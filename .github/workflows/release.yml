@@ -1,0 +1,29 @@
+name: Release
+on:
+  repository_dispatch:
+    types: [spec-updated]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version to publish (SDK-only patch, e.g. 3.2.1)"
+        required: true
+        type: string
+      dry_run:
+        description: "Build and test but do not publish"
+        required: false
+        type: boolean
+        default: false
+jobs:
+  release:
+    uses: shadow-software/sdk-release/.github/workflows/release.yml@master
+    with:
+      language: php
+      package_name: "shadow-software/dabdash-php-sdk"
+      package_dir: "."
+      spec_url: ${{ github.event.client_payload.spec_url || '' }}
+      version: ${{ github.event.client_payload.version || inputs.version }}
+      dry_run: ${{ inputs.dry_run || false }}
+    secrets:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      PACKAGIST_TOKEN: ${{ secrets.PACKAGIST_TOKEN }}
+      PACKAGIST_USERNAME: ${{ secrets.PACKAGIST_USERNAME }}
