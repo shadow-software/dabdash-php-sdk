@@ -20,7 +20,6 @@ jobs:
       language: php
       package_name: "shadow-software/dabdash-php-sdk"
       package_dir: "."
-      spec_url: ${{ github.event.client_payload.spec_url || '' }}
       version: ${{ github.event.client_payload.version || inputs.version }}
       dry_run: ${{ inputs.dry_run || false }}
     secrets:
