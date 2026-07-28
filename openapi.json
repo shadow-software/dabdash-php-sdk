@@ -5659,7 +5659,7 @@
         "/api/v1/tools/analytics_query": {
             "post": {
                 "operationId": "analytics_query",
-                "summary": "Run read-only analytics queries against the production database. Available reports: revenue_by_tenant, orders_by_status, top_products, revenue_over_time, customer_stats.",
+                "summary": "Run read-only analytics queries against the production database. Available reports: revenue_by_tenant, orders_by_status, top_products, revenue_over_time, customer_stats. Revenue dating uses RevenueAttribution (pass tenant_slug for delivered-mode tenants).",
                 "tags": [
                     "analytics",
                     "read"
