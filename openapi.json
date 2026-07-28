@@ -1249,6 +1249,243 @@
                 },
                 "type": "object"
             },
+            "CouponListRequest": {
+                "properties": {
+                    "only_active": {
+                        "description": "Return only is_active coupons. Defaults to false (all coupons).",
+                        "type": [
+                            "boolean",
+                            "null"
+                        ]
+                    }
+                },
+                "type": "object"
+            },
+            "CouponListResponse": {
+                "properties": {
+                    "tenant": {
+                        "properties": {
+                            "id": {
+                                "type": "integer"
+                            },
+                            "slug": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "summary": {
+                        "properties": {
+                            "total": {
+                                "type": "integer"
+                            },
+                            "active": {
+                                "type": "integer"
+                            },
+                            "exhausted": {
+                                "type": "integer"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "coupons": {
+                        "items": {
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "code": {
+                                    "type": "string"
+                                },
+                                "type": {
+                                    "type": "string"
+                                },
+                                "value": {
+                                    "type": "number"
+                                },
+                                "value_unit": {
+                                    "type": "string"
+                                },
+                                "min_order_cents": {
+                                    "type": "integer"
+                                },
+                                "max_uses": {
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ]
+                                },
+                                "used_count": {
+                                    "type": "integer"
+                                },
+                                "is_exhausted": {
+                                    "type": "boolean"
+                                },
+                                "max_uses_per_customer": {
+                                    "type": "integer"
+                                },
+                                "limit_match_by": {
+                                    "type": "string"
+                                },
+                                "applies_to": {
+                                    "type": "string"
+                                },
+                                "is_active": {
+                                    "type": "boolean"
+                                },
+                                "starts_at": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "expires_at": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    }
+                },
+                "type": "object"
+            },
+            "CouponUpsertRequest": {
+                "properties": {
+                    "coupon_id": {
+                        "description": "ID of an existing coupon to update. Omit to create a new coupon.",
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "code": {
+                        "description": "Coupon code customers enter at checkout (case-insensitive, stored uppercase). Required when creating.",
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "type": {
+                        "description": "\"percentage\", \"fixed\", or \"free_delivery\". Required when creating.",
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "value": {
+                        "description": "Percent 0-100 for \"percentage\"; dollars for \"fixed\"; ignored for \"free_delivery\". Required when creating (pass 0 for free_delivery).",
+                        "type": [
+                            "number",
+                            "null"
+                        ]
+                    },
+                    "min_order": {
+                        "description": "Minimum order subtotal in dollars required to use the coupon. Omit or 0 for no minimum.",
+                        "type": [
+                            "number",
+                            "null"
+                        ]
+                    },
+                    "max_uses": {
+                        "description": "Total redemption cap across all customers. Omit/null for unlimited.",
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "max_uses_per_customer": {
+                        "description": "Redemption cap per customer, matched via limit_match_by. Defaults to 1.",
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "limit_match_by": {
+                        "description": "\"email\", \"phone\", or \"both\" — how max_uses_per_customer is enforced. \"phone\"/\"both\" require the tenant's phone-at-checkout setting to be on.",
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "applies_to": {
+                        "description": "\"all\", \"products\", or \"categories\". Only \"all\" is fully wired today — see tool description.",
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "is_active": {
+                        "description": "Whether the coupon is live. Defaults to true on create; left unchanged on update unless passed.",
+                        "type": [
+                            "boolean",
+                            "null"
+                        ]
+                    },
+                    "starts_at": {
+                        "description": "Optional start date (tenant timezone, stored as UTC start-of-day). Pass null to clear.",
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "expires_at": {
+                        "description": "Optional expiry date (tenant timezone, stored as UTC end-of-day). Must be on/after starts_at. Pass null to clear.",
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    }
+                },
+                "type": "object"
+            },
+            "CouponUpsertResponse": {
+                "properties": {
+                    "action": {
+                        "type": "string"
+                    },
+                    "coupon_id": {
+                        "type": "integer"
+                    },
+                    "code": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "number"
+                    },
+                    "value_unit": {
+                        "type": "string"
+                    },
+                    "min_order_cents": {
+                        "type": "integer"
+                    },
+                    "is_active": {
+                        "type": "boolean"
+                    },
+                    "starts_at": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "expires_at": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "message": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
             "CustomerAddressesRequest": {
                 "properties": {
                     "customer_id": {
@@ -1861,6 +2098,239 @@
                             "type": "string"
                         },
                         "type": "array"
+                    }
+                },
+                "type": "object"
+            },
+            "FreebieListRequest": {
+                "properties": {
+                    "only_active": {
+                        "description": "Return only is_active freebies. Defaults to false (all freebies).",
+                        "type": [
+                            "boolean",
+                            "null"
+                        ]
+                    }
+                },
+                "type": "object"
+            },
+            "FreebieListResponse": {
+                "properties": {
+                    "tenant": {
+                        "properties": {
+                            "id": {
+                                "type": "integer"
+                            },
+                            "slug": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "summary": {
+                        "properties": {
+                            "total": {
+                                "type": "integer"
+                            },
+                            "active": {
+                                "type": "integer"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "freebies": {
+                        "items": {
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "spend_threshold_cents": {
+                                    "type": "integer"
+                                },
+                                "product_id": {
+                                    "type": "integer"
+                                },
+                                "product_name": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "variation_id": {
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ]
+                                },
+                                "variation_name": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "quantity": {
+                                    "type": "integer"
+                                },
+                                "is_stackable": {
+                                    "type": "boolean"
+                                },
+                                "is_active": {
+                                    "type": "boolean"
+                                },
+                                "starts_at": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "ends_at": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    }
+                },
+                "type": "object"
+            },
+            "FreebieUpsertRequest": {
+                "properties": {
+                    "freebie_id": {
+                        "description": "ID of an existing freebie to update. Omit to create a new freebie.",
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "name": {
+                        "description": "Freebie name shown to vendors (e.g. \"Spend $50 Get Papers\"). Required when creating.",
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "product_id": {
+                        "description": "The product given away. Must belong to this tenant. Required when creating.",
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "variation_id": {
+                        "description": "Optional specific variation of product_id to give away. Must belong to this tenant. Pass null to clear.",
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "spend_threshold": {
+                        "description": "Minimum cart spend in dollars that triggers this freebie. Required when creating.",
+                        "type": [
+                            "number",
+                            "null"
+                        ]
+                    },
+                    "quantity": {
+                        "description": "How many units of the product/variation are given away once triggered. Required when creating.",
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "is_stackable": {
+                        "description": "Whether this rule can combine with other freebie rules on the same order. Defaults to false.",
+                        "type": [
+                            "boolean",
+                            "null"
+                        ]
+                    },
+                    "is_active": {
+                        "description": "Whether the freebie is live. Defaults to true on create; left unchanged on update unless passed.",
+                        "type": [
+                            "boolean",
+                            "null"
+                        ]
+                    },
+                    "starts_at": {
+                        "description": "Optional start date (tenant timezone, stored as UTC). Pass null to clear.",
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "ends_at": {
+                        "description": "Optional end date (tenant timezone, stored as UTC). Must be on/after starts_at. Pass null to clear.",
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "category_ids": {
+                        "description": "Category IDs to scope this freebie to. Must belong to this tenant; foreign ids are ignored. Omit to leave unchanged; pass an empty array to clear all.",
+                        "type": [
+                            "array",
+                            "null"
+                        ]
+                    }
+                },
+                "type": "object"
+            },
+            "FreebieUpsertResponse": {
+                "properties": {
+                    "action": {
+                        "type": "string"
+                    },
+                    "freebie_id": {
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "product_id": {
+                        "type": "integer"
+                    },
+                    "variation_id": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "spend_threshold_cents": {
+                        "type": "integer"
+                    },
+                    "quantity": {
+                        "type": "integer"
+                    },
+                    "is_stackable": {
+                        "type": "boolean"
+                    },
+                    "is_active": {
+                        "type": "boolean"
+                    },
+                    "starts_at": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "ends_at": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "category_count": {
+                        "type": "integer"
+                    },
+                    "message": {
+                        "type": "string"
                     }
                 },
                 "type": "object"
@@ -7262,6 +7732,352 @@
                 ]
             }
         },
+        "/api/v1/tools/coupon_list": {
+            "post": {
+                "operationId": "coupon_list",
+                "summary": "List a tenant's discount coupons with code, type, value, usage limits, redemption count,\nactive state, and schedule window. Coupons are customer-entered codes applied at checkout\n(distinct from bundles, which fire automatically on cart contents — use bundle_list for those).\n\ntype:\n  percentage     → value is a percentage 0-100 off the order subtotal.\n  fixed          → value is dollars off the order subtotal.\n  free_delivery  → waives the delivery fee only; value is unused for this type.\n\nAlways call this before making coupon-related decisions to see current codes, usage caps,\nand whether a coupon has already been exhausted (used_count vs max_uses).",
+                "tags": [
+                    "promotions",
+                    "read"
+                ],
+                "requestBody": {
+                    "required": false,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CouponListRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "tool": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "$ref": "#/components/schemas/CouponListResponse"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Missing or invalid tenant credentials.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "402": {
+                        "description": "The tenant has no active trial, subscription, or grace period.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "A read-scoped key was used to call a write tool.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unknown tool name.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Request validation failed, or the tool reported a business error.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "tenantApiKey": []
+                    },
+                    {
+                        "tenantOAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/tools/coupon_upsert": {
+            "post": {
+                "operationId": "coupon_upsert",
+                "summary": "Create or update a discount coupon on behalf of a tenant. Coupons are customer-entered codes\napplied at checkout (distinct from bundles, which fire automatically on cart contents — use\nbundle_upsert for those).\n\nUPDATE MODE (coupon_id provided):\n  Edits the coupon. Only the fields you pass are changed; omitted fields are left as-is.\n\nCREATE MODE (no coupon_id):\n  Creates a new coupon. code, type, and value are required.\n\nVALUE UNITS:\n  type = \"percentage\"     → value is a percentage 0-100 off the order subtotal.\n  type = \"fixed\"          → value is DOLLARS off the order subtotal (e.g. 10 = $10 off).\n  type = \"free_delivery\"  → value is ignored (pass 0); this type only waives the delivery fee.\n\nmin_order is a dollar minimum order subtotal required to use the coupon (pass dollars, e.g. 25\nfor a $25 minimum — the tool stores cents internally). Omit or pass 0 for no minimum.\n\nlimit_match_by (\"email\"|\"phone\"|\"both\") controls how max_uses_per_customer is enforced. Using\n\"phone\" or \"both\" REQUIRES the tenant's \"Require phone at checkout\" setting to be on — otherwise\nthe update is rejected, since customers without a phone on file could otherwise reuse the coupon\npast its per-customer limit.\n\nSCHEDULE:\n  starts_at / expires_at are interpreted in the tenant's timezone and stored as UTC. Pass\n  null/omit for an always-on coupon.\n\nNOT YET SUPPORTED BY THIS TOOL: scoping a coupon to specific products or categories\n(applies_to_ids) — only applies_to=\"all\" is fully wired end to end today. Passing\napplies_to=\"products\" or \"categories\" without further product/category tooling will save the\ncoupon with no scoped items, which behaves the same as \"all\" in the current checkout logic.\n\nAlways call coupon_list first to get the coupon_id and confirm the current configuration.",
+                "tags": [
+                    "promotions",
+                    "write"
+                ],
+                "requestBody": {
+                    "required": false,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CouponUpsertRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "tool": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "$ref": "#/components/schemas/CouponUpsertResponse"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Missing or invalid tenant credentials.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "402": {
+                        "description": "The tenant has no active trial, subscription, or grace period.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "A read-scoped key was used to call a write tool.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unknown tool name.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Request validation failed, or the tool reported a business error.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "tenantApiKey": []
+                    },
+                    {
+                        "tenantOAuth": []
+                    }
+                ]
+            }
+        },
         "/api/v1/tools/customer_addresses": {
             "post": {
                 "operationId": "customer_addresses",
@@ -7812,6 +8628,352 @@
                                         },
                                         "data": {
                                             "$ref": "#/components/schemas/CustomerUpdateResponse"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Missing or invalid tenant credentials.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "402": {
+                        "description": "The tenant has no active trial, subscription, or grace period.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "A read-scoped key was used to call a write tool.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unknown tool name.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Request validation failed, or the tool reported a business error.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "tenantApiKey": []
+                    },
+                    {
+                        "tenantOAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/tools/freebie_list": {
+            "post": {
+                "operationId": "freebie_list",
+                "summary": "List a tenant's freebie rules (\"spend $X, get a free item\") with id, name, spend threshold,\nthe product/variation given away, quantity, stackable flag, active state, and schedule window.\nFreebies are evaluated on every cart change by FreebieService: a rule fires once its\nspend_threshold is met, adding `quantity` of the configured product/variation to the cart.\n\nIMPORTANT: this reads the `freebies` table — the source of truth the storefront cart uses. It\nis NOT the legacy freebie summary promotion_audit surfaces alongside coupons/bundles; that view\nis stale display-only data built for a different purpose. Trust this tool for what actually\napplies at checkout.\n\nis_stackable:\n  true   → this rule can fire alongside OTHER DIFFERENT freebie rules on the same order (each\n           rule still only fires once, at its configured quantity, regardless of how far above\n           its own threshold the cart is).\n  false  → this rule cannot combine with other freebie rules; if multiple non-stackable rules\n           qualify, FreebieService applies its own precedence to pick one.\n  This flag does NOT multiply a single rule's quantity by how many multiples of the threshold\n  the cart reaches — a $50-threshold rule at $150 spent still gives quantity 1, not 3.",
+                "tags": [
+                    "promotions",
+                    "read"
+                ],
+                "requestBody": {
+                    "required": false,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/FreebieListRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "tool": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "$ref": "#/components/schemas/FreebieListResponse"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Missing or invalid tenant credentials.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "402": {
+                        "description": "The tenant has no active trial, subscription, or grace period.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "A read-scoped key was used to call a write tool.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unknown tool name.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Request validation failed, or the tool reported a business error.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "tenantApiKey": []
+                    },
+                    {
+                        "tenantOAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/tools/freebie_upsert": {
+            "post": {
+                "operationId": "freebie_upsert",
+                "summary": "Create or update a freebie rule (\"spend $X, get a free item\") on behalf of a tenant. Freebies\nare evaluated on every cart change: a rule fires once its spend_threshold is met, adding\n`quantity` of the configured product/variation to the cart (distinct from bundles, which fire\non cart CONTENTS/quantity — use bundle_upsert for those).\n\nUPDATE MODE (freebie_id provided):\n  Edits the freebie. Only the fields you pass are changed; omitted fields are left as-is,\n  EXCEPT category_ids, which — like bundle_upsert's variation_ids — fully replaces the category\n  set whenever passed (pass an empty array to clear all categories).\n\nCREATE MODE (no freebie_id):\n  Creates a new freebie. name, product_id, spend_threshold, and quantity are required.\n\nproduct_id and variation_id (if given) MUST belong to the same tenant — foreign ids are\nrejected, not silently ignored (unlike bundle_upsert's variation_ids, since a freebie needs\nexactly one product to give away, not a set).\n\nspend_threshold is entered in DOLLARS (e.g. 50 for a $50 minimum spend) — the tool stores cents\ninternally.\n\nis_stackable:\n  true   → this rule can fire alongside OTHER DIFFERENT freebie rules on the same order.\n  false  → this rule cannot combine with other freebie rules.\n  Does NOT multiply this rule's own quantity by how many multiples of spend_threshold the cart\n  reaches — a $50-threshold rule at $150 spent still gives quantity 1, not 3.\n\nSCHEDULE:\n  starts_at / ends_at are interpreted in the tenant's timezone and stored as UTC. Pass\n  null/omit for an always-on freebie.\n\nAlways call freebie_list first to get the freebie_id and confirm the current configuration.",
+                "tags": [
+                    "promotions",
+                    "write"
+                ],
+                "requestBody": {
+                    "required": false,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/FreebieUpsertRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "tool": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "$ref": "#/components/schemas/FreebieUpsertResponse"
                                         }
                                     }
                                 }
