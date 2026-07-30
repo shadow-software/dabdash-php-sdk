@@ -12,20 +12,7 @@ Do not edit `generated/` by hand.
 composer require shadow-software/dabdash-php-sdk
 ```
 
-Requires PHP 8.1+.
-
-Until Packagist lists the package, add a VCS repository:
-
-```json
-{
-  "repositories": [
-    { "type": "vcs", "url": "https://github.com/shadow-software/dabdash-php-sdk" }
-  ],
-  "require": {
-    "shadow-software/dabdash-php-sdk": "^0.2"
-  }
-}
-```
+Requires PHP 8.1+. On [Packagist](https://packagist.org/packages/shadow-software/dabdash-php-sdk).
 
 ## Usage
 
