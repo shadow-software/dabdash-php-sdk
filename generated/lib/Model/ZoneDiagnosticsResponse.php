@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace ShadowSoftware\Sdk\Generated\Model;
+namespace ShadowSoftware\DabDash\Model;
 
 use \ArrayAccess;
-use \ShadowSoftware\Sdk\Generated\ObjectSerializer;
+use \ShadowSoftware\DabDash\ObjectSerializer;
 
 /**
  * ZoneDiagnosticsResponse Class Doc Comment
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -57,12 +57,12 @@ class ZoneDiagnosticsResponse implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $openAPITypes = [
-        'tenant' => '\ShadowSoftware\Sdk\Generated\Model\CustomerAddressesResponseTenant',
-        'source' => '\ShadowSoftware\Sdk\Generated\Model\ZoneDiagnosticsResponseSource',
-        'address_coordinates' => '\ShadowSoftware\Sdk\Generated\Model\ZoneDiagnosticsResponseAddressCoordinates',
-        'saved_zone' => '\ShadowSoftware\Sdk\Generated\Model\ZoneDiagnosticsResponseSavedZone',
-        'detected_zone' => '\ShadowSoftware\Sdk\Generated\Model\ZoneDiagnosticsResponseDetectedZone',
-        'zones' => '\ShadowSoftware\Sdk\Generated\Model\ZoneDiagnosticsResponseZonesInner[]'
+        'tenant' => '\ShadowSoftware\DabDash\Model\CustomerAddressesResponseTenant',
+        'source' => '\ShadowSoftware\DabDash\Model\ZoneDiagnosticsResponseSource',
+        'address_coordinates' => '\ShadowSoftware\DabDash\Model\ZoneDiagnosticsResponseAddressCoordinates',
+        'saved_zone' => '\ShadowSoftware\DabDash\Model\ZoneDiagnosticsResponseSavedZone',
+        'detected_zone' => '\ShadowSoftware\DabDash\Model\ZoneDiagnosticsResponseDetectedZone',
+        'zones' => '\ShadowSoftware\DabDash\Model\ZoneDiagnosticsResponseZonesInner[]'
     ];
 
     /**
@@ -327,7 +327,7 @@ class ZoneDiagnosticsResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets tenant
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\CustomerAddressesResponseTenant|null
+     * @return \ShadowSoftware\DabDash\Model\CustomerAddressesResponseTenant|null
      */
     public function getTenant()
     {
@@ -337,7 +337,7 @@ class ZoneDiagnosticsResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets tenant
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\CustomerAddressesResponseTenant|null $tenant tenant
+     * @param \ShadowSoftware\DabDash\Model\CustomerAddressesResponseTenant|null $tenant tenant
      *
      * @return self
      */
@@ -354,7 +354,7 @@ class ZoneDiagnosticsResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets source
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\ZoneDiagnosticsResponseSource|null
+     * @return \ShadowSoftware\DabDash\Model\ZoneDiagnosticsResponseSource|null
      */
     public function getSource()
     {
@@ -364,7 +364,7 @@ class ZoneDiagnosticsResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets source
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\ZoneDiagnosticsResponseSource|null $source source
+     * @param \ShadowSoftware\DabDash\Model\ZoneDiagnosticsResponseSource|null $source source
      *
      * @return self
      */
@@ -388,7 +388,7 @@ class ZoneDiagnosticsResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets address_coordinates
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\ZoneDiagnosticsResponseAddressCoordinates|null
+     * @return \ShadowSoftware\DabDash\Model\ZoneDiagnosticsResponseAddressCoordinates|null
      */
     public function getAddressCoordinates()
     {
@@ -398,7 +398,7 @@ class ZoneDiagnosticsResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets address_coordinates
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\ZoneDiagnosticsResponseAddressCoordinates|null $address_coordinates address_coordinates
+     * @param \ShadowSoftware\DabDash\Model\ZoneDiagnosticsResponseAddressCoordinates|null $address_coordinates address_coordinates
      *
      * @return self
      */
@@ -415,7 +415,7 @@ class ZoneDiagnosticsResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets saved_zone
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\ZoneDiagnosticsResponseSavedZone|null
+     * @return \ShadowSoftware\DabDash\Model\ZoneDiagnosticsResponseSavedZone|null
      */
     public function getSavedZone()
     {
@@ -425,7 +425,7 @@ class ZoneDiagnosticsResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets saved_zone
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\ZoneDiagnosticsResponseSavedZone|null $saved_zone saved_zone
+     * @param \ShadowSoftware\DabDash\Model\ZoneDiagnosticsResponseSavedZone|null $saved_zone saved_zone
      *
      * @return self
      */
@@ -449,7 +449,7 @@ class ZoneDiagnosticsResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets detected_zone
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\ZoneDiagnosticsResponseDetectedZone|null
+     * @return \ShadowSoftware\DabDash\Model\ZoneDiagnosticsResponseDetectedZone|null
      */
     public function getDetectedZone()
     {
@@ -459,7 +459,7 @@ class ZoneDiagnosticsResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets detected_zone
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\ZoneDiagnosticsResponseDetectedZone|null $detected_zone detected_zone
+     * @param \ShadowSoftware\DabDash\Model\ZoneDiagnosticsResponseDetectedZone|null $detected_zone detected_zone
      *
      * @return self
      */
@@ -483,7 +483,7 @@ class ZoneDiagnosticsResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets zones
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\ZoneDiagnosticsResponseZonesInner[]|null
+     * @return \ShadowSoftware\DabDash\Model\ZoneDiagnosticsResponseZonesInner[]|null
      */
     public function getZones()
     {
@@ -493,7 +493,7 @@ class ZoneDiagnosticsResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets zones
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\ZoneDiagnosticsResponseZonesInner[]|null $zones zones
+     * @param \ShadowSoftware\DabDash\Model\ZoneDiagnosticsResponseZonesInner[]|null $zones zones
      *
      * @return self
      */

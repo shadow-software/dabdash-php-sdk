@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace ShadowSoftware\Sdk\Generated\Model;
+namespace ShadowSoftware\DabDash\Model;
 
 use \ArrayAccess;
-use \ShadowSoftware\Sdk\Generated\ObjectSerializer;
+use \ShadowSoftware\DabDash\ObjectSerializer;
 
 /**
  * PromotionAuditResponseOrder Class Doc Comment
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -73,7 +73,7 @@ class PromotionAuditResponseOrder implements ModelInterface, ArrayAccess, \JsonS
         'loyalty_discount' => 'int',
         'total' => 'int',
         'zone' => 'string',
-        'items' => '\ShadowSoftware\Sdk\Generated\Model\PromotionAuditResponseOrderItemsInner[]'
+        'items' => '\ShadowSoftware\DabDash\Model\PromotionAuditResponseOrderItemsInner[]'
     ];
 
     /**
@@ -857,7 +857,7 @@ class PromotionAuditResponseOrder implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets items
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\PromotionAuditResponseOrderItemsInner[]|null
+     * @return \ShadowSoftware\DabDash\Model\PromotionAuditResponseOrderItemsInner[]|null
      */
     public function getItems()
     {
@@ -867,7 +867,7 @@ class PromotionAuditResponseOrder implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets items
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\PromotionAuditResponseOrderItemsInner[]|null $items items
+     * @param \ShadowSoftware\DabDash\Model\PromotionAuditResponseOrderItemsInner[]|null $items items
      *
      * @return self
      */

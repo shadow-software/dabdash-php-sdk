@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace ShadowSoftware\Sdk\Generated\Model;
+namespace ShadowSoftware\DabDash\Model;
 
 use \ArrayAccess;
-use \ShadowSoftware\Sdk\Generated\ObjectSerializer;
+use \ShadowSoftware\DabDash\ObjectSerializer;
 
 /**
  * CatalogFlatteningAuditResponse Class Doc Comment
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,8 +58,8 @@ class CatalogFlatteningAuditResponse implements ModelInterface, ArrayAccess, \Js
      */
     protected static $openAPITypes = [
         'tenant_slug' => 'string',
-        'summary' => '\ShadowSoftware\Sdk\Generated\Model\CatalogFlatteningAuditResponseSummary',
-        'families' => '\ShadowSoftware\Sdk\Generated\Model\CatalogFlatteningAuditResponseFamiliesInner[]'
+        'summary' => '\ShadowSoftware\DabDash\Model\CatalogFlatteningAuditResponseSummary',
+        'families' => '\ShadowSoftware\DabDash\Model\CatalogFlatteningAuditResponseFamiliesInner[]'
     ];
 
     /**
@@ -333,7 +333,7 @@ class CatalogFlatteningAuditResponse implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets summary
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\CatalogFlatteningAuditResponseSummary|null
+     * @return \ShadowSoftware\DabDash\Model\CatalogFlatteningAuditResponseSummary|null
      */
     public function getSummary()
     {
@@ -343,7 +343,7 @@ class CatalogFlatteningAuditResponse implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets summary
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\CatalogFlatteningAuditResponseSummary|null $summary summary
+     * @param \ShadowSoftware\DabDash\Model\CatalogFlatteningAuditResponseSummary|null $summary summary
      *
      * @return self
      */
@@ -360,7 +360,7 @@ class CatalogFlatteningAuditResponse implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets families
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\CatalogFlatteningAuditResponseFamiliesInner[]|null
+     * @return \ShadowSoftware\DabDash\Model\CatalogFlatteningAuditResponseFamiliesInner[]|null
      */
     public function getFamilies()
     {
@@ -370,7 +370,7 @@ class CatalogFlatteningAuditResponse implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets families
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\CatalogFlatteningAuditResponseFamiliesInner[]|null $families families
+     * @param \ShadowSoftware\DabDash\Model\CatalogFlatteningAuditResponseFamiliesInner[]|null $families families
      *
      * @return self
      */

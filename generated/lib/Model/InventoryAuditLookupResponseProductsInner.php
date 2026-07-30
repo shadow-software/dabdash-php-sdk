@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace ShadowSoftware\Sdk\Generated\Model;
+namespace ShadowSoftware\DabDash\Model;
 
 use \ArrayAccess;
-use \ShadowSoftware\Sdk\Generated\ObjectSerializer;
+use \ShadowSoftware\DabDash\ObjectSerializer;
 
 /**
  * InventoryAuditLookupResponseProductsInner Class Doc Comment
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class InventoryAuditLookupResponseProductsInner implements ModelInterface, Array
         'product_id' => 'int',
         'product_name' => 'string',
         'product_slug' => 'string',
-        'current_state' => '\ShadowSoftware\Sdk\Generated\Model\InventoryAuditLookupResponseProductsInnerCurrentState',
-        'audit_history' => '\ShadowSoftware\Sdk\Generated\Model\InventoryAuditLookupResponseProductsInnerAuditHistoryInner[]'
+        'current_state' => '\ShadowSoftware\DabDash\Model\InventoryAuditLookupResponseProductsInnerCurrentState',
+        'audit_history' => '\ShadowSoftware\DabDash\Model\InventoryAuditLookupResponseProductsInnerAuditHistoryInner[]'
     ];
 
     /**
@@ -401,7 +401,7 @@ class InventoryAuditLookupResponseProductsInner implements ModelInterface, Array
     /**
      * Gets current_state
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\InventoryAuditLookupResponseProductsInnerCurrentState|null
+     * @return \ShadowSoftware\DabDash\Model\InventoryAuditLookupResponseProductsInnerCurrentState|null
      */
     public function getCurrentState()
     {
@@ -411,7 +411,7 @@ class InventoryAuditLookupResponseProductsInner implements ModelInterface, Array
     /**
      * Sets current_state
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\InventoryAuditLookupResponseProductsInnerCurrentState|null $current_state current_state
+     * @param \ShadowSoftware\DabDash\Model\InventoryAuditLookupResponseProductsInnerCurrentState|null $current_state current_state
      *
      * @return self
      */
@@ -428,7 +428,7 @@ class InventoryAuditLookupResponseProductsInner implements ModelInterface, Array
     /**
      * Gets audit_history
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\InventoryAuditLookupResponseProductsInnerAuditHistoryInner[]|null
+     * @return \ShadowSoftware\DabDash\Model\InventoryAuditLookupResponseProductsInnerAuditHistoryInner[]|null
      */
     public function getAuditHistory()
     {
@@ -438,7 +438,7 @@ class InventoryAuditLookupResponseProductsInner implements ModelInterface, Array
     /**
      * Sets audit_history
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\InventoryAuditLookupResponseProductsInnerAuditHistoryInner[]|null $audit_history audit_history
+     * @param \ShadowSoftware\DabDash\Model\InventoryAuditLookupResponseProductsInnerAuditHistoryInner[]|null $audit_history audit_history
      *
      * @return self
      */

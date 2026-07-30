@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace ShadowSoftware\Sdk\Generated\Model;
+namespace ShadowSoftware\DabDash\Model;
 
 use \ArrayAccess;
-use \ShadowSoftware\Sdk\Generated\ObjectSerializer;
+use \ShadowSoftware\DabDash\ObjectSerializer;
 
 /**
  * ProductInspectResponse Class Doc Comment
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -57,9 +57,9 @@ class ProductInspectResponse implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $openAPITypes = [
-        'tenant' => '\ShadowSoftware\Sdk\Generated\Model\BundleListResponseTenant',
-        'mix_match_settings' => '\ShadowSoftware\Sdk\Generated\Model\ProductInspectResponseMixMatchSettings',
-        'products' => '\ShadowSoftware\Sdk\Generated\Model\ProductInspectResponseProductsInner[]'
+        'tenant' => '\ShadowSoftware\DabDash\Model\BundleListResponseTenant',
+        'mix_match_settings' => '\ShadowSoftware\DabDash\Model\ProductInspectResponseMixMatchSettings',
+        'products' => '\ShadowSoftware\DabDash\Model\ProductInspectResponseProductsInner[]'
     ];
 
     /**
@@ -306,7 +306,7 @@ class ProductInspectResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets tenant
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\BundleListResponseTenant|null
+     * @return \ShadowSoftware\DabDash\Model\BundleListResponseTenant|null
      */
     public function getTenant()
     {
@@ -316,7 +316,7 @@ class ProductInspectResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets tenant
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\BundleListResponseTenant|null $tenant tenant
+     * @param \ShadowSoftware\DabDash\Model\BundleListResponseTenant|null $tenant tenant
      *
      * @return self
      */
@@ -333,7 +333,7 @@ class ProductInspectResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets mix_match_settings
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\ProductInspectResponseMixMatchSettings|null
+     * @return \ShadowSoftware\DabDash\Model\ProductInspectResponseMixMatchSettings|null
      */
     public function getMixMatchSettings()
     {
@@ -343,7 +343,7 @@ class ProductInspectResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets mix_match_settings
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\ProductInspectResponseMixMatchSettings|null $mix_match_settings mix_match_settings
+     * @param \ShadowSoftware\DabDash\Model\ProductInspectResponseMixMatchSettings|null $mix_match_settings mix_match_settings
      *
      * @return self
      */
@@ -360,7 +360,7 @@ class ProductInspectResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets products
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\ProductInspectResponseProductsInner[]|null
+     * @return \ShadowSoftware\DabDash\Model\ProductInspectResponseProductsInner[]|null
      */
     public function getProducts()
     {
@@ -370,7 +370,7 @@ class ProductInspectResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets products
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\ProductInspectResponseProductsInner[]|null $products products
+     * @param \ShadowSoftware\DabDash\Model\ProductInspectResponseProductsInner[]|null $products products
      *
      * @return self
      */

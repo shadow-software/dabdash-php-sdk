@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace ShadowSoftware\Sdk\Generated\Model;
+namespace ShadowSoftware\DabDash\Model;
 
 use \ArrayAccess;
-use \ShadowSoftware\Sdk\Generated\ObjectSerializer;
+use \ShadowSoftware\DabDash\ObjectSerializer;
 
 /**
  * StoreInfoResponse Class Doc Comment
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -57,7 +57,7 @@ class StoreInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $openAPITypes = [
-        'store' => '\ShadowSoftware\Sdk\Generated\Model\StoreInfoResponseStore'
+        'store' => '\ShadowSoftware\DabDash\Model\StoreInfoResponseStore'
     ];
 
     /**
@@ -292,7 +292,7 @@ class StoreInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets store
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\StoreInfoResponseStore|null
+     * @return \ShadowSoftware\DabDash\Model\StoreInfoResponseStore|null
      */
     public function getStore()
     {
@@ -302,7 +302,7 @@ class StoreInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets store
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\StoreInfoResponseStore|null $store store
+     * @param \ShadowSoftware\DabDash\Model\StoreInfoResponseStore|null $store store
      *
      * @return self
      */

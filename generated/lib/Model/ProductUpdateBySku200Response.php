@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace ShadowSoftware\Sdk\Generated\Model;
+namespace ShadowSoftware\DabDash\Model;
 
 use \ArrayAccess;
-use \ShadowSoftware\Sdk\Generated\ObjectSerializer;
+use \ShadowSoftware\DabDash\ObjectSerializer;
 
 /**
  * ProductUpdateBySku200Response Class Doc Comment
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class ProductUpdateBySku200Response implements ModelInterface, ArrayAccess, \Jso
      */
     protected static $openAPITypes = [
         'tool' => 'string',
-        'data' => '\ShadowSoftware\Sdk\Generated\Model\ProductUpdateBySkuResponse'
+        'data' => '\ShadowSoftware\DabDash\Model\ProductUpdateBySkuResponse'
     ];
 
     /**
@@ -326,7 +326,7 @@ class ProductUpdateBySku200Response implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets data
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\ProductUpdateBySkuResponse|null
+     * @return \ShadowSoftware\DabDash\Model\ProductUpdateBySkuResponse|null
      */
     public function getData()
     {
@@ -336,7 +336,7 @@ class ProductUpdateBySku200Response implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets data
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\ProductUpdateBySkuResponse|null $data data
+     * @param \ShadowSoftware\DabDash\Model\ProductUpdateBySkuResponse|null $data data
      *
      * @return self
      */

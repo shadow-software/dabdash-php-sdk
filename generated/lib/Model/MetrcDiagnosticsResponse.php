@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace ShadowSoftware\Sdk\Generated\Model;
+namespace ShadowSoftware\DabDash\Model;
 
 use \ArrayAccess;
-use \ShadowSoftware\Sdk\Generated\ObjectSerializer;
+use \ShadowSoftware\DabDash\ObjectSerializer;
 
 /**
  * MetrcDiagnosticsResponse Class Doc Comment
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -57,12 +57,12 @@ class MetrcDiagnosticsResponse implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $openAPITypes = [
-        'tenant' => '\ShadowSoftware\Sdk\Generated\Model\CustomerAddressesResponseTenant',
-        'integration' => '\ShadowSoftware\Sdk\Generated\Model\MetrcDiagnosticsResponseIntegration',
-        'sync_states' => '\ShadowSoftware\Sdk\Generated\Model\MetrcDiagnosticsResponseSyncStatesInner[]',
+        'tenant' => '\ShadowSoftware\DabDash\Model\CustomerAddressesResponseTenant',
+        'integration' => '\ShadowSoftware\DabDash\Model\MetrcDiagnosticsResponseIntegration',
+        'sync_states' => '\ShadowSoftware\DabDash\Model\MetrcDiagnosticsResponseSyncStatesInner[]',
         'audit_log_counts_by_http_status' => 'object',
         'report_counts_by_status' => 'object',
-        'last_reconciliation_run' => '\ShadowSoftware\Sdk\Generated\Model\MetrcDiagnosticsResponseLastReconciliationRun'
+        'last_reconciliation_run' => '\ShadowSoftware\DabDash\Model\MetrcDiagnosticsResponseLastReconciliationRun'
     ];
 
     /**
@@ -327,7 +327,7 @@ class MetrcDiagnosticsResponse implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets tenant
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\CustomerAddressesResponseTenant|null
+     * @return \ShadowSoftware\DabDash\Model\CustomerAddressesResponseTenant|null
      */
     public function getTenant()
     {
@@ -337,7 +337,7 @@ class MetrcDiagnosticsResponse implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets tenant
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\CustomerAddressesResponseTenant|null $tenant tenant
+     * @param \ShadowSoftware\DabDash\Model\CustomerAddressesResponseTenant|null $tenant tenant
      *
      * @return self
      */
@@ -354,7 +354,7 @@ class MetrcDiagnosticsResponse implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets integration
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\MetrcDiagnosticsResponseIntegration|null
+     * @return \ShadowSoftware\DabDash\Model\MetrcDiagnosticsResponseIntegration|null
      */
     public function getIntegration()
     {
@@ -364,7 +364,7 @@ class MetrcDiagnosticsResponse implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets integration
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\MetrcDiagnosticsResponseIntegration|null $integration integration
+     * @param \ShadowSoftware\DabDash\Model\MetrcDiagnosticsResponseIntegration|null $integration integration
      *
      * @return self
      */
@@ -381,7 +381,7 @@ class MetrcDiagnosticsResponse implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets sync_states
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\MetrcDiagnosticsResponseSyncStatesInner[]|null
+     * @return \ShadowSoftware\DabDash\Model\MetrcDiagnosticsResponseSyncStatesInner[]|null
      */
     public function getSyncStates()
     {
@@ -391,7 +391,7 @@ class MetrcDiagnosticsResponse implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets sync_states
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\MetrcDiagnosticsResponseSyncStatesInner[]|null $sync_states sync_states
+     * @param \ShadowSoftware\DabDash\Model\MetrcDiagnosticsResponseSyncStatesInner[]|null $sync_states sync_states
      *
      * @return self
      */
@@ -462,7 +462,7 @@ class MetrcDiagnosticsResponse implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets last_reconciliation_run
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\MetrcDiagnosticsResponseLastReconciliationRun|null
+     * @return \ShadowSoftware\DabDash\Model\MetrcDiagnosticsResponseLastReconciliationRun|null
      */
     public function getLastReconciliationRun()
     {
@@ -472,7 +472,7 @@ class MetrcDiagnosticsResponse implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets last_reconciliation_run
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\MetrcDiagnosticsResponseLastReconciliationRun|null $last_reconciliation_run last_reconciliation_run
+     * @param \ShadowSoftware\DabDash\Model\MetrcDiagnosticsResponseLastReconciliationRun|null $last_reconciliation_run last_reconciliation_run
      *
      * @return self
      */

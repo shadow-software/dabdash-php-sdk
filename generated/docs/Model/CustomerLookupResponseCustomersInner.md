@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 **addresses_count** | **int** |  | [optional]
 **orders_count** | **int** |  | [optional]
 **conversation_count** | **int** |  | [optional]
-**addresses** | [**\ShadowSoftware\Sdk\Generated\Model\CustomerLookupResponseCustomersInnerAddressesInner[]**](CustomerLookupResponseCustomersInnerAddressesInner.md) |  | [optional]
-**recent_orders** | [**\ShadowSoftware\Sdk\Generated\Model\CustomerLookupResponseCustomersInnerRecentOrdersInner[]**](CustomerLookupResponseCustomersInnerRecentOrdersInner.md) |  | [optional]
+**addresses** | [**\ShadowSoftware\DabDash\Model\CustomerLookupResponseCustomersInnerAddressesInner[]**](CustomerLookupResponseCustomersInnerAddressesInner.md) |  | [optional]
+**recent_orders** | [**\ShadowSoftware\DabDash\Model\CustomerLookupResponseCustomersInnerRecentOrdersInner[]**](CustomerLookupResponseCustomersInnerRecentOrdersInner.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

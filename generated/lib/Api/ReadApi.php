@@ -4,7 +4,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace ShadowSoftware\Sdk\Generated\Api;
+namespace ShadowSoftware\DabDash\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -36,17 +36,17 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use ShadowSoftware\Sdk\Generated\ApiException;
-use ShadowSoftware\Sdk\Generated\Configuration;
-use ShadowSoftware\Sdk\Generated\FormDataProcessor;
-use ShadowSoftware\Sdk\Generated\HeaderSelector;
-use ShadowSoftware\Sdk\Generated\ObjectSerializer;
+use ShadowSoftware\DabDash\ApiException;
+use ShadowSoftware\DabDash\Configuration;
+use ShadowSoftware\DabDash\FormDataProcessor;
+use ShadowSoftware\DabDash\HeaderSelector;
+use ShadowSoftware\DabDash\ObjectSerializer;
 
 /**
  * ReadApi Class Doc Comment
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -184,12 +184,12 @@ class ReadApi
      *
      * Run read-only analytics queries against the production database. Available reports: revenue_by_tenant, orders_by_status, top_products, revenue_over_time, customer_stats. Revenue dating uses RevenueAttribution (pass tenant_slug for delivered-mode tenants).
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\AnalyticsQueryRequest|null $analytics_query_request analytics_query_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\AnalyticsQueryRequest|null $analytics_query_request analytics_query_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['analyticsQuery'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\AnalyticsQuery200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function analyticsQuery($analytics_query_request = null, string $contentType = self::contentTypes['analyticsQuery'][0])
     {
@@ -202,12 +202,12 @@ class ReadApi
      *
      * Run read-only analytics queries against the production database. Available reports: revenue_by_tenant, orders_by_status, top_products, revenue_over_time, customer_stats. Revenue dating uses RevenueAttribution (pass tenant_slug for delivered-mode tenants).
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\AnalyticsQueryRequest|null $analytics_query_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\AnalyticsQueryRequest|null $analytics_query_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['analyticsQuery'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\AnalyticsQuery200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function analyticsQueryWithHttpInfo($analytics_query_request = null, string $contentType = self::contentTypes['analyticsQuery'][0])
     {
@@ -239,37 +239,37 @@ class ReadApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery200Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -291,7 +291,7 @@ class ReadApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery200Response',
+                '\ShadowSoftware\DabDash\Model\AnalyticsQuery200Response',
                 $request,
                 $response,
             );
@@ -300,7 +300,7 @@ class ReadApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery200Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -308,7 +308,7 @@ class ReadApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -316,7 +316,7 @@ class ReadApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -324,7 +324,7 @@ class ReadApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -332,7 +332,7 @@ class ReadApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -340,7 +340,7 @@ class ReadApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -357,7 +357,7 @@ class ReadApi
      *
      * Run read-only analytics queries against the production database. Available reports: revenue_by_tenant, orders_by_status, top_products, revenue_over_time, customer_stats. Revenue dating uses RevenueAttribution (pass tenant_slug for delivered-mode tenants).
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\AnalyticsQueryRequest|null $analytics_query_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\AnalyticsQueryRequest|null $analytics_query_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['analyticsQuery'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -378,7 +378,7 @@ class ReadApi
      *
      * Run read-only analytics queries against the production database. Available reports: revenue_by_tenant, orders_by_status, top_products, revenue_over_time, customer_stats. Revenue dating uses RevenueAttribution (pass tenant_slug for delivered-mode tenants).
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\AnalyticsQueryRequest|null $analytics_query_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\AnalyticsQueryRequest|null $analytics_query_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['analyticsQuery'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -386,7 +386,7 @@ class ReadApi
      */
     public function analyticsQueryAsyncWithHttpInfo($analytics_query_request = null, string $contentType = self::contentTypes['analyticsQuery'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\AnalyticsQuery200Response';
         $request = $this->analyticsQueryRequest($analytics_query_request, $contentType);
 
         return $this->client
@@ -428,7 +428,7 @@ class ReadApi
     /**
      * Create request for operation 'analyticsQuery'
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\AnalyticsQueryRequest|null $analytics_query_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\AnalyticsQueryRequest|null $analytics_query_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['analyticsQuery'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -526,9 +526,9 @@ class ReadApi
      * @param  object|null $body body (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['catalogFlatteningAudit'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\CatalogFlatteningAudit200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\CatalogFlatteningAudit200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function catalogFlatteningAudit($body = null, string $contentType = self::contentTypes['catalogFlatteningAudit'][0])
     {
@@ -544,9 +544,9 @@ class ReadApi
      * @param  object|null $body (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['catalogFlatteningAudit'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\CatalogFlatteningAudit200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\CatalogFlatteningAudit200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function catalogFlatteningAuditWithHttpInfo($body = null, string $contentType = self::contentTypes['catalogFlatteningAudit'][0])
     {
@@ -578,37 +578,37 @@ class ReadApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\CatalogFlatteningAudit200Response',
+                        '\ShadowSoftware\DabDash\Model\CatalogFlatteningAudit200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -630,7 +630,7 @@ class ReadApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\CatalogFlatteningAudit200Response',
+                '\ShadowSoftware\DabDash\Model\CatalogFlatteningAudit200Response',
                 $request,
                 $response,
             );
@@ -639,7 +639,7 @@ class ReadApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\CatalogFlatteningAudit200Response',
+                        '\ShadowSoftware\DabDash\Model\CatalogFlatteningAudit200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -647,7 +647,7 @@ class ReadApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -655,7 +655,7 @@ class ReadApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -663,7 +663,7 @@ class ReadApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -671,7 +671,7 @@ class ReadApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -679,7 +679,7 @@ class ReadApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -725,7 +725,7 @@ class ReadApi
      */
     public function catalogFlatteningAuditAsyncWithHttpInfo($body = null, string $contentType = self::contentTypes['catalogFlatteningAudit'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\CatalogFlatteningAudit200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\CatalogFlatteningAudit200Response';
         $request = $this->catalogFlatteningAuditRequest($body, $contentType);
 
         return $this->client
@@ -862,12 +862,12 @@ class ReadApi
      *
      * List a tenant&#39;s discount coupons with code, type, value, usage limits, redemption count, active state, and schedule window. Coupons are customer-entered codes applied at checkout (distinct from bundles, which fire automatically on cart contents — use bundle_list for those).  type:   percentage     → value is a percentage 0-100 off the order subtotal.   fixed          → value is dollars off the order subtotal.   free_delivery  → waives the delivery fee only; value is unused for this type.  Always call this before making coupon-related decisions to see current codes, usage caps, and whether a coupon has already been exhausted (used_count vs max_uses).
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CouponListRequest|null $coupon_list_request coupon_list_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CouponListRequest|null $coupon_list_request coupon_list_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['couponList'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\CouponList200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\CouponList200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function couponList($coupon_list_request = null, string $contentType = self::contentTypes['couponList'][0])
     {
@@ -880,12 +880,12 @@ class ReadApi
      *
      * List a tenant&#39;s discount coupons with code, type, value, usage limits, redemption count, active state, and schedule window. Coupons are customer-entered codes applied at checkout (distinct from bundles, which fire automatically on cart contents — use bundle_list for those).  type:   percentage     → value is a percentage 0-100 off the order subtotal.   fixed          → value is dollars off the order subtotal.   free_delivery  → waives the delivery fee only; value is unused for this type.  Always call this before making coupon-related decisions to see current codes, usage caps, and whether a coupon has already been exhausted (used_count vs max_uses).
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CouponListRequest|null $coupon_list_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CouponListRequest|null $coupon_list_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['couponList'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\CouponList200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\CouponList200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function couponListWithHttpInfo($coupon_list_request = null, string $contentType = self::contentTypes['couponList'][0])
     {
@@ -917,37 +917,37 @@ class ReadApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\CouponList200Response',
+                        '\ShadowSoftware\DabDash\Model\CouponList200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -969,7 +969,7 @@ class ReadApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\CouponList200Response',
+                '\ShadowSoftware\DabDash\Model\CouponList200Response',
                 $request,
                 $response,
             );
@@ -978,7 +978,7 @@ class ReadApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\CouponList200Response',
+                        '\ShadowSoftware\DabDash\Model\CouponList200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -986,7 +986,7 @@ class ReadApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -994,7 +994,7 @@ class ReadApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1002,7 +1002,7 @@ class ReadApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1010,7 +1010,7 @@ class ReadApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1018,7 +1018,7 @@ class ReadApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1035,7 +1035,7 @@ class ReadApi
      *
      * List a tenant&#39;s discount coupons with code, type, value, usage limits, redemption count, active state, and schedule window. Coupons are customer-entered codes applied at checkout (distinct from bundles, which fire automatically on cart contents — use bundle_list for those).  type:   percentage     → value is a percentage 0-100 off the order subtotal.   fixed          → value is dollars off the order subtotal.   free_delivery  → waives the delivery fee only; value is unused for this type.  Always call this before making coupon-related decisions to see current codes, usage caps, and whether a coupon has already been exhausted (used_count vs max_uses).
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CouponListRequest|null $coupon_list_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CouponListRequest|null $coupon_list_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['couponList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1056,7 +1056,7 @@ class ReadApi
      *
      * List a tenant&#39;s discount coupons with code, type, value, usage limits, redemption count, active state, and schedule window. Coupons are customer-entered codes applied at checkout (distinct from bundles, which fire automatically on cart contents — use bundle_list for those).  type:   percentage     → value is a percentage 0-100 off the order subtotal.   fixed          → value is dollars off the order subtotal.   free_delivery  → waives the delivery fee only; value is unused for this type.  Always call this before making coupon-related decisions to see current codes, usage caps, and whether a coupon has already been exhausted (used_count vs max_uses).
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CouponListRequest|null $coupon_list_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CouponListRequest|null $coupon_list_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['couponList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1064,7 +1064,7 @@ class ReadApi
      */
     public function couponListAsyncWithHttpInfo($coupon_list_request = null, string $contentType = self::contentTypes['couponList'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\CouponList200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\CouponList200Response';
         $request = $this->couponListRequest($coupon_list_request, $contentType);
 
         return $this->client
@@ -1106,7 +1106,7 @@ class ReadApi
     /**
      * Create request for operation 'couponList'
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CouponListRequest|null $coupon_list_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CouponListRequest|null $coupon_list_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['couponList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1201,12 +1201,12 @@ class ReadApi
      *
      * Return a customer&#39;s saved addresses, coordinates, saved zones, and zone mismatch diagnostics.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CustomerAddressesRequest|null $customer_addresses_request customer_addresses_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CustomerAddressesRequest|null $customer_addresses_request customer_addresses_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['customerAddresses'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\CustomerAddresses200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\CustomerAddresses200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function customerAddresses($customer_addresses_request = null, string $contentType = self::contentTypes['customerAddresses'][0])
     {
@@ -1219,12 +1219,12 @@ class ReadApi
      *
      * Return a customer&#39;s saved addresses, coordinates, saved zones, and zone mismatch diagnostics.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CustomerAddressesRequest|null $customer_addresses_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CustomerAddressesRequest|null $customer_addresses_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['customerAddresses'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\CustomerAddresses200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\CustomerAddresses200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function customerAddressesWithHttpInfo($customer_addresses_request = null, string $contentType = self::contentTypes['customerAddresses'][0])
     {
@@ -1256,37 +1256,37 @@ class ReadApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\CustomerAddresses200Response',
+                        '\ShadowSoftware\DabDash\Model\CustomerAddresses200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -1308,7 +1308,7 @@ class ReadApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\CustomerAddresses200Response',
+                '\ShadowSoftware\DabDash\Model\CustomerAddresses200Response',
                 $request,
                 $response,
             );
@@ -1317,7 +1317,7 @@ class ReadApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\CustomerAddresses200Response',
+                        '\ShadowSoftware\DabDash\Model\CustomerAddresses200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1325,7 +1325,7 @@ class ReadApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1333,7 +1333,7 @@ class ReadApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1341,7 +1341,7 @@ class ReadApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1349,7 +1349,7 @@ class ReadApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1357,7 +1357,7 @@ class ReadApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1374,7 +1374,7 @@ class ReadApi
      *
      * Return a customer&#39;s saved addresses, coordinates, saved zones, and zone mismatch diagnostics.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CustomerAddressesRequest|null $customer_addresses_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CustomerAddressesRequest|null $customer_addresses_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['customerAddresses'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1395,7 +1395,7 @@ class ReadApi
      *
      * Return a customer&#39;s saved addresses, coordinates, saved zones, and zone mismatch diagnostics.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CustomerAddressesRequest|null $customer_addresses_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CustomerAddressesRequest|null $customer_addresses_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['customerAddresses'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1403,7 +1403,7 @@ class ReadApi
      */
     public function customerAddressesAsyncWithHttpInfo($customer_addresses_request = null, string $contentType = self::contentTypes['customerAddresses'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\CustomerAddresses200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\CustomerAddresses200Response';
         $request = $this->customerAddressesRequest($customer_addresses_request, $contentType);
 
         return $this->client
@@ -1445,7 +1445,7 @@ class ReadApi
     /**
      * Create request for operation 'customerAddresses'
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CustomerAddressesRequest|null $customer_addresses_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CustomerAddressesRequest|null $customer_addresses_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['customerAddresses'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1540,12 +1540,12 @@ class ReadApi
      *
      * Page through all customers for a tenant, optionally filtered to those updated since a given time. Built for bulk sync — use customer_lookup instead for a single targeted search.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CustomerListRequest|null $customer_list_request customer_list_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CustomerListRequest|null $customer_list_request customer_list_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['customerList'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\CustomerList200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\CustomerList200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function customerList($customer_list_request = null, string $contentType = self::contentTypes['customerList'][0])
     {
@@ -1558,12 +1558,12 @@ class ReadApi
      *
      * Page through all customers for a tenant, optionally filtered to those updated since a given time. Built for bulk sync — use customer_lookup instead for a single targeted search.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CustomerListRequest|null $customer_list_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CustomerListRequest|null $customer_list_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['customerList'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\CustomerList200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\CustomerList200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function customerListWithHttpInfo($customer_list_request = null, string $contentType = self::contentTypes['customerList'][0])
     {
@@ -1595,37 +1595,37 @@ class ReadApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\CustomerList200Response',
+                        '\ShadowSoftware\DabDash\Model\CustomerList200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -1647,7 +1647,7 @@ class ReadApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\CustomerList200Response',
+                '\ShadowSoftware\DabDash\Model\CustomerList200Response',
                 $request,
                 $response,
             );
@@ -1656,7 +1656,7 @@ class ReadApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\CustomerList200Response',
+                        '\ShadowSoftware\DabDash\Model\CustomerList200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1664,7 +1664,7 @@ class ReadApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1672,7 +1672,7 @@ class ReadApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1680,7 +1680,7 @@ class ReadApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1688,7 +1688,7 @@ class ReadApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1696,7 +1696,7 @@ class ReadApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1713,7 +1713,7 @@ class ReadApi
      *
      * Page through all customers for a tenant, optionally filtered to those updated since a given time. Built for bulk sync — use customer_lookup instead for a single targeted search.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CustomerListRequest|null $customer_list_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CustomerListRequest|null $customer_list_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['customerList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1734,7 +1734,7 @@ class ReadApi
      *
      * Page through all customers for a tenant, optionally filtered to those updated since a given time. Built for bulk sync — use customer_lookup instead for a single targeted search.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CustomerListRequest|null $customer_list_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CustomerListRequest|null $customer_list_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['customerList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1742,7 +1742,7 @@ class ReadApi
      */
     public function customerListAsyncWithHttpInfo($customer_list_request = null, string $contentType = self::contentTypes['customerList'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\CustomerList200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\CustomerList200Response';
         $request = $this->customerListRequest($customer_list_request, $contentType);
 
         return $this->client
@@ -1784,7 +1784,7 @@ class ReadApi
     /**
      * Create request for operation 'customerList'
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CustomerListRequest|null $customer_list_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CustomerListRequest|null $customer_list_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['customerList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1879,12 +1879,12 @@ class ReadApi
      *
      * Find customers by id, email, phone, or name and return their recent addresses, orders, and support context.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CustomerLookupRequest|null $customer_lookup_request customer_lookup_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CustomerLookupRequest|null $customer_lookup_request customer_lookup_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['customerLookup'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\CustomerLookup200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\CustomerLookup200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function customerLookup($customer_lookup_request = null, string $contentType = self::contentTypes['customerLookup'][0])
     {
@@ -1897,12 +1897,12 @@ class ReadApi
      *
      * Find customers by id, email, phone, or name and return their recent addresses, orders, and support context.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CustomerLookupRequest|null $customer_lookup_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CustomerLookupRequest|null $customer_lookup_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['customerLookup'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\CustomerLookup200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\CustomerLookup200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function customerLookupWithHttpInfo($customer_lookup_request = null, string $contentType = self::contentTypes['customerLookup'][0])
     {
@@ -1934,37 +1934,37 @@ class ReadApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\CustomerLookup200Response',
+                        '\ShadowSoftware\DabDash\Model\CustomerLookup200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -1986,7 +1986,7 @@ class ReadApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\CustomerLookup200Response',
+                '\ShadowSoftware\DabDash\Model\CustomerLookup200Response',
                 $request,
                 $response,
             );
@@ -1995,7 +1995,7 @@ class ReadApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\CustomerLookup200Response',
+                        '\ShadowSoftware\DabDash\Model\CustomerLookup200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2003,7 +2003,7 @@ class ReadApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2011,7 +2011,7 @@ class ReadApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2019,7 +2019,7 @@ class ReadApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2027,7 +2027,7 @@ class ReadApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2035,7 +2035,7 @@ class ReadApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2052,7 +2052,7 @@ class ReadApi
      *
      * Find customers by id, email, phone, or name and return their recent addresses, orders, and support context.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CustomerLookupRequest|null $customer_lookup_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CustomerLookupRequest|null $customer_lookup_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['customerLookup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2073,7 +2073,7 @@ class ReadApi
      *
      * Find customers by id, email, phone, or name and return their recent addresses, orders, and support context.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CustomerLookupRequest|null $customer_lookup_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CustomerLookupRequest|null $customer_lookup_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['customerLookup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2081,7 +2081,7 @@ class ReadApi
      */
     public function customerLookupAsyncWithHttpInfo($customer_lookup_request = null, string $contentType = self::contentTypes['customerLookup'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\CustomerLookup200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\CustomerLookup200Response';
         $request = $this->customerLookupRequest($customer_lookup_request, $contentType);
 
         return $this->client
@@ -2123,7 +2123,7 @@ class ReadApi
     /**
      * Create request for operation 'customerLookup'
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CustomerLookupRequest|null $customer_lookup_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CustomerLookupRequest|null $customer_lookup_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['customerLookup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2218,12 +2218,12 @@ class ReadApi
      *
      * List a tenant&#39;s freebie rules (\&quot;spend $X, get a free item\&quot;) with id, name, spend threshold, the product/variation given away, quantity, stackable flag, active state, and schedule window. Freebies are evaluated on every cart change by FreebieService: a rule fires once its spend_threshold is met, adding &#x60;quantity&#x60; of the configured product/variation to the cart.  IMPORTANT: this reads the &#x60;freebies&#x60; table — the source of truth the storefront cart uses. It is NOT the legacy freebie summary promotion_audit surfaces alongside coupons/bundles; that view is stale display-only data built for a different purpose. Trust this tool for what actually applies at checkout.  is_stackable:   true   → this rule can fire alongside OTHER DIFFERENT freebie rules on the same order (each            rule still only fires once, at its configured quantity, regardless of how far above            its own threshold the cart is).   false  → this rule cannot combine with other freebie rules; if multiple non-stackable rules            qualify, FreebieService applies its own precedence to pick one.   This flag does NOT multiply a single rule&#39;s quantity by how many multiples of the threshold   the cart reaches — a $50-threshold rule at $150 spent still gives quantity 1, not 3.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\FreebieListRequest|null $freebie_list_request freebie_list_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\FreebieListRequest|null $freebie_list_request freebie_list_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['freebieList'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\FreebieList200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\FreebieList200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function freebieList($freebie_list_request = null, string $contentType = self::contentTypes['freebieList'][0])
     {
@@ -2236,12 +2236,12 @@ class ReadApi
      *
      * List a tenant&#39;s freebie rules (\&quot;spend $X, get a free item\&quot;) with id, name, spend threshold, the product/variation given away, quantity, stackable flag, active state, and schedule window. Freebies are evaluated on every cart change by FreebieService: a rule fires once its spend_threshold is met, adding &#x60;quantity&#x60; of the configured product/variation to the cart.  IMPORTANT: this reads the &#x60;freebies&#x60; table — the source of truth the storefront cart uses. It is NOT the legacy freebie summary promotion_audit surfaces alongside coupons/bundles; that view is stale display-only data built for a different purpose. Trust this tool for what actually applies at checkout.  is_stackable:   true   → this rule can fire alongside OTHER DIFFERENT freebie rules on the same order (each            rule still only fires once, at its configured quantity, regardless of how far above            its own threshold the cart is).   false  → this rule cannot combine with other freebie rules; if multiple non-stackable rules            qualify, FreebieService applies its own precedence to pick one.   This flag does NOT multiply a single rule&#39;s quantity by how many multiples of the threshold   the cart reaches — a $50-threshold rule at $150 spent still gives quantity 1, not 3.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\FreebieListRequest|null $freebie_list_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\FreebieListRequest|null $freebie_list_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['freebieList'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\FreebieList200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\FreebieList200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function freebieListWithHttpInfo($freebie_list_request = null, string $contentType = self::contentTypes['freebieList'][0])
     {
@@ -2273,37 +2273,37 @@ class ReadApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\FreebieList200Response',
+                        '\ShadowSoftware\DabDash\Model\FreebieList200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -2325,7 +2325,7 @@ class ReadApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\FreebieList200Response',
+                '\ShadowSoftware\DabDash\Model\FreebieList200Response',
                 $request,
                 $response,
             );
@@ -2334,7 +2334,7 @@ class ReadApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\FreebieList200Response',
+                        '\ShadowSoftware\DabDash\Model\FreebieList200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2342,7 +2342,7 @@ class ReadApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2350,7 +2350,7 @@ class ReadApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2358,7 +2358,7 @@ class ReadApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2366,7 +2366,7 @@ class ReadApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2374,7 +2374,7 @@ class ReadApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2391,7 +2391,7 @@ class ReadApi
      *
      * List a tenant&#39;s freebie rules (\&quot;spend $X, get a free item\&quot;) with id, name, spend threshold, the product/variation given away, quantity, stackable flag, active state, and schedule window. Freebies are evaluated on every cart change by FreebieService: a rule fires once its spend_threshold is met, adding &#x60;quantity&#x60; of the configured product/variation to the cart.  IMPORTANT: this reads the &#x60;freebies&#x60; table — the source of truth the storefront cart uses. It is NOT the legacy freebie summary promotion_audit surfaces alongside coupons/bundles; that view is stale display-only data built for a different purpose. Trust this tool for what actually applies at checkout.  is_stackable:   true   → this rule can fire alongside OTHER DIFFERENT freebie rules on the same order (each            rule still only fires once, at its configured quantity, regardless of how far above            its own threshold the cart is).   false  → this rule cannot combine with other freebie rules; if multiple non-stackable rules            qualify, FreebieService applies its own precedence to pick one.   This flag does NOT multiply a single rule&#39;s quantity by how many multiples of the threshold   the cart reaches — a $50-threshold rule at $150 spent still gives quantity 1, not 3.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\FreebieListRequest|null $freebie_list_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\FreebieListRequest|null $freebie_list_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['freebieList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2412,7 +2412,7 @@ class ReadApi
      *
      * List a tenant&#39;s freebie rules (\&quot;spend $X, get a free item\&quot;) with id, name, spend threshold, the product/variation given away, quantity, stackable flag, active state, and schedule window. Freebies are evaluated on every cart change by FreebieService: a rule fires once its spend_threshold is met, adding &#x60;quantity&#x60; of the configured product/variation to the cart.  IMPORTANT: this reads the &#x60;freebies&#x60; table — the source of truth the storefront cart uses. It is NOT the legacy freebie summary promotion_audit surfaces alongside coupons/bundles; that view is stale display-only data built for a different purpose. Trust this tool for what actually applies at checkout.  is_stackable:   true   → this rule can fire alongside OTHER DIFFERENT freebie rules on the same order (each            rule still only fires once, at its configured quantity, regardless of how far above            its own threshold the cart is).   false  → this rule cannot combine with other freebie rules; if multiple non-stackable rules            qualify, FreebieService applies its own precedence to pick one.   This flag does NOT multiply a single rule&#39;s quantity by how many multiples of the threshold   the cart reaches — a $50-threshold rule at $150 spent still gives quantity 1, not 3.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\FreebieListRequest|null $freebie_list_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\FreebieListRequest|null $freebie_list_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['freebieList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2420,7 +2420,7 @@ class ReadApi
      */
     public function freebieListAsyncWithHttpInfo($freebie_list_request = null, string $contentType = self::contentTypes['freebieList'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\FreebieList200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\FreebieList200Response';
         $request = $this->freebieListRequest($freebie_list_request, $contentType);
 
         return $this->client
@@ -2462,7 +2462,7 @@ class ReadApi
     /**
      * Create request for operation 'freebieList'
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\FreebieListRequest|null $freebie_list_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\FreebieListRequest|null $freebie_list_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['freebieList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2557,12 +2557,12 @@ class ReadApi
      *
      * Query Google Analytics (GA4) data for the platform (dabdash.com) or a specific tenant with a connected GA integration. Returns traffic overview, top pages, traffic sources, top events, and daily trend.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\GoogleAnalyticsRequest|null $google_analytics_request google_analytics_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\GoogleAnalyticsRequest|null $google_analytics_request google_analytics_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['googleAnalytics'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\GoogleAnalytics200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\GoogleAnalytics200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function googleAnalytics($google_analytics_request = null, string $contentType = self::contentTypes['googleAnalytics'][0])
     {
@@ -2575,12 +2575,12 @@ class ReadApi
      *
      * Query Google Analytics (GA4) data for the platform (dabdash.com) or a specific tenant with a connected GA integration. Returns traffic overview, top pages, traffic sources, top events, and daily trend.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\GoogleAnalyticsRequest|null $google_analytics_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\GoogleAnalyticsRequest|null $google_analytics_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['googleAnalytics'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\GoogleAnalytics200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\GoogleAnalytics200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function googleAnalyticsWithHttpInfo($google_analytics_request = null, string $contentType = self::contentTypes['googleAnalytics'][0])
     {
@@ -2612,37 +2612,37 @@ class ReadApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\GoogleAnalytics200Response',
+                        '\ShadowSoftware\DabDash\Model\GoogleAnalytics200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -2664,7 +2664,7 @@ class ReadApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\GoogleAnalytics200Response',
+                '\ShadowSoftware\DabDash\Model\GoogleAnalytics200Response',
                 $request,
                 $response,
             );
@@ -2673,7 +2673,7 @@ class ReadApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\GoogleAnalytics200Response',
+                        '\ShadowSoftware\DabDash\Model\GoogleAnalytics200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2681,7 +2681,7 @@ class ReadApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2689,7 +2689,7 @@ class ReadApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2697,7 +2697,7 @@ class ReadApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2705,7 +2705,7 @@ class ReadApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2713,7 +2713,7 @@ class ReadApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2730,7 +2730,7 @@ class ReadApi
      *
      * Query Google Analytics (GA4) data for the platform (dabdash.com) or a specific tenant with a connected GA integration. Returns traffic overview, top pages, traffic sources, top events, and daily trend.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\GoogleAnalyticsRequest|null $google_analytics_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\GoogleAnalyticsRequest|null $google_analytics_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['googleAnalytics'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2751,7 +2751,7 @@ class ReadApi
      *
      * Query Google Analytics (GA4) data for the platform (dabdash.com) or a specific tenant with a connected GA integration. Returns traffic overview, top pages, traffic sources, top events, and daily trend.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\GoogleAnalyticsRequest|null $google_analytics_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\GoogleAnalyticsRequest|null $google_analytics_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['googleAnalytics'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2759,7 +2759,7 @@ class ReadApi
      */
     public function googleAnalyticsAsyncWithHttpInfo($google_analytics_request = null, string $contentType = self::contentTypes['googleAnalytics'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\GoogleAnalytics200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\GoogleAnalytics200Response';
         $request = $this->googleAnalyticsRequest($google_analytics_request, $contentType);
 
         return $this->client
@@ -2801,7 +2801,7 @@ class ReadApi
     /**
      * Create request for operation 'googleAnalytics'
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\GoogleAnalyticsRequest|null $google_analytics_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\GoogleAnalyticsRequest|null $google_analytics_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['googleAnalytics'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2896,12 +2896,12 @@ class ReadApi
      *
      * Look up the historical inventory state of a list of products from the inventory_audit_logs table.  For each product, returns every variation_id ever logged in the audit trail (including variations that have since been deleted), the variation&#39;s last known stock_quantity strictly BEFORE the given cutoff timestamp, and that variation&#39;s most recent action+notes for context.  Use this tool to recover pre-incident stock values when variations have been overwritten or deleted by a destructive operation (e.g. an erroneous pricing structure assignment that wiped unit/simple variations and replaced them with weight tiers).  Output is grouped per product. Each product also includes its CURRENT variations and their stock for comparison so you can see the delta.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\InventoryAuditLookupRequest|null $inventory_audit_lookup_request inventory_audit_lookup_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\InventoryAuditLookupRequest|null $inventory_audit_lookup_request inventory_audit_lookup_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['inventoryAuditLookup'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\InventoryAuditLookup200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\InventoryAuditLookup200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function inventoryAuditLookup($inventory_audit_lookup_request = null, string $contentType = self::contentTypes['inventoryAuditLookup'][0])
     {
@@ -2914,12 +2914,12 @@ class ReadApi
      *
      * Look up the historical inventory state of a list of products from the inventory_audit_logs table.  For each product, returns every variation_id ever logged in the audit trail (including variations that have since been deleted), the variation&#39;s last known stock_quantity strictly BEFORE the given cutoff timestamp, and that variation&#39;s most recent action+notes for context.  Use this tool to recover pre-incident stock values when variations have been overwritten or deleted by a destructive operation (e.g. an erroneous pricing structure assignment that wiped unit/simple variations and replaced them with weight tiers).  Output is grouped per product. Each product also includes its CURRENT variations and their stock for comparison so you can see the delta.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\InventoryAuditLookupRequest|null $inventory_audit_lookup_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\InventoryAuditLookupRequest|null $inventory_audit_lookup_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['inventoryAuditLookup'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\InventoryAuditLookup200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\InventoryAuditLookup200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function inventoryAuditLookupWithHttpInfo($inventory_audit_lookup_request = null, string $contentType = self::contentTypes['inventoryAuditLookup'][0])
     {
@@ -2951,37 +2951,37 @@ class ReadApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\InventoryAuditLookup200Response',
+                        '\ShadowSoftware\DabDash\Model\InventoryAuditLookup200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -3003,7 +3003,7 @@ class ReadApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\InventoryAuditLookup200Response',
+                '\ShadowSoftware\DabDash\Model\InventoryAuditLookup200Response',
                 $request,
                 $response,
             );
@@ -3012,7 +3012,7 @@ class ReadApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\InventoryAuditLookup200Response',
+                        '\ShadowSoftware\DabDash\Model\InventoryAuditLookup200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3020,7 +3020,7 @@ class ReadApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3028,7 +3028,7 @@ class ReadApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3036,7 +3036,7 @@ class ReadApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3044,7 +3044,7 @@ class ReadApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3052,7 +3052,7 @@ class ReadApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3069,7 +3069,7 @@ class ReadApi
      *
      * Look up the historical inventory state of a list of products from the inventory_audit_logs table.  For each product, returns every variation_id ever logged in the audit trail (including variations that have since been deleted), the variation&#39;s last known stock_quantity strictly BEFORE the given cutoff timestamp, and that variation&#39;s most recent action+notes for context.  Use this tool to recover pre-incident stock values when variations have been overwritten or deleted by a destructive operation (e.g. an erroneous pricing structure assignment that wiped unit/simple variations and replaced them with weight tiers).  Output is grouped per product. Each product also includes its CURRENT variations and their stock for comparison so you can see the delta.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\InventoryAuditLookupRequest|null $inventory_audit_lookup_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\InventoryAuditLookupRequest|null $inventory_audit_lookup_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['inventoryAuditLookup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3090,7 +3090,7 @@ class ReadApi
      *
      * Look up the historical inventory state of a list of products from the inventory_audit_logs table.  For each product, returns every variation_id ever logged in the audit trail (including variations that have since been deleted), the variation&#39;s last known stock_quantity strictly BEFORE the given cutoff timestamp, and that variation&#39;s most recent action+notes for context.  Use this tool to recover pre-incident stock values when variations have been overwritten or deleted by a destructive operation (e.g. an erroneous pricing structure assignment that wiped unit/simple variations and replaced them with weight tiers).  Output is grouped per product. Each product also includes its CURRENT variations and their stock for comparison so you can see the delta.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\InventoryAuditLookupRequest|null $inventory_audit_lookup_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\InventoryAuditLookupRequest|null $inventory_audit_lookup_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['inventoryAuditLookup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3098,7 +3098,7 @@ class ReadApi
      */
     public function inventoryAuditLookupAsyncWithHttpInfo($inventory_audit_lookup_request = null, string $contentType = self::contentTypes['inventoryAuditLookup'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\InventoryAuditLookup200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\InventoryAuditLookup200Response';
         $request = $this->inventoryAuditLookupRequest($inventory_audit_lookup_request, $contentType);
 
         return $this->client
@@ -3140,7 +3140,7 @@ class ReadApi
     /**
      * Create request for operation 'inventoryAuditLookup'
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\InventoryAuditLookupRequest|null $inventory_audit_lookup_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\InventoryAuditLookupRequest|null $inventory_audit_lookup_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['inventoryAuditLookup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3235,12 +3235,12 @@ class ReadApi
      *
      * Get inventory status across all tenants or a specific tenant. Shows low stock alerts and out-of-stock products.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\InventoryStatusRequest|null $inventory_status_request inventory_status_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\InventoryStatusRequest|null $inventory_status_request inventory_status_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['inventoryStatus'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\InventoryStatus200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\InventoryStatus200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function inventoryStatus($inventory_status_request = null, string $contentType = self::contentTypes['inventoryStatus'][0])
     {
@@ -3253,12 +3253,12 @@ class ReadApi
      *
      * Get inventory status across all tenants or a specific tenant. Shows low stock alerts and out-of-stock products.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\InventoryStatusRequest|null $inventory_status_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\InventoryStatusRequest|null $inventory_status_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['inventoryStatus'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\InventoryStatus200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\InventoryStatus200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function inventoryStatusWithHttpInfo($inventory_status_request = null, string $contentType = self::contentTypes['inventoryStatus'][0])
     {
@@ -3290,37 +3290,37 @@ class ReadApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\InventoryStatus200Response',
+                        '\ShadowSoftware\DabDash\Model\InventoryStatus200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -3342,7 +3342,7 @@ class ReadApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\InventoryStatus200Response',
+                '\ShadowSoftware\DabDash\Model\InventoryStatus200Response',
                 $request,
                 $response,
             );
@@ -3351,7 +3351,7 @@ class ReadApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\InventoryStatus200Response',
+                        '\ShadowSoftware\DabDash\Model\InventoryStatus200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3359,7 +3359,7 @@ class ReadApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3367,7 +3367,7 @@ class ReadApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3375,7 +3375,7 @@ class ReadApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3383,7 +3383,7 @@ class ReadApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3391,7 +3391,7 @@ class ReadApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3408,7 +3408,7 @@ class ReadApi
      *
      * Get inventory status across all tenants or a specific tenant. Shows low stock alerts and out-of-stock products.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\InventoryStatusRequest|null $inventory_status_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\InventoryStatusRequest|null $inventory_status_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['inventoryStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3429,7 +3429,7 @@ class ReadApi
      *
      * Get inventory status across all tenants or a specific tenant. Shows low stock alerts and out-of-stock products.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\InventoryStatusRequest|null $inventory_status_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\InventoryStatusRequest|null $inventory_status_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['inventoryStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3437,7 +3437,7 @@ class ReadApi
      */
     public function inventoryStatusAsyncWithHttpInfo($inventory_status_request = null, string $contentType = self::contentTypes['inventoryStatus'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\InventoryStatus200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\InventoryStatus200Response';
         $request = $this->inventoryStatusRequest($inventory_status_request, $contentType);
 
         return $this->client
@@ -3479,7 +3479,7 @@ class ReadApi
     /**
      * Create request for operation 'inventoryStatus'
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\InventoryStatusRequest|null $inventory_status_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\InventoryStatusRequest|null $inventory_status_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['inventoryStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3574,12 +3574,12 @@ class ReadApi
      *
      * Inspect a tenant inbound mailbox: sync watermark, last error, recent ingestion counts (inbound/outbound), and a healthy/bootstrap/stalled/quiet verdict. Pass a tenant_slug, or pass platform&#x3D;true for a platform-owned mailbox (tenant_id IS NULL).
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\MailboxInspectRequest|null $mailbox_inspect_request mailbox_inspect_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\MailboxInspectRequest|null $mailbox_inspect_request mailbox_inspect_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['mailboxInspect'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\MailboxInspect200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\MailboxInspect200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function mailboxInspect($mailbox_inspect_request = null, string $contentType = self::contentTypes['mailboxInspect'][0])
     {
@@ -3592,12 +3592,12 @@ class ReadApi
      *
      * Inspect a tenant inbound mailbox: sync watermark, last error, recent ingestion counts (inbound/outbound), and a healthy/bootstrap/stalled/quiet verdict. Pass a tenant_slug, or pass platform&#x3D;true for a platform-owned mailbox (tenant_id IS NULL).
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\MailboxInspectRequest|null $mailbox_inspect_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\MailboxInspectRequest|null $mailbox_inspect_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['mailboxInspect'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\MailboxInspect200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\MailboxInspect200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function mailboxInspectWithHttpInfo($mailbox_inspect_request = null, string $contentType = self::contentTypes['mailboxInspect'][0])
     {
@@ -3629,37 +3629,37 @@ class ReadApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\MailboxInspect200Response',
+                        '\ShadowSoftware\DabDash\Model\MailboxInspect200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -3681,7 +3681,7 @@ class ReadApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\MailboxInspect200Response',
+                '\ShadowSoftware\DabDash\Model\MailboxInspect200Response',
                 $request,
                 $response,
             );
@@ -3690,7 +3690,7 @@ class ReadApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\MailboxInspect200Response',
+                        '\ShadowSoftware\DabDash\Model\MailboxInspect200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3698,7 +3698,7 @@ class ReadApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3706,7 +3706,7 @@ class ReadApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3714,7 +3714,7 @@ class ReadApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3722,7 +3722,7 @@ class ReadApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3730,7 +3730,7 @@ class ReadApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3747,7 +3747,7 @@ class ReadApi
      *
      * Inspect a tenant inbound mailbox: sync watermark, last error, recent ingestion counts (inbound/outbound), and a healthy/bootstrap/stalled/quiet verdict. Pass a tenant_slug, or pass platform&#x3D;true for a platform-owned mailbox (tenant_id IS NULL).
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\MailboxInspectRequest|null $mailbox_inspect_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\MailboxInspectRequest|null $mailbox_inspect_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['mailboxInspect'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3768,7 +3768,7 @@ class ReadApi
      *
      * Inspect a tenant inbound mailbox: sync watermark, last error, recent ingestion counts (inbound/outbound), and a healthy/bootstrap/stalled/quiet verdict. Pass a tenant_slug, or pass platform&#x3D;true for a platform-owned mailbox (tenant_id IS NULL).
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\MailboxInspectRequest|null $mailbox_inspect_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\MailboxInspectRequest|null $mailbox_inspect_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['mailboxInspect'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3776,7 +3776,7 @@ class ReadApi
      */
     public function mailboxInspectAsyncWithHttpInfo($mailbox_inspect_request = null, string $contentType = self::contentTypes['mailboxInspect'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\MailboxInspect200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\MailboxInspect200Response';
         $request = $this->mailboxInspectRequest($mailbox_inspect_request, $contentType);
 
         return $this->client
@@ -3818,7 +3818,7 @@ class ReadApi
     /**
      * Create request for operation 'mailboxInspect'
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\MailboxInspectRequest|null $mailbox_inspect_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\MailboxInspectRequest|null $mailbox_inspect_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['mailboxInspect'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3916,9 +3916,9 @@ class ReadApi
      * @param  object|null $body body (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['metrcDiagnostics'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\MetrcDiagnostics200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\MetrcDiagnostics200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function metrcDiagnostics($body = null, string $contentType = self::contentTypes['metrcDiagnostics'][0])
     {
@@ -3934,9 +3934,9 @@ class ReadApi
      * @param  object|null $body (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['metrcDiagnostics'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\MetrcDiagnostics200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\MetrcDiagnostics200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function metrcDiagnosticsWithHttpInfo($body = null, string $contentType = self::contentTypes['metrcDiagnostics'][0])
     {
@@ -3968,37 +3968,37 @@ class ReadApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\MetrcDiagnostics200Response',
+                        '\ShadowSoftware\DabDash\Model\MetrcDiagnostics200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -4020,7 +4020,7 @@ class ReadApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\MetrcDiagnostics200Response',
+                '\ShadowSoftware\DabDash\Model\MetrcDiagnostics200Response',
                 $request,
                 $response,
             );
@@ -4029,7 +4029,7 @@ class ReadApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\MetrcDiagnostics200Response',
+                        '\ShadowSoftware\DabDash\Model\MetrcDiagnostics200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4037,7 +4037,7 @@ class ReadApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4045,7 +4045,7 @@ class ReadApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4053,7 +4053,7 @@ class ReadApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4061,7 +4061,7 @@ class ReadApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4069,7 +4069,7 @@ class ReadApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4115,7 +4115,7 @@ class ReadApi
      */
     public function metrcDiagnosticsAsyncWithHttpInfo($body = null, string $contentType = self::contentTypes['metrcDiagnostics'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\MetrcDiagnostics200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\MetrcDiagnostics200Response';
         $request = $this->metrcDiagnosticsRequest($body, $contentType);
 
         return $this->client
@@ -4252,12 +4252,12 @@ class ReadApi
      *
      * Query orders across all tenants. Filter by status, order number, customer clues, date range, amount, or tenant. Returns order list with pricing context.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\OrderDashboardRequest|null $order_dashboard_request order_dashboard_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\OrderDashboardRequest|null $order_dashboard_request order_dashboard_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['orderDashboard'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\OrderDashboard200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\OrderDashboard200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function orderDashboard($order_dashboard_request = null, string $contentType = self::contentTypes['orderDashboard'][0])
     {
@@ -4270,12 +4270,12 @@ class ReadApi
      *
      * Query orders across all tenants. Filter by status, order number, customer clues, date range, amount, or tenant. Returns order list with pricing context.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\OrderDashboardRequest|null $order_dashboard_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\OrderDashboardRequest|null $order_dashboard_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['orderDashboard'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\OrderDashboard200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\OrderDashboard200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function orderDashboardWithHttpInfo($order_dashboard_request = null, string $contentType = self::contentTypes['orderDashboard'][0])
     {
@@ -4307,37 +4307,37 @@ class ReadApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\OrderDashboard200Response',
+                        '\ShadowSoftware\DabDash\Model\OrderDashboard200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -4359,7 +4359,7 @@ class ReadApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\OrderDashboard200Response',
+                '\ShadowSoftware\DabDash\Model\OrderDashboard200Response',
                 $request,
                 $response,
             );
@@ -4368,7 +4368,7 @@ class ReadApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\OrderDashboard200Response',
+                        '\ShadowSoftware\DabDash\Model\OrderDashboard200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4376,7 +4376,7 @@ class ReadApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4384,7 +4384,7 @@ class ReadApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4392,7 +4392,7 @@ class ReadApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4400,7 +4400,7 @@ class ReadApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4408,7 +4408,7 @@ class ReadApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4425,7 +4425,7 @@ class ReadApi
      *
      * Query orders across all tenants. Filter by status, order number, customer clues, date range, amount, or tenant. Returns order list with pricing context.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\OrderDashboardRequest|null $order_dashboard_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\OrderDashboardRequest|null $order_dashboard_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['orderDashboard'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4446,7 +4446,7 @@ class ReadApi
      *
      * Query orders across all tenants. Filter by status, order number, customer clues, date range, amount, or tenant. Returns order list with pricing context.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\OrderDashboardRequest|null $order_dashboard_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\OrderDashboardRequest|null $order_dashboard_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['orderDashboard'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4454,7 +4454,7 @@ class ReadApi
      */
     public function orderDashboardAsyncWithHttpInfo($order_dashboard_request = null, string $contentType = self::contentTypes['orderDashboard'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\OrderDashboard200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\OrderDashboard200Response';
         $request = $this->orderDashboardRequest($order_dashboard_request, $contentType);
 
         return $this->client
@@ -4496,7 +4496,7 @@ class ReadApi
     /**
      * Create request for operation 'orderDashboard'
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\OrderDashboardRequest|null $order_dashboard_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\OrderDashboardRequest|null $order_dashboard_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['orderDashboard'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4591,12 +4591,12 @@ class ReadApi
      *
      * Inspect a specific product including every variation&#39;s price, compare_at_price, mix_match_tags, stock, and the tenant&#39;s mix &amp; match rule settings. Use this to audit pricing, sale state, and bundle configuration for support tickets.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\ProductInspectRequest|null $product_inspect_request product_inspect_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\ProductInspectRequest|null $product_inspect_request product_inspect_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productInspect'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\ProductInspect200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\ProductInspect200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function productInspect($product_inspect_request = null, string $contentType = self::contentTypes['productInspect'][0])
     {
@@ -4609,12 +4609,12 @@ class ReadApi
      *
      * Inspect a specific product including every variation&#39;s price, compare_at_price, mix_match_tags, stock, and the tenant&#39;s mix &amp; match rule settings. Use this to audit pricing, sale state, and bundle configuration for support tickets.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\ProductInspectRequest|null $product_inspect_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\ProductInspectRequest|null $product_inspect_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productInspect'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\ProductInspect200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\ProductInspect200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function productInspectWithHttpInfo($product_inspect_request = null, string $contentType = self::contentTypes['productInspect'][0])
     {
@@ -4646,37 +4646,37 @@ class ReadApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\ProductInspect200Response',
+                        '\ShadowSoftware\DabDash\Model\ProductInspect200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -4698,7 +4698,7 @@ class ReadApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\ProductInspect200Response',
+                '\ShadowSoftware\DabDash\Model\ProductInspect200Response',
                 $request,
                 $response,
             );
@@ -4707,7 +4707,7 @@ class ReadApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\ProductInspect200Response',
+                        '\ShadowSoftware\DabDash\Model\ProductInspect200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4715,7 +4715,7 @@ class ReadApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4723,7 +4723,7 @@ class ReadApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4731,7 +4731,7 @@ class ReadApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4739,7 +4739,7 @@ class ReadApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4747,7 +4747,7 @@ class ReadApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4764,7 +4764,7 @@ class ReadApi
      *
      * Inspect a specific product including every variation&#39;s price, compare_at_price, mix_match_tags, stock, and the tenant&#39;s mix &amp; match rule settings. Use this to audit pricing, sale state, and bundle configuration for support tickets.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\ProductInspectRequest|null $product_inspect_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\ProductInspectRequest|null $product_inspect_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productInspect'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4785,7 +4785,7 @@ class ReadApi
      *
      * Inspect a specific product including every variation&#39;s price, compare_at_price, mix_match_tags, stock, and the tenant&#39;s mix &amp; match rule settings. Use this to audit pricing, sale state, and bundle configuration for support tickets.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\ProductInspectRequest|null $product_inspect_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\ProductInspectRequest|null $product_inspect_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productInspect'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4793,7 +4793,7 @@ class ReadApi
      */
     public function productInspectAsyncWithHttpInfo($product_inspect_request = null, string $contentType = self::contentTypes['productInspect'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\ProductInspect200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\ProductInspect200Response';
         $request = $this->productInspectRequest($product_inspect_request, $contentType);
 
         return $this->client
@@ -4835,7 +4835,7 @@ class ReadApi
     /**
      * Create request for operation 'productInspect'
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\ProductInspectRequest|null $product_inspect_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\ProductInspectRequest|null $product_inspect_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productInspect'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4930,12 +4930,12 @@ class ReadApi
      *
      * Inspect coupons, freebies, mix and match rules, loyalty settings, and storewide sale state for overcharge or missed-discount support tickets.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PromotionAuditRequest|null $promotion_audit_request promotion_audit_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PromotionAuditRequest|null $promotion_audit_request promotion_audit_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['promotionAudit'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\PromotionAudit200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\PromotionAudit200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function promotionAudit($promotion_audit_request = null, string $contentType = self::contentTypes['promotionAudit'][0])
     {
@@ -4948,12 +4948,12 @@ class ReadApi
      *
      * Inspect coupons, freebies, mix and match rules, loyalty settings, and storewide sale state for overcharge or missed-discount support tickets.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PromotionAuditRequest|null $promotion_audit_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PromotionAuditRequest|null $promotion_audit_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['promotionAudit'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\PromotionAudit200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\PromotionAudit200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function promotionAuditWithHttpInfo($promotion_audit_request = null, string $contentType = self::contentTypes['promotionAudit'][0])
     {
@@ -4985,37 +4985,37 @@ class ReadApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\PromotionAudit200Response',
+                        '\ShadowSoftware\DabDash\Model\PromotionAudit200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -5037,7 +5037,7 @@ class ReadApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\PromotionAudit200Response',
+                '\ShadowSoftware\DabDash\Model\PromotionAudit200Response',
                 $request,
                 $response,
             );
@@ -5046,7 +5046,7 @@ class ReadApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\PromotionAudit200Response',
+                        '\ShadowSoftware\DabDash\Model\PromotionAudit200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5054,7 +5054,7 @@ class ReadApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5062,7 +5062,7 @@ class ReadApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5070,7 +5070,7 @@ class ReadApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5078,7 +5078,7 @@ class ReadApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5086,7 +5086,7 @@ class ReadApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5103,7 +5103,7 @@ class ReadApi
      *
      * Inspect coupons, freebies, mix and match rules, loyalty settings, and storewide sale state for overcharge or missed-discount support tickets.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PromotionAuditRequest|null $promotion_audit_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PromotionAuditRequest|null $promotion_audit_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['promotionAudit'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5124,7 +5124,7 @@ class ReadApi
      *
      * Inspect coupons, freebies, mix and match rules, loyalty settings, and storewide sale state for overcharge or missed-discount support tickets.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PromotionAuditRequest|null $promotion_audit_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PromotionAuditRequest|null $promotion_audit_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['promotionAudit'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5132,7 +5132,7 @@ class ReadApi
      */
     public function promotionAuditAsyncWithHttpInfo($promotion_audit_request = null, string $contentType = self::contentTypes['promotionAudit'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\PromotionAudit200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\PromotionAudit200Response';
         $request = $this->promotionAuditRequest($promotion_audit_request, $contentType);
 
         return $this->client
@@ -5174,7 +5174,7 @@ class ReadApi
     /**
      * Create request for operation 'promotionAudit'
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PromotionAuditRequest|null $promotion_audit_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PromotionAuditRequest|null $promotion_audit_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['promotionAudit'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5269,12 +5269,12 @@ class ReadApi
      *
      * Diagnose push notification (FCM) delivery for a vendor. Surfaces token health, notification settings, recent send history with push/email flags, and a plain-language diagnosis of why pushes are or are not being delivered.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PushNotificationDiagnosticsRequest|null $push_notification_diagnostics_request push_notification_diagnostics_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PushNotificationDiagnosticsRequest|null $push_notification_diagnostics_request push_notification_diagnostics_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pushNotificationDiagnostics'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\PushNotificationDiagnostics200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\PushNotificationDiagnostics200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function pushNotificationDiagnostics($push_notification_diagnostics_request = null, string $contentType = self::contentTypes['pushNotificationDiagnostics'][0])
     {
@@ -5287,12 +5287,12 @@ class ReadApi
      *
      * Diagnose push notification (FCM) delivery for a vendor. Surfaces token health, notification settings, recent send history with push/email flags, and a plain-language diagnosis of why pushes are or are not being delivered.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PushNotificationDiagnosticsRequest|null $push_notification_diagnostics_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PushNotificationDiagnosticsRequest|null $push_notification_diagnostics_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pushNotificationDiagnostics'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\PushNotificationDiagnostics200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\PushNotificationDiagnostics200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function pushNotificationDiagnosticsWithHttpInfo($push_notification_diagnostics_request = null, string $contentType = self::contentTypes['pushNotificationDiagnostics'][0])
     {
@@ -5324,37 +5324,37 @@ class ReadApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\PushNotificationDiagnostics200Response',
+                        '\ShadowSoftware\DabDash\Model\PushNotificationDiagnostics200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -5376,7 +5376,7 @@ class ReadApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\PushNotificationDiagnostics200Response',
+                '\ShadowSoftware\DabDash\Model\PushNotificationDiagnostics200Response',
                 $request,
                 $response,
             );
@@ -5385,7 +5385,7 @@ class ReadApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\PushNotificationDiagnostics200Response',
+                        '\ShadowSoftware\DabDash\Model\PushNotificationDiagnostics200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5393,7 +5393,7 @@ class ReadApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5401,7 +5401,7 @@ class ReadApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5409,7 +5409,7 @@ class ReadApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5417,7 +5417,7 @@ class ReadApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5425,7 +5425,7 @@ class ReadApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5442,7 +5442,7 @@ class ReadApi
      *
      * Diagnose push notification (FCM) delivery for a vendor. Surfaces token health, notification settings, recent send history with push/email flags, and a plain-language diagnosis of why pushes are or are not being delivered.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PushNotificationDiagnosticsRequest|null $push_notification_diagnostics_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PushNotificationDiagnosticsRequest|null $push_notification_diagnostics_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pushNotificationDiagnostics'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5463,7 +5463,7 @@ class ReadApi
      *
      * Diagnose push notification (FCM) delivery for a vendor. Surfaces token health, notification settings, recent send history with push/email flags, and a plain-language diagnosis of why pushes are or are not being delivered.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PushNotificationDiagnosticsRequest|null $push_notification_diagnostics_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PushNotificationDiagnosticsRequest|null $push_notification_diagnostics_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pushNotificationDiagnostics'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5471,7 +5471,7 @@ class ReadApi
      */
     public function pushNotificationDiagnosticsAsyncWithHttpInfo($push_notification_diagnostics_request = null, string $contentType = self::contentTypes['pushNotificationDiagnostics'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\PushNotificationDiagnostics200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\PushNotificationDiagnostics200Response';
         $request = $this->pushNotificationDiagnosticsRequest($push_notification_diagnostics_request, $contentType);
 
         return $this->client
@@ -5513,7 +5513,7 @@ class ReadApi
     /**
      * Create request for operation 'pushNotificationDiagnostics'
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PushNotificationDiagnosticsRequest|null $push_notification_diagnostics_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PushNotificationDiagnosticsRequest|null $push_notification_diagnostics_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pushNotificationDiagnostics'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5608,12 +5608,12 @@ class ReadApi
      *
      * Query Google Search Console data for the platform (dabdash.com) or a specific tenant with a connected GSC integration. Returns search overview, top queries, top pages, and daily trend.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\SearchConsoleRequest|null $search_console_request search_console_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\SearchConsoleRequest|null $search_console_request search_console_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchConsole'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\SearchConsole200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\SearchConsole200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function searchConsole($search_console_request = null, string $contentType = self::contentTypes['searchConsole'][0])
     {
@@ -5626,12 +5626,12 @@ class ReadApi
      *
      * Query Google Search Console data for the platform (dabdash.com) or a specific tenant with a connected GSC integration. Returns search overview, top queries, top pages, and daily trend.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\SearchConsoleRequest|null $search_console_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\SearchConsoleRequest|null $search_console_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchConsole'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\SearchConsole200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\SearchConsole200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function searchConsoleWithHttpInfo($search_console_request = null, string $contentType = self::contentTypes['searchConsole'][0])
     {
@@ -5663,37 +5663,37 @@ class ReadApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\SearchConsole200Response',
+                        '\ShadowSoftware\DabDash\Model\SearchConsole200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -5715,7 +5715,7 @@ class ReadApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\SearchConsole200Response',
+                '\ShadowSoftware\DabDash\Model\SearchConsole200Response',
                 $request,
                 $response,
             );
@@ -5724,7 +5724,7 @@ class ReadApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\SearchConsole200Response',
+                        '\ShadowSoftware\DabDash\Model\SearchConsole200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5732,7 +5732,7 @@ class ReadApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5740,7 +5740,7 @@ class ReadApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5748,7 +5748,7 @@ class ReadApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5756,7 +5756,7 @@ class ReadApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5764,7 +5764,7 @@ class ReadApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5781,7 +5781,7 @@ class ReadApi
      *
      * Query Google Search Console data for the platform (dabdash.com) or a specific tenant with a connected GSC integration. Returns search overview, top queries, top pages, and daily trend.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\SearchConsoleRequest|null $search_console_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\SearchConsoleRequest|null $search_console_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchConsole'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5802,7 +5802,7 @@ class ReadApi
      *
      * Query Google Search Console data for the platform (dabdash.com) or a specific tenant with a connected GSC integration. Returns search overview, top queries, top pages, and daily trend.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\SearchConsoleRequest|null $search_console_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\SearchConsoleRequest|null $search_console_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchConsole'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5810,7 +5810,7 @@ class ReadApi
      */
     public function searchConsoleAsyncWithHttpInfo($search_console_request = null, string $contentType = self::contentTypes['searchConsole'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\SearchConsole200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\SearchConsole200Response';
         $request = $this->searchConsoleRequest($search_console_request, $contentType);
 
         return $this->client
@@ -5852,7 +5852,7 @@ class ReadApi
     /**
      * Create request for operation 'searchConsole'
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\SearchConsoleRequest|null $search_console_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\SearchConsoleRequest|null $search_console_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchConsole'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5950,9 +5950,9 @@ class ReadApi
      * @param  object|null $body body (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['storeInfo'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\StoreInfo200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\StoreInfo200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function storeInfo($body = null, string $contentType = self::contentTypes['storeInfo'][0])
     {
@@ -5968,9 +5968,9 @@ class ReadApi
      * @param  object|null $body (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['storeInfo'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\StoreInfo200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\StoreInfo200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function storeInfoWithHttpInfo($body = null, string $contentType = self::contentTypes['storeInfo'][0])
     {
@@ -6002,37 +6002,37 @@ class ReadApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\StoreInfo200Response',
+                        '\ShadowSoftware\DabDash\Model\StoreInfo200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -6054,7 +6054,7 @@ class ReadApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\StoreInfo200Response',
+                '\ShadowSoftware\DabDash\Model\StoreInfo200Response',
                 $request,
                 $response,
             );
@@ -6063,7 +6063,7 @@ class ReadApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\StoreInfo200Response',
+                        '\ShadowSoftware\DabDash\Model\StoreInfo200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6071,7 +6071,7 @@ class ReadApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6079,7 +6079,7 @@ class ReadApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6087,7 +6087,7 @@ class ReadApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6095,7 +6095,7 @@ class ReadApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6103,7 +6103,7 @@ class ReadApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6149,7 +6149,7 @@ class ReadApi
      */
     public function storeInfoAsyncWithHttpInfo($body = null, string $contentType = self::contentTypes['storeInfo'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\StoreInfo200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\StoreInfo200Response';
         $request = $this->storeInfoRequest($body, $contentType);
 
         return $this->client
@@ -6286,12 +6286,12 @@ class ReadApi
      *
      * Inspect zone polygons against customer or order coordinates to explain why an address is inside or outside delivery coverage.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\ZoneDiagnosticsRequest|null $zone_diagnostics_request zone_diagnostics_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\ZoneDiagnosticsRequest|null $zone_diagnostics_request zone_diagnostics_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['zoneDiagnostics'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\ZoneDiagnostics200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\ZoneDiagnostics200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function zoneDiagnostics($zone_diagnostics_request = null, string $contentType = self::contentTypes['zoneDiagnostics'][0])
     {
@@ -6304,12 +6304,12 @@ class ReadApi
      *
      * Inspect zone polygons against customer or order coordinates to explain why an address is inside or outside delivery coverage.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\ZoneDiagnosticsRequest|null $zone_diagnostics_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\ZoneDiagnosticsRequest|null $zone_diagnostics_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['zoneDiagnostics'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\ZoneDiagnostics200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\ZoneDiagnostics200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function zoneDiagnosticsWithHttpInfo($zone_diagnostics_request = null, string $contentType = self::contentTypes['zoneDiagnostics'][0])
     {
@@ -6341,37 +6341,37 @@ class ReadApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\ZoneDiagnostics200Response',
+                        '\ShadowSoftware\DabDash\Model\ZoneDiagnostics200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -6393,7 +6393,7 @@ class ReadApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\ZoneDiagnostics200Response',
+                '\ShadowSoftware\DabDash\Model\ZoneDiagnostics200Response',
                 $request,
                 $response,
             );
@@ -6402,7 +6402,7 @@ class ReadApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\ZoneDiagnostics200Response',
+                        '\ShadowSoftware\DabDash\Model\ZoneDiagnostics200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6410,7 +6410,7 @@ class ReadApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6418,7 +6418,7 @@ class ReadApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6426,7 +6426,7 @@ class ReadApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6434,7 +6434,7 @@ class ReadApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6442,7 +6442,7 @@ class ReadApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6459,7 +6459,7 @@ class ReadApi
      *
      * Inspect zone polygons against customer or order coordinates to explain why an address is inside or outside delivery coverage.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\ZoneDiagnosticsRequest|null $zone_diagnostics_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\ZoneDiagnosticsRequest|null $zone_diagnostics_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['zoneDiagnostics'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6480,7 +6480,7 @@ class ReadApi
      *
      * Inspect zone polygons against customer or order coordinates to explain why an address is inside or outside delivery coverage.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\ZoneDiagnosticsRequest|null $zone_diagnostics_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\ZoneDiagnosticsRequest|null $zone_diagnostics_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['zoneDiagnostics'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6488,7 +6488,7 @@ class ReadApi
      */
     public function zoneDiagnosticsAsyncWithHttpInfo($zone_diagnostics_request = null, string $contentType = self::contentTypes['zoneDiagnostics'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\ZoneDiagnostics200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\ZoneDiagnostics200Response';
         $request = $this->zoneDiagnosticsRequest($zone_diagnostics_request, $contentType);
 
         return $this->client
@@ -6530,7 +6530,7 @@ class ReadApi
     /**
      * Create request for operation 'zoneDiagnostics'
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\ZoneDiagnosticsRequest|null $zone_diagnostics_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\ZoneDiagnosticsRequest|null $zone_diagnostics_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['zoneDiagnostics'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

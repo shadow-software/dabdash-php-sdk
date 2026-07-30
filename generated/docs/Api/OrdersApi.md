@@ -1,4 +1,4 @@
-# ShadowSoftware\Sdk\Generated\OrdersApi
+# ShadowSoftware\DabDash\OrdersApi
 
 
 
@@ -12,7 +12,7 @@ All URIs are relative to https://.dabdash.com, except if the operation defines a
 ## `orderDashboard()`
 
 ```php
-orderDashboard($order_dashboard_request): \ShadowSoftware\Sdk\Generated\Model\OrderDashboard200Response
+orderDashboard($order_dashboard_request): \ShadowSoftware\DabDash\Model\OrderDashboard200Response
 ```
 
 Query orders across all tenants. Filter by status, order number, customer clues, date range, amount, or tenant. Returns order list with pricing context.
@@ -25,19 +25,19 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: tenantOAuth
-$config = ShadowSoftware\Sdk\Generated\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure Bearer authorization: tenantApiKey
-$config = ShadowSoftware\Sdk\Generated\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new ShadowSoftware\Sdk\Generated\Api\OrdersApi(
+$apiInstance = new ShadowSoftware\DabDash\Api\OrdersApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$order_dashboard_request = new \ShadowSoftware\Sdk\Generated\Model\OrderDashboardRequest(); // \ShadowSoftware\Sdk\Generated\Model\OrderDashboardRequest
+$order_dashboard_request = new \ShadowSoftware\DabDash\Model\OrderDashboardRequest(); // \ShadowSoftware\DabDash\Model\OrderDashboardRequest
 
 try {
     $result = $apiInstance->orderDashboard($order_dashboard_request);
@@ -51,11 +51,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **order_dashboard_request** | [**\ShadowSoftware\Sdk\Generated\Model\OrderDashboardRequest**](../Model/OrderDashboardRequest.md)|  | [optional] |
+| **order_dashboard_request** | [**\ShadowSoftware\DabDash\Model\OrderDashboardRequest**](../Model/OrderDashboardRequest.md)|  | [optional] |
 
 ### Return type
 
-[**\ShadowSoftware\Sdk\Generated\Model\OrderDashboard200Response**](../Model/OrderDashboard200Response.md)
+[**\ShadowSoftware\DabDash\Model\OrderDashboard200Response**](../Model/OrderDashboard200Response.md)
 
 ### Authorization
 

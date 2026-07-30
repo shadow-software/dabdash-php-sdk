@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Please update the test case below to test the model.
  */
 
-namespace ShadowSoftware\Sdk\Generated\Test\Model;
+namespace ShadowSoftware\DabDash\Test\Model;
 
 use PHPUnit\Framework\TestCase;
 
@@ -35,7 +35,7 @@ use PHPUnit\Framework\TestCase;
  *
  * @category    Class
  * @description ProductUpdateBySkuResponse
- * @package     ShadowSoftware\Sdk\Generated
+ * @package     ShadowSoftware\DabDash
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */

@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace ShadowSoftware\Sdk\Generated\Model;
+namespace ShadowSoftware\DabDash\Model;
 
 use \ArrayAccess;
-use \ShadowSoftware\Sdk\Generated\ObjectSerializer;
+use \ShadowSoftware\DabDash\ObjectSerializer;
 
 /**
  * OrderDashboardResponse Class Doc Comment
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -57,8 +57,8 @@ class OrderDashboardResponse implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $openAPITypes = [
-        'summary' => '\ShadowSoftware\Sdk\Generated\Model\OrderDashboardResponseSummary',
-        'orders' => '\ShadowSoftware\Sdk\Generated\Model\OrderDashboardResponseOrdersInner[]'
+        'summary' => '\ShadowSoftware\DabDash\Model\OrderDashboardResponseSummary',
+        'orders' => '\ShadowSoftware\DabDash\Model\OrderDashboardResponseOrdersInner[]'
     ];
 
     /**
@@ -299,7 +299,7 @@ class OrderDashboardResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets summary
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\OrderDashboardResponseSummary|null
+     * @return \ShadowSoftware\DabDash\Model\OrderDashboardResponseSummary|null
      */
     public function getSummary()
     {
@@ -309,7 +309,7 @@ class OrderDashboardResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets summary
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\OrderDashboardResponseSummary|null $summary summary
+     * @param \ShadowSoftware\DabDash\Model\OrderDashboardResponseSummary|null $summary summary
      *
      * @return self
      */
@@ -326,7 +326,7 @@ class OrderDashboardResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets orders
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\OrderDashboardResponseOrdersInner[]|null
+     * @return \ShadowSoftware\DabDash\Model\OrderDashboardResponseOrdersInner[]|null
      */
     public function getOrders()
     {
@@ -336,7 +336,7 @@ class OrderDashboardResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets orders
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\OrderDashboardResponseOrdersInner[]|null $orders orders
+     * @param \ShadowSoftware\DabDash\Model\OrderDashboardResponseOrdersInner[]|null $orders orders
      *
      * @return self
      */

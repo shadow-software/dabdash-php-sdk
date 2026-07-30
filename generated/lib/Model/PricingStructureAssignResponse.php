@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace ShadowSoftware\Sdk\Generated\Model;
+namespace ShadowSoftware\DabDash\Model;
 
 use \ArrayAccess;
-use \ShadowSoftware\Sdk\Generated\ObjectSerializer;
+use \ShadowSoftware\DabDash\ObjectSerializer;
 
 /**
  * PricingStructureAssignResponse Class Doc Comment
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class PricingStructureAssignResponse implements ModelInterface, ArrayAccess, \Js
         'structure_id' => 'int',
         'structure_name' => 'string',
         'tracking_type' => 'string',
-        'summary' => '\ShadowSoftware\Sdk\Generated\Model\PricingStructureAssignResponseSummary',
-        'results' => '\ShadowSoftware\Sdk\Generated\Model\PricingStructureAssignResponseResultsInner[]'
+        'summary' => '\ShadowSoftware\DabDash\Model\PricingStructureAssignResponseSummary',
+        'results' => '\ShadowSoftware\DabDash\Model\PricingStructureAssignResponseResultsInner[]'
     ];
 
     /**
@@ -401,7 +401,7 @@ class PricingStructureAssignResponse implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets summary
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\PricingStructureAssignResponseSummary|null
+     * @return \ShadowSoftware\DabDash\Model\PricingStructureAssignResponseSummary|null
      */
     public function getSummary()
     {
@@ -411,7 +411,7 @@ class PricingStructureAssignResponse implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets summary
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\PricingStructureAssignResponseSummary|null $summary summary
+     * @param \ShadowSoftware\DabDash\Model\PricingStructureAssignResponseSummary|null $summary summary
      *
      * @return self
      */
@@ -428,7 +428,7 @@ class PricingStructureAssignResponse implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets results
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\PricingStructureAssignResponseResultsInner[]|null
+     * @return \ShadowSoftware\DabDash\Model\PricingStructureAssignResponseResultsInner[]|null
      */
     public function getResults()
     {
@@ -438,7 +438,7 @@ class PricingStructureAssignResponse implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets results
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\PricingStructureAssignResponseResultsInner[]|null $results results
+     * @param \ShadowSoftware\DabDash\Model\PricingStructureAssignResponseResultsInner[]|null $results results
      *
      * @return self
      */

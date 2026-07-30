@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace ShadowSoftware\Sdk\Generated\Model;
+namespace ShadowSoftware\DabDash\Model;
 
 use \ArrayAccess;
-use \ShadowSoftware\Sdk\Generated\ObjectSerializer;
+use \ShadowSoftware\DabDash\ObjectSerializer;
 
 /**
  * WidgetManageResponse Class Doc Comment
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,10 +58,10 @@ class WidgetManageResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $openAPITypes = [
         'action' => 'string',
-        'tenant' => '\ShadowSoftware\Sdk\Generated\Model\BundleListResponseTenant',
+        'tenant' => '\ShadowSoftware\DabDash\Model\BundleListResponseTenant',
         'total' => 'int',
-        'widgets' => '\ShadowSoftware\Sdk\Generated\Model\WidgetManageResponseWidgetsInner[]',
-        'widget' => '\ShadowSoftware\Sdk\Generated\Model\WidgetManageResponseWidget',
+        'widgets' => '\ShadowSoftware\DabDash\Model\WidgetManageResponseWidgetsInner[]',
+        'widget' => '\ShadowSoftware\DabDash\Model\WidgetManageResponseWidget',
         'message' => 'string'
     ];
 
@@ -354,7 +354,7 @@ class WidgetManageResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets tenant
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\BundleListResponseTenant|null
+     * @return \ShadowSoftware\DabDash\Model\BundleListResponseTenant|null
      */
     public function getTenant()
     {
@@ -364,7 +364,7 @@ class WidgetManageResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets tenant
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\BundleListResponseTenant|null $tenant tenant
+     * @param \ShadowSoftware\DabDash\Model\BundleListResponseTenant|null $tenant tenant
      *
      * @return self
      */
@@ -415,7 +415,7 @@ class WidgetManageResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets widgets
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\WidgetManageResponseWidgetsInner[]|null
+     * @return \ShadowSoftware\DabDash\Model\WidgetManageResponseWidgetsInner[]|null
      */
     public function getWidgets()
     {
@@ -425,7 +425,7 @@ class WidgetManageResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets widgets
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\WidgetManageResponseWidgetsInner[]|null $widgets widgets
+     * @param \ShadowSoftware\DabDash\Model\WidgetManageResponseWidgetsInner[]|null $widgets widgets
      *
      * @return self
      */
@@ -449,7 +449,7 @@ class WidgetManageResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets widget
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\WidgetManageResponseWidget|null
+     * @return \ShadowSoftware\DabDash\Model\WidgetManageResponseWidget|null
      */
     public function getWidget()
     {
@@ -459,7 +459,7 @@ class WidgetManageResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets widget
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\WidgetManageResponseWidget|null $widget widget
+     * @param \ShadowSoftware\DabDash\Model\WidgetManageResponseWidget|null $widget widget
      *
      * @return self
      */

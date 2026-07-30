@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace ShadowSoftware\Sdk\Generated\Model;
+namespace ShadowSoftware\DabDash\Model;
 
 use \ArrayAccess;
-use \ShadowSoftware\Sdk\Generated\ObjectSerializer;
+use \ShadowSoftware\DabDash\ObjectSerializer;
 
 /**
  * PromotionAuditResponse Class Doc Comment
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -57,14 +57,14 @@ class PromotionAuditResponse implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $openAPITypes = [
-        'tenant' => '\ShadowSoftware\Sdk\Generated\Model\CustomerAddressesResponseTenant',
-        'order' => '\ShadowSoftware\Sdk\Generated\Model\PromotionAuditResponseOrder',
-        'storewide_sale' => '\ShadowSoftware\Sdk\Generated\Model\PromotionAuditResponseStorewideSale',
-        'loyalty' => '\ShadowSoftware\Sdk\Generated\Model\PromotionAuditResponseLoyalty',
-        'bundles' => '\ShadowSoftware\Sdk\Generated\Model\PromotionAuditResponseBundlesInner[]',
-        'mix_match' => '\ShadowSoftware\Sdk\Generated\Model\PromotionAuditResponseMixMatch',
-        'coupons' => '\ShadowSoftware\Sdk\Generated\Model\PromotionAuditResponseCouponsInner[]',
-        'freebies' => '\ShadowSoftware\Sdk\Generated\Model\PromotionAuditResponseFreebiesInner[]'
+        'tenant' => '\ShadowSoftware\DabDash\Model\CustomerAddressesResponseTenant',
+        'order' => '\ShadowSoftware\DabDash\Model\PromotionAuditResponseOrder',
+        'storewide_sale' => '\ShadowSoftware\DabDash\Model\PromotionAuditResponseStorewideSale',
+        'loyalty' => '\ShadowSoftware\DabDash\Model\PromotionAuditResponseLoyalty',
+        'bundles' => '\ShadowSoftware\DabDash\Model\PromotionAuditResponseBundlesInner[]',
+        'mix_match' => '\ShadowSoftware\DabDash\Model\PromotionAuditResponseMixMatch',
+        'coupons' => '\ShadowSoftware\DabDash\Model\PromotionAuditResponseCouponsInner[]',
+        'freebies' => '\ShadowSoftware\DabDash\Model\PromotionAuditResponseFreebiesInner[]'
     ];
 
     /**
@@ -341,7 +341,7 @@ class PromotionAuditResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets tenant
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\CustomerAddressesResponseTenant|null
+     * @return \ShadowSoftware\DabDash\Model\CustomerAddressesResponseTenant|null
      */
     public function getTenant()
     {
@@ -351,7 +351,7 @@ class PromotionAuditResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets tenant
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\CustomerAddressesResponseTenant|null $tenant tenant
+     * @param \ShadowSoftware\DabDash\Model\CustomerAddressesResponseTenant|null $tenant tenant
      *
      * @return self
      */
@@ -368,7 +368,7 @@ class PromotionAuditResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets order
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\PromotionAuditResponseOrder|null
+     * @return \ShadowSoftware\DabDash\Model\PromotionAuditResponseOrder|null
      */
     public function getOrder()
     {
@@ -378,7 +378,7 @@ class PromotionAuditResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets order
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\PromotionAuditResponseOrder|null $order order
+     * @param \ShadowSoftware\DabDash\Model\PromotionAuditResponseOrder|null $order order
      *
      * @return self
      */
@@ -402,7 +402,7 @@ class PromotionAuditResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets storewide_sale
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\PromotionAuditResponseStorewideSale|null
+     * @return \ShadowSoftware\DabDash\Model\PromotionAuditResponseStorewideSale|null
      */
     public function getStorewideSale()
     {
@@ -412,7 +412,7 @@ class PromotionAuditResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets storewide_sale
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\PromotionAuditResponseStorewideSale|null $storewide_sale storewide_sale
+     * @param \ShadowSoftware\DabDash\Model\PromotionAuditResponseStorewideSale|null $storewide_sale storewide_sale
      *
      * @return self
      */
@@ -429,7 +429,7 @@ class PromotionAuditResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets loyalty
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\PromotionAuditResponseLoyalty|null
+     * @return \ShadowSoftware\DabDash\Model\PromotionAuditResponseLoyalty|null
      */
     public function getLoyalty()
     {
@@ -439,7 +439,7 @@ class PromotionAuditResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets loyalty
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\PromotionAuditResponseLoyalty|null $loyalty loyalty
+     * @param \ShadowSoftware\DabDash\Model\PromotionAuditResponseLoyalty|null $loyalty loyalty
      *
      * @return self
      */
@@ -456,7 +456,7 @@ class PromotionAuditResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets bundles
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\PromotionAuditResponseBundlesInner[]|null
+     * @return \ShadowSoftware\DabDash\Model\PromotionAuditResponseBundlesInner[]|null
      */
     public function getBundles()
     {
@@ -466,7 +466,7 @@ class PromotionAuditResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets bundles
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\PromotionAuditResponseBundlesInner[]|null $bundles bundles
+     * @param \ShadowSoftware\DabDash\Model\PromotionAuditResponseBundlesInner[]|null $bundles bundles
      *
      * @return self
      */
@@ -483,7 +483,7 @@ class PromotionAuditResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets mix_match
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\PromotionAuditResponseMixMatch|null
+     * @return \ShadowSoftware\DabDash\Model\PromotionAuditResponseMixMatch|null
      */
     public function getMixMatch()
     {
@@ -493,7 +493,7 @@ class PromotionAuditResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets mix_match
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\PromotionAuditResponseMixMatch|null $mix_match mix_match
+     * @param \ShadowSoftware\DabDash\Model\PromotionAuditResponseMixMatch|null $mix_match mix_match
      *
      * @return self
      */
@@ -510,7 +510,7 @@ class PromotionAuditResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets coupons
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\PromotionAuditResponseCouponsInner[]|null
+     * @return \ShadowSoftware\DabDash\Model\PromotionAuditResponseCouponsInner[]|null
      */
     public function getCoupons()
     {
@@ -520,7 +520,7 @@ class PromotionAuditResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets coupons
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\PromotionAuditResponseCouponsInner[]|null $coupons coupons
+     * @param \ShadowSoftware\DabDash\Model\PromotionAuditResponseCouponsInner[]|null $coupons coupons
      *
      * @return self
      */
@@ -537,7 +537,7 @@ class PromotionAuditResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets freebies
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\PromotionAuditResponseFreebiesInner[]|null
+     * @return \ShadowSoftware\DabDash\Model\PromotionAuditResponseFreebiesInner[]|null
      */
     public function getFreebies()
     {
@@ -547,7 +547,7 @@ class PromotionAuditResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets freebies
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\PromotionAuditResponseFreebiesInner[]|null $freebies freebies
+     * @param \ShadowSoftware\DabDash\Model\PromotionAuditResponseFreebiesInner[]|null $freebies freebies
      *
      * @return self
      */

@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace ShadowSoftware\Sdk\Generated\Model;
+namespace ShadowSoftware\DabDash\Model;
 
 use \ArrayAccess;
-use \ShadowSoftware\Sdk\Generated\ObjectSerializer;
+use \ShadowSoftware\DabDash\ObjectSerializer;
 
 /**
  * SearchConsole200Response Class Doc Comment
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class SearchConsole200Response implements ModelInterface, ArrayAccess, \JsonSeri
      */
     protected static $openAPITypes = [
         'tool' => 'string',
-        'data' => '\ShadowSoftware\Sdk\Generated\Model\SearchConsoleResponse'
+        'data' => '\ShadowSoftware\DabDash\Model\SearchConsoleResponse'
     ];
 
     /**
@@ -326,7 +326,7 @@ class SearchConsole200Response implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets data
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\SearchConsoleResponse|null
+     * @return \ShadowSoftware\DabDash\Model\SearchConsoleResponse|null
      */
     public function getData()
     {
@@ -336,7 +336,7 @@ class SearchConsole200Response implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets data
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\SearchConsoleResponse|null $data data
+     * @param \ShadowSoftware\DabDash\Model\SearchConsoleResponse|null $data data
      *
      * @return self
      */

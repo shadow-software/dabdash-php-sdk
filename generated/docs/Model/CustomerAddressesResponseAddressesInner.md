@@ -9,8 +9,8 @@ Name | Type | Description | Notes
 **address** | **string** |  | [optional]
 **latitude** | **float** |  | [optional]
 **longitude** | **float** |  | [optional]
-**saved_zone** | [**\ShadowSoftware\Sdk\Generated\Model\CustomerAddressesResponseAddressesInnerSavedZone**](CustomerAddressesResponseAddressesInnerSavedZone.md) |  | [optional]
-**detected_zone** | [**\ShadowSoftware\Sdk\Generated\Model\CustomerAddressesResponseAddressesInnerSavedZone**](CustomerAddressesResponseAddressesInnerSavedZone.md) |  | [optional]
+**saved_zone** | [**\ShadowSoftware\DabDash\Model\CustomerAddressesResponseAddressesInnerSavedZone**](CustomerAddressesResponseAddressesInnerSavedZone.md) |  | [optional]
+**detected_zone** | [**\ShadowSoftware\DabDash\Model\CustomerAddressesResponseAddressesInnerSavedZone**](CustomerAddressesResponseAddressesInnerSavedZone.md) |  | [optional]
 **zone_matches_saved_zone** | **bool** |  | [optional]
 **is_default** | **bool** |  | [optional]
 

@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace ShadowSoftware\Sdk\Generated\Model;
+namespace ShadowSoftware\DabDash\Model;
 
 use \ArrayAccess;
-use \ShadowSoftware\Sdk\Generated\ObjectSerializer;
+use \ShadowSoftware\DabDash\ObjectSerializer;
 
 /**
  * CustomerLookupResponse Class Doc Comment
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -57,9 +57,9 @@ class CustomerLookupResponse implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $openAPITypes = [
-        'tenant' => '\ShadowSoftware\Sdk\Generated\Model\CustomerAddressesResponseTenant',
+        'tenant' => '\ShadowSoftware\DabDash\Model\CustomerAddressesResponseTenant',
         'matched_customers' => 'int',
-        'customers' => '\ShadowSoftware\Sdk\Generated\Model\CustomerLookupResponseCustomersInner[]'
+        'customers' => '\ShadowSoftware\DabDash\Model\CustomerLookupResponseCustomersInner[]'
     ];
 
     /**
@@ -306,7 +306,7 @@ class CustomerLookupResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets tenant
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\CustomerAddressesResponseTenant|null
+     * @return \ShadowSoftware\DabDash\Model\CustomerAddressesResponseTenant|null
      */
     public function getTenant()
     {
@@ -316,7 +316,7 @@ class CustomerLookupResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets tenant
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\CustomerAddressesResponseTenant|null $tenant tenant
+     * @param \ShadowSoftware\DabDash\Model\CustomerAddressesResponseTenant|null $tenant tenant
      *
      * @return self
      */
@@ -360,7 +360,7 @@ class CustomerLookupResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets customers
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\CustomerLookupResponseCustomersInner[]|null
+     * @return \ShadowSoftware\DabDash\Model\CustomerLookupResponseCustomersInner[]|null
      */
     public function getCustomers()
     {
@@ -370,7 +370,7 @@ class CustomerLookupResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets customers
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\CustomerLookupResponseCustomersInner[]|null $customers customers
+     * @param \ShadowSoftware\DabDash\Model\CustomerLookupResponseCustomersInner[]|null $customers customers
      *
      * @return self
      */

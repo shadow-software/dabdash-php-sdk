@@ -1,4 +1,4 @@
-# ShadowSoftware\Sdk\Generated\CustomersApi
+# ShadowSoftware\DabDash\CustomersApi
 
 
 
@@ -16,7 +16,7 @@ All URIs are relative to https://.dabdash.com, except if the operation defines a
 ## `customerAddresses()`
 
 ```php
-customerAddresses($customer_addresses_request): \ShadowSoftware\Sdk\Generated\Model\CustomerAddresses200Response
+customerAddresses($customer_addresses_request): \ShadowSoftware\DabDash\Model\CustomerAddresses200Response
 ```
 
 Return a customer's saved addresses, coordinates, saved zones, and zone mismatch diagnostics.
@@ -29,19 +29,19 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: tenantOAuth
-$config = ShadowSoftware\Sdk\Generated\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure Bearer authorization: tenantApiKey
-$config = ShadowSoftware\Sdk\Generated\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new ShadowSoftware\Sdk\Generated\Api\CustomersApi(
+$apiInstance = new ShadowSoftware\DabDash\Api\CustomersApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$customer_addresses_request = new \ShadowSoftware\Sdk\Generated\Model\CustomerAddressesRequest(); // \ShadowSoftware\Sdk\Generated\Model\CustomerAddressesRequest
+$customer_addresses_request = new \ShadowSoftware\DabDash\Model\CustomerAddressesRequest(); // \ShadowSoftware\DabDash\Model\CustomerAddressesRequest
 
 try {
     $result = $apiInstance->customerAddresses($customer_addresses_request);
@@ -55,11 +55,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **customer_addresses_request** | [**\ShadowSoftware\Sdk\Generated\Model\CustomerAddressesRequest**](../Model/CustomerAddressesRequest.md)|  | [optional] |
+| **customer_addresses_request** | [**\ShadowSoftware\DabDash\Model\CustomerAddressesRequest**](../Model/CustomerAddressesRequest.md)|  | [optional] |
 
 ### Return type
 
-[**\ShadowSoftware\Sdk\Generated\Model\CustomerAddresses200Response**](../Model/CustomerAddresses200Response.md)
+[**\ShadowSoftware\DabDash\Model\CustomerAddresses200Response**](../Model/CustomerAddresses200Response.md)
 
 ### Authorization
 
@@ -77,7 +77,7 @@ try {
 ## `customerList()`
 
 ```php
-customerList($customer_list_request): \ShadowSoftware\Sdk\Generated\Model\CustomerList200Response
+customerList($customer_list_request): \ShadowSoftware\DabDash\Model\CustomerList200Response
 ```
 
 Page through all customers for a tenant, optionally filtered to those updated since a given time. Built for bulk sync — use customer_lookup instead for a single targeted search.
@@ -90,19 +90,19 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: tenantOAuth
-$config = ShadowSoftware\Sdk\Generated\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure Bearer authorization: tenantApiKey
-$config = ShadowSoftware\Sdk\Generated\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new ShadowSoftware\Sdk\Generated\Api\CustomersApi(
+$apiInstance = new ShadowSoftware\DabDash\Api\CustomersApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$customer_list_request = new \ShadowSoftware\Sdk\Generated\Model\CustomerListRequest(); // \ShadowSoftware\Sdk\Generated\Model\CustomerListRequest
+$customer_list_request = new \ShadowSoftware\DabDash\Model\CustomerListRequest(); // \ShadowSoftware\DabDash\Model\CustomerListRequest
 
 try {
     $result = $apiInstance->customerList($customer_list_request);
@@ -116,11 +116,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **customer_list_request** | [**\ShadowSoftware\Sdk\Generated\Model\CustomerListRequest**](../Model/CustomerListRequest.md)|  | [optional] |
+| **customer_list_request** | [**\ShadowSoftware\DabDash\Model\CustomerListRequest**](../Model/CustomerListRequest.md)|  | [optional] |
 
 ### Return type
 
-[**\ShadowSoftware\Sdk\Generated\Model\CustomerList200Response**](../Model/CustomerList200Response.md)
+[**\ShadowSoftware\DabDash\Model\CustomerList200Response**](../Model/CustomerList200Response.md)
 
 ### Authorization
 
@@ -138,7 +138,7 @@ try {
 ## `customerLookup()`
 
 ```php
-customerLookup($customer_lookup_request): \ShadowSoftware\Sdk\Generated\Model\CustomerLookup200Response
+customerLookup($customer_lookup_request): \ShadowSoftware\DabDash\Model\CustomerLookup200Response
 ```
 
 Find customers by id, email, phone, or name and return their recent addresses, orders, and support context.
@@ -151,19 +151,19 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: tenantOAuth
-$config = ShadowSoftware\Sdk\Generated\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure Bearer authorization: tenantApiKey
-$config = ShadowSoftware\Sdk\Generated\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new ShadowSoftware\Sdk\Generated\Api\CustomersApi(
+$apiInstance = new ShadowSoftware\DabDash\Api\CustomersApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$customer_lookup_request = new \ShadowSoftware\Sdk\Generated\Model\CustomerLookupRequest(); // \ShadowSoftware\Sdk\Generated\Model\CustomerLookupRequest
+$customer_lookup_request = new \ShadowSoftware\DabDash\Model\CustomerLookupRequest(); // \ShadowSoftware\DabDash\Model\CustomerLookupRequest
 
 try {
     $result = $apiInstance->customerLookup($customer_lookup_request);
@@ -177,11 +177,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **customer_lookup_request** | [**\ShadowSoftware\Sdk\Generated\Model\CustomerLookupRequest**](../Model/CustomerLookupRequest.md)|  | [optional] |
+| **customer_lookup_request** | [**\ShadowSoftware\DabDash\Model\CustomerLookupRequest**](../Model/CustomerLookupRequest.md)|  | [optional] |
 
 ### Return type
 
-[**\ShadowSoftware\Sdk\Generated\Model\CustomerLookup200Response**](../Model/CustomerLookup200Response.md)
+[**\ShadowSoftware\DabDash\Model\CustomerLookup200Response**](../Model/CustomerLookup200Response.md)
 
 ### Authorization
 
@@ -199,7 +199,7 @@ try {
 ## `customerUpdate()`
 
 ```php
-customerUpdate($customer_update_request): \ShadowSoftware\Sdk\Generated\Model\CustomerUpdate200Response
+customerUpdate($customer_update_request): \ShadowSoftware\DabDash\Model\CustomerUpdate200Response
 ```
 
 Update a customer's contact fields (name, email, phone) and/or suppress marketing consent (email_opt_out, sms_marketing_opt_out, sms_notifications_muted — one-way, cannot un-suppress). Verification, loyalty, and other DabDash-owned fields cannot be set here.
@@ -212,19 +212,19 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: tenantOAuth
-$config = ShadowSoftware\Sdk\Generated\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure Bearer authorization: tenantApiKey
-$config = ShadowSoftware\Sdk\Generated\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new ShadowSoftware\Sdk\Generated\Api\CustomersApi(
+$apiInstance = new ShadowSoftware\DabDash\Api\CustomersApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$customer_update_request = new \ShadowSoftware\Sdk\Generated\Model\CustomerUpdateRequest(); // \ShadowSoftware\Sdk\Generated\Model\CustomerUpdateRequest
+$customer_update_request = new \ShadowSoftware\DabDash\Model\CustomerUpdateRequest(); // \ShadowSoftware\DabDash\Model\CustomerUpdateRequest
 
 try {
     $result = $apiInstance->customerUpdate($customer_update_request);
@@ -238,11 +238,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **customer_update_request** | [**\ShadowSoftware\Sdk\Generated\Model\CustomerUpdateRequest**](../Model/CustomerUpdateRequest.md)|  | [optional] |
+| **customer_update_request** | [**\ShadowSoftware\DabDash\Model\CustomerUpdateRequest**](../Model/CustomerUpdateRequest.md)|  | [optional] |
 
 ### Return type
 
-[**\ShadowSoftware\Sdk\Generated\Model\CustomerUpdate200Response**](../Model/CustomerUpdate200Response.md)
+[**\ShadowSoftware\DabDash\Model\CustomerUpdate200Response**](../Model/CustomerUpdate200Response.md)
 
 ### Authorization
 
@@ -260,7 +260,7 @@ try {
 ## `mailboxInspect()`
 
 ```php
-mailboxInspect($mailbox_inspect_request): \ShadowSoftware\Sdk\Generated\Model\MailboxInspect200Response
+mailboxInspect($mailbox_inspect_request): \ShadowSoftware\DabDash\Model\MailboxInspect200Response
 ```
 
 Inspect a tenant inbound mailbox: sync watermark, last error, recent ingestion counts (inbound/outbound), and a healthy/bootstrap/stalled/quiet verdict. Pass a tenant_slug, or pass platform=true for a platform-owned mailbox (tenant_id IS NULL).
@@ -273,19 +273,19 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: tenantOAuth
-$config = ShadowSoftware\Sdk\Generated\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure Bearer authorization: tenantApiKey
-$config = ShadowSoftware\Sdk\Generated\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new ShadowSoftware\Sdk\Generated\Api\CustomersApi(
+$apiInstance = new ShadowSoftware\DabDash\Api\CustomersApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$mailbox_inspect_request = new \ShadowSoftware\Sdk\Generated\Model\MailboxInspectRequest(); // \ShadowSoftware\Sdk\Generated\Model\MailboxInspectRequest
+$mailbox_inspect_request = new \ShadowSoftware\DabDash\Model\MailboxInspectRequest(); // \ShadowSoftware\DabDash\Model\MailboxInspectRequest
 
 try {
     $result = $apiInstance->mailboxInspect($mailbox_inspect_request);
@@ -299,11 +299,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **mailbox_inspect_request** | [**\ShadowSoftware\Sdk\Generated\Model\MailboxInspectRequest**](../Model/MailboxInspectRequest.md)|  | [optional] |
+| **mailbox_inspect_request** | [**\ShadowSoftware\DabDash\Model\MailboxInspectRequest**](../Model/MailboxInspectRequest.md)|  | [optional] |
 
 ### Return type
 
-[**\ShadowSoftware\Sdk\Generated\Model\MailboxInspect200Response**](../Model/MailboxInspect200Response.md)
+[**\ShadowSoftware\DabDash\Model\MailboxInspect200Response**](../Model/MailboxInspect200Response.md)
 
 ### Authorization
 

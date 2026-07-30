@@ -5,6 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **tool** | **string** |  | [optional]
-**data** | [**\ShadowSoftware\Sdk\Generated\Model\CampaignControlResponse**](CampaignControlResponse.md) |  | [optional]
+**data** | [**\ShadowSoftware\DabDash\Model\CampaignControlResponse**](CampaignControlResponse.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

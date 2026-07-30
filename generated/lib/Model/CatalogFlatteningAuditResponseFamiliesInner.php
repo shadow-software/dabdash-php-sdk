@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace ShadowSoftware\Sdk\Generated\Model;
+namespace ShadowSoftware\DabDash\Model;
 
 use \ArrayAccess;
-use \ShadowSoftware\Sdk\Generated\ObjectSerializer;
+use \ShadowSoftware\DabDash\ObjectSerializer;
 
 /**
  * CatalogFlatteningAuditResponseFamiliesInner Class Doc Comment
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class CatalogFlatteningAuditResponseFamiliesInner implements ModelInterface, Arr
         'base_name' => 'string',
         'collapsible' => 'bool',
         'blocker' => 'string',
-        'members' => '\ShadowSoftware\Sdk\Generated\Model\CatalogFlatteningAuditResponseFamiliesInnerMembersInner[]'
+        'members' => '\ShadowSoftware\DabDash\Model\CatalogFlatteningAuditResponseFamiliesInnerMembersInner[]'
     ];
 
     /**
@@ -401,7 +401,7 @@ class CatalogFlatteningAuditResponseFamiliesInner implements ModelInterface, Arr
     /**
      * Gets members
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\CatalogFlatteningAuditResponseFamiliesInnerMembersInner[]|null
+     * @return \ShadowSoftware\DabDash\Model\CatalogFlatteningAuditResponseFamiliesInnerMembersInner[]|null
      */
     public function getMembers()
     {
@@ -411,7 +411,7 @@ class CatalogFlatteningAuditResponseFamiliesInner implements ModelInterface, Arr
     /**
      * Sets members
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\CatalogFlatteningAuditResponseFamiliesInnerMembersInner[]|null $members members
+     * @param \ShadowSoftware\DabDash\Model\CatalogFlatteningAuditResponseFamiliesInnerMembersInner[]|null $members members
      *
      * @return self
      */

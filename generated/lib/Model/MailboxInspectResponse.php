@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace ShadowSoftware\Sdk\Generated\Model;
+namespace ShadowSoftware\DabDash\Model;
 
 use \ArrayAccess;
-use \ShadowSoftware\Sdk\Generated\ObjectSerializer;
+use \ShadowSoftware\DabDash\ObjectSerializer;
 
 /**
  * MailboxInspectResponse Class Doc Comment
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -57,11 +57,11 @@ class MailboxInspectResponse implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $openAPITypes = [
-        'account' => '\ShadowSoftware\Sdk\Generated\Model\MailboxInspectResponseAccount',
-        'sync_state' => '\ShadowSoftware\Sdk\Generated\Model\MailboxInspectResponseSyncState',
-        'ingestion' => '\ShadowSoftware\Sdk\Generated\Model\MailboxInspectResponseIngestion',
-        'verdict' => '\ShadowSoftware\Sdk\Generated\Model\MailboxInspectResponseVerdict',
-        'recent_messages' => '\ShadowSoftware\Sdk\Generated\Model\MailboxInspectResponseRecentMessagesInner[]'
+        'account' => '\ShadowSoftware\DabDash\Model\MailboxInspectResponseAccount',
+        'sync_state' => '\ShadowSoftware\DabDash\Model\MailboxInspectResponseSyncState',
+        'ingestion' => '\ShadowSoftware\DabDash\Model\MailboxInspectResponseIngestion',
+        'verdict' => '\ShadowSoftware\DabDash\Model\MailboxInspectResponseVerdict',
+        'recent_messages' => '\ShadowSoftware\DabDash\Model\MailboxInspectResponseRecentMessagesInner[]'
     ];
 
     /**
@@ -320,7 +320,7 @@ class MailboxInspectResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets account
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\MailboxInspectResponseAccount|null
+     * @return \ShadowSoftware\DabDash\Model\MailboxInspectResponseAccount|null
      */
     public function getAccount()
     {
@@ -330,7 +330,7 @@ class MailboxInspectResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets account
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\MailboxInspectResponseAccount|null $account account
+     * @param \ShadowSoftware\DabDash\Model\MailboxInspectResponseAccount|null $account account
      *
      * @return self
      */
@@ -347,7 +347,7 @@ class MailboxInspectResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets sync_state
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\MailboxInspectResponseSyncState|null
+     * @return \ShadowSoftware\DabDash\Model\MailboxInspectResponseSyncState|null
      */
     public function getSyncState()
     {
@@ -357,7 +357,7 @@ class MailboxInspectResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets sync_state
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\MailboxInspectResponseSyncState|null $sync_state sync_state
+     * @param \ShadowSoftware\DabDash\Model\MailboxInspectResponseSyncState|null $sync_state sync_state
      *
      * @return self
      */
@@ -374,7 +374,7 @@ class MailboxInspectResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets ingestion
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\MailboxInspectResponseIngestion|null
+     * @return \ShadowSoftware\DabDash\Model\MailboxInspectResponseIngestion|null
      */
     public function getIngestion()
     {
@@ -384,7 +384,7 @@ class MailboxInspectResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets ingestion
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\MailboxInspectResponseIngestion|null $ingestion ingestion
+     * @param \ShadowSoftware\DabDash\Model\MailboxInspectResponseIngestion|null $ingestion ingestion
      *
      * @return self
      */
@@ -401,7 +401,7 @@ class MailboxInspectResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets verdict
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\MailboxInspectResponseVerdict|null
+     * @return \ShadowSoftware\DabDash\Model\MailboxInspectResponseVerdict|null
      */
     public function getVerdict()
     {
@@ -411,7 +411,7 @@ class MailboxInspectResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets verdict
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\MailboxInspectResponseVerdict|null $verdict verdict
+     * @param \ShadowSoftware\DabDash\Model\MailboxInspectResponseVerdict|null $verdict verdict
      *
      * @return self
      */
@@ -428,7 +428,7 @@ class MailboxInspectResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets recent_messages
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\MailboxInspectResponseRecentMessagesInner[]|null
+     * @return \ShadowSoftware\DabDash\Model\MailboxInspectResponseRecentMessagesInner[]|null
      */
     public function getRecentMessages()
     {
@@ -438,7 +438,7 @@ class MailboxInspectResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets recent_messages
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\MailboxInspectResponseRecentMessagesInner[]|null $recent_messages recent_messages
+     * @param \ShadowSoftware\DabDash\Model\MailboxInspectResponseRecentMessagesInner[]|null $recent_messages recent_messages
      *
      * @return self
      */

@@ -1,4 +1,4 @@
-# ShadowSoftware\Sdk\Generated\PromotionsApi
+# ShadowSoftware\DabDash\PromotionsApi
 
 
 
@@ -19,7 +19,7 @@ All URIs are relative to https://.dabdash.com, except if the operation defines a
 ## `bundleList()`
 
 ```php
-bundleList($bundle_list_request): \ShadowSoftware\Sdk\Generated\Model\BundleList200Response
+bundleList($bundle_list_request): \ShadowSoftware\DabDash\Model\BundleList200Response
 ```
 
 List a tenant's bundle deals (\"mix & match\" — e.g. \"buy 4 for $77\") with id, name, trigger quantity, discount type/value, active state, schedule window, and attached variation count. Bundles are the live cart engine (MixMatchService): a bundle fires when a cart holds at least `quantity` units across its attached variations. Always call this before bundle_upsert to get the bundle id and confirm the current discount configuration.  IMPORTANT: this reads the `bundles` table — the source of truth the storefront cart uses. It is NOT the legacy `mix_match_rules` tenant setting that promotion_audit / product_inspect surface; those are stale display-only data. Trust this tool for what actually applies at checkout.  discount_type:   percent      → discount_value is a percentage 0–100, applied per unit.   fixed        → discount_value is dollars off PER UNIT.   fixed_total  → discount_value is the dollar TOTAL for the whole set (\"$77 for 4\").
@@ -32,19 +32,19 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: tenantOAuth
-$config = ShadowSoftware\Sdk\Generated\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure Bearer authorization: tenantApiKey
-$config = ShadowSoftware\Sdk\Generated\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new ShadowSoftware\Sdk\Generated\Api\PromotionsApi(
+$apiInstance = new ShadowSoftware\DabDash\Api\PromotionsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$bundle_list_request = new \ShadowSoftware\Sdk\Generated\Model\BundleListRequest(); // \ShadowSoftware\Sdk\Generated\Model\BundleListRequest
+$bundle_list_request = new \ShadowSoftware\DabDash\Model\BundleListRequest(); // \ShadowSoftware\DabDash\Model\BundleListRequest
 
 try {
     $result = $apiInstance->bundleList($bundle_list_request);
@@ -58,11 +58,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **bundle_list_request** | [**\ShadowSoftware\Sdk\Generated\Model\BundleListRequest**](../Model/BundleListRequest.md)|  | [optional] |
+| **bundle_list_request** | [**\ShadowSoftware\DabDash\Model\BundleListRequest**](../Model/BundleListRequest.md)|  | [optional] |
 
 ### Return type
 
-[**\ShadowSoftware\Sdk\Generated\Model\BundleList200Response**](../Model/BundleList200Response.md)
+[**\ShadowSoftware\DabDash\Model\BundleList200Response**](../Model/BundleList200Response.md)
 
 ### Authorization
 
@@ -80,7 +80,7 @@ try {
 ## `bundleUpsert()`
 
 ```php
-bundleUpsert($bundle_upsert_request): \ShadowSoftware\Sdk\Generated\Model\BundleUpsert200Response
+bundleUpsert($bundle_upsert_request): \ShadowSoftware\DabDash\Model\BundleUpsert200Response
 ```
 
 Create or update a bundle deal (mix & match) on behalf of a tenant. Bundles are the live cart engine: a bundle fires when a cart holds at least `quantity` units across its attached variations.  UPDATE MODE (bundle_id provided):   Edits the bundle. Only the fields you pass are changed; omitted fields are left as-is.  CREATE MODE (no bundle_id):   Creates a new bundle. name, quantity, discount_type, and discount_value are required.  DISCOUNT VALUE UNITS — read carefully, this is the common mistake:   discount_type = \"percent\"      → discount_value is a percentage 0–100 (e.g. 20 = 20% off each unit).   discount_type = \"fixed\"        → discount_value is DOLLARS off PER UNIT (e.g. 5 = $5 off each).   discount_type = \"fixed_total\"  → discount_value is the DOLLARS TOTAL for the whole set                                     (e.g. quantity=4, discount_value=77 → \"any 4 for $77\").   For fixed and fixed_total, pass dollars (e.g. 77 or 77.00) — the tool stores cents internally.   For percent, pass the percentage (e.g. 20), NOT a fraction.  VARIATIONS:   variation_ids + variation_mode control which product variations the bundle applies to.   mode \"replace\" (default) sets membership to exactly variation_ids; \"add\" attaches them to the   existing set; \"detach\" removes them. Variations not owned by the tenant are ignored.   Omit variation_ids entirely to leave membership untouched.  SCHEDULE:   starts_at / ends_at are interpreted in the tenant's timezone and stored as UTC. Pass null/omit   for an always-on bundle.  Always call bundle_list first to get the bundle_id and confirm the current configuration.
@@ -93,19 +93,19 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: tenantOAuth
-$config = ShadowSoftware\Sdk\Generated\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure Bearer authorization: tenantApiKey
-$config = ShadowSoftware\Sdk\Generated\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new ShadowSoftware\Sdk\Generated\Api\PromotionsApi(
+$apiInstance = new ShadowSoftware\DabDash\Api\PromotionsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$bundle_upsert_request = new \ShadowSoftware\Sdk\Generated\Model\BundleUpsertRequest(); // \ShadowSoftware\Sdk\Generated\Model\BundleUpsertRequest
+$bundle_upsert_request = new \ShadowSoftware\DabDash\Model\BundleUpsertRequest(); // \ShadowSoftware\DabDash\Model\BundleUpsertRequest
 
 try {
     $result = $apiInstance->bundleUpsert($bundle_upsert_request);
@@ -119,11 +119,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **bundle_upsert_request** | [**\ShadowSoftware\Sdk\Generated\Model\BundleUpsertRequest**](../Model/BundleUpsertRequest.md)|  | [optional] |
+| **bundle_upsert_request** | [**\ShadowSoftware\DabDash\Model\BundleUpsertRequest**](../Model/BundleUpsertRequest.md)|  | [optional] |
 
 ### Return type
 
-[**\ShadowSoftware\Sdk\Generated\Model\BundleUpsert200Response**](../Model/BundleUpsert200Response.md)
+[**\ShadowSoftware\DabDash\Model\BundleUpsert200Response**](../Model/BundleUpsert200Response.md)
 
 ### Authorization
 
@@ -141,7 +141,7 @@ try {
 ## `couponList()`
 
 ```php
-couponList($coupon_list_request): \ShadowSoftware\Sdk\Generated\Model\CouponList200Response
+couponList($coupon_list_request): \ShadowSoftware\DabDash\Model\CouponList200Response
 ```
 
 List a tenant's discount coupons with code, type, value, usage limits, redemption count, active state, and schedule window. Coupons are customer-entered codes applied at checkout (distinct from bundles, which fire automatically on cart contents — use bundle_list for those).  type:   percentage     → value is a percentage 0-100 off the order subtotal.   fixed          → value is dollars off the order subtotal.   free_delivery  → waives the delivery fee only; value is unused for this type.  Always call this before making coupon-related decisions to see current codes, usage caps, and whether a coupon has already been exhausted (used_count vs max_uses).
@@ -154,19 +154,19 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: tenantOAuth
-$config = ShadowSoftware\Sdk\Generated\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure Bearer authorization: tenantApiKey
-$config = ShadowSoftware\Sdk\Generated\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new ShadowSoftware\Sdk\Generated\Api\PromotionsApi(
+$apiInstance = new ShadowSoftware\DabDash\Api\PromotionsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$coupon_list_request = new \ShadowSoftware\Sdk\Generated\Model\CouponListRequest(); // \ShadowSoftware\Sdk\Generated\Model\CouponListRequest
+$coupon_list_request = new \ShadowSoftware\DabDash\Model\CouponListRequest(); // \ShadowSoftware\DabDash\Model\CouponListRequest
 
 try {
     $result = $apiInstance->couponList($coupon_list_request);
@@ -180,11 +180,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **coupon_list_request** | [**\ShadowSoftware\Sdk\Generated\Model\CouponListRequest**](../Model/CouponListRequest.md)|  | [optional] |
+| **coupon_list_request** | [**\ShadowSoftware\DabDash\Model\CouponListRequest**](../Model/CouponListRequest.md)|  | [optional] |
 
 ### Return type
 
-[**\ShadowSoftware\Sdk\Generated\Model\CouponList200Response**](../Model/CouponList200Response.md)
+[**\ShadowSoftware\DabDash\Model\CouponList200Response**](../Model/CouponList200Response.md)
 
 ### Authorization
 
@@ -202,7 +202,7 @@ try {
 ## `couponUpsert()`
 
 ```php
-couponUpsert($coupon_upsert_request): \ShadowSoftware\Sdk\Generated\Model\CouponUpsert200Response
+couponUpsert($coupon_upsert_request): \ShadowSoftware\DabDash\Model\CouponUpsert200Response
 ```
 
 Create or update a discount coupon on behalf of a tenant. Coupons are customer-entered codes applied at checkout (distinct from bundles, which fire automatically on cart contents — use bundle_upsert for those).  UPDATE MODE (coupon_id provided):   Edits the coupon. Only the fields you pass are changed; omitted fields are left as-is.  CREATE MODE (no coupon_id):   Creates a new coupon. code, type, and value are required.  VALUE UNITS:   type = \"percentage\"     → value is a percentage 0-100 off the order subtotal.   type = \"fixed\"          → value is DOLLARS off the order subtotal (e.g. 10 = $10 off).   type = \"free_delivery\"  → value is ignored (pass 0); this type only waives the delivery fee.  min_order is a dollar minimum order subtotal required to use the coupon (pass dollars, e.g. 25 for a $25 minimum — the tool stores cents internally). Omit or pass 0 for no minimum.  limit_match_by (\"email\"|\"phone\"|\"both\") controls how max_uses_per_customer is enforced. Using \"phone\" or \"both\" REQUIRES the tenant's \"Require phone at checkout\" setting to be on — otherwise the update is rejected, since customers without a phone on file could otherwise reuse the coupon past its per-customer limit.  SCHEDULE:   starts_at / expires_at are interpreted in the tenant's timezone and stored as UTC. Pass   null/omit for an always-on coupon.  NOT YET SUPPORTED BY THIS TOOL: scoping a coupon to specific products or categories (applies_to_ids) — only applies_to=\"all\" is fully wired end to end today. Passing applies_to=\"products\" or \"categories\" without further product/category tooling will save the coupon with no scoped items, which behaves the same as \"all\" in the current checkout logic.  Always call coupon_list first to get the coupon_id and confirm the current configuration.
@@ -215,19 +215,19 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: tenantOAuth
-$config = ShadowSoftware\Sdk\Generated\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure Bearer authorization: tenantApiKey
-$config = ShadowSoftware\Sdk\Generated\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new ShadowSoftware\Sdk\Generated\Api\PromotionsApi(
+$apiInstance = new ShadowSoftware\DabDash\Api\PromotionsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$coupon_upsert_request = new \ShadowSoftware\Sdk\Generated\Model\CouponUpsertRequest(); // \ShadowSoftware\Sdk\Generated\Model\CouponUpsertRequest
+$coupon_upsert_request = new \ShadowSoftware\DabDash\Model\CouponUpsertRequest(); // \ShadowSoftware\DabDash\Model\CouponUpsertRequest
 
 try {
     $result = $apiInstance->couponUpsert($coupon_upsert_request);
@@ -241,11 +241,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **coupon_upsert_request** | [**\ShadowSoftware\Sdk\Generated\Model\CouponUpsertRequest**](../Model/CouponUpsertRequest.md)|  | [optional] |
+| **coupon_upsert_request** | [**\ShadowSoftware\DabDash\Model\CouponUpsertRequest**](../Model/CouponUpsertRequest.md)|  | [optional] |
 
 ### Return type
 
-[**\ShadowSoftware\Sdk\Generated\Model\CouponUpsert200Response**](../Model/CouponUpsert200Response.md)
+[**\ShadowSoftware\DabDash\Model\CouponUpsert200Response**](../Model/CouponUpsert200Response.md)
 
 ### Authorization
 
@@ -263,7 +263,7 @@ try {
 ## `freebieList()`
 
 ```php
-freebieList($freebie_list_request): \ShadowSoftware\Sdk\Generated\Model\FreebieList200Response
+freebieList($freebie_list_request): \ShadowSoftware\DabDash\Model\FreebieList200Response
 ```
 
 List a tenant's freebie rules (\"spend $X, get a free item\") with id, name, spend threshold, the product/variation given away, quantity, stackable flag, active state, and schedule window. Freebies are evaluated on every cart change by FreebieService: a rule fires once its spend_threshold is met, adding `quantity` of the configured product/variation to the cart.  IMPORTANT: this reads the `freebies` table — the source of truth the storefront cart uses. It is NOT the legacy freebie summary promotion_audit surfaces alongside coupons/bundles; that view is stale display-only data built for a different purpose. Trust this tool for what actually applies at checkout.  is_stackable:   true   → this rule can fire alongside OTHER DIFFERENT freebie rules on the same order (each            rule still only fires once, at its configured quantity, regardless of how far above            its own threshold the cart is).   false  → this rule cannot combine with other freebie rules; if multiple non-stackable rules            qualify, FreebieService applies its own precedence to pick one.   This flag does NOT multiply a single rule's quantity by how many multiples of the threshold   the cart reaches — a $50-threshold rule at $150 spent still gives quantity 1, not 3.
@@ -276,19 +276,19 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: tenantOAuth
-$config = ShadowSoftware\Sdk\Generated\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure Bearer authorization: tenantApiKey
-$config = ShadowSoftware\Sdk\Generated\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new ShadowSoftware\Sdk\Generated\Api\PromotionsApi(
+$apiInstance = new ShadowSoftware\DabDash\Api\PromotionsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$freebie_list_request = new \ShadowSoftware\Sdk\Generated\Model\FreebieListRequest(); // \ShadowSoftware\Sdk\Generated\Model\FreebieListRequest
+$freebie_list_request = new \ShadowSoftware\DabDash\Model\FreebieListRequest(); // \ShadowSoftware\DabDash\Model\FreebieListRequest
 
 try {
     $result = $apiInstance->freebieList($freebie_list_request);
@@ -302,11 +302,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **freebie_list_request** | [**\ShadowSoftware\Sdk\Generated\Model\FreebieListRequest**](../Model/FreebieListRequest.md)|  | [optional] |
+| **freebie_list_request** | [**\ShadowSoftware\DabDash\Model\FreebieListRequest**](../Model/FreebieListRequest.md)|  | [optional] |
 
 ### Return type
 
-[**\ShadowSoftware\Sdk\Generated\Model\FreebieList200Response**](../Model/FreebieList200Response.md)
+[**\ShadowSoftware\DabDash\Model\FreebieList200Response**](../Model/FreebieList200Response.md)
 
 ### Authorization
 
@@ -324,7 +324,7 @@ try {
 ## `freebieUpsert()`
 
 ```php
-freebieUpsert($freebie_upsert_request): \ShadowSoftware\Sdk\Generated\Model\FreebieUpsert200Response
+freebieUpsert($freebie_upsert_request): \ShadowSoftware\DabDash\Model\FreebieUpsert200Response
 ```
 
 Create or update a freebie rule (\"spend $X, get a free item\") on behalf of a tenant. Freebies are evaluated on every cart change: a rule fires once its spend_threshold is met, adding `quantity` of the configured product/variation to the cart (distinct from bundles, which fire on cart CONTENTS/quantity — use bundle_upsert for those).  UPDATE MODE (freebie_id provided):   Edits the freebie. Only the fields you pass are changed; omitted fields are left as-is,   EXCEPT category_ids, which — like bundle_upsert's variation_ids — fully replaces the category   set whenever passed (pass an empty array to clear all categories).  CREATE MODE (no freebie_id):   Creates a new freebie. name, product_id, spend_threshold, and quantity are required.  product_id and variation_id (if given) MUST belong to the same tenant — foreign ids are rejected, not silently ignored (unlike bundle_upsert's variation_ids, since a freebie needs exactly one product to give away, not a set).  spend_threshold is entered in DOLLARS (e.g. 50 for a $50 minimum spend) — the tool stores cents internally.  is_stackable:   true   → this rule can fire alongside OTHER DIFFERENT freebie rules on the same order.   false  → this rule cannot combine with other freebie rules.   Does NOT multiply this rule's own quantity by how many multiples of spend_threshold the cart   reaches — a $50-threshold rule at $150 spent still gives quantity 1, not 3.  SCHEDULE:   starts_at / ends_at are interpreted in the tenant's timezone and stored as UTC. Pass   null/omit for an always-on freebie.  Always call freebie_list first to get the freebie_id and confirm the current configuration.
@@ -337,19 +337,19 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: tenantOAuth
-$config = ShadowSoftware\Sdk\Generated\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure Bearer authorization: tenantApiKey
-$config = ShadowSoftware\Sdk\Generated\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new ShadowSoftware\Sdk\Generated\Api\PromotionsApi(
+$apiInstance = new ShadowSoftware\DabDash\Api\PromotionsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$freebie_upsert_request = new \ShadowSoftware\Sdk\Generated\Model\FreebieUpsertRequest(); // \ShadowSoftware\Sdk\Generated\Model\FreebieUpsertRequest
+$freebie_upsert_request = new \ShadowSoftware\DabDash\Model\FreebieUpsertRequest(); // \ShadowSoftware\DabDash\Model\FreebieUpsertRequest
 
 try {
     $result = $apiInstance->freebieUpsert($freebie_upsert_request);
@@ -363,11 +363,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **freebie_upsert_request** | [**\ShadowSoftware\Sdk\Generated\Model\FreebieUpsertRequest**](../Model/FreebieUpsertRequest.md)|  | [optional] |
+| **freebie_upsert_request** | [**\ShadowSoftware\DabDash\Model\FreebieUpsertRequest**](../Model/FreebieUpsertRequest.md)|  | [optional] |
 
 ### Return type
 
-[**\ShadowSoftware\Sdk\Generated\Model\FreebieUpsert200Response**](../Model/FreebieUpsert200Response.md)
+[**\ShadowSoftware\DabDash\Model\FreebieUpsert200Response**](../Model/FreebieUpsert200Response.md)
 
 ### Authorization
 
@@ -385,7 +385,7 @@ try {
 ## `promotionAudit()`
 
 ```php
-promotionAudit($promotion_audit_request): \ShadowSoftware\Sdk\Generated\Model\PromotionAudit200Response
+promotionAudit($promotion_audit_request): \ShadowSoftware\DabDash\Model\PromotionAudit200Response
 ```
 
 Inspect coupons, freebies, mix and match rules, loyalty settings, and storewide sale state for overcharge or missed-discount support tickets.
@@ -398,19 +398,19 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: tenantOAuth
-$config = ShadowSoftware\Sdk\Generated\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure Bearer authorization: tenantApiKey
-$config = ShadowSoftware\Sdk\Generated\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new ShadowSoftware\Sdk\Generated\Api\PromotionsApi(
+$apiInstance = new ShadowSoftware\DabDash\Api\PromotionsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$promotion_audit_request = new \ShadowSoftware\Sdk\Generated\Model\PromotionAuditRequest(); // \ShadowSoftware\Sdk\Generated\Model\PromotionAuditRequest
+$promotion_audit_request = new \ShadowSoftware\DabDash\Model\PromotionAuditRequest(); // \ShadowSoftware\DabDash\Model\PromotionAuditRequest
 
 try {
     $result = $apiInstance->promotionAudit($promotion_audit_request);
@@ -424,11 +424,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **promotion_audit_request** | [**\ShadowSoftware\Sdk\Generated\Model\PromotionAuditRequest**](../Model/PromotionAuditRequest.md)|  | [optional] |
+| **promotion_audit_request** | [**\ShadowSoftware\DabDash\Model\PromotionAuditRequest**](../Model/PromotionAuditRequest.md)|  | [optional] |
 
 ### Return type
 
-[**\ShadowSoftware\Sdk\Generated\Model\PromotionAudit200Response**](../Model/PromotionAudit200Response.md)
+[**\ShadowSoftware\DabDash\Model\PromotionAudit200Response**](../Model/PromotionAudit200Response.md)
 
 ### Authorization
 
@@ -446,7 +446,7 @@ try {
 ## `widgetManage()`
 
 ```php
-widgetManage($widget_manage_request): \ShadowSoftware\Sdk\Generated\Model\WidgetManage200Response
+widgetManage($widget_manage_request): \ShadowSoftware\DabDash\Model\WidgetManage200Response
 ```
 
 List, create, update, or delete a tenant's homepage marketing widgets (the hero slider cards linking to a product, category, featured products, or a mix & match tag).  ACTIONS:   list   (default): return every widget with id, title, subtitle, link_type, target, sort_order,          is_active, and image_url. Always call this first to find a widget_id.   create: requires title. link_type + its matching id/tag is optional but recommended so the          widget's CTA actually goes somewhere (see LINK_TYPE below). Defaults to \"featured\"          (no target) when omitted.   update: requires widget_id. Only the fields you pass are changed.   delete: requires widget_id and confirm=true.  LINK_TYPE — pairs with exactly one target field:   \"product\"    → product_id   \"category\"   → category_id   \"mix_match\"  → mix_match_tag   \"featured\"   → no target needed (links to the featured-products listing)  IMAGES: pass media_id (from media_list / media_upload) to set image_path (the final, customer-facing image) or base_image_path (the unbranded source canvas SwagImagesService composites the headline/logo overlay onto). Omit both to leave images untouched.  Always call action=list first to confirm widget_id before update or delete.
@@ -459,19 +459,19 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: tenantOAuth
-$config = ShadowSoftware\Sdk\Generated\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure Bearer authorization: tenantApiKey
-$config = ShadowSoftware\Sdk\Generated\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new ShadowSoftware\Sdk\Generated\Api\PromotionsApi(
+$apiInstance = new ShadowSoftware\DabDash\Api\PromotionsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$widget_manage_request = new \ShadowSoftware\Sdk\Generated\Model\WidgetManageRequest(); // \ShadowSoftware\Sdk\Generated\Model\WidgetManageRequest
+$widget_manage_request = new \ShadowSoftware\DabDash\Model\WidgetManageRequest(); // \ShadowSoftware\DabDash\Model\WidgetManageRequest
 
 try {
     $result = $apiInstance->widgetManage($widget_manage_request);
@@ -485,11 +485,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **widget_manage_request** | [**\ShadowSoftware\Sdk\Generated\Model\WidgetManageRequest**](../Model/WidgetManageRequest.md)|  | [optional] |
+| **widget_manage_request** | [**\ShadowSoftware\DabDash\Model\WidgetManageRequest**](../Model/WidgetManageRequest.md)|  | [optional] |
 
 ### Return type
 
-[**\ShadowSoftware\Sdk\Generated\Model\WidgetManage200Response**](../Model/WidgetManage200Response.md)
+[**\ShadowSoftware\DabDash\Model\WidgetManage200Response**](../Model/WidgetManage200Response.md)
 
 ### Authorization
 

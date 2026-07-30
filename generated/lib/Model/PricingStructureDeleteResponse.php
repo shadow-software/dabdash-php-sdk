@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace ShadowSoftware\Sdk\Generated\Model;
+namespace ShadowSoftware\DabDash\Model;
 
 use \ArrayAccess;
-use \ShadowSoftware\Sdk\Generated\ObjectSerializer;
+use \ShadowSoftware\DabDash\ObjectSerializer;
 
 /**
  * PricingStructureDeleteResponse Class Doc Comment
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -57,8 +57,8 @@ class PricingStructureDeleteResponse implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $openAPITypes = [
-        'summary' => '\ShadowSoftware\Sdk\Generated\Model\PricingStructureDeleteResponseSummary',
-        'results' => '\ShadowSoftware\Sdk\Generated\Model\PricingStructureDeleteResponseResultsInner[]'
+        'summary' => '\ShadowSoftware\DabDash\Model\PricingStructureDeleteResponseSummary',
+        'results' => '\ShadowSoftware\DabDash\Model\PricingStructureDeleteResponseResultsInner[]'
     ];
 
     /**
@@ -299,7 +299,7 @@ class PricingStructureDeleteResponse implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets summary
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\PricingStructureDeleteResponseSummary|null
+     * @return \ShadowSoftware\DabDash\Model\PricingStructureDeleteResponseSummary|null
      */
     public function getSummary()
     {
@@ -309,7 +309,7 @@ class PricingStructureDeleteResponse implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets summary
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\PricingStructureDeleteResponseSummary|null $summary summary
+     * @param \ShadowSoftware\DabDash\Model\PricingStructureDeleteResponseSummary|null $summary summary
      *
      * @return self
      */
@@ -326,7 +326,7 @@ class PricingStructureDeleteResponse implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets results
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\PricingStructureDeleteResponseResultsInner[]|null
+     * @return \ShadowSoftware\DabDash\Model\PricingStructureDeleteResponseResultsInner[]|null
      */
     public function getResults()
     {
@@ -336,7 +336,7 @@ class PricingStructureDeleteResponse implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets results
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\PricingStructureDeleteResponseResultsInner[]|null $results results
+     * @param \ShadowSoftware\DabDash\Model\PricingStructureDeleteResponseResultsInner[]|null $results results
      *
      * @return self
      */

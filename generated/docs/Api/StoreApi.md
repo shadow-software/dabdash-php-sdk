@@ -1,4 +1,4 @@
-# ShadowSoftware\Sdk\Generated\StoreApi
+# ShadowSoftware\DabDash\StoreApi
 
 
 
@@ -12,7 +12,7 @@ All URIs are relative to https://.dabdash.com, except if the operation defines a
 ## `storeInfo()`
 
 ```php
-storeInfo($body): \ShadowSoftware\Sdk\Generated\Model\StoreInfo200Response
+storeInfo($body): \ShadowSoftware\DabDash\Model\StoreInfo200Response
 ```
 
 Identify the connected store — name, slug, timezone, currency, country, and subscription status. Use to validate an API token during setup.
@@ -25,13 +25,13 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: tenantOAuth
-$config = ShadowSoftware\Sdk\Generated\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure Bearer authorization: tenantApiKey
-$config = ShadowSoftware\Sdk\Generated\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new ShadowSoftware\Sdk\Generated\Api\StoreApi(
+$apiInstance = new ShadowSoftware\DabDash\Api\StoreApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -55,7 +55,7 @@ try {
 
 ### Return type
 
-[**\ShadowSoftware\Sdk\Generated\Model\StoreInfo200Response**](../Model/StoreInfo200Response.md)
+[**\ShadowSoftware\DabDash\Model\StoreInfo200Response**](../Model/StoreInfo200Response.md)
 
 ### Authorization
 

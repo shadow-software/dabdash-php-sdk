@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace ShadowSoftware\Sdk\Generated\Model;
+namespace ShadowSoftware\DabDash\Model;
 
 use \ArrayAccess;
-use \ShadowSoftware\Sdk\Generated\ObjectSerializer;
+use \ShadowSoftware\DabDash\ObjectSerializer;
 
 /**
  * InventoryStatusResponse Class Doc Comment
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -57,10 +57,10 @@ class InventoryStatusResponse implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $openAPITypes = [
-        'summary' => '\ShadowSoftware\Sdk\Generated\Model\InventoryStatusResponseSummary',
-        'low_stock_alerts' => '\ShadowSoftware\Sdk\Generated\Model\InventoryStatusResponseLowStockAlertsInner[]',
-        'out_of_stock' => '\ShadowSoftware\Sdk\Generated\Model\InventoryStatusResponseOutOfStockInner[]',
-        'in_stock_items' => '\ShadowSoftware\Sdk\Generated\Model\InventoryStatusResponseInStockItemsInner[]'
+        'summary' => '\ShadowSoftware\DabDash\Model\InventoryStatusResponseSummary',
+        'low_stock_alerts' => '\ShadowSoftware\DabDash\Model\InventoryStatusResponseLowStockAlertsInner[]',
+        'out_of_stock' => '\ShadowSoftware\DabDash\Model\InventoryStatusResponseOutOfStockInner[]',
+        'in_stock_items' => '\ShadowSoftware\DabDash\Model\InventoryStatusResponseInStockItemsInner[]'
     ];
 
     /**
@@ -313,7 +313,7 @@ class InventoryStatusResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets summary
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\InventoryStatusResponseSummary|null
+     * @return \ShadowSoftware\DabDash\Model\InventoryStatusResponseSummary|null
      */
     public function getSummary()
     {
@@ -323,7 +323,7 @@ class InventoryStatusResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets summary
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\InventoryStatusResponseSummary|null $summary summary
+     * @param \ShadowSoftware\DabDash\Model\InventoryStatusResponseSummary|null $summary summary
      *
      * @return self
      */
@@ -340,7 +340,7 @@ class InventoryStatusResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets low_stock_alerts
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\InventoryStatusResponseLowStockAlertsInner[]|null
+     * @return \ShadowSoftware\DabDash\Model\InventoryStatusResponseLowStockAlertsInner[]|null
      */
     public function getLowStockAlerts()
     {
@@ -350,7 +350,7 @@ class InventoryStatusResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets low_stock_alerts
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\InventoryStatusResponseLowStockAlertsInner[]|null $low_stock_alerts low_stock_alerts
+     * @param \ShadowSoftware\DabDash\Model\InventoryStatusResponseLowStockAlertsInner[]|null $low_stock_alerts low_stock_alerts
      *
      * @return self
      */
@@ -367,7 +367,7 @@ class InventoryStatusResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets out_of_stock
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\InventoryStatusResponseOutOfStockInner[]|null
+     * @return \ShadowSoftware\DabDash\Model\InventoryStatusResponseOutOfStockInner[]|null
      */
     public function getOutOfStock()
     {
@@ -377,7 +377,7 @@ class InventoryStatusResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets out_of_stock
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\InventoryStatusResponseOutOfStockInner[]|null $out_of_stock out_of_stock
+     * @param \ShadowSoftware\DabDash\Model\InventoryStatusResponseOutOfStockInner[]|null $out_of_stock out_of_stock
      *
      * @return self
      */
@@ -394,7 +394,7 @@ class InventoryStatusResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets in_stock_items
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\InventoryStatusResponseInStockItemsInner[]|null
+     * @return \ShadowSoftware\DabDash\Model\InventoryStatusResponseInStockItemsInner[]|null
      */
     public function getInStockItems()
     {
@@ -404,7 +404,7 @@ class InventoryStatusResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets in_stock_items
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\InventoryStatusResponseInStockItemsInner[]|null $in_stock_items in_stock_items
+     * @param \ShadowSoftware\DabDash\Model\InventoryStatusResponseInStockItemsInner[]|null $in_stock_items in_stock_items
      *
      * @return self
      */

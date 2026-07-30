@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace ShadowSoftware\Sdk\Generated\Model;
+namespace ShadowSoftware\DabDash\Model;
 
 use \ArrayAccess;
-use \ShadowSoftware\Sdk\Generated\ObjectSerializer;
+use \ShadowSoftware\DabDash\ObjectSerializer;
 
 /**
  * AnalyticsQueryResponse Class Doc Comment
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,9 +58,9 @@ class AnalyticsQueryResponse implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $openAPITypes = [
         'report' => 'string',
-        'period' => '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQueryResponsePeriod',
+        'period' => '\ShadowSoftware\DabDash\Model\AnalyticsQueryResponsePeriod',
         'tenant' => 'string',
-        'results' => '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQueryResponseResults'
+        'results' => '\ShadowSoftware\DabDash\Model\AnalyticsQueryResponseResults'
     ];
 
     /**
@@ -340,7 +340,7 @@ class AnalyticsQueryResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets period
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\AnalyticsQueryResponsePeriod|null
+     * @return \ShadowSoftware\DabDash\Model\AnalyticsQueryResponsePeriod|null
      */
     public function getPeriod()
     {
@@ -350,7 +350,7 @@ class AnalyticsQueryResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets period
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\AnalyticsQueryResponsePeriod|null $period period
+     * @param \ShadowSoftware\DabDash\Model\AnalyticsQueryResponsePeriod|null $period period
      *
      * @return self
      */
@@ -394,7 +394,7 @@ class AnalyticsQueryResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets results
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\AnalyticsQueryResponseResults|null
+     * @return \ShadowSoftware\DabDash\Model\AnalyticsQueryResponseResults|null
      */
     public function getResults()
     {
@@ -404,7 +404,7 @@ class AnalyticsQueryResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets results
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\AnalyticsQueryResponseResults|null $results results
+     * @param \ShadowSoftware\DabDash\Model\AnalyticsQueryResponseResults|null $results results
      *
      * @return self
      */

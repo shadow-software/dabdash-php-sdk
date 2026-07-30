@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace ShadowSoftware\Sdk\Generated\Model;
+namespace ShadowSoftware\DabDash\Model;
 
 use \ArrayAccess;
-use \ShadowSoftware\Sdk\Generated\ObjectSerializer;
+use \ShadowSoftware\DabDash\ObjectSerializer;
 
 /**
  * InventoryAuditLookupResponseProductsInnerCurrentState Class Doc Comment
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class InventoryAuditLookupResponseProductsInnerCurrentState implements ModelInte
         'inventory_mode' => 'string',
         'pricing_structure_id' => 'int',
         'product_stock_quantity' => 'float',
-        'variations' => '\ShadowSoftware\Sdk\Generated\Model\InventoryAuditLookupResponseProductsInnerCurrentStateVariationsInner[]'
+        'variations' => '\ShadowSoftware\DabDash\Model\InventoryAuditLookupResponseProductsInnerCurrentStateVariationsInner[]'
     ];
 
     /**
@@ -442,7 +442,7 @@ class InventoryAuditLookupResponseProductsInnerCurrentState implements ModelInte
     /**
      * Gets variations
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\InventoryAuditLookupResponseProductsInnerCurrentStateVariationsInner[]|null
+     * @return \ShadowSoftware\DabDash\Model\InventoryAuditLookupResponseProductsInnerCurrentStateVariationsInner[]|null
      */
     public function getVariations()
     {
@@ -452,7 +452,7 @@ class InventoryAuditLookupResponseProductsInnerCurrentState implements ModelInte
     /**
      * Sets variations
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\InventoryAuditLookupResponseProductsInnerCurrentStateVariationsInner[]|null $variations variations
+     * @param \ShadowSoftware\DabDash\Model\InventoryAuditLookupResponseProductsInnerCurrentStateVariationsInner[]|null $variations variations
      *
      * @return self
      */

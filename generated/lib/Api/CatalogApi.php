@@ -4,7 +4,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace ShadowSoftware\Sdk\Generated\Api;
+namespace ShadowSoftware\DabDash\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -36,17 +36,17 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use ShadowSoftware\Sdk\Generated\ApiException;
-use ShadowSoftware\Sdk\Generated\Configuration;
-use ShadowSoftware\Sdk\Generated\FormDataProcessor;
-use ShadowSoftware\Sdk\Generated\HeaderSelector;
-use ShadowSoftware\Sdk\Generated\ObjectSerializer;
+use ShadowSoftware\DabDash\ApiException;
+use ShadowSoftware\DabDash\Configuration;
+use ShadowSoftware\DabDash\FormDataProcessor;
+use ShadowSoftware\DabDash\HeaderSelector;
+use ShadowSoftware\DabDash\ObjectSerializer;
 
 /**
  * CatalogApi Class Doc Comment
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -163,12 +163,12 @@ class CatalogApi
      *
      * Merges a group of size-split products into ONE product with size options.  Turns \&quot;Blue Dream - 3.5G\&quot;, \&quot;Blue Dream - 7G\&quot;, \&quot;Blue Dream - 28G\&quot; (three separate products, each with one \&quot;Default\&quot; option) into a single \&quot;Blue Dream\&quot; product that sells by weight with 3.5g / 7g / 28g options. Stock is added together into one shared pool, and each old price becomes the price of its size.  Run catalog_flattening_audit first to see the groups and their exact base_name.  SAFETY: - dry_run defaults to TRUE. Nothing changes until you pass dry_run&#x3D;false. The dry run returns   the exact sizes, prices, stock, and which products would be removed. - Past orders are never affected — they keep the product name and price the customer saw. - Refused when two products in the group claim the same size, or when any product belongs to   another store. - This removes the duplicate products. It cannot be undone from here.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CatalogCollapseRequest|null $catalog_collapse_request catalog_collapse_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CatalogCollapseRequest|null $catalog_collapse_request catalog_collapse_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['catalogCollapse'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\CatalogCollapse200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\CatalogCollapse200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function catalogCollapse($catalog_collapse_request = null, string $contentType = self::contentTypes['catalogCollapse'][0])
     {
@@ -181,12 +181,12 @@ class CatalogApi
      *
      * Merges a group of size-split products into ONE product with size options.  Turns \&quot;Blue Dream - 3.5G\&quot;, \&quot;Blue Dream - 7G\&quot;, \&quot;Blue Dream - 28G\&quot; (three separate products, each with one \&quot;Default\&quot; option) into a single \&quot;Blue Dream\&quot; product that sells by weight with 3.5g / 7g / 28g options. Stock is added together into one shared pool, and each old price becomes the price of its size.  Run catalog_flattening_audit first to see the groups and their exact base_name.  SAFETY: - dry_run defaults to TRUE. Nothing changes until you pass dry_run&#x3D;false. The dry run returns   the exact sizes, prices, stock, and which products would be removed. - Past orders are never affected — they keep the product name and price the customer saw. - Refused when two products in the group claim the same size, or when any product belongs to   another store. - This removes the duplicate products. It cannot be undone from here.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CatalogCollapseRequest|null $catalog_collapse_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CatalogCollapseRequest|null $catalog_collapse_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['catalogCollapse'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\CatalogCollapse200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\CatalogCollapse200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function catalogCollapseWithHttpInfo($catalog_collapse_request = null, string $contentType = self::contentTypes['catalogCollapse'][0])
     {
@@ -218,37 +218,37 @@ class CatalogApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\CatalogCollapse200Response',
+                        '\ShadowSoftware\DabDash\Model\CatalogCollapse200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -270,7 +270,7 @@ class CatalogApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\CatalogCollapse200Response',
+                '\ShadowSoftware\DabDash\Model\CatalogCollapse200Response',
                 $request,
                 $response,
             );
@@ -279,7 +279,7 @@ class CatalogApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\CatalogCollapse200Response',
+                        '\ShadowSoftware\DabDash\Model\CatalogCollapse200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -287,7 +287,7 @@ class CatalogApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -295,7 +295,7 @@ class CatalogApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -303,7 +303,7 @@ class CatalogApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -311,7 +311,7 @@ class CatalogApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -319,7 +319,7 @@ class CatalogApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -336,7 +336,7 @@ class CatalogApi
      *
      * Merges a group of size-split products into ONE product with size options.  Turns \&quot;Blue Dream - 3.5G\&quot;, \&quot;Blue Dream - 7G\&quot;, \&quot;Blue Dream - 28G\&quot; (three separate products, each with one \&quot;Default\&quot; option) into a single \&quot;Blue Dream\&quot; product that sells by weight with 3.5g / 7g / 28g options. Stock is added together into one shared pool, and each old price becomes the price of its size.  Run catalog_flattening_audit first to see the groups and their exact base_name.  SAFETY: - dry_run defaults to TRUE. Nothing changes until you pass dry_run&#x3D;false. The dry run returns   the exact sizes, prices, stock, and which products would be removed. - Past orders are never affected — they keep the product name and price the customer saw. - Refused when two products in the group claim the same size, or when any product belongs to   another store. - This removes the duplicate products. It cannot be undone from here.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CatalogCollapseRequest|null $catalog_collapse_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CatalogCollapseRequest|null $catalog_collapse_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['catalogCollapse'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -357,7 +357,7 @@ class CatalogApi
      *
      * Merges a group of size-split products into ONE product with size options.  Turns \&quot;Blue Dream - 3.5G\&quot;, \&quot;Blue Dream - 7G\&quot;, \&quot;Blue Dream - 28G\&quot; (three separate products, each with one \&quot;Default\&quot; option) into a single \&quot;Blue Dream\&quot; product that sells by weight with 3.5g / 7g / 28g options. Stock is added together into one shared pool, and each old price becomes the price of its size.  Run catalog_flattening_audit first to see the groups and their exact base_name.  SAFETY: - dry_run defaults to TRUE. Nothing changes until you pass dry_run&#x3D;false. The dry run returns   the exact sizes, prices, stock, and which products would be removed. - Past orders are never affected — they keep the product name and price the customer saw. - Refused when two products in the group claim the same size, or when any product belongs to   another store. - This removes the duplicate products. It cannot be undone from here.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CatalogCollapseRequest|null $catalog_collapse_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CatalogCollapseRequest|null $catalog_collapse_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['catalogCollapse'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -365,7 +365,7 @@ class CatalogApi
      */
     public function catalogCollapseAsyncWithHttpInfo($catalog_collapse_request = null, string $contentType = self::contentTypes['catalogCollapse'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\CatalogCollapse200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\CatalogCollapse200Response';
         $request = $this->catalogCollapseRequest($catalog_collapse_request, $contentType);
 
         return $this->client
@@ -407,7 +407,7 @@ class CatalogApi
     /**
      * Create request for operation 'catalogCollapse'
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CatalogCollapseRequest|null $catalog_collapse_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CatalogCollapseRequest|null $catalog_collapse_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['catalogCollapse'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -505,9 +505,9 @@ class CatalogApi
      * @param  object|null $body body (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['catalogFlatteningAudit'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\CatalogFlatteningAudit200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\CatalogFlatteningAudit200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function catalogFlatteningAudit($body = null, string $contentType = self::contentTypes['catalogFlatteningAudit'][0])
     {
@@ -523,9 +523,9 @@ class CatalogApi
      * @param  object|null $body (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['catalogFlatteningAudit'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\CatalogFlatteningAudit200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\CatalogFlatteningAudit200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function catalogFlatteningAuditWithHttpInfo($body = null, string $contentType = self::contentTypes['catalogFlatteningAudit'][0])
     {
@@ -557,37 +557,37 @@ class CatalogApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\CatalogFlatteningAudit200Response',
+                        '\ShadowSoftware\DabDash\Model\CatalogFlatteningAudit200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -609,7 +609,7 @@ class CatalogApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\CatalogFlatteningAudit200Response',
+                '\ShadowSoftware\DabDash\Model\CatalogFlatteningAudit200Response',
                 $request,
                 $response,
             );
@@ -618,7 +618,7 @@ class CatalogApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\CatalogFlatteningAudit200Response',
+                        '\ShadowSoftware\DabDash\Model\CatalogFlatteningAudit200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -626,7 +626,7 @@ class CatalogApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -634,7 +634,7 @@ class CatalogApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -642,7 +642,7 @@ class CatalogApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -650,7 +650,7 @@ class CatalogApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -658,7 +658,7 @@ class CatalogApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -704,7 +704,7 @@ class CatalogApi
      */
     public function catalogFlatteningAuditAsyncWithHttpInfo($body = null, string $contentType = self::contentTypes['catalogFlatteningAudit'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\CatalogFlatteningAudit200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\CatalogFlatteningAudit200Response';
         $request = $this->catalogFlatteningAuditRequest($body, $contentType);
 
         return $this->client
@@ -841,12 +841,12 @@ class CatalogApi
      *
      * List, create, update, or delete a tenant&#39;s storefront categories.  ACTIONS:   list   (default): return every category with id, name, slug, parent, sort_order,          is_active, is_featured, and image_url. Always call this first to find a          category_id before update/delete, and to check for slug collisions before create.   create: requires name (slug is auto-generated from name if omitted).   update: requires category_id. Only the fields you pass are changed.   delete: requires category_id and confirm&#x3D;true. Refuses if the category still has          products or children attached (detach or reassign them first).  IMAGES: pass media_id (from media_list / media_upload) to set image_path (the final, customer-facing image) or base_image_path (the unbranded source canvas SwagImagesService composites branding onto). Omit both to leave images untouched.  Always call action&#x3D;list first to confirm category_id / slug before update or delete.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CategoryManageRequest|null $category_manage_request category_manage_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CategoryManageRequest|null $category_manage_request category_manage_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['categoryManage'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\CategoryManage200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\CategoryManage200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function categoryManage($category_manage_request = null, string $contentType = self::contentTypes['categoryManage'][0])
     {
@@ -859,12 +859,12 @@ class CatalogApi
      *
      * List, create, update, or delete a tenant&#39;s storefront categories.  ACTIONS:   list   (default): return every category with id, name, slug, parent, sort_order,          is_active, is_featured, and image_url. Always call this first to find a          category_id before update/delete, and to check for slug collisions before create.   create: requires name (slug is auto-generated from name if omitted).   update: requires category_id. Only the fields you pass are changed.   delete: requires category_id and confirm&#x3D;true. Refuses if the category still has          products or children attached (detach or reassign them first).  IMAGES: pass media_id (from media_list / media_upload) to set image_path (the final, customer-facing image) or base_image_path (the unbranded source canvas SwagImagesService composites branding onto). Omit both to leave images untouched.  Always call action&#x3D;list first to confirm category_id / slug before update or delete.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CategoryManageRequest|null $category_manage_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CategoryManageRequest|null $category_manage_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['categoryManage'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\CategoryManage200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\CategoryManage200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function categoryManageWithHttpInfo($category_manage_request = null, string $contentType = self::contentTypes['categoryManage'][0])
     {
@@ -896,37 +896,37 @@ class CatalogApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\CategoryManage200Response',
+                        '\ShadowSoftware\DabDash\Model\CategoryManage200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -948,7 +948,7 @@ class CatalogApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\CategoryManage200Response',
+                '\ShadowSoftware\DabDash\Model\CategoryManage200Response',
                 $request,
                 $response,
             );
@@ -957,7 +957,7 @@ class CatalogApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\CategoryManage200Response',
+                        '\ShadowSoftware\DabDash\Model\CategoryManage200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -965,7 +965,7 @@ class CatalogApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -973,7 +973,7 @@ class CatalogApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -981,7 +981,7 @@ class CatalogApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -989,7 +989,7 @@ class CatalogApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -997,7 +997,7 @@ class CatalogApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1014,7 +1014,7 @@ class CatalogApi
      *
      * List, create, update, or delete a tenant&#39;s storefront categories.  ACTIONS:   list   (default): return every category with id, name, slug, parent, sort_order,          is_active, is_featured, and image_url. Always call this first to find a          category_id before update/delete, and to check for slug collisions before create.   create: requires name (slug is auto-generated from name if omitted).   update: requires category_id. Only the fields you pass are changed.   delete: requires category_id and confirm&#x3D;true. Refuses if the category still has          products or children attached (detach or reassign them first).  IMAGES: pass media_id (from media_list / media_upload) to set image_path (the final, customer-facing image) or base_image_path (the unbranded source canvas SwagImagesService composites branding onto). Omit both to leave images untouched.  Always call action&#x3D;list first to confirm category_id / slug before update or delete.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CategoryManageRequest|null $category_manage_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CategoryManageRequest|null $category_manage_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['categoryManage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1035,7 +1035,7 @@ class CatalogApi
      *
      * List, create, update, or delete a tenant&#39;s storefront categories.  ACTIONS:   list   (default): return every category with id, name, slug, parent, sort_order,          is_active, is_featured, and image_url. Always call this first to find a          category_id before update/delete, and to check for slug collisions before create.   create: requires name (slug is auto-generated from name if omitted).   update: requires category_id. Only the fields you pass are changed.   delete: requires category_id and confirm&#x3D;true. Refuses if the category still has          products or children attached (detach or reassign them first).  IMAGES: pass media_id (from media_list / media_upload) to set image_path (the final, customer-facing image) or base_image_path (the unbranded source canvas SwagImagesService composites branding onto). Omit both to leave images untouched.  Always call action&#x3D;list first to confirm category_id / slug before update or delete.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CategoryManageRequest|null $category_manage_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CategoryManageRequest|null $category_manage_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['categoryManage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1043,7 +1043,7 @@ class CatalogApi
      */
     public function categoryManageAsyncWithHttpInfo($category_manage_request = null, string $contentType = self::contentTypes['categoryManage'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\CategoryManage200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\CategoryManage200Response';
         $request = $this->categoryManageRequest($category_manage_request, $contentType);
 
         return $this->client
@@ -1085,7 +1085,7 @@ class CatalogApi
     /**
      * Create request for operation 'categoryManage'
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CategoryManageRequest|null $category_manage_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CategoryManageRequest|null $category_manage_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['categoryManage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1180,12 +1180,12 @@ class CatalogApi
      *
      * Look up the historical inventory state of a list of products from the inventory_audit_logs table.  For each product, returns every variation_id ever logged in the audit trail (including variations that have since been deleted), the variation&#39;s last known stock_quantity strictly BEFORE the given cutoff timestamp, and that variation&#39;s most recent action+notes for context.  Use this tool to recover pre-incident stock values when variations have been overwritten or deleted by a destructive operation (e.g. an erroneous pricing structure assignment that wiped unit/simple variations and replaced them with weight tiers).  Output is grouped per product. Each product also includes its CURRENT variations and their stock for comparison so you can see the delta.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\InventoryAuditLookupRequest|null $inventory_audit_lookup_request inventory_audit_lookup_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\InventoryAuditLookupRequest|null $inventory_audit_lookup_request inventory_audit_lookup_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['inventoryAuditLookup'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\InventoryAuditLookup200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\InventoryAuditLookup200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function inventoryAuditLookup($inventory_audit_lookup_request = null, string $contentType = self::contentTypes['inventoryAuditLookup'][0])
     {
@@ -1198,12 +1198,12 @@ class CatalogApi
      *
      * Look up the historical inventory state of a list of products from the inventory_audit_logs table.  For each product, returns every variation_id ever logged in the audit trail (including variations that have since been deleted), the variation&#39;s last known stock_quantity strictly BEFORE the given cutoff timestamp, and that variation&#39;s most recent action+notes for context.  Use this tool to recover pre-incident stock values when variations have been overwritten or deleted by a destructive operation (e.g. an erroneous pricing structure assignment that wiped unit/simple variations and replaced them with weight tiers).  Output is grouped per product. Each product also includes its CURRENT variations and their stock for comparison so you can see the delta.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\InventoryAuditLookupRequest|null $inventory_audit_lookup_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\InventoryAuditLookupRequest|null $inventory_audit_lookup_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['inventoryAuditLookup'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\InventoryAuditLookup200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\InventoryAuditLookup200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function inventoryAuditLookupWithHttpInfo($inventory_audit_lookup_request = null, string $contentType = self::contentTypes['inventoryAuditLookup'][0])
     {
@@ -1235,37 +1235,37 @@ class CatalogApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\InventoryAuditLookup200Response',
+                        '\ShadowSoftware\DabDash\Model\InventoryAuditLookup200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -1287,7 +1287,7 @@ class CatalogApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\InventoryAuditLookup200Response',
+                '\ShadowSoftware\DabDash\Model\InventoryAuditLookup200Response',
                 $request,
                 $response,
             );
@@ -1296,7 +1296,7 @@ class CatalogApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\InventoryAuditLookup200Response',
+                        '\ShadowSoftware\DabDash\Model\InventoryAuditLookup200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1304,7 +1304,7 @@ class CatalogApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1312,7 +1312,7 @@ class CatalogApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1320,7 +1320,7 @@ class CatalogApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1328,7 +1328,7 @@ class CatalogApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1336,7 +1336,7 @@ class CatalogApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1353,7 +1353,7 @@ class CatalogApi
      *
      * Look up the historical inventory state of a list of products from the inventory_audit_logs table.  For each product, returns every variation_id ever logged in the audit trail (including variations that have since been deleted), the variation&#39;s last known stock_quantity strictly BEFORE the given cutoff timestamp, and that variation&#39;s most recent action+notes for context.  Use this tool to recover pre-incident stock values when variations have been overwritten or deleted by a destructive operation (e.g. an erroneous pricing structure assignment that wiped unit/simple variations and replaced them with weight tiers).  Output is grouped per product. Each product also includes its CURRENT variations and their stock for comparison so you can see the delta.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\InventoryAuditLookupRequest|null $inventory_audit_lookup_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\InventoryAuditLookupRequest|null $inventory_audit_lookup_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['inventoryAuditLookup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1374,7 +1374,7 @@ class CatalogApi
      *
      * Look up the historical inventory state of a list of products from the inventory_audit_logs table.  For each product, returns every variation_id ever logged in the audit trail (including variations that have since been deleted), the variation&#39;s last known stock_quantity strictly BEFORE the given cutoff timestamp, and that variation&#39;s most recent action+notes for context.  Use this tool to recover pre-incident stock values when variations have been overwritten or deleted by a destructive operation (e.g. an erroneous pricing structure assignment that wiped unit/simple variations and replaced them with weight tiers).  Output is grouped per product. Each product also includes its CURRENT variations and their stock for comparison so you can see the delta.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\InventoryAuditLookupRequest|null $inventory_audit_lookup_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\InventoryAuditLookupRequest|null $inventory_audit_lookup_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['inventoryAuditLookup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1382,7 +1382,7 @@ class CatalogApi
      */
     public function inventoryAuditLookupAsyncWithHttpInfo($inventory_audit_lookup_request = null, string $contentType = self::contentTypes['inventoryAuditLookup'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\InventoryAuditLookup200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\InventoryAuditLookup200Response';
         $request = $this->inventoryAuditLookupRequest($inventory_audit_lookup_request, $contentType);
 
         return $this->client
@@ -1424,7 +1424,7 @@ class CatalogApi
     /**
      * Create request for operation 'inventoryAuditLookup'
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\InventoryAuditLookupRequest|null $inventory_audit_lookup_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\InventoryAuditLookupRequest|null $inventory_audit_lookup_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['inventoryAuditLookup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1519,12 +1519,12 @@ class CatalogApi
      *
      * Get inventory status across all tenants or a specific tenant. Shows low stock alerts and out-of-stock products.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\InventoryStatusRequest|null $inventory_status_request inventory_status_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\InventoryStatusRequest|null $inventory_status_request inventory_status_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['inventoryStatus'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\InventoryStatus200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\InventoryStatus200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function inventoryStatus($inventory_status_request = null, string $contentType = self::contentTypes['inventoryStatus'][0])
     {
@@ -1537,12 +1537,12 @@ class CatalogApi
      *
      * Get inventory status across all tenants or a specific tenant. Shows low stock alerts and out-of-stock products.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\InventoryStatusRequest|null $inventory_status_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\InventoryStatusRequest|null $inventory_status_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['inventoryStatus'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\InventoryStatus200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\InventoryStatus200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function inventoryStatusWithHttpInfo($inventory_status_request = null, string $contentType = self::contentTypes['inventoryStatus'][0])
     {
@@ -1574,37 +1574,37 @@ class CatalogApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\InventoryStatus200Response',
+                        '\ShadowSoftware\DabDash\Model\InventoryStatus200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -1626,7 +1626,7 @@ class CatalogApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\InventoryStatus200Response',
+                '\ShadowSoftware\DabDash\Model\InventoryStatus200Response',
                 $request,
                 $response,
             );
@@ -1635,7 +1635,7 @@ class CatalogApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\InventoryStatus200Response',
+                        '\ShadowSoftware\DabDash\Model\InventoryStatus200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1643,7 +1643,7 @@ class CatalogApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1651,7 +1651,7 @@ class CatalogApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1659,7 +1659,7 @@ class CatalogApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1667,7 +1667,7 @@ class CatalogApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1675,7 +1675,7 @@ class CatalogApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1692,7 +1692,7 @@ class CatalogApi
      *
      * Get inventory status across all tenants or a specific tenant. Shows low stock alerts and out-of-stock products.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\InventoryStatusRequest|null $inventory_status_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\InventoryStatusRequest|null $inventory_status_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['inventoryStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1713,7 +1713,7 @@ class CatalogApi
      *
      * Get inventory status across all tenants or a specific tenant. Shows low stock alerts and out-of-stock products.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\InventoryStatusRequest|null $inventory_status_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\InventoryStatusRequest|null $inventory_status_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['inventoryStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1721,7 +1721,7 @@ class CatalogApi
      */
     public function inventoryStatusAsyncWithHttpInfo($inventory_status_request = null, string $contentType = self::contentTypes['inventoryStatus'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\InventoryStatus200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\InventoryStatus200Response';
         $request = $this->inventoryStatusRequest($inventory_status_request, $contentType);
 
         return $this->client
@@ -1763,7 +1763,7 @@ class CatalogApi
     /**
      * Create request for operation 'inventoryStatus'
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\InventoryStatusRequest|null $inventory_status_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\InventoryStatusRequest|null $inventory_status_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['inventoryStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1858,12 +1858,12 @@ class CatalogApi
      *
      * Assign a shared bundle pricing structure to one or more products. Re-syncs variations for each reassigned product. Automatically deletes orphaned inline (hidden) structures when replacing them.  SAFETY RULES enforced by this tool: - The target structure_id must be a BUNDLE (is_hidden&#x3D;false). Inline structures cannot be assigned   to products this way — that would violate the 1:1 contract. - If a product&#39;s current structure is inline (hidden) and this product is its only consumer   (product_count &#x3D;&#x3D; 1), the old inline structure is deleted automatically. - If a product&#39;s current structure is inline but product_count &gt; 1, assignment is refused for that   product with an explanation — this is a data anomaly that needs manual resolution. - Each product result includes a status: assigned | skipped (already on this structure) | refused.  Use pricing_structure_list to get valid structure IDs before calling this tool.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PricingStructureAssignRequest|null $pricing_structure_assign_request pricing_structure_assign_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PricingStructureAssignRequest|null $pricing_structure_assign_request pricing_structure_assign_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pricingStructureAssign'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\PricingStructureAssign200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\PricingStructureAssign200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function pricingStructureAssign($pricing_structure_assign_request = null, string $contentType = self::contentTypes['pricingStructureAssign'][0])
     {
@@ -1876,12 +1876,12 @@ class CatalogApi
      *
      * Assign a shared bundle pricing structure to one or more products. Re-syncs variations for each reassigned product. Automatically deletes orphaned inline (hidden) structures when replacing them.  SAFETY RULES enforced by this tool: - The target structure_id must be a BUNDLE (is_hidden&#x3D;false). Inline structures cannot be assigned   to products this way — that would violate the 1:1 contract. - If a product&#39;s current structure is inline (hidden) and this product is its only consumer   (product_count &#x3D;&#x3D; 1), the old inline structure is deleted automatically. - If a product&#39;s current structure is inline but product_count &gt; 1, assignment is refused for that   product with an explanation — this is a data anomaly that needs manual resolution. - Each product result includes a status: assigned | skipped (already on this structure) | refused.  Use pricing_structure_list to get valid structure IDs before calling this tool.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PricingStructureAssignRequest|null $pricing_structure_assign_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PricingStructureAssignRequest|null $pricing_structure_assign_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pricingStructureAssign'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\PricingStructureAssign200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\PricingStructureAssign200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function pricingStructureAssignWithHttpInfo($pricing_structure_assign_request = null, string $contentType = self::contentTypes['pricingStructureAssign'][0])
     {
@@ -1913,37 +1913,37 @@ class CatalogApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\PricingStructureAssign200Response',
+                        '\ShadowSoftware\DabDash\Model\PricingStructureAssign200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -1965,7 +1965,7 @@ class CatalogApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\PricingStructureAssign200Response',
+                '\ShadowSoftware\DabDash\Model\PricingStructureAssign200Response',
                 $request,
                 $response,
             );
@@ -1974,7 +1974,7 @@ class CatalogApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\PricingStructureAssign200Response',
+                        '\ShadowSoftware\DabDash\Model\PricingStructureAssign200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1982,7 +1982,7 @@ class CatalogApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1990,7 +1990,7 @@ class CatalogApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1998,7 +1998,7 @@ class CatalogApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2006,7 +2006,7 @@ class CatalogApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2014,7 +2014,7 @@ class CatalogApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2031,7 +2031,7 @@ class CatalogApi
      *
      * Assign a shared bundle pricing structure to one or more products. Re-syncs variations for each reassigned product. Automatically deletes orphaned inline (hidden) structures when replacing them.  SAFETY RULES enforced by this tool: - The target structure_id must be a BUNDLE (is_hidden&#x3D;false). Inline structures cannot be assigned   to products this way — that would violate the 1:1 contract. - If a product&#39;s current structure is inline (hidden) and this product is its only consumer   (product_count &#x3D;&#x3D; 1), the old inline structure is deleted automatically. - If a product&#39;s current structure is inline but product_count &gt; 1, assignment is refused for that   product with an explanation — this is a data anomaly that needs manual resolution. - Each product result includes a status: assigned | skipped (already on this structure) | refused.  Use pricing_structure_list to get valid structure IDs before calling this tool.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PricingStructureAssignRequest|null $pricing_structure_assign_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PricingStructureAssignRequest|null $pricing_structure_assign_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pricingStructureAssign'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2052,7 +2052,7 @@ class CatalogApi
      *
      * Assign a shared bundle pricing structure to one or more products. Re-syncs variations for each reassigned product. Automatically deletes orphaned inline (hidden) structures when replacing them.  SAFETY RULES enforced by this tool: - The target structure_id must be a BUNDLE (is_hidden&#x3D;false). Inline structures cannot be assigned   to products this way — that would violate the 1:1 contract. - If a product&#39;s current structure is inline (hidden) and this product is its only consumer   (product_count &#x3D;&#x3D; 1), the old inline structure is deleted automatically. - If a product&#39;s current structure is inline but product_count &gt; 1, assignment is refused for that   product with an explanation — this is a data anomaly that needs manual resolution. - Each product result includes a status: assigned | skipped (already on this structure) | refused.  Use pricing_structure_list to get valid structure IDs before calling this tool.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PricingStructureAssignRequest|null $pricing_structure_assign_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PricingStructureAssignRequest|null $pricing_structure_assign_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pricingStructureAssign'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2060,7 +2060,7 @@ class CatalogApi
      */
     public function pricingStructureAssignAsyncWithHttpInfo($pricing_structure_assign_request = null, string $contentType = self::contentTypes['pricingStructureAssign'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\PricingStructureAssign200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\PricingStructureAssign200Response';
         $request = $this->pricingStructureAssignRequest($pricing_structure_assign_request, $contentType);
 
         return $this->client
@@ -2102,7 +2102,7 @@ class CatalogApi
     /**
      * Create request for operation 'pricingStructureAssign'
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PricingStructureAssignRequest|null $pricing_structure_assign_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PricingStructureAssignRequest|null $pricing_structure_assign_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pricingStructureAssign'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2197,12 +2197,12 @@ class CatalogApi
      *
      * Delete one or more pricing structures by ID.  SAFETY RULES enforced by this tool: - BUNDLE structures (is_hidden&#x3D;false): always deletable unless products are still assigned.   Pass force&#x3D;true to delete even when products are assigned (use only after migrating them). - INLINE structures (is_hidden&#x3D;true): only deletable when product_count&#x3D;0 (orphaned).   Inline structures with products attached cannot be deleted — use pricing_structure_assign   to move the product to a bundle first, which auto-cleans the inline structure.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PricingStructureDeleteRequest|null $pricing_structure_delete_request pricing_structure_delete_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PricingStructureDeleteRequest|null $pricing_structure_delete_request pricing_structure_delete_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pricingStructureDelete'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\PricingStructureDelete200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\PricingStructureDelete200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function pricingStructureDelete($pricing_structure_delete_request = null, string $contentType = self::contentTypes['pricingStructureDelete'][0])
     {
@@ -2215,12 +2215,12 @@ class CatalogApi
      *
      * Delete one or more pricing structures by ID.  SAFETY RULES enforced by this tool: - BUNDLE structures (is_hidden&#x3D;false): always deletable unless products are still assigned.   Pass force&#x3D;true to delete even when products are assigned (use only after migrating them). - INLINE structures (is_hidden&#x3D;true): only deletable when product_count&#x3D;0 (orphaned).   Inline structures with products attached cannot be deleted — use pricing_structure_assign   to move the product to a bundle first, which auto-cleans the inline structure.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PricingStructureDeleteRequest|null $pricing_structure_delete_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PricingStructureDeleteRequest|null $pricing_structure_delete_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pricingStructureDelete'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\PricingStructureDelete200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\PricingStructureDelete200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function pricingStructureDeleteWithHttpInfo($pricing_structure_delete_request = null, string $contentType = self::contentTypes['pricingStructureDelete'][0])
     {
@@ -2252,37 +2252,37 @@ class CatalogApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\PricingStructureDelete200Response',
+                        '\ShadowSoftware\DabDash\Model\PricingStructureDelete200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -2304,7 +2304,7 @@ class CatalogApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\PricingStructureDelete200Response',
+                '\ShadowSoftware\DabDash\Model\PricingStructureDelete200Response',
                 $request,
                 $response,
             );
@@ -2313,7 +2313,7 @@ class CatalogApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\PricingStructureDelete200Response',
+                        '\ShadowSoftware\DabDash\Model\PricingStructureDelete200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2321,7 +2321,7 @@ class CatalogApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2329,7 +2329,7 @@ class CatalogApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2337,7 +2337,7 @@ class CatalogApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2345,7 +2345,7 @@ class CatalogApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2353,7 +2353,7 @@ class CatalogApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2370,7 +2370,7 @@ class CatalogApi
      *
      * Delete one or more pricing structures by ID.  SAFETY RULES enforced by this tool: - BUNDLE structures (is_hidden&#x3D;false): always deletable unless products are still assigned.   Pass force&#x3D;true to delete even when products are assigned (use only after migrating them). - INLINE structures (is_hidden&#x3D;true): only deletable when product_count&#x3D;0 (orphaned).   Inline structures with products attached cannot be deleted — use pricing_structure_assign   to move the product to a bundle first, which auto-cleans the inline structure.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PricingStructureDeleteRequest|null $pricing_structure_delete_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PricingStructureDeleteRequest|null $pricing_structure_delete_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pricingStructureDelete'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2391,7 +2391,7 @@ class CatalogApi
      *
      * Delete one or more pricing structures by ID.  SAFETY RULES enforced by this tool: - BUNDLE structures (is_hidden&#x3D;false): always deletable unless products are still assigned.   Pass force&#x3D;true to delete even when products are assigned (use only after migrating them). - INLINE structures (is_hidden&#x3D;true): only deletable when product_count&#x3D;0 (orphaned).   Inline structures with products attached cannot be deleted — use pricing_structure_assign   to move the product to a bundle first, which auto-cleans the inline structure.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PricingStructureDeleteRequest|null $pricing_structure_delete_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PricingStructureDeleteRequest|null $pricing_structure_delete_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pricingStructureDelete'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2399,7 +2399,7 @@ class CatalogApi
      */
     public function pricingStructureDeleteAsyncWithHttpInfo($pricing_structure_delete_request = null, string $contentType = self::contentTypes['pricingStructureDelete'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\PricingStructureDelete200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\PricingStructureDelete200Response';
         $request = $this->pricingStructureDeleteRequest($pricing_structure_delete_request, $contentType);
 
         return $this->client
@@ -2441,7 +2441,7 @@ class CatalogApi
     /**
      * Create request for operation 'pricingStructureDelete'
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PricingStructureDeleteRequest|null $pricing_structure_delete_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PricingStructureDeleteRequest|null $pricing_structure_delete_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pricingStructureDelete'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2536,12 +2536,12 @@ class CatalogApi
      *
      * List all pricing structures for a tenant with their kind (inline|bundle), product count, tracking type, and tier summary. Always call this before pricing_structure_upsert or pricing_structure_assign to get structure IDs and confirm which structures are bundles vs inline (1:1 product) structures.  kind&#x3D;inline  → hidden 1:1 structure tied to exactly one product (is_hidden&#x3D;true) kind&#x3D;bundle  → shared structure visible on /admin/pricing, used by 0 or more products (is_hidden&#x3D;false)
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PricingStructureListRequest|null $pricing_structure_list_request pricing_structure_list_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PricingStructureListRequest|null $pricing_structure_list_request pricing_structure_list_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pricingStructureList'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\PricingStructureList200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\PricingStructureList200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function pricingStructureList($pricing_structure_list_request = null, string $contentType = self::contentTypes['pricingStructureList'][0])
     {
@@ -2554,12 +2554,12 @@ class CatalogApi
      *
      * List all pricing structures for a tenant with their kind (inline|bundle), product count, tracking type, and tier summary. Always call this before pricing_structure_upsert or pricing_structure_assign to get structure IDs and confirm which structures are bundles vs inline (1:1 product) structures.  kind&#x3D;inline  → hidden 1:1 structure tied to exactly one product (is_hidden&#x3D;true) kind&#x3D;bundle  → shared structure visible on /admin/pricing, used by 0 or more products (is_hidden&#x3D;false)
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PricingStructureListRequest|null $pricing_structure_list_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PricingStructureListRequest|null $pricing_structure_list_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pricingStructureList'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\PricingStructureList200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\PricingStructureList200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function pricingStructureListWithHttpInfo($pricing_structure_list_request = null, string $contentType = self::contentTypes['pricingStructureList'][0])
     {
@@ -2591,37 +2591,37 @@ class CatalogApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\PricingStructureList200Response',
+                        '\ShadowSoftware\DabDash\Model\PricingStructureList200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -2643,7 +2643,7 @@ class CatalogApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\PricingStructureList200Response',
+                '\ShadowSoftware\DabDash\Model\PricingStructureList200Response',
                 $request,
                 $response,
             );
@@ -2652,7 +2652,7 @@ class CatalogApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\PricingStructureList200Response',
+                        '\ShadowSoftware\DabDash\Model\PricingStructureList200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2660,7 +2660,7 @@ class CatalogApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2668,7 +2668,7 @@ class CatalogApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2676,7 +2676,7 @@ class CatalogApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2684,7 +2684,7 @@ class CatalogApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2692,7 +2692,7 @@ class CatalogApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2709,7 +2709,7 @@ class CatalogApi
      *
      * List all pricing structures for a tenant with their kind (inline|bundle), product count, tracking type, and tier summary. Always call this before pricing_structure_upsert or pricing_structure_assign to get structure IDs and confirm which structures are bundles vs inline (1:1 product) structures.  kind&#x3D;inline  → hidden 1:1 structure tied to exactly one product (is_hidden&#x3D;true) kind&#x3D;bundle  → shared structure visible on /admin/pricing, used by 0 or more products (is_hidden&#x3D;false)
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PricingStructureListRequest|null $pricing_structure_list_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PricingStructureListRequest|null $pricing_structure_list_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pricingStructureList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2730,7 +2730,7 @@ class CatalogApi
      *
      * List all pricing structures for a tenant with their kind (inline|bundle), product count, tracking type, and tier summary. Always call this before pricing_structure_upsert or pricing_structure_assign to get structure IDs and confirm which structures are bundles vs inline (1:1 product) structures.  kind&#x3D;inline  → hidden 1:1 structure tied to exactly one product (is_hidden&#x3D;true) kind&#x3D;bundle  → shared structure visible on /admin/pricing, used by 0 or more products (is_hidden&#x3D;false)
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PricingStructureListRequest|null $pricing_structure_list_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PricingStructureListRequest|null $pricing_structure_list_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pricingStructureList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2738,7 +2738,7 @@ class CatalogApi
      */
     public function pricingStructureListAsyncWithHttpInfo($pricing_structure_list_request = null, string $contentType = self::contentTypes['pricingStructureList'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\PricingStructureList200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\PricingStructureList200Response';
         $request = $this->pricingStructureListRequest($pricing_structure_list_request, $contentType);
 
         return $this->client
@@ -2780,7 +2780,7 @@ class CatalogApi
     /**
      * Create request for operation 'pricingStructureList'
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PricingStructureListRequest|null $pricing_structure_list_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PricingStructureListRequest|null $pricing_structure_list_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pricingStructureList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2875,12 +2875,12 @@ class CatalogApi
      *
      * Surgical restore tool. Rebuilds a single product&#39;s pricing structure and variations EXACTLY to a specified state. Bypasses the standard syncVariationsForProduct routine — you control every field.  Use this AFTER inventory_audit_lookup has revealed the pre-incident state of variations whose names/prices/stock were destroyed by an erroneous bundle reassignment.  Behaviour: - Creates a NEW inline (hidden, 1:1) pricing structure with the given tracking_type, tier   definitions, and a name like \&quot;Product: &lt;product_name&gt; (Hidden)\&quot;. Old structure linkage is   replaced. The previous structure is NOT deleted by this tool. - For each tier in the spec, finds-or-creates a variation. Matching is by &#x60;restore_variation_id&#x60;   if provided, else by name. If found, the variation is updated in place (preserving its id and   its audit-log history). If not found, a new variation is created. - Stock_quantity is set EXACTLY to the value specified — this is the whole point of the tool. - Sets product.tracking_type, product.inventory_mode, product.base_unit per the new structure. - Variations on the product not referenced by any tier in the spec are DEACTIVATED (is_active&#x3D;false)   so they stop being shown but their audit history is retained. Pass &#x60;delete_unreferenced&#x3D;true&#x60; to   hard-delete them instead.  SAFETY: - Wrap each call in its own transaction. - Will refuse if the new tracking_type is incompatible with stored cost data. - Inline-only by design — bundles are not recreated by this tool. Use pricing_structure_assign   to put the product on a bundle if that&#39;s what you want.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PricingStructureRestoreRequest|null $pricing_structure_restore_request pricing_structure_restore_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PricingStructureRestoreRequest|null $pricing_structure_restore_request pricing_structure_restore_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pricingStructureRestore'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\PricingStructureRestore200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\PricingStructureRestore200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function pricingStructureRestore($pricing_structure_restore_request = null, string $contentType = self::contentTypes['pricingStructureRestore'][0])
     {
@@ -2893,12 +2893,12 @@ class CatalogApi
      *
      * Surgical restore tool. Rebuilds a single product&#39;s pricing structure and variations EXACTLY to a specified state. Bypasses the standard syncVariationsForProduct routine — you control every field.  Use this AFTER inventory_audit_lookup has revealed the pre-incident state of variations whose names/prices/stock were destroyed by an erroneous bundle reassignment.  Behaviour: - Creates a NEW inline (hidden, 1:1) pricing structure with the given tracking_type, tier   definitions, and a name like \&quot;Product: &lt;product_name&gt; (Hidden)\&quot;. Old structure linkage is   replaced. The previous structure is NOT deleted by this tool. - For each tier in the spec, finds-or-creates a variation. Matching is by &#x60;restore_variation_id&#x60;   if provided, else by name. If found, the variation is updated in place (preserving its id and   its audit-log history). If not found, a new variation is created. - Stock_quantity is set EXACTLY to the value specified — this is the whole point of the tool. - Sets product.tracking_type, product.inventory_mode, product.base_unit per the new structure. - Variations on the product not referenced by any tier in the spec are DEACTIVATED (is_active&#x3D;false)   so they stop being shown but their audit history is retained. Pass &#x60;delete_unreferenced&#x3D;true&#x60; to   hard-delete them instead.  SAFETY: - Wrap each call in its own transaction. - Will refuse if the new tracking_type is incompatible with stored cost data. - Inline-only by design — bundles are not recreated by this tool. Use pricing_structure_assign   to put the product on a bundle if that&#39;s what you want.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PricingStructureRestoreRequest|null $pricing_structure_restore_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PricingStructureRestoreRequest|null $pricing_structure_restore_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pricingStructureRestore'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\PricingStructureRestore200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\PricingStructureRestore200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function pricingStructureRestoreWithHttpInfo($pricing_structure_restore_request = null, string $contentType = self::contentTypes['pricingStructureRestore'][0])
     {
@@ -2930,37 +2930,37 @@ class CatalogApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\PricingStructureRestore200Response',
+                        '\ShadowSoftware\DabDash\Model\PricingStructureRestore200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -2982,7 +2982,7 @@ class CatalogApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\PricingStructureRestore200Response',
+                '\ShadowSoftware\DabDash\Model\PricingStructureRestore200Response',
                 $request,
                 $response,
             );
@@ -2991,7 +2991,7 @@ class CatalogApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\PricingStructureRestore200Response',
+                        '\ShadowSoftware\DabDash\Model\PricingStructureRestore200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2999,7 +2999,7 @@ class CatalogApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3007,7 +3007,7 @@ class CatalogApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3015,7 +3015,7 @@ class CatalogApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3023,7 +3023,7 @@ class CatalogApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3031,7 +3031,7 @@ class CatalogApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3048,7 +3048,7 @@ class CatalogApi
      *
      * Surgical restore tool. Rebuilds a single product&#39;s pricing structure and variations EXACTLY to a specified state. Bypasses the standard syncVariationsForProduct routine — you control every field.  Use this AFTER inventory_audit_lookup has revealed the pre-incident state of variations whose names/prices/stock were destroyed by an erroneous bundle reassignment.  Behaviour: - Creates a NEW inline (hidden, 1:1) pricing structure with the given tracking_type, tier   definitions, and a name like \&quot;Product: &lt;product_name&gt; (Hidden)\&quot;. Old structure linkage is   replaced. The previous structure is NOT deleted by this tool. - For each tier in the spec, finds-or-creates a variation. Matching is by &#x60;restore_variation_id&#x60;   if provided, else by name. If found, the variation is updated in place (preserving its id and   its audit-log history). If not found, a new variation is created. - Stock_quantity is set EXACTLY to the value specified — this is the whole point of the tool. - Sets product.tracking_type, product.inventory_mode, product.base_unit per the new structure. - Variations on the product not referenced by any tier in the spec are DEACTIVATED (is_active&#x3D;false)   so they stop being shown but their audit history is retained. Pass &#x60;delete_unreferenced&#x3D;true&#x60; to   hard-delete them instead.  SAFETY: - Wrap each call in its own transaction. - Will refuse if the new tracking_type is incompatible with stored cost data. - Inline-only by design — bundles are not recreated by this tool. Use pricing_structure_assign   to put the product on a bundle if that&#39;s what you want.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PricingStructureRestoreRequest|null $pricing_structure_restore_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PricingStructureRestoreRequest|null $pricing_structure_restore_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pricingStructureRestore'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3069,7 +3069,7 @@ class CatalogApi
      *
      * Surgical restore tool. Rebuilds a single product&#39;s pricing structure and variations EXACTLY to a specified state. Bypasses the standard syncVariationsForProduct routine — you control every field.  Use this AFTER inventory_audit_lookup has revealed the pre-incident state of variations whose names/prices/stock were destroyed by an erroneous bundle reassignment.  Behaviour: - Creates a NEW inline (hidden, 1:1) pricing structure with the given tracking_type, tier   definitions, and a name like \&quot;Product: &lt;product_name&gt; (Hidden)\&quot;. Old structure linkage is   replaced. The previous structure is NOT deleted by this tool. - For each tier in the spec, finds-or-creates a variation. Matching is by &#x60;restore_variation_id&#x60;   if provided, else by name. If found, the variation is updated in place (preserving its id and   its audit-log history). If not found, a new variation is created. - Stock_quantity is set EXACTLY to the value specified — this is the whole point of the tool. - Sets product.tracking_type, product.inventory_mode, product.base_unit per the new structure. - Variations on the product not referenced by any tier in the spec are DEACTIVATED (is_active&#x3D;false)   so they stop being shown but their audit history is retained. Pass &#x60;delete_unreferenced&#x3D;true&#x60; to   hard-delete them instead.  SAFETY: - Wrap each call in its own transaction. - Will refuse if the new tracking_type is incompatible with stored cost data. - Inline-only by design — bundles are not recreated by this tool. Use pricing_structure_assign   to put the product on a bundle if that&#39;s what you want.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PricingStructureRestoreRequest|null $pricing_structure_restore_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PricingStructureRestoreRequest|null $pricing_structure_restore_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pricingStructureRestore'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3077,7 +3077,7 @@ class CatalogApi
      */
     public function pricingStructureRestoreAsyncWithHttpInfo($pricing_structure_restore_request = null, string $contentType = self::contentTypes['pricingStructureRestore'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\PricingStructureRestore200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\PricingStructureRestore200Response';
         $request = $this->pricingStructureRestoreRequest($pricing_structure_restore_request, $contentType);
 
         return $this->client
@@ -3119,7 +3119,7 @@ class CatalogApi
     /**
      * Create request for operation 'pricingStructureRestore'
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PricingStructureRestoreRequest|null $pricing_structure_restore_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PricingStructureRestoreRequest|null $pricing_structure_restore_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pricingStructureRestore'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3214,12 +3214,12 @@ class CatalogApi
      *
      * Create or edit a pricing structure&#39;s tiers, name, and tracking type. Operates in three modes:  BUNDLE MODE (structure_id provided, structure is not hidden):   Edit a shared bundle structure visible on /admin/pricing. Tiers are replaced and ALL products   linked to the bundle are re-synced. Returns how many products were affected as a warning.  INLINE MODE (product_slug or product_id provided, no structure_id):   Edit the hidden 1:1 pricing structure for a single product. Tiers are replaced and variations   are re-synced for that product only. Refuses if the product currently uses a bundle structure —   use pricing_structure_assign to detach from the bundle first.  CREATE BUNDLE MODE (no structure_id, no product_slug/product_id):   Create a new shared bundle structure. Does not link it to any products.  SAFETY RULES enforced by this tool: - Never accepts structure_id pointing to a hidden (inline) structure — always go via product_slug/product_id. - Tiers for weight/matrix types must have weight_grams &gt; 0. - Tiers for simple type: only the first tier is used; name and weight_grams are normalised. - Prices are accepted as dollar amounts (e.g. 12.99) and converted to cents internally.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PricingStructureUpsertRequest|null $pricing_structure_upsert_request pricing_structure_upsert_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PricingStructureUpsertRequest|null $pricing_structure_upsert_request pricing_structure_upsert_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pricingStructureUpsert'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\PricingStructureUpsert200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\PricingStructureUpsert200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function pricingStructureUpsert($pricing_structure_upsert_request = null, string $contentType = self::contentTypes['pricingStructureUpsert'][0])
     {
@@ -3232,12 +3232,12 @@ class CatalogApi
      *
      * Create or edit a pricing structure&#39;s tiers, name, and tracking type. Operates in three modes:  BUNDLE MODE (structure_id provided, structure is not hidden):   Edit a shared bundle structure visible on /admin/pricing. Tiers are replaced and ALL products   linked to the bundle are re-synced. Returns how many products were affected as a warning.  INLINE MODE (product_slug or product_id provided, no structure_id):   Edit the hidden 1:1 pricing structure for a single product. Tiers are replaced and variations   are re-synced for that product only. Refuses if the product currently uses a bundle structure —   use pricing_structure_assign to detach from the bundle first.  CREATE BUNDLE MODE (no structure_id, no product_slug/product_id):   Create a new shared bundle structure. Does not link it to any products.  SAFETY RULES enforced by this tool: - Never accepts structure_id pointing to a hidden (inline) structure — always go via product_slug/product_id. - Tiers for weight/matrix types must have weight_grams &gt; 0. - Tiers for simple type: only the first tier is used; name and weight_grams are normalised. - Prices are accepted as dollar amounts (e.g. 12.99) and converted to cents internally.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PricingStructureUpsertRequest|null $pricing_structure_upsert_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PricingStructureUpsertRequest|null $pricing_structure_upsert_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pricingStructureUpsert'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\PricingStructureUpsert200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\PricingStructureUpsert200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function pricingStructureUpsertWithHttpInfo($pricing_structure_upsert_request = null, string $contentType = self::contentTypes['pricingStructureUpsert'][0])
     {
@@ -3269,37 +3269,37 @@ class CatalogApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\PricingStructureUpsert200Response',
+                        '\ShadowSoftware\DabDash\Model\PricingStructureUpsert200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -3321,7 +3321,7 @@ class CatalogApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\PricingStructureUpsert200Response',
+                '\ShadowSoftware\DabDash\Model\PricingStructureUpsert200Response',
                 $request,
                 $response,
             );
@@ -3330,7 +3330,7 @@ class CatalogApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\PricingStructureUpsert200Response',
+                        '\ShadowSoftware\DabDash\Model\PricingStructureUpsert200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3338,7 +3338,7 @@ class CatalogApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3346,7 +3346,7 @@ class CatalogApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3354,7 +3354,7 @@ class CatalogApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3362,7 +3362,7 @@ class CatalogApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3370,7 +3370,7 @@ class CatalogApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3387,7 +3387,7 @@ class CatalogApi
      *
      * Create or edit a pricing structure&#39;s tiers, name, and tracking type. Operates in three modes:  BUNDLE MODE (structure_id provided, structure is not hidden):   Edit a shared bundle structure visible on /admin/pricing. Tiers are replaced and ALL products   linked to the bundle are re-synced. Returns how many products were affected as a warning.  INLINE MODE (product_slug or product_id provided, no structure_id):   Edit the hidden 1:1 pricing structure for a single product. Tiers are replaced and variations   are re-synced for that product only. Refuses if the product currently uses a bundle structure —   use pricing_structure_assign to detach from the bundle first.  CREATE BUNDLE MODE (no structure_id, no product_slug/product_id):   Create a new shared bundle structure. Does not link it to any products.  SAFETY RULES enforced by this tool: - Never accepts structure_id pointing to a hidden (inline) structure — always go via product_slug/product_id. - Tiers for weight/matrix types must have weight_grams &gt; 0. - Tiers for simple type: only the first tier is used; name and weight_grams are normalised. - Prices are accepted as dollar amounts (e.g. 12.99) and converted to cents internally.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PricingStructureUpsertRequest|null $pricing_structure_upsert_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PricingStructureUpsertRequest|null $pricing_structure_upsert_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pricingStructureUpsert'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3408,7 +3408,7 @@ class CatalogApi
      *
      * Create or edit a pricing structure&#39;s tiers, name, and tracking type. Operates in three modes:  BUNDLE MODE (structure_id provided, structure is not hidden):   Edit a shared bundle structure visible on /admin/pricing. Tiers are replaced and ALL products   linked to the bundle are re-synced. Returns how many products were affected as a warning.  INLINE MODE (product_slug or product_id provided, no structure_id):   Edit the hidden 1:1 pricing structure for a single product. Tiers are replaced and variations   are re-synced for that product only. Refuses if the product currently uses a bundle structure —   use pricing_structure_assign to detach from the bundle first.  CREATE BUNDLE MODE (no structure_id, no product_slug/product_id):   Create a new shared bundle structure. Does not link it to any products.  SAFETY RULES enforced by this tool: - Never accepts structure_id pointing to a hidden (inline) structure — always go via product_slug/product_id. - Tiers for weight/matrix types must have weight_grams &gt; 0. - Tiers for simple type: only the first tier is used; name and weight_grams are normalised. - Prices are accepted as dollar amounts (e.g. 12.99) and converted to cents internally.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PricingStructureUpsertRequest|null $pricing_structure_upsert_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PricingStructureUpsertRequest|null $pricing_structure_upsert_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pricingStructureUpsert'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3416,7 +3416,7 @@ class CatalogApi
      */
     public function pricingStructureUpsertAsyncWithHttpInfo($pricing_structure_upsert_request = null, string $contentType = self::contentTypes['pricingStructureUpsert'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\PricingStructureUpsert200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\PricingStructureUpsert200Response';
         $request = $this->pricingStructureUpsertRequest($pricing_structure_upsert_request, $contentType);
 
         return $this->client
@@ -3458,7 +3458,7 @@ class CatalogApi
     /**
      * Create request for operation 'pricingStructureUpsert'
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PricingStructureUpsertRequest|null $pricing_structure_upsert_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PricingStructureUpsertRequest|null $pricing_structure_upsert_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pricingStructureUpsert'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3553,12 +3553,12 @@ class CatalogApi
      *
      * Inspect a specific product including every variation&#39;s price, compare_at_price, mix_match_tags, stock, and the tenant&#39;s mix &amp; match rule settings. Use this to audit pricing, sale state, and bundle configuration for support tickets.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\ProductInspectRequest|null $product_inspect_request product_inspect_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\ProductInspectRequest|null $product_inspect_request product_inspect_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productInspect'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\ProductInspect200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\ProductInspect200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function productInspect($product_inspect_request = null, string $contentType = self::contentTypes['productInspect'][0])
     {
@@ -3571,12 +3571,12 @@ class CatalogApi
      *
      * Inspect a specific product including every variation&#39;s price, compare_at_price, mix_match_tags, stock, and the tenant&#39;s mix &amp; match rule settings. Use this to audit pricing, sale state, and bundle configuration for support tickets.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\ProductInspectRequest|null $product_inspect_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\ProductInspectRequest|null $product_inspect_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productInspect'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\ProductInspect200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\ProductInspect200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function productInspectWithHttpInfo($product_inspect_request = null, string $contentType = self::contentTypes['productInspect'][0])
     {
@@ -3608,37 +3608,37 @@ class CatalogApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\ProductInspect200Response',
+                        '\ShadowSoftware\DabDash\Model\ProductInspect200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -3660,7 +3660,7 @@ class CatalogApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\ProductInspect200Response',
+                '\ShadowSoftware\DabDash\Model\ProductInspect200Response',
                 $request,
                 $response,
             );
@@ -3669,7 +3669,7 @@ class CatalogApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\ProductInspect200Response',
+                        '\ShadowSoftware\DabDash\Model\ProductInspect200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3677,7 +3677,7 @@ class CatalogApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3685,7 +3685,7 @@ class CatalogApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3693,7 +3693,7 @@ class CatalogApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3701,7 +3701,7 @@ class CatalogApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3709,7 +3709,7 @@ class CatalogApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3726,7 +3726,7 @@ class CatalogApi
      *
      * Inspect a specific product including every variation&#39;s price, compare_at_price, mix_match_tags, stock, and the tenant&#39;s mix &amp; match rule settings. Use this to audit pricing, sale state, and bundle configuration for support tickets.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\ProductInspectRequest|null $product_inspect_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\ProductInspectRequest|null $product_inspect_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productInspect'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3747,7 +3747,7 @@ class CatalogApi
      *
      * Inspect a specific product including every variation&#39;s price, compare_at_price, mix_match_tags, stock, and the tenant&#39;s mix &amp; match rule settings. Use this to audit pricing, sale state, and bundle configuration for support tickets.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\ProductInspectRequest|null $product_inspect_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\ProductInspectRequest|null $product_inspect_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productInspect'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3755,7 +3755,7 @@ class CatalogApi
      */
     public function productInspectAsyncWithHttpInfo($product_inspect_request = null, string $contentType = self::contentTypes['productInspect'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\ProductInspect200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\ProductInspect200Response';
         $request = $this->productInspectRequest($product_inspect_request, $contentType);
 
         return $this->client
@@ -3797,7 +3797,7 @@ class CatalogApi
     /**
      * Create request for operation 'productInspect'
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\ProductInspectRequest|null $product_inspect_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\ProductInspectRequest|null $product_inspect_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productInspect'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3892,12 +3892,12 @@ class CatalogApi
      *
      * Update a simple product&#39;s stock quantity and/or price by SKU — the inventory-sync path for an external POS. v1 scope: SIMPLE products only (single implicit unit, no weight/variant tiers). Every other pricing type (weight, unit, matrix, matrix_unit) is rejected with a clear message; those need per-tier/per-variant targeting that a flat SKU+quantity+price payload cannot express safely. Always call product_inspect with sku first to confirm which product/type you are targeting.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\ProductUpdateBySkuRequest|null $product_update_by_sku_request product_update_by_sku_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\ProductUpdateBySkuRequest|null $product_update_by_sku_request product_update_by_sku_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productUpdateBySku'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\ProductUpdateBySku200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\ProductUpdateBySku200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function productUpdateBySku($product_update_by_sku_request = null, string $contentType = self::contentTypes['productUpdateBySku'][0])
     {
@@ -3910,12 +3910,12 @@ class CatalogApi
      *
      * Update a simple product&#39;s stock quantity and/or price by SKU — the inventory-sync path for an external POS. v1 scope: SIMPLE products only (single implicit unit, no weight/variant tiers). Every other pricing type (weight, unit, matrix, matrix_unit) is rejected with a clear message; those need per-tier/per-variant targeting that a flat SKU+quantity+price payload cannot express safely. Always call product_inspect with sku first to confirm which product/type you are targeting.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\ProductUpdateBySkuRequest|null $product_update_by_sku_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\ProductUpdateBySkuRequest|null $product_update_by_sku_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productUpdateBySku'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\ProductUpdateBySku200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\ProductUpdateBySku200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function productUpdateBySkuWithHttpInfo($product_update_by_sku_request = null, string $contentType = self::contentTypes['productUpdateBySku'][0])
     {
@@ -3947,37 +3947,37 @@ class CatalogApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\ProductUpdateBySku200Response',
+                        '\ShadowSoftware\DabDash\Model\ProductUpdateBySku200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -3999,7 +3999,7 @@ class CatalogApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\ProductUpdateBySku200Response',
+                '\ShadowSoftware\DabDash\Model\ProductUpdateBySku200Response',
                 $request,
                 $response,
             );
@@ -4008,7 +4008,7 @@ class CatalogApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\ProductUpdateBySku200Response',
+                        '\ShadowSoftware\DabDash\Model\ProductUpdateBySku200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4016,7 +4016,7 @@ class CatalogApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4024,7 +4024,7 @@ class CatalogApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4032,7 +4032,7 @@ class CatalogApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4040,7 +4040,7 @@ class CatalogApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4048,7 +4048,7 @@ class CatalogApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4065,7 +4065,7 @@ class CatalogApi
      *
      * Update a simple product&#39;s stock quantity and/or price by SKU — the inventory-sync path for an external POS. v1 scope: SIMPLE products only (single implicit unit, no weight/variant tiers). Every other pricing type (weight, unit, matrix, matrix_unit) is rejected with a clear message; those need per-tier/per-variant targeting that a flat SKU+quantity+price payload cannot express safely. Always call product_inspect with sku first to confirm which product/type you are targeting.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\ProductUpdateBySkuRequest|null $product_update_by_sku_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\ProductUpdateBySkuRequest|null $product_update_by_sku_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productUpdateBySku'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4086,7 +4086,7 @@ class CatalogApi
      *
      * Update a simple product&#39;s stock quantity and/or price by SKU — the inventory-sync path for an external POS. v1 scope: SIMPLE products only (single implicit unit, no weight/variant tiers). Every other pricing type (weight, unit, matrix, matrix_unit) is rejected with a clear message; those need per-tier/per-variant targeting that a flat SKU+quantity+price payload cannot express safely. Always call product_inspect with sku first to confirm which product/type you are targeting.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\ProductUpdateBySkuRequest|null $product_update_by_sku_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\ProductUpdateBySkuRequest|null $product_update_by_sku_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productUpdateBySku'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4094,7 +4094,7 @@ class CatalogApi
      */
     public function productUpdateBySkuAsyncWithHttpInfo($product_update_by_sku_request = null, string $contentType = self::contentTypes['productUpdateBySku'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\ProductUpdateBySku200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\ProductUpdateBySku200Response';
         $request = $this->productUpdateBySkuRequest($product_update_by_sku_request, $contentType);
 
         return $this->client
@@ -4136,7 +4136,7 @@ class CatalogApi
     /**
      * Create request for operation 'productUpdateBySku'
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\ProductUpdateBySkuRequest|null $product_update_by_sku_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\ProductUpdateBySkuRequest|null $product_update_by_sku_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productUpdateBySku'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

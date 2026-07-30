@@ -1,4 +1,4 @@
-# ShadowSoftware\Sdk\Generated\AnalyticsApi
+# ShadowSoftware\DabDash\AnalyticsApi
 
 
 
@@ -14,7 +14,7 @@ All URIs are relative to https://.dabdash.com, except if the operation defines a
 ## `analyticsQuery()`
 
 ```php
-analyticsQuery($analytics_query_request): \ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery200Response
+analyticsQuery($analytics_query_request): \ShadowSoftware\DabDash\Model\AnalyticsQuery200Response
 ```
 
 Run read-only analytics queries against the production database. Available reports: revenue_by_tenant, orders_by_status, top_products, revenue_over_time, customer_stats. Revenue dating uses RevenueAttribution (pass tenant_slug for delivered-mode tenants).
@@ -27,19 +27,19 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: tenantOAuth
-$config = ShadowSoftware\Sdk\Generated\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure Bearer authorization: tenantApiKey
-$config = ShadowSoftware\Sdk\Generated\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new ShadowSoftware\Sdk\Generated\Api\AnalyticsApi(
+$apiInstance = new ShadowSoftware\DabDash\Api\AnalyticsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$analytics_query_request = new \ShadowSoftware\Sdk\Generated\Model\AnalyticsQueryRequest(); // \ShadowSoftware\Sdk\Generated\Model\AnalyticsQueryRequest
+$analytics_query_request = new \ShadowSoftware\DabDash\Model\AnalyticsQueryRequest(); // \ShadowSoftware\DabDash\Model\AnalyticsQueryRequest
 
 try {
     $result = $apiInstance->analyticsQuery($analytics_query_request);
@@ -53,11 +53,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **analytics_query_request** | [**\ShadowSoftware\Sdk\Generated\Model\AnalyticsQueryRequest**](../Model/AnalyticsQueryRequest.md)|  | [optional] |
+| **analytics_query_request** | [**\ShadowSoftware\DabDash\Model\AnalyticsQueryRequest**](../Model/AnalyticsQueryRequest.md)|  | [optional] |
 
 ### Return type
 
-[**\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery200Response**](../Model/AnalyticsQuery200Response.md)
+[**\ShadowSoftware\DabDash\Model\AnalyticsQuery200Response**](../Model/AnalyticsQuery200Response.md)
 
 ### Authorization
 
@@ -75,7 +75,7 @@ try {
 ## `googleAnalytics()`
 
 ```php
-googleAnalytics($google_analytics_request): \ShadowSoftware\Sdk\Generated\Model\GoogleAnalytics200Response
+googleAnalytics($google_analytics_request): \ShadowSoftware\DabDash\Model\GoogleAnalytics200Response
 ```
 
 Query Google Analytics (GA4) data for the platform (dabdash.com) or a specific tenant with a connected GA integration. Returns traffic overview, top pages, traffic sources, top events, and daily trend.
@@ -88,19 +88,19 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: tenantOAuth
-$config = ShadowSoftware\Sdk\Generated\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure Bearer authorization: tenantApiKey
-$config = ShadowSoftware\Sdk\Generated\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new ShadowSoftware\Sdk\Generated\Api\AnalyticsApi(
+$apiInstance = new ShadowSoftware\DabDash\Api\AnalyticsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$google_analytics_request = new \ShadowSoftware\Sdk\Generated\Model\GoogleAnalyticsRequest(); // \ShadowSoftware\Sdk\Generated\Model\GoogleAnalyticsRequest
+$google_analytics_request = new \ShadowSoftware\DabDash\Model\GoogleAnalyticsRequest(); // \ShadowSoftware\DabDash\Model\GoogleAnalyticsRequest
 
 try {
     $result = $apiInstance->googleAnalytics($google_analytics_request);
@@ -114,11 +114,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **google_analytics_request** | [**\ShadowSoftware\Sdk\Generated\Model\GoogleAnalyticsRequest**](../Model/GoogleAnalyticsRequest.md)|  | [optional] |
+| **google_analytics_request** | [**\ShadowSoftware\DabDash\Model\GoogleAnalyticsRequest**](../Model/GoogleAnalyticsRequest.md)|  | [optional] |
 
 ### Return type
 
-[**\ShadowSoftware\Sdk\Generated\Model\GoogleAnalytics200Response**](../Model/GoogleAnalytics200Response.md)
+[**\ShadowSoftware\DabDash\Model\GoogleAnalytics200Response**](../Model/GoogleAnalytics200Response.md)
 
 ### Authorization
 
@@ -136,7 +136,7 @@ try {
 ## `searchConsole()`
 
 ```php
-searchConsole($search_console_request): \ShadowSoftware\Sdk\Generated\Model\SearchConsole200Response
+searchConsole($search_console_request): \ShadowSoftware\DabDash\Model\SearchConsole200Response
 ```
 
 Query Google Search Console data for the platform (dabdash.com) or a specific tenant with a connected GSC integration. Returns search overview, top queries, top pages, and daily trend.
@@ -149,19 +149,19 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: tenantOAuth
-$config = ShadowSoftware\Sdk\Generated\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure Bearer authorization: tenantApiKey
-$config = ShadowSoftware\Sdk\Generated\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new ShadowSoftware\Sdk\Generated\Api\AnalyticsApi(
+$apiInstance = new ShadowSoftware\DabDash\Api\AnalyticsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$search_console_request = new \ShadowSoftware\Sdk\Generated\Model\SearchConsoleRequest(); // \ShadowSoftware\Sdk\Generated\Model\SearchConsoleRequest
+$search_console_request = new \ShadowSoftware\DabDash\Model\SearchConsoleRequest(); // \ShadowSoftware\DabDash\Model\SearchConsoleRequest
 
 try {
     $result = $apiInstance->searchConsole($search_console_request);
@@ -175,11 +175,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **search_console_request** | [**\ShadowSoftware\Sdk\Generated\Model\SearchConsoleRequest**](../Model/SearchConsoleRequest.md)|  | [optional] |
+| **search_console_request** | [**\ShadowSoftware\DabDash\Model\SearchConsoleRequest**](../Model/SearchConsoleRequest.md)|  | [optional] |
 
 ### Return type
 
-[**\ShadowSoftware\Sdk\Generated\Model\SearchConsole200Response**](../Model/SearchConsole200Response.md)
+[**\ShadowSoftware\DabDash\Model\SearchConsole200Response**](../Model/SearchConsole200Response.md)
 
 ### Authorization
 

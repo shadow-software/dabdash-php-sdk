@@ -4,7 +4,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace ShadowSoftware\Sdk\Generated\Api;
+namespace ShadowSoftware\DabDash\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -36,17 +36,17 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use ShadowSoftware\Sdk\Generated\ApiException;
-use ShadowSoftware\Sdk\Generated\Configuration;
-use ShadowSoftware\Sdk\Generated\FormDataProcessor;
-use ShadowSoftware\Sdk\Generated\HeaderSelector;
-use ShadowSoftware\Sdk\Generated\ObjectSerializer;
+use ShadowSoftware\DabDash\ApiException;
+use ShadowSoftware\DabDash\Configuration;
+use ShadowSoftware\DabDash\FormDataProcessor;
+use ShadowSoftware\DabDash\HeaderSelector;
+use ShadowSoftware\DabDash\ObjectSerializer;
 
 /**
  * AnalyticsApi Class Doc Comment
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -136,12 +136,12 @@ class AnalyticsApi
      *
      * Run read-only analytics queries against the production database. Available reports: revenue_by_tenant, orders_by_status, top_products, revenue_over_time, customer_stats. Revenue dating uses RevenueAttribution (pass tenant_slug for delivered-mode tenants).
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\AnalyticsQueryRequest|null $analytics_query_request analytics_query_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\AnalyticsQueryRequest|null $analytics_query_request analytics_query_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['analyticsQuery'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\AnalyticsQuery200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function analyticsQuery($analytics_query_request = null, string $contentType = self::contentTypes['analyticsQuery'][0])
     {
@@ -154,12 +154,12 @@ class AnalyticsApi
      *
      * Run read-only analytics queries against the production database. Available reports: revenue_by_tenant, orders_by_status, top_products, revenue_over_time, customer_stats. Revenue dating uses RevenueAttribution (pass tenant_slug for delivered-mode tenants).
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\AnalyticsQueryRequest|null $analytics_query_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\AnalyticsQueryRequest|null $analytics_query_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['analyticsQuery'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\AnalyticsQuery200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function analyticsQueryWithHttpInfo($analytics_query_request = null, string $contentType = self::contentTypes['analyticsQuery'][0])
     {
@@ -191,37 +191,37 @@ class AnalyticsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery200Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -243,7 +243,7 @@ class AnalyticsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery200Response',
+                '\ShadowSoftware\DabDash\Model\AnalyticsQuery200Response',
                 $request,
                 $response,
             );
@@ -252,7 +252,7 @@ class AnalyticsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery200Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -260,7 +260,7 @@ class AnalyticsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -268,7 +268,7 @@ class AnalyticsApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -276,7 +276,7 @@ class AnalyticsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -284,7 +284,7 @@ class AnalyticsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -292,7 +292,7 @@ class AnalyticsApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -309,7 +309,7 @@ class AnalyticsApi
      *
      * Run read-only analytics queries against the production database. Available reports: revenue_by_tenant, orders_by_status, top_products, revenue_over_time, customer_stats. Revenue dating uses RevenueAttribution (pass tenant_slug for delivered-mode tenants).
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\AnalyticsQueryRequest|null $analytics_query_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\AnalyticsQueryRequest|null $analytics_query_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['analyticsQuery'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -330,7 +330,7 @@ class AnalyticsApi
      *
      * Run read-only analytics queries against the production database. Available reports: revenue_by_tenant, orders_by_status, top_products, revenue_over_time, customer_stats. Revenue dating uses RevenueAttribution (pass tenant_slug for delivered-mode tenants).
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\AnalyticsQueryRequest|null $analytics_query_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\AnalyticsQueryRequest|null $analytics_query_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['analyticsQuery'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -338,7 +338,7 @@ class AnalyticsApi
      */
     public function analyticsQueryAsyncWithHttpInfo($analytics_query_request = null, string $contentType = self::contentTypes['analyticsQuery'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\AnalyticsQuery200Response';
         $request = $this->analyticsQueryRequest($analytics_query_request, $contentType);
 
         return $this->client
@@ -380,7 +380,7 @@ class AnalyticsApi
     /**
      * Create request for operation 'analyticsQuery'
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\AnalyticsQueryRequest|null $analytics_query_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\AnalyticsQueryRequest|null $analytics_query_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['analyticsQuery'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -475,12 +475,12 @@ class AnalyticsApi
      *
      * Query Google Analytics (GA4) data for the platform (dabdash.com) or a specific tenant with a connected GA integration. Returns traffic overview, top pages, traffic sources, top events, and daily trend.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\GoogleAnalyticsRequest|null $google_analytics_request google_analytics_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\GoogleAnalyticsRequest|null $google_analytics_request google_analytics_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['googleAnalytics'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\GoogleAnalytics200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\GoogleAnalytics200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function googleAnalytics($google_analytics_request = null, string $contentType = self::contentTypes['googleAnalytics'][0])
     {
@@ -493,12 +493,12 @@ class AnalyticsApi
      *
      * Query Google Analytics (GA4) data for the platform (dabdash.com) or a specific tenant with a connected GA integration. Returns traffic overview, top pages, traffic sources, top events, and daily trend.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\GoogleAnalyticsRequest|null $google_analytics_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\GoogleAnalyticsRequest|null $google_analytics_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['googleAnalytics'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\GoogleAnalytics200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\GoogleAnalytics200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function googleAnalyticsWithHttpInfo($google_analytics_request = null, string $contentType = self::contentTypes['googleAnalytics'][0])
     {
@@ -530,37 +530,37 @@ class AnalyticsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\GoogleAnalytics200Response',
+                        '\ShadowSoftware\DabDash\Model\GoogleAnalytics200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -582,7 +582,7 @@ class AnalyticsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\GoogleAnalytics200Response',
+                '\ShadowSoftware\DabDash\Model\GoogleAnalytics200Response',
                 $request,
                 $response,
             );
@@ -591,7 +591,7 @@ class AnalyticsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\GoogleAnalytics200Response',
+                        '\ShadowSoftware\DabDash\Model\GoogleAnalytics200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -599,7 +599,7 @@ class AnalyticsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -607,7 +607,7 @@ class AnalyticsApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -615,7 +615,7 @@ class AnalyticsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -623,7 +623,7 @@ class AnalyticsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -631,7 +631,7 @@ class AnalyticsApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -648,7 +648,7 @@ class AnalyticsApi
      *
      * Query Google Analytics (GA4) data for the platform (dabdash.com) or a specific tenant with a connected GA integration. Returns traffic overview, top pages, traffic sources, top events, and daily trend.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\GoogleAnalyticsRequest|null $google_analytics_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\GoogleAnalyticsRequest|null $google_analytics_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['googleAnalytics'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -669,7 +669,7 @@ class AnalyticsApi
      *
      * Query Google Analytics (GA4) data for the platform (dabdash.com) or a specific tenant with a connected GA integration. Returns traffic overview, top pages, traffic sources, top events, and daily trend.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\GoogleAnalyticsRequest|null $google_analytics_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\GoogleAnalyticsRequest|null $google_analytics_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['googleAnalytics'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -677,7 +677,7 @@ class AnalyticsApi
      */
     public function googleAnalyticsAsyncWithHttpInfo($google_analytics_request = null, string $contentType = self::contentTypes['googleAnalytics'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\GoogleAnalytics200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\GoogleAnalytics200Response';
         $request = $this->googleAnalyticsRequest($google_analytics_request, $contentType);
 
         return $this->client
@@ -719,7 +719,7 @@ class AnalyticsApi
     /**
      * Create request for operation 'googleAnalytics'
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\GoogleAnalyticsRequest|null $google_analytics_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\GoogleAnalyticsRequest|null $google_analytics_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['googleAnalytics'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -814,12 +814,12 @@ class AnalyticsApi
      *
      * Query Google Search Console data for the platform (dabdash.com) or a specific tenant with a connected GSC integration. Returns search overview, top queries, top pages, and daily trend.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\SearchConsoleRequest|null $search_console_request search_console_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\SearchConsoleRequest|null $search_console_request search_console_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchConsole'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\SearchConsole200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\SearchConsole200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function searchConsole($search_console_request = null, string $contentType = self::contentTypes['searchConsole'][0])
     {
@@ -832,12 +832,12 @@ class AnalyticsApi
      *
      * Query Google Search Console data for the platform (dabdash.com) or a specific tenant with a connected GSC integration. Returns search overview, top queries, top pages, and daily trend.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\SearchConsoleRequest|null $search_console_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\SearchConsoleRequest|null $search_console_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchConsole'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\SearchConsole200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\SearchConsole200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function searchConsoleWithHttpInfo($search_console_request = null, string $contentType = self::contentTypes['searchConsole'][0])
     {
@@ -869,37 +869,37 @@ class AnalyticsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\SearchConsole200Response',
+                        '\ShadowSoftware\DabDash\Model\SearchConsole200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -921,7 +921,7 @@ class AnalyticsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\SearchConsole200Response',
+                '\ShadowSoftware\DabDash\Model\SearchConsole200Response',
                 $request,
                 $response,
             );
@@ -930,7 +930,7 @@ class AnalyticsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\SearchConsole200Response',
+                        '\ShadowSoftware\DabDash\Model\SearchConsole200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -938,7 +938,7 @@ class AnalyticsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -946,7 +946,7 @@ class AnalyticsApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -954,7 +954,7 @@ class AnalyticsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -962,7 +962,7 @@ class AnalyticsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -970,7 +970,7 @@ class AnalyticsApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -987,7 +987,7 @@ class AnalyticsApi
      *
      * Query Google Search Console data for the platform (dabdash.com) or a specific tenant with a connected GSC integration. Returns search overview, top queries, top pages, and daily trend.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\SearchConsoleRequest|null $search_console_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\SearchConsoleRequest|null $search_console_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchConsole'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1008,7 +1008,7 @@ class AnalyticsApi
      *
      * Query Google Search Console data for the platform (dabdash.com) or a specific tenant with a connected GSC integration. Returns search overview, top queries, top pages, and daily trend.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\SearchConsoleRequest|null $search_console_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\SearchConsoleRequest|null $search_console_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchConsole'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1016,7 +1016,7 @@ class AnalyticsApi
      */
     public function searchConsoleAsyncWithHttpInfo($search_console_request = null, string $contentType = self::contentTypes['searchConsole'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\SearchConsole200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\SearchConsole200Response';
         $request = $this->searchConsoleRequest($search_console_request, $contentType);
 
         return $this->client
@@ -1058,7 +1058,7 @@ class AnalyticsApi
     /**
      * Create request for operation 'searchConsole'
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\SearchConsoleRequest|null $search_console_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\SearchConsoleRequest|null $search_console_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchConsole'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

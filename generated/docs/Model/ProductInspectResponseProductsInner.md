@@ -12,6 +12,6 @@ Name | Type | Description | Notes
 **stock_quantity** | **float** |  | [optional]
 **stock_status** | **string** |  | [optional]
 **pricing_structure** | **string** |  | [optional]
-**variations** | [**\ShadowSoftware\Sdk\Generated\Model\ProductInspectResponseProductsInnerVariationsInner[]**](ProductInspectResponseProductsInnerVariationsInner.md) |  | [optional]
+**variations** | [**\ShadowSoftware\DabDash\Model\ProductInspectResponseProductsInnerVariationsInner[]**](ProductInspectResponseProductsInnerVariationsInner.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

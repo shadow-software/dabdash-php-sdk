@@ -16,12 +16,12 @@
     },
     "autoload": {
         "psr-4": {
-            "ShadowSoftware\\Sdk\\Generated\\": "generated/lib/"
+            "ShadowSoftware\\DabDash\\": "generated/lib/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "ShadowSoftware\\Sdk\\Generated\\Test\\": "generated/test/"
+            "ShadowSoftware\\DabDash\\Test\\": "generated/test/"
         }
     },
     "scripts": {

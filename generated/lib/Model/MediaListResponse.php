@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace ShadowSoftware\Sdk\Generated\Model;
+namespace ShadowSoftware\DabDash\Model;
 
 use \ArrayAccess;
-use \ShadowSoftware\Sdk\Generated\ObjectSerializer;
+use \ShadowSoftware\DabDash\ObjectSerializer;
 
 /**
  * MediaListResponse Class Doc Comment
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -57,12 +57,12 @@ class MediaListResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $openAPITypes = [
-        'tenant' => '\ShadowSoftware\Sdk\Generated\Model\BundleListResponseTenant',
+        'tenant' => '\ShadowSoftware\DabDash\Model\BundleListResponseTenant',
         'visibility' => 'string',
         'total' => 'int',
         'returned' => 'int',
         'truncated' => 'bool',
-        'assets' => '\ShadowSoftware\Sdk\Generated\Model\MediaListResponseAssetsInner[]'
+        'assets' => '\ShadowSoftware\DabDash\Model\MediaListResponseAssetsInner[]'
     ];
 
     /**
@@ -327,7 +327,7 @@ class MediaListResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets tenant
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\BundleListResponseTenant|null
+     * @return \ShadowSoftware\DabDash\Model\BundleListResponseTenant|null
      */
     public function getTenant()
     {
@@ -337,7 +337,7 @@ class MediaListResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets tenant
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\BundleListResponseTenant|null $tenant tenant
+     * @param \ShadowSoftware\DabDash\Model\BundleListResponseTenant|null $tenant tenant
      *
      * @return self
      */
@@ -462,7 +462,7 @@ class MediaListResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets assets
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\MediaListResponseAssetsInner[]|null
+     * @return \ShadowSoftware\DabDash\Model\MediaListResponseAssetsInner[]|null
      */
     public function getAssets()
     {
@@ -472,7 +472,7 @@ class MediaListResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets assets
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\MediaListResponseAssetsInner[]|null $assets assets
+     * @param \ShadowSoftware\DabDash\Model\MediaListResponseAssetsInner[]|null $assets assets
      *
      * @return self
      */

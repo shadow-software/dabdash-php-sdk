@@ -1,4 +1,4 @@
-# ShadowSoftware\Sdk\Generated\IntegrationsApi
+# ShadowSoftware\DabDash\IntegrationsApi
 
 
 
@@ -13,7 +13,7 @@ All URIs are relative to https://.dabdash.com, except if the operation defines a
 ## `metrcDiagnostics()`
 
 ```php
-metrcDiagnostics($body): \ShadowSoftware\Sdk\Generated\Model\MetrcDiagnostics200Response
+metrcDiagnostics($body): \ShadowSoftware\DabDash\Model\MetrcDiagnostics200Response
 ```
 
 Returns a JSON summary of Metrc compliance status for a tenant: integration mode, sync states, audit log counts by HTTP status, and pending/failed report counts. Pass a tenant_slug to inspect a specific tenant.
@@ -26,13 +26,13 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: tenantOAuth
-$config = ShadowSoftware\Sdk\Generated\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure Bearer authorization: tenantApiKey
-$config = ShadowSoftware\Sdk\Generated\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new ShadowSoftware\Sdk\Generated\Api\IntegrationsApi(
+$apiInstance = new ShadowSoftware\DabDash\Api\IntegrationsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -56,7 +56,7 @@ try {
 
 ### Return type
 
-[**\ShadowSoftware\Sdk\Generated\Model\MetrcDiagnostics200Response**](../Model/MetrcDiagnostics200Response.md)
+[**\ShadowSoftware\DabDash\Model\MetrcDiagnostics200Response**](../Model/MetrcDiagnostics200Response.md)
 
 ### Authorization
 
@@ -74,7 +74,7 @@ try {
 ## `pushNotificationDiagnostics()`
 
 ```php
-pushNotificationDiagnostics($push_notification_diagnostics_request): \ShadowSoftware\Sdk\Generated\Model\PushNotificationDiagnostics200Response
+pushNotificationDiagnostics($push_notification_diagnostics_request): \ShadowSoftware\DabDash\Model\PushNotificationDiagnostics200Response
 ```
 
 Diagnose push notification (FCM) delivery for a vendor. Surfaces token health, notification settings, recent send history with push/email flags, and a plain-language diagnosis of why pushes are or are not being delivered.
@@ -87,19 +87,19 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: tenantOAuth
-$config = ShadowSoftware\Sdk\Generated\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure Bearer authorization: tenantApiKey
-$config = ShadowSoftware\Sdk\Generated\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new ShadowSoftware\Sdk\Generated\Api\IntegrationsApi(
+$apiInstance = new ShadowSoftware\DabDash\Api\IntegrationsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$push_notification_diagnostics_request = new \ShadowSoftware\Sdk\Generated\Model\PushNotificationDiagnosticsRequest(); // \ShadowSoftware\Sdk\Generated\Model\PushNotificationDiagnosticsRequest
+$push_notification_diagnostics_request = new \ShadowSoftware\DabDash\Model\PushNotificationDiagnosticsRequest(); // \ShadowSoftware\DabDash\Model\PushNotificationDiagnosticsRequest
 
 try {
     $result = $apiInstance->pushNotificationDiagnostics($push_notification_diagnostics_request);
@@ -113,11 +113,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **push_notification_diagnostics_request** | [**\ShadowSoftware\Sdk\Generated\Model\PushNotificationDiagnosticsRequest**](../Model/PushNotificationDiagnosticsRequest.md)|  | [optional] |
+| **push_notification_diagnostics_request** | [**\ShadowSoftware\DabDash\Model\PushNotificationDiagnosticsRequest**](../Model/PushNotificationDiagnosticsRequest.md)|  | [optional] |
 
 ### Return type
 
-[**\ShadowSoftware\Sdk\Generated\Model\PushNotificationDiagnostics200Response**](../Model/PushNotificationDiagnostics200Response.md)
+[**\ShadowSoftware\DabDash\Model\PushNotificationDiagnostics200Response**](../Model/PushNotificationDiagnostics200Response.md)
 
 ### Authorization
 

@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace ShadowSoftware\Sdk\Generated\Model;
+namespace ShadowSoftware\DabDash\Model;
 
 use \ArrayAccess;
-use \ShadowSoftware\Sdk\Generated\ObjectSerializer;
+use \ShadowSoftware\DabDash\ObjectSerializer;
 
 /**
  * CustomerLookupResponseCustomersInner Class Doc Comment
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -78,8 +78,8 @@ class CustomerLookupResponseCustomersInner implements ModelInterface, ArrayAcces
         'addresses_count' => 'int',
         'orders_count' => 'int',
         'conversation_count' => 'int',
-        'addresses' => '\ShadowSoftware\Sdk\Generated\Model\CustomerLookupResponseCustomersInnerAddressesInner[]',
-        'recent_orders' => '\ShadowSoftware\Sdk\Generated\Model\CustomerLookupResponseCustomersInnerRecentOrdersInner[]'
+        'addresses' => '\ShadowSoftware\DabDash\Model\CustomerLookupResponseCustomersInnerAddressesInner[]',
+        'recent_orders' => '\ShadowSoftware\DabDash\Model\CustomerLookupResponseCustomersInnerRecentOrdersInner[]'
     ];
 
     /**
@@ -1069,7 +1069,7 @@ class CustomerLookupResponseCustomersInner implements ModelInterface, ArrayAcces
     /**
      * Gets addresses
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\CustomerLookupResponseCustomersInnerAddressesInner[]|null
+     * @return \ShadowSoftware\DabDash\Model\CustomerLookupResponseCustomersInnerAddressesInner[]|null
      */
     public function getAddresses()
     {
@@ -1079,7 +1079,7 @@ class CustomerLookupResponseCustomersInner implements ModelInterface, ArrayAcces
     /**
      * Sets addresses
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\CustomerLookupResponseCustomersInnerAddressesInner[]|null $addresses addresses
+     * @param \ShadowSoftware\DabDash\Model\CustomerLookupResponseCustomersInnerAddressesInner[]|null $addresses addresses
      *
      * @return self
      */
@@ -1096,7 +1096,7 @@ class CustomerLookupResponseCustomersInner implements ModelInterface, ArrayAcces
     /**
      * Gets recent_orders
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\CustomerLookupResponseCustomersInnerRecentOrdersInner[]|null
+     * @return \ShadowSoftware\DabDash\Model\CustomerLookupResponseCustomersInnerRecentOrdersInner[]|null
      */
     public function getRecentOrders()
     {
@@ -1106,7 +1106,7 @@ class CustomerLookupResponseCustomersInner implements ModelInterface, ArrayAcces
     /**
      * Sets recent_orders
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\CustomerLookupResponseCustomersInnerRecentOrdersInner[]|null $recent_orders recent_orders
+     * @param \ShadowSoftware\DabDash\Model\CustomerLookupResponseCustomersInnerRecentOrdersInner[]|null $recent_orders recent_orders
      *
      * @return self
      */

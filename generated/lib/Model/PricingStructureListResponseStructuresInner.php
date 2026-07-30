@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace ShadowSoftware\Sdk\Generated\Model;
+namespace ShadowSoftware\DabDash\Model;
 
 use \ArrayAccess;
-use \ShadowSoftware\Sdk\Generated\ObjectSerializer;
+use \ShadowSoftware\DabDash\ObjectSerializer;
 
 /**
  * PricingStructureListResponseStructuresInner Class Doc Comment
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -65,7 +65,7 @@ class PricingStructureListResponseStructuresInner implements ModelInterface, Arr
         'is_default' => 'bool',
         'product_count' => 'int',
         'product_ids' => 'int[]',
-        'tiers' => '\ShadowSoftware\Sdk\Generated\Model\PricingStructureListResponseStructuresInnerTiersInner[]'
+        'tiers' => '\ShadowSoftware\DabDash\Model\PricingStructureListResponseStructuresInnerTiersInner[]'
     ];
 
     /**
@@ -571,7 +571,7 @@ class PricingStructureListResponseStructuresInner implements ModelInterface, Arr
     /**
      * Gets tiers
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\PricingStructureListResponseStructuresInnerTiersInner[]|null
+     * @return \ShadowSoftware\DabDash\Model\PricingStructureListResponseStructuresInnerTiersInner[]|null
      */
     public function getTiers()
     {
@@ -581,7 +581,7 @@ class PricingStructureListResponseStructuresInner implements ModelInterface, Arr
     /**
      * Sets tiers
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\PricingStructureListResponseStructuresInnerTiersInner[]|null $tiers tiers
+     * @param \ShadowSoftware\DabDash\Model\PricingStructureListResponseStructuresInnerTiersInner[]|null $tiers tiers
      *
      * @return self
      */

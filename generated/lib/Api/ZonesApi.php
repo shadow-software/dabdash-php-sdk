@@ -4,7 +4,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace ShadowSoftware\Sdk\Generated\Api;
+namespace ShadowSoftware\DabDash\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -36,17 +36,17 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use ShadowSoftware\Sdk\Generated\ApiException;
-use ShadowSoftware\Sdk\Generated\Configuration;
-use ShadowSoftware\Sdk\Generated\FormDataProcessor;
-use ShadowSoftware\Sdk\Generated\HeaderSelector;
-use ShadowSoftware\Sdk\Generated\ObjectSerializer;
+use ShadowSoftware\DabDash\ApiException;
+use ShadowSoftware\DabDash\Configuration;
+use ShadowSoftware\DabDash\FormDataProcessor;
+use ShadowSoftware\DabDash\HeaderSelector;
+use ShadowSoftware\DabDash\ObjectSerializer;
 
 /**
  * ZonesApi Class Doc Comment
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -130,12 +130,12 @@ class ZonesApi
      *
      * Inspect zone polygons against customer or order coordinates to explain why an address is inside or outside delivery coverage.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\ZoneDiagnosticsRequest|null $zone_diagnostics_request zone_diagnostics_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\ZoneDiagnosticsRequest|null $zone_diagnostics_request zone_diagnostics_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['zoneDiagnostics'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\ZoneDiagnostics200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\ZoneDiagnostics200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function zoneDiagnostics($zone_diagnostics_request = null, string $contentType = self::contentTypes['zoneDiagnostics'][0])
     {
@@ -148,12 +148,12 @@ class ZonesApi
      *
      * Inspect zone polygons against customer or order coordinates to explain why an address is inside or outside delivery coverage.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\ZoneDiagnosticsRequest|null $zone_diagnostics_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\ZoneDiagnosticsRequest|null $zone_diagnostics_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['zoneDiagnostics'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\ZoneDiagnostics200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\ZoneDiagnostics200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function zoneDiagnosticsWithHttpInfo($zone_diagnostics_request = null, string $contentType = self::contentTypes['zoneDiagnostics'][0])
     {
@@ -185,37 +185,37 @@ class ZonesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\ZoneDiagnostics200Response',
+                        '\ShadowSoftware\DabDash\Model\ZoneDiagnostics200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -237,7 +237,7 @@ class ZonesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\ZoneDiagnostics200Response',
+                '\ShadowSoftware\DabDash\Model\ZoneDiagnostics200Response',
                 $request,
                 $response,
             );
@@ -246,7 +246,7 @@ class ZonesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\ZoneDiagnostics200Response',
+                        '\ShadowSoftware\DabDash\Model\ZoneDiagnostics200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -254,7 +254,7 @@ class ZonesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -262,7 +262,7 @@ class ZonesApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -270,7 +270,7 @@ class ZonesApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -278,7 +278,7 @@ class ZonesApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -286,7 +286,7 @@ class ZonesApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -303,7 +303,7 @@ class ZonesApi
      *
      * Inspect zone polygons against customer or order coordinates to explain why an address is inside or outside delivery coverage.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\ZoneDiagnosticsRequest|null $zone_diagnostics_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\ZoneDiagnosticsRequest|null $zone_diagnostics_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['zoneDiagnostics'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -324,7 +324,7 @@ class ZonesApi
      *
      * Inspect zone polygons against customer or order coordinates to explain why an address is inside or outside delivery coverage.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\ZoneDiagnosticsRequest|null $zone_diagnostics_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\ZoneDiagnosticsRequest|null $zone_diagnostics_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['zoneDiagnostics'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -332,7 +332,7 @@ class ZonesApi
      */
     public function zoneDiagnosticsAsyncWithHttpInfo($zone_diagnostics_request = null, string $contentType = self::contentTypes['zoneDiagnostics'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\ZoneDiagnostics200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\ZoneDiagnostics200Response';
         $request = $this->zoneDiagnosticsRequest($zone_diagnostics_request, $contentType);
 
         return $this->client
@@ -374,7 +374,7 @@ class ZonesApi
     /**
      * Create request for operation 'zoneDiagnostics'
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\ZoneDiagnosticsRequest|null $zone_diagnostics_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\ZoneDiagnosticsRequest|null $zone_diagnostics_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['zoneDiagnostics'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

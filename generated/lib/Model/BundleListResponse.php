@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace ShadowSoftware\Sdk\Generated\Model;
+namespace ShadowSoftware\DabDash\Model;
 
 use \ArrayAccess;
-use \ShadowSoftware\Sdk\Generated\ObjectSerializer;
+use \ShadowSoftware\DabDash\ObjectSerializer;
 
 /**
  * BundleListResponse Class Doc Comment
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -57,10 +57,10 @@ class BundleListResponse implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $openAPITypes = [
-        'tenant' => '\ShadowSoftware\Sdk\Generated\Model\BundleListResponseTenant',
-        'summary' => '\ShadowSoftware\Sdk\Generated\Model\BundleListResponseSummary',
+        'tenant' => '\ShadowSoftware\DabDash\Model\BundleListResponseTenant',
+        'summary' => '\ShadowSoftware\DabDash\Model\BundleListResponseSummary',
         'zero_discount_bundles' => 'string[]',
-        'bundles' => '\ShadowSoftware\Sdk\Generated\Model\BundleListResponseBundlesInner[]'
+        'bundles' => '\ShadowSoftware\DabDash\Model\BundleListResponseBundlesInner[]'
     ];
 
     /**
@@ -313,7 +313,7 @@ class BundleListResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets tenant
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\BundleListResponseTenant|null
+     * @return \ShadowSoftware\DabDash\Model\BundleListResponseTenant|null
      */
     public function getTenant()
     {
@@ -323,7 +323,7 @@ class BundleListResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets tenant
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\BundleListResponseTenant|null $tenant tenant
+     * @param \ShadowSoftware\DabDash\Model\BundleListResponseTenant|null $tenant tenant
      *
      * @return self
      */
@@ -340,7 +340,7 @@ class BundleListResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets summary
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\BundleListResponseSummary|null
+     * @return \ShadowSoftware\DabDash\Model\BundleListResponseSummary|null
      */
     public function getSummary()
     {
@@ -350,7 +350,7 @@ class BundleListResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets summary
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\BundleListResponseSummary|null $summary summary
+     * @param \ShadowSoftware\DabDash\Model\BundleListResponseSummary|null $summary summary
      *
      * @return self
      */
@@ -394,7 +394,7 @@ class BundleListResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets bundles
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\BundleListResponseBundlesInner[]|null
+     * @return \ShadowSoftware\DabDash\Model\BundleListResponseBundlesInner[]|null
      */
     public function getBundles()
     {
@@ -404,7 +404,7 @@ class BundleListResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets bundles
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\BundleListResponseBundlesInner[]|null $bundles bundles
+     * @param \ShadowSoftware\DabDash\Model\BundleListResponseBundlesInner[]|null $bundles bundles
      *
      * @return self
      */

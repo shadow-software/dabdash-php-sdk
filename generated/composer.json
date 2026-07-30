@@ -30,9 +30,9 @@
         "friendsofphp/php-cs-fixer": "^3.5"
     },
     "autoload": {
-        "psr-4": { "ShadowSoftware\\Sdk\\Generated\\" : "lib/" }
+        "psr-4": { "ShadowSoftware\\DabDash\\" : "lib/" }
     },
     "autoload-dev": {
-        "psr-4": { "ShadowSoftware\\Sdk\\Generated\\Test\\" : "test/" }
+        "psr-4": { "ShadowSoftware\\DabDash\\Test\\" : "test/" }
     }
 }

@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace ShadowSoftware\Sdk\Generated\Model;
+namespace ShadowSoftware\DabDash\Model;
 
 use \ArrayAccess;
-use \ShadowSoftware\Sdk\Generated\ObjectSerializer;
+use \ShadowSoftware\DabDash\ObjectSerializer;
 
 /**
  * CustomerUpdateResponse Class Doc Comment
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -57,7 +57,7 @@ class CustomerUpdateResponse implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $openAPITypes = [
-        'customer' => '\ShadowSoftware\Sdk\Generated\Model\CustomerUpdateResponseCustomer',
+        'customer' => '\ShadowSoftware\DabDash\Model\CustomerUpdateResponseCustomer',
         'updated_fields' => 'string[]'
     ];
 
@@ -299,7 +299,7 @@ class CustomerUpdateResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets customer
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\CustomerUpdateResponseCustomer|null
+     * @return \ShadowSoftware\DabDash\Model\CustomerUpdateResponseCustomer|null
      */
     public function getCustomer()
     {
@@ -309,7 +309,7 @@ class CustomerUpdateResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets customer
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\CustomerUpdateResponseCustomer|null $customer customer
+     * @param \ShadowSoftware\DabDash\Model\CustomerUpdateResponseCustomer|null $customer customer
      *
      * @return self
      */

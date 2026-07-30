@@ -4,7 +4,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace ShadowSoftware\Sdk\Generated\Api;
+namespace ShadowSoftware\DabDash\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -36,17 +36,17 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use ShadowSoftware\Sdk\Generated\ApiException;
-use ShadowSoftware\Sdk\Generated\Configuration;
-use ShadowSoftware\Sdk\Generated\FormDataProcessor;
-use ShadowSoftware\Sdk\Generated\HeaderSelector;
-use ShadowSoftware\Sdk\Generated\ObjectSerializer;
+use ShadowSoftware\DabDash\ApiException;
+use ShadowSoftware\DabDash\Configuration;
+use ShadowSoftware\DabDash\FormDataProcessor;
+use ShadowSoftware\DabDash\HeaderSelector;
+use ShadowSoftware\DabDash\ObjectSerializer;
 
 /**
  * WriteApi Class Doc Comment
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -196,12 +196,12 @@ class WriteApi
      *
      * List a tenant&#39;s bundle deals (\&quot;mix &amp; match\&quot; — e.g. \&quot;buy 4 for $77\&quot;) with id, name, trigger quantity, discount type/value, active state, schedule window, and attached variation count. Bundles are the live cart engine (MixMatchService): a bundle fires when a cart holds at least &#x60;quantity&#x60; units across its attached variations. Always call this before bundle_upsert to get the bundle id and confirm the current discount configuration.  IMPORTANT: this reads the &#x60;bundles&#x60; table — the source of truth the storefront cart uses. It is NOT the legacy &#x60;mix_match_rules&#x60; tenant setting that promotion_audit / product_inspect surface; those are stale display-only data. Trust this tool for what actually applies at checkout.  discount_type:   percent      → discount_value is a percentage 0–100, applied per unit.   fixed        → discount_value is dollars off PER UNIT.   fixed_total  → discount_value is the dollar TOTAL for the whole set (\&quot;$77 for 4\&quot;).
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\BundleListRequest|null $bundle_list_request bundle_list_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\BundleListRequest|null $bundle_list_request bundle_list_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bundleList'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\BundleList200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\BundleList200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function bundleList($bundle_list_request = null, string $contentType = self::contentTypes['bundleList'][0])
     {
@@ -214,12 +214,12 @@ class WriteApi
      *
      * List a tenant&#39;s bundle deals (\&quot;mix &amp; match\&quot; — e.g. \&quot;buy 4 for $77\&quot;) with id, name, trigger quantity, discount type/value, active state, schedule window, and attached variation count. Bundles are the live cart engine (MixMatchService): a bundle fires when a cart holds at least &#x60;quantity&#x60; units across its attached variations. Always call this before bundle_upsert to get the bundle id and confirm the current discount configuration.  IMPORTANT: this reads the &#x60;bundles&#x60; table — the source of truth the storefront cart uses. It is NOT the legacy &#x60;mix_match_rules&#x60; tenant setting that promotion_audit / product_inspect surface; those are stale display-only data. Trust this tool for what actually applies at checkout.  discount_type:   percent      → discount_value is a percentage 0–100, applied per unit.   fixed        → discount_value is dollars off PER UNIT.   fixed_total  → discount_value is the dollar TOTAL for the whole set (\&quot;$77 for 4\&quot;).
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\BundleListRequest|null $bundle_list_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\BundleListRequest|null $bundle_list_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bundleList'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\BundleList200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\BundleList200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function bundleListWithHttpInfo($bundle_list_request = null, string $contentType = self::contentTypes['bundleList'][0])
     {
@@ -251,37 +251,37 @@ class WriteApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\BundleList200Response',
+                        '\ShadowSoftware\DabDash\Model\BundleList200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -303,7 +303,7 @@ class WriteApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\BundleList200Response',
+                '\ShadowSoftware\DabDash\Model\BundleList200Response',
                 $request,
                 $response,
             );
@@ -312,7 +312,7 @@ class WriteApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\BundleList200Response',
+                        '\ShadowSoftware\DabDash\Model\BundleList200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -320,7 +320,7 @@ class WriteApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -328,7 +328,7 @@ class WriteApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -336,7 +336,7 @@ class WriteApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -344,7 +344,7 @@ class WriteApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -352,7 +352,7 @@ class WriteApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -369,7 +369,7 @@ class WriteApi
      *
      * List a tenant&#39;s bundle deals (\&quot;mix &amp; match\&quot; — e.g. \&quot;buy 4 for $77\&quot;) with id, name, trigger quantity, discount type/value, active state, schedule window, and attached variation count. Bundles are the live cart engine (MixMatchService): a bundle fires when a cart holds at least &#x60;quantity&#x60; units across its attached variations. Always call this before bundle_upsert to get the bundle id and confirm the current discount configuration.  IMPORTANT: this reads the &#x60;bundles&#x60; table — the source of truth the storefront cart uses. It is NOT the legacy &#x60;mix_match_rules&#x60; tenant setting that promotion_audit / product_inspect surface; those are stale display-only data. Trust this tool for what actually applies at checkout.  discount_type:   percent      → discount_value is a percentage 0–100, applied per unit.   fixed        → discount_value is dollars off PER UNIT.   fixed_total  → discount_value is the dollar TOTAL for the whole set (\&quot;$77 for 4\&quot;).
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\BundleListRequest|null $bundle_list_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\BundleListRequest|null $bundle_list_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bundleList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -390,7 +390,7 @@ class WriteApi
      *
      * List a tenant&#39;s bundle deals (\&quot;mix &amp; match\&quot; — e.g. \&quot;buy 4 for $77\&quot;) with id, name, trigger quantity, discount type/value, active state, schedule window, and attached variation count. Bundles are the live cart engine (MixMatchService): a bundle fires when a cart holds at least &#x60;quantity&#x60; units across its attached variations. Always call this before bundle_upsert to get the bundle id and confirm the current discount configuration.  IMPORTANT: this reads the &#x60;bundles&#x60; table — the source of truth the storefront cart uses. It is NOT the legacy &#x60;mix_match_rules&#x60; tenant setting that promotion_audit / product_inspect surface; those are stale display-only data. Trust this tool for what actually applies at checkout.  discount_type:   percent      → discount_value is a percentage 0–100, applied per unit.   fixed        → discount_value is dollars off PER UNIT.   fixed_total  → discount_value is the dollar TOTAL for the whole set (\&quot;$77 for 4\&quot;).
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\BundleListRequest|null $bundle_list_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\BundleListRequest|null $bundle_list_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bundleList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -398,7 +398,7 @@ class WriteApi
      */
     public function bundleListAsyncWithHttpInfo($bundle_list_request = null, string $contentType = self::contentTypes['bundleList'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\BundleList200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\BundleList200Response';
         $request = $this->bundleListRequest($bundle_list_request, $contentType);
 
         return $this->client
@@ -440,7 +440,7 @@ class WriteApi
     /**
      * Create request for operation 'bundleList'
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\BundleListRequest|null $bundle_list_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\BundleListRequest|null $bundle_list_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bundleList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -535,12 +535,12 @@ class WriteApi
      *
      * Create or update a bundle deal (mix &amp; match) on behalf of a tenant. Bundles are the live cart engine: a bundle fires when a cart holds at least &#x60;quantity&#x60; units across its attached variations.  UPDATE MODE (bundle_id provided):   Edits the bundle. Only the fields you pass are changed; omitted fields are left as-is.  CREATE MODE (no bundle_id):   Creates a new bundle. name, quantity, discount_type, and discount_value are required.  DISCOUNT VALUE UNITS — read carefully, this is the common mistake:   discount_type &#x3D; \&quot;percent\&quot;      → discount_value is a percentage 0–100 (e.g. 20 &#x3D; 20% off each unit).   discount_type &#x3D; \&quot;fixed\&quot;        → discount_value is DOLLARS off PER UNIT (e.g. 5 &#x3D; $5 off each).   discount_type &#x3D; \&quot;fixed_total\&quot;  → discount_value is the DOLLARS TOTAL for the whole set                                     (e.g. quantity&#x3D;4, discount_value&#x3D;77 → \&quot;any 4 for $77\&quot;).   For fixed and fixed_total, pass dollars (e.g. 77 or 77.00) — the tool stores cents internally.   For percent, pass the percentage (e.g. 20), NOT a fraction.  VARIATIONS:   variation_ids + variation_mode control which product variations the bundle applies to.   mode \&quot;replace\&quot; (default) sets membership to exactly variation_ids; \&quot;add\&quot; attaches them to the   existing set; \&quot;detach\&quot; removes them. Variations not owned by the tenant are ignored.   Omit variation_ids entirely to leave membership untouched.  SCHEDULE:   starts_at / ends_at are interpreted in the tenant&#39;s timezone and stored as UTC. Pass null/omit   for an always-on bundle.  Always call bundle_list first to get the bundle_id and confirm the current configuration.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\BundleUpsertRequest|null $bundle_upsert_request bundle_upsert_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\BundleUpsertRequest|null $bundle_upsert_request bundle_upsert_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bundleUpsert'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\BundleUpsert200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\BundleUpsert200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function bundleUpsert($bundle_upsert_request = null, string $contentType = self::contentTypes['bundleUpsert'][0])
     {
@@ -553,12 +553,12 @@ class WriteApi
      *
      * Create or update a bundle deal (mix &amp; match) on behalf of a tenant. Bundles are the live cart engine: a bundle fires when a cart holds at least &#x60;quantity&#x60; units across its attached variations.  UPDATE MODE (bundle_id provided):   Edits the bundle. Only the fields you pass are changed; omitted fields are left as-is.  CREATE MODE (no bundle_id):   Creates a new bundle. name, quantity, discount_type, and discount_value are required.  DISCOUNT VALUE UNITS — read carefully, this is the common mistake:   discount_type &#x3D; \&quot;percent\&quot;      → discount_value is a percentage 0–100 (e.g. 20 &#x3D; 20% off each unit).   discount_type &#x3D; \&quot;fixed\&quot;        → discount_value is DOLLARS off PER UNIT (e.g. 5 &#x3D; $5 off each).   discount_type &#x3D; \&quot;fixed_total\&quot;  → discount_value is the DOLLARS TOTAL for the whole set                                     (e.g. quantity&#x3D;4, discount_value&#x3D;77 → \&quot;any 4 for $77\&quot;).   For fixed and fixed_total, pass dollars (e.g. 77 or 77.00) — the tool stores cents internally.   For percent, pass the percentage (e.g. 20), NOT a fraction.  VARIATIONS:   variation_ids + variation_mode control which product variations the bundle applies to.   mode \&quot;replace\&quot; (default) sets membership to exactly variation_ids; \&quot;add\&quot; attaches them to the   existing set; \&quot;detach\&quot; removes them. Variations not owned by the tenant are ignored.   Omit variation_ids entirely to leave membership untouched.  SCHEDULE:   starts_at / ends_at are interpreted in the tenant&#39;s timezone and stored as UTC. Pass null/omit   for an always-on bundle.  Always call bundle_list first to get the bundle_id and confirm the current configuration.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\BundleUpsertRequest|null $bundle_upsert_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\BundleUpsertRequest|null $bundle_upsert_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bundleUpsert'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\BundleUpsert200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\BundleUpsert200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function bundleUpsertWithHttpInfo($bundle_upsert_request = null, string $contentType = self::contentTypes['bundleUpsert'][0])
     {
@@ -590,37 +590,37 @@ class WriteApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\BundleUpsert200Response',
+                        '\ShadowSoftware\DabDash\Model\BundleUpsert200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -642,7 +642,7 @@ class WriteApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\BundleUpsert200Response',
+                '\ShadowSoftware\DabDash\Model\BundleUpsert200Response',
                 $request,
                 $response,
             );
@@ -651,7 +651,7 @@ class WriteApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\BundleUpsert200Response',
+                        '\ShadowSoftware\DabDash\Model\BundleUpsert200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -659,7 +659,7 @@ class WriteApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -667,7 +667,7 @@ class WriteApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -675,7 +675,7 @@ class WriteApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -683,7 +683,7 @@ class WriteApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -691,7 +691,7 @@ class WriteApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -708,7 +708,7 @@ class WriteApi
      *
      * Create or update a bundle deal (mix &amp; match) on behalf of a tenant. Bundles are the live cart engine: a bundle fires when a cart holds at least &#x60;quantity&#x60; units across its attached variations.  UPDATE MODE (bundle_id provided):   Edits the bundle. Only the fields you pass are changed; omitted fields are left as-is.  CREATE MODE (no bundle_id):   Creates a new bundle. name, quantity, discount_type, and discount_value are required.  DISCOUNT VALUE UNITS — read carefully, this is the common mistake:   discount_type &#x3D; \&quot;percent\&quot;      → discount_value is a percentage 0–100 (e.g. 20 &#x3D; 20% off each unit).   discount_type &#x3D; \&quot;fixed\&quot;        → discount_value is DOLLARS off PER UNIT (e.g. 5 &#x3D; $5 off each).   discount_type &#x3D; \&quot;fixed_total\&quot;  → discount_value is the DOLLARS TOTAL for the whole set                                     (e.g. quantity&#x3D;4, discount_value&#x3D;77 → \&quot;any 4 for $77\&quot;).   For fixed and fixed_total, pass dollars (e.g. 77 or 77.00) — the tool stores cents internally.   For percent, pass the percentage (e.g. 20), NOT a fraction.  VARIATIONS:   variation_ids + variation_mode control which product variations the bundle applies to.   mode \&quot;replace\&quot; (default) sets membership to exactly variation_ids; \&quot;add\&quot; attaches them to the   existing set; \&quot;detach\&quot; removes them. Variations not owned by the tenant are ignored.   Omit variation_ids entirely to leave membership untouched.  SCHEDULE:   starts_at / ends_at are interpreted in the tenant&#39;s timezone and stored as UTC. Pass null/omit   for an always-on bundle.  Always call bundle_list first to get the bundle_id and confirm the current configuration.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\BundleUpsertRequest|null $bundle_upsert_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\BundleUpsertRequest|null $bundle_upsert_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bundleUpsert'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -729,7 +729,7 @@ class WriteApi
      *
      * Create or update a bundle deal (mix &amp; match) on behalf of a tenant. Bundles are the live cart engine: a bundle fires when a cart holds at least &#x60;quantity&#x60; units across its attached variations.  UPDATE MODE (bundle_id provided):   Edits the bundle. Only the fields you pass are changed; omitted fields are left as-is.  CREATE MODE (no bundle_id):   Creates a new bundle. name, quantity, discount_type, and discount_value are required.  DISCOUNT VALUE UNITS — read carefully, this is the common mistake:   discount_type &#x3D; \&quot;percent\&quot;      → discount_value is a percentage 0–100 (e.g. 20 &#x3D; 20% off each unit).   discount_type &#x3D; \&quot;fixed\&quot;        → discount_value is DOLLARS off PER UNIT (e.g. 5 &#x3D; $5 off each).   discount_type &#x3D; \&quot;fixed_total\&quot;  → discount_value is the DOLLARS TOTAL for the whole set                                     (e.g. quantity&#x3D;4, discount_value&#x3D;77 → \&quot;any 4 for $77\&quot;).   For fixed and fixed_total, pass dollars (e.g. 77 or 77.00) — the tool stores cents internally.   For percent, pass the percentage (e.g. 20), NOT a fraction.  VARIATIONS:   variation_ids + variation_mode control which product variations the bundle applies to.   mode \&quot;replace\&quot; (default) sets membership to exactly variation_ids; \&quot;add\&quot; attaches them to the   existing set; \&quot;detach\&quot; removes them. Variations not owned by the tenant are ignored.   Omit variation_ids entirely to leave membership untouched.  SCHEDULE:   starts_at / ends_at are interpreted in the tenant&#39;s timezone and stored as UTC. Pass null/omit   for an always-on bundle.  Always call bundle_list first to get the bundle_id and confirm the current configuration.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\BundleUpsertRequest|null $bundle_upsert_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\BundleUpsertRequest|null $bundle_upsert_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bundleUpsert'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -737,7 +737,7 @@ class WriteApi
      */
     public function bundleUpsertAsyncWithHttpInfo($bundle_upsert_request = null, string $contentType = self::contentTypes['bundleUpsert'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\BundleUpsert200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\BundleUpsert200Response';
         $request = $this->bundleUpsertRequest($bundle_upsert_request, $contentType);
 
         return $this->client
@@ -779,7 +779,7 @@ class WriteApi
     /**
      * Create request for operation 'bundleUpsert'
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\BundleUpsertRequest|null $bundle_upsert_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\BundleUpsertRequest|null $bundle_upsert_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bundleUpsert'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -874,12 +874,12 @@ class WriteApi
      *
      * Apply a built-in system email template to a DRAFT campaign, replacing its html_body with the rendered, tenant-branded design. This mirrors the \&quot;Choose template\&quot; action in the vendor admin.  The template is rendered with the tenant&#39;s own branding (theme colour, logo, name, address, phone), then sanitized and written to the campaign&#39;s html_body. The {{unsubscribe_url}} token is preserved. The design ships with placeholder copy ([Product name], $00, \&quot;Your headline here\&quot;, etc.) — after applying, use campaign_upsert to set the real html_body with this tenant&#39;s products, prices, and offers, or hand off to the vendor to fill in.  Only DRAFT campaigns can have a template applied. To discover valid template_id values, omit template_id (or pass an unknown one) and the tool returns the list of available templates.  Typical flow: campaign_upsert (create draft) → campaign_apply_template (lay down the design) → campaign_upsert (replace html_body with real data) → campaign_send_test (preview).
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CampaignApplyTemplateRequest|null $campaign_apply_template_request campaign_apply_template_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CampaignApplyTemplateRequest|null $campaign_apply_template_request campaign_apply_template_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignApplyTemplate'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\CampaignApplyTemplate200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\CampaignApplyTemplate200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function campaignApplyTemplate($campaign_apply_template_request = null, string $contentType = self::contentTypes['campaignApplyTemplate'][0])
     {
@@ -892,12 +892,12 @@ class WriteApi
      *
      * Apply a built-in system email template to a DRAFT campaign, replacing its html_body with the rendered, tenant-branded design. This mirrors the \&quot;Choose template\&quot; action in the vendor admin.  The template is rendered with the tenant&#39;s own branding (theme colour, logo, name, address, phone), then sanitized and written to the campaign&#39;s html_body. The {{unsubscribe_url}} token is preserved. The design ships with placeholder copy ([Product name], $00, \&quot;Your headline here\&quot;, etc.) — after applying, use campaign_upsert to set the real html_body with this tenant&#39;s products, prices, and offers, or hand off to the vendor to fill in.  Only DRAFT campaigns can have a template applied. To discover valid template_id values, omit template_id (or pass an unknown one) and the tool returns the list of available templates.  Typical flow: campaign_upsert (create draft) → campaign_apply_template (lay down the design) → campaign_upsert (replace html_body with real data) → campaign_send_test (preview).
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CampaignApplyTemplateRequest|null $campaign_apply_template_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CampaignApplyTemplateRequest|null $campaign_apply_template_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignApplyTemplate'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\CampaignApplyTemplate200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\CampaignApplyTemplate200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function campaignApplyTemplateWithHttpInfo($campaign_apply_template_request = null, string $contentType = self::contentTypes['campaignApplyTemplate'][0])
     {
@@ -929,37 +929,37 @@ class WriteApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\CampaignApplyTemplate200Response',
+                        '\ShadowSoftware\DabDash\Model\CampaignApplyTemplate200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -981,7 +981,7 @@ class WriteApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\CampaignApplyTemplate200Response',
+                '\ShadowSoftware\DabDash\Model\CampaignApplyTemplate200Response',
                 $request,
                 $response,
             );
@@ -990,7 +990,7 @@ class WriteApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\CampaignApplyTemplate200Response',
+                        '\ShadowSoftware\DabDash\Model\CampaignApplyTemplate200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -998,7 +998,7 @@ class WriteApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1006,7 +1006,7 @@ class WriteApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1014,7 +1014,7 @@ class WriteApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1022,7 +1022,7 @@ class WriteApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1030,7 +1030,7 @@ class WriteApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1047,7 +1047,7 @@ class WriteApi
      *
      * Apply a built-in system email template to a DRAFT campaign, replacing its html_body with the rendered, tenant-branded design. This mirrors the \&quot;Choose template\&quot; action in the vendor admin.  The template is rendered with the tenant&#39;s own branding (theme colour, logo, name, address, phone), then sanitized and written to the campaign&#39;s html_body. The {{unsubscribe_url}} token is preserved. The design ships with placeholder copy ([Product name], $00, \&quot;Your headline here\&quot;, etc.) — after applying, use campaign_upsert to set the real html_body with this tenant&#39;s products, prices, and offers, or hand off to the vendor to fill in.  Only DRAFT campaigns can have a template applied. To discover valid template_id values, omit template_id (or pass an unknown one) and the tool returns the list of available templates.  Typical flow: campaign_upsert (create draft) → campaign_apply_template (lay down the design) → campaign_upsert (replace html_body with real data) → campaign_send_test (preview).
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CampaignApplyTemplateRequest|null $campaign_apply_template_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CampaignApplyTemplateRequest|null $campaign_apply_template_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignApplyTemplate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1068,7 +1068,7 @@ class WriteApi
      *
      * Apply a built-in system email template to a DRAFT campaign, replacing its html_body with the rendered, tenant-branded design. This mirrors the \&quot;Choose template\&quot; action in the vendor admin.  The template is rendered with the tenant&#39;s own branding (theme colour, logo, name, address, phone), then sanitized and written to the campaign&#39;s html_body. The {{unsubscribe_url}} token is preserved. The design ships with placeholder copy ([Product name], $00, \&quot;Your headline here\&quot;, etc.) — after applying, use campaign_upsert to set the real html_body with this tenant&#39;s products, prices, and offers, or hand off to the vendor to fill in.  Only DRAFT campaigns can have a template applied. To discover valid template_id values, omit template_id (or pass an unknown one) and the tool returns the list of available templates.  Typical flow: campaign_upsert (create draft) → campaign_apply_template (lay down the design) → campaign_upsert (replace html_body with real data) → campaign_send_test (preview).
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CampaignApplyTemplateRequest|null $campaign_apply_template_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CampaignApplyTemplateRequest|null $campaign_apply_template_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignApplyTemplate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1076,7 +1076,7 @@ class WriteApi
      */
     public function campaignApplyTemplateAsyncWithHttpInfo($campaign_apply_template_request = null, string $contentType = self::contentTypes['campaignApplyTemplate'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\CampaignApplyTemplate200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\CampaignApplyTemplate200Response';
         $request = $this->campaignApplyTemplateRequest($campaign_apply_template_request, $contentType);
 
         return $this->client
@@ -1118,7 +1118,7 @@ class WriteApi
     /**
      * Create request for operation 'campaignApplyTemplate'
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CampaignApplyTemplateRequest|null $campaign_apply_template_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CampaignApplyTemplateRequest|null $campaign_apply_template_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignApplyTemplate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1213,12 +1213,12 @@ class WriteApi
      *
      * Pause or resume a vendor email/SMS campaign.  pause: sets status&#x3D;paused with paused_reason&#x3D;manual. Works from sending or recovering. Pending recipients stay pending; the dispatcher skips this campaign so sibling sending campaigns can use the shared throttle.  resume: from paused → sending (clears pause fields). From recovering → sending and requeues transport-failed recipients (same as auto-resume after a healthy webhook health check).  dry_run defaults TRUE. Always confirm tenant_slug and campaign_id first.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CampaignControlRequest|null $campaign_control_request campaign_control_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CampaignControlRequest|null $campaign_control_request campaign_control_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignControl'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\CampaignControl200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\CampaignControl200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function campaignControl($campaign_control_request = null, string $contentType = self::contentTypes['campaignControl'][0])
     {
@@ -1231,12 +1231,12 @@ class WriteApi
      *
      * Pause or resume a vendor email/SMS campaign.  pause: sets status&#x3D;paused with paused_reason&#x3D;manual. Works from sending or recovering. Pending recipients stay pending; the dispatcher skips this campaign so sibling sending campaigns can use the shared throttle.  resume: from paused → sending (clears pause fields). From recovering → sending and requeues transport-failed recipients (same as auto-resume after a healthy webhook health check).  dry_run defaults TRUE. Always confirm tenant_slug and campaign_id first.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CampaignControlRequest|null $campaign_control_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CampaignControlRequest|null $campaign_control_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignControl'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\CampaignControl200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\CampaignControl200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function campaignControlWithHttpInfo($campaign_control_request = null, string $contentType = self::contentTypes['campaignControl'][0])
     {
@@ -1268,37 +1268,37 @@ class WriteApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\CampaignControl200Response',
+                        '\ShadowSoftware\DabDash\Model\CampaignControl200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -1320,7 +1320,7 @@ class WriteApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\CampaignControl200Response',
+                '\ShadowSoftware\DabDash\Model\CampaignControl200Response',
                 $request,
                 $response,
             );
@@ -1329,7 +1329,7 @@ class WriteApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\CampaignControl200Response',
+                        '\ShadowSoftware\DabDash\Model\CampaignControl200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1337,7 +1337,7 @@ class WriteApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1345,7 +1345,7 @@ class WriteApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1353,7 +1353,7 @@ class WriteApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1361,7 +1361,7 @@ class WriteApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1369,7 +1369,7 @@ class WriteApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1386,7 +1386,7 @@ class WriteApi
      *
      * Pause or resume a vendor email/SMS campaign.  pause: sets status&#x3D;paused with paused_reason&#x3D;manual. Works from sending or recovering. Pending recipients stay pending; the dispatcher skips this campaign so sibling sending campaigns can use the shared throttle.  resume: from paused → sending (clears pause fields). From recovering → sending and requeues transport-failed recipients (same as auto-resume after a healthy webhook health check).  dry_run defaults TRUE. Always confirm tenant_slug and campaign_id first.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CampaignControlRequest|null $campaign_control_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CampaignControlRequest|null $campaign_control_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignControl'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1407,7 +1407,7 @@ class WriteApi
      *
      * Pause or resume a vendor email/SMS campaign.  pause: sets status&#x3D;paused with paused_reason&#x3D;manual. Works from sending or recovering. Pending recipients stay pending; the dispatcher skips this campaign so sibling sending campaigns can use the shared throttle.  resume: from paused → sending (clears pause fields). From recovering → sending and requeues transport-failed recipients (same as auto-resume after a healthy webhook health check).  dry_run defaults TRUE. Always confirm tenant_slug and campaign_id first.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CampaignControlRequest|null $campaign_control_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CampaignControlRequest|null $campaign_control_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignControl'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1415,7 +1415,7 @@ class WriteApi
      */
     public function campaignControlAsyncWithHttpInfo($campaign_control_request = null, string $contentType = self::contentTypes['campaignControl'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\CampaignControl200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\CampaignControl200Response';
         $request = $this->campaignControlRequest($campaign_control_request, $contentType);
 
         return $this->client
@@ -1457,7 +1457,7 @@ class WriteApi
     /**
      * Create request for operation 'campaignControl'
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CampaignControlRequest|null $campaign_control_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CampaignControlRequest|null $campaign_control_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignControl'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1552,12 +1552,12 @@ class WriteApi
      *
      * Unstick a vendor email/SMS campaign that auto-paused or stalled mid-send.  Resets failed recipients (and optionally stale \&quot;sending\&quot; rows) back to pending, clears webhook_consecutive_failures / paused_reason / last_error, and sets the campaign status to sending so the dispatcher continues. Already-sent recipients are never touched.  Pass retry_sending_log_errors&#x3D;true to retry every recipient that appears in the campaign sending log with a retryable error (502/timeout/SMTP soft fail, etc.). Those jobs dispatch immediately (up to dispatch_limit) so they are not stuck behind a large pending queue. The log rows stay — they are diagnostic history.  Use when a webhook campaign froze after consecutive endpoint errors (or soft SMTP failures that were misclassified before the soft-fail fix) and pending + failed recipients remain.  dry_run defaults to TRUE — first call reports counts only. Pass dry_run&#x3D;false to apply. Always confirm tenant_slug with tenant_list and campaign_id with the vendor.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CampaignRecipientsRequeueRequest|null $campaign_recipients_requeue_request campaign_recipients_requeue_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CampaignRecipientsRequeueRequest|null $campaign_recipients_requeue_request campaign_recipients_requeue_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignRecipientsRequeue'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\CampaignRecipientsRequeue200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\CampaignRecipientsRequeue200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function campaignRecipientsRequeue($campaign_recipients_requeue_request = null, string $contentType = self::contentTypes['campaignRecipientsRequeue'][0])
     {
@@ -1570,12 +1570,12 @@ class WriteApi
      *
      * Unstick a vendor email/SMS campaign that auto-paused or stalled mid-send.  Resets failed recipients (and optionally stale \&quot;sending\&quot; rows) back to pending, clears webhook_consecutive_failures / paused_reason / last_error, and sets the campaign status to sending so the dispatcher continues. Already-sent recipients are never touched.  Pass retry_sending_log_errors&#x3D;true to retry every recipient that appears in the campaign sending log with a retryable error (502/timeout/SMTP soft fail, etc.). Those jobs dispatch immediately (up to dispatch_limit) so they are not stuck behind a large pending queue. The log rows stay — they are diagnostic history.  Use when a webhook campaign froze after consecutive endpoint errors (or soft SMTP failures that were misclassified before the soft-fail fix) and pending + failed recipients remain.  dry_run defaults to TRUE — first call reports counts only. Pass dry_run&#x3D;false to apply. Always confirm tenant_slug with tenant_list and campaign_id with the vendor.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CampaignRecipientsRequeueRequest|null $campaign_recipients_requeue_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CampaignRecipientsRequeueRequest|null $campaign_recipients_requeue_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignRecipientsRequeue'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\CampaignRecipientsRequeue200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\CampaignRecipientsRequeue200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function campaignRecipientsRequeueWithHttpInfo($campaign_recipients_requeue_request = null, string $contentType = self::contentTypes['campaignRecipientsRequeue'][0])
     {
@@ -1607,37 +1607,37 @@ class WriteApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\CampaignRecipientsRequeue200Response',
+                        '\ShadowSoftware\DabDash\Model\CampaignRecipientsRequeue200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -1659,7 +1659,7 @@ class WriteApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\CampaignRecipientsRequeue200Response',
+                '\ShadowSoftware\DabDash\Model\CampaignRecipientsRequeue200Response',
                 $request,
                 $response,
             );
@@ -1668,7 +1668,7 @@ class WriteApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\CampaignRecipientsRequeue200Response',
+                        '\ShadowSoftware\DabDash\Model\CampaignRecipientsRequeue200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1676,7 +1676,7 @@ class WriteApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1684,7 +1684,7 @@ class WriteApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1692,7 +1692,7 @@ class WriteApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1700,7 +1700,7 @@ class WriteApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1708,7 +1708,7 @@ class WriteApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1725,7 +1725,7 @@ class WriteApi
      *
      * Unstick a vendor email/SMS campaign that auto-paused or stalled mid-send.  Resets failed recipients (and optionally stale \&quot;sending\&quot; rows) back to pending, clears webhook_consecutive_failures / paused_reason / last_error, and sets the campaign status to sending so the dispatcher continues. Already-sent recipients are never touched.  Pass retry_sending_log_errors&#x3D;true to retry every recipient that appears in the campaign sending log with a retryable error (502/timeout/SMTP soft fail, etc.). Those jobs dispatch immediately (up to dispatch_limit) so they are not stuck behind a large pending queue. The log rows stay — they are diagnostic history.  Use when a webhook campaign froze after consecutive endpoint errors (or soft SMTP failures that were misclassified before the soft-fail fix) and pending + failed recipients remain.  dry_run defaults to TRUE — first call reports counts only. Pass dry_run&#x3D;false to apply. Always confirm tenant_slug with tenant_list and campaign_id with the vendor.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CampaignRecipientsRequeueRequest|null $campaign_recipients_requeue_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CampaignRecipientsRequeueRequest|null $campaign_recipients_requeue_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignRecipientsRequeue'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1746,7 +1746,7 @@ class WriteApi
      *
      * Unstick a vendor email/SMS campaign that auto-paused or stalled mid-send.  Resets failed recipients (and optionally stale \&quot;sending\&quot; rows) back to pending, clears webhook_consecutive_failures / paused_reason / last_error, and sets the campaign status to sending so the dispatcher continues. Already-sent recipients are never touched.  Pass retry_sending_log_errors&#x3D;true to retry every recipient that appears in the campaign sending log with a retryable error (502/timeout/SMTP soft fail, etc.). Those jobs dispatch immediately (up to dispatch_limit) so they are not stuck behind a large pending queue. The log rows stay — they are diagnostic history.  Use when a webhook campaign froze after consecutive endpoint errors (or soft SMTP failures that were misclassified before the soft-fail fix) and pending + failed recipients remain.  dry_run defaults to TRUE — first call reports counts only. Pass dry_run&#x3D;false to apply. Always confirm tenant_slug with tenant_list and campaign_id with the vendor.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CampaignRecipientsRequeueRequest|null $campaign_recipients_requeue_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CampaignRecipientsRequeueRequest|null $campaign_recipients_requeue_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignRecipientsRequeue'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1754,7 +1754,7 @@ class WriteApi
      */
     public function campaignRecipientsRequeueAsyncWithHttpInfo($campaign_recipients_requeue_request = null, string $contentType = self::contentTypes['campaignRecipientsRequeue'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\CampaignRecipientsRequeue200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\CampaignRecipientsRequeue200Response';
         $request = $this->campaignRecipientsRequeueRequest($campaign_recipients_requeue_request, $contentType);
 
         return $this->client
@@ -1796,7 +1796,7 @@ class WriteApi
     /**
      * Create request for operation 'campaignRecipientsRequeue'
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CampaignRecipientsRequeueRequest|null $campaign_recipients_requeue_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CampaignRecipientsRequeueRequest|null $campaign_recipients_requeue_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignRecipientsRequeue'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1891,12 +1891,12 @@ class WriteApi
      *
      * Send a single test copy of a campaign so the design and copy can be reviewed before the real send.  Email campaigns go out through the tenant&#39;s own SMTP settings — exactly the path a real send uses. Pass to_email. Requires complete SMTP settings.  Text (SMS) campaigns go out through the tenant&#39;s connected Twilio account. Pass to_phone instead of to_email. Requires Twilio to be connected.  This is a preview only: it does NOT start the campaign, does NOT touch the audience, and does NOT record any send/open/click stats. Personalization tokens render with sample values; unsubscribe links point at harmless test URLs.  Works on a campaign in any status (a draft preview is the common case). Always confirm the campaign_id with the vendor first.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CampaignSendTestRequest|null $campaign_send_test_request campaign_send_test_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CampaignSendTestRequest|null $campaign_send_test_request campaign_send_test_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignSendTest'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\CampaignSendTest200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\CampaignSendTest200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function campaignSendTest($campaign_send_test_request = null, string $contentType = self::contentTypes['campaignSendTest'][0])
     {
@@ -1909,12 +1909,12 @@ class WriteApi
      *
      * Send a single test copy of a campaign so the design and copy can be reviewed before the real send.  Email campaigns go out through the tenant&#39;s own SMTP settings — exactly the path a real send uses. Pass to_email. Requires complete SMTP settings.  Text (SMS) campaigns go out through the tenant&#39;s connected Twilio account. Pass to_phone instead of to_email. Requires Twilio to be connected.  This is a preview only: it does NOT start the campaign, does NOT touch the audience, and does NOT record any send/open/click stats. Personalization tokens render with sample values; unsubscribe links point at harmless test URLs.  Works on a campaign in any status (a draft preview is the common case). Always confirm the campaign_id with the vendor first.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CampaignSendTestRequest|null $campaign_send_test_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CampaignSendTestRequest|null $campaign_send_test_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignSendTest'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\CampaignSendTest200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\CampaignSendTest200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function campaignSendTestWithHttpInfo($campaign_send_test_request = null, string $contentType = self::contentTypes['campaignSendTest'][0])
     {
@@ -1946,37 +1946,37 @@ class WriteApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\CampaignSendTest200Response',
+                        '\ShadowSoftware\DabDash\Model\CampaignSendTest200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -1998,7 +1998,7 @@ class WriteApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\CampaignSendTest200Response',
+                '\ShadowSoftware\DabDash\Model\CampaignSendTest200Response',
                 $request,
                 $response,
             );
@@ -2007,7 +2007,7 @@ class WriteApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\CampaignSendTest200Response',
+                        '\ShadowSoftware\DabDash\Model\CampaignSendTest200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2015,7 +2015,7 @@ class WriteApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2023,7 +2023,7 @@ class WriteApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2031,7 +2031,7 @@ class WriteApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2039,7 +2039,7 @@ class WriteApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2047,7 +2047,7 @@ class WriteApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2064,7 +2064,7 @@ class WriteApi
      *
      * Send a single test copy of a campaign so the design and copy can be reviewed before the real send.  Email campaigns go out through the tenant&#39;s own SMTP settings — exactly the path a real send uses. Pass to_email. Requires complete SMTP settings.  Text (SMS) campaigns go out through the tenant&#39;s connected Twilio account. Pass to_phone instead of to_email. Requires Twilio to be connected.  This is a preview only: it does NOT start the campaign, does NOT touch the audience, and does NOT record any send/open/click stats. Personalization tokens render with sample values; unsubscribe links point at harmless test URLs.  Works on a campaign in any status (a draft preview is the common case). Always confirm the campaign_id with the vendor first.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CampaignSendTestRequest|null $campaign_send_test_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CampaignSendTestRequest|null $campaign_send_test_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignSendTest'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2085,7 +2085,7 @@ class WriteApi
      *
      * Send a single test copy of a campaign so the design and copy can be reviewed before the real send.  Email campaigns go out through the tenant&#39;s own SMTP settings — exactly the path a real send uses. Pass to_email. Requires complete SMTP settings.  Text (SMS) campaigns go out through the tenant&#39;s connected Twilio account. Pass to_phone instead of to_email. Requires Twilio to be connected.  This is a preview only: it does NOT start the campaign, does NOT touch the audience, and does NOT record any send/open/click stats. Personalization tokens render with sample values; unsubscribe links point at harmless test URLs.  Works on a campaign in any status (a draft preview is the common case). Always confirm the campaign_id with the vendor first.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CampaignSendTestRequest|null $campaign_send_test_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CampaignSendTestRequest|null $campaign_send_test_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignSendTest'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2093,7 +2093,7 @@ class WriteApi
      */
     public function campaignSendTestAsyncWithHttpInfo($campaign_send_test_request = null, string $contentType = self::contentTypes['campaignSendTest'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\CampaignSendTest200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\CampaignSendTest200Response';
         $request = $this->campaignSendTestRequest($campaign_send_test_request, $contentType);
 
         return $this->client
@@ -2135,7 +2135,7 @@ class WriteApi
     /**
      * Create request for operation 'campaignSendTest'
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CampaignSendTestRequest|null $campaign_send_test_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CampaignSendTestRequest|null $campaign_send_test_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignSendTest'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2230,12 +2230,12 @@ class WriteApi
      *
      * Drop an image from the tenant&#39;s media library into a DRAFT campaign — no link copying, no manual HTML. Give it a campaign_id and a media_id (from the tenant&#39;s own library) and it fills an image placeholder in the campaign body with that image, using the library image&#39;s own public URL and alt text. The URL is on the tenant&#39;s public disk, so it passes the campaign HTML sanitizer untouched and renders in email clients.  WHICH SLOT IT FILLS:   System templates render image placeholders labelled \&quot;Add image\&quot;. By default this tool fills the   FIRST remaining placeholder. Pass slot_index (1-based) to target a specific placeholder when a   template has more than one. If the body has no placeholder left, the image is appended at the end.  REQUIREMENTS:   - The campaign must be a DRAFT and belong to the tenant.   - The media asset must belong to the tenant and be public (private assets have no shareable URL).  Typical flow: campaign_upsert (create) → campaign_apply_template (design with placeholders) → campaign_set_image (fill each placeholder) → campaign_upsert (real copy) → campaign_send_test.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CampaignSetImageRequest|null $campaign_set_image_request campaign_set_image_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CampaignSetImageRequest|null $campaign_set_image_request campaign_set_image_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignSetImage'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\CampaignSetImage200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\CampaignSetImage200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function campaignSetImage($campaign_set_image_request = null, string $contentType = self::contentTypes['campaignSetImage'][0])
     {
@@ -2248,12 +2248,12 @@ class WriteApi
      *
      * Drop an image from the tenant&#39;s media library into a DRAFT campaign — no link copying, no manual HTML. Give it a campaign_id and a media_id (from the tenant&#39;s own library) and it fills an image placeholder in the campaign body with that image, using the library image&#39;s own public URL and alt text. The URL is on the tenant&#39;s public disk, so it passes the campaign HTML sanitizer untouched and renders in email clients.  WHICH SLOT IT FILLS:   System templates render image placeholders labelled \&quot;Add image\&quot;. By default this tool fills the   FIRST remaining placeholder. Pass slot_index (1-based) to target a specific placeholder when a   template has more than one. If the body has no placeholder left, the image is appended at the end.  REQUIREMENTS:   - The campaign must be a DRAFT and belong to the tenant.   - The media asset must belong to the tenant and be public (private assets have no shareable URL).  Typical flow: campaign_upsert (create) → campaign_apply_template (design with placeholders) → campaign_set_image (fill each placeholder) → campaign_upsert (real copy) → campaign_send_test.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CampaignSetImageRequest|null $campaign_set_image_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CampaignSetImageRequest|null $campaign_set_image_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignSetImage'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\CampaignSetImage200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\CampaignSetImage200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function campaignSetImageWithHttpInfo($campaign_set_image_request = null, string $contentType = self::contentTypes['campaignSetImage'][0])
     {
@@ -2285,37 +2285,37 @@ class WriteApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\CampaignSetImage200Response',
+                        '\ShadowSoftware\DabDash\Model\CampaignSetImage200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -2337,7 +2337,7 @@ class WriteApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\CampaignSetImage200Response',
+                '\ShadowSoftware\DabDash\Model\CampaignSetImage200Response',
                 $request,
                 $response,
             );
@@ -2346,7 +2346,7 @@ class WriteApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\CampaignSetImage200Response',
+                        '\ShadowSoftware\DabDash\Model\CampaignSetImage200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2354,7 +2354,7 @@ class WriteApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2362,7 +2362,7 @@ class WriteApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2370,7 +2370,7 @@ class WriteApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2378,7 +2378,7 @@ class WriteApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2386,7 +2386,7 @@ class WriteApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2403,7 +2403,7 @@ class WriteApi
      *
      * Drop an image from the tenant&#39;s media library into a DRAFT campaign — no link copying, no manual HTML. Give it a campaign_id and a media_id (from the tenant&#39;s own library) and it fills an image placeholder in the campaign body with that image, using the library image&#39;s own public URL and alt text. The URL is on the tenant&#39;s public disk, so it passes the campaign HTML sanitizer untouched and renders in email clients.  WHICH SLOT IT FILLS:   System templates render image placeholders labelled \&quot;Add image\&quot;. By default this tool fills the   FIRST remaining placeholder. Pass slot_index (1-based) to target a specific placeholder when a   template has more than one. If the body has no placeholder left, the image is appended at the end.  REQUIREMENTS:   - The campaign must be a DRAFT and belong to the tenant.   - The media asset must belong to the tenant and be public (private assets have no shareable URL).  Typical flow: campaign_upsert (create) → campaign_apply_template (design with placeholders) → campaign_set_image (fill each placeholder) → campaign_upsert (real copy) → campaign_send_test.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CampaignSetImageRequest|null $campaign_set_image_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CampaignSetImageRequest|null $campaign_set_image_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignSetImage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2424,7 +2424,7 @@ class WriteApi
      *
      * Drop an image from the tenant&#39;s media library into a DRAFT campaign — no link copying, no manual HTML. Give it a campaign_id and a media_id (from the tenant&#39;s own library) and it fills an image placeholder in the campaign body with that image, using the library image&#39;s own public URL and alt text. The URL is on the tenant&#39;s public disk, so it passes the campaign HTML sanitizer untouched and renders in email clients.  WHICH SLOT IT FILLS:   System templates render image placeholders labelled \&quot;Add image\&quot;. By default this tool fills the   FIRST remaining placeholder. Pass slot_index (1-based) to target a specific placeholder when a   template has more than one. If the body has no placeholder left, the image is appended at the end.  REQUIREMENTS:   - The campaign must be a DRAFT and belong to the tenant.   - The media asset must belong to the tenant and be public (private assets have no shareable URL).  Typical flow: campaign_upsert (create) → campaign_apply_template (design with placeholders) → campaign_set_image (fill each placeholder) → campaign_upsert (real copy) → campaign_send_test.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CampaignSetImageRequest|null $campaign_set_image_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CampaignSetImageRequest|null $campaign_set_image_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignSetImage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2432,7 +2432,7 @@ class WriteApi
      */
     public function campaignSetImageAsyncWithHttpInfo($campaign_set_image_request = null, string $contentType = self::contentTypes['campaignSetImage'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\CampaignSetImage200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\CampaignSetImage200Response';
         $request = $this->campaignSetImageRequest($campaign_set_image_request, $contentType);
 
         return $this->client
@@ -2474,7 +2474,7 @@ class WriteApi
     /**
      * Create request for operation 'campaignSetImage'
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CampaignSetImageRequest|null $campaign_set_image_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CampaignSetImageRequest|null $campaign_set_image_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignSetImage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2569,12 +2569,12 @@ class WriteApi
      *
      * Create or edit a vendor email campaign on behalf of a tenant. This is the vendor → their-customers campaign universe (NOT the platform drip-to-leads system). Completed campaigns cannot be edited.  CREATE MODE (no campaign_id):   Creates a new draft. For email campaigns, &#x60;name&#x60; and &#x60;subject&#x60; are required; &#x60;html_body&#x60; is optional   on create — omit it to start blank and apply a system template afterwards with campaign_apply_template.   For text (SMS) campaigns, set channel to \&quot;sms\&quot; and pass &#x60;sms_body&#x60; (name required). Twilio must be   connected on the tenant.  UPDATE MODE (campaign_id provided):   Edits an existing campaign. Only the fields you pass are changed; omitted fields are left as-is.   Drafts accept all fields. Sending or paused campaigns accept content fields only — for email that is   name, subject, html_body, plain_body; for text that is name and sms_body. Sending campaigns keep   running and unreached recipients get the latest version. Scheduled, cancelled, and failed campaigns   must be edited from the vendor admin.  HTML BODY (email only):   Pass the full email HTML in &#x60;html_body&#x60;. It is sanitized exactly like the vendor admin editor:   a full document (&lt;!DOCTYPE …&gt; / &lt;html&gt;) keeps its table-based structure; a fragment is run   through the stricter inline allowlist. Use the literal token {{unsubscribe_url}} where the   unsubscribe link should appear — it is replaced per-recipient at send time and a List-Unsubscribe   header is added automatically. Personalization tokens {{first_name}} and {{last_name}} are also   replaced at send time.  SMS BODY (text only):   Pass the message in &#x60;sms_body&#x60; (max 1600 chars). Tokens {{first_name}} and {{last_name}} are   replaced at send time. Text campaigns only target opted-in shop customers.  AUDIENCE / MODE (email only):   mode is \&quot;smtp\&quot; (default) or \&quot;webhook\&quot;. audience_includes_customers (default true) targets the   tenant&#39;s own customers. This tool does not send anything — use campaign_send_test to preview,   then the vendor sends from the admin.  Always confirm the tenant_slug with tenant_list first. To populate a draft from a built-in design, create it here, then call campaign_apply_template.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CampaignUpsertRequest|null $campaign_upsert_request campaign_upsert_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CampaignUpsertRequest|null $campaign_upsert_request campaign_upsert_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignUpsert'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\CampaignUpsert200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\CampaignUpsert200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function campaignUpsert($campaign_upsert_request = null, string $contentType = self::contentTypes['campaignUpsert'][0])
     {
@@ -2587,12 +2587,12 @@ class WriteApi
      *
      * Create or edit a vendor email campaign on behalf of a tenant. This is the vendor → their-customers campaign universe (NOT the platform drip-to-leads system). Completed campaigns cannot be edited.  CREATE MODE (no campaign_id):   Creates a new draft. For email campaigns, &#x60;name&#x60; and &#x60;subject&#x60; are required; &#x60;html_body&#x60; is optional   on create — omit it to start blank and apply a system template afterwards with campaign_apply_template.   For text (SMS) campaigns, set channel to \&quot;sms\&quot; and pass &#x60;sms_body&#x60; (name required). Twilio must be   connected on the tenant.  UPDATE MODE (campaign_id provided):   Edits an existing campaign. Only the fields you pass are changed; omitted fields are left as-is.   Drafts accept all fields. Sending or paused campaigns accept content fields only — for email that is   name, subject, html_body, plain_body; for text that is name and sms_body. Sending campaigns keep   running and unreached recipients get the latest version. Scheduled, cancelled, and failed campaigns   must be edited from the vendor admin.  HTML BODY (email only):   Pass the full email HTML in &#x60;html_body&#x60;. It is sanitized exactly like the vendor admin editor:   a full document (&lt;!DOCTYPE …&gt; / &lt;html&gt;) keeps its table-based structure; a fragment is run   through the stricter inline allowlist. Use the literal token {{unsubscribe_url}} where the   unsubscribe link should appear — it is replaced per-recipient at send time and a List-Unsubscribe   header is added automatically. Personalization tokens {{first_name}} and {{last_name}} are also   replaced at send time.  SMS BODY (text only):   Pass the message in &#x60;sms_body&#x60; (max 1600 chars). Tokens {{first_name}} and {{last_name}} are   replaced at send time. Text campaigns only target opted-in shop customers.  AUDIENCE / MODE (email only):   mode is \&quot;smtp\&quot; (default) or \&quot;webhook\&quot;. audience_includes_customers (default true) targets the   tenant&#39;s own customers. This tool does not send anything — use campaign_send_test to preview,   then the vendor sends from the admin.  Always confirm the tenant_slug with tenant_list first. To populate a draft from a built-in design, create it here, then call campaign_apply_template.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CampaignUpsertRequest|null $campaign_upsert_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CampaignUpsertRequest|null $campaign_upsert_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignUpsert'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\CampaignUpsert200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\CampaignUpsert200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function campaignUpsertWithHttpInfo($campaign_upsert_request = null, string $contentType = self::contentTypes['campaignUpsert'][0])
     {
@@ -2624,37 +2624,37 @@ class WriteApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\CampaignUpsert200Response',
+                        '\ShadowSoftware\DabDash\Model\CampaignUpsert200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -2676,7 +2676,7 @@ class WriteApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\CampaignUpsert200Response',
+                '\ShadowSoftware\DabDash\Model\CampaignUpsert200Response',
                 $request,
                 $response,
             );
@@ -2685,7 +2685,7 @@ class WriteApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\CampaignUpsert200Response',
+                        '\ShadowSoftware\DabDash\Model\CampaignUpsert200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2693,7 +2693,7 @@ class WriteApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2701,7 +2701,7 @@ class WriteApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2709,7 +2709,7 @@ class WriteApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2717,7 +2717,7 @@ class WriteApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2725,7 +2725,7 @@ class WriteApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2742,7 +2742,7 @@ class WriteApi
      *
      * Create or edit a vendor email campaign on behalf of a tenant. This is the vendor → their-customers campaign universe (NOT the platform drip-to-leads system). Completed campaigns cannot be edited.  CREATE MODE (no campaign_id):   Creates a new draft. For email campaigns, &#x60;name&#x60; and &#x60;subject&#x60; are required; &#x60;html_body&#x60; is optional   on create — omit it to start blank and apply a system template afterwards with campaign_apply_template.   For text (SMS) campaigns, set channel to \&quot;sms\&quot; and pass &#x60;sms_body&#x60; (name required). Twilio must be   connected on the tenant.  UPDATE MODE (campaign_id provided):   Edits an existing campaign. Only the fields you pass are changed; omitted fields are left as-is.   Drafts accept all fields. Sending or paused campaigns accept content fields only — for email that is   name, subject, html_body, plain_body; for text that is name and sms_body. Sending campaigns keep   running and unreached recipients get the latest version. Scheduled, cancelled, and failed campaigns   must be edited from the vendor admin.  HTML BODY (email only):   Pass the full email HTML in &#x60;html_body&#x60;. It is sanitized exactly like the vendor admin editor:   a full document (&lt;!DOCTYPE …&gt; / &lt;html&gt;) keeps its table-based structure; a fragment is run   through the stricter inline allowlist. Use the literal token {{unsubscribe_url}} where the   unsubscribe link should appear — it is replaced per-recipient at send time and a List-Unsubscribe   header is added automatically. Personalization tokens {{first_name}} and {{last_name}} are also   replaced at send time.  SMS BODY (text only):   Pass the message in &#x60;sms_body&#x60; (max 1600 chars). Tokens {{first_name}} and {{last_name}} are   replaced at send time. Text campaigns only target opted-in shop customers.  AUDIENCE / MODE (email only):   mode is \&quot;smtp\&quot; (default) or \&quot;webhook\&quot;. audience_includes_customers (default true) targets the   tenant&#39;s own customers. This tool does not send anything — use campaign_send_test to preview,   then the vendor sends from the admin.  Always confirm the tenant_slug with tenant_list first. To populate a draft from a built-in design, create it here, then call campaign_apply_template.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CampaignUpsertRequest|null $campaign_upsert_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CampaignUpsertRequest|null $campaign_upsert_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignUpsert'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2763,7 +2763,7 @@ class WriteApi
      *
      * Create or edit a vendor email campaign on behalf of a tenant. This is the vendor → their-customers campaign universe (NOT the platform drip-to-leads system). Completed campaigns cannot be edited.  CREATE MODE (no campaign_id):   Creates a new draft. For email campaigns, &#x60;name&#x60; and &#x60;subject&#x60; are required; &#x60;html_body&#x60; is optional   on create — omit it to start blank and apply a system template afterwards with campaign_apply_template.   For text (SMS) campaigns, set channel to \&quot;sms\&quot; and pass &#x60;sms_body&#x60; (name required). Twilio must be   connected on the tenant.  UPDATE MODE (campaign_id provided):   Edits an existing campaign. Only the fields you pass are changed; omitted fields are left as-is.   Drafts accept all fields. Sending or paused campaigns accept content fields only — for email that is   name, subject, html_body, plain_body; for text that is name and sms_body. Sending campaigns keep   running and unreached recipients get the latest version. Scheduled, cancelled, and failed campaigns   must be edited from the vendor admin.  HTML BODY (email only):   Pass the full email HTML in &#x60;html_body&#x60;. It is sanitized exactly like the vendor admin editor:   a full document (&lt;!DOCTYPE …&gt; / &lt;html&gt;) keeps its table-based structure; a fragment is run   through the stricter inline allowlist. Use the literal token {{unsubscribe_url}} where the   unsubscribe link should appear — it is replaced per-recipient at send time and a List-Unsubscribe   header is added automatically. Personalization tokens {{first_name}} and {{last_name}} are also   replaced at send time.  SMS BODY (text only):   Pass the message in &#x60;sms_body&#x60; (max 1600 chars). Tokens {{first_name}} and {{last_name}} are   replaced at send time. Text campaigns only target opted-in shop customers.  AUDIENCE / MODE (email only):   mode is \&quot;smtp\&quot; (default) or \&quot;webhook\&quot;. audience_includes_customers (default true) targets the   tenant&#39;s own customers. This tool does not send anything — use campaign_send_test to preview,   then the vendor sends from the admin.  Always confirm the tenant_slug with tenant_list first. To populate a draft from a built-in design, create it here, then call campaign_apply_template.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CampaignUpsertRequest|null $campaign_upsert_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CampaignUpsertRequest|null $campaign_upsert_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignUpsert'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2771,7 +2771,7 @@ class WriteApi
      */
     public function campaignUpsertAsyncWithHttpInfo($campaign_upsert_request = null, string $contentType = self::contentTypes['campaignUpsert'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\CampaignUpsert200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\CampaignUpsert200Response';
         $request = $this->campaignUpsertRequest($campaign_upsert_request, $contentType);
 
         return $this->client
@@ -2813,7 +2813,7 @@ class WriteApi
     /**
      * Create request for operation 'campaignUpsert'
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CampaignUpsertRequest|null $campaign_upsert_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CampaignUpsertRequest|null $campaign_upsert_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignUpsert'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2908,12 +2908,12 @@ class WriteApi
      *
      * Merges a group of size-split products into ONE product with size options.  Turns \&quot;Blue Dream - 3.5G\&quot;, \&quot;Blue Dream - 7G\&quot;, \&quot;Blue Dream - 28G\&quot; (three separate products, each with one \&quot;Default\&quot; option) into a single \&quot;Blue Dream\&quot; product that sells by weight with 3.5g / 7g / 28g options. Stock is added together into one shared pool, and each old price becomes the price of its size.  Run catalog_flattening_audit first to see the groups and their exact base_name.  SAFETY: - dry_run defaults to TRUE. Nothing changes until you pass dry_run&#x3D;false. The dry run returns   the exact sizes, prices, stock, and which products would be removed. - Past orders are never affected — they keep the product name and price the customer saw. - Refused when two products in the group claim the same size, or when any product belongs to   another store. - This removes the duplicate products. It cannot be undone from here.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CatalogCollapseRequest|null $catalog_collapse_request catalog_collapse_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CatalogCollapseRequest|null $catalog_collapse_request catalog_collapse_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['catalogCollapse'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\CatalogCollapse200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\CatalogCollapse200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function catalogCollapse($catalog_collapse_request = null, string $contentType = self::contentTypes['catalogCollapse'][0])
     {
@@ -2926,12 +2926,12 @@ class WriteApi
      *
      * Merges a group of size-split products into ONE product with size options.  Turns \&quot;Blue Dream - 3.5G\&quot;, \&quot;Blue Dream - 7G\&quot;, \&quot;Blue Dream - 28G\&quot; (three separate products, each with one \&quot;Default\&quot; option) into a single \&quot;Blue Dream\&quot; product that sells by weight with 3.5g / 7g / 28g options. Stock is added together into one shared pool, and each old price becomes the price of its size.  Run catalog_flattening_audit first to see the groups and their exact base_name.  SAFETY: - dry_run defaults to TRUE. Nothing changes until you pass dry_run&#x3D;false. The dry run returns   the exact sizes, prices, stock, and which products would be removed. - Past orders are never affected — they keep the product name and price the customer saw. - Refused when two products in the group claim the same size, or when any product belongs to   another store. - This removes the duplicate products. It cannot be undone from here.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CatalogCollapseRequest|null $catalog_collapse_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CatalogCollapseRequest|null $catalog_collapse_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['catalogCollapse'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\CatalogCollapse200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\CatalogCollapse200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function catalogCollapseWithHttpInfo($catalog_collapse_request = null, string $contentType = self::contentTypes['catalogCollapse'][0])
     {
@@ -2963,37 +2963,37 @@ class WriteApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\CatalogCollapse200Response',
+                        '\ShadowSoftware\DabDash\Model\CatalogCollapse200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -3015,7 +3015,7 @@ class WriteApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\CatalogCollapse200Response',
+                '\ShadowSoftware\DabDash\Model\CatalogCollapse200Response',
                 $request,
                 $response,
             );
@@ -3024,7 +3024,7 @@ class WriteApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\CatalogCollapse200Response',
+                        '\ShadowSoftware\DabDash\Model\CatalogCollapse200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3032,7 +3032,7 @@ class WriteApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3040,7 +3040,7 @@ class WriteApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3048,7 +3048,7 @@ class WriteApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3056,7 +3056,7 @@ class WriteApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3064,7 +3064,7 @@ class WriteApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3081,7 +3081,7 @@ class WriteApi
      *
      * Merges a group of size-split products into ONE product with size options.  Turns \&quot;Blue Dream - 3.5G\&quot;, \&quot;Blue Dream - 7G\&quot;, \&quot;Blue Dream - 28G\&quot; (three separate products, each with one \&quot;Default\&quot; option) into a single \&quot;Blue Dream\&quot; product that sells by weight with 3.5g / 7g / 28g options. Stock is added together into one shared pool, and each old price becomes the price of its size.  Run catalog_flattening_audit first to see the groups and their exact base_name.  SAFETY: - dry_run defaults to TRUE. Nothing changes until you pass dry_run&#x3D;false. The dry run returns   the exact sizes, prices, stock, and which products would be removed. - Past orders are never affected — they keep the product name and price the customer saw. - Refused when two products in the group claim the same size, or when any product belongs to   another store. - This removes the duplicate products. It cannot be undone from here.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CatalogCollapseRequest|null $catalog_collapse_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CatalogCollapseRequest|null $catalog_collapse_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['catalogCollapse'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3102,7 +3102,7 @@ class WriteApi
      *
      * Merges a group of size-split products into ONE product with size options.  Turns \&quot;Blue Dream - 3.5G\&quot;, \&quot;Blue Dream - 7G\&quot;, \&quot;Blue Dream - 28G\&quot; (three separate products, each with one \&quot;Default\&quot; option) into a single \&quot;Blue Dream\&quot; product that sells by weight with 3.5g / 7g / 28g options. Stock is added together into one shared pool, and each old price becomes the price of its size.  Run catalog_flattening_audit first to see the groups and their exact base_name.  SAFETY: - dry_run defaults to TRUE. Nothing changes until you pass dry_run&#x3D;false. The dry run returns   the exact sizes, prices, stock, and which products would be removed. - Past orders are never affected — they keep the product name and price the customer saw. - Refused when two products in the group claim the same size, or when any product belongs to   another store. - This removes the duplicate products. It cannot be undone from here.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CatalogCollapseRequest|null $catalog_collapse_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CatalogCollapseRequest|null $catalog_collapse_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['catalogCollapse'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3110,7 +3110,7 @@ class WriteApi
      */
     public function catalogCollapseAsyncWithHttpInfo($catalog_collapse_request = null, string $contentType = self::contentTypes['catalogCollapse'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\CatalogCollapse200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\CatalogCollapse200Response';
         $request = $this->catalogCollapseRequest($catalog_collapse_request, $contentType);
 
         return $this->client
@@ -3152,7 +3152,7 @@ class WriteApi
     /**
      * Create request for operation 'catalogCollapse'
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CatalogCollapseRequest|null $catalog_collapse_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CatalogCollapseRequest|null $catalog_collapse_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['catalogCollapse'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3247,12 +3247,12 @@ class WriteApi
      *
      * List, create, update, or delete a tenant&#39;s storefront categories.  ACTIONS:   list   (default): return every category with id, name, slug, parent, sort_order,          is_active, is_featured, and image_url. Always call this first to find a          category_id before update/delete, and to check for slug collisions before create.   create: requires name (slug is auto-generated from name if omitted).   update: requires category_id. Only the fields you pass are changed.   delete: requires category_id and confirm&#x3D;true. Refuses if the category still has          products or children attached (detach or reassign them first).  IMAGES: pass media_id (from media_list / media_upload) to set image_path (the final, customer-facing image) or base_image_path (the unbranded source canvas SwagImagesService composites branding onto). Omit both to leave images untouched.  Always call action&#x3D;list first to confirm category_id / slug before update or delete.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CategoryManageRequest|null $category_manage_request category_manage_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CategoryManageRequest|null $category_manage_request category_manage_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['categoryManage'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\CategoryManage200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\CategoryManage200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function categoryManage($category_manage_request = null, string $contentType = self::contentTypes['categoryManage'][0])
     {
@@ -3265,12 +3265,12 @@ class WriteApi
      *
      * List, create, update, or delete a tenant&#39;s storefront categories.  ACTIONS:   list   (default): return every category with id, name, slug, parent, sort_order,          is_active, is_featured, and image_url. Always call this first to find a          category_id before update/delete, and to check for slug collisions before create.   create: requires name (slug is auto-generated from name if omitted).   update: requires category_id. Only the fields you pass are changed.   delete: requires category_id and confirm&#x3D;true. Refuses if the category still has          products or children attached (detach or reassign them first).  IMAGES: pass media_id (from media_list / media_upload) to set image_path (the final, customer-facing image) or base_image_path (the unbranded source canvas SwagImagesService composites branding onto). Omit both to leave images untouched.  Always call action&#x3D;list first to confirm category_id / slug before update or delete.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CategoryManageRequest|null $category_manage_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CategoryManageRequest|null $category_manage_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['categoryManage'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\CategoryManage200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\CategoryManage200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function categoryManageWithHttpInfo($category_manage_request = null, string $contentType = self::contentTypes['categoryManage'][0])
     {
@@ -3302,37 +3302,37 @@ class WriteApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\CategoryManage200Response',
+                        '\ShadowSoftware\DabDash\Model\CategoryManage200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -3354,7 +3354,7 @@ class WriteApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\CategoryManage200Response',
+                '\ShadowSoftware\DabDash\Model\CategoryManage200Response',
                 $request,
                 $response,
             );
@@ -3363,7 +3363,7 @@ class WriteApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\CategoryManage200Response',
+                        '\ShadowSoftware\DabDash\Model\CategoryManage200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3371,7 +3371,7 @@ class WriteApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3379,7 +3379,7 @@ class WriteApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3387,7 +3387,7 @@ class WriteApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3395,7 +3395,7 @@ class WriteApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3403,7 +3403,7 @@ class WriteApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3420,7 +3420,7 @@ class WriteApi
      *
      * List, create, update, or delete a tenant&#39;s storefront categories.  ACTIONS:   list   (default): return every category with id, name, slug, parent, sort_order,          is_active, is_featured, and image_url. Always call this first to find a          category_id before update/delete, and to check for slug collisions before create.   create: requires name (slug is auto-generated from name if omitted).   update: requires category_id. Only the fields you pass are changed.   delete: requires category_id and confirm&#x3D;true. Refuses if the category still has          products or children attached (detach or reassign them first).  IMAGES: pass media_id (from media_list / media_upload) to set image_path (the final, customer-facing image) or base_image_path (the unbranded source canvas SwagImagesService composites branding onto). Omit both to leave images untouched.  Always call action&#x3D;list first to confirm category_id / slug before update or delete.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CategoryManageRequest|null $category_manage_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CategoryManageRequest|null $category_manage_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['categoryManage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3441,7 +3441,7 @@ class WriteApi
      *
      * List, create, update, or delete a tenant&#39;s storefront categories.  ACTIONS:   list   (default): return every category with id, name, slug, parent, sort_order,          is_active, is_featured, and image_url. Always call this first to find a          category_id before update/delete, and to check for slug collisions before create.   create: requires name (slug is auto-generated from name if omitted).   update: requires category_id. Only the fields you pass are changed.   delete: requires category_id and confirm&#x3D;true. Refuses if the category still has          products or children attached (detach or reassign them first).  IMAGES: pass media_id (from media_list / media_upload) to set image_path (the final, customer-facing image) or base_image_path (the unbranded source canvas SwagImagesService composites branding onto). Omit both to leave images untouched.  Always call action&#x3D;list first to confirm category_id / slug before update or delete.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CategoryManageRequest|null $category_manage_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CategoryManageRequest|null $category_manage_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['categoryManage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3449,7 +3449,7 @@ class WriteApi
      */
     public function categoryManageAsyncWithHttpInfo($category_manage_request = null, string $contentType = self::contentTypes['categoryManage'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\CategoryManage200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\CategoryManage200Response';
         $request = $this->categoryManageRequest($category_manage_request, $contentType);
 
         return $this->client
@@ -3491,7 +3491,7 @@ class WriteApi
     /**
      * Create request for operation 'categoryManage'
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CategoryManageRequest|null $category_manage_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CategoryManageRequest|null $category_manage_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['categoryManage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3586,12 +3586,12 @@ class WriteApi
      *
      * Create or update a discount coupon on behalf of a tenant. Coupons are customer-entered codes applied at checkout (distinct from bundles, which fire automatically on cart contents — use bundle_upsert for those).  UPDATE MODE (coupon_id provided):   Edits the coupon. Only the fields you pass are changed; omitted fields are left as-is.  CREATE MODE (no coupon_id):   Creates a new coupon. code, type, and value are required.  VALUE UNITS:   type &#x3D; \&quot;percentage\&quot;     → value is a percentage 0-100 off the order subtotal.   type &#x3D; \&quot;fixed\&quot;          → value is DOLLARS off the order subtotal (e.g. 10 &#x3D; $10 off).   type &#x3D; \&quot;free_delivery\&quot;  → value is ignored (pass 0); this type only waives the delivery fee.  min_order is a dollar minimum order subtotal required to use the coupon (pass dollars, e.g. 25 for a $25 minimum — the tool stores cents internally). Omit or pass 0 for no minimum.  limit_match_by (\&quot;email\&quot;|\&quot;phone\&quot;|\&quot;both\&quot;) controls how max_uses_per_customer is enforced. Using \&quot;phone\&quot; or \&quot;both\&quot; REQUIRES the tenant&#39;s \&quot;Require phone at checkout\&quot; setting to be on — otherwise the update is rejected, since customers without a phone on file could otherwise reuse the coupon past its per-customer limit.  SCHEDULE:   starts_at / expires_at are interpreted in the tenant&#39;s timezone and stored as UTC. Pass   null/omit for an always-on coupon.  NOT YET SUPPORTED BY THIS TOOL: scoping a coupon to specific products or categories (applies_to_ids) — only applies_to&#x3D;\&quot;all\&quot; is fully wired end to end today. Passing applies_to&#x3D;\&quot;products\&quot; or \&quot;categories\&quot; without further product/category tooling will save the coupon with no scoped items, which behaves the same as \&quot;all\&quot; in the current checkout logic.  Always call coupon_list first to get the coupon_id and confirm the current configuration.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CouponUpsertRequest|null $coupon_upsert_request coupon_upsert_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CouponUpsertRequest|null $coupon_upsert_request coupon_upsert_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['couponUpsert'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\CouponUpsert200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\CouponUpsert200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function couponUpsert($coupon_upsert_request = null, string $contentType = self::contentTypes['couponUpsert'][0])
     {
@@ -3604,12 +3604,12 @@ class WriteApi
      *
      * Create or update a discount coupon on behalf of a tenant. Coupons are customer-entered codes applied at checkout (distinct from bundles, which fire automatically on cart contents — use bundle_upsert for those).  UPDATE MODE (coupon_id provided):   Edits the coupon. Only the fields you pass are changed; omitted fields are left as-is.  CREATE MODE (no coupon_id):   Creates a new coupon. code, type, and value are required.  VALUE UNITS:   type &#x3D; \&quot;percentage\&quot;     → value is a percentage 0-100 off the order subtotal.   type &#x3D; \&quot;fixed\&quot;          → value is DOLLARS off the order subtotal (e.g. 10 &#x3D; $10 off).   type &#x3D; \&quot;free_delivery\&quot;  → value is ignored (pass 0); this type only waives the delivery fee.  min_order is a dollar minimum order subtotal required to use the coupon (pass dollars, e.g. 25 for a $25 minimum — the tool stores cents internally). Omit or pass 0 for no minimum.  limit_match_by (\&quot;email\&quot;|\&quot;phone\&quot;|\&quot;both\&quot;) controls how max_uses_per_customer is enforced. Using \&quot;phone\&quot; or \&quot;both\&quot; REQUIRES the tenant&#39;s \&quot;Require phone at checkout\&quot; setting to be on — otherwise the update is rejected, since customers without a phone on file could otherwise reuse the coupon past its per-customer limit.  SCHEDULE:   starts_at / expires_at are interpreted in the tenant&#39;s timezone and stored as UTC. Pass   null/omit for an always-on coupon.  NOT YET SUPPORTED BY THIS TOOL: scoping a coupon to specific products or categories (applies_to_ids) — only applies_to&#x3D;\&quot;all\&quot; is fully wired end to end today. Passing applies_to&#x3D;\&quot;products\&quot; or \&quot;categories\&quot; without further product/category tooling will save the coupon with no scoped items, which behaves the same as \&quot;all\&quot; in the current checkout logic.  Always call coupon_list first to get the coupon_id and confirm the current configuration.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CouponUpsertRequest|null $coupon_upsert_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CouponUpsertRequest|null $coupon_upsert_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['couponUpsert'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\CouponUpsert200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\CouponUpsert200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function couponUpsertWithHttpInfo($coupon_upsert_request = null, string $contentType = self::contentTypes['couponUpsert'][0])
     {
@@ -3641,37 +3641,37 @@ class WriteApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\CouponUpsert200Response',
+                        '\ShadowSoftware\DabDash\Model\CouponUpsert200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -3693,7 +3693,7 @@ class WriteApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\CouponUpsert200Response',
+                '\ShadowSoftware\DabDash\Model\CouponUpsert200Response',
                 $request,
                 $response,
             );
@@ -3702,7 +3702,7 @@ class WriteApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\CouponUpsert200Response',
+                        '\ShadowSoftware\DabDash\Model\CouponUpsert200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3710,7 +3710,7 @@ class WriteApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3718,7 +3718,7 @@ class WriteApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3726,7 +3726,7 @@ class WriteApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3734,7 +3734,7 @@ class WriteApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3742,7 +3742,7 @@ class WriteApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3759,7 +3759,7 @@ class WriteApi
      *
      * Create or update a discount coupon on behalf of a tenant. Coupons are customer-entered codes applied at checkout (distinct from bundles, which fire automatically on cart contents — use bundle_upsert for those).  UPDATE MODE (coupon_id provided):   Edits the coupon. Only the fields you pass are changed; omitted fields are left as-is.  CREATE MODE (no coupon_id):   Creates a new coupon. code, type, and value are required.  VALUE UNITS:   type &#x3D; \&quot;percentage\&quot;     → value is a percentage 0-100 off the order subtotal.   type &#x3D; \&quot;fixed\&quot;          → value is DOLLARS off the order subtotal (e.g. 10 &#x3D; $10 off).   type &#x3D; \&quot;free_delivery\&quot;  → value is ignored (pass 0); this type only waives the delivery fee.  min_order is a dollar minimum order subtotal required to use the coupon (pass dollars, e.g. 25 for a $25 minimum — the tool stores cents internally). Omit or pass 0 for no minimum.  limit_match_by (\&quot;email\&quot;|\&quot;phone\&quot;|\&quot;both\&quot;) controls how max_uses_per_customer is enforced. Using \&quot;phone\&quot; or \&quot;both\&quot; REQUIRES the tenant&#39;s \&quot;Require phone at checkout\&quot; setting to be on — otherwise the update is rejected, since customers without a phone on file could otherwise reuse the coupon past its per-customer limit.  SCHEDULE:   starts_at / expires_at are interpreted in the tenant&#39;s timezone and stored as UTC. Pass   null/omit for an always-on coupon.  NOT YET SUPPORTED BY THIS TOOL: scoping a coupon to specific products or categories (applies_to_ids) — only applies_to&#x3D;\&quot;all\&quot; is fully wired end to end today. Passing applies_to&#x3D;\&quot;products\&quot; or \&quot;categories\&quot; without further product/category tooling will save the coupon with no scoped items, which behaves the same as \&quot;all\&quot; in the current checkout logic.  Always call coupon_list first to get the coupon_id and confirm the current configuration.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CouponUpsertRequest|null $coupon_upsert_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CouponUpsertRequest|null $coupon_upsert_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['couponUpsert'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3780,7 +3780,7 @@ class WriteApi
      *
      * Create or update a discount coupon on behalf of a tenant. Coupons are customer-entered codes applied at checkout (distinct from bundles, which fire automatically on cart contents — use bundle_upsert for those).  UPDATE MODE (coupon_id provided):   Edits the coupon. Only the fields you pass are changed; omitted fields are left as-is.  CREATE MODE (no coupon_id):   Creates a new coupon. code, type, and value are required.  VALUE UNITS:   type &#x3D; \&quot;percentage\&quot;     → value is a percentage 0-100 off the order subtotal.   type &#x3D; \&quot;fixed\&quot;          → value is DOLLARS off the order subtotal (e.g. 10 &#x3D; $10 off).   type &#x3D; \&quot;free_delivery\&quot;  → value is ignored (pass 0); this type only waives the delivery fee.  min_order is a dollar minimum order subtotal required to use the coupon (pass dollars, e.g. 25 for a $25 minimum — the tool stores cents internally). Omit or pass 0 for no minimum.  limit_match_by (\&quot;email\&quot;|\&quot;phone\&quot;|\&quot;both\&quot;) controls how max_uses_per_customer is enforced. Using \&quot;phone\&quot; or \&quot;both\&quot; REQUIRES the tenant&#39;s \&quot;Require phone at checkout\&quot; setting to be on — otherwise the update is rejected, since customers without a phone on file could otherwise reuse the coupon past its per-customer limit.  SCHEDULE:   starts_at / expires_at are interpreted in the tenant&#39;s timezone and stored as UTC. Pass   null/omit for an always-on coupon.  NOT YET SUPPORTED BY THIS TOOL: scoping a coupon to specific products or categories (applies_to_ids) — only applies_to&#x3D;\&quot;all\&quot; is fully wired end to end today. Passing applies_to&#x3D;\&quot;products\&quot; or \&quot;categories\&quot; without further product/category tooling will save the coupon with no scoped items, which behaves the same as \&quot;all\&quot; in the current checkout logic.  Always call coupon_list first to get the coupon_id and confirm the current configuration.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CouponUpsertRequest|null $coupon_upsert_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CouponUpsertRequest|null $coupon_upsert_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['couponUpsert'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3788,7 +3788,7 @@ class WriteApi
      */
     public function couponUpsertAsyncWithHttpInfo($coupon_upsert_request = null, string $contentType = self::contentTypes['couponUpsert'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\CouponUpsert200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\CouponUpsert200Response';
         $request = $this->couponUpsertRequest($coupon_upsert_request, $contentType);
 
         return $this->client
@@ -3830,7 +3830,7 @@ class WriteApi
     /**
      * Create request for operation 'couponUpsert'
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CouponUpsertRequest|null $coupon_upsert_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CouponUpsertRequest|null $coupon_upsert_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['couponUpsert'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3925,12 +3925,12 @@ class WriteApi
      *
      * Update a customer&#39;s contact fields (name, email, phone) and/or suppress marketing consent (email_opt_out, sms_marketing_opt_out, sms_notifications_muted — one-way, cannot un-suppress). Verification, loyalty, and other DabDash-owned fields cannot be set here.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CustomerUpdateRequest|null $customer_update_request customer_update_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CustomerUpdateRequest|null $customer_update_request customer_update_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['customerUpdate'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\CustomerUpdate200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\CustomerUpdate200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function customerUpdate($customer_update_request = null, string $contentType = self::contentTypes['customerUpdate'][0])
     {
@@ -3943,12 +3943,12 @@ class WriteApi
      *
      * Update a customer&#39;s contact fields (name, email, phone) and/or suppress marketing consent (email_opt_out, sms_marketing_opt_out, sms_notifications_muted — one-way, cannot un-suppress). Verification, loyalty, and other DabDash-owned fields cannot be set here.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CustomerUpdateRequest|null $customer_update_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CustomerUpdateRequest|null $customer_update_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['customerUpdate'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\CustomerUpdate200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\CustomerUpdate200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function customerUpdateWithHttpInfo($customer_update_request = null, string $contentType = self::contentTypes['customerUpdate'][0])
     {
@@ -3980,37 +3980,37 @@ class WriteApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\CustomerUpdate200Response',
+                        '\ShadowSoftware\DabDash\Model\CustomerUpdate200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -4032,7 +4032,7 @@ class WriteApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\CustomerUpdate200Response',
+                '\ShadowSoftware\DabDash\Model\CustomerUpdate200Response',
                 $request,
                 $response,
             );
@@ -4041,7 +4041,7 @@ class WriteApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\CustomerUpdate200Response',
+                        '\ShadowSoftware\DabDash\Model\CustomerUpdate200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4049,7 +4049,7 @@ class WriteApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4057,7 +4057,7 @@ class WriteApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4065,7 +4065,7 @@ class WriteApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4073,7 +4073,7 @@ class WriteApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4081,7 +4081,7 @@ class WriteApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4098,7 +4098,7 @@ class WriteApi
      *
      * Update a customer&#39;s contact fields (name, email, phone) and/or suppress marketing consent (email_opt_out, sms_marketing_opt_out, sms_notifications_muted — one-way, cannot un-suppress). Verification, loyalty, and other DabDash-owned fields cannot be set here.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CustomerUpdateRequest|null $customer_update_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CustomerUpdateRequest|null $customer_update_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['customerUpdate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4119,7 +4119,7 @@ class WriteApi
      *
      * Update a customer&#39;s contact fields (name, email, phone) and/or suppress marketing consent (email_opt_out, sms_marketing_opt_out, sms_notifications_muted — one-way, cannot un-suppress). Verification, loyalty, and other DabDash-owned fields cannot be set here.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CustomerUpdateRequest|null $customer_update_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CustomerUpdateRequest|null $customer_update_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['customerUpdate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4127,7 +4127,7 @@ class WriteApi
      */
     public function customerUpdateAsyncWithHttpInfo($customer_update_request = null, string $contentType = self::contentTypes['customerUpdate'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\CustomerUpdate200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\CustomerUpdate200Response';
         $request = $this->customerUpdateRequest($customer_update_request, $contentType);
 
         return $this->client
@@ -4169,7 +4169,7 @@ class WriteApi
     /**
      * Create request for operation 'customerUpdate'
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\CustomerUpdateRequest|null $customer_update_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\CustomerUpdateRequest|null $customer_update_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['customerUpdate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4264,12 +4264,12 @@ class WriteApi
      *
      * Create or update a freebie rule (\&quot;spend $X, get a free item\&quot;) on behalf of a tenant. Freebies are evaluated on every cart change: a rule fires once its spend_threshold is met, adding &#x60;quantity&#x60; of the configured product/variation to the cart (distinct from bundles, which fire on cart CONTENTS/quantity — use bundle_upsert for those).  UPDATE MODE (freebie_id provided):   Edits the freebie. Only the fields you pass are changed; omitted fields are left as-is,   EXCEPT category_ids, which — like bundle_upsert&#39;s variation_ids — fully replaces the category   set whenever passed (pass an empty array to clear all categories).  CREATE MODE (no freebie_id):   Creates a new freebie. name, product_id, spend_threshold, and quantity are required.  product_id and variation_id (if given) MUST belong to the same tenant — foreign ids are rejected, not silently ignored (unlike bundle_upsert&#39;s variation_ids, since a freebie needs exactly one product to give away, not a set).  spend_threshold is entered in DOLLARS (e.g. 50 for a $50 minimum spend) — the tool stores cents internally.  is_stackable:   true   → this rule can fire alongside OTHER DIFFERENT freebie rules on the same order.   false  → this rule cannot combine with other freebie rules.   Does NOT multiply this rule&#39;s own quantity by how many multiples of spend_threshold the cart   reaches — a $50-threshold rule at $150 spent still gives quantity 1, not 3.  SCHEDULE:   starts_at / ends_at are interpreted in the tenant&#39;s timezone and stored as UTC. Pass   null/omit for an always-on freebie.  Always call freebie_list first to get the freebie_id and confirm the current configuration.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\FreebieUpsertRequest|null $freebie_upsert_request freebie_upsert_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\FreebieUpsertRequest|null $freebie_upsert_request freebie_upsert_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['freebieUpsert'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\FreebieUpsert200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\FreebieUpsert200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function freebieUpsert($freebie_upsert_request = null, string $contentType = self::contentTypes['freebieUpsert'][0])
     {
@@ -4282,12 +4282,12 @@ class WriteApi
      *
      * Create or update a freebie rule (\&quot;spend $X, get a free item\&quot;) on behalf of a tenant. Freebies are evaluated on every cart change: a rule fires once its spend_threshold is met, adding &#x60;quantity&#x60; of the configured product/variation to the cart (distinct from bundles, which fire on cart CONTENTS/quantity — use bundle_upsert for those).  UPDATE MODE (freebie_id provided):   Edits the freebie. Only the fields you pass are changed; omitted fields are left as-is,   EXCEPT category_ids, which — like bundle_upsert&#39;s variation_ids — fully replaces the category   set whenever passed (pass an empty array to clear all categories).  CREATE MODE (no freebie_id):   Creates a new freebie. name, product_id, spend_threshold, and quantity are required.  product_id and variation_id (if given) MUST belong to the same tenant — foreign ids are rejected, not silently ignored (unlike bundle_upsert&#39;s variation_ids, since a freebie needs exactly one product to give away, not a set).  spend_threshold is entered in DOLLARS (e.g. 50 for a $50 minimum spend) — the tool stores cents internally.  is_stackable:   true   → this rule can fire alongside OTHER DIFFERENT freebie rules on the same order.   false  → this rule cannot combine with other freebie rules.   Does NOT multiply this rule&#39;s own quantity by how many multiples of spend_threshold the cart   reaches — a $50-threshold rule at $150 spent still gives quantity 1, not 3.  SCHEDULE:   starts_at / ends_at are interpreted in the tenant&#39;s timezone and stored as UTC. Pass   null/omit for an always-on freebie.  Always call freebie_list first to get the freebie_id and confirm the current configuration.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\FreebieUpsertRequest|null $freebie_upsert_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\FreebieUpsertRequest|null $freebie_upsert_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['freebieUpsert'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\FreebieUpsert200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\FreebieUpsert200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function freebieUpsertWithHttpInfo($freebie_upsert_request = null, string $contentType = self::contentTypes['freebieUpsert'][0])
     {
@@ -4319,37 +4319,37 @@ class WriteApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\FreebieUpsert200Response',
+                        '\ShadowSoftware\DabDash\Model\FreebieUpsert200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -4371,7 +4371,7 @@ class WriteApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\FreebieUpsert200Response',
+                '\ShadowSoftware\DabDash\Model\FreebieUpsert200Response',
                 $request,
                 $response,
             );
@@ -4380,7 +4380,7 @@ class WriteApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\FreebieUpsert200Response',
+                        '\ShadowSoftware\DabDash\Model\FreebieUpsert200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4388,7 +4388,7 @@ class WriteApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4396,7 +4396,7 @@ class WriteApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4404,7 +4404,7 @@ class WriteApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4412,7 +4412,7 @@ class WriteApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4420,7 +4420,7 @@ class WriteApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4437,7 +4437,7 @@ class WriteApi
      *
      * Create or update a freebie rule (\&quot;spend $X, get a free item\&quot;) on behalf of a tenant. Freebies are evaluated on every cart change: a rule fires once its spend_threshold is met, adding &#x60;quantity&#x60; of the configured product/variation to the cart (distinct from bundles, which fire on cart CONTENTS/quantity — use bundle_upsert for those).  UPDATE MODE (freebie_id provided):   Edits the freebie. Only the fields you pass are changed; omitted fields are left as-is,   EXCEPT category_ids, which — like bundle_upsert&#39;s variation_ids — fully replaces the category   set whenever passed (pass an empty array to clear all categories).  CREATE MODE (no freebie_id):   Creates a new freebie. name, product_id, spend_threshold, and quantity are required.  product_id and variation_id (if given) MUST belong to the same tenant — foreign ids are rejected, not silently ignored (unlike bundle_upsert&#39;s variation_ids, since a freebie needs exactly one product to give away, not a set).  spend_threshold is entered in DOLLARS (e.g. 50 for a $50 minimum spend) — the tool stores cents internally.  is_stackable:   true   → this rule can fire alongside OTHER DIFFERENT freebie rules on the same order.   false  → this rule cannot combine with other freebie rules.   Does NOT multiply this rule&#39;s own quantity by how many multiples of spend_threshold the cart   reaches — a $50-threshold rule at $150 spent still gives quantity 1, not 3.  SCHEDULE:   starts_at / ends_at are interpreted in the tenant&#39;s timezone and stored as UTC. Pass   null/omit for an always-on freebie.  Always call freebie_list first to get the freebie_id and confirm the current configuration.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\FreebieUpsertRequest|null $freebie_upsert_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\FreebieUpsertRequest|null $freebie_upsert_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['freebieUpsert'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4458,7 +4458,7 @@ class WriteApi
      *
      * Create or update a freebie rule (\&quot;spend $X, get a free item\&quot;) on behalf of a tenant. Freebies are evaluated on every cart change: a rule fires once its spend_threshold is met, adding &#x60;quantity&#x60; of the configured product/variation to the cart (distinct from bundles, which fire on cart CONTENTS/quantity — use bundle_upsert for those).  UPDATE MODE (freebie_id provided):   Edits the freebie. Only the fields you pass are changed; omitted fields are left as-is,   EXCEPT category_ids, which — like bundle_upsert&#39;s variation_ids — fully replaces the category   set whenever passed (pass an empty array to clear all categories).  CREATE MODE (no freebie_id):   Creates a new freebie. name, product_id, spend_threshold, and quantity are required.  product_id and variation_id (if given) MUST belong to the same tenant — foreign ids are rejected, not silently ignored (unlike bundle_upsert&#39;s variation_ids, since a freebie needs exactly one product to give away, not a set).  spend_threshold is entered in DOLLARS (e.g. 50 for a $50 minimum spend) — the tool stores cents internally.  is_stackable:   true   → this rule can fire alongside OTHER DIFFERENT freebie rules on the same order.   false  → this rule cannot combine with other freebie rules.   Does NOT multiply this rule&#39;s own quantity by how many multiples of spend_threshold the cart   reaches — a $50-threshold rule at $150 spent still gives quantity 1, not 3.  SCHEDULE:   starts_at / ends_at are interpreted in the tenant&#39;s timezone and stored as UTC. Pass   null/omit for an always-on freebie.  Always call freebie_list first to get the freebie_id and confirm the current configuration.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\FreebieUpsertRequest|null $freebie_upsert_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\FreebieUpsertRequest|null $freebie_upsert_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['freebieUpsert'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4466,7 +4466,7 @@ class WriteApi
      */
     public function freebieUpsertAsyncWithHttpInfo($freebie_upsert_request = null, string $contentType = self::contentTypes['freebieUpsert'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\FreebieUpsert200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\FreebieUpsert200Response';
         $request = $this->freebieUpsertRequest($freebie_upsert_request, $contentType);
 
         return $this->client
@@ -4508,7 +4508,7 @@ class WriteApi
     /**
      * Create request for operation 'freebieUpsert'
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\FreebieUpsertRequest|null $freebie_upsert_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\FreebieUpsertRequest|null $freebie_upsert_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['freebieUpsert'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4603,12 +4603,12 @@ class WriteApi
      *
      * Build a finished campaign image ON THE SERVER: take a base picture, drop the vendor&#39;s logo on top, add a headline and subtitle, and save the result straight into the tenant&#39;s media library. Returns a media_id + public URL ready for campaign_set_image. Nothing has to be uploaded from your machine — pass IDs and URLs and the server does the artwork.  PROVIDE THE BASE (exactly one):   - base_media_id — an image already in the tenant&#39;s library (see media_list).   - base_url      — a public https image URL, e.g. the output of an image-generation tool.  PROVIDE THE LOGO (optional, at most one):   - logo_media_id / logo_url — same two options as the base.   THE LOGO IS NEVER ALTERED. It is scaled to fit (aspect ratio locked) and placed as-is —   its colours, strokes and transparency are left exactly as supplied. For legibility on busy   artwork use the &#x60;scrim&#x60; option, which darkens the area BEHIND the logo and text.  LAYOUT: logo on top, headline under it, subtitle under that — the block is centred horizontally and positioned with logo_position (top / center / bottom). Sizes are given as a fraction of the base image width so they scale with any canvas. Long text is word-wrapped automatically; the response&#39;s &#x60;wrapped&#x60; flag tells you when that happened so you can shorten it.  CONSTRAINTS: sources max 5 MB, JPEG/PNG/WebP/GIF, max 8000x8000. The finished image goes through the same pipeline as media_upload — re-encoded to WebP, resized to fit, de-duplicated by content — so identical inputs return the existing media_id instead of a duplicate.  Typical flow: (generate or pick a base image) -&gt; media_compose -&gt; campaign_set_image.  STOREFRONT SWAG MODE (category_id or widget_id): instead of the manual layout above, pass category_id or widget_id to run the platform&#39;s own storefront branding pipeline (SwagImagesService) against that exact category or widget — the same compositor used by the dev seeder and vendor admin: tenant logo eyebrow, Bebas Neue headline (shrunk to fit long names automatically), brand-colour accent rule, and a sub-label (the tenant&#39;s live domain for categories, the widget&#39;s own subtitle for widgets). Pass base_media_id or base_url to set/replace the row&#39;s base_image_path first; omit both to recompose from whatever base_image_path is already saved. Saves directly to image_path on that category or widget — this is an internal/admin tool, not exposed to vendors.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\MediaComposeRequest|null $media_compose_request media_compose_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\MediaComposeRequest|null $media_compose_request media_compose_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['mediaCompose'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\MediaCompose200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\MediaCompose200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function mediaCompose($media_compose_request = null, string $contentType = self::contentTypes['mediaCompose'][0])
     {
@@ -4621,12 +4621,12 @@ class WriteApi
      *
      * Build a finished campaign image ON THE SERVER: take a base picture, drop the vendor&#39;s logo on top, add a headline and subtitle, and save the result straight into the tenant&#39;s media library. Returns a media_id + public URL ready for campaign_set_image. Nothing has to be uploaded from your machine — pass IDs and URLs and the server does the artwork.  PROVIDE THE BASE (exactly one):   - base_media_id — an image already in the tenant&#39;s library (see media_list).   - base_url      — a public https image URL, e.g. the output of an image-generation tool.  PROVIDE THE LOGO (optional, at most one):   - logo_media_id / logo_url — same two options as the base.   THE LOGO IS NEVER ALTERED. It is scaled to fit (aspect ratio locked) and placed as-is —   its colours, strokes and transparency are left exactly as supplied. For legibility on busy   artwork use the &#x60;scrim&#x60; option, which darkens the area BEHIND the logo and text.  LAYOUT: logo on top, headline under it, subtitle under that — the block is centred horizontally and positioned with logo_position (top / center / bottom). Sizes are given as a fraction of the base image width so they scale with any canvas. Long text is word-wrapped automatically; the response&#39;s &#x60;wrapped&#x60; flag tells you when that happened so you can shorten it.  CONSTRAINTS: sources max 5 MB, JPEG/PNG/WebP/GIF, max 8000x8000. The finished image goes through the same pipeline as media_upload — re-encoded to WebP, resized to fit, de-duplicated by content — so identical inputs return the existing media_id instead of a duplicate.  Typical flow: (generate or pick a base image) -&gt; media_compose -&gt; campaign_set_image.  STOREFRONT SWAG MODE (category_id or widget_id): instead of the manual layout above, pass category_id or widget_id to run the platform&#39;s own storefront branding pipeline (SwagImagesService) against that exact category or widget — the same compositor used by the dev seeder and vendor admin: tenant logo eyebrow, Bebas Neue headline (shrunk to fit long names automatically), brand-colour accent rule, and a sub-label (the tenant&#39;s live domain for categories, the widget&#39;s own subtitle for widgets). Pass base_media_id or base_url to set/replace the row&#39;s base_image_path first; omit both to recompose from whatever base_image_path is already saved. Saves directly to image_path on that category or widget — this is an internal/admin tool, not exposed to vendors.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\MediaComposeRequest|null $media_compose_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\MediaComposeRequest|null $media_compose_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['mediaCompose'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\MediaCompose200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\MediaCompose200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function mediaComposeWithHttpInfo($media_compose_request = null, string $contentType = self::contentTypes['mediaCompose'][0])
     {
@@ -4658,37 +4658,37 @@ class WriteApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\MediaCompose200Response',
+                        '\ShadowSoftware\DabDash\Model\MediaCompose200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -4710,7 +4710,7 @@ class WriteApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\MediaCompose200Response',
+                '\ShadowSoftware\DabDash\Model\MediaCompose200Response',
                 $request,
                 $response,
             );
@@ -4719,7 +4719,7 @@ class WriteApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\MediaCompose200Response',
+                        '\ShadowSoftware\DabDash\Model\MediaCompose200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4727,7 +4727,7 @@ class WriteApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4735,7 +4735,7 @@ class WriteApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4743,7 +4743,7 @@ class WriteApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4751,7 +4751,7 @@ class WriteApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4759,7 +4759,7 @@ class WriteApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4776,7 +4776,7 @@ class WriteApi
      *
      * Build a finished campaign image ON THE SERVER: take a base picture, drop the vendor&#39;s logo on top, add a headline and subtitle, and save the result straight into the tenant&#39;s media library. Returns a media_id + public URL ready for campaign_set_image. Nothing has to be uploaded from your machine — pass IDs and URLs and the server does the artwork.  PROVIDE THE BASE (exactly one):   - base_media_id — an image already in the tenant&#39;s library (see media_list).   - base_url      — a public https image URL, e.g. the output of an image-generation tool.  PROVIDE THE LOGO (optional, at most one):   - logo_media_id / logo_url — same two options as the base.   THE LOGO IS NEVER ALTERED. It is scaled to fit (aspect ratio locked) and placed as-is —   its colours, strokes and transparency are left exactly as supplied. For legibility on busy   artwork use the &#x60;scrim&#x60; option, which darkens the area BEHIND the logo and text.  LAYOUT: logo on top, headline under it, subtitle under that — the block is centred horizontally and positioned with logo_position (top / center / bottom). Sizes are given as a fraction of the base image width so they scale with any canvas. Long text is word-wrapped automatically; the response&#39;s &#x60;wrapped&#x60; flag tells you when that happened so you can shorten it.  CONSTRAINTS: sources max 5 MB, JPEG/PNG/WebP/GIF, max 8000x8000. The finished image goes through the same pipeline as media_upload — re-encoded to WebP, resized to fit, de-duplicated by content — so identical inputs return the existing media_id instead of a duplicate.  Typical flow: (generate or pick a base image) -&gt; media_compose -&gt; campaign_set_image.  STOREFRONT SWAG MODE (category_id or widget_id): instead of the manual layout above, pass category_id or widget_id to run the platform&#39;s own storefront branding pipeline (SwagImagesService) against that exact category or widget — the same compositor used by the dev seeder and vendor admin: tenant logo eyebrow, Bebas Neue headline (shrunk to fit long names automatically), brand-colour accent rule, and a sub-label (the tenant&#39;s live domain for categories, the widget&#39;s own subtitle for widgets). Pass base_media_id or base_url to set/replace the row&#39;s base_image_path first; omit both to recompose from whatever base_image_path is already saved. Saves directly to image_path on that category or widget — this is an internal/admin tool, not exposed to vendors.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\MediaComposeRequest|null $media_compose_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\MediaComposeRequest|null $media_compose_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['mediaCompose'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4797,7 +4797,7 @@ class WriteApi
      *
      * Build a finished campaign image ON THE SERVER: take a base picture, drop the vendor&#39;s logo on top, add a headline and subtitle, and save the result straight into the tenant&#39;s media library. Returns a media_id + public URL ready for campaign_set_image. Nothing has to be uploaded from your machine — pass IDs and URLs and the server does the artwork.  PROVIDE THE BASE (exactly one):   - base_media_id — an image already in the tenant&#39;s library (see media_list).   - base_url      — a public https image URL, e.g. the output of an image-generation tool.  PROVIDE THE LOGO (optional, at most one):   - logo_media_id / logo_url — same two options as the base.   THE LOGO IS NEVER ALTERED. It is scaled to fit (aspect ratio locked) and placed as-is —   its colours, strokes and transparency are left exactly as supplied. For legibility on busy   artwork use the &#x60;scrim&#x60; option, which darkens the area BEHIND the logo and text.  LAYOUT: logo on top, headline under it, subtitle under that — the block is centred horizontally and positioned with logo_position (top / center / bottom). Sizes are given as a fraction of the base image width so they scale with any canvas. Long text is word-wrapped automatically; the response&#39;s &#x60;wrapped&#x60; flag tells you when that happened so you can shorten it.  CONSTRAINTS: sources max 5 MB, JPEG/PNG/WebP/GIF, max 8000x8000. The finished image goes through the same pipeline as media_upload — re-encoded to WebP, resized to fit, de-duplicated by content — so identical inputs return the existing media_id instead of a duplicate.  Typical flow: (generate or pick a base image) -&gt; media_compose -&gt; campaign_set_image.  STOREFRONT SWAG MODE (category_id or widget_id): instead of the manual layout above, pass category_id or widget_id to run the platform&#39;s own storefront branding pipeline (SwagImagesService) against that exact category or widget — the same compositor used by the dev seeder and vendor admin: tenant logo eyebrow, Bebas Neue headline (shrunk to fit long names automatically), brand-colour accent rule, and a sub-label (the tenant&#39;s live domain for categories, the widget&#39;s own subtitle for widgets). Pass base_media_id or base_url to set/replace the row&#39;s base_image_path first; omit both to recompose from whatever base_image_path is already saved. Saves directly to image_path on that category or widget — this is an internal/admin tool, not exposed to vendors.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\MediaComposeRequest|null $media_compose_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\MediaComposeRequest|null $media_compose_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['mediaCompose'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4805,7 +4805,7 @@ class WriteApi
      */
     public function mediaComposeAsyncWithHttpInfo($media_compose_request = null, string $contentType = self::contentTypes['mediaCompose'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\MediaCompose200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\MediaCompose200Response';
         $request = $this->mediaComposeRequest($media_compose_request, $contentType);
 
         return $this->client
@@ -4847,7 +4847,7 @@ class WriteApi
     /**
      * Create request for operation 'mediaCompose'
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\MediaComposeRequest|null $media_compose_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\MediaComposeRequest|null $media_compose_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['mediaCompose'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4942,12 +4942,12 @@ class WriteApi
      *
      * List the images in a tenant&#39;s media library — id, public URL, dimensions, filename, folder, and alt text. Use this to find the media_id of an image to place into a campaign with campaign_set_image, instead of guessing. Returns newest first.  Filter with &#x60;folder&#x60; (exact match) or &#x60;search&#x60; (filename substring). &#x60;visibility&#x60; defaults to \&quot;public\&quot; (the emailable assets); pass \&quot;all\&quot; or \&quot;private\&quot; to widen. Confirm the tenant_slug with tenant_list first.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\MediaListRequest|null $media_list_request media_list_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\MediaListRequest|null $media_list_request media_list_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['mediaList'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\MediaList200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\MediaList200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function mediaList($media_list_request = null, string $contentType = self::contentTypes['mediaList'][0])
     {
@@ -4960,12 +4960,12 @@ class WriteApi
      *
      * List the images in a tenant&#39;s media library — id, public URL, dimensions, filename, folder, and alt text. Use this to find the media_id of an image to place into a campaign with campaign_set_image, instead of guessing. Returns newest first.  Filter with &#x60;folder&#x60; (exact match) or &#x60;search&#x60; (filename substring). &#x60;visibility&#x60; defaults to \&quot;public\&quot; (the emailable assets); pass \&quot;all\&quot; or \&quot;private\&quot; to widen. Confirm the tenant_slug with tenant_list first.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\MediaListRequest|null $media_list_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\MediaListRequest|null $media_list_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['mediaList'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\MediaList200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\MediaList200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function mediaListWithHttpInfo($media_list_request = null, string $contentType = self::contentTypes['mediaList'][0])
     {
@@ -4997,37 +4997,37 @@ class WriteApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\MediaList200Response',
+                        '\ShadowSoftware\DabDash\Model\MediaList200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -5049,7 +5049,7 @@ class WriteApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\MediaList200Response',
+                '\ShadowSoftware\DabDash\Model\MediaList200Response',
                 $request,
                 $response,
             );
@@ -5058,7 +5058,7 @@ class WriteApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\MediaList200Response',
+                        '\ShadowSoftware\DabDash\Model\MediaList200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5066,7 +5066,7 @@ class WriteApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5074,7 +5074,7 @@ class WriteApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5082,7 +5082,7 @@ class WriteApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5090,7 +5090,7 @@ class WriteApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5098,7 +5098,7 @@ class WriteApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5115,7 +5115,7 @@ class WriteApi
      *
      * List the images in a tenant&#39;s media library — id, public URL, dimensions, filename, folder, and alt text. Use this to find the media_id of an image to place into a campaign with campaign_set_image, instead of guessing. Returns newest first.  Filter with &#x60;folder&#x60; (exact match) or &#x60;search&#x60; (filename substring). &#x60;visibility&#x60; defaults to \&quot;public\&quot; (the emailable assets); pass \&quot;all\&quot; or \&quot;private\&quot; to widen. Confirm the tenant_slug with tenant_list first.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\MediaListRequest|null $media_list_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\MediaListRequest|null $media_list_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['mediaList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5136,7 +5136,7 @@ class WriteApi
      *
      * List the images in a tenant&#39;s media library — id, public URL, dimensions, filename, folder, and alt text. Use this to find the media_id of an image to place into a campaign with campaign_set_image, instead of guessing. Returns newest first.  Filter with &#x60;folder&#x60; (exact match) or &#x60;search&#x60; (filename substring). &#x60;visibility&#x60; defaults to \&quot;public\&quot; (the emailable assets); pass \&quot;all\&quot; or \&quot;private\&quot; to widen. Confirm the tenant_slug with tenant_list first.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\MediaListRequest|null $media_list_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\MediaListRequest|null $media_list_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['mediaList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5144,7 +5144,7 @@ class WriteApi
      */
     public function mediaListAsyncWithHttpInfo($media_list_request = null, string $contentType = self::contentTypes['mediaList'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\MediaList200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\MediaList200Response';
         $request = $this->mediaListRequest($media_list_request, $contentType);
 
         return $this->client
@@ -5186,7 +5186,7 @@ class WriteApi
     /**
      * Create request for operation 'mediaList'
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\MediaListRequest|null $media_list_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\MediaListRequest|null $media_list_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['mediaList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5281,12 +5281,12 @@ class WriteApi
      *
      * Upload an image into a tenant&#39;s media library (the same library the vendor admin uses). The image is ingested through the platform&#39;s shared media pipeline — re-encoded to WebP, resized to fit, EXIF- oriented, content-addressed for dedup — and a media_assets row is created. It ALWAYS lands in the library, and the tool returns the new media_id and public URL you can then place into a campaign with campaign_set_image.  PROVIDE THE IMAGE ONE OF THREE WAYS (exactly one):   - source_url    — fetch the image from a public http(s) URL.   - source_path   — read a local file path on the server/agent host.   - source_base64 — raw base64 of the image bytes (no data: prefix needed; a data: prefix is stripped).  CONSTRAINTS: max 5 MB; JPEG, PNG, WebP, or GIF. Identical bytes already in the library are de-duped (you get the existing media_id back). Uploads default to public visibility so the image is emailable.  Optional alt_text and folder help organise and caption the asset. Confirm the tenant_slug with tenant_list first. To see what&#39;s already in the library, use media_list.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\MediaUploadRequest|null $media_upload_request media_upload_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\MediaUploadRequest|null $media_upload_request media_upload_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['mediaUpload'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\MediaUpload200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\MediaUpload200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function mediaUpload($media_upload_request = null, string $contentType = self::contentTypes['mediaUpload'][0])
     {
@@ -5299,12 +5299,12 @@ class WriteApi
      *
      * Upload an image into a tenant&#39;s media library (the same library the vendor admin uses). The image is ingested through the platform&#39;s shared media pipeline — re-encoded to WebP, resized to fit, EXIF- oriented, content-addressed for dedup — and a media_assets row is created. It ALWAYS lands in the library, and the tool returns the new media_id and public URL you can then place into a campaign with campaign_set_image.  PROVIDE THE IMAGE ONE OF THREE WAYS (exactly one):   - source_url    — fetch the image from a public http(s) URL.   - source_path   — read a local file path on the server/agent host.   - source_base64 — raw base64 of the image bytes (no data: prefix needed; a data: prefix is stripped).  CONSTRAINTS: max 5 MB; JPEG, PNG, WebP, or GIF. Identical bytes already in the library are de-duped (you get the existing media_id back). Uploads default to public visibility so the image is emailable.  Optional alt_text and folder help organise and caption the asset. Confirm the tenant_slug with tenant_list first. To see what&#39;s already in the library, use media_list.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\MediaUploadRequest|null $media_upload_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\MediaUploadRequest|null $media_upload_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['mediaUpload'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\MediaUpload200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\MediaUpload200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function mediaUploadWithHttpInfo($media_upload_request = null, string $contentType = self::contentTypes['mediaUpload'][0])
     {
@@ -5336,37 +5336,37 @@ class WriteApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\MediaUpload200Response',
+                        '\ShadowSoftware\DabDash\Model\MediaUpload200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -5388,7 +5388,7 @@ class WriteApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\MediaUpload200Response',
+                '\ShadowSoftware\DabDash\Model\MediaUpload200Response',
                 $request,
                 $response,
             );
@@ -5397,7 +5397,7 @@ class WriteApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\MediaUpload200Response',
+                        '\ShadowSoftware\DabDash\Model\MediaUpload200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5405,7 +5405,7 @@ class WriteApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5413,7 +5413,7 @@ class WriteApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5421,7 +5421,7 @@ class WriteApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5429,7 +5429,7 @@ class WriteApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5437,7 +5437,7 @@ class WriteApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5454,7 +5454,7 @@ class WriteApi
      *
      * Upload an image into a tenant&#39;s media library (the same library the vendor admin uses). The image is ingested through the platform&#39;s shared media pipeline — re-encoded to WebP, resized to fit, EXIF- oriented, content-addressed for dedup — and a media_assets row is created. It ALWAYS lands in the library, and the tool returns the new media_id and public URL you can then place into a campaign with campaign_set_image.  PROVIDE THE IMAGE ONE OF THREE WAYS (exactly one):   - source_url    — fetch the image from a public http(s) URL.   - source_path   — read a local file path on the server/agent host.   - source_base64 — raw base64 of the image bytes (no data: prefix needed; a data: prefix is stripped).  CONSTRAINTS: max 5 MB; JPEG, PNG, WebP, or GIF. Identical bytes already in the library are de-duped (you get the existing media_id back). Uploads default to public visibility so the image is emailable.  Optional alt_text and folder help organise and caption the asset. Confirm the tenant_slug with tenant_list first. To see what&#39;s already in the library, use media_list.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\MediaUploadRequest|null $media_upload_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\MediaUploadRequest|null $media_upload_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['mediaUpload'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5475,7 +5475,7 @@ class WriteApi
      *
      * Upload an image into a tenant&#39;s media library (the same library the vendor admin uses). The image is ingested through the platform&#39;s shared media pipeline — re-encoded to WebP, resized to fit, EXIF- oriented, content-addressed for dedup — and a media_assets row is created. It ALWAYS lands in the library, and the tool returns the new media_id and public URL you can then place into a campaign with campaign_set_image.  PROVIDE THE IMAGE ONE OF THREE WAYS (exactly one):   - source_url    — fetch the image from a public http(s) URL.   - source_path   — read a local file path on the server/agent host.   - source_base64 — raw base64 of the image bytes (no data: prefix needed; a data: prefix is stripped).  CONSTRAINTS: max 5 MB; JPEG, PNG, WebP, or GIF. Identical bytes already in the library are de-duped (you get the existing media_id back). Uploads default to public visibility so the image is emailable.  Optional alt_text and folder help organise and caption the asset. Confirm the tenant_slug with tenant_list first. To see what&#39;s already in the library, use media_list.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\MediaUploadRequest|null $media_upload_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\MediaUploadRequest|null $media_upload_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['mediaUpload'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5483,7 +5483,7 @@ class WriteApi
      */
     public function mediaUploadAsyncWithHttpInfo($media_upload_request = null, string $contentType = self::contentTypes['mediaUpload'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\MediaUpload200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\MediaUpload200Response';
         $request = $this->mediaUploadRequest($media_upload_request, $contentType);
 
         return $this->client
@@ -5525,7 +5525,7 @@ class WriteApi
     /**
      * Create request for operation 'mediaUpload'
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\MediaUploadRequest|null $media_upload_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\MediaUploadRequest|null $media_upload_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['mediaUpload'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5620,12 +5620,12 @@ class WriteApi
      *
      * Assign a shared bundle pricing structure to one or more products. Re-syncs variations for each reassigned product. Automatically deletes orphaned inline (hidden) structures when replacing them.  SAFETY RULES enforced by this tool: - The target structure_id must be a BUNDLE (is_hidden&#x3D;false). Inline structures cannot be assigned   to products this way — that would violate the 1:1 contract. - If a product&#39;s current structure is inline (hidden) and this product is its only consumer   (product_count &#x3D;&#x3D; 1), the old inline structure is deleted automatically. - If a product&#39;s current structure is inline but product_count &gt; 1, assignment is refused for that   product with an explanation — this is a data anomaly that needs manual resolution. - Each product result includes a status: assigned | skipped (already on this structure) | refused.  Use pricing_structure_list to get valid structure IDs before calling this tool.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PricingStructureAssignRequest|null $pricing_structure_assign_request pricing_structure_assign_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PricingStructureAssignRequest|null $pricing_structure_assign_request pricing_structure_assign_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pricingStructureAssign'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\PricingStructureAssign200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\PricingStructureAssign200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function pricingStructureAssign($pricing_structure_assign_request = null, string $contentType = self::contentTypes['pricingStructureAssign'][0])
     {
@@ -5638,12 +5638,12 @@ class WriteApi
      *
      * Assign a shared bundle pricing structure to one or more products. Re-syncs variations for each reassigned product. Automatically deletes orphaned inline (hidden) structures when replacing them.  SAFETY RULES enforced by this tool: - The target structure_id must be a BUNDLE (is_hidden&#x3D;false). Inline structures cannot be assigned   to products this way — that would violate the 1:1 contract. - If a product&#39;s current structure is inline (hidden) and this product is its only consumer   (product_count &#x3D;&#x3D; 1), the old inline structure is deleted automatically. - If a product&#39;s current structure is inline but product_count &gt; 1, assignment is refused for that   product with an explanation — this is a data anomaly that needs manual resolution. - Each product result includes a status: assigned | skipped (already on this structure) | refused.  Use pricing_structure_list to get valid structure IDs before calling this tool.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PricingStructureAssignRequest|null $pricing_structure_assign_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PricingStructureAssignRequest|null $pricing_structure_assign_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pricingStructureAssign'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\PricingStructureAssign200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\PricingStructureAssign200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function pricingStructureAssignWithHttpInfo($pricing_structure_assign_request = null, string $contentType = self::contentTypes['pricingStructureAssign'][0])
     {
@@ -5675,37 +5675,37 @@ class WriteApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\PricingStructureAssign200Response',
+                        '\ShadowSoftware\DabDash\Model\PricingStructureAssign200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -5727,7 +5727,7 @@ class WriteApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\PricingStructureAssign200Response',
+                '\ShadowSoftware\DabDash\Model\PricingStructureAssign200Response',
                 $request,
                 $response,
             );
@@ -5736,7 +5736,7 @@ class WriteApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\PricingStructureAssign200Response',
+                        '\ShadowSoftware\DabDash\Model\PricingStructureAssign200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5744,7 +5744,7 @@ class WriteApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5752,7 +5752,7 @@ class WriteApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5760,7 +5760,7 @@ class WriteApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5768,7 +5768,7 @@ class WriteApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5776,7 +5776,7 @@ class WriteApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5793,7 +5793,7 @@ class WriteApi
      *
      * Assign a shared bundle pricing structure to one or more products. Re-syncs variations for each reassigned product. Automatically deletes orphaned inline (hidden) structures when replacing them.  SAFETY RULES enforced by this tool: - The target structure_id must be a BUNDLE (is_hidden&#x3D;false). Inline structures cannot be assigned   to products this way — that would violate the 1:1 contract. - If a product&#39;s current structure is inline (hidden) and this product is its only consumer   (product_count &#x3D;&#x3D; 1), the old inline structure is deleted automatically. - If a product&#39;s current structure is inline but product_count &gt; 1, assignment is refused for that   product with an explanation — this is a data anomaly that needs manual resolution. - Each product result includes a status: assigned | skipped (already on this structure) | refused.  Use pricing_structure_list to get valid structure IDs before calling this tool.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PricingStructureAssignRequest|null $pricing_structure_assign_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PricingStructureAssignRequest|null $pricing_structure_assign_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pricingStructureAssign'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5814,7 +5814,7 @@ class WriteApi
      *
      * Assign a shared bundle pricing structure to one or more products. Re-syncs variations for each reassigned product. Automatically deletes orphaned inline (hidden) structures when replacing them.  SAFETY RULES enforced by this tool: - The target structure_id must be a BUNDLE (is_hidden&#x3D;false). Inline structures cannot be assigned   to products this way — that would violate the 1:1 contract. - If a product&#39;s current structure is inline (hidden) and this product is its only consumer   (product_count &#x3D;&#x3D; 1), the old inline structure is deleted automatically. - If a product&#39;s current structure is inline but product_count &gt; 1, assignment is refused for that   product with an explanation — this is a data anomaly that needs manual resolution. - Each product result includes a status: assigned | skipped (already on this structure) | refused.  Use pricing_structure_list to get valid structure IDs before calling this tool.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PricingStructureAssignRequest|null $pricing_structure_assign_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PricingStructureAssignRequest|null $pricing_structure_assign_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pricingStructureAssign'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5822,7 +5822,7 @@ class WriteApi
      */
     public function pricingStructureAssignAsyncWithHttpInfo($pricing_structure_assign_request = null, string $contentType = self::contentTypes['pricingStructureAssign'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\PricingStructureAssign200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\PricingStructureAssign200Response';
         $request = $this->pricingStructureAssignRequest($pricing_structure_assign_request, $contentType);
 
         return $this->client
@@ -5864,7 +5864,7 @@ class WriteApi
     /**
      * Create request for operation 'pricingStructureAssign'
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PricingStructureAssignRequest|null $pricing_structure_assign_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PricingStructureAssignRequest|null $pricing_structure_assign_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pricingStructureAssign'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5959,12 +5959,12 @@ class WriteApi
      *
      * Delete one or more pricing structures by ID.  SAFETY RULES enforced by this tool: - BUNDLE structures (is_hidden&#x3D;false): always deletable unless products are still assigned.   Pass force&#x3D;true to delete even when products are assigned (use only after migrating them). - INLINE structures (is_hidden&#x3D;true): only deletable when product_count&#x3D;0 (orphaned).   Inline structures with products attached cannot be deleted — use pricing_structure_assign   to move the product to a bundle first, which auto-cleans the inline structure.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PricingStructureDeleteRequest|null $pricing_structure_delete_request pricing_structure_delete_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PricingStructureDeleteRequest|null $pricing_structure_delete_request pricing_structure_delete_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pricingStructureDelete'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\PricingStructureDelete200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\PricingStructureDelete200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function pricingStructureDelete($pricing_structure_delete_request = null, string $contentType = self::contentTypes['pricingStructureDelete'][0])
     {
@@ -5977,12 +5977,12 @@ class WriteApi
      *
      * Delete one or more pricing structures by ID.  SAFETY RULES enforced by this tool: - BUNDLE structures (is_hidden&#x3D;false): always deletable unless products are still assigned.   Pass force&#x3D;true to delete even when products are assigned (use only after migrating them). - INLINE structures (is_hidden&#x3D;true): only deletable when product_count&#x3D;0 (orphaned).   Inline structures with products attached cannot be deleted — use pricing_structure_assign   to move the product to a bundle first, which auto-cleans the inline structure.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PricingStructureDeleteRequest|null $pricing_structure_delete_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PricingStructureDeleteRequest|null $pricing_structure_delete_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pricingStructureDelete'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\PricingStructureDelete200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\PricingStructureDelete200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function pricingStructureDeleteWithHttpInfo($pricing_structure_delete_request = null, string $contentType = self::contentTypes['pricingStructureDelete'][0])
     {
@@ -6014,37 +6014,37 @@ class WriteApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\PricingStructureDelete200Response',
+                        '\ShadowSoftware\DabDash\Model\PricingStructureDelete200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -6066,7 +6066,7 @@ class WriteApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\PricingStructureDelete200Response',
+                '\ShadowSoftware\DabDash\Model\PricingStructureDelete200Response',
                 $request,
                 $response,
             );
@@ -6075,7 +6075,7 @@ class WriteApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\PricingStructureDelete200Response',
+                        '\ShadowSoftware\DabDash\Model\PricingStructureDelete200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6083,7 +6083,7 @@ class WriteApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6091,7 +6091,7 @@ class WriteApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6099,7 +6099,7 @@ class WriteApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6107,7 +6107,7 @@ class WriteApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6115,7 +6115,7 @@ class WriteApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6132,7 +6132,7 @@ class WriteApi
      *
      * Delete one or more pricing structures by ID.  SAFETY RULES enforced by this tool: - BUNDLE structures (is_hidden&#x3D;false): always deletable unless products are still assigned.   Pass force&#x3D;true to delete even when products are assigned (use only after migrating them). - INLINE structures (is_hidden&#x3D;true): only deletable when product_count&#x3D;0 (orphaned).   Inline structures with products attached cannot be deleted — use pricing_structure_assign   to move the product to a bundle first, which auto-cleans the inline structure.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PricingStructureDeleteRequest|null $pricing_structure_delete_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PricingStructureDeleteRequest|null $pricing_structure_delete_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pricingStructureDelete'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6153,7 +6153,7 @@ class WriteApi
      *
      * Delete one or more pricing structures by ID.  SAFETY RULES enforced by this tool: - BUNDLE structures (is_hidden&#x3D;false): always deletable unless products are still assigned.   Pass force&#x3D;true to delete even when products are assigned (use only after migrating them). - INLINE structures (is_hidden&#x3D;true): only deletable when product_count&#x3D;0 (orphaned).   Inline structures with products attached cannot be deleted — use pricing_structure_assign   to move the product to a bundle first, which auto-cleans the inline structure.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PricingStructureDeleteRequest|null $pricing_structure_delete_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PricingStructureDeleteRequest|null $pricing_structure_delete_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pricingStructureDelete'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6161,7 +6161,7 @@ class WriteApi
      */
     public function pricingStructureDeleteAsyncWithHttpInfo($pricing_structure_delete_request = null, string $contentType = self::contentTypes['pricingStructureDelete'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\PricingStructureDelete200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\PricingStructureDelete200Response';
         $request = $this->pricingStructureDeleteRequest($pricing_structure_delete_request, $contentType);
 
         return $this->client
@@ -6203,7 +6203,7 @@ class WriteApi
     /**
      * Create request for operation 'pricingStructureDelete'
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PricingStructureDeleteRequest|null $pricing_structure_delete_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PricingStructureDeleteRequest|null $pricing_structure_delete_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pricingStructureDelete'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6298,12 +6298,12 @@ class WriteApi
      *
      * List all pricing structures for a tenant with their kind (inline|bundle), product count, tracking type, and tier summary. Always call this before pricing_structure_upsert or pricing_structure_assign to get structure IDs and confirm which structures are bundles vs inline (1:1 product) structures.  kind&#x3D;inline  → hidden 1:1 structure tied to exactly one product (is_hidden&#x3D;true) kind&#x3D;bundle  → shared structure visible on /admin/pricing, used by 0 or more products (is_hidden&#x3D;false)
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PricingStructureListRequest|null $pricing_structure_list_request pricing_structure_list_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PricingStructureListRequest|null $pricing_structure_list_request pricing_structure_list_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pricingStructureList'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\PricingStructureList200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\PricingStructureList200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function pricingStructureList($pricing_structure_list_request = null, string $contentType = self::contentTypes['pricingStructureList'][0])
     {
@@ -6316,12 +6316,12 @@ class WriteApi
      *
      * List all pricing structures for a tenant with their kind (inline|bundle), product count, tracking type, and tier summary. Always call this before pricing_structure_upsert or pricing_structure_assign to get structure IDs and confirm which structures are bundles vs inline (1:1 product) structures.  kind&#x3D;inline  → hidden 1:1 structure tied to exactly one product (is_hidden&#x3D;true) kind&#x3D;bundle  → shared structure visible on /admin/pricing, used by 0 or more products (is_hidden&#x3D;false)
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PricingStructureListRequest|null $pricing_structure_list_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PricingStructureListRequest|null $pricing_structure_list_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pricingStructureList'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\PricingStructureList200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\PricingStructureList200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function pricingStructureListWithHttpInfo($pricing_structure_list_request = null, string $contentType = self::contentTypes['pricingStructureList'][0])
     {
@@ -6353,37 +6353,37 @@ class WriteApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\PricingStructureList200Response',
+                        '\ShadowSoftware\DabDash\Model\PricingStructureList200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -6405,7 +6405,7 @@ class WriteApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\PricingStructureList200Response',
+                '\ShadowSoftware\DabDash\Model\PricingStructureList200Response',
                 $request,
                 $response,
             );
@@ -6414,7 +6414,7 @@ class WriteApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\PricingStructureList200Response',
+                        '\ShadowSoftware\DabDash\Model\PricingStructureList200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6422,7 +6422,7 @@ class WriteApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6430,7 +6430,7 @@ class WriteApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6438,7 +6438,7 @@ class WriteApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6446,7 +6446,7 @@ class WriteApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6454,7 +6454,7 @@ class WriteApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6471,7 +6471,7 @@ class WriteApi
      *
      * List all pricing structures for a tenant with their kind (inline|bundle), product count, tracking type, and tier summary. Always call this before pricing_structure_upsert or pricing_structure_assign to get structure IDs and confirm which structures are bundles vs inline (1:1 product) structures.  kind&#x3D;inline  → hidden 1:1 structure tied to exactly one product (is_hidden&#x3D;true) kind&#x3D;bundle  → shared structure visible on /admin/pricing, used by 0 or more products (is_hidden&#x3D;false)
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PricingStructureListRequest|null $pricing_structure_list_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PricingStructureListRequest|null $pricing_structure_list_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pricingStructureList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6492,7 +6492,7 @@ class WriteApi
      *
      * List all pricing structures for a tenant with their kind (inline|bundle), product count, tracking type, and tier summary. Always call this before pricing_structure_upsert or pricing_structure_assign to get structure IDs and confirm which structures are bundles vs inline (1:1 product) structures.  kind&#x3D;inline  → hidden 1:1 structure tied to exactly one product (is_hidden&#x3D;true) kind&#x3D;bundle  → shared structure visible on /admin/pricing, used by 0 or more products (is_hidden&#x3D;false)
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PricingStructureListRequest|null $pricing_structure_list_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PricingStructureListRequest|null $pricing_structure_list_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pricingStructureList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6500,7 +6500,7 @@ class WriteApi
      */
     public function pricingStructureListAsyncWithHttpInfo($pricing_structure_list_request = null, string $contentType = self::contentTypes['pricingStructureList'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\PricingStructureList200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\PricingStructureList200Response';
         $request = $this->pricingStructureListRequest($pricing_structure_list_request, $contentType);
 
         return $this->client
@@ -6542,7 +6542,7 @@ class WriteApi
     /**
      * Create request for operation 'pricingStructureList'
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PricingStructureListRequest|null $pricing_structure_list_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PricingStructureListRequest|null $pricing_structure_list_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pricingStructureList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6637,12 +6637,12 @@ class WriteApi
      *
      * Surgical restore tool. Rebuilds a single product&#39;s pricing structure and variations EXACTLY to a specified state. Bypasses the standard syncVariationsForProduct routine — you control every field.  Use this AFTER inventory_audit_lookup has revealed the pre-incident state of variations whose names/prices/stock were destroyed by an erroneous bundle reassignment.  Behaviour: - Creates a NEW inline (hidden, 1:1) pricing structure with the given tracking_type, tier   definitions, and a name like \&quot;Product: &lt;product_name&gt; (Hidden)\&quot;. Old structure linkage is   replaced. The previous structure is NOT deleted by this tool. - For each tier in the spec, finds-or-creates a variation. Matching is by &#x60;restore_variation_id&#x60;   if provided, else by name. If found, the variation is updated in place (preserving its id and   its audit-log history). If not found, a new variation is created. - Stock_quantity is set EXACTLY to the value specified — this is the whole point of the tool. - Sets product.tracking_type, product.inventory_mode, product.base_unit per the new structure. - Variations on the product not referenced by any tier in the spec are DEACTIVATED (is_active&#x3D;false)   so they stop being shown but their audit history is retained. Pass &#x60;delete_unreferenced&#x3D;true&#x60; to   hard-delete them instead.  SAFETY: - Wrap each call in its own transaction. - Will refuse if the new tracking_type is incompatible with stored cost data. - Inline-only by design — bundles are not recreated by this tool. Use pricing_structure_assign   to put the product on a bundle if that&#39;s what you want.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PricingStructureRestoreRequest|null $pricing_structure_restore_request pricing_structure_restore_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PricingStructureRestoreRequest|null $pricing_structure_restore_request pricing_structure_restore_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pricingStructureRestore'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\PricingStructureRestore200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\PricingStructureRestore200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function pricingStructureRestore($pricing_structure_restore_request = null, string $contentType = self::contentTypes['pricingStructureRestore'][0])
     {
@@ -6655,12 +6655,12 @@ class WriteApi
      *
      * Surgical restore tool. Rebuilds a single product&#39;s pricing structure and variations EXACTLY to a specified state. Bypasses the standard syncVariationsForProduct routine — you control every field.  Use this AFTER inventory_audit_lookup has revealed the pre-incident state of variations whose names/prices/stock were destroyed by an erroneous bundle reassignment.  Behaviour: - Creates a NEW inline (hidden, 1:1) pricing structure with the given tracking_type, tier   definitions, and a name like \&quot;Product: &lt;product_name&gt; (Hidden)\&quot;. Old structure linkage is   replaced. The previous structure is NOT deleted by this tool. - For each tier in the spec, finds-or-creates a variation. Matching is by &#x60;restore_variation_id&#x60;   if provided, else by name. If found, the variation is updated in place (preserving its id and   its audit-log history). If not found, a new variation is created. - Stock_quantity is set EXACTLY to the value specified — this is the whole point of the tool. - Sets product.tracking_type, product.inventory_mode, product.base_unit per the new structure. - Variations on the product not referenced by any tier in the spec are DEACTIVATED (is_active&#x3D;false)   so they stop being shown but their audit history is retained. Pass &#x60;delete_unreferenced&#x3D;true&#x60; to   hard-delete them instead.  SAFETY: - Wrap each call in its own transaction. - Will refuse if the new tracking_type is incompatible with stored cost data. - Inline-only by design — bundles are not recreated by this tool. Use pricing_structure_assign   to put the product on a bundle if that&#39;s what you want.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PricingStructureRestoreRequest|null $pricing_structure_restore_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PricingStructureRestoreRequest|null $pricing_structure_restore_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pricingStructureRestore'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\PricingStructureRestore200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\PricingStructureRestore200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function pricingStructureRestoreWithHttpInfo($pricing_structure_restore_request = null, string $contentType = self::contentTypes['pricingStructureRestore'][0])
     {
@@ -6692,37 +6692,37 @@ class WriteApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\PricingStructureRestore200Response',
+                        '\ShadowSoftware\DabDash\Model\PricingStructureRestore200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -6744,7 +6744,7 @@ class WriteApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\PricingStructureRestore200Response',
+                '\ShadowSoftware\DabDash\Model\PricingStructureRestore200Response',
                 $request,
                 $response,
             );
@@ -6753,7 +6753,7 @@ class WriteApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\PricingStructureRestore200Response',
+                        '\ShadowSoftware\DabDash\Model\PricingStructureRestore200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6761,7 +6761,7 @@ class WriteApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6769,7 +6769,7 @@ class WriteApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6777,7 +6777,7 @@ class WriteApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6785,7 +6785,7 @@ class WriteApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6793,7 +6793,7 @@ class WriteApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6810,7 +6810,7 @@ class WriteApi
      *
      * Surgical restore tool. Rebuilds a single product&#39;s pricing structure and variations EXACTLY to a specified state. Bypasses the standard syncVariationsForProduct routine — you control every field.  Use this AFTER inventory_audit_lookup has revealed the pre-incident state of variations whose names/prices/stock were destroyed by an erroneous bundle reassignment.  Behaviour: - Creates a NEW inline (hidden, 1:1) pricing structure with the given tracking_type, tier   definitions, and a name like \&quot;Product: &lt;product_name&gt; (Hidden)\&quot;. Old structure linkage is   replaced. The previous structure is NOT deleted by this tool. - For each tier in the spec, finds-or-creates a variation. Matching is by &#x60;restore_variation_id&#x60;   if provided, else by name. If found, the variation is updated in place (preserving its id and   its audit-log history). If not found, a new variation is created. - Stock_quantity is set EXACTLY to the value specified — this is the whole point of the tool. - Sets product.tracking_type, product.inventory_mode, product.base_unit per the new structure. - Variations on the product not referenced by any tier in the spec are DEACTIVATED (is_active&#x3D;false)   so they stop being shown but their audit history is retained. Pass &#x60;delete_unreferenced&#x3D;true&#x60; to   hard-delete them instead.  SAFETY: - Wrap each call in its own transaction. - Will refuse if the new tracking_type is incompatible with stored cost data. - Inline-only by design — bundles are not recreated by this tool. Use pricing_structure_assign   to put the product on a bundle if that&#39;s what you want.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PricingStructureRestoreRequest|null $pricing_structure_restore_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PricingStructureRestoreRequest|null $pricing_structure_restore_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pricingStructureRestore'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6831,7 +6831,7 @@ class WriteApi
      *
      * Surgical restore tool. Rebuilds a single product&#39;s pricing structure and variations EXACTLY to a specified state. Bypasses the standard syncVariationsForProduct routine — you control every field.  Use this AFTER inventory_audit_lookup has revealed the pre-incident state of variations whose names/prices/stock were destroyed by an erroneous bundle reassignment.  Behaviour: - Creates a NEW inline (hidden, 1:1) pricing structure with the given tracking_type, tier   definitions, and a name like \&quot;Product: &lt;product_name&gt; (Hidden)\&quot;. Old structure linkage is   replaced. The previous structure is NOT deleted by this tool. - For each tier in the spec, finds-or-creates a variation. Matching is by &#x60;restore_variation_id&#x60;   if provided, else by name. If found, the variation is updated in place (preserving its id and   its audit-log history). If not found, a new variation is created. - Stock_quantity is set EXACTLY to the value specified — this is the whole point of the tool. - Sets product.tracking_type, product.inventory_mode, product.base_unit per the new structure. - Variations on the product not referenced by any tier in the spec are DEACTIVATED (is_active&#x3D;false)   so they stop being shown but their audit history is retained. Pass &#x60;delete_unreferenced&#x3D;true&#x60; to   hard-delete them instead.  SAFETY: - Wrap each call in its own transaction. - Will refuse if the new tracking_type is incompatible with stored cost data. - Inline-only by design — bundles are not recreated by this tool. Use pricing_structure_assign   to put the product on a bundle if that&#39;s what you want.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PricingStructureRestoreRequest|null $pricing_structure_restore_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PricingStructureRestoreRequest|null $pricing_structure_restore_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pricingStructureRestore'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6839,7 +6839,7 @@ class WriteApi
      */
     public function pricingStructureRestoreAsyncWithHttpInfo($pricing_structure_restore_request = null, string $contentType = self::contentTypes['pricingStructureRestore'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\PricingStructureRestore200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\PricingStructureRestore200Response';
         $request = $this->pricingStructureRestoreRequest($pricing_structure_restore_request, $contentType);
 
         return $this->client
@@ -6881,7 +6881,7 @@ class WriteApi
     /**
      * Create request for operation 'pricingStructureRestore'
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PricingStructureRestoreRequest|null $pricing_structure_restore_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PricingStructureRestoreRequest|null $pricing_structure_restore_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pricingStructureRestore'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6976,12 +6976,12 @@ class WriteApi
      *
      * Create or edit a pricing structure&#39;s tiers, name, and tracking type. Operates in three modes:  BUNDLE MODE (structure_id provided, structure is not hidden):   Edit a shared bundle structure visible on /admin/pricing. Tiers are replaced and ALL products   linked to the bundle are re-synced. Returns how many products were affected as a warning.  INLINE MODE (product_slug or product_id provided, no structure_id):   Edit the hidden 1:1 pricing structure for a single product. Tiers are replaced and variations   are re-synced for that product only. Refuses if the product currently uses a bundle structure —   use pricing_structure_assign to detach from the bundle first.  CREATE BUNDLE MODE (no structure_id, no product_slug/product_id):   Create a new shared bundle structure. Does not link it to any products.  SAFETY RULES enforced by this tool: - Never accepts structure_id pointing to a hidden (inline) structure — always go via product_slug/product_id. - Tiers for weight/matrix types must have weight_grams &gt; 0. - Tiers for simple type: only the first tier is used; name and weight_grams are normalised. - Prices are accepted as dollar amounts (e.g. 12.99) and converted to cents internally.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PricingStructureUpsertRequest|null $pricing_structure_upsert_request pricing_structure_upsert_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PricingStructureUpsertRequest|null $pricing_structure_upsert_request pricing_structure_upsert_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pricingStructureUpsert'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\PricingStructureUpsert200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\PricingStructureUpsert200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function pricingStructureUpsert($pricing_structure_upsert_request = null, string $contentType = self::contentTypes['pricingStructureUpsert'][0])
     {
@@ -6994,12 +6994,12 @@ class WriteApi
      *
      * Create or edit a pricing structure&#39;s tiers, name, and tracking type. Operates in three modes:  BUNDLE MODE (structure_id provided, structure is not hidden):   Edit a shared bundle structure visible on /admin/pricing. Tiers are replaced and ALL products   linked to the bundle are re-synced. Returns how many products were affected as a warning.  INLINE MODE (product_slug or product_id provided, no structure_id):   Edit the hidden 1:1 pricing structure for a single product. Tiers are replaced and variations   are re-synced for that product only. Refuses if the product currently uses a bundle structure —   use pricing_structure_assign to detach from the bundle first.  CREATE BUNDLE MODE (no structure_id, no product_slug/product_id):   Create a new shared bundle structure. Does not link it to any products.  SAFETY RULES enforced by this tool: - Never accepts structure_id pointing to a hidden (inline) structure — always go via product_slug/product_id. - Tiers for weight/matrix types must have weight_grams &gt; 0. - Tiers for simple type: only the first tier is used; name and weight_grams are normalised. - Prices are accepted as dollar amounts (e.g. 12.99) and converted to cents internally.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PricingStructureUpsertRequest|null $pricing_structure_upsert_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PricingStructureUpsertRequest|null $pricing_structure_upsert_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pricingStructureUpsert'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\PricingStructureUpsert200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\PricingStructureUpsert200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function pricingStructureUpsertWithHttpInfo($pricing_structure_upsert_request = null, string $contentType = self::contentTypes['pricingStructureUpsert'][0])
     {
@@ -7031,37 +7031,37 @@ class WriteApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\PricingStructureUpsert200Response',
+                        '\ShadowSoftware\DabDash\Model\PricingStructureUpsert200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -7083,7 +7083,7 @@ class WriteApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\PricingStructureUpsert200Response',
+                '\ShadowSoftware\DabDash\Model\PricingStructureUpsert200Response',
                 $request,
                 $response,
             );
@@ -7092,7 +7092,7 @@ class WriteApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\PricingStructureUpsert200Response',
+                        '\ShadowSoftware\DabDash\Model\PricingStructureUpsert200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7100,7 +7100,7 @@ class WriteApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7108,7 +7108,7 @@ class WriteApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7116,7 +7116,7 @@ class WriteApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7124,7 +7124,7 @@ class WriteApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7132,7 +7132,7 @@ class WriteApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7149,7 +7149,7 @@ class WriteApi
      *
      * Create or edit a pricing structure&#39;s tiers, name, and tracking type. Operates in three modes:  BUNDLE MODE (structure_id provided, structure is not hidden):   Edit a shared bundle structure visible on /admin/pricing. Tiers are replaced and ALL products   linked to the bundle are re-synced. Returns how many products were affected as a warning.  INLINE MODE (product_slug or product_id provided, no structure_id):   Edit the hidden 1:1 pricing structure for a single product. Tiers are replaced and variations   are re-synced for that product only. Refuses if the product currently uses a bundle structure —   use pricing_structure_assign to detach from the bundle first.  CREATE BUNDLE MODE (no structure_id, no product_slug/product_id):   Create a new shared bundle structure. Does not link it to any products.  SAFETY RULES enforced by this tool: - Never accepts structure_id pointing to a hidden (inline) structure — always go via product_slug/product_id. - Tiers for weight/matrix types must have weight_grams &gt; 0. - Tiers for simple type: only the first tier is used; name and weight_grams are normalised. - Prices are accepted as dollar amounts (e.g. 12.99) and converted to cents internally.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PricingStructureUpsertRequest|null $pricing_structure_upsert_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PricingStructureUpsertRequest|null $pricing_structure_upsert_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pricingStructureUpsert'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7170,7 +7170,7 @@ class WriteApi
      *
      * Create or edit a pricing structure&#39;s tiers, name, and tracking type. Operates in three modes:  BUNDLE MODE (structure_id provided, structure is not hidden):   Edit a shared bundle structure visible on /admin/pricing. Tiers are replaced and ALL products   linked to the bundle are re-synced. Returns how many products were affected as a warning.  INLINE MODE (product_slug or product_id provided, no structure_id):   Edit the hidden 1:1 pricing structure for a single product. Tiers are replaced and variations   are re-synced for that product only. Refuses if the product currently uses a bundle structure —   use pricing_structure_assign to detach from the bundle first.  CREATE BUNDLE MODE (no structure_id, no product_slug/product_id):   Create a new shared bundle structure. Does not link it to any products.  SAFETY RULES enforced by this tool: - Never accepts structure_id pointing to a hidden (inline) structure — always go via product_slug/product_id. - Tiers for weight/matrix types must have weight_grams &gt; 0. - Tiers for simple type: only the first tier is used; name and weight_grams are normalised. - Prices are accepted as dollar amounts (e.g. 12.99) and converted to cents internally.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PricingStructureUpsertRequest|null $pricing_structure_upsert_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PricingStructureUpsertRequest|null $pricing_structure_upsert_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pricingStructureUpsert'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7178,7 +7178,7 @@ class WriteApi
      */
     public function pricingStructureUpsertAsyncWithHttpInfo($pricing_structure_upsert_request = null, string $contentType = self::contentTypes['pricingStructureUpsert'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\PricingStructureUpsert200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\PricingStructureUpsert200Response';
         $request = $this->pricingStructureUpsertRequest($pricing_structure_upsert_request, $contentType);
 
         return $this->client
@@ -7220,7 +7220,7 @@ class WriteApi
     /**
      * Create request for operation 'pricingStructureUpsert'
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\PricingStructureUpsertRequest|null $pricing_structure_upsert_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\PricingStructureUpsertRequest|null $pricing_structure_upsert_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pricingStructureUpsert'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7315,12 +7315,12 @@ class WriteApi
      *
      * Update a simple product&#39;s stock quantity and/or price by SKU — the inventory-sync path for an external POS. v1 scope: SIMPLE products only (single implicit unit, no weight/variant tiers). Every other pricing type (weight, unit, matrix, matrix_unit) is rejected with a clear message; those need per-tier/per-variant targeting that a flat SKU+quantity+price payload cannot express safely. Always call product_inspect with sku first to confirm which product/type you are targeting.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\ProductUpdateBySkuRequest|null $product_update_by_sku_request product_update_by_sku_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\ProductUpdateBySkuRequest|null $product_update_by_sku_request product_update_by_sku_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productUpdateBySku'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\ProductUpdateBySku200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\ProductUpdateBySku200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function productUpdateBySku($product_update_by_sku_request = null, string $contentType = self::contentTypes['productUpdateBySku'][0])
     {
@@ -7333,12 +7333,12 @@ class WriteApi
      *
      * Update a simple product&#39;s stock quantity and/or price by SKU — the inventory-sync path for an external POS. v1 scope: SIMPLE products only (single implicit unit, no weight/variant tiers). Every other pricing type (weight, unit, matrix, matrix_unit) is rejected with a clear message; those need per-tier/per-variant targeting that a flat SKU+quantity+price payload cannot express safely. Always call product_inspect with sku first to confirm which product/type you are targeting.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\ProductUpdateBySkuRequest|null $product_update_by_sku_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\ProductUpdateBySkuRequest|null $product_update_by_sku_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productUpdateBySku'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\ProductUpdateBySku200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\ProductUpdateBySku200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function productUpdateBySkuWithHttpInfo($product_update_by_sku_request = null, string $contentType = self::contentTypes['productUpdateBySku'][0])
     {
@@ -7370,37 +7370,37 @@ class WriteApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\ProductUpdateBySku200Response',
+                        '\ShadowSoftware\DabDash\Model\ProductUpdateBySku200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -7422,7 +7422,7 @@ class WriteApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\ProductUpdateBySku200Response',
+                '\ShadowSoftware\DabDash\Model\ProductUpdateBySku200Response',
                 $request,
                 $response,
             );
@@ -7431,7 +7431,7 @@ class WriteApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\ProductUpdateBySku200Response',
+                        '\ShadowSoftware\DabDash\Model\ProductUpdateBySku200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7439,7 +7439,7 @@ class WriteApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7447,7 +7447,7 @@ class WriteApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7455,7 +7455,7 @@ class WriteApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7463,7 +7463,7 @@ class WriteApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7471,7 +7471,7 @@ class WriteApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7488,7 +7488,7 @@ class WriteApi
      *
      * Update a simple product&#39;s stock quantity and/or price by SKU — the inventory-sync path for an external POS. v1 scope: SIMPLE products only (single implicit unit, no weight/variant tiers). Every other pricing type (weight, unit, matrix, matrix_unit) is rejected with a clear message; those need per-tier/per-variant targeting that a flat SKU+quantity+price payload cannot express safely. Always call product_inspect with sku first to confirm which product/type you are targeting.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\ProductUpdateBySkuRequest|null $product_update_by_sku_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\ProductUpdateBySkuRequest|null $product_update_by_sku_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productUpdateBySku'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7509,7 +7509,7 @@ class WriteApi
      *
      * Update a simple product&#39;s stock quantity and/or price by SKU — the inventory-sync path for an external POS. v1 scope: SIMPLE products only (single implicit unit, no weight/variant tiers). Every other pricing type (weight, unit, matrix, matrix_unit) is rejected with a clear message; those need per-tier/per-variant targeting that a flat SKU+quantity+price payload cannot express safely. Always call product_inspect with sku first to confirm which product/type you are targeting.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\ProductUpdateBySkuRequest|null $product_update_by_sku_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\ProductUpdateBySkuRequest|null $product_update_by_sku_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productUpdateBySku'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7517,7 +7517,7 @@ class WriteApi
      */
     public function productUpdateBySkuAsyncWithHttpInfo($product_update_by_sku_request = null, string $contentType = self::contentTypes['productUpdateBySku'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\ProductUpdateBySku200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\ProductUpdateBySku200Response';
         $request = $this->productUpdateBySkuRequest($product_update_by_sku_request, $contentType);
 
         return $this->client
@@ -7559,7 +7559,7 @@ class WriteApi
     /**
      * Create request for operation 'productUpdateBySku'
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\ProductUpdateBySkuRequest|null $product_update_by_sku_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\ProductUpdateBySkuRequest|null $product_update_by_sku_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productUpdateBySku'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7654,12 +7654,12 @@ class WriteApi
      *
      * List, create, update, or delete a tenant&#39;s homepage marketing widgets (the hero slider cards linking to a product, category, featured products, or a mix &amp; match tag).  ACTIONS:   list   (default): return every widget with id, title, subtitle, link_type, target, sort_order,          is_active, and image_url. Always call this first to find a widget_id.   create: requires title. link_type + its matching id/tag is optional but recommended so the          widget&#39;s CTA actually goes somewhere (see LINK_TYPE below). Defaults to \&quot;featured\&quot;          (no target) when omitted.   update: requires widget_id. Only the fields you pass are changed.   delete: requires widget_id and confirm&#x3D;true.  LINK_TYPE — pairs with exactly one target field:   \&quot;product\&quot;    → product_id   \&quot;category\&quot;   → category_id   \&quot;mix_match\&quot;  → mix_match_tag   \&quot;featured\&quot;   → no target needed (links to the featured-products listing)  IMAGES: pass media_id (from media_list / media_upload) to set image_path (the final, customer-facing image) or base_image_path (the unbranded source canvas SwagImagesService composites the headline/logo overlay onto). Omit both to leave images untouched.  Always call action&#x3D;list first to confirm widget_id before update or delete.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\WidgetManageRequest|null $widget_manage_request widget_manage_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\WidgetManageRequest|null $widget_manage_request widget_manage_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['widgetManage'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\Sdk\Generated\Model\WidgetManage200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\WidgetManage200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
      */
     public function widgetManage($widget_manage_request = null, string $contentType = self::contentTypes['widgetManage'][0])
     {
@@ -7672,12 +7672,12 @@ class WriteApi
      *
      * List, create, update, or delete a tenant&#39;s homepage marketing widgets (the hero slider cards linking to a product, category, featured products, or a mix &amp; match tag).  ACTIONS:   list   (default): return every widget with id, title, subtitle, link_type, target, sort_order,          is_active, and image_url. Always call this first to find a widget_id.   create: requires title. link_type + its matching id/tag is optional but recommended so the          widget&#39;s CTA actually goes somewhere (see LINK_TYPE below). Defaults to \&quot;featured\&quot;          (no target) when omitted.   update: requires widget_id. Only the fields you pass are changed.   delete: requires widget_id and confirm&#x3D;true.  LINK_TYPE — pairs with exactly one target field:   \&quot;product\&quot;    → product_id   \&quot;category\&quot;   → category_id   \&quot;mix_match\&quot;  → mix_match_tag   \&quot;featured\&quot;   → no target needed (links to the featured-products listing)  IMAGES: pass media_id (from media_list / media_upload) to set image_path (the final, customer-facing image) or base_image_path (the unbranded source canvas SwagImagesService composites the headline/logo overlay onto). Omit both to leave images untouched.  Always call action&#x3D;list first to confirm widget_id before update or delete.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\WidgetManageRequest|null $widget_manage_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\WidgetManageRequest|null $widget_manage_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['widgetManage'] to see the possible values for this operation
      *
-     * @throws \ShadowSoftware\Sdk\Generated\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\Sdk\Generated\Model\WidgetManage200Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response|\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\WidgetManage200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function widgetManageWithHttpInfo($widget_manage_request = null, string $contentType = self::contentTypes['widgetManage'][0])
     {
@@ -7709,37 +7709,37 @@ class WriteApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\WidgetManage200Response',
+                        '\ShadowSoftware\DabDash\Model\WidgetManage200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $request,
                         $response,
                     );
@@ -7761,7 +7761,7 @@ class WriteApi
             }
 
             return $this->handleResponseWithDataType(
-                '\ShadowSoftware\Sdk\Generated\Model\WidgetManage200Response',
+                '\ShadowSoftware\DabDash\Model\WidgetManage200Response',
                 $request,
                 $response,
             );
@@ -7770,7 +7770,7 @@ class WriteApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\WidgetManage200Response',
+                        '\ShadowSoftware\DabDash\Model\WidgetManage200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7778,7 +7778,7 @@ class WriteApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7786,7 +7786,7 @@ class WriteApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7794,7 +7794,7 @@ class WriteApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7802,7 +7802,7 @@ class WriteApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7810,7 +7810,7 @@ class WriteApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\Sdk\Generated\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7827,7 +7827,7 @@ class WriteApi
      *
      * List, create, update, or delete a tenant&#39;s homepage marketing widgets (the hero slider cards linking to a product, category, featured products, or a mix &amp; match tag).  ACTIONS:   list   (default): return every widget with id, title, subtitle, link_type, target, sort_order,          is_active, and image_url. Always call this first to find a widget_id.   create: requires title. link_type + its matching id/tag is optional but recommended so the          widget&#39;s CTA actually goes somewhere (see LINK_TYPE below). Defaults to \&quot;featured\&quot;          (no target) when omitted.   update: requires widget_id. Only the fields you pass are changed.   delete: requires widget_id and confirm&#x3D;true.  LINK_TYPE — pairs with exactly one target field:   \&quot;product\&quot;    → product_id   \&quot;category\&quot;   → category_id   \&quot;mix_match\&quot;  → mix_match_tag   \&quot;featured\&quot;   → no target needed (links to the featured-products listing)  IMAGES: pass media_id (from media_list / media_upload) to set image_path (the final, customer-facing image) or base_image_path (the unbranded source canvas SwagImagesService composites the headline/logo overlay onto). Omit both to leave images untouched.  Always call action&#x3D;list first to confirm widget_id before update or delete.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\WidgetManageRequest|null $widget_manage_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\WidgetManageRequest|null $widget_manage_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['widgetManage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7848,7 +7848,7 @@ class WriteApi
      *
      * List, create, update, or delete a tenant&#39;s homepage marketing widgets (the hero slider cards linking to a product, category, featured products, or a mix &amp; match tag).  ACTIONS:   list   (default): return every widget with id, title, subtitle, link_type, target, sort_order,          is_active, and image_url. Always call this first to find a widget_id.   create: requires title. link_type + its matching id/tag is optional but recommended so the          widget&#39;s CTA actually goes somewhere (see LINK_TYPE below). Defaults to \&quot;featured\&quot;          (no target) when omitted.   update: requires widget_id. Only the fields you pass are changed.   delete: requires widget_id and confirm&#x3D;true.  LINK_TYPE — pairs with exactly one target field:   \&quot;product\&quot;    → product_id   \&quot;category\&quot;   → category_id   \&quot;mix_match\&quot;  → mix_match_tag   \&quot;featured\&quot;   → no target needed (links to the featured-products listing)  IMAGES: pass media_id (from media_list / media_upload) to set image_path (the final, customer-facing image) or base_image_path (the unbranded source canvas SwagImagesService composites the headline/logo overlay onto). Omit both to leave images untouched.  Always call action&#x3D;list first to confirm widget_id before update or delete.
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\WidgetManageRequest|null $widget_manage_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\WidgetManageRequest|null $widget_manage_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['widgetManage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7856,7 +7856,7 @@ class WriteApi
      */
     public function widgetManageAsyncWithHttpInfo($widget_manage_request = null, string $contentType = self::contentTypes['widgetManage'][0])
     {
-        $returnType = '\ShadowSoftware\Sdk\Generated\Model\WidgetManage200Response';
+        $returnType = '\ShadowSoftware\DabDash\Model\WidgetManage200Response';
         $request = $this->widgetManageRequest($widget_manage_request, $contentType);
 
         return $this->client
@@ -7898,7 +7898,7 @@ class WriteApi
     /**
      * Create request for operation 'widgetManage'
      *
-     * @param  \ShadowSoftware\Sdk\Generated\Model\WidgetManageRequest|null $widget_manage_request (optional)
+     * @param  \ShadowSoftware\DabDash\Model\WidgetManageRequest|null $widget_manage_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['widgetManage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

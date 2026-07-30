@@ -1,4 +1,4 @@
-# ShadowSoftware\Sdk\Generated\ZonesApi
+# ShadowSoftware\DabDash\ZonesApi
 
 
 
@@ -12,7 +12,7 @@ All URIs are relative to https://.dabdash.com, except if the operation defines a
 ## `zoneDiagnostics()`
 
 ```php
-zoneDiagnostics($zone_diagnostics_request): \ShadowSoftware\Sdk\Generated\Model\ZoneDiagnostics200Response
+zoneDiagnostics($zone_diagnostics_request): \ShadowSoftware\DabDash\Model\ZoneDiagnostics200Response
 ```
 
 Inspect zone polygons against customer or order coordinates to explain why an address is inside or outside delivery coverage.
@@ -25,19 +25,19 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: tenantOAuth
-$config = ShadowSoftware\Sdk\Generated\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure Bearer authorization: tenantApiKey
-$config = ShadowSoftware\Sdk\Generated\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new ShadowSoftware\Sdk\Generated\Api\ZonesApi(
+$apiInstance = new ShadowSoftware\DabDash\Api\ZonesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$zone_diagnostics_request = new \ShadowSoftware\Sdk\Generated\Model\ZoneDiagnosticsRequest(); // \ShadowSoftware\Sdk\Generated\Model\ZoneDiagnosticsRequest
+$zone_diagnostics_request = new \ShadowSoftware\DabDash\Model\ZoneDiagnosticsRequest(); // \ShadowSoftware\DabDash\Model\ZoneDiagnosticsRequest
 
 try {
     $result = $apiInstance->zoneDiagnostics($zone_diagnostics_request);
@@ -51,11 +51,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **zone_diagnostics_request** | [**\ShadowSoftware\Sdk\Generated\Model\ZoneDiagnosticsRequest**](../Model/ZoneDiagnosticsRequest.md)|  | [optional] |
+| **zone_diagnostics_request** | [**\ShadowSoftware\DabDash\Model\ZoneDiagnosticsRequest**](../Model/ZoneDiagnosticsRequest.md)|  | [optional] |
 
 ### Return type
 
-[**\ShadowSoftware\Sdk\Generated\Model\ZoneDiagnostics200Response**](../Model/ZoneDiagnostics200Response.md)
+[**\ShadowSoftware\DabDash\Model\ZoneDiagnostics200Response**](../Model/ZoneDiagnostics200Response.md)
 
 ### Authorization
 

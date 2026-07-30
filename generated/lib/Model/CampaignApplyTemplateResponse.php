@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace ShadowSoftware\Sdk\Generated\Model;
+namespace ShadowSoftware\DabDash\Model;
 
 use \ArrayAccess;
-use \ShadowSoftware\Sdk\Generated\ObjectSerializer;
+use \ShadowSoftware\DabDash\ObjectSerializer;
 
 /**
  * CampaignApplyTemplateResponse Class Doc Comment
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class CampaignApplyTemplateResponse implements ModelInterface, ArrayAccess, \Jso
      */
     protected static $openAPITypes = [
         'error' => 'string',
-        'available_templates' => '\ShadowSoftware\Sdk\Generated\Model\CampaignApplyTemplateResponseAvailableTemplatesInner[]',
+        'available_templates' => '\ShadowSoftware\DabDash\Model\CampaignApplyTemplateResponseAvailableTemplatesInner[]',
         'action' => 'string',
         'campaign_id' => 'int',
         'template_id' => 'string',
@@ -375,7 +375,7 @@ class CampaignApplyTemplateResponse implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets available_templates
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\CampaignApplyTemplateResponseAvailableTemplatesInner[]|null
+     * @return \ShadowSoftware\DabDash\Model\CampaignApplyTemplateResponseAvailableTemplatesInner[]|null
      */
     public function getAvailableTemplates()
     {
@@ -385,7 +385,7 @@ class CampaignApplyTemplateResponse implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets available_templates
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\CampaignApplyTemplateResponseAvailableTemplatesInner[]|null $available_templates available_templates
+     * @param \ShadowSoftware\DabDash\Model\CampaignApplyTemplateResponseAvailableTemplatesInner[]|null $available_templates available_templates
      *
      * @return self
      */

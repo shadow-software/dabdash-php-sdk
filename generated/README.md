@@ -49,19 +49,19 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: tenantOAuth
-$config = ShadowSoftware\Sdk\Generated\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure Bearer authorization: tenantApiKey
-$config = ShadowSoftware\Sdk\Generated\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new ShadowSoftware\Sdk\Generated\Api\AnalyticsApi(
+$apiInstance = new ShadowSoftware\DabDash\Api\AnalyticsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$analytics_query_request = new \ShadowSoftware\Sdk\Generated\Model\AnalyticsQueryRequest(); // \ShadowSoftware\Sdk\Generated\Model\AnalyticsQueryRequest
+$analytics_query_request = new \ShadowSoftware\DabDash\Model\AnalyticsQueryRequest(); // \ShadowSoftware\DabDash\Model\AnalyticsQueryRequest
 
 try {
     $result = $apiInstance->analyticsQuery($analytics_query_request);

@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace ShadowSoftware\Sdk\Generated\Model;
+namespace ShadowSoftware\DabDash\Model;
 
 use \ArrayAccess;
-use \ShadowSoftware\Sdk\Generated\ObjectSerializer;
+use \ShadowSoftware\DabDash\ObjectSerializer;
 
 /**
  * FreebieListResponse Class Doc Comment
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -57,9 +57,9 @@ class FreebieListResponse implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $openAPITypes = [
-        'tenant' => '\ShadowSoftware\Sdk\Generated\Model\BundleListResponseTenant',
-        'summary' => '\ShadowSoftware\Sdk\Generated\Model\FreebieListResponseSummary',
-        'freebies' => '\ShadowSoftware\Sdk\Generated\Model\FreebieListResponseFreebiesInner[]'
+        'tenant' => '\ShadowSoftware\DabDash\Model\BundleListResponseTenant',
+        'summary' => '\ShadowSoftware\DabDash\Model\FreebieListResponseSummary',
+        'freebies' => '\ShadowSoftware\DabDash\Model\FreebieListResponseFreebiesInner[]'
     ];
 
     /**
@@ -306,7 +306,7 @@ class FreebieListResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets tenant
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\BundleListResponseTenant|null
+     * @return \ShadowSoftware\DabDash\Model\BundleListResponseTenant|null
      */
     public function getTenant()
     {
@@ -316,7 +316,7 @@ class FreebieListResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets tenant
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\BundleListResponseTenant|null $tenant tenant
+     * @param \ShadowSoftware\DabDash\Model\BundleListResponseTenant|null $tenant tenant
      *
      * @return self
      */
@@ -333,7 +333,7 @@ class FreebieListResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets summary
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\FreebieListResponseSummary|null
+     * @return \ShadowSoftware\DabDash\Model\FreebieListResponseSummary|null
      */
     public function getSummary()
     {
@@ -343,7 +343,7 @@ class FreebieListResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets summary
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\FreebieListResponseSummary|null $summary summary
+     * @param \ShadowSoftware\DabDash\Model\FreebieListResponseSummary|null $summary summary
      *
      * @return self
      */
@@ -360,7 +360,7 @@ class FreebieListResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets freebies
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\FreebieListResponseFreebiesInner[]|null
+     * @return \ShadowSoftware\DabDash\Model\FreebieListResponseFreebiesInner[]|null
      */
     public function getFreebies()
     {
@@ -370,7 +370,7 @@ class FreebieListResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets freebies
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\FreebieListResponseFreebiesInner[]|null $freebies freebies
+     * @param \ShadowSoftware\DabDash\Model\FreebieListResponseFreebiesInner[]|null $freebies freebies
      *
      * @return self
      */

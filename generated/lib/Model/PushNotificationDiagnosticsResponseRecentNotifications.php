@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace ShadowSoftware\Sdk\Generated\Model;
+namespace ShadowSoftware\DabDash\Model;
 
 use \ArrayAccess;
-use \ShadowSoftware\Sdk\Generated\ObjectSerializer;
+use \ShadowSoftware\DabDash\ObjectSerializer;
 
 /**
  * PushNotificationDiagnosticsResponseRecentNotifications Class Doc Comment
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -64,7 +64,7 @@ class PushNotificationDiagnosticsResponseRecentNotifications implements ModelInt
         'neither_sent_count' => 'int',
         'push_rate_pct' => 'float',
         'by_type' => 'object',
-        'entries' => '\ShadowSoftware\Sdk\Generated\Model\PushNotificationDiagnosticsResponseRecentNotificationsEntriesInner[]'
+        'entries' => '\ShadowSoftware\DabDash\Model\PushNotificationDiagnosticsResponseRecentNotificationsEntriesInner[]'
     ];
 
     /**
@@ -537,7 +537,7 @@ class PushNotificationDiagnosticsResponseRecentNotifications implements ModelInt
     /**
      * Gets entries
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\PushNotificationDiagnosticsResponseRecentNotificationsEntriesInner[]|null
+     * @return \ShadowSoftware\DabDash\Model\PushNotificationDiagnosticsResponseRecentNotificationsEntriesInner[]|null
      */
     public function getEntries()
     {
@@ -547,7 +547,7 @@ class PushNotificationDiagnosticsResponseRecentNotifications implements ModelInt
     /**
      * Sets entries
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\PushNotificationDiagnosticsResponseRecentNotificationsEntriesInner[]|null $entries entries
+     * @param \ShadowSoftware\DabDash\Model\PushNotificationDiagnosticsResponseRecentNotificationsEntriesInner[]|null $entries entries
      *
      * @return self
      */

@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace ShadowSoftware\Sdk\Generated\Model;
+namespace ShadowSoftware\DabDash\Model;
 
 use \ArrayAccess;
-use \ShadowSoftware\Sdk\Generated\ObjectSerializer;
+use \ShadowSoftware\DabDash\ObjectSerializer;
 
 /**
  * CategoryManageResponse Class Doc Comment
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,10 +58,10 @@ class CategoryManageResponse implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $openAPITypes = [
         'action' => 'string',
-        'tenant' => '\ShadowSoftware\Sdk\Generated\Model\BundleListResponseTenant',
+        'tenant' => '\ShadowSoftware\DabDash\Model\BundleListResponseTenant',
         'total' => 'int',
-        'categories' => '\ShadowSoftware\Sdk\Generated\Model\CategoryManageResponseCategoriesInner[]',
-        'category' => '\ShadowSoftware\Sdk\Generated\Model\CategoryManageResponseCategory',
+        'categories' => '\ShadowSoftware\DabDash\Model\CategoryManageResponseCategoriesInner[]',
+        'category' => '\ShadowSoftware\DabDash\Model\CategoryManageResponseCategory',
         'message' => 'string'
     ];
 
@@ -354,7 +354,7 @@ class CategoryManageResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets tenant
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\BundleListResponseTenant|null
+     * @return \ShadowSoftware\DabDash\Model\BundleListResponseTenant|null
      */
     public function getTenant()
     {
@@ -364,7 +364,7 @@ class CategoryManageResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets tenant
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\BundleListResponseTenant|null $tenant tenant
+     * @param \ShadowSoftware\DabDash\Model\BundleListResponseTenant|null $tenant tenant
      *
      * @return self
      */
@@ -415,7 +415,7 @@ class CategoryManageResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets categories
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\CategoryManageResponseCategoriesInner[]|null
+     * @return \ShadowSoftware\DabDash\Model\CategoryManageResponseCategoriesInner[]|null
      */
     public function getCategories()
     {
@@ -425,7 +425,7 @@ class CategoryManageResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets categories
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\CategoryManageResponseCategoriesInner[]|null $categories categories
+     * @param \ShadowSoftware\DabDash\Model\CategoryManageResponseCategoriesInner[]|null $categories categories
      *
      * @return self
      */
@@ -449,7 +449,7 @@ class CategoryManageResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets category
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\CategoryManageResponseCategory|null
+     * @return \ShadowSoftware\DabDash\Model\CategoryManageResponseCategory|null
      */
     public function getCategory()
     {
@@ -459,7 +459,7 @@ class CategoryManageResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets category
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\CategoryManageResponseCategory|null $category category
+     * @param \ShadowSoftware\DabDash\Model\CategoryManageResponseCategory|null $category category
      *
      * @return self
      */

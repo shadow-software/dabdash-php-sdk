@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated\Model
+ * @package  ShadowSoftware\DabDash\Model
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,12 +26,12 @@
  * Do not edit the class manually.
  */
 
-namespace ShadowSoftware\Sdk\Generated\Model;
+namespace ShadowSoftware\DabDash\Model;
 
 /**
  * Interface abstracting model access.
  *
- * @package ShadowSoftware\Sdk\Generated\Model
+ * @package ShadowSoftware\DabDash\Model
  * @author  OpenAPI Generator team
  */
 interface ModelInterface

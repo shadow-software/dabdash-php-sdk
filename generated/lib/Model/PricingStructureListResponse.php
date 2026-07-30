@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace ShadowSoftware\Sdk\Generated\Model;
+namespace ShadowSoftware\DabDash\Model;
 
 use \ArrayAccess;
-use \ShadowSoftware\Sdk\Generated\ObjectSerializer;
+use \ShadowSoftware\DabDash\ObjectSerializer;
 
 /**
  * PricingStructureListResponse Class Doc Comment
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -57,9 +57,9 @@ class PricingStructureListResponse implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $openAPITypes = [
-        'tenant' => '\ShadowSoftware\Sdk\Generated\Model\BundleListResponseTenant',
-        'summary' => '\ShadowSoftware\Sdk\Generated\Model\PricingStructureListResponseSummary',
-        'structures' => '\ShadowSoftware\Sdk\Generated\Model\PricingStructureListResponseStructuresInner[]'
+        'tenant' => '\ShadowSoftware\DabDash\Model\BundleListResponseTenant',
+        'summary' => '\ShadowSoftware\DabDash\Model\PricingStructureListResponseSummary',
+        'structures' => '\ShadowSoftware\DabDash\Model\PricingStructureListResponseStructuresInner[]'
     ];
 
     /**
@@ -306,7 +306,7 @@ class PricingStructureListResponse implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets tenant
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\BundleListResponseTenant|null
+     * @return \ShadowSoftware\DabDash\Model\BundleListResponseTenant|null
      */
     public function getTenant()
     {
@@ -316,7 +316,7 @@ class PricingStructureListResponse implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets tenant
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\BundleListResponseTenant|null $tenant tenant
+     * @param \ShadowSoftware\DabDash\Model\BundleListResponseTenant|null $tenant tenant
      *
      * @return self
      */
@@ -333,7 +333,7 @@ class PricingStructureListResponse implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets summary
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\PricingStructureListResponseSummary|null
+     * @return \ShadowSoftware\DabDash\Model\PricingStructureListResponseSummary|null
      */
     public function getSummary()
     {
@@ -343,7 +343,7 @@ class PricingStructureListResponse implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets summary
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\PricingStructureListResponseSummary|null $summary summary
+     * @param \ShadowSoftware\DabDash\Model\PricingStructureListResponseSummary|null $summary summary
      *
      * @return self
      */
@@ -360,7 +360,7 @@ class PricingStructureListResponse implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets structures
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\PricingStructureListResponseStructuresInner[]|null
+     * @return \ShadowSoftware\DabDash\Model\PricingStructureListResponseStructuresInner[]|null
      */
     public function getStructures()
     {
@@ -370,7 +370,7 @@ class PricingStructureListResponse implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets structures
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\PricingStructureListResponseStructuresInner[]|null $structures structures
+     * @param \ShadowSoftware\DabDash\Model\PricingStructureListResponseStructuresInner[]|null $structures structures
      *
      * @return self
      */

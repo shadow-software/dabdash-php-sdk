@@ -20,6 +20,6 @@ Name | Type | Description | Notes
 **loyalty_discount** | **int** |  | [optional]
 **total** | **int** |  | [optional]
 **zone** | **string** |  | [optional]
-**items** | [**\ShadowSoftware\Sdk\Generated\Model\PromotionAuditResponseOrderItemsInner[]**](PromotionAuditResponseOrderItemsInner.md) |  | [optional]
+**items** | [**\ShadowSoftware\DabDash\Model\PromotionAuditResponseOrderItemsInner[]**](PromotionAuditResponseOrderItemsInner.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

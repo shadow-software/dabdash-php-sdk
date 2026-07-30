@@ -2,7 +2,9 @@
 
 PHP client for the [DabDash](https://dabdash.com/) Tenant API.
 
-Generated from `openapi.json` by [`shadow-software/sdk-release`](https://github.com/shadow-software/sdk-release). Do not edit `generated/` by hand.
+Namespace: **`ShadowSoftware\DabDash`** (generated from `openapi.json` by
+[`shadow-software/sdk-release`](https://github.com/shadow-software/sdk-release)).
+Do not edit `generated/` by hand.
 
 ## Install
 
@@ -10,7 +12,9 @@ Generated from `openapi.json` by [`shadow-software/sdk-release`](https://github.
 composer require shadow-software/dabdash-php-sdk
 ```
 
-Until the package is listed on Packagist, add a VCS repository:
+Requires PHP 8.1+.
+
+Until Packagist lists the package, add a VCS repository:
 
 ```json
 {
@@ -18,18 +22,16 @@ Until the package is listed on Packagist, add a VCS repository:
     { "type": "vcs", "url": "https://github.com/shadow-software/dabdash-php-sdk" }
   ],
   "require": {
-    "shadow-software/dabdash-php-sdk": "^0.1"
+    "shadow-software/dabdash-php-sdk": "^0.2"
   }
 }
 ```
 
-Requires PHP 8.1+.
-
 ## Usage
 
 ```php
-use ShadowSoftware\Sdk\Generated\Configuration;
-use ShadowSoftware\Sdk\Generated\Api\CustomersApi;
+use ShadowSoftware\DabDash\Configuration;
+use ShadowSoftware\DabDash\Api\CustomersApi;
 
 $config = Configuration::getDefaultConfiguration()
     ->setHost('https://your-tenant.dabdash.com')

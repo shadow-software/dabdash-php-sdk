@@ -5,6 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **tool** | **string** |  | [optional]
-**data** | [**\ShadowSoftware\Sdk\Generated\Model\CampaignUpsertResponse**](CampaignUpsertResponse.md) |  | [optional]
+**data** | [**\ShadowSoftware\DabDash\Model\CampaignUpsertResponse**](CampaignUpsertResponse.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

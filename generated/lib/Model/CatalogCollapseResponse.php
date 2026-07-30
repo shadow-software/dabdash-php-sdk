@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace ShadowSoftware\Sdk\Generated\Model;
+namespace ShadowSoftware\DabDash\Model;
 
 use \ArrayAccess;
-use \ShadowSoftware\Sdk\Generated\ObjectSerializer;
+use \ShadowSoftware\DabDash\ObjectSerializer;
 
 /**
  * CatalogCollapseResponse Class Doc Comment
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -64,8 +64,8 @@ class CatalogCollapseResponse implements ModelInterface, ArrayAccess, \JsonSeria
         'products_removed' => 'int',
         'total_grams' => 'float',
         'cost_per_gram_cents' => 'int',
-        'tiers' => '\ShadowSoftware\Sdk\Generated\Model\CatalogCollapseResponseTiersInner[]',
-        'absorbed' => '\ShadowSoftware\Sdk\Generated\Model\CatalogCollapseResponseAbsorbedInner[]',
+        'tiers' => '\ShadowSoftware\DabDash\Model\CatalogCollapseResponseTiersInner[]',
+        'absorbed' => '\ShadowSoftware\DabDash\Model\CatalogCollapseResponseAbsorbedInner[]',
         'notes' => 'string[]',
         'tenant_slug' => 'string',
         'next_step' => 'string'
@@ -572,7 +572,7 @@ class CatalogCollapseResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets tiers
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\CatalogCollapseResponseTiersInner[]|null
+     * @return \ShadowSoftware\DabDash\Model\CatalogCollapseResponseTiersInner[]|null
      */
     public function getTiers()
     {
@@ -582,7 +582,7 @@ class CatalogCollapseResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets tiers
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\CatalogCollapseResponseTiersInner[]|null $tiers tiers
+     * @param \ShadowSoftware\DabDash\Model\CatalogCollapseResponseTiersInner[]|null $tiers tiers
      *
      * @return self
      */
@@ -599,7 +599,7 @@ class CatalogCollapseResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets absorbed
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\CatalogCollapseResponseAbsorbedInner[]|null
+     * @return \ShadowSoftware\DabDash\Model\CatalogCollapseResponseAbsorbedInner[]|null
      */
     public function getAbsorbed()
     {
@@ -609,7 +609,7 @@ class CatalogCollapseResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets absorbed
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\CatalogCollapseResponseAbsorbedInner[]|null $absorbed absorbed
+     * @param \ShadowSoftware\DabDash\Model\CatalogCollapseResponseAbsorbedInner[]|null $absorbed absorbed
      *
      * @return self
      */

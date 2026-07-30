@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**identifier** | [**\ShadowSoftware\Sdk\Generated\Model\PricingStructureAssignResponseResultsInnerIdentifier**](PricingStructureAssignResponseResultsInnerIdentifier.md) |  | [optional]
+**identifier** | [**\ShadowSoftware\DabDash\Model\PricingStructureAssignResponseResultsInnerIdentifier**](PricingStructureAssignResponseResultsInnerIdentifier.md) |  | [optional]
 **product_id** | **int** |  | [optional]
 **product_name** | **string** |  | [optional]
 **status** | **string** |  | [optional]

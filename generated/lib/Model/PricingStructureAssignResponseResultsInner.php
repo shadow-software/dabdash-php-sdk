@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace ShadowSoftware\Sdk\Generated\Model;
+namespace ShadowSoftware\DabDash\Model;
 
 use \ArrayAccess;
-use \ShadowSoftware\Sdk\Generated\ObjectSerializer;
+use \ShadowSoftware\DabDash\ObjectSerializer;
 
 /**
  * PricingStructureAssignResponseResultsInner Class Doc Comment
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -57,7 +57,7 @@ class PricingStructureAssignResponseResultsInner implements ModelInterface, Arra
      * @var string[]
      */
     protected static $openAPITypes = [
-        'identifier' => '\ShadowSoftware\Sdk\Generated\Model\PricingStructureAssignResponseResultsInnerIdentifier',
+        'identifier' => '\ShadowSoftware\DabDash\Model\PricingStructureAssignResponseResultsInnerIdentifier',
         'product_id' => 'int',
         'product_name' => 'string',
         'status' => 'string',
@@ -327,7 +327,7 @@ class PricingStructureAssignResponseResultsInner implements ModelInterface, Arra
     /**
      * Gets identifier
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\PricingStructureAssignResponseResultsInnerIdentifier|null
+     * @return \ShadowSoftware\DabDash\Model\PricingStructureAssignResponseResultsInnerIdentifier|null
      */
     public function getIdentifier()
     {
@@ -337,7 +337,7 @@ class PricingStructureAssignResponseResultsInner implements ModelInterface, Arra
     /**
      * Sets identifier
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\PricingStructureAssignResponseResultsInnerIdentifier|null $identifier identifier
+     * @param \ShadowSoftware\DabDash\Model\PricingStructureAssignResponseResultsInnerIdentifier|null $identifier identifier
      *
      * @return self
      */

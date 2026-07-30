@@ -4,7 +4,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,18 +25,18 @@
  * Please update the test case below to test the endpoint.
  */
 
-namespace ShadowSoftware\Sdk\Generated\Test\Api;
+namespace ShadowSoftware\DabDash\Test\Api;
 
-use \ShadowSoftware\Sdk\Generated\Configuration;
-use \ShadowSoftware\Sdk\Generated\ApiException;
-use \ShadowSoftware\Sdk\Generated\ObjectSerializer;
+use \ShadowSoftware\DabDash\Configuration;
+use \ShadowSoftware\DabDash\ApiException;
+use \ShadowSoftware\DabDash\ObjectSerializer;
 use PHPUnit\Framework\TestCase;
 
 /**
  * ZonesApiTest Class Doc Comment
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */

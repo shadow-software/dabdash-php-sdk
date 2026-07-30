@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace ShadowSoftware\Sdk\Generated\Model;
+namespace ShadowSoftware\DabDash\Model;
 
 use \ArrayAccess;
-use \ShadowSoftware\Sdk\Generated\ObjectSerializer;
+use \ShadowSoftware\DabDash\ObjectSerializer;
 
 /**
  * CustomerAddressesResponseAddressesInner Class Doc Comment
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,8 +62,8 @@ class CustomerAddressesResponseAddressesInner implements ModelInterface, ArrayAc
         'address' => 'string',
         'latitude' => 'float',
         'longitude' => 'float',
-        'saved_zone' => '\ShadowSoftware\Sdk\Generated\Model\CustomerAddressesResponseAddressesInnerSavedZone',
-        'detected_zone' => '\ShadowSoftware\Sdk\Generated\Model\CustomerAddressesResponseAddressesInnerSavedZone',
+        'saved_zone' => '\ShadowSoftware\DabDash\Model\CustomerAddressesResponseAddressesInnerSavedZone',
+        'detected_zone' => '\ShadowSoftware\DabDash\Model\CustomerAddressesResponseAddressesInnerSavedZone',
         'zone_matches_saved_zone' => 'bool',
         'is_default' => 'bool'
     ];
@@ -497,7 +497,7 @@ class CustomerAddressesResponseAddressesInner implements ModelInterface, ArrayAc
     /**
      * Gets saved_zone
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\CustomerAddressesResponseAddressesInnerSavedZone|null
+     * @return \ShadowSoftware\DabDash\Model\CustomerAddressesResponseAddressesInnerSavedZone|null
      */
     public function getSavedZone()
     {
@@ -507,7 +507,7 @@ class CustomerAddressesResponseAddressesInner implements ModelInterface, ArrayAc
     /**
      * Sets saved_zone
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\CustomerAddressesResponseAddressesInnerSavedZone|null $saved_zone saved_zone
+     * @param \ShadowSoftware\DabDash\Model\CustomerAddressesResponseAddressesInnerSavedZone|null $saved_zone saved_zone
      *
      * @return self
      */
@@ -531,7 +531,7 @@ class CustomerAddressesResponseAddressesInner implements ModelInterface, ArrayAc
     /**
      * Gets detected_zone
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\CustomerAddressesResponseAddressesInnerSavedZone|null
+     * @return \ShadowSoftware\DabDash\Model\CustomerAddressesResponseAddressesInnerSavedZone|null
      */
     public function getDetectedZone()
     {
@@ -541,7 +541,7 @@ class CustomerAddressesResponseAddressesInner implements ModelInterface, ArrayAc
     /**
      * Sets detected_zone
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\CustomerAddressesResponseAddressesInnerSavedZone|null $detected_zone detected_zone
+     * @param \ShadowSoftware\DabDash\Model\CustomerAddressesResponseAddressesInnerSavedZone|null $detected_zone detected_zone
      *
      * @return self
      */

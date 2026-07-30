@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **error** | **string** |  | [optional]
-**available_templates** | [**\ShadowSoftware\Sdk\Generated\Model\CampaignApplyTemplateResponseAvailableTemplatesInner[]**](CampaignApplyTemplateResponseAvailableTemplatesInner.md) |  | [optional]
+**available_templates** | [**\ShadowSoftware\DabDash\Model\CampaignApplyTemplateResponseAvailableTemplatesInner[]**](CampaignApplyTemplateResponseAvailableTemplatesInner.md) |  | [optional]
 **action** | **string** |  | [optional]
 **campaign_id** | **int** |  | [optional]
 **template_id** | **string** |  | [optional]

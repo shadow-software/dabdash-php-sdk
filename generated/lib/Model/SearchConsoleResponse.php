@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace ShadowSoftware\Sdk\Generated\Model;
+namespace ShadowSoftware\DabDash\Model;
 
 use \ArrayAccess;
-use \ShadowSoftware\Sdk\Generated\ObjectSerializer;
+use \ShadowSoftware\DabDash\ObjectSerializer;
 
 /**
  * SearchConsoleResponse Class Doc Comment
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class SearchConsoleResponse implements ModelInterface, ArrayAccess, \JsonSeriali
         'site_url' => 'string',
         'report' => 'string',
         'days' => 'int',
-        'results' => '\ShadowSoftware\Sdk\Generated\Model\SearchConsoleResponseResults'
+        'results' => '\ShadowSoftware\DabDash\Model\SearchConsoleResponseResults'
     ];
 
     /**
@@ -435,7 +435,7 @@ class SearchConsoleResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets results
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\SearchConsoleResponseResults|null
+     * @return \ShadowSoftware\DabDash\Model\SearchConsoleResponseResults|null
      */
     public function getResults()
     {
@@ -445,7 +445,7 @@ class SearchConsoleResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets results
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\SearchConsoleResponseResults|null $results results
+     * @param \ShadowSoftware\DabDash\Model\SearchConsoleResponseResults|null $results results
      *
      * @return self
      */

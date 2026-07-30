@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace ShadowSoftware\Sdk\Generated\Model;
+namespace ShadowSoftware\DabDash\Model;
 
 use \ArrayAccess;
-use \ShadowSoftware\Sdk\Generated\ObjectSerializer;
+use \ShadowSoftware\DabDash\ObjectSerializer;
 
 /**
  * InventoryAuditLookupResponse Class Doc Comment
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -57,10 +57,10 @@ class InventoryAuditLookupResponse implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $openAPITypes = [
-        'tenant' => '\ShadowSoftware\Sdk\Generated\Model\BundleListResponseTenant',
+        'tenant' => '\ShadowSoftware\DabDash\Model\BundleListResponseTenant',
         'cutoff' => 'string',
         'not_found_product_ids' => 'int[]',
-        'products' => '\ShadowSoftware\Sdk\Generated\Model\InventoryAuditLookupResponseProductsInner[]'
+        'products' => '\ShadowSoftware\DabDash\Model\InventoryAuditLookupResponseProductsInner[]'
     ];
 
     /**
@@ -313,7 +313,7 @@ class InventoryAuditLookupResponse implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets tenant
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\BundleListResponseTenant|null
+     * @return \ShadowSoftware\DabDash\Model\BundleListResponseTenant|null
      */
     public function getTenant()
     {
@@ -323,7 +323,7 @@ class InventoryAuditLookupResponse implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets tenant
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\BundleListResponseTenant|null $tenant tenant
+     * @param \ShadowSoftware\DabDash\Model\BundleListResponseTenant|null $tenant tenant
      *
      * @return self
      */
@@ -394,7 +394,7 @@ class InventoryAuditLookupResponse implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets products
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\InventoryAuditLookupResponseProductsInner[]|null
+     * @return \ShadowSoftware\DabDash\Model\InventoryAuditLookupResponseProductsInner[]|null
      */
     public function getProducts()
     {
@@ -404,7 +404,7 @@ class InventoryAuditLookupResponse implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets products
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\InventoryAuditLookupResponseProductsInner[]|null $products products
+     * @param \ShadowSoftware\DabDash\Model\InventoryAuditLookupResponseProductsInner[]|null $products products
      *
      * @return self
      */

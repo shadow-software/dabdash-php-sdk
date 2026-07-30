@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace ShadowSoftware\Sdk\Generated\Model;
+namespace ShadowSoftware\DabDash\Model;
 
 use \ArrayAccess;
-use \ShadowSoftware\Sdk\Generated\ObjectSerializer;
+use \ShadowSoftware\DabDash\ObjectSerializer;
 
 /**
  * ProductInspectResponseProductsInner Class Doc Comment
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -65,7 +65,7 @@ class ProductInspectResponseProductsInner implements ModelInterface, ArrayAccess
         'stock_quantity' => 'float',
         'stock_status' => 'string',
         'pricing_structure' => 'string',
-        'variations' => '\ShadowSoftware\Sdk\Generated\Model\ProductInspectResponseProductsInnerVariationsInner[]'
+        'variations' => '\ShadowSoftware\DabDash\Model\ProductInspectResponseProductsInnerVariationsInner[]'
     ];
 
     /**
@@ -578,7 +578,7 @@ class ProductInspectResponseProductsInner implements ModelInterface, ArrayAccess
     /**
      * Gets variations
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\ProductInspectResponseProductsInnerVariationsInner[]|null
+     * @return \ShadowSoftware\DabDash\Model\ProductInspectResponseProductsInnerVariationsInner[]|null
      */
     public function getVariations()
     {
@@ -588,7 +588,7 @@ class ProductInspectResponseProductsInner implements ModelInterface, ArrayAccess
     /**
      * Sets variations
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\ProductInspectResponseProductsInnerVariationsInner[]|null $variations variations
+     * @param \ShadowSoftware\DabDash\Model\ProductInspectResponseProductsInnerVariationsInner[]|null $variations variations
      *
      * @return self
      */

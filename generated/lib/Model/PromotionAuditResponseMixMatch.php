@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace ShadowSoftware\Sdk\Generated\Model;
+namespace ShadowSoftware\DabDash\Model;
 
 use \ArrayAccess;
-use \ShadowSoftware\Sdk\Generated\ObjectSerializer;
+use \ShadowSoftware\DabDash\ObjectSerializer;
 
 /**
  * PromotionAuditResponseMixMatch Class Doc Comment
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,8 +58,8 @@ class PromotionAuditResponseMixMatch implements ModelInterface, ArrayAccess, \Js
      */
     protected static $openAPITypes = [
         'note' => 'string',
-        'rules' => '\ShadowSoftware\Sdk\Generated\Model\PromotionAuditResponseMixMatchRulesInner[]',
-        'tagged_variations' => '\ShadowSoftware\Sdk\Generated\Model\PromotionAuditResponseMixMatchTaggedVariationsInner[]'
+        'rules' => '\ShadowSoftware\DabDash\Model\PromotionAuditResponseMixMatchRulesInner[]',
+        'tagged_variations' => '\ShadowSoftware\DabDash\Model\PromotionAuditResponseMixMatchTaggedVariationsInner[]'
     ];
 
     /**
@@ -333,7 +333,7 @@ class PromotionAuditResponseMixMatch implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets rules
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\PromotionAuditResponseMixMatchRulesInner[]|null
+     * @return \ShadowSoftware\DabDash\Model\PromotionAuditResponseMixMatchRulesInner[]|null
      */
     public function getRules()
     {
@@ -343,7 +343,7 @@ class PromotionAuditResponseMixMatch implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets rules
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\PromotionAuditResponseMixMatchRulesInner[]|null $rules rules
+     * @param \ShadowSoftware\DabDash\Model\PromotionAuditResponseMixMatchRulesInner[]|null $rules rules
      *
      * @return self
      */
@@ -360,7 +360,7 @@ class PromotionAuditResponseMixMatch implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets tagged_variations
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\PromotionAuditResponseMixMatchTaggedVariationsInner[]|null
+     * @return \ShadowSoftware\DabDash\Model\PromotionAuditResponseMixMatchTaggedVariationsInner[]|null
      */
     public function getTaggedVariations()
     {
@@ -370,7 +370,7 @@ class PromotionAuditResponseMixMatch implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets tagged_variations
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\PromotionAuditResponseMixMatchTaggedVariationsInner[]|null $tagged_variations tagged_variations
+     * @param \ShadowSoftware\DabDash\Model\PromotionAuditResponseMixMatchTaggedVariationsInner[]|null $tagged_variations tagged_variations
      *
      * @return self
      */

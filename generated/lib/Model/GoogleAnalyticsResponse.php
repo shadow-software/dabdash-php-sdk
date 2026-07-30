@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace ShadowSoftware\Sdk\Generated\Model;
+namespace ShadowSoftware\DabDash\Model;
 
 use \ArrayAccess;
-use \ShadowSoftware\Sdk\Generated\ObjectSerializer;
+use \ShadowSoftware\DabDash\ObjectSerializer;
 
 /**
  * GoogleAnalyticsResponse Class Doc Comment
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,7 +62,7 @@ class GoogleAnalyticsResponse implements ModelInterface, ArrayAccess, \JsonSeria
         'property_id' => 'string',
         'report' => 'string',
         'days' => 'int',
-        'results' => '\ShadowSoftware\Sdk\Generated\Model\GoogleAnalyticsResponseResults'
+        'results' => '\ShadowSoftware\DabDash\Model\GoogleAnalyticsResponseResults'
     ];
 
     /**
@@ -476,7 +476,7 @@ class GoogleAnalyticsResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets results
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\GoogleAnalyticsResponseResults|null
+     * @return \ShadowSoftware\DabDash\Model\GoogleAnalyticsResponseResults|null
      */
     public function getResults()
     {
@@ -486,7 +486,7 @@ class GoogleAnalyticsResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets results
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\GoogleAnalyticsResponseResults|null $results results
+     * @param \ShadowSoftware\DabDash\Model\GoogleAnalyticsResponseResults|null $results results
      *
      * @return self
      */

@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace ShadowSoftware\Sdk\Generated\Model;
+namespace ShadowSoftware\DabDash\Model;
 
 use \ArrayAccess;
-use \ShadowSoftware\Sdk\Generated\ObjectSerializer;
+use \ShadowSoftware\DabDash\ObjectSerializer;
 
 /**
  * CouponListResponse Class Doc Comment
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -57,9 +57,9 @@ class CouponListResponse implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $openAPITypes = [
-        'tenant' => '\ShadowSoftware\Sdk\Generated\Model\BundleListResponseTenant',
-        'summary' => '\ShadowSoftware\Sdk\Generated\Model\CouponListResponseSummary',
-        'coupons' => '\ShadowSoftware\Sdk\Generated\Model\CouponListResponseCouponsInner[]'
+        'tenant' => '\ShadowSoftware\DabDash\Model\BundleListResponseTenant',
+        'summary' => '\ShadowSoftware\DabDash\Model\CouponListResponseSummary',
+        'coupons' => '\ShadowSoftware\DabDash\Model\CouponListResponseCouponsInner[]'
     ];
 
     /**
@@ -306,7 +306,7 @@ class CouponListResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets tenant
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\BundleListResponseTenant|null
+     * @return \ShadowSoftware\DabDash\Model\BundleListResponseTenant|null
      */
     public function getTenant()
     {
@@ -316,7 +316,7 @@ class CouponListResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets tenant
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\BundleListResponseTenant|null $tenant tenant
+     * @param \ShadowSoftware\DabDash\Model\BundleListResponseTenant|null $tenant tenant
      *
      * @return self
      */
@@ -333,7 +333,7 @@ class CouponListResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets summary
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\CouponListResponseSummary|null
+     * @return \ShadowSoftware\DabDash\Model\CouponListResponseSummary|null
      */
     public function getSummary()
     {
@@ -343,7 +343,7 @@ class CouponListResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets summary
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\CouponListResponseSummary|null $summary summary
+     * @param \ShadowSoftware\DabDash\Model\CouponListResponseSummary|null $summary summary
      *
      * @return self
      */
@@ -360,7 +360,7 @@ class CouponListResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets coupons
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\CouponListResponseCouponsInner[]|null
+     * @return \ShadowSoftware\DabDash\Model\CouponListResponseCouponsInner[]|null
      */
     public function getCoupons()
     {
@@ -370,7 +370,7 @@ class CouponListResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets coupons
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\CouponListResponseCouponsInner[]|null $coupons coupons
+     * @param \ShadowSoftware\DabDash\Model\CouponListResponseCouponsInner[]|null $coupons coupons
      *
      * @return self
      */

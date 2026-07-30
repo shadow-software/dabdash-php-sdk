@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace ShadowSoftware\Sdk\Generated\Model;
+namespace ShadowSoftware\DabDash\Model;
 
 use \ArrayAccess;
-use \ShadowSoftware\Sdk\Generated\ObjectSerializer;
+use \ShadowSoftware\DabDash\ObjectSerializer;
 
 /**
  * PricingStructureRestoreResponse Class Doc Comment
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,8 +62,8 @@ class PricingStructureRestoreResponse implements ModelInterface, ArrayAccess, \J
         'new_structure_id' => 'int',
         'tracking_type' => 'string',
         'inventory_mode' => 'string',
-        'tiers' => '\ShadowSoftware\Sdk\Generated\Model\PricingStructureRestoreResponseTiersInner[]',
-        'unreferenced_variations' => '\ShadowSoftware\Sdk\Generated\Model\PricingStructureRestoreResponseUnreferencedVariationsInner[]',
+        'tiers' => '\ShadowSoftware\DabDash\Model\PricingStructureRestoreResponseTiersInner[]',
+        'unreferenced_variations' => '\ShadowSoftware\DabDash\Model\PricingStructureRestoreResponseUnreferencedVariationsInner[]',
         'unreferenced_action' => 'string'
     ];
 
@@ -476,7 +476,7 @@ class PricingStructureRestoreResponse implements ModelInterface, ArrayAccess, \J
     /**
      * Gets tiers
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\PricingStructureRestoreResponseTiersInner[]|null
+     * @return \ShadowSoftware\DabDash\Model\PricingStructureRestoreResponseTiersInner[]|null
      */
     public function getTiers()
     {
@@ -486,7 +486,7 @@ class PricingStructureRestoreResponse implements ModelInterface, ArrayAccess, \J
     /**
      * Sets tiers
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\PricingStructureRestoreResponseTiersInner[]|null $tiers tiers
+     * @param \ShadowSoftware\DabDash\Model\PricingStructureRestoreResponseTiersInner[]|null $tiers tiers
      *
      * @return self
      */
@@ -503,7 +503,7 @@ class PricingStructureRestoreResponse implements ModelInterface, ArrayAccess, \J
     /**
      * Gets unreferenced_variations
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\PricingStructureRestoreResponseUnreferencedVariationsInner[]|null
+     * @return \ShadowSoftware\DabDash\Model\PricingStructureRestoreResponseUnreferencedVariationsInner[]|null
      */
     public function getUnreferencedVariations()
     {
@@ -513,7 +513,7 @@ class PricingStructureRestoreResponse implements ModelInterface, ArrayAccess, \J
     /**
      * Sets unreferenced_variations
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\PricingStructureRestoreResponseUnreferencedVariationsInner[]|null $unreferenced_variations unreferenced_variations
+     * @param \ShadowSoftware\DabDash\Model\PricingStructureRestoreResponseUnreferencedVariationsInner[]|null $unreferenced_variations unreferenced_variations
      *
      * @return self
      */

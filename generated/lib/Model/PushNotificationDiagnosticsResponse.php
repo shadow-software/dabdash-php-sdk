@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace ShadowSoftware\Sdk\Generated\Model;
+namespace ShadowSoftware\DabDash\Model;
 
 use \ArrayAccess;
-use \ShadowSoftware\Sdk\Generated\ObjectSerializer;
+use \ShadowSoftware\DabDash\ObjectSerializer;
 
 /**
  * PushNotificationDiagnosticsResponse Class Doc Comment
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -57,13 +57,13 @@ class PushNotificationDiagnosticsResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $openAPITypes = [
-        'tenant' => '\ShadowSoftware\Sdk\Generated\Model\PushNotificationDiagnosticsResponseTenant',
-        'vendor_user' => '\ShadowSoftware\Sdk\Generated\Model\PushNotificationDiagnosticsResponseVendorUser',
-        'firebase_config' => '\ShadowSoftware\Sdk\Generated\Model\PushNotificationDiagnosticsResponseFirebaseConfig',
-        'token_health' => '\ShadowSoftware\Sdk\Generated\Model\PushNotificationDiagnosticsResponseTokenHealth',
-        'notification_settings' => '\ShadowSoftware\Sdk\Generated\Model\PushNotificationDiagnosticsResponseNotificationSettings',
-        'recent_notifications' => '\ShadowSoftware\Sdk\Generated\Model\PushNotificationDiagnosticsResponseRecentNotifications',
-        'diagnosis' => '\ShadowSoftware\Sdk\Generated\Model\PushNotificationDiagnosticsResponseDiagnosis'
+        'tenant' => '\ShadowSoftware\DabDash\Model\PushNotificationDiagnosticsResponseTenant',
+        'vendor_user' => '\ShadowSoftware\DabDash\Model\PushNotificationDiagnosticsResponseVendorUser',
+        'firebase_config' => '\ShadowSoftware\DabDash\Model\PushNotificationDiagnosticsResponseFirebaseConfig',
+        'token_health' => '\ShadowSoftware\DabDash\Model\PushNotificationDiagnosticsResponseTokenHealth',
+        'notification_settings' => '\ShadowSoftware\DabDash\Model\PushNotificationDiagnosticsResponseNotificationSettings',
+        'recent_notifications' => '\ShadowSoftware\DabDash\Model\PushNotificationDiagnosticsResponseRecentNotifications',
+        'diagnosis' => '\ShadowSoftware\DabDash\Model\PushNotificationDiagnosticsResponseDiagnosis'
     ];
 
     /**
@@ -334,7 +334,7 @@ class PushNotificationDiagnosticsResponse implements ModelInterface, ArrayAccess
     /**
      * Gets tenant
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\PushNotificationDiagnosticsResponseTenant|null
+     * @return \ShadowSoftware\DabDash\Model\PushNotificationDiagnosticsResponseTenant|null
      */
     public function getTenant()
     {
@@ -344,7 +344,7 @@ class PushNotificationDiagnosticsResponse implements ModelInterface, ArrayAccess
     /**
      * Sets tenant
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\PushNotificationDiagnosticsResponseTenant|null $tenant tenant
+     * @param \ShadowSoftware\DabDash\Model\PushNotificationDiagnosticsResponseTenant|null $tenant tenant
      *
      * @return self
      */
@@ -361,7 +361,7 @@ class PushNotificationDiagnosticsResponse implements ModelInterface, ArrayAccess
     /**
      * Gets vendor_user
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\PushNotificationDiagnosticsResponseVendorUser|null
+     * @return \ShadowSoftware\DabDash\Model\PushNotificationDiagnosticsResponseVendorUser|null
      */
     public function getVendorUser()
     {
@@ -371,7 +371,7 @@ class PushNotificationDiagnosticsResponse implements ModelInterface, ArrayAccess
     /**
      * Sets vendor_user
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\PushNotificationDiagnosticsResponseVendorUser|null $vendor_user vendor_user
+     * @param \ShadowSoftware\DabDash\Model\PushNotificationDiagnosticsResponseVendorUser|null $vendor_user vendor_user
      *
      * @return self
      */
@@ -388,7 +388,7 @@ class PushNotificationDiagnosticsResponse implements ModelInterface, ArrayAccess
     /**
      * Gets firebase_config
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\PushNotificationDiagnosticsResponseFirebaseConfig|null
+     * @return \ShadowSoftware\DabDash\Model\PushNotificationDiagnosticsResponseFirebaseConfig|null
      */
     public function getFirebaseConfig()
     {
@@ -398,7 +398,7 @@ class PushNotificationDiagnosticsResponse implements ModelInterface, ArrayAccess
     /**
      * Sets firebase_config
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\PushNotificationDiagnosticsResponseFirebaseConfig|null $firebase_config firebase_config
+     * @param \ShadowSoftware\DabDash\Model\PushNotificationDiagnosticsResponseFirebaseConfig|null $firebase_config firebase_config
      *
      * @return self
      */
@@ -415,7 +415,7 @@ class PushNotificationDiagnosticsResponse implements ModelInterface, ArrayAccess
     /**
      * Gets token_health
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\PushNotificationDiagnosticsResponseTokenHealth|null
+     * @return \ShadowSoftware\DabDash\Model\PushNotificationDiagnosticsResponseTokenHealth|null
      */
     public function getTokenHealth()
     {
@@ -425,7 +425,7 @@ class PushNotificationDiagnosticsResponse implements ModelInterface, ArrayAccess
     /**
      * Sets token_health
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\PushNotificationDiagnosticsResponseTokenHealth|null $token_health token_health
+     * @param \ShadowSoftware\DabDash\Model\PushNotificationDiagnosticsResponseTokenHealth|null $token_health token_health
      *
      * @return self
      */
@@ -442,7 +442,7 @@ class PushNotificationDiagnosticsResponse implements ModelInterface, ArrayAccess
     /**
      * Gets notification_settings
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\PushNotificationDiagnosticsResponseNotificationSettings|null
+     * @return \ShadowSoftware\DabDash\Model\PushNotificationDiagnosticsResponseNotificationSettings|null
      */
     public function getNotificationSettings()
     {
@@ -452,7 +452,7 @@ class PushNotificationDiagnosticsResponse implements ModelInterface, ArrayAccess
     /**
      * Sets notification_settings
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\PushNotificationDiagnosticsResponseNotificationSettings|null $notification_settings notification_settings
+     * @param \ShadowSoftware\DabDash\Model\PushNotificationDiagnosticsResponseNotificationSettings|null $notification_settings notification_settings
      *
      * @return self
      */
@@ -469,7 +469,7 @@ class PushNotificationDiagnosticsResponse implements ModelInterface, ArrayAccess
     /**
      * Gets recent_notifications
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\PushNotificationDiagnosticsResponseRecentNotifications|null
+     * @return \ShadowSoftware\DabDash\Model\PushNotificationDiagnosticsResponseRecentNotifications|null
      */
     public function getRecentNotifications()
     {
@@ -479,7 +479,7 @@ class PushNotificationDiagnosticsResponse implements ModelInterface, ArrayAccess
     /**
      * Sets recent_notifications
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\PushNotificationDiagnosticsResponseRecentNotifications|null $recent_notifications recent_notifications
+     * @param \ShadowSoftware\DabDash\Model\PushNotificationDiagnosticsResponseRecentNotifications|null $recent_notifications recent_notifications
      *
      * @return self
      */
@@ -496,7 +496,7 @@ class PushNotificationDiagnosticsResponse implements ModelInterface, ArrayAccess
     /**
      * Gets diagnosis
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\PushNotificationDiagnosticsResponseDiagnosis|null
+     * @return \ShadowSoftware\DabDash\Model\PushNotificationDiagnosticsResponseDiagnosis|null
      */
     public function getDiagnosis()
     {
@@ -506,7 +506,7 @@ class PushNotificationDiagnosticsResponse implements ModelInterface, ArrayAccess
     /**
      * Sets diagnosis
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\PushNotificationDiagnosticsResponseDiagnosis|null $diagnosis diagnosis
+     * @param \ShadowSoftware\DabDash\Model\PushNotificationDiagnosticsResponseDiagnosis|null $diagnosis diagnosis
      *
      * @return self
      */

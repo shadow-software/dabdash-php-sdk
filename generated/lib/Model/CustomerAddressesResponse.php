@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace ShadowSoftware\Sdk\Generated\Model;
+namespace ShadowSoftware\DabDash\Model;
 
 use \ArrayAccess;
-use \ShadowSoftware\Sdk\Generated\ObjectSerializer;
+use \ShadowSoftware\DabDash\ObjectSerializer;
 
 /**
  * CustomerAddressesResponse Class Doc Comment
  *
  * @category Class
- * @package  ShadowSoftware\Sdk\Generated
+ * @package  ShadowSoftware\DabDash
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -57,9 +57,9 @@ class CustomerAddressesResponse implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $openAPITypes = [
-        'tenant' => '\ShadowSoftware\Sdk\Generated\Model\CustomerAddressesResponseTenant',
-        'customer' => '\ShadowSoftware\Sdk\Generated\Model\CustomerAddressesResponseCustomer',
-        'addresses' => '\ShadowSoftware\Sdk\Generated\Model\CustomerAddressesResponseAddressesInner[]'
+        'tenant' => '\ShadowSoftware\DabDash\Model\CustomerAddressesResponseTenant',
+        'customer' => '\ShadowSoftware\DabDash\Model\CustomerAddressesResponseCustomer',
+        'addresses' => '\ShadowSoftware\DabDash\Model\CustomerAddressesResponseAddressesInner[]'
     ];
 
     /**
@@ -306,7 +306,7 @@ class CustomerAddressesResponse implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets tenant
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\CustomerAddressesResponseTenant|null
+     * @return \ShadowSoftware\DabDash\Model\CustomerAddressesResponseTenant|null
      */
     public function getTenant()
     {
@@ -316,7 +316,7 @@ class CustomerAddressesResponse implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets tenant
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\CustomerAddressesResponseTenant|null $tenant tenant
+     * @param \ShadowSoftware\DabDash\Model\CustomerAddressesResponseTenant|null $tenant tenant
      *
      * @return self
      */
@@ -333,7 +333,7 @@ class CustomerAddressesResponse implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets customer
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\CustomerAddressesResponseCustomer|null
+     * @return \ShadowSoftware\DabDash\Model\CustomerAddressesResponseCustomer|null
      */
     public function getCustomer()
     {
@@ -343,7 +343,7 @@ class CustomerAddressesResponse implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets customer
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\CustomerAddressesResponseCustomer|null $customer customer
+     * @param \ShadowSoftware\DabDash\Model\CustomerAddressesResponseCustomer|null $customer customer
      *
      * @return self
      */
@@ -360,7 +360,7 @@ class CustomerAddressesResponse implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets addresses
      *
-     * @return \ShadowSoftware\Sdk\Generated\Model\CustomerAddressesResponseAddressesInner[]|null
+     * @return \ShadowSoftware\DabDash\Model\CustomerAddressesResponseAddressesInner[]|null
      */
     public function getAddresses()
     {
@@ -370,7 +370,7 @@ class CustomerAddressesResponse implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets addresses
      *
-     * @param \ShadowSoftware\Sdk\Generated\Model\CustomerAddressesResponseAddressesInner[]|null $addresses addresses
+     * @param \ShadowSoftware\DabDash\Model\CustomerAddressesResponseAddressesInner[]|null $addresses addresses
      *
      * @return self
      */
