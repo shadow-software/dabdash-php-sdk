@@ -1,4 +1,5 @@
 name: Release
+
 on:
   repository_dispatch:
     types: [spec-updated]
@@ -13,16 +14,33 @@ on:
         required: false
         type: boolean
         default: false
+
+permissions:
+  contents: write
+
 jobs:
   release:
-    uses: shadow-software/sdk-release/.github/workflows/release.yml@master
-    with:
-      language: php
-      package_name: "shadow-software/dabdash-php-sdk"
-      package_dir: "."
-      version: ${{ github.event.client_payload.version || inputs.version }}
-      dry_run: ${{ inputs.dry_run || false }}
-    secrets:
-      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      PACKAGIST_TOKEN: ${{ secrets.PACKAGIST_TOKEN }}
-      PACKAGIST_USERNAME: ${{ secrets.PACKAGIST_USERNAME }}
+    name: Generate, build, test, publish
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout SDK package
+        uses: actions/checkout@v7
+
+      - name: Checkout private sdk-release (scripts + composite action)
+        uses: actions/checkout@v7
+        with:
+          repository: shadow-software/sdk-release
+          path: .sdk-release
+          token: ${{ secrets.SDK_RELEASE_TOKEN }}
+
+      - name: Generate, build, test, publish
+        uses: ./.sdk-release/.github/actions/release
+        with:
+          language: php
+          package_name: "shadow-software/dabdash-php-sdk"
+          package_dir: "."
+          version: ${{ github.event.client_payload.version || inputs.version }}
+          dry_run: ${{ inputs.dry_run && 'true' || 'false' }}
+          npm_token: ${{ secrets.NPM_TOKEN }}
+          packagist_token: ${{ secrets.PACKAGIST_TOKEN }}
+          packagist_username: ${{ secrets.PACKAGIST_USERNAME }}
