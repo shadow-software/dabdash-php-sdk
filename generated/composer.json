@@ -1,0 +1,38 @@
+{
+    "description": "REST facade over the DabDash tenant MCP tools. Every operation here dispatches into the exact same handler the tenant MCP server (/mcp) calls — the two surfaces cannot drift apart. Served from each tenant's own subdomain or mapped custom domain, never from the platform domain.",
+    "keywords": [
+        "openapitools",
+        "openapi-generator",
+        "openapi",
+        "php",
+        "sdk",
+        "rest",
+        "api"
+    ],
+    "homepage": "https://openapi-generator.tech",
+    "license": "unlicense",
+    "authors": [
+        {
+            "name": "OpenAPI",
+            "homepage": "https://openapi-generator.tech"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "guzzlehttp/guzzle": "^7.3",
+        "guzzlehttp/psr7": "^1.7 || ^2.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.0 || ^9.0",
+        "friendsofphp/php-cs-fixer": "^3.5"
+    },
+    "autoload": {
+        "psr-4": { "ShadowSoftware\\Sdk\\Generated\\" : "lib/" }
+    },
+    "autoload-dev": {
+        "psr-4": { "ShadowSoftware\\Sdk\\Generated\\Test\\" : "test/" }
+    }
+}

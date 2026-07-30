@@ -3,13 +3,13 @@
     "description": "PHP SDK for the DabDash Tenant API",
     "type": "library",
     "license": "MIT",
-    "version": "0.0.0",
     "require": {
         "php": "^8.1",
         "ext-curl": "*",
         "ext-json": "*",
         "ext-mbstring": "*",
-        "guzzlehttp/guzzle": "^7.3"
+        "guzzlehttp/guzzle": "^7.3",
+        "guzzlehttp/psr7": "^1.7 || ^2.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^10.0"
@@ -19,7 +19,12 @@
             "ShadowSoftware\\Sdk\\Generated\\": "generated/lib/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "ShadowSoftware\\Sdk\\Generated\\Test\\": "generated/test/"
+        }
+    },
     "scripts": {
-        "test": "if [ -d generated/test ]; then phpunit --bootstrap vendor/autoload.php generated/test; else echo 'no generated client yet'; fi"
+        "test": "if [ -d generated/test ]; then phpunit --bootstrap vendor/autoload.php generated/test; else echo \"no generated client yet\"; fi"
     }
 }
