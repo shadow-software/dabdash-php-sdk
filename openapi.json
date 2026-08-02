@@ -1532,6 +1532,41 @@
                             "null"
                         ]
                     },
+                    "subscription_ladder_id": {
+                        "description": "ID of an existing SubscriptionDiscountLadder to link. Pass null to unlink. See tool description.",
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "ladder_start_percent": {
+                        "description": "Mounting ladder: percent off for orders before start_order_index. 0-100. See tool description.",
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "ladder_step_percent": {
+                        "description": "Mounting ladder: percent the discount climbs each order once past start_order_index. 0-100. See tool description.",
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "ladder_cap_percent": {
+                        "description": "Mounting ladder: ceiling percent the discount pegs at once reached. 0-100. See tool description.",
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "ladder_start_order_index": {
+                        "description": "Mounting ladder: 1-based order number the climb begins at. See tool description.",
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
                     "is_active": {
                         "description": "Whether the coupon is live. Defaults to true on create; left unchanged on update unless passed.",
                         "type": [
@@ -1580,6 +1615,12 @@
                         "type": "integer"
                     },
                     "freebie_id": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "subscription_ladder_id": {
                         "type": [
                             "integer",
                             "null"
@@ -8457,7 +8498,7 @@
         "/api/v1/tools/coupon_upsert": {
             "post": {
                 "operationId": "coupon_upsert",
-                "summary": "Create or update a discount coupon on behalf of a tenant. Coupons are customer-entered codes\napplied at checkout (distinct from bundles, which fire automatically on cart contents — use\nbundle_upsert for those).\n\nUPDATE MODE (coupon_id provided):\n  Edits the coupon. Only the fields you pass are changed; omitted fields are left as-is.\n\nCREATE MODE (no coupon_id):\n  Creates a new coupon. code, type, and value are required.\n\nVALUE UNITS:\n  type = \"percentage\"     → value is a percentage 0-100 off the order subtotal.\n  type = \"fixed\"          → value is DOLLARS off the order subtotal (e.g. 10 = $10 off).\n  type = \"free_delivery\"  → value is ignored (pass 0); this type only waives the delivery fee.\n\nmin_order is a dollar minimum order subtotal required to use the coupon (pass dollars, e.g. 25\nfor a $25 minimum — the tool stores cents internally). Omit or pass 0 for no minimum.\n\nfreebie_id links this coupon to an existing Freebie (see freebie_list/freebie_upsert), turning it\ninto a \"code-triggered freebie\": a customer who applies the code while below min_order has the\ncode parked (kept attached, not rejected) and sees cart progress toward unlocking it, instead of\nthe code being discarded. Pass null to unlink. The freebie must belong to the same tenant.\n\nlimit_match_by (\"email\"|\"phone\"|\"both\") controls how max_uses_per_customer is enforced. Using\n\"phone\" or \"both\" REQUIRES the tenant's \"Require phone at checkout\" setting to be on — otherwise\nthe update is rejected, since customers without a phone on file could otherwise reuse the coupon\npast its per-customer limit.\n\nSCHEDULE:\n  starts_at / expires_at are interpreted in the tenant's timezone and stored as UTC. Pass\n  null/omit for an always-on coupon.\n\nNOT YET SUPPORTED BY THIS TOOL: scoping a coupon to specific products or categories\n(applies_to_ids) — only applies_to=\"all\" is fully wired end to end today. Passing\napplies_to=\"products\" or \"categories\" without further product/category tooling will save the\ncoupon with no scoped items, which behaves the same as \"all\" in the current checkout logic.\n\nAlways call coupon_list first to get the coupon_id and confirm the current configuration.",
+                "summary": "Create or update a discount coupon on behalf of a tenant. Coupons are customer-entered codes\napplied at checkout (distinct from bundles, which fire automatically on cart contents — use\nbundle_upsert for those).\n\nUPDATE MODE (coupon_id provided):\n  Edits the coupon. Only the fields you pass are changed; omitted fields are left as-is.\n\nCREATE MODE (no coupon_id):\n  Creates a new coupon. code, type, and value are required.\n\nVALUE UNITS:\n  type = \"percentage\"     → value is a percentage 0-100 off the order subtotal.\n  type = \"fixed\"          → value is DOLLARS off the order subtotal (e.g. 10 = $10 off).\n  type = \"free_delivery\"  → value is ignored (pass 0); this type only waives the delivery fee.\n\nmin_order is a dollar minimum order subtotal required to use the coupon (pass dollars, e.g. 25\nfor a $25 minimum — the tool stores cents internally). Omit or pass 0 for no minimum.\n\nfreebie_id links this coupon to an existing Freebie (see freebie_list/freebie_upsert), turning it\ninto a \"code-triggered freebie\": a customer who applies the code while below min_order has the\ncode parked (kept attached, not rejected) and sees cart progress toward unlocking it, instead of\nthe code being discarded. Pass null to unlink. The freebie must belong to the same tenant.\n\nlimit_match_by (\"email\"|\"phone\"|\"both\") controls how max_uses_per_customer is enforced. Using\n\"phone\" or \"both\" REQUIRES the tenant's \"Require phone at checkout\" setting to be on — otherwise\nthe update is rejected, since customers without a phone on file could otherwise reuse the coupon\npast its per-customer limit.\n\nSCHEDULE:\n  starts_at / expires_at are interpreted in the tenant's timezone and stored as UTC. Pass\n  null/omit for an always-on coupon.\n\nNOT YET SUPPORTED BY THIS TOOL: scoping a coupon to specific products or categories\n(applies_to_ids) — only applies_to=\"all\" is fully wired end to end today. Passing\napplies_to=\"products\" or \"categories\" without further product/category tooling will save the\ncoupon with no scoped items, which behaves the same as \"all\" in the current checkout logic.\n\nSUBSCRIPTION MOUNTING DISCOUNT LADDERS (subscribe-and-save retention):\n  A coupon can carry a \"mounting ladder\" so its discount climbs with each successive order a\n  customer's delivery subscription generates, pegging at a ceiling — e.g. order 1 = 0% off,\n  then +5% every order up to a 20% cap. This only affects orders generated for a subscription\n  linked to this coupon (DeliverySubscription.coupon_id) — it has no effect on ordinary\n  one-off checkout use of the code, which still uses type/value as normal.\n\n  subscription_ladder_id: link to an existing ladder (from another coupon) by id, or pass null\n  to unlink. Must belong to the same tenant.\n\n  ladder_start_percent / ladder_step_percent / ladder_cap_percent / ladder_start_order_index:\n  pass any of these to CREATE a new ladder inline (on coupon create) or EDIT the tiers of the\n  ladder already linked to this coupon (on update) — do not combine with subscription_ladder_id\n  in the same call. All four are whole-number percentages (0-100) except start_order_index,\n  which is the 1-based order number the climb begins at (orders before it stay at\n  ladder_start_percent). Omitted ladder_* fields default to 0% start / 5% step / 20% cap /\n  order 1 on create; on update, only the fields you pass are changed.\n\nAlways call coupon_list first to get the coupon_id and confirm the current configuration.",
                 "tags": [
                     "promotions",
                     "write"
