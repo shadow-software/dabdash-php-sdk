@@ -4846,6 +4846,140 @@
                 },
                 "type": "object"
             },
+            "ProductUnitPriceSearchRequest": {
+                "properties": {
+                    "unit": {
+                        "description": "Unit to price per: \"g\", \"oz\" (default, 28g), or \"lb\" (448g)",
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "name_query": {
+                        "description": "Optional partial product name filter",
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "min_price": {
+                        "description": "Minimum price per unit in dollars (optional)",
+                        "type": [
+                            "number",
+                            "null"
+                        ]
+                    },
+                    "max_price": {
+                        "description": "Maximum price per unit in dollars (optional)",
+                        "type": [
+                            "number",
+                            "null"
+                        ]
+                    },
+                    "sort": {
+                        "description": "\"asc\" (cheapest first, default) or \"desc\" (most expensive first)",
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "only_in_stock": {
+                        "description": "When true (default), exclude out-of-stock variations",
+                        "type": [
+                            "boolean",
+                            "null"
+                        ]
+                    },
+                    "limit": {
+                        "description": "Max results to return (default 25, max 100)",
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    }
+                },
+                "type": "object"
+            },
+            "ProductUnitPriceSearchResponse": {
+                "properties": {
+                    "tenant": {
+                        "properties": {
+                            "id": {
+                                "type": "integer"
+                            },
+                            "slug": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "unit": {
+                        "type": "string"
+                    },
+                    "unit_grams": {
+                        "type": "number"
+                    },
+                    "summary": {
+                        "properties": {
+                            "variations_ranked": {
+                                "type": "integer"
+                            },
+                            "products_considered": {
+                                "type": "integer"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "results": {
+                        "items": {
+                            "properties": {
+                                "product_id": {
+                                    "type": "integer"
+                                },
+                                "product_name": {
+                                    "type": "string"
+                                },
+                                "product_slug": {
+                                    "type": "string"
+                                },
+                                "pricing_type": {
+                                    "type": "string"
+                                },
+                                "variation_id": {
+                                    "type": "integer"
+                                },
+                                "variation_name": {
+                                    "type": "string"
+                                },
+                                "weight_value_grams": {
+                                    "type": "number"
+                                },
+                                "price_cents": {
+                                    "type": "integer"
+                                },
+                                "price_display": {
+                                    "type": "string"
+                                },
+                                "price_per_unit_cents": {
+                                    "type": "number"
+                                },
+                                "price_per_unit_display": {
+                                    "type": "string"
+                                },
+                                "stock_quantity": {
+                                    "type": "number"
+                                },
+                                "in_stock": {
+                                    "type": "boolean"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    }
+                },
+                "type": "object"
+            },
             "ProductUpdateBySkuRequest": {
                 "properties": {
                     "sku": {
@@ -12505,6 +12639,179 @@
                                         },
                                         "data": {
                                             "$ref": "#/components/schemas/ProductProfitabilityResponse"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Missing or invalid tenant credentials.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "402": {
+                        "description": "The tenant has no active trial, subscription, or grace period.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "A read-scoped key was used to call a write tool.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unknown tool name.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Request validation failed, or the tool reported a business error.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "tenantApiKey": []
+                    },
+                    {
+                        "tenantOAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/tools/product_unit_price_search": {
+            "post": {
+                "operationId": "product_unit_price_search",
+                "summary": "Search and rank a tenant's catalog by computed per-unit price (e.g. price\nper gram or price per ounce), across every weight-family product (types\n\"weight\" and \"matrix\") — something product_inspect cannot do because it\nonly looks up one product at a time by id/name/sku.\n\nFor each active, in-stock variation with a weight_value, computes\nprice_per_gram = price_cents / weight_value, then scales it to the\nrequested unit (default \"oz\" = 28g, matching the storefront's weight-tier\nconvention). Use this to answer \"what's the cheapest/most expensive\nproduct per ounce\", \"find products under $X/g\", or to rank the catalog by\nunit economics for pricing audits and promo targeting.\n\nOnly weight-family products (weight, matrix) have a meaningful per-gram\nprice — unit-family products (simple, unit, matrix_unit) are excluded\nsince their variations are priced per item, not per weight.",
+                "tags": [
+                    "catalog",
+                    "read"
+                ],
+                "requestBody": {
+                    "required": false,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ProductUnitPriceSearchRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "tool": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "$ref": "#/components/schemas/ProductUnitPriceSearchResponse"
                                         }
                                     }
                                 }
