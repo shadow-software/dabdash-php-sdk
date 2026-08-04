@@ -2352,6 +2352,9 @@
                                         "null"
                                     ]
                                 },
+                                "is_merch_product": {
+                                    "type": "boolean"
+                                },
                                 "variation_id": {
                                     "type": [
                                         "integer",
@@ -9529,7 +9532,7 @@
         "/api/v1/tools/freebie_list": {
             "post": {
                 "operationId": "freebie_list",
-                "summary": "List a tenant's freebie rules (\"spend $X, get a free item\") with id, name, spend threshold,\nthe product/variation given away, quantity, stackable flag, active state, and schedule window.\nFreebies are evaluated on every cart change by FreebieService: a rule fires once its\nspend_threshold is met, adding `quantity` of the configured product/variation to the cart.\n\nIMPORTANT: this reads the `freebies` table — the source of truth the storefront cart uses. It\nis NOT the legacy freebie summary promotion_audit surfaces alongside coupons/bundles; that view\nis stale display-only data built for a different purpose. Trust this tool for what actually\napplies at checkout.\n\nis_stackable:\n  true   → this rule can fire alongside OTHER DIFFERENT freebie rules on the same order (each\n           rule still only fires once, at its configured quantity, regardless of how far above\n           its own threshold the cart is).\n  false  → this rule cannot combine with other freebie rules; if multiple non-stackable rules\n           qualify, FreebieService applies its own precedence to pick one.\n  This flag does NOT multiply a single rule's quantity by how many multiples of the threshold\n  the cart reaches — a $50-threshold rule at $150 spent still gives quantity 1, not 3.",
+                "summary": "List a tenant's freebie rules (\"spend $X, get a free item\") with id, name, spend threshold,\nthe product/variation given away, quantity, stackable flag, active state, and schedule window.\nFreebies are evaluated on every cart change by FreebieService: a rule fires once its\nspend_threshold is met, adding `quantity` of the configured product/variation to the cart.\n\nIMPORTANT: this reads the `freebies` table — the source of truth the storefront cart uses. It\nis NOT the legacy freebie summary promotion_audit surfaces alongside coupons/bundles; that view\nis stale display-only data built for a different purpose. Trust this tool for what actually\napplies at checkout.\n\nis_merch_product: true when the freebie's product is tagged \"merch\" (Product.tags contains\n\"merch\") — a branded giveaway item (hats, apparel) rather than sellable cannabis inventory.\nPrefer merch-tagged products over high-COGS flower when recommending a NEW freebie: giving away\npromo materials protects margin the same way a discount code doesn't.\n\nis_stackable:\n  true   → this rule can fire alongside OTHER DIFFERENT freebie rules on the same order (each\n           rule still only fires once, at its configured quantity, regardless of how far above\n           its own threshold the cart is).\n  false  → this rule cannot combine with other freebie rules; if multiple non-stackable rules\n           qualify, FreebieService applies its own precedence to pick one.\n  This flag does NOT multiply a single rule's quantity by how many multiples of the threshold\n  the cart reaches — a $50-threshold rule at $150 spent still gives quantity 1, not 3.",
                 "tags": [
                     "promotions",
                     "read"
