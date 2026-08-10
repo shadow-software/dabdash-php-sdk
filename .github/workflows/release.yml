@@ -44,3 +44,8 @@ jobs:
           npm_token: ${{ secrets.NPM_TOKEN }}
           packagist_token: ${{ secrets.PACKAGIST_TOKEN }}
           packagist_username: ${{ secrets.PACKAGIST_USERNAME }}
+          # Cascade to the WooCommerce plugin that bundles this SDK via
+          # Composer — it bumps its own dependency and cuts its own release.
+          # See shadow-software/dabdash-for-woocommerce's sdk-bump.yml.
+          consumer_repo: "dabdash-for-woocommerce"
+          consumer_dispatch_token: ${{ secrets.WOOCOMMERCE_DISPATCH_TOKEN }}
