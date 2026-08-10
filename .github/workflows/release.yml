@@ -47,5 +47,8 @@ jobs:
           # Cascade to the WooCommerce plugin that bundles this SDK via
           # Composer — it bumps its own dependency and cuts its own release.
           # See shadow-software/dabdash-for-woocommerce's sdk-bump.yml.
+          # Reuses SDK_RELEASE_TOKEN (its underlying PAT was widened to also
+          # cover Contents: write on dabdash-for-woocommerce) rather than a
+          # separate secret.
           consumer_repo: "dabdash-for-woocommerce"
-          consumer_dispatch_token: ${{ secrets.WOOCOMMERCE_DISPATCH_TOKEN }}
+          consumer_dispatch_token: ${{ secrets.SDK_RELEASE_TOKEN }}
