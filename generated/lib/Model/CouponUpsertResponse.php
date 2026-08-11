@@ -64,6 +64,11 @@ class CouponUpsertResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'value' => 'float',
         'value_unit' => 'string',
         'min_order_cents' => 'int',
+        'freebie_id' => 'int',
+        'subscription_ladder_id' => 'int',
+        'applies_to' => 'string',
+        'applies_to_ids' => 'int[]',
+        'requires_subscribed_customer' => 'bool',
         'is_active' => 'bool',
         'starts_at' => 'string',
         'expires_at' => 'string',
@@ -85,6 +90,11 @@ class CouponUpsertResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'value' => null,
         'value_unit' => null,
         'min_order_cents' => null,
+        'freebie_id' => null,
+        'subscription_ladder_id' => null,
+        'applies_to' => null,
+        'applies_to_ids' => null,
+        'requires_subscribed_customer' => null,
         'is_active' => null,
         'starts_at' => null,
         'expires_at' => null,
@@ -104,6 +114,11 @@ class CouponUpsertResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'value' => false,
         'value_unit' => false,
         'min_order_cents' => false,
+        'freebie_id' => true,
+        'subscription_ladder_id' => true,
+        'applies_to' => false,
+        'applies_to_ids' => true,
+        'requires_subscribed_customer' => false,
         'is_active' => false,
         'starts_at' => true,
         'expires_at' => true,
@@ -203,6 +218,11 @@ class CouponUpsertResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'value' => 'value',
         'value_unit' => 'value_unit',
         'min_order_cents' => 'min_order_cents',
+        'freebie_id' => 'freebie_id',
+        'subscription_ladder_id' => 'subscription_ladder_id',
+        'applies_to' => 'applies_to',
+        'applies_to_ids' => 'applies_to_ids',
+        'requires_subscribed_customer' => 'requires_subscribed_customer',
         'is_active' => 'is_active',
         'starts_at' => 'starts_at',
         'expires_at' => 'expires_at',
@@ -222,6 +242,11 @@ class CouponUpsertResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'value' => 'setValue',
         'value_unit' => 'setValueUnit',
         'min_order_cents' => 'setMinOrderCents',
+        'freebie_id' => 'setFreebieId',
+        'subscription_ladder_id' => 'setSubscriptionLadderId',
+        'applies_to' => 'setAppliesTo',
+        'applies_to_ids' => 'setAppliesToIds',
+        'requires_subscribed_customer' => 'setRequiresSubscribedCustomer',
         'is_active' => 'setIsActive',
         'starts_at' => 'setStartsAt',
         'expires_at' => 'setExpiresAt',
@@ -241,6 +266,11 @@ class CouponUpsertResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'value' => 'getValue',
         'value_unit' => 'getValueUnit',
         'min_order_cents' => 'getMinOrderCents',
+        'freebie_id' => 'getFreebieId',
+        'subscription_ladder_id' => 'getSubscriptionLadderId',
+        'applies_to' => 'getAppliesTo',
+        'applies_to_ids' => 'getAppliesToIds',
+        'requires_subscribed_customer' => 'getRequiresSubscribedCustomer',
         'is_active' => 'getIsActive',
         'starts_at' => 'getStartsAt',
         'expires_at' => 'getExpiresAt',
@@ -311,6 +341,11 @@ class CouponUpsertResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->setIfExists('value', $data ?? [], null);
         $this->setIfExists('value_unit', $data ?? [], null);
         $this->setIfExists('min_order_cents', $data ?? [], null);
+        $this->setIfExists('freebie_id', $data ?? [], null);
+        $this->setIfExists('subscription_ladder_id', $data ?? [], null);
+        $this->setIfExists('applies_to', $data ?? [], null);
+        $this->setIfExists('applies_to_ids', $data ?? [], null);
+        $this->setIfExists('requires_subscribed_customer', $data ?? [], null);
         $this->setIfExists('is_active', $data ?? [], null);
         $this->setIfExists('starts_at', $data ?? [], null);
         $this->setIfExists('expires_at', $data ?? [], null);
@@ -544,6 +579,162 @@ class CouponUpsertResponse implements ModelInterface, ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable min_order_cents cannot be null');
         }
         $this->container['min_order_cents'] = $min_order_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets freebie_id
+     *
+     * @return int|null
+     */
+    public function getFreebieId()
+    {
+        return $this->container['freebie_id'];
+    }
+
+    /**
+     * Sets freebie_id
+     *
+     * @param int|null $freebie_id freebie_id
+     *
+     * @return self
+     */
+    public function setFreebieId($freebie_id)
+    {
+        if (is_null($freebie_id)) {
+            array_push($this->openAPINullablesSetToNull, 'freebie_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('freebie_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['freebie_id'] = $freebie_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets subscription_ladder_id
+     *
+     * @return int|null
+     */
+    public function getSubscriptionLadderId()
+    {
+        return $this->container['subscription_ladder_id'];
+    }
+
+    /**
+     * Sets subscription_ladder_id
+     *
+     * @param int|null $subscription_ladder_id subscription_ladder_id
+     *
+     * @return self
+     */
+    public function setSubscriptionLadderId($subscription_ladder_id)
+    {
+        if (is_null($subscription_ladder_id)) {
+            array_push($this->openAPINullablesSetToNull, 'subscription_ladder_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('subscription_ladder_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['subscription_ladder_id'] = $subscription_ladder_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets applies_to
+     *
+     * @return string|null
+     */
+    public function getAppliesTo()
+    {
+        return $this->container['applies_to'];
+    }
+
+    /**
+     * Sets applies_to
+     *
+     * @param string|null $applies_to applies_to
+     *
+     * @return self
+     */
+    public function setAppliesTo($applies_to)
+    {
+        if (is_null($applies_to)) {
+            throw new \InvalidArgumentException('non-nullable applies_to cannot be null');
+        }
+        $this->container['applies_to'] = $applies_to;
+
+        return $this;
+    }
+
+    /**
+     * Gets applies_to_ids
+     *
+     * @return int[]|null
+     */
+    public function getAppliesToIds()
+    {
+        return $this->container['applies_to_ids'];
+    }
+
+    /**
+     * Sets applies_to_ids
+     *
+     * @param int[]|null $applies_to_ids applies_to_ids
+     *
+     * @return self
+     */
+    public function setAppliesToIds($applies_to_ids)
+    {
+        if (is_null($applies_to_ids)) {
+            array_push($this->openAPINullablesSetToNull, 'applies_to_ids');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('applies_to_ids', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['applies_to_ids'] = $applies_to_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets requires_subscribed_customer
+     *
+     * @return bool|null
+     */
+    public function getRequiresSubscribedCustomer()
+    {
+        return $this->container['requires_subscribed_customer'];
+    }
+
+    /**
+     * Sets requires_subscribed_customer
+     *
+     * @param bool|null $requires_subscribed_customer requires_subscribed_customer
+     *
+     * @return self
+     */
+    public function setRequiresSubscribedCustomer($requires_subscribed_customer)
+    {
+        if (is_null($requires_subscribed_customer)) {
+            throw new \InvalidArgumentException('non-nullable requires_subscribed_customer cannot be null');
+        }
+        $this->container['requires_subscribed_customer'] = $requires_subscribed_customer;
 
         return $this;
     }

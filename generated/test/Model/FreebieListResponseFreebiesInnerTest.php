@@ -125,6 +125,15 @@ class FreebieListResponseFreebiesInnerTest extends TestCase
     }
 
     /**
+     * Test attribute "is_merch_product"
+     */
+    public function testPropertyIsMerchProduct()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "variation_id"
      */
     public function testPropertyVariationId()

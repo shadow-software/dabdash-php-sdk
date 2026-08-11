@@ -125,6 +125,15 @@ class CouponUpsertRequestTest extends TestCase
     }
 
     /**
+     * Test attribute "freebie_id"
+     */
+    public function testPropertyFreebieId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "max_uses"
      */
     public function testPropertyMaxUses()
@@ -155,6 +164,69 @@ class CouponUpsertRequestTest extends TestCase
      * Test attribute "applies_to"
      */
     public function testPropertyAppliesTo()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "applies_to_ids"
+     */
+    public function testPropertyAppliesToIds()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "requires_subscribed_customer"
+     */
+    public function testPropertyRequiresSubscribedCustomer()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "subscription_ladder_id"
+     */
+    public function testPropertySubscriptionLadderId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "ladder_start_percent"
+     */
+    public function testPropertyLadderStartPercent()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "ladder_step_percent"
+     */
+    public function testPropertyLadderStepPercent()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "ladder_cap_percent"
+     */
+    public function testPropertyLadderCapPercent()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "ladder_start_order_index"
+     */
+    public function testPropertyLadderStartOrderIndex()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

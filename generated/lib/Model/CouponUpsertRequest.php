@@ -62,10 +62,18 @@ class CouponUpsertRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'type' => 'string',
         'value' => 'float',
         'min_order' => 'float',
+        'freebie_id' => 'int',
         'max_uses' => 'int',
         'max_uses_per_customer' => 'int',
         'limit_match_by' => 'string',
         'applies_to' => 'string',
+        'applies_to_ids' => 'int[]',
+        'requires_subscribed_customer' => 'bool',
+        'subscription_ladder_id' => 'int',
+        'ladder_start_percent' => 'int',
+        'ladder_step_percent' => 'int',
+        'ladder_cap_percent' => 'int',
+        'ladder_start_order_index' => 'int',
         'is_active' => 'bool',
         'starts_at' => 'string',
         'expires_at' => 'string'
@@ -84,10 +92,18 @@ class CouponUpsertRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'type' => null,
         'value' => null,
         'min_order' => null,
+        'freebie_id' => null,
         'max_uses' => null,
         'max_uses_per_customer' => null,
         'limit_match_by' => null,
         'applies_to' => null,
+        'applies_to_ids' => null,
+        'requires_subscribed_customer' => null,
+        'subscription_ladder_id' => null,
+        'ladder_start_percent' => null,
+        'ladder_step_percent' => null,
+        'ladder_cap_percent' => null,
+        'ladder_start_order_index' => null,
         'is_active' => null,
         'starts_at' => null,
         'expires_at' => null
@@ -104,10 +120,18 @@ class CouponUpsertRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'type' => true,
         'value' => true,
         'min_order' => true,
+        'freebie_id' => true,
         'max_uses' => true,
         'max_uses_per_customer' => true,
         'limit_match_by' => true,
         'applies_to' => true,
+        'applies_to_ids' => true,
+        'requires_subscribed_customer' => true,
+        'subscription_ladder_id' => true,
+        'ladder_start_percent' => true,
+        'ladder_step_percent' => true,
+        'ladder_cap_percent' => true,
+        'ladder_start_order_index' => true,
         'is_active' => true,
         'starts_at' => true,
         'expires_at' => true
@@ -204,10 +228,18 @@ class CouponUpsertRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'type' => 'type',
         'value' => 'value',
         'min_order' => 'min_order',
+        'freebie_id' => 'freebie_id',
         'max_uses' => 'max_uses',
         'max_uses_per_customer' => 'max_uses_per_customer',
         'limit_match_by' => 'limit_match_by',
         'applies_to' => 'applies_to',
+        'applies_to_ids' => 'applies_to_ids',
+        'requires_subscribed_customer' => 'requires_subscribed_customer',
+        'subscription_ladder_id' => 'subscription_ladder_id',
+        'ladder_start_percent' => 'ladder_start_percent',
+        'ladder_step_percent' => 'ladder_step_percent',
+        'ladder_cap_percent' => 'ladder_cap_percent',
+        'ladder_start_order_index' => 'ladder_start_order_index',
         'is_active' => 'is_active',
         'starts_at' => 'starts_at',
         'expires_at' => 'expires_at'
@@ -224,10 +256,18 @@ class CouponUpsertRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'type' => 'setType',
         'value' => 'setValue',
         'min_order' => 'setMinOrder',
+        'freebie_id' => 'setFreebieId',
         'max_uses' => 'setMaxUses',
         'max_uses_per_customer' => 'setMaxUsesPerCustomer',
         'limit_match_by' => 'setLimitMatchBy',
         'applies_to' => 'setAppliesTo',
+        'applies_to_ids' => 'setAppliesToIds',
+        'requires_subscribed_customer' => 'setRequiresSubscribedCustomer',
+        'subscription_ladder_id' => 'setSubscriptionLadderId',
+        'ladder_start_percent' => 'setLadderStartPercent',
+        'ladder_step_percent' => 'setLadderStepPercent',
+        'ladder_cap_percent' => 'setLadderCapPercent',
+        'ladder_start_order_index' => 'setLadderStartOrderIndex',
         'is_active' => 'setIsActive',
         'starts_at' => 'setStartsAt',
         'expires_at' => 'setExpiresAt'
@@ -244,10 +284,18 @@ class CouponUpsertRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'type' => 'getType',
         'value' => 'getValue',
         'min_order' => 'getMinOrder',
+        'freebie_id' => 'getFreebieId',
         'max_uses' => 'getMaxUses',
         'max_uses_per_customer' => 'getMaxUsesPerCustomer',
         'limit_match_by' => 'getLimitMatchBy',
         'applies_to' => 'getAppliesTo',
+        'applies_to_ids' => 'getAppliesToIds',
+        'requires_subscribed_customer' => 'getRequiresSubscribedCustomer',
+        'subscription_ladder_id' => 'getSubscriptionLadderId',
+        'ladder_start_percent' => 'getLadderStartPercent',
+        'ladder_step_percent' => 'getLadderStepPercent',
+        'ladder_cap_percent' => 'getLadderCapPercent',
+        'ladder_start_order_index' => 'getLadderStartOrderIndex',
         'is_active' => 'getIsActive',
         'starts_at' => 'getStartsAt',
         'expires_at' => 'getExpiresAt'
@@ -315,10 +363,18 @@ class CouponUpsertRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('value', $data ?? [], null);
         $this->setIfExists('min_order', $data ?? [], null);
+        $this->setIfExists('freebie_id', $data ?? [], null);
         $this->setIfExists('max_uses', $data ?? [], null);
         $this->setIfExists('max_uses_per_customer', $data ?? [], null);
         $this->setIfExists('limit_match_by', $data ?? [], null);
         $this->setIfExists('applies_to', $data ?? [], null);
+        $this->setIfExists('applies_to_ids', $data ?? [], null);
+        $this->setIfExists('requires_subscribed_customer', $data ?? [], null);
+        $this->setIfExists('subscription_ladder_id', $data ?? [], null);
+        $this->setIfExists('ladder_start_percent', $data ?? [], null);
+        $this->setIfExists('ladder_step_percent', $data ?? [], null);
+        $this->setIfExists('ladder_cap_percent', $data ?? [], null);
+        $this->setIfExists('ladder_start_order_index', $data ?? [], null);
         $this->setIfExists('is_active', $data ?? [], null);
         $this->setIfExists('starts_at', $data ?? [], null);
         $this->setIfExists('expires_at', $data ?? [], null);
@@ -537,6 +593,40 @@ class CouponUpsertRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
+     * Gets freebie_id
+     *
+     * @return int|null
+     */
+    public function getFreebieId()
+    {
+        return $this->container['freebie_id'];
+    }
+
+    /**
+     * Sets freebie_id
+     *
+     * @param int|null $freebie_id ID of a Freebie (from freebie_list) to link, making this a code-triggered freebie. Pass null to unlink.
+     *
+     * @return self
+     */
+    public function setFreebieId($freebie_id)
+    {
+        if (is_null($freebie_id)) {
+            array_push($this->openAPINullablesSetToNull, 'freebie_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('freebie_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['freebie_id'] = $freebie_id;
+
+        return $this;
+    }
+
+    /**
      * Gets max_uses
      *
      * @return int|null
@@ -651,7 +741,7 @@ class CouponUpsertRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets applies_to
      *
-     * @param string|null $applies_to \"all\", \"products\", or \"categories\". Only \"all\" is fully wired today — see tool description.
+     * @param string|null $applies_to \"all\", \"products\", or \"categories\". See tool description for applies_to_ids.
      *
      * @return self
      */
@@ -668,6 +758,244 @@ class CouponUpsertRequest implements ModelInterface, ArrayAccess, \JsonSerializa
             }
         }
         $this->container['applies_to'] = $applies_to;
+
+        return $this;
+    }
+
+    /**
+     * Gets applies_to_ids
+     *
+     * @return int[]|null
+     */
+    public function getAppliesToIds()
+    {
+        return $this->container['applies_to_ids'];
+    }
+
+    /**
+     * Sets applies_to_ids
+     *
+     * @param int[]|null $applies_to_ids Product ids (applies_to=\"products\") or category ids (applies_to=\"categories\") this coupon is scoped to. All must belong to this tenant. Pass [] to clear.
+     *
+     * @return self
+     */
+    public function setAppliesToIds($applies_to_ids)
+    {
+        if (is_null($applies_to_ids)) {
+            array_push($this->openAPINullablesSetToNull, 'applies_to_ids');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('applies_to_ids', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['applies_to_ids'] = $applies_to_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets requires_subscribed_customer
+     *
+     * @return bool|null
+     */
+    public function getRequiresSubscribedCustomer()
+    {
+        return $this->container['requires_subscribed_customer'];
+    }
+
+    /**
+     * Sets requires_subscribed_customer
+     *
+     * @param bool|null $requires_subscribed_customer Newsletter-subscriber-exclusive code: when true, only a registered customer who has NOT opted out of marketing email (email_opt_out=false) can redeem it. Gates to store customers only — never platform leads. Guests are always rejected. Defaults to false.
+     *
+     * @return self
+     */
+    public function setRequiresSubscribedCustomer($requires_subscribed_customer)
+    {
+        if (is_null($requires_subscribed_customer)) {
+            array_push($this->openAPINullablesSetToNull, 'requires_subscribed_customer');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('requires_subscribed_customer', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['requires_subscribed_customer'] = $requires_subscribed_customer;
+
+        return $this;
+    }
+
+    /**
+     * Gets subscription_ladder_id
+     *
+     * @return int|null
+     */
+    public function getSubscriptionLadderId()
+    {
+        return $this->container['subscription_ladder_id'];
+    }
+
+    /**
+     * Sets subscription_ladder_id
+     *
+     * @param int|null $subscription_ladder_id ID of an existing SubscriptionDiscountLadder to link. Pass null to unlink. See tool description.
+     *
+     * @return self
+     */
+    public function setSubscriptionLadderId($subscription_ladder_id)
+    {
+        if (is_null($subscription_ladder_id)) {
+            array_push($this->openAPINullablesSetToNull, 'subscription_ladder_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('subscription_ladder_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['subscription_ladder_id'] = $subscription_ladder_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets ladder_start_percent
+     *
+     * @return int|null
+     */
+    public function getLadderStartPercent()
+    {
+        return $this->container['ladder_start_percent'];
+    }
+
+    /**
+     * Sets ladder_start_percent
+     *
+     * @param int|null $ladder_start_percent Mounting ladder: percent off for orders before start_order_index. 0-100. See tool description.
+     *
+     * @return self
+     */
+    public function setLadderStartPercent($ladder_start_percent)
+    {
+        if (is_null($ladder_start_percent)) {
+            array_push($this->openAPINullablesSetToNull, 'ladder_start_percent');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ladder_start_percent', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['ladder_start_percent'] = $ladder_start_percent;
+
+        return $this;
+    }
+
+    /**
+     * Gets ladder_step_percent
+     *
+     * @return int|null
+     */
+    public function getLadderStepPercent()
+    {
+        return $this->container['ladder_step_percent'];
+    }
+
+    /**
+     * Sets ladder_step_percent
+     *
+     * @param int|null $ladder_step_percent Mounting ladder: percent the discount climbs each order once past start_order_index. 0-100. See tool description.
+     *
+     * @return self
+     */
+    public function setLadderStepPercent($ladder_step_percent)
+    {
+        if (is_null($ladder_step_percent)) {
+            array_push($this->openAPINullablesSetToNull, 'ladder_step_percent');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ladder_step_percent', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['ladder_step_percent'] = $ladder_step_percent;
+
+        return $this;
+    }
+
+    /**
+     * Gets ladder_cap_percent
+     *
+     * @return int|null
+     */
+    public function getLadderCapPercent()
+    {
+        return $this->container['ladder_cap_percent'];
+    }
+
+    /**
+     * Sets ladder_cap_percent
+     *
+     * @param int|null $ladder_cap_percent Mounting ladder: ceiling percent the discount pegs at once reached. 0-100. See tool description.
+     *
+     * @return self
+     */
+    public function setLadderCapPercent($ladder_cap_percent)
+    {
+        if (is_null($ladder_cap_percent)) {
+            array_push($this->openAPINullablesSetToNull, 'ladder_cap_percent');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ladder_cap_percent', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['ladder_cap_percent'] = $ladder_cap_percent;
+
+        return $this;
+    }
+
+    /**
+     * Gets ladder_start_order_index
+     *
+     * @return int|null
+     */
+    public function getLadderStartOrderIndex()
+    {
+        return $this->container['ladder_start_order_index'];
+    }
+
+    /**
+     * Sets ladder_start_order_index
+     *
+     * @param int|null $ladder_start_order_index Mounting ladder: 1-based order number the climb begins at. See tool description.
+     *
+     * @return self
+     */
+    public function setLadderStartOrderIndex($ladder_start_order_index)
+    {
+        if (is_null($ladder_start_order_index)) {
+            array_push($this->openAPINullablesSetToNull, 'ladder_start_order_index');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ladder_start_order_index', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['ladder_start_order_index'] = $ladder_start_order_index;
 
         return $this;
     }

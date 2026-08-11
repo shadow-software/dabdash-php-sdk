@@ -96,6 +96,18 @@ class AnalyticsApiTest extends TestCase
     }
 
     /**
+     * Test case for productProfitability
+     *
+     * Rank a tenant's products by real net margin using order-line COGS (order_items.cost_price), not price-tier approximations. Use this before recommending sales, coupons, freebies, or subscription mounting ladders — only promote SKUs with enough margin headroom.  Revenue dating follows RevenueAttribution (placed vs delivered) for the tenant. Freebie gift lines are excluded from COGS so giveaways do not distort product margins. Results include current catalog stock_status and a promo_headroom_ok flag (margin_percent >= min_margin_percent).  Sort: margin (default), revenue, or units. Pass a wide date_from for tenants with older imported history..
+     *
+     */
+    public function testProductProfitability()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for searchConsole
      *
      * Query Google Search Console data for the platform (dabdash.com) or a specific tenant with a connected GSC integration. Returns search overview, top queries, top pages, and daily trend..

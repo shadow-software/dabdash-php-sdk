@@ -125,6 +125,15 @@ class CampaignUpsertResponseTest extends TestCase
     }
 
     /**
+     * Test attribute "fallback_first_name"
+     */
+    public function testPropertyFallbackFirstName()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "mode"
      */
     public function testPropertyMode()
@@ -182,6 +191,60 @@ class CampaignUpsertResponseTest extends TestCase
      * Test attribute "has_unsubscribe_token"
      */
     public function testPropertyHasUnsubscribeToken()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "spam_score"
+     */
+    public function testPropertySpamScore()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "spam_band"
+     */
+    public function testPropertySpamBand()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "spam_summary"
+     */
+    public function testPropertySpamSummary()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "spam_can_send"
+     */
+    public function testPropertySpamCanSend()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "spam_min_send_score"
+     */
+    public function testPropertySpamMinSendScore()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "spam_findings"
+     */
+    public function testPropertySpamFindings()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

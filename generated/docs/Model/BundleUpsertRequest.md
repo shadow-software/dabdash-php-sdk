@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **is_active** | **bool** | Whether the bundle is live. Defaults to true on create; left unchanged on update unless passed. | [optional]
 **starts_at** | **string** | Optional start datetime (tenant timezone, stored as UTC). Pass null to clear. | [optional]
 **ends_at** | **string** | Optional end datetime (tenant timezone, stored as UTC). Must be on/after starts_at. Pass null to clear. | [optional]
-**variation_ids** | **mixed[]** | Product variation IDs to apply the bundle to. Omit to leave membership unchanged. | [optional]
+**variation_ids** | **int[]** | Product variation IDs to apply the bundle to. Omit to leave membership unchanged. | [optional]
 **variation_mode** | **string** | How to apply variation_ids: \&quot;replace\&quot; (default), \&quot;add\&quot;, or \&quot;detach\&quot;. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -62,6 +62,7 @@ class FreebieListResponseFreebiesInner implements ModelInterface, ArrayAccess, \
         'spend_threshold_cents' => 'int',
         'product_id' => 'int',
         'product_name' => 'string',
+        'is_merch_product' => 'bool',
         'variation_id' => 'int',
         'variation_name' => 'string',
         'quantity' => 'int',
@@ -84,6 +85,7 @@ class FreebieListResponseFreebiesInner implements ModelInterface, ArrayAccess, \
         'spend_threshold_cents' => null,
         'product_id' => null,
         'product_name' => null,
+        'is_merch_product' => null,
         'variation_id' => null,
         'variation_name' => null,
         'quantity' => null,
@@ -104,6 +106,7 @@ class FreebieListResponseFreebiesInner implements ModelInterface, ArrayAccess, \
         'spend_threshold_cents' => false,
         'product_id' => false,
         'product_name' => true,
+        'is_merch_product' => false,
         'variation_id' => true,
         'variation_name' => true,
         'quantity' => false,
@@ -204,6 +207,7 @@ class FreebieListResponseFreebiesInner implements ModelInterface, ArrayAccess, \
         'spend_threshold_cents' => 'spend_threshold_cents',
         'product_id' => 'product_id',
         'product_name' => 'product_name',
+        'is_merch_product' => 'is_merch_product',
         'variation_id' => 'variation_id',
         'variation_name' => 'variation_name',
         'quantity' => 'quantity',
@@ -224,6 +228,7 @@ class FreebieListResponseFreebiesInner implements ModelInterface, ArrayAccess, \
         'spend_threshold_cents' => 'setSpendThresholdCents',
         'product_id' => 'setProductId',
         'product_name' => 'setProductName',
+        'is_merch_product' => 'setIsMerchProduct',
         'variation_id' => 'setVariationId',
         'variation_name' => 'setVariationName',
         'quantity' => 'setQuantity',
@@ -244,6 +249,7 @@ class FreebieListResponseFreebiesInner implements ModelInterface, ArrayAccess, \
         'spend_threshold_cents' => 'getSpendThresholdCents',
         'product_id' => 'getProductId',
         'product_name' => 'getProductName',
+        'is_merch_product' => 'getIsMerchProduct',
         'variation_id' => 'getVariationId',
         'variation_name' => 'getVariationName',
         'quantity' => 'getQuantity',
@@ -315,6 +321,7 @@ class FreebieListResponseFreebiesInner implements ModelInterface, ArrayAccess, \
         $this->setIfExists('spend_threshold_cents', $data ?? [], null);
         $this->setIfExists('product_id', $data ?? [], null);
         $this->setIfExists('product_name', $data ?? [], null);
+        $this->setIfExists('is_merch_product', $data ?? [], null);
         $this->setIfExists('variation_id', $data ?? [], null);
         $this->setIfExists('variation_name', $data ?? [], null);
         $this->setIfExists('quantity', $data ?? [], null);
@@ -504,6 +511,33 @@ class FreebieListResponseFreebiesInner implements ModelInterface, ArrayAccess, \
             }
         }
         $this->container['product_name'] = $product_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_merch_product
+     *
+     * @return bool|null
+     */
+    public function getIsMerchProduct()
+    {
+        return $this->container['is_merch_product'];
+    }
+
+    /**
+     * Sets is_merch_product
+     *
+     * @param bool|null $is_merch_product is_merch_product
+     *
+     * @return self
+     */
+    public function setIsMerchProduct($is_merch_product)
+    {
+        if (is_null($is_merch_product)) {
+            throw new \InvalidArgumentException('non-nullable is_merch_product cannot be null');
+        }
+        $this->container['is_merch_product'] = $is_merch_product;
 
         return $this;
     }

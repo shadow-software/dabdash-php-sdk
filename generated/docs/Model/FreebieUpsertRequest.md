@@ -14,6 +14,6 @@ Name | Type | Description | Notes
 **is_active** | **bool** | Whether the freebie is live. Defaults to true on create; left unchanged on update unless passed. | [optional]
 **starts_at** | **string** | Optional start date (tenant timezone, stored as UTC). Pass null to clear. | [optional]
 **ends_at** | **string** | Optional end date (tenant timezone, stored as UTC). Must be on/after starts_at. Pass null to clear. | [optional]
-**category_ids** | **mixed[]** | Category IDs to scope this freebie to. Must belong to this tenant; foreign ids are ignored. Omit to leave unchanged; pass an empty array to clear all. | [optional]
+**category_ids** | **int[]** | Category IDs to scope this freebie to. Must belong to this tenant; foreign ids are ignored. Omit to leave unchanged; pass an empty array to clear all. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

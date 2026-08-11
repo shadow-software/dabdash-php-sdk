@@ -116,6 +116,15 @@ class CampaignUpsertRequestTest extends TestCase
     }
 
     /**
+     * Test attribute "fallback_first_name"
+     */
+    public function testPropertyFallbackFirstName()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "html_body"
      */
     public function testPropertyHtmlBody()

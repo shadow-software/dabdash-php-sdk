@@ -61,6 +61,7 @@ class CampaignUpsertRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'name' => 'string',
         'channel' => 'string',
         'subject' => 'string',
+        'fallback_first_name' => 'string',
         'html_body' => 'string',
         'sms_body' => 'string',
         'plain_body' => 'string',
@@ -80,6 +81,7 @@ class CampaignUpsertRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'name' => null,
         'channel' => null,
         'subject' => null,
+        'fallback_first_name' => null,
         'html_body' => null,
         'sms_body' => null,
         'plain_body' => null,
@@ -97,6 +99,7 @@ class CampaignUpsertRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'name' => true,
         'channel' => true,
         'subject' => true,
+        'fallback_first_name' => true,
         'html_body' => true,
         'sms_body' => true,
         'plain_body' => true,
@@ -194,6 +197,7 @@ class CampaignUpsertRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'name' => 'name',
         'channel' => 'channel',
         'subject' => 'subject',
+        'fallback_first_name' => 'fallback_first_name',
         'html_body' => 'html_body',
         'sms_body' => 'sms_body',
         'plain_body' => 'plain_body',
@@ -211,6 +215,7 @@ class CampaignUpsertRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'name' => 'setName',
         'channel' => 'setChannel',
         'subject' => 'setSubject',
+        'fallback_first_name' => 'setFallbackFirstName',
         'html_body' => 'setHtmlBody',
         'sms_body' => 'setSmsBody',
         'plain_body' => 'setPlainBody',
@@ -228,6 +233,7 @@ class CampaignUpsertRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'name' => 'getName',
         'channel' => 'getChannel',
         'subject' => 'getSubject',
+        'fallback_first_name' => 'getFallbackFirstName',
         'html_body' => 'getHtmlBody',
         'sms_body' => 'getSmsBody',
         'plain_body' => 'getPlainBody',
@@ -296,6 +302,7 @@ class CampaignUpsertRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('channel', $data ?? [], null);
         $this->setIfExists('subject', $data ?? [], null);
+        $this->setIfExists('fallback_first_name', $data ?? [], null);
         $this->setIfExists('html_body', $data ?? [], null);
         $this->setIfExists('sms_body', $data ?? [], null);
         $this->setIfExists('plain_body', $data ?? [], null);
@@ -477,6 +484,40 @@ class CampaignUpsertRequest implements ModelInterface, ArrayAccess, \JsonSeriali
             }
         }
         $this->container['subject'] = $subject;
+
+        return $this;
+    }
+
+    /**
+     * Gets fallback_first_name
+     *
+     * @return string|null
+     */
+    public function getFallbackFirstName()
+    {
+        return $this->container['fallback_first_name'];
+    }
+
+    /**
+     * Sets fallback_first_name
+     *
+     * @param string|null $fallback_first_name Stand-in when {{first_name}} is blank (max 80). Empty string clears. Omit on update to keep.
+     *
+     * @return self
+     */
+    public function setFallbackFirstName($fallback_first_name)
+    {
+        if (is_null($fallback_first_name)) {
+            array_push($this->openAPINullablesSetToNull, 'fallback_first_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fallback_first_name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['fallback_first_name'] = $fallback_first_name;
 
         return $this;
     }

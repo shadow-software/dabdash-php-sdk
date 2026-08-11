@@ -192,12 +192,36 @@ class CatalogApiTest extends TestCase
     }
 
     /**
+     * Test case for productFeatureManage
+     *
+     * List or set which products are featured on a tenant's storefront home page (the \"Featured Products\" section, HomeController — up to 8 shown, ordered by the tenant's default product sort).  ACTIONS:   list (default): return every is_featured=true product with id, slug, name,          stock_status. Always call this first to see the current set before          changing it.   set: pass product_ids (array) and featured (bool) to set is_featured on          those products. Unlisted products are left untouched — this is an          additive/subtractive edit, not a replace-the-whole-set operation.  Products must be resolved to ids first (product_inspect or this tool's list action). Featuring an out-of-stock product is allowed but usually undesirable — check stock_status in the list output before featuring..
+     *
+     */
+    public function testProductFeatureManage()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for productInspect
      *
      * Inspect a specific product including every variation's price, compare_at_price, mix_match_tags, stock, and the tenant's mix & match rule settings. Use this to audit pricing, sale state, and bundle configuration for support tickets..
      *
      */
     public function testProductInspect()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for productUnitPriceSearch
+     *
+     * Search and rank a tenant's catalog by computed per-unit price (e.g. price per gram or price per ounce), across every weight-family product (types \"weight\" and \"matrix\") — something product_inspect cannot do because it only looks up one product at a time by id/name/sku.  For each active, in-stock variation with a weight_value, computes price_per_gram = price_cents / weight_value, then scales it to the requested unit (default \"oz\" = 28g, matching the storefront's weight-tier convention). Use this to answer \"what's the cheapest/most expensive product per ounce\", \"find products under $X/g\", or to rank the catalog by unit economics for pricing audits and promo targeting.  Only weight-family products (weight, matrix) have a meaningful per-gram price — unit-family products (simple, unit, matrix_unit) are excluded since their variations are priced per item, not per weight..
+     *
+     */
+    public function testProductUnitPriceSearch()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

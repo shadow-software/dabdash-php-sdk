@@ -143,6 +143,51 @@ class CouponUpsertResponseTest extends TestCase
     }
 
     /**
+     * Test attribute "freebie_id"
+     */
+    public function testPropertyFreebieId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "subscription_ladder_id"
+     */
+    public function testPropertySubscriptionLadderId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "applies_to"
+     */
+    public function testPropertyAppliesTo()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "applies_to_ids"
+     */
+    public function testPropertyAppliesToIds()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "requires_subscribed_customer"
+     */
+    public function testPropertyRequiresSubscribedCustomer()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "is_active"
      */
     public function testPropertyIsActive()

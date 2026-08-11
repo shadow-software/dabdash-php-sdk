@@ -72,6 +72,18 @@ class CustomersApiTest extends TestCase
     }
 
     /**
+     * Test case for contactCleanup
+     *
+     * Removes contacts that failed email validation from an imported list.  Typical use: a CSV import brought in thousands of addresses, the validator graded them, and the list is now full of dead addresses that will bounce and hurt sending reputation.  SAFETY: - dry_run defaults to TRUE. Nothing is deleted until you pass dry_run=false. The dry run   returns exactly how many contacts match and a sample of them. - Only statuses \"invalid\" and \"risky\" can be purged. \"unknown\" means the validator has not   graded that contact YET — those are never deleted, and asking for them is refused. - Scoped to one contact list when list_id is given, otherwise the whole store. - Contacts are deleted, not unsubscribed. This cannot be undone from here..
+     *
+     */
+    public function testContactCleanup()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for customerAddresses
      *
      * Return a customer's saved addresses, coordinates, saved zones, and zone mismatch diagnostics..

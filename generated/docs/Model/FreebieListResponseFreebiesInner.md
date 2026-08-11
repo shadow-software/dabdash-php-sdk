@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **spend_threshold_cents** | **int** |  | [optional]
 **product_id** | **int** |  | [optional]
 **product_name** | **string** |  | [optional]
+**is_merch_product** | **bool** |  | [optional]
 **variation_id** | **int** |  | [optional]
 **variation_name** | **string** |  | [optional]
 **quantity** | **int** |  | [optional]

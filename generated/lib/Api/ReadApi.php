@@ -116,6 +116,12 @@ class ReadApi
         'productInspect' => [
             'application/json',
         ],
+        'productProfitability' => [
+            'application/json',
+        ],
+        'productUnitPriceSearch' => [
+            'application/json',
+        ],
         'promotionAudit' => [
             'application/json',
         ],
@@ -2216,7 +2222,7 @@ class ReadApi
     /**
      * Operation freebieList
      *
-     * List a tenant&#39;s freebie rules (\&quot;spend $X, get a free item\&quot;) with id, name, spend threshold, the product/variation given away, quantity, stackable flag, active state, and schedule window. Freebies are evaluated on every cart change by FreebieService: a rule fires once its spend_threshold is met, adding &#x60;quantity&#x60; of the configured product/variation to the cart.  IMPORTANT: this reads the &#x60;freebies&#x60; table — the source of truth the storefront cart uses. It is NOT the legacy freebie summary promotion_audit surfaces alongside coupons/bundles; that view is stale display-only data built for a different purpose. Trust this tool for what actually applies at checkout.  is_stackable:   true   → this rule can fire alongside OTHER DIFFERENT freebie rules on the same order (each            rule still only fires once, at its configured quantity, regardless of how far above            its own threshold the cart is).   false  → this rule cannot combine with other freebie rules; if multiple non-stackable rules            qualify, FreebieService applies its own precedence to pick one.   This flag does NOT multiply a single rule&#39;s quantity by how many multiples of the threshold   the cart reaches — a $50-threshold rule at $150 spent still gives quantity 1, not 3.
+     * List a tenant&#39;s freebie rules (\&quot;spend $X, get a free item\&quot;) with id, name, spend threshold, the product/variation given away, quantity, stackable flag, active state, and schedule window. Freebies are evaluated on every cart change by FreebieService: a rule fires once its spend_threshold is met, adding &#x60;quantity&#x60; of the configured product/variation to the cart.  IMPORTANT: this reads the &#x60;freebies&#x60; table — the source of truth the storefront cart uses. It is NOT the legacy freebie summary promotion_audit surfaces alongside coupons/bundles; that view is stale display-only data built for a different purpose. Trust this tool for what actually applies at checkout.  is_merch_product: true when the freebie&#39;s product is tagged \&quot;merch\&quot; (Product.tags contains \&quot;merch\&quot;) — a branded giveaway item (hats, apparel) rather than sellable cannabis inventory. Prefer merch-tagged products over high-COGS flower when recommending a NEW freebie: giving away promo materials protects margin the same way a discount code doesn&#39;t.  is_stackable:   true   → this rule can fire alongside OTHER DIFFERENT freebie rules on the same order (each            rule still only fires once, at its configured quantity, regardless of how far above            its own threshold the cart is).   false  → this rule cannot combine with other freebie rules; if multiple non-stackable rules            qualify, FreebieService applies its own precedence to pick one.   This flag does NOT multiply a single rule&#39;s quantity by how many multiples of the threshold   the cart reaches — a $50-threshold rule at $150 spent still gives quantity 1, not 3.
      *
      * @param  \ShadowSoftware\DabDash\Model\FreebieListRequest|null $freebie_list_request freebie_list_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['freebieList'] to see the possible values for this operation
@@ -2234,7 +2240,7 @@ class ReadApi
     /**
      * Operation freebieListWithHttpInfo
      *
-     * List a tenant&#39;s freebie rules (\&quot;spend $X, get a free item\&quot;) with id, name, spend threshold, the product/variation given away, quantity, stackable flag, active state, and schedule window. Freebies are evaluated on every cart change by FreebieService: a rule fires once its spend_threshold is met, adding &#x60;quantity&#x60; of the configured product/variation to the cart.  IMPORTANT: this reads the &#x60;freebies&#x60; table — the source of truth the storefront cart uses. It is NOT the legacy freebie summary promotion_audit surfaces alongside coupons/bundles; that view is stale display-only data built for a different purpose. Trust this tool for what actually applies at checkout.  is_stackable:   true   → this rule can fire alongside OTHER DIFFERENT freebie rules on the same order (each            rule still only fires once, at its configured quantity, regardless of how far above            its own threshold the cart is).   false  → this rule cannot combine with other freebie rules; if multiple non-stackable rules            qualify, FreebieService applies its own precedence to pick one.   This flag does NOT multiply a single rule&#39;s quantity by how many multiples of the threshold   the cart reaches — a $50-threshold rule at $150 spent still gives quantity 1, not 3.
+     * List a tenant&#39;s freebie rules (\&quot;spend $X, get a free item\&quot;) with id, name, spend threshold, the product/variation given away, quantity, stackable flag, active state, and schedule window. Freebies are evaluated on every cart change by FreebieService: a rule fires once its spend_threshold is met, adding &#x60;quantity&#x60; of the configured product/variation to the cart.  IMPORTANT: this reads the &#x60;freebies&#x60; table — the source of truth the storefront cart uses. It is NOT the legacy freebie summary promotion_audit surfaces alongside coupons/bundles; that view is stale display-only data built for a different purpose. Trust this tool for what actually applies at checkout.  is_merch_product: true when the freebie&#39;s product is tagged \&quot;merch\&quot; (Product.tags contains \&quot;merch\&quot;) — a branded giveaway item (hats, apparel) rather than sellable cannabis inventory. Prefer merch-tagged products over high-COGS flower when recommending a NEW freebie: giving away promo materials protects margin the same way a discount code doesn&#39;t.  is_stackable:   true   → this rule can fire alongside OTHER DIFFERENT freebie rules on the same order (each            rule still only fires once, at its configured quantity, regardless of how far above            its own threshold the cart is).   false  → this rule cannot combine with other freebie rules; if multiple non-stackable rules            qualify, FreebieService applies its own precedence to pick one.   This flag does NOT multiply a single rule&#39;s quantity by how many multiples of the threshold   the cart reaches — a $50-threshold rule at $150 spent still gives quantity 1, not 3.
      *
      * @param  \ShadowSoftware\DabDash\Model\FreebieListRequest|null $freebie_list_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['freebieList'] to see the possible values for this operation
@@ -2389,7 +2395,7 @@ class ReadApi
     /**
      * Operation freebieListAsync
      *
-     * List a tenant&#39;s freebie rules (\&quot;spend $X, get a free item\&quot;) with id, name, spend threshold, the product/variation given away, quantity, stackable flag, active state, and schedule window. Freebies are evaluated on every cart change by FreebieService: a rule fires once its spend_threshold is met, adding &#x60;quantity&#x60; of the configured product/variation to the cart.  IMPORTANT: this reads the &#x60;freebies&#x60; table — the source of truth the storefront cart uses. It is NOT the legacy freebie summary promotion_audit surfaces alongside coupons/bundles; that view is stale display-only data built for a different purpose. Trust this tool for what actually applies at checkout.  is_stackable:   true   → this rule can fire alongside OTHER DIFFERENT freebie rules on the same order (each            rule still only fires once, at its configured quantity, regardless of how far above            its own threshold the cart is).   false  → this rule cannot combine with other freebie rules; if multiple non-stackable rules            qualify, FreebieService applies its own precedence to pick one.   This flag does NOT multiply a single rule&#39;s quantity by how many multiples of the threshold   the cart reaches — a $50-threshold rule at $150 spent still gives quantity 1, not 3.
+     * List a tenant&#39;s freebie rules (\&quot;spend $X, get a free item\&quot;) with id, name, spend threshold, the product/variation given away, quantity, stackable flag, active state, and schedule window. Freebies are evaluated on every cart change by FreebieService: a rule fires once its spend_threshold is met, adding &#x60;quantity&#x60; of the configured product/variation to the cart.  IMPORTANT: this reads the &#x60;freebies&#x60; table — the source of truth the storefront cart uses. It is NOT the legacy freebie summary promotion_audit surfaces alongside coupons/bundles; that view is stale display-only data built for a different purpose. Trust this tool for what actually applies at checkout.  is_merch_product: true when the freebie&#39;s product is tagged \&quot;merch\&quot; (Product.tags contains \&quot;merch\&quot;) — a branded giveaway item (hats, apparel) rather than sellable cannabis inventory. Prefer merch-tagged products over high-COGS flower when recommending a NEW freebie: giving away promo materials protects margin the same way a discount code doesn&#39;t.  is_stackable:   true   → this rule can fire alongside OTHER DIFFERENT freebie rules on the same order (each            rule still only fires once, at its configured quantity, regardless of how far above            its own threshold the cart is).   false  → this rule cannot combine with other freebie rules; if multiple non-stackable rules            qualify, FreebieService applies its own precedence to pick one.   This flag does NOT multiply a single rule&#39;s quantity by how many multiples of the threshold   the cart reaches — a $50-threshold rule at $150 spent still gives quantity 1, not 3.
      *
      * @param  \ShadowSoftware\DabDash\Model\FreebieListRequest|null $freebie_list_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['freebieList'] to see the possible values for this operation
@@ -2410,7 +2416,7 @@ class ReadApi
     /**
      * Operation freebieListAsyncWithHttpInfo
      *
-     * List a tenant&#39;s freebie rules (\&quot;spend $X, get a free item\&quot;) with id, name, spend threshold, the product/variation given away, quantity, stackable flag, active state, and schedule window. Freebies are evaluated on every cart change by FreebieService: a rule fires once its spend_threshold is met, adding &#x60;quantity&#x60; of the configured product/variation to the cart.  IMPORTANT: this reads the &#x60;freebies&#x60; table — the source of truth the storefront cart uses. It is NOT the legacy freebie summary promotion_audit surfaces alongside coupons/bundles; that view is stale display-only data built for a different purpose. Trust this tool for what actually applies at checkout.  is_stackable:   true   → this rule can fire alongside OTHER DIFFERENT freebie rules on the same order (each            rule still only fires once, at its configured quantity, regardless of how far above            its own threshold the cart is).   false  → this rule cannot combine with other freebie rules; if multiple non-stackable rules            qualify, FreebieService applies its own precedence to pick one.   This flag does NOT multiply a single rule&#39;s quantity by how many multiples of the threshold   the cart reaches — a $50-threshold rule at $150 spent still gives quantity 1, not 3.
+     * List a tenant&#39;s freebie rules (\&quot;spend $X, get a free item\&quot;) with id, name, spend threshold, the product/variation given away, quantity, stackable flag, active state, and schedule window. Freebies are evaluated on every cart change by FreebieService: a rule fires once its spend_threshold is met, adding &#x60;quantity&#x60; of the configured product/variation to the cart.  IMPORTANT: this reads the &#x60;freebies&#x60; table — the source of truth the storefront cart uses. It is NOT the legacy freebie summary promotion_audit surfaces alongside coupons/bundles; that view is stale display-only data built for a different purpose. Trust this tool for what actually applies at checkout.  is_merch_product: true when the freebie&#39;s product is tagged \&quot;merch\&quot; (Product.tags contains \&quot;merch\&quot;) — a branded giveaway item (hats, apparel) rather than sellable cannabis inventory. Prefer merch-tagged products over high-COGS flower when recommending a NEW freebie: giving away promo materials protects margin the same way a discount code doesn&#39;t.  is_stackable:   true   → this rule can fire alongside OTHER DIFFERENT freebie rules on the same order (each            rule still only fires once, at its configured quantity, regardless of how far above            its own threshold the cart is).   false  → this rule cannot combine with other freebie rules; if multiple non-stackable rules            qualify, FreebieService applies its own precedence to pick one.   This flag does NOT multiply a single rule&#39;s quantity by how many multiples of the threshold   the cart reaches — a $50-threshold rule at $150 spent still gives quantity 1, not 3.
      *
      * @param  \ShadowSoftware\DabDash\Model\FreebieListRequest|null $freebie_list_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['freebieList'] to see the possible values for this operation
@@ -4870,6 +4876,684 @@ class ReadApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($product_inspect_request));
             } else {
                 $httpBody = $product_inspect_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation productProfitability
+     *
+     * Rank a tenant&#39;s products by real net margin using order-line COGS (order_items.cost_price), not price-tier approximations. Use this before recommending sales, coupons, freebies, or subscription mounting ladders — only promote SKUs with enough margin headroom.  Revenue dating follows RevenueAttribution (placed vs delivered) for the tenant. Freebie gift lines are excluded from COGS so giveaways do not distort product margins. Results include current catalog stock_status and a promo_headroom_ok flag (margin_percent &gt;&#x3D; min_margin_percent).  Sort: margin (default), revenue, or units. Pass a wide date_from for tenants with older imported history.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ProductProfitabilityRequest|null $product_profitability_request product_profitability_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productProfitability'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \ShadowSoftware\DabDash\Model\ProductProfitability200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
+     */
+    public function productProfitability($product_profitability_request = null, string $contentType = self::contentTypes['productProfitability'][0])
+    {
+        list($response) = $this->productProfitabilityWithHttpInfo($product_profitability_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation productProfitabilityWithHttpInfo
+     *
+     * Rank a tenant&#39;s products by real net margin using order-line COGS (order_items.cost_price), not price-tier approximations. Use this before recommending sales, coupons, freebies, or subscription mounting ladders — only promote SKUs with enough margin headroom.  Revenue dating follows RevenueAttribution (placed vs delivered) for the tenant. Freebie gift lines are excluded from COGS so giveaways do not distort product margins. Results include current catalog stock_status and a promo_headroom_ok flag (margin_percent &gt;&#x3D; min_margin_percent).  Sort: margin (default), revenue, or units. Pass a wide date_from for tenants with older imported history.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ProductProfitabilityRequest|null $product_profitability_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productProfitability'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \ShadowSoftware\DabDash\Model\ProductProfitability200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function productProfitabilityWithHttpInfo($product_profitability_request = null, string $contentType = self::contentTypes['productProfitability'][0])
+    {
+        $request = $this->productProfitabilityRequest($product_profitability_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\ProductProfitability200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $request,
+                        $response,
+                    );
+                case 402:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $request,
+                        $response,
+                    );
+                case 422:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\ShadowSoftware\DabDash\Model\ProductProfitability200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\ProductProfitability200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 402:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation productProfitabilityAsync
+     *
+     * Rank a tenant&#39;s products by real net margin using order-line COGS (order_items.cost_price), not price-tier approximations. Use this before recommending sales, coupons, freebies, or subscription mounting ladders — only promote SKUs with enough margin headroom.  Revenue dating follows RevenueAttribution (placed vs delivered) for the tenant. Freebie gift lines are excluded from COGS so giveaways do not distort product margins. Results include current catalog stock_status and a promo_headroom_ok flag (margin_percent &gt;&#x3D; min_margin_percent).  Sort: margin (default), revenue, or units. Pass a wide date_from for tenants with older imported history.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ProductProfitabilityRequest|null $product_profitability_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productProfitability'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function productProfitabilityAsync($product_profitability_request = null, string $contentType = self::contentTypes['productProfitability'][0])
+    {
+        return $this->productProfitabilityAsyncWithHttpInfo($product_profitability_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation productProfitabilityAsyncWithHttpInfo
+     *
+     * Rank a tenant&#39;s products by real net margin using order-line COGS (order_items.cost_price), not price-tier approximations. Use this before recommending sales, coupons, freebies, or subscription mounting ladders — only promote SKUs with enough margin headroom.  Revenue dating follows RevenueAttribution (placed vs delivered) for the tenant. Freebie gift lines are excluded from COGS so giveaways do not distort product margins. Results include current catalog stock_status and a promo_headroom_ok flag (margin_percent &gt;&#x3D; min_margin_percent).  Sort: margin (default), revenue, or units. Pass a wide date_from for tenants with older imported history.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ProductProfitabilityRequest|null $product_profitability_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productProfitability'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function productProfitabilityAsyncWithHttpInfo($product_profitability_request = null, string $contentType = self::contentTypes['productProfitability'][0])
+    {
+        $returnType = '\ShadowSoftware\DabDash\Model\ProductProfitability200Response';
+        $request = $this->productProfitabilityRequest($product_profitability_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'productProfitability'
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ProductProfitabilityRequest|null $product_profitability_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productProfitability'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function productProfitabilityRequest($product_profitability_request = null, string $contentType = self::contentTypes['productProfitability'][0])
+    {
+
+
+
+        $resourcePath = '/api/v1/tools/product_profitability';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($product_profitability_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($product_profitability_request));
+            } else {
+                $httpBody = $product_profitability_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation productUnitPriceSearch
+     *
+     * Search and rank a tenant&#39;s catalog by computed per-unit price (e.g. price per gram or price per ounce), across every weight-family product (types \&quot;weight\&quot; and \&quot;matrix\&quot;) — something product_inspect cannot do because it only looks up one product at a time by id/name/sku.  For each active, in-stock variation with a weight_value, computes price_per_gram &#x3D; price_cents / weight_value, then scales it to the requested unit (default \&quot;oz\&quot; &#x3D; 28g, matching the storefront&#39;s weight-tier convention). Use this to answer \&quot;what&#39;s the cheapest/most expensive product per ounce\&quot;, \&quot;find products under $X/g\&quot;, or to rank the catalog by unit economics for pricing audits and promo targeting.  Only weight-family products (weight, matrix) have a meaningful per-gram price — unit-family products (simple, unit, matrix_unit) are excluded since their variations are priced per item, not per weight.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ProductUnitPriceSearchRequest|null $product_unit_price_search_request product_unit_price_search_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productUnitPriceSearch'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \ShadowSoftware\DabDash\Model\ProductUnitPriceSearch200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
+     */
+    public function productUnitPriceSearch($product_unit_price_search_request = null, string $contentType = self::contentTypes['productUnitPriceSearch'][0])
+    {
+        list($response) = $this->productUnitPriceSearchWithHttpInfo($product_unit_price_search_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation productUnitPriceSearchWithHttpInfo
+     *
+     * Search and rank a tenant&#39;s catalog by computed per-unit price (e.g. price per gram or price per ounce), across every weight-family product (types \&quot;weight\&quot; and \&quot;matrix\&quot;) — something product_inspect cannot do because it only looks up one product at a time by id/name/sku.  For each active, in-stock variation with a weight_value, computes price_per_gram &#x3D; price_cents / weight_value, then scales it to the requested unit (default \&quot;oz\&quot; &#x3D; 28g, matching the storefront&#39;s weight-tier convention). Use this to answer \&quot;what&#39;s the cheapest/most expensive product per ounce\&quot;, \&quot;find products under $X/g\&quot;, or to rank the catalog by unit economics for pricing audits and promo targeting.  Only weight-family products (weight, matrix) have a meaningful per-gram price — unit-family products (simple, unit, matrix_unit) are excluded since their variations are priced per item, not per weight.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ProductUnitPriceSearchRequest|null $product_unit_price_search_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productUnitPriceSearch'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \ShadowSoftware\DabDash\Model\ProductUnitPriceSearch200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function productUnitPriceSearchWithHttpInfo($product_unit_price_search_request = null, string $contentType = self::contentTypes['productUnitPriceSearch'][0])
+    {
+        $request = $this->productUnitPriceSearchRequest($product_unit_price_search_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\ProductUnitPriceSearch200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $request,
+                        $response,
+                    );
+                case 402:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $request,
+                        $response,
+                    );
+                case 422:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\ShadowSoftware\DabDash\Model\ProductUnitPriceSearch200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\ProductUnitPriceSearch200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 402:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation productUnitPriceSearchAsync
+     *
+     * Search and rank a tenant&#39;s catalog by computed per-unit price (e.g. price per gram or price per ounce), across every weight-family product (types \&quot;weight\&quot; and \&quot;matrix\&quot;) — something product_inspect cannot do because it only looks up one product at a time by id/name/sku.  For each active, in-stock variation with a weight_value, computes price_per_gram &#x3D; price_cents / weight_value, then scales it to the requested unit (default \&quot;oz\&quot; &#x3D; 28g, matching the storefront&#39;s weight-tier convention). Use this to answer \&quot;what&#39;s the cheapest/most expensive product per ounce\&quot;, \&quot;find products under $X/g\&quot;, or to rank the catalog by unit economics for pricing audits and promo targeting.  Only weight-family products (weight, matrix) have a meaningful per-gram price — unit-family products (simple, unit, matrix_unit) are excluded since their variations are priced per item, not per weight.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ProductUnitPriceSearchRequest|null $product_unit_price_search_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productUnitPriceSearch'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function productUnitPriceSearchAsync($product_unit_price_search_request = null, string $contentType = self::contentTypes['productUnitPriceSearch'][0])
+    {
+        return $this->productUnitPriceSearchAsyncWithHttpInfo($product_unit_price_search_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation productUnitPriceSearchAsyncWithHttpInfo
+     *
+     * Search and rank a tenant&#39;s catalog by computed per-unit price (e.g. price per gram or price per ounce), across every weight-family product (types \&quot;weight\&quot; and \&quot;matrix\&quot;) — something product_inspect cannot do because it only looks up one product at a time by id/name/sku.  For each active, in-stock variation with a weight_value, computes price_per_gram &#x3D; price_cents / weight_value, then scales it to the requested unit (default \&quot;oz\&quot; &#x3D; 28g, matching the storefront&#39;s weight-tier convention). Use this to answer \&quot;what&#39;s the cheapest/most expensive product per ounce\&quot;, \&quot;find products under $X/g\&quot;, or to rank the catalog by unit economics for pricing audits and promo targeting.  Only weight-family products (weight, matrix) have a meaningful per-gram price — unit-family products (simple, unit, matrix_unit) are excluded since their variations are priced per item, not per weight.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ProductUnitPriceSearchRequest|null $product_unit_price_search_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productUnitPriceSearch'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function productUnitPriceSearchAsyncWithHttpInfo($product_unit_price_search_request = null, string $contentType = self::contentTypes['productUnitPriceSearch'][0])
+    {
+        $returnType = '\ShadowSoftware\DabDash\Model\ProductUnitPriceSearch200Response';
+        $request = $this->productUnitPriceSearchRequest($product_unit_price_search_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'productUnitPriceSearch'
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ProductUnitPriceSearchRequest|null $product_unit_price_search_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productUnitPriceSearch'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function productUnitPriceSearchRequest($product_unit_price_search_request = null, string $contentType = self::contentTypes['productUnitPriceSearch'][0])
+    {
+
+
+
+        $resourcePath = '/api/v1/tools/product_unit_price_search';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($product_unit_price_search_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($product_unit_price_search_request));
+            } else {
+                $httpBody = $product_unit_price_search_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

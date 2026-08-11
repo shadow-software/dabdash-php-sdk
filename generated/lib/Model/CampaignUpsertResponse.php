@@ -62,13 +62,20 @@ class CampaignUpsertResponse implements ModelInterface, ArrayAccess, \JsonSerial
         'name' => 'string',
         'channel' => 'string',
         'subject' => 'string',
+        'fallback_first_name' => 'string',
         'mode' => 'string',
         'status' => 'string',
         'audience_includes_customers' => 'bool',
         'message' => 'string',
         'sms_body_length' => 'int',
         'html_body_length' => 'int',
-        'has_unsubscribe_token' => 'bool'
+        'has_unsubscribe_token' => 'bool',
+        'spam_score' => 'int',
+        'spam_band' => 'string',
+        'spam_summary' => 'string',
+        'spam_can_send' => 'bool',
+        'spam_min_send_score' => 'int',
+        'spam_findings' => '\ShadowSoftware\DabDash\Model\CampaignUpsertResponseSpamFindingsInner[]'
     ];
 
     /**
@@ -84,13 +91,20 @@ class CampaignUpsertResponse implements ModelInterface, ArrayAccess, \JsonSerial
         'name' => null,
         'channel' => null,
         'subject' => null,
+        'fallback_first_name' => null,
         'mode' => null,
         'status' => null,
         'audience_includes_customers' => null,
         'message' => null,
         'sms_body_length' => null,
         'html_body_length' => null,
-        'has_unsubscribe_token' => null
+        'has_unsubscribe_token' => null,
+        'spam_score' => null,
+        'spam_band' => null,
+        'spam_summary' => null,
+        'spam_can_send' => null,
+        'spam_min_send_score' => null,
+        'spam_findings' => null
     ];
 
     /**
@@ -104,13 +118,20 @@ class CampaignUpsertResponse implements ModelInterface, ArrayAccess, \JsonSerial
         'name' => false,
         'channel' => false,
         'subject' => true,
+        'fallback_first_name' => true,
         'mode' => false,
         'status' => false,
         'audience_includes_customers' => false,
         'message' => false,
         'sms_body_length' => true,
         'html_body_length' => true,
-        'has_unsubscribe_token' => true
+        'has_unsubscribe_token' => true,
+        'spam_score' => true,
+        'spam_band' => true,
+        'spam_summary' => true,
+        'spam_can_send' => true,
+        'spam_min_send_score' => true,
+        'spam_findings' => true
     ];
 
     /**
@@ -204,13 +225,20 @@ class CampaignUpsertResponse implements ModelInterface, ArrayAccess, \JsonSerial
         'name' => 'name',
         'channel' => 'channel',
         'subject' => 'subject',
+        'fallback_first_name' => 'fallback_first_name',
         'mode' => 'mode',
         'status' => 'status',
         'audience_includes_customers' => 'audience_includes_customers',
         'message' => 'message',
         'sms_body_length' => 'sms_body_length',
         'html_body_length' => 'html_body_length',
-        'has_unsubscribe_token' => 'has_unsubscribe_token'
+        'has_unsubscribe_token' => 'has_unsubscribe_token',
+        'spam_score' => 'spam_score',
+        'spam_band' => 'spam_band',
+        'spam_summary' => 'spam_summary',
+        'spam_can_send' => 'spam_can_send',
+        'spam_min_send_score' => 'spam_min_send_score',
+        'spam_findings' => 'spam_findings'
     ];
 
     /**
@@ -224,13 +252,20 @@ class CampaignUpsertResponse implements ModelInterface, ArrayAccess, \JsonSerial
         'name' => 'setName',
         'channel' => 'setChannel',
         'subject' => 'setSubject',
+        'fallback_first_name' => 'setFallbackFirstName',
         'mode' => 'setMode',
         'status' => 'setStatus',
         'audience_includes_customers' => 'setAudienceIncludesCustomers',
         'message' => 'setMessage',
         'sms_body_length' => 'setSmsBodyLength',
         'html_body_length' => 'setHtmlBodyLength',
-        'has_unsubscribe_token' => 'setHasUnsubscribeToken'
+        'has_unsubscribe_token' => 'setHasUnsubscribeToken',
+        'spam_score' => 'setSpamScore',
+        'spam_band' => 'setSpamBand',
+        'spam_summary' => 'setSpamSummary',
+        'spam_can_send' => 'setSpamCanSend',
+        'spam_min_send_score' => 'setSpamMinSendScore',
+        'spam_findings' => 'setSpamFindings'
     ];
 
     /**
@@ -244,13 +279,20 @@ class CampaignUpsertResponse implements ModelInterface, ArrayAccess, \JsonSerial
         'name' => 'getName',
         'channel' => 'getChannel',
         'subject' => 'getSubject',
+        'fallback_first_name' => 'getFallbackFirstName',
         'mode' => 'getMode',
         'status' => 'getStatus',
         'audience_includes_customers' => 'getAudienceIncludesCustomers',
         'message' => 'getMessage',
         'sms_body_length' => 'getSmsBodyLength',
         'html_body_length' => 'getHtmlBodyLength',
-        'has_unsubscribe_token' => 'getHasUnsubscribeToken'
+        'has_unsubscribe_token' => 'getHasUnsubscribeToken',
+        'spam_score' => 'getSpamScore',
+        'spam_band' => 'getSpamBand',
+        'spam_summary' => 'getSpamSummary',
+        'spam_can_send' => 'getSpamCanSend',
+        'spam_min_send_score' => 'getSpamMinSendScore',
+        'spam_findings' => 'getSpamFindings'
     ];
 
     /**
@@ -315,6 +357,7 @@ class CampaignUpsertResponse implements ModelInterface, ArrayAccess, \JsonSerial
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('channel', $data ?? [], null);
         $this->setIfExists('subject', $data ?? [], null);
+        $this->setIfExists('fallback_first_name', $data ?? [], null);
         $this->setIfExists('mode', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('audience_includes_customers', $data ?? [], null);
@@ -322,6 +365,12 @@ class CampaignUpsertResponse implements ModelInterface, ArrayAccess, \JsonSerial
         $this->setIfExists('sms_body_length', $data ?? [], null);
         $this->setIfExists('html_body_length', $data ?? [], null);
         $this->setIfExists('has_unsubscribe_token', $data ?? [], null);
+        $this->setIfExists('spam_score', $data ?? [], null);
+        $this->setIfExists('spam_band', $data ?? [], null);
+        $this->setIfExists('spam_summary', $data ?? [], null);
+        $this->setIfExists('spam_can_send', $data ?? [], null);
+        $this->setIfExists('spam_min_send_score', $data ?? [], null);
+        $this->setIfExists('spam_findings', $data ?? [], null);
     }
 
     /**
@@ -504,6 +553,40 @@ class CampaignUpsertResponse implements ModelInterface, ArrayAccess, \JsonSerial
             }
         }
         $this->container['subject'] = $subject;
+
+        return $this;
+    }
+
+    /**
+     * Gets fallback_first_name
+     *
+     * @return string|null
+     */
+    public function getFallbackFirstName()
+    {
+        return $this->container['fallback_first_name'];
+    }
+
+    /**
+     * Sets fallback_first_name
+     *
+     * @param string|null $fallback_first_name fallback_first_name
+     *
+     * @return self
+     */
+    public function setFallbackFirstName($fallback_first_name)
+    {
+        if (is_null($fallback_first_name)) {
+            array_push($this->openAPINullablesSetToNull, 'fallback_first_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fallback_first_name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['fallback_first_name'] = $fallback_first_name;
 
         return $this;
     }
@@ -714,6 +797,210 @@ class CampaignUpsertResponse implements ModelInterface, ArrayAccess, \JsonSerial
             }
         }
         $this->container['has_unsubscribe_token'] = $has_unsubscribe_token;
+
+        return $this;
+    }
+
+    /**
+     * Gets spam_score
+     *
+     * @return int|null
+     */
+    public function getSpamScore()
+    {
+        return $this->container['spam_score'];
+    }
+
+    /**
+     * Sets spam_score
+     *
+     * @param int|null $spam_score spam_score
+     *
+     * @return self
+     */
+    public function setSpamScore($spam_score)
+    {
+        if (is_null($spam_score)) {
+            array_push($this->openAPINullablesSetToNull, 'spam_score');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('spam_score', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['spam_score'] = $spam_score;
+
+        return $this;
+    }
+
+    /**
+     * Gets spam_band
+     *
+     * @return string|null
+     */
+    public function getSpamBand()
+    {
+        return $this->container['spam_band'];
+    }
+
+    /**
+     * Sets spam_band
+     *
+     * @param string|null $spam_band spam_band
+     *
+     * @return self
+     */
+    public function setSpamBand($spam_band)
+    {
+        if (is_null($spam_band)) {
+            array_push($this->openAPINullablesSetToNull, 'spam_band');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('spam_band', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['spam_band'] = $spam_band;
+
+        return $this;
+    }
+
+    /**
+     * Gets spam_summary
+     *
+     * @return string|null
+     */
+    public function getSpamSummary()
+    {
+        return $this->container['spam_summary'];
+    }
+
+    /**
+     * Sets spam_summary
+     *
+     * @param string|null $spam_summary spam_summary
+     *
+     * @return self
+     */
+    public function setSpamSummary($spam_summary)
+    {
+        if (is_null($spam_summary)) {
+            array_push($this->openAPINullablesSetToNull, 'spam_summary');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('spam_summary', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['spam_summary'] = $spam_summary;
+
+        return $this;
+    }
+
+    /**
+     * Gets spam_can_send
+     *
+     * @return bool|null
+     */
+    public function getSpamCanSend()
+    {
+        return $this->container['spam_can_send'];
+    }
+
+    /**
+     * Sets spam_can_send
+     *
+     * @param bool|null $spam_can_send spam_can_send
+     *
+     * @return self
+     */
+    public function setSpamCanSend($spam_can_send)
+    {
+        if (is_null($spam_can_send)) {
+            array_push($this->openAPINullablesSetToNull, 'spam_can_send');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('spam_can_send', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['spam_can_send'] = $spam_can_send;
+
+        return $this;
+    }
+
+    /**
+     * Gets spam_min_send_score
+     *
+     * @return int|null
+     */
+    public function getSpamMinSendScore()
+    {
+        return $this->container['spam_min_send_score'];
+    }
+
+    /**
+     * Sets spam_min_send_score
+     *
+     * @param int|null $spam_min_send_score spam_min_send_score
+     *
+     * @return self
+     */
+    public function setSpamMinSendScore($spam_min_send_score)
+    {
+        if (is_null($spam_min_send_score)) {
+            array_push($this->openAPINullablesSetToNull, 'spam_min_send_score');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('spam_min_send_score', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['spam_min_send_score'] = $spam_min_send_score;
+
+        return $this;
+    }
+
+    /**
+     * Gets spam_findings
+     *
+     * @return \ShadowSoftware\DabDash\Model\CampaignUpsertResponseSpamFindingsInner[]|null
+     */
+    public function getSpamFindings()
+    {
+        return $this->container['spam_findings'];
+    }
+
+    /**
+     * Sets spam_findings
+     *
+     * @param \ShadowSoftware\DabDash\Model\CampaignUpsertResponseSpamFindingsInner[]|null $spam_findings spam_findings
+     *
+     * @return self
+     */
+    public function setSpamFindings($spam_findings)
+    {
+        if (is_null($spam_findings)) {
+            array_push($this->openAPINullablesSetToNull, 'spam_findings');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('spam_findings', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['spam_findings'] = $spam_findings;
 
         return $this;
     }

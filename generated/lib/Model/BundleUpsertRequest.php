@@ -65,7 +65,7 @@ class BundleUpsertRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'is_active' => 'bool',
         'starts_at' => 'string',
         'ends_at' => 'string',
-        'variation_ids' => 'mixed[]',
+        'variation_ids' => 'int[]',
         'variation_mode' => 'string'
     ];
 
@@ -627,7 +627,7 @@ class BundleUpsertRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets variation_ids
      *
-     * @return mixed[]|null
+     * @return int[]|null
      */
     public function getVariationIds()
     {
@@ -637,7 +637,7 @@ class BundleUpsertRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets variation_ids
      *
-     * @param mixed[]|null $variation_ids Product variation IDs to apply the bundle to. Omit to leave membership unchanged.
+     * @param int[]|null $variation_ids Product variation IDs to apply the bundle to. Omit to leave membership unchanged.
      *
      * @return self
      */

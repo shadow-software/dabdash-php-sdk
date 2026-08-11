@@ -12,7 +12,7 @@ All URIs are relative to https://.dabdash.com, except if the operation defines a
 | [**customerAddresses()**](ReadApi.md#customerAddresses) | **POST** /api/v1/tools/customer_addresses | Return a customer&#39;s saved addresses, coordinates, saved zones, and zone mismatch diagnostics. |
 | [**customerList()**](ReadApi.md#customerList) | **POST** /api/v1/tools/customer_list | Page through all customers for a tenant, optionally filtered to those updated since a given time. Built for bulk sync — use customer_lookup instead for a single targeted search. |
 | [**customerLookup()**](ReadApi.md#customerLookup) | **POST** /api/v1/tools/customer_lookup | Find customers by id, email, phone, or name and return their recent addresses, orders, and support context. |
-| [**freebieList()**](ReadApi.md#freebieList) | **POST** /api/v1/tools/freebie_list | List a tenant&#39;s freebie rules (\&quot;spend $X, get a free item\&quot;) with id, name, spend threshold, the product/variation given away, quantity, stackable flag, active state, and schedule window. Freebies are evaluated on every cart change by FreebieService: a rule fires once its spend_threshold is met, adding &#x60;quantity&#x60; of the configured product/variation to the cart.  IMPORTANT: this reads the &#x60;freebies&#x60; table — the source of truth the storefront cart uses. It is NOT the legacy freebie summary promotion_audit surfaces alongside coupons/bundles; that view is stale display-only data built for a different purpose. Trust this tool for what actually applies at checkout.  is_stackable:   true   → this rule can fire alongside OTHER DIFFERENT freebie rules on the same order (each            rule still only fires once, at its configured quantity, regardless of how far above            its own threshold the cart is).   false  → this rule cannot combine with other freebie rules; if multiple non-stackable rules            qualify, FreebieService applies its own precedence to pick one.   This flag does NOT multiply a single rule&#39;s quantity by how many multiples of the threshold   the cart reaches — a $50-threshold rule at $150 spent still gives quantity 1, not 3. |
+| [**freebieList()**](ReadApi.md#freebieList) | **POST** /api/v1/tools/freebie_list | List a tenant&#39;s freebie rules (\&quot;spend $X, get a free item\&quot;) with id, name, spend threshold, the product/variation given away, quantity, stackable flag, active state, and schedule window. Freebies are evaluated on every cart change by FreebieService: a rule fires once its spend_threshold is met, adding &#x60;quantity&#x60; of the configured product/variation to the cart.  IMPORTANT: this reads the &#x60;freebies&#x60; table — the source of truth the storefront cart uses. It is NOT the legacy freebie summary promotion_audit surfaces alongside coupons/bundles; that view is stale display-only data built for a different purpose. Trust this tool for what actually applies at checkout.  is_merch_product: true when the freebie&#39;s product is tagged \&quot;merch\&quot; (Product.tags contains \&quot;merch\&quot;) — a branded giveaway item (hats, apparel) rather than sellable cannabis inventory. Prefer merch-tagged products over high-COGS flower when recommending a NEW freebie: giving away promo materials protects margin the same way a discount code doesn&#39;t.  is_stackable:   true   → this rule can fire alongside OTHER DIFFERENT freebie rules on the same order (each            rule still only fires once, at its configured quantity, regardless of how far above            its own threshold the cart is).   false  → this rule cannot combine with other freebie rules; if multiple non-stackable rules            qualify, FreebieService applies its own precedence to pick one.   This flag does NOT multiply a single rule&#39;s quantity by how many multiples of the threshold   the cart reaches — a $50-threshold rule at $150 spent still gives quantity 1, not 3. |
 | [**googleAnalytics()**](ReadApi.md#googleAnalytics) | **POST** /api/v1/tools/google_analytics | Query Google Analytics (GA4) data for the platform (dabdash.com) or a specific tenant with a connected GA integration. Returns traffic overview, top pages, traffic sources, top events, and daily trend. |
 | [**inventoryAuditLookup()**](ReadApi.md#inventoryAuditLookup) | **POST** /api/v1/tools/inventory_audit_lookup | Look up the historical inventory state of a list of products from the inventory_audit_logs table.  For each product, returns every variation_id ever logged in the audit trail (including variations that have since been deleted), the variation&#39;s last known stock_quantity strictly BEFORE the given cutoff timestamp, and that variation&#39;s most recent action+notes for context.  Use this tool to recover pre-incident stock values when variations have been overwritten or deleted by a destructive operation (e.g. an erroneous pricing structure assignment that wiped unit/simple variations and replaced them with weight tiers).  Output is grouped per product. Each product also includes its CURRENT variations and their stock for comparison so you can see the delta. |
 | [**inventoryStatus()**](ReadApi.md#inventoryStatus) | **POST** /api/v1/tools/inventory_status | Get inventory status across all tenants or a specific tenant. Shows low stock alerts and out-of-stock products. |
@@ -20,6 +20,8 @@ All URIs are relative to https://.dabdash.com, except if the operation defines a
 | [**metrcDiagnostics()**](ReadApi.md#metrcDiagnostics) | **POST** /api/v1/tools/metrc_diagnostics | Returns a JSON summary of Metrc compliance status for a tenant: integration mode, sync states, audit log counts by HTTP status, and pending/failed report counts. Pass a tenant_slug to inspect a specific tenant. |
 | [**orderDashboard()**](ReadApi.md#orderDashboard) | **POST** /api/v1/tools/order_dashboard | Query orders across all tenants. Filter by status, order number, customer clues, date range, amount, or tenant. Returns order list with pricing context. |
 | [**productInspect()**](ReadApi.md#productInspect) | **POST** /api/v1/tools/product_inspect | Inspect a specific product including every variation&#39;s price, compare_at_price, mix_match_tags, stock, and the tenant&#39;s mix &amp; match rule settings. Use this to audit pricing, sale state, and bundle configuration for support tickets. |
+| [**productProfitability()**](ReadApi.md#productProfitability) | **POST** /api/v1/tools/product_profitability | Rank a tenant&#39;s products by real net margin using order-line COGS (order_items.cost_price), not price-tier approximations. Use this before recommending sales, coupons, freebies, or subscription mounting ladders — only promote SKUs with enough margin headroom.  Revenue dating follows RevenueAttribution (placed vs delivered) for the tenant. Freebie gift lines are excluded from COGS so giveaways do not distort product margins. Results include current catalog stock_status and a promo_headroom_ok flag (margin_percent &gt;&#x3D; min_margin_percent).  Sort: margin (default), revenue, or units. Pass a wide date_from for tenants with older imported history. |
+| [**productUnitPriceSearch()**](ReadApi.md#productUnitPriceSearch) | **POST** /api/v1/tools/product_unit_price_search | Search and rank a tenant&#39;s catalog by computed per-unit price (e.g. price per gram or price per ounce), across every weight-family product (types \&quot;weight\&quot; and \&quot;matrix\&quot;) — something product_inspect cannot do because it only looks up one product at a time by id/name/sku.  For each active, in-stock variation with a weight_value, computes price_per_gram &#x3D; price_cents / weight_value, then scales it to the requested unit (default \&quot;oz\&quot; &#x3D; 28g, matching the storefront&#39;s weight-tier convention). Use this to answer \&quot;what&#39;s the cheapest/most expensive product per ounce\&quot;, \&quot;find products under $X/g\&quot;, or to rank the catalog by unit economics for pricing audits and promo targeting.  Only weight-family products (weight, matrix) have a meaningful per-gram price — unit-family products (simple, unit, matrix_unit) are excluded since their variations are priced per item, not per weight. |
 | [**promotionAudit()**](ReadApi.md#promotionAudit) | **POST** /api/v1/tools/promotion_audit | Inspect coupons, freebies, mix and match rules, loyalty settings, and storewide sale state for overcharge or missed-discount support tickets. |
 | [**pushNotificationDiagnostics()**](ReadApi.md#pushNotificationDiagnostics) | **POST** /api/v1/tools/push_notification_diagnostics | Diagnose push notification (FCM) delivery for a vendor. Surfaces token health, notification settings, recent send history with push/email flags, and a plain-language diagnosis of why pushes are or are not being delivered. |
 | [**searchConsole()**](ReadApi.md#searchConsole) | **POST** /api/v1/tools/search_console | Query Google Search Console data for the platform (dabdash.com) or a specific tenant with a connected GSC integration. Returns search overview, top queries, top pages, and daily trend. |
@@ -399,7 +401,7 @@ try {
 freebieList($freebie_list_request): \ShadowSoftware\DabDash\Model\FreebieList200Response
 ```
 
-List a tenant's freebie rules (\"spend $X, get a free item\") with id, name, spend threshold, the product/variation given away, quantity, stackable flag, active state, and schedule window. Freebies are evaluated on every cart change by FreebieService: a rule fires once its spend_threshold is met, adding `quantity` of the configured product/variation to the cart.  IMPORTANT: this reads the `freebies` table — the source of truth the storefront cart uses. It is NOT the legacy freebie summary promotion_audit surfaces alongside coupons/bundles; that view is stale display-only data built for a different purpose. Trust this tool for what actually applies at checkout.  is_stackable:   true   → this rule can fire alongside OTHER DIFFERENT freebie rules on the same order (each            rule still only fires once, at its configured quantity, regardless of how far above            its own threshold the cart is).   false  → this rule cannot combine with other freebie rules; if multiple non-stackable rules            qualify, FreebieService applies its own precedence to pick one.   This flag does NOT multiply a single rule's quantity by how many multiples of the threshold   the cart reaches — a $50-threshold rule at $150 spent still gives quantity 1, not 3.
+List a tenant's freebie rules (\"spend $X, get a free item\") with id, name, spend threshold, the product/variation given away, quantity, stackable flag, active state, and schedule window. Freebies are evaluated on every cart change by FreebieService: a rule fires once its spend_threshold is met, adding `quantity` of the configured product/variation to the cart.  IMPORTANT: this reads the `freebies` table — the source of truth the storefront cart uses. It is NOT the legacy freebie summary promotion_audit surfaces alongside coupons/bundles; that view is stale display-only data built for a different purpose. Trust this tool for what actually applies at checkout.  is_merch_product: true when the freebie's product is tagged \"merch\" (Product.tags contains \"merch\") — a branded giveaway item (hats, apparel) rather than sellable cannabis inventory. Prefer merch-tagged products over high-COGS flower when recommending a NEW freebie: giving away promo materials protects margin the same way a discount code doesn't.  is_stackable:   true   → this rule can fire alongside OTHER DIFFERENT freebie rules on the same order (each            rule still only fires once, at its configured quantity, regardless of how far above            its own threshold the cart is).   false  → this rule cannot combine with other freebie rules; if multiple non-stackable rules            qualify, FreebieService applies its own precedence to pick one.   This flag does NOT multiply a single rule's quantity by how many multiples of the threshold   the cart reaches — a $50-threshold rule at $150 spent still gives quantity 1, not 3.
 
 ### Example
 
@@ -867,6 +869,128 @@ try {
 ### Return type
 
 [**\ShadowSoftware\DabDash\Model\ProductInspect200Response**](../Model/ProductInspect200Response.md)
+
+### Authorization
+
+[tenantOAuth](../../README.md#tenantOAuth), [tenantApiKey](../../README.md#tenantApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `productProfitability()`
+
+```php
+productProfitability($product_profitability_request): \ShadowSoftware\DabDash\Model\ProductProfitability200Response
+```
+
+Rank a tenant's products by real net margin using order-line COGS (order_items.cost_price), not price-tier approximations. Use this before recommending sales, coupons, freebies, or subscription mounting ladders — only promote SKUs with enough margin headroom.  Revenue dating follows RevenueAttribution (placed vs delivered) for the tenant. Freebie gift lines are excluded from COGS so giveaways do not distort product margins. Results include current catalog stock_status and a promo_headroom_ok flag (margin_percent >= min_margin_percent).  Sort: margin (default), revenue, or units. Pass a wide date_from for tenants with older imported history.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: tenantOAuth
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure Bearer authorization: tenantApiKey
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new ShadowSoftware\DabDash\Api\ReadApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$product_profitability_request = new \ShadowSoftware\DabDash\Model\ProductProfitabilityRequest(); // \ShadowSoftware\DabDash\Model\ProductProfitabilityRequest
+
+try {
+    $result = $apiInstance->productProfitability($product_profitability_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ReadApi->productProfitability: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **product_profitability_request** | [**\ShadowSoftware\DabDash\Model\ProductProfitabilityRequest**](../Model/ProductProfitabilityRequest.md)|  | [optional] |
+
+### Return type
+
+[**\ShadowSoftware\DabDash\Model\ProductProfitability200Response**](../Model/ProductProfitability200Response.md)
+
+### Authorization
+
+[tenantOAuth](../../README.md#tenantOAuth), [tenantApiKey](../../README.md#tenantApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `productUnitPriceSearch()`
+
+```php
+productUnitPriceSearch($product_unit_price_search_request): \ShadowSoftware\DabDash\Model\ProductUnitPriceSearch200Response
+```
+
+Search and rank a tenant's catalog by computed per-unit price (e.g. price per gram or price per ounce), across every weight-family product (types \"weight\" and \"matrix\") — something product_inspect cannot do because it only looks up one product at a time by id/name/sku.  For each active, in-stock variation with a weight_value, computes price_per_gram = price_cents / weight_value, then scales it to the requested unit (default \"oz\" = 28g, matching the storefront's weight-tier convention). Use this to answer \"what's the cheapest/most expensive product per ounce\", \"find products under $X/g\", or to rank the catalog by unit economics for pricing audits and promo targeting.  Only weight-family products (weight, matrix) have a meaningful per-gram price — unit-family products (simple, unit, matrix_unit) are excluded since their variations are priced per item, not per weight.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: tenantOAuth
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure Bearer authorization: tenantApiKey
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new ShadowSoftware\DabDash\Api\ReadApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$product_unit_price_search_request = new \ShadowSoftware\DabDash\Model\ProductUnitPriceSearchRequest(); // \ShadowSoftware\DabDash\Model\ProductUnitPriceSearchRequest
+
+try {
+    $result = $apiInstance->productUnitPriceSearch($product_unit_price_search_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ReadApi->productUnitPriceSearch: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **product_unit_price_search_request** | [**\ShadowSoftware\DabDash\Model\ProductUnitPriceSearchRequest**](../Model/ProductUnitPriceSearchRequest.md)|  | [optional] |
+
+### Return type
+
+[**\ShadowSoftware\DabDash\Model\ProductUnitPriceSearch200Response**](../Model/ProductUnitPriceSearch200Response.md)
 
 ### Authorization
 

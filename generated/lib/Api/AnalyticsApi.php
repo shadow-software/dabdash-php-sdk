@@ -80,6 +80,9 @@ class AnalyticsApi
         'googleAnalytics' => [
             'application/json',
         ],
+        'productProfitability' => [
+            'application/json',
+        ],
         'searchConsole' => [
             'application/json',
         ],
@@ -754,6 +757,345 @@ class AnalyticsApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($google_analytics_request));
             } else {
                 $httpBody = $google_analytics_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation productProfitability
+     *
+     * Rank a tenant&#39;s products by real net margin using order-line COGS (order_items.cost_price), not price-tier approximations. Use this before recommending sales, coupons, freebies, or subscription mounting ladders — only promote SKUs with enough margin headroom.  Revenue dating follows RevenueAttribution (placed vs delivered) for the tenant. Freebie gift lines are excluded from COGS so giveaways do not distort product margins. Results include current catalog stock_status and a promo_headroom_ok flag (margin_percent &gt;&#x3D; min_margin_percent).  Sort: margin (default), revenue, or units. Pass a wide date_from for tenants with older imported history.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ProductProfitabilityRequest|null $product_profitability_request product_profitability_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productProfitability'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \ShadowSoftware\DabDash\Model\ProductProfitability200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
+     */
+    public function productProfitability($product_profitability_request = null, string $contentType = self::contentTypes['productProfitability'][0])
+    {
+        list($response) = $this->productProfitabilityWithHttpInfo($product_profitability_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation productProfitabilityWithHttpInfo
+     *
+     * Rank a tenant&#39;s products by real net margin using order-line COGS (order_items.cost_price), not price-tier approximations. Use this before recommending sales, coupons, freebies, or subscription mounting ladders — only promote SKUs with enough margin headroom.  Revenue dating follows RevenueAttribution (placed vs delivered) for the tenant. Freebie gift lines are excluded from COGS so giveaways do not distort product margins. Results include current catalog stock_status and a promo_headroom_ok flag (margin_percent &gt;&#x3D; min_margin_percent).  Sort: margin (default), revenue, or units. Pass a wide date_from for tenants with older imported history.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ProductProfitabilityRequest|null $product_profitability_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productProfitability'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \ShadowSoftware\DabDash\Model\ProductProfitability200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function productProfitabilityWithHttpInfo($product_profitability_request = null, string $contentType = self::contentTypes['productProfitability'][0])
+    {
+        $request = $this->productProfitabilityRequest($product_profitability_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\ProductProfitability200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $request,
+                        $response,
+                    );
+                case 402:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $request,
+                        $response,
+                    );
+                case 422:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\ShadowSoftware\DabDash\Model\ProductProfitability200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\ProductProfitability200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 402:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation productProfitabilityAsync
+     *
+     * Rank a tenant&#39;s products by real net margin using order-line COGS (order_items.cost_price), not price-tier approximations. Use this before recommending sales, coupons, freebies, or subscription mounting ladders — only promote SKUs with enough margin headroom.  Revenue dating follows RevenueAttribution (placed vs delivered) for the tenant. Freebie gift lines are excluded from COGS so giveaways do not distort product margins. Results include current catalog stock_status and a promo_headroom_ok flag (margin_percent &gt;&#x3D; min_margin_percent).  Sort: margin (default), revenue, or units. Pass a wide date_from for tenants with older imported history.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ProductProfitabilityRequest|null $product_profitability_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productProfitability'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function productProfitabilityAsync($product_profitability_request = null, string $contentType = self::contentTypes['productProfitability'][0])
+    {
+        return $this->productProfitabilityAsyncWithHttpInfo($product_profitability_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation productProfitabilityAsyncWithHttpInfo
+     *
+     * Rank a tenant&#39;s products by real net margin using order-line COGS (order_items.cost_price), not price-tier approximations. Use this before recommending sales, coupons, freebies, or subscription mounting ladders — only promote SKUs with enough margin headroom.  Revenue dating follows RevenueAttribution (placed vs delivered) for the tenant. Freebie gift lines are excluded from COGS so giveaways do not distort product margins. Results include current catalog stock_status and a promo_headroom_ok flag (margin_percent &gt;&#x3D; min_margin_percent).  Sort: margin (default), revenue, or units. Pass a wide date_from for tenants with older imported history.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ProductProfitabilityRequest|null $product_profitability_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productProfitability'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function productProfitabilityAsyncWithHttpInfo($product_profitability_request = null, string $contentType = self::contentTypes['productProfitability'][0])
+    {
+        $returnType = '\ShadowSoftware\DabDash\Model\ProductProfitability200Response';
+        $request = $this->productProfitabilityRequest($product_profitability_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'productProfitability'
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ProductProfitabilityRequest|null $product_profitability_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productProfitability'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function productProfitabilityRequest($product_profitability_request = null, string $contentType = self::contentTypes['productProfitability'][0])
+    {
+
+
+
+        $resourcePath = '/api/v1/tools/product_profitability';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($product_profitability_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($product_profitability_request));
+            } else {
+                $httpBody = $product_profitability_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

@@ -67,7 +67,7 @@ class FreebieUpsertRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         'is_active' => 'bool',
         'starts_at' => 'string',
         'ends_at' => 'string',
-        'category_ids' => 'mixed[]'
+        'category_ids' => 'int[]'
     ];
 
     /**
@@ -702,7 +702,7 @@ class FreebieUpsertRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets category_ids
      *
-     * @return mixed[]|null
+     * @return int[]|null
      */
     public function getCategoryIds()
     {
@@ -712,7 +712,7 @@ class FreebieUpsertRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets category_ids
      *
-     * @param mixed[]|null $category_ids Category IDs to scope this freebie to. Must belong to this tenant; foreign ids are ignored. Omit to leave unchanged; pass an empty array to clear all.
+     * @param int[]|null $category_ids Category IDs to scope this freebie to. Must belong to this tenant; foreign ids are ignored. Omit to leave unchanged; pass an empty array to clear all.
      *
      * @return self
      */

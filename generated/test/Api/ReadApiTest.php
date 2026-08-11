@@ -146,7 +146,7 @@ class ReadApiTest extends TestCase
     /**
      * Test case for freebieList
      *
-     * List a tenant's freebie rules (\"spend $X, get a free item\") with id, name, spend threshold, the product/variation given away, quantity, stackable flag, active state, and schedule window. Freebies are evaluated on every cart change by FreebieService: a rule fires once its spend_threshold is met, adding `quantity` of the configured product/variation to the cart.  IMPORTANT: this reads the `freebies` table — the source of truth the storefront cart uses. It is NOT the legacy freebie summary promotion_audit surfaces alongside coupons/bundles; that view is stale display-only data built for a different purpose. Trust this tool for what actually applies at checkout.  is_stackable:   true   → this rule can fire alongside OTHER DIFFERENT freebie rules on the same order (each            rule still only fires once, at its configured quantity, regardless of how far above            its own threshold the cart is).   false  → this rule cannot combine with other freebie rules; if multiple non-stackable rules            qualify, FreebieService applies its own precedence to pick one.   This flag does NOT multiply a single rule's quantity by how many multiples of the threshold   the cart reaches — a $50-threshold rule at $150 spent still gives quantity 1, not 3..
+     * List a tenant's freebie rules (\"spend $X, get a free item\") with id, name, spend threshold, the product/variation given away, quantity, stackable flag, active state, and schedule window. Freebies are evaluated on every cart change by FreebieService: a rule fires once its spend_threshold is met, adding `quantity` of the configured product/variation to the cart.  IMPORTANT: this reads the `freebies` table — the source of truth the storefront cart uses. It is NOT the legacy freebie summary promotion_audit surfaces alongside coupons/bundles; that view is stale display-only data built for a different purpose. Trust this tool for what actually applies at checkout.  is_merch_product: true when the freebie's product is tagged \"merch\" (Product.tags contains \"merch\") — a branded giveaway item (hats, apparel) rather than sellable cannabis inventory. Prefer merch-tagged products over high-COGS flower when recommending a NEW freebie: giving away promo materials protects margin the same way a discount code doesn't.  is_stackable:   true   → this rule can fire alongside OTHER DIFFERENT freebie rules on the same order (each            rule still only fires once, at its configured quantity, regardless of how far above            its own threshold the cart is).   false  → this rule cannot combine with other freebie rules; if multiple non-stackable rules            qualify, FreebieService applies its own precedence to pick one.   This flag does NOT multiply a single rule's quantity by how many multiples of the threshold   the cart reaches — a $50-threshold rule at $150 spent still gives quantity 1, not 3..
      *
      */
     public function testFreebieList()
@@ -234,6 +234,30 @@ class ReadApiTest extends TestCase
      *
      */
     public function testProductInspect()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for productProfitability
+     *
+     * Rank a tenant's products by real net margin using order-line COGS (order_items.cost_price), not price-tier approximations. Use this before recommending sales, coupons, freebies, or subscription mounting ladders — only promote SKUs with enough margin headroom.  Revenue dating follows RevenueAttribution (placed vs delivered) for the tenant. Freebie gift lines are excluded from COGS so giveaways do not distort product margins. Results include current catalog stock_status and a promo_headroom_ok flag (margin_percent >= min_margin_percent).  Sort: margin (default), revenue, or units. Pass a wide date_from for tenants with older imported history..
+     *
+     */
+    public function testProductProfitability()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for productUnitPriceSearch
+     *
+     * Search and rank a tenant's catalog by computed per-unit price (e.g. price per gram or price per ounce), across every weight-family product (types \"weight\" and \"matrix\") — something product_inspect cannot do because it only looks up one product at a time by id/name/sku.  For each active, in-stock variation with a weight_value, computes price_per_gram = price_cents / weight_value, then scales it to the requested unit (default \"oz\" = 28g, matching the storefront's weight-tier convention). Use this to answer \"what's the cheapest/most expensive product per ounce\", \"find products under $X/g\", or to rank the catalog by unit economics for pricing audits and promo targeting.  Only weight-family products (weight, matrix) have a meaningful per-gram price — unit-family products (simple, unit, matrix_unit) are excluded since their variations are priced per item, not per weight..
+     *
+     */
+    public function testProductUnitPriceSearch()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

@@ -104,7 +104,13 @@ class CatalogApi
         'pricingStructureUpsert' => [
             'application/json',
         ],
+        'productFeatureManage' => [
+            'application/json',
+        ],
         'productInspect' => [
+            'application/json',
+        ],
+        'productUnitPriceSearch' => [
             'application/json',
         ],
         'productUpdateBySku' => [
@@ -3549,6 +3555,345 @@ class CatalogApi
     }
 
     /**
+     * Operation productFeatureManage
+     *
+     * List or set which products are featured on a tenant&#39;s storefront home page (the \&quot;Featured Products\&quot; section, HomeController — up to 8 shown, ordered by the tenant&#39;s default product sort).  ACTIONS:   list (default): return every is_featured&#x3D;true product with id, slug, name,          stock_status. Always call this first to see the current set before          changing it.   set: pass product_ids (array) and featured (bool) to set is_featured on          those products. Unlisted products are left untouched — this is an          additive/subtractive edit, not a replace-the-whole-set operation.  Products must be resolved to ids first (product_inspect or this tool&#39;s list action). Featuring an out-of-stock product is allowed but usually undesirable — check stock_status in the list output before featuring.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ProductFeatureManageRequest|null $product_feature_manage_request product_feature_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productFeatureManage'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \ShadowSoftware\DabDash\Model\ProductFeatureManage200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
+     */
+    public function productFeatureManage($product_feature_manage_request = null, string $contentType = self::contentTypes['productFeatureManage'][0])
+    {
+        list($response) = $this->productFeatureManageWithHttpInfo($product_feature_manage_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation productFeatureManageWithHttpInfo
+     *
+     * List or set which products are featured on a tenant&#39;s storefront home page (the \&quot;Featured Products\&quot; section, HomeController — up to 8 shown, ordered by the tenant&#39;s default product sort).  ACTIONS:   list (default): return every is_featured&#x3D;true product with id, slug, name,          stock_status. Always call this first to see the current set before          changing it.   set: pass product_ids (array) and featured (bool) to set is_featured on          those products. Unlisted products are left untouched — this is an          additive/subtractive edit, not a replace-the-whole-set operation.  Products must be resolved to ids first (product_inspect or this tool&#39;s list action). Featuring an out-of-stock product is allowed but usually undesirable — check stock_status in the list output before featuring.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ProductFeatureManageRequest|null $product_feature_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productFeatureManage'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \ShadowSoftware\DabDash\Model\ProductFeatureManage200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function productFeatureManageWithHttpInfo($product_feature_manage_request = null, string $contentType = self::contentTypes['productFeatureManage'][0])
+    {
+        $request = $this->productFeatureManageRequest($product_feature_manage_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\ProductFeatureManage200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $request,
+                        $response,
+                    );
+                case 402:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $request,
+                        $response,
+                    );
+                case 422:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\ShadowSoftware\DabDash\Model\ProductFeatureManage200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\ProductFeatureManage200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 402:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation productFeatureManageAsync
+     *
+     * List or set which products are featured on a tenant&#39;s storefront home page (the \&quot;Featured Products\&quot; section, HomeController — up to 8 shown, ordered by the tenant&#39;s default product sort).  ACTIONS:   list (default): return every is_featured&#x3D;true product with id, slug, name,          stock_status. Always call this first to see the current set before          changing it.   set: pass product_ids (array) and featured (bool) to set is_featured on          those products. Unlisted products are left untouched — this is an          additive/subtractive edit, not a replace-the-whole-set operation.  Products must be resolved to ids first (product_inspect or this tool&#39;s list action). Featuring an out-of-stock product is allowed but usually undesirable — check stock_status in the list output before featuring.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ProductFeatureManageRequest|null $product_feature_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productFeatureManage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function productFeatureManageAsync($product_feature_manage_request = null, string $contentType = self::contentTypes['productFeatureManage'][0])
+    {
+        return $this->productFeatureManageAsyncWithHttpInfo($product_feature_manage_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation productFeatureManageAsyncWithHttpInfo
+     *
+     * List or set which products are featured on a tenant&#39;s storefront home page (the \&quot;Featured Products\&quot; section, HomeController — up to 8 shown, ordered by the tenant&#39;s default product sort).  ACTIONS:   list (default): return every is_featured&#x3D;true product with id, slug, name,          stock_status. Always call this first to see the current set before          changing it.   set: pass product_ids (array) and featured (bool) to set is_featured on          those products. Unlisted products are left untouched — this is an          additive/subtractive edit, not a replace-the-whole-set operation.  Products must be resolved to ids first (product_inspect or this tool&#39;s list action). Featuring an out-of-stock product is allowed but usually undesirable — check stock_status in the list output before featuring.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ProductFeatureManageRequest|null $product_feature_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productFeatureManage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function productFeatureManageAsyncWithHttpInfo($product_feature_manage_request = null, string $contentType = self::contentTypes['productFeatureManage'][0])
+    {
+        $returnType = '\ShadowSoftware\DabDash\Model\ProductFeatureManage200Response';
+        $request = $this->productFeatureManageRequest($product_feature_manage_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'productFeatureManage'
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ProductFeatureManageRequest|null $product_feature_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productFeatureManage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function productFeatureManageRequest($product_feature_manage_request = null, string $contentType = self::contentTypes['productFeatureManage'][0])
+    {
+
+
+
+        $resourcePath = '/api/v1/tools/product_feature_manage';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($product_feature_manage_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($product_feature_manage_request));
+            } else {
+                $httpBody = $product_feature_manage_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation productInspect
      *
      * Inspect a specific product including every variation&#39;s price, compare_at_price, mix_match_tags, stock, and the tenant&#39;s mix &amp; match rule settings. Use this to audit pricing, sale state, and bundle configuration for support tickets.
@@ -3832,6 +4177,345 @@ class CatalogApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($product_inspect_request));
             } else {
                 $httpBody = $product_inspect_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation productUnitPriceSearch
+     *
+     * Search and rank a tenant&#39;s catalog by computed per-unit price (e.g. price per gram or price per ounce), across every weight-family product (types \&quot;weight\&quot; and \&quot;matrix\&quot;) — something product_inspect cannot do because it only looks up one product at a time by id/name/sku.  For each active, in-stock variation with a weight_value, computes price_per_gram &#x3D; price_cents / weight_value, then scales it to the requested unit (default \&quot;oz\&quot; &#x3D; 28g, matching the storefront&#39;s weight-tier convention). Use this to answer \&quot;what&#39;s the cheapest/most expensive product per ounce\&quot;, \&quot;find products under $X/g\&quot;, or to rank the catalog by unit economics for pricing audits and promo targeting.  Only weight-family products (weight, matrix) have a meaningful per-gram price — unit-family products (simple, unit, matrix_unit) are excluded since their variations are priced per item, not per weight.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ProductUnitPriceSearchRequest|null $product_unit_price_search_request product_unit_price_search_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productUnitPriceSearch'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \ShadowSoftware\DabDash\Model\ProductUnitPriceSearch200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
+     */
+    public function productUnitPriceSearch($product_unit_price_search_request = null, string $contentType = self::contentTypes['productUnitPriceSearch'][0])
+    {
+        list($response) = $this->productUnitPriceSearchWithHttpInfo($product_unit_price_search_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation productUnitPriceSearchWithHttpInfo
+     *
+     * Search and rank a tenant&#39;s catalog by computed per-unit price (e.g. price per gram or price per ounce), across every weight-family product (types \&quot;weight\&quot; and \&quot;matrix\&quot;) — something product_inspect cannot do because it only looks up one product at a time by id/name/sku.  For each active, in-stock variation with a weight_value, computes price_per_gram &#x3D; price_cents / weight_value, then scales it to the requested unit (default \&quot;oz\&quot; &#x3D; 28g, matching the storefront&#39;s weight-tier convention). Use this to answer \&quot;what&#39;s the cheapest/most expensive product per ounce\&quot;, \&quot;find products under $X/g\&quot;, or to rank the catalog by unit economics for pricing audits and promo targeting.  Only weight-family products (weight, matrix) have a meaningful per-gram price — unit-family products (simple, unit, matrix_unit) are excluded since their variations are priced per item, not per weight.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ProductUnitPriceSearchRequest|null $product_unit_price_search_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productUnitPriceSearch'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \ShadowSoftware\DabDash\Model\ProductUnitPriceSearch200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function productUnitPriceSearchWithHttpInfo($product_unit_price_search_request = null, string $contentType = self::contentTypes['productUnitPriceSearch'][0])
+    {
+        $request = $this->productUnitPriceSearchRequest($product_unit_price_search_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\ProductUnitPriceSearch200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $request,
+                        $response,
+                    );
+                case 402:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $request,
+                        $response,
+                    );
+                case 422:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\ShadowSoftware\DabDash\Model\ProductUnitPriceSearch200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\ProductUnitPriceSearch200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 402:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation productUnitPriceSearchAsync
+     *
+     * Search and rank a tenant&#39;s catalog by computed per-unit price (e.g. price per gram or price per ounce), across every weight-family product (types \&quot;weight\&quot; and \&quot;matrix\&quot;) — something product_inspect cannot do because it only looks up one product at a time by id/name/sku.  For each active, in-stock variation with a weight_value, computes price_per_gram &#x3D; price_cents / weight_value, then scales it to the requested unit (default \&quot;oz\&quot; &#x3D; 28g, matching the storefront&#39;s weight-tier convention). Use this to answer \&quot;what&#39;s the cheapest/most expensive product per ounce\&quot;, \&quot;find products under $X/g\&quot;, or to rank the catalog by unit economics for pricing audits and promo targeting.  Only weight-family products (weight, matrix) have a meaningful per-gram price — unit-family products (simple, unit, matrix_unit) are excluded since their variations are priced per item, not per weight.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ProductUnitPriceSearchRequest|null $product_unit_price_search_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productUnitPriceSearch'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function productUnitPriceSearchAsync($product_unit_price_search_request = null, string $contentType = self::contentTypes['productUnitPriceSearch'][0])
+    {
+        return $this->productUnitPriceSearchAsyncWithHttpInfo($product_unit_price_search_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation productUnitPriceSearchAsyncWithHttpInfo
+     *
+     * Search and rank a tenant&#39;s catalog by computed per-unit price (e.g. price per gram or price per ounce), across every weight-family product (types \&quot;weight\&quot; and \&quot;matrix\&quot;) — something product_inspect cannot do because it only looks up one product at a time by id/name/sku.  For each active, in-stock variation with a weight_value, computes price_per_gram &#x3D; price_cents / weight_value, then scales it to the requested unit (default \&quot;oz\&quot; &#x3D; 28g, matching the storefront&#39;s weight-tier convention). Use this to answer \&quot;what&#39;s the cheapest/most expensive product per ounce\&quot;, \&quot;find products under $X/g\&quot;, or to rank the catalog by unit economics for pricing audits and promo targeting.  Only weight-family products (weight, matrix) have a meaningful per-gram price — unit-family products (simple, unit, matrix_unit) are excluded since their variations are priced per item, not per weight.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ProductUnitPriceSearchRequest|null $product_unit_price_search_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productUnitPriceSearch'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function productUnitPriceSearchAsyncWithHttpInfo($product_unit_price_search_request = null, string $contentType = self::contentTypes['productUnitPriceSearch'][0])
+    {
+        $returnType = '\ShadowSoftware\DabDash\Model\ProductUnitPriceSearch200Response';
+        $request = $this->productUnitPriceSearchRequest($product_unit_price_search_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'productUnitPriceSearch'
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ProductUnitPriceSearchRequest|null $product_unit_price_search_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productUnitPriceSearch'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function productUnitPriceSearchRequest($product_unit_price_search_request = null, string $contentType = self::contentTypes['productUnitPriceSearch'][0])
+    {
+
+
+
+        $resourcePath = '/api/v1/tools/product_unit_price_search';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($product_unit_price_search_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($product_unit_price_search_request));
+            } else {
+                $httpBody = $product_unit_price_search_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

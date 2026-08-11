@@ -104,6 +104,9 @@ class WriteApi
         'categoryManage' => [
             'application/json',
         ],
+        'contactCleanup' => [
+            'application/json',
+        ],
         'couponUpsert' => [
             'application/json',
         ],
@@ -135,6 +138,9 @@ class WriteApi
             'application/json',
         ],
         'pricingStructureUpsert' => [
+            'application/json',
+        ],
+        'productFeatureManage' => [
             'application/json',
         ],
         'productUpdateBySku' => [
@@ -2567,7 +2573,7 @@ class WriteApi
     /**
      * Operation campaignUpsert
      *
-     * Create or edit a vendor email campaign on behalf of a tenant. This is the vendor → their-customers campaign universe (NOT the platform drip-to-leads system). Completed campaigns cannot be edited.  CREATE MODE (no campaign_id):   Creates a new draft. For email campaigns, &#x60;name&#x60; and &#x60;subject&#x60; are required; &#x60;html_body&#x60; is optional   on create — omit it to start blank and apply a system template afterwards with campaign_apply_template.   For text (SMS) campaigns, set channel to \&quot;sms\&quot; and pass &#x60;sms_body&#x60; (name required). Twilio must be   connected on the tenant.  UPDATE MODE (campaign_id provided):   Edits an existing campaign. Only the fields you pass are changed; omitted fields are left as-is.   Drafts accept all fields. Sending or paused campaigns accept content fields only — for email that is   name, subject, html_body, plain_body; for text that is name and sms_body. Sending campaigns keep   running and unreached recipients get the latest version. Scheduled, cancelled, and failed campaigns   must be edited from the vendor admin.  HTML BODY (email only):   Pass the full email HTML in &#x60;html_body&#x60;. It is sanitized exactly like the vendor admin editor:   a full document (&lt;!DOCTYPE …&gt; / &lt;html&gt;) keeps its table-based structure; a fragment is run   through the stricter inline allowlist. Use the literal token {{unsubscribe_url}} where the   unsubscribe link should appear — it is replaced per-recipient at send time and a List-Unsubscribe   header is added automatically. Personalization tokens {{first_name}} and {{last_name}} are also   replaced at send time.  SMS BODY (text only):   Pass the message in &#x60;sms_body&#x60; (max 1600 chars). Tokens {{first_name}} and {{last_name}} are   replaced at send time. Text campaigns only target opted-in shop customers.  AUDIENCE / MODE (email only):   mode is \&quot;smtp\&quot; (default) or \&quot;webhook\&quot;. audience_includes_customers (default true) targets the   tenant&#39;s own customers. This tool does not send anything — use campaign_send_test to preview,   then the vendor sends from the admin.  Always confirm the tenant_slug with tenant_list first. To populate a draft from a built-in design, create it here, then call campaign_apply_template.
+     * Create or edit a vendor email campaign on behalf of a tenant. This is the vendor → their-customers campaign universe (NOT the platform drip-to-leads system). Completed campaigns cannot be edited.  CREATE MODE (no campaign_id):   Creates a new draft. For email campaigns, &#x60;name&#x60; and &#x60;subject&#x60; are required; &#x60;html_body&#x60; is optional   on create — omit it to start blank and apply a system template afterwards with campaign_apply_template.   For text (SMS) campaigns, set channel to \&quot;sms\&quot; and pass &#x60;sms_body&#x60; (name required). Twilio must be   connected on the tenant.  UPDATE MODE (campaign_id provided):   Edits an existing campaign. Only the fields you pass are changed; omitted fields are left as-is.   Drafts accept all fields. Sending or paused campaigns accept content fields only — for email that is   name, subject, html_body, plain_body, fallback_first_name; for text that is name, sms_body,   and fallback_first_name. Sending campaigns keep   running and unreached recipients get the latest version. Scheduled, cancelled, and failed campaigns   must be edited from the vendor admin.  HTML BODY (email only):   Pass the full email HTML in &#x60;html_body&#x60;. It is sanitized exactly like the vendor admin editor:   a full document (&lt;!DOCTYPE …&gt; / &lt;html&gt;) keeps its table-based structure; a fragment is run   through the stricter inline allowlist. Use the literal token {{unsubscribe_url}} where the   unsubscribe link should appear — it is replaced per-recipient at send time and a List-Unsubscribe   header is added automatically. Personalization tokens {{first_name}} and {{last_name}} are also   replaced at send time. When {{first_name}} is blank, fallback_first_name is used (default \&quot;there\&quot;   when unset). Pass fallback_first_name as \&quot;\&quot; to clear an override.  SMS BODY (text only):   Pass the message in &#x60;sms_body&#x60; (max 1600 chars). Tokens {{first_name}} and {{last_name}} are   replaced at send time (same first-name fallback as email). Text campaigns only target opted-in shop customers.  AUDIENCE / MODE (email only):   mode is \&quot;smtp\&quot; (default) or \&quot;webhook\&quot;. audience_includes_customers (default true) targets the   tenant&#39;s own customers. This tool does not send anything — use campaign_send_test to preview,   then the vendor sends from the admin.  Always confirm the tenant_slug with tenant_list first. To populate a draft from a built-in design, create it here, then call campaign_apply_template.
      *
      * @param  \ShadowSoftware\DabDash\Model\CampaignUpsertRequest|null $campaign_upsert_request campaign_upsert_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignUpsert'] to see the possible values for this operation
@@ -2585,7 +2591,7 @@ class WriteApi
     /**
      * Operation campaignUpsertWithHttpInfo
      *
-     * Create or edit a vendor email campaign on behalf of a tenant. This is the vendor → their-customers campaign universe (NOT the platform drip-to-leads system). Completed campaigns cannot be edited.  CREATE MODE (no campaign_id):   Creates a new draft. For email campaigns, &#x60;name&#x60; and &#x60;subject&#x60; are required; &#x60;html_body&#x60; is optional   on create — omit it to start blank and apply a system template afterwards with campaign_apply_template.   For text (SMS) campaigns, set channel to \&quot;sms\&quot; and pass &#x60;sms_body&#x60; (name required). Twilio must be   connected on the tenant.  UPDATE MODE (campaign_id provided):   Edits an existing campaign. Only the fields you pass are changed; omitted fields are left as-is.   Drafts accept all fields. Sending or paused campaigns accept content fields only — for email that is   name, subject, html_body, plain_body; for text that is name and sms_body. Sending campaigns keep   running and unreached recipients get the latest version. Scheduled, cancelled, and failed campaigns   must be edited from the vendor admin.  HTML BODY (email only):   Pass the full email HTML in &#x60;html_body&#x60;. It is sanitized exactly like the vendor admin editor:   a full document (&lt;!DOCTYPE …&gt; / &lt;html&gt;) keeps its table-based structure; a fragment is run   through the stricter inline allowlist. Use the literal token {{unsubscribe_url}} where the   unsubscribe link should appear — it is replaced per-recipient at send time and a List-Unsubscribe   header is added automatically. Personalization tokens {{first_name}} and {{last_name}} are also   replaced at send time.  SMS BODY (text only):   Pass the message in &#x60;sms_body&#x60; (max 1600 chars). Tokens {{first_name}} and {{last_name}} are   replaced at send time. Text campaigns only target opted-in shop customers.  AUDIENCE / MODE (email only):   mode is \&quot;smtp\&quot; (default) or \&quot;webhook\&quot;. audience_includes_customers (default true) targets the   tenant&#39;s own customers. This tool does not send anything — use campaign_send_test to preview,   then the vendor sends from the admin.  Always confirm the tenant_slug with tenant_list first. To populate a draft from a built-in design, create it here, then call campaign_apply_template.
+     * Create or edit a vendor email campaign on behalf of a tenant. This is the vendor → their-customers campaign universe (NOT the platform drip-to-leads system). Completed campaigns cannot be edited.  CREATE MODE (no campaign_id):   Creates a new draft. For email campaigns, &#x60;name&#x60; and &#x60;subject&#x60; are required; &#x60;html_body&#x60; is optional   on create — omit it to start blank and apply a system template afterwards with campaign_apply_template.   For text (SMS) campaigns, set channel to \&quot;sms\&quot; and pass &#x60;sms_body&#x60; (name required). Twilio must be   connected on the tenant.  UPDATE MODE (campaign_id provided):   Edits an existing campaign. Only the fields you pass are changed; omitted fields are left as-is.   Drafts accept all fields. Sending or paused campaigns accept content fields only — for email that is   name, subject, html_body, plain_body, fallback_first_name; for text that is name, sms_body,   and fallback_first_name. Sending campaigns keep   running and unreached recipients get the latest version. Scheduled, cancelled, and failed campaigns   must be edited from the vendor admin.  HTML BODY (email only):   Pass the full email HTML in &#x60;html_body&#x60;. It is sanitized exactly like the vendor admin editor:   a full document (&lt;!DOCTYPE …&gt; / &lt;html&gt;) keeps its table-based structure; a fragment is run   through the stricter inline allowlist. Use the literal token {{unsubscribe_url}} where the   unsubscribe link should appear — it is replaced per-recipient at send time and a List-Unsubscribe   header is added automatically. Personalization tokens {{first_name}} and {{last_name}} are also   replaced at send time. When {{first_name}} is blank, fallback_first_name is used (default \&quot;there\&quot;   when unset). Pass fallback_first_name as \&quot;\&quot; to clear an override.  SMS BODY (text only):   Pass the message in &#x60;sms_body&#x60; (max 1600 chars). Tokens {{first_name}} and {{last_name}} are   replaced at send time (same first-name fallback as email). Text campaigns only target opted-in shop customers.  AUDIENCE / MODE (email only):   mode is \&quot;smtp\&quot; (default) or \&quot;webhook\&quot;. audience_includes_customers (default true) targets the   tenant&#39;s own customers. This tool does not send anything — use campaign_send_test to preview,   then the vendor sends from the admin.  Always confirm the tenant_slug with tenant_list first. To populate a draft from a built-in design, create it here, then call campaign_apply_template.
      *
      * @param  \ShadowSoftware\DabDash\Model\CampaignUpsertRequest|null $campaign_upsert_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignUpsert'] to see the possible values for this operation
@@ -2740,7 +2746,7 @@ class WriteApi
     /**
      * Operation campaignUpsertAsync
      *
-     * Create or edit a vendor email campaign on behalf of a tenant. This is the vendor → their-customers campaign universe (NOT the platform drip-to-leads system). Completed campaigns cannot be edited.  CREATE MODE (no campaign_id):   Creates a new draft. For email campaigns, &#x60;name&#x60; and &#x60;subject&#x60; are required; &#x60;html_body&#x60; is optional   on create — omit it to start blank and apply a system template afterwards with campaign_apply_template.   For text (SMS) campaigns, set channel to \&quot;sms\&quot; and pass &#x60;sms_body&#x60; (name required). Twilio must be   connected on the tenant.  UPDATE MODE (campaign_id provided):   Edits an existing campaign. Only the fields you pass are changed; omitted fields are left as-is.   Drafts accept all fields. Sending or paused campaigns accept content fields only — for email that is   name, subject, html_body, plain_body; for text that is name and sms_body. Sending campaigns keep   running and unreached recipients get the latest version. Scheduled, cancelled, and failed campaigns   must be edited from the vendor admin.  HTML BODY (email only):   Pass the full email HTML in &#x60;html_body&#x60;. It is sanitized exactly like the vendor admin editor:   a full document (&lt;!DOCTYPE …&gt; / &lt;html&gt;) keeps its table-based structure; a fragment is run   through the stricter inline allowlist. Use the literal token {{unsubscribe_url}} where the   unsubscribe link should appear — it is replaced per-recipient at send time and a List-Unsubscribe   header is added automatically. Personalization tokens {{first_name}} and {{last_name}} are also   replaced at send time.  SMS BODY (text only):   Pass the message in &#x60;sms_body&#x60; (max 1600 chars). Tokens {{first_name}} and {{last_name}} are   replaced at send time. Text campaigns only target opted-in shop customers.  AUDIENCE / MODE (email only):   mode is \&quot;smtp\&quot; (default) or \&quot;webhook\&quot;. audience_includes_customers (default true) targets the   tenant&#39;s own customers. This tool does not send anything — use campaign_send_test to preview,   then the vendor sends from the admin.  Always confirm the tenant_slug with tenant_list first. To populate a draft from a built-in design, create it here, then call campaign_apply_template.
+     * Create or edit a vendor email campaign on behalf of a tenant. This is the vendor → their-customers campaign universe (NOT the platform drip-to-leads system). Completed campaigns cannot be edited.  CREATE MODE (no campaign_id):   Creates a new draft. For email campaigns, &#x60;name&#x60; and &#x60;subject&#x60; are required; &#x60;html_body&#x60; is optional   on create — omit it to start blank and apply a system template afterwards with campaign_apply_template.   For text (SMS) campaigns, set channel to \&quot;sms\&quot; and pass &#x60;sms_body&#x60; (name required). Twilio must be   connected on the tenant.  UPDATE MODE (campaign_id provided):   Edits an existing campaign. Only the fields you pass are changed; omitted fields are left as-is.   Drafts accept all fields. Sending or paused campaigns accept content fields only — for email that is   name, subject, html_body, plain_body, fallback_first_name; for text that is name, sms_body,   and fallback_first_name. Sending campaigns keep   running and unreached recipients get the latest version. Scheduled, cancelled, and failed campaigns   must be edited from the vendor admin.  HTML BODY (email only):   Pass the full email HTML in &#x60;html_body&#x60;. It is sanitized exactly like the vendor admin editor:   a full document (&lt;!DOCTYPE …&gt; / &lt;html&gt;) keeps its table-based structure; a fragment is run   through the stricter inline allowlist. Use the literal token {{unsubscribe_url}} where the   unsubscribe link should appear — it is replaced per-recipient at send time and a List-Unsubscribe   header is added automatically. Personalization tokens {{first_name}} and {{last_name}} are also   replaced at send time. When {{first_name}} is blank, fallback_first_name is used (default \&quot;there\&quot;   when unset). Pass fallback_first_name as \&quot;\&quot; to clear an override.  SMS BODY (text only):   Pass the message in &#x60;sms_body&#x60; (max 1600 chars). Tokens {{first_name}} and {{last_name}} are   replaced at send time (same first-name fallback as email). Text campaigns only target opted-in shop customers.  AUDIENCE / MODE (email only):   mode is \&quot;smtp\&quot; (default) or \&quot;webhook\&quot;. audience_includes_customers (default true) targets the   tenant&#39;s own customers. This tool does not send anything — use campaign_send_test to preview,   then the vendor sends from the admin.  Always confirm the tenant_slug with tenant_list first. To populate a draft from a built-in design, create it here, then call campaign_apply_template.
      *
      * @param  \ShadowSoftware\DabDash\Model\CampaignUpsertRequest|null $campaign_upsert_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignUpsert'] to see the possible values for this operation
@@ -2761,7 +2767,7 @@ class WriteApi
     /**
      * Operation campaignUpsertAsyncWithHttpInfo
      *
-     * Create or edit a vendor email campaign on behalf of a tenant. This is the vendor → their-customers campaign universe (NOT the platform drip-to-leads system). Completed campaigns cannot be edited.  CREATE MODE (no campaign_id):   Creates a new draft. For email campaigns, &#x60;name&#x60; and &#x60;subject&#x60; are required; &#x60;html_body&#x60; is optional   on create — omit it to start blank and apply a system template afterwards with campaign_apply_template.   For text (SMS) campaigns, set channel to \&quot;sms\&quot; and pass &#x60;sms_body&#x60; (name required). Twilio must be   connected on the tenant.  UPDATE MODE (campaign_id provided):   Edits an existing campaign. Only the fields you pass are changed; omitted fields are left as-is.   Drafts accept all fields. Sending or paused campaigns accept content fields only — for email that is   name, subject, html_body, plain_body; for text that is name and sms_body. Sending campaigns keep   running and unreached recipients get the latest version. Scheduled, cancelled, and failed campaigns   must be edited from the vendor admin.  HTML BODY (email only):   Pass the full email HTML in &#x60;html_body&#x60;. It is sanitized exactly like the vendor admin editor:   a full document (&lt;!DOCTYPE …&gt; / &lt;html&gt;) keeps its table-based structure; a fragment is run   through the stricter inline allowlist. Use the literal token {{unsubscribe_url}} where the   unsubscribe link should appear — it is replaced per-recipient at send time and a List-Unsubscribe   header is added automatically. Personalization tokens {{first_name}} and {{last_name}} are also   replaced at send time.  SMS BODY (text only):   Pass the message in &#x60;sms_body&#x60; (max 1600 chars). Tokens {{first_name}} and {{last_name}} are   replaced at send time. Text campaigns only target opted-in shop customers.  AUDIENCE / MODE (email only):   mode is \&quot;smtp\&quot; (default) or \&quot;webhook\&quot;. audience_includes_customers (default true) targets the   tenant&#39;s own customers. This tool does not send anything — use campaign_send_test to preview,   then the vendor sends from the admin.  Always confirm the tenant_slug with tenant_list first. To populate a draft from a built-in design, create it here, then call campaign_apply_template.
+     * Create or edit a vendor email campaign on behalf of a tenant. This is the vendor → their-customers campaign universe (NOT the platform drip-to-leads system). Completed campaigns cannot be edited.  CREATE MODE (no campaign_id):   Creates a new draft. For email campaigns, &#x60;name&#x60; and &#x60;subject&#x60; are required; &#x60;html_body&#x60; is optional   on create — omit it to start blank and apply a system template afterwards with campaign_apply_template.   For text (SMS) campaigns, set channel to \&quot;sms\&quot; and pass &#x60;sms_body&#x60; (name required). Twilio must be   connected on the tenant.  UPDATE MODE (campaign_id provided):   Edits an existing campaign. Only the fields you pass are changed; omitted fields are left as-is.   Drafts accept all fields. Sending or paused campaigns accept content fields only — for email that is   name, subject, html_body, plain_body, fallback_first_name; for text that is name, sms_body,   and fallback_first_name. Sending campaigns keep   running and unreached recipients get the latest version. Scheduled, cancelled, and failed campaigns   must be edited from the vendor admin.  HTML BODY (email only):   Pass the full email HTML in &#x60;html_body&#x60;. It is sanitized exactly like the vendor admin editor:   a full document (&lt;!DOCTYPE …&gt; / &lt;html&gt;) keeps its table-based structure; a fragment is run   through the stricter inline allowlist. Use the literal token {{unsubscribe_url}} where the   unsubscribe link should appear — it is replaced per-recipient at send time and a List-Unsubscribe   header is added automatically. Personalization tokens {{first_name}} and {{last_name}} are also   replaced at send time. When {{first_name}} is blank, fallback_first_name is used (default \&quot;there\&quot;   when unset). Pass fallback_first_name as \&quot;\&quot; to clear an override.  SMS BODY (text only):   Pass the message in &#x60;sms_body&#x60; (max 1600 chars). Tokens {{first_name}} and {{last_name}} are   replaced at send time (same first-name fallback as email). Text campaigns only target opted-in shop customers.  AUDIENCE / MODE (email only):   mode is \&quot;smtp\&quot; (default) or \&quot;webhook\&quot;. audience_includes_customers (default true) targets the   tenant&#39;s own customers. This tool does not send anything — use campaign_send_test to preview,   then the vendor sends from the admin.  Always confirm the tenant_slug with tenant_list first. To populate a draft from a built-in design, create it here, then call campaign_apply_template.
      *
      * @param  \ShadowSoftware\DabDash\Model\CampaignUpsertRequest|null $campaign_upsert_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignUpsert'] to see the possible values for this operation
@@ -3582,9 +3588,348 @@ class WriteApi
     }
 
     /**
+     * Operation contactCleanup
+     *
+     * Removes contacts that failed email validation from an imported list.  Typical use: a CSV import brought in thousands of addresses, the validator graded them, and the list is now full of dead addresses that will bounce and hurt sending reputation.  SAFETY: - dry_run defaults to TRUE. Nothing is deleted until you pass dry_run&#x3D;false. The dry run   returns exactly how many contacts match and a sample of them. - Only statuses \&quot;invalid\&quot; and \&quot;risky\&quot; can be purged. \&quot;unknown\&quot; means the validator has not   graded that contact YET — those are never deleted, and asking for them is refused. - Scoped to one contact list when list_id is given, otherwise the whole store. - Contacts are deleted, not unsubscribed. This cannot be undone from here.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ContactCleanupRequest|null $contact_cleanup_request contact_cleanup_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['contactCleanup'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \ShadowSoftware\DabDash\Model\ContactCleanup200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
+     */
+    public function contactCleanup($contact_cleanup_request = null, string $contentType = self::contentTypes['contactCleanup'][0])
+    {
+        list($response) = $this->contactCleanupWithHttpInfo($contact_cleanup_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation contactCleanupWithHttpInfo
+     *
+     * Removes contacts that failed email validation from an imported list.  Typical use: a CSV import brought in thousands of addresses, the validator graded them, and the list is now full of dead addresses that will bounce and hurt sending reputation.  SAFETY: - dry_run defaults to TRUE. Nothing is deleted until you pass dry_run&#x3D;false. The dry run   returns exactly how many contacts match and a sample of them. - Only statuses \&quot;invalid\&quot; and \&quot;risky\&quot; can be purged. \&quot;unknown\&quot; means the validator has not   graded that contact YET — those are never deleted, and asking for them is refused. - Scoped to one contact list when list_id is given, otherwise the whole store. - Contacts are deleted, not unsubscribed. This cannot be undone from here.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ContactCleanupRequest|null $contact_cleanup_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['contactCleanup'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \ShadowSoftware\DabDash\Model\ContactCleanup200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function contactCleanupWithHttpInfo($contact_cleanup_request = null, string $contentType = self::contentTypes['contactCleanup'][0])
+    {
+        $request = $this->contactCleanupRequest($contact_cleanup_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\ContactCleanup200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $request,
+                        $response,
+                    );
+                case 402:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $request,
+                        $response,
+                    );
+                case 422:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\ShadowSoftware\DabDash\Model\ContactCleanup200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\ContactCleanup200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 402:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation contactCleanupAsync
+     *
+     * Removes contacts that failed email validation from an imported list.  Typical use: a CSV import brought in thousands of addresses, the validator graded them, and the list is now full of dead addresses that will bounce and hurt sending reputation.  SAFETY: - dry_run defaults to TRUE. Nothing is deleted until you pass dry_run&#x3D;false. The dry run   returns exactly how many contacts match and a sample of them. - Only statuses \&quot;invalid\&quot; and \&quot;risky\&quot; can be purged. \&quot;unknown\&quot; means the validator has not   graded that contact YET — those are never deleted, and asking for them is refused. - Scoped to one contact list when list_id is given, otherwise the whole store. - Contacts are deleted, not unsubscribed. This cannot be undone from here.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ContactCleanupRequest|null $contact_cleanup_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['contactCleanup'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function contactCleanupAsync($contact_cleanup_request = null, string $contentType = self::contentTypes['contactCleanup'][0])
+    {
+        return $this->contactCleanupAsyncWithHttpInfo($contact_cleanup_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation contactCleanupAsyncWithHttpInfo
+     *
+     * Removes contacts that failed email validation from an imported list.  Typical use: a CSV import brought in thousands of addresses, the validator graded them, and the list is now full of dead addresses that will bounce and hurt sending reputation.  SAFETY: - dry_run defaults to TRUE. Nothing is deleted until you pass dry_run&#x3D;false. The dry run   returns exactly how many contacts match and a sample of them. - Only statuses \&quot;invalid\&quot; and \&quot;risky\&quot; can be purged. \&quot;unknown\&quot; means the validator has not   graded that contact YET — those are never deleted, and asking for them is refused. - Scoped to one contact list when list_id is given, otherwise the whole store. - Contacts are deleted, not unsubscribed. This cannot be undone from here.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ContactCleanupRequest|null $contact_cleanup_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['contactCleanup'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function contactCleanupAsyncWithHttpInfo($contact_cleanup_request = null, string $contentType = self::contentTypes['contactCleanup'][0])
+    {
+        $returnType = '\ShadowSoftware\DabDash\Model\ContactCleanup200Response';
+        $request = $this->contactCleanupRequest($contact_cleanup_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'contactCleanup'
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ContactCleanupRequest|null $contact_cleanup_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['contactCleanup'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function contactCleanupRequest($contact_cleanup_request = null, string $contentType = self::contentTypes['contactCleanup'][0])
+    {
+
+
+
+        $resourcePath = '/api/v1/tools/contact_cleanup';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($contact_cleanup_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($contact_cleanup_request));
+            } else {
+                $httpBody = $contact_cleanup_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation couponUpsert
      *
-     * Create or update a discount coupon on behalf of a tenant. Coupons are customer-entered codes applied at checkout (distinct from bundles, which fire automatically on cart contents — use bundle_upsert for those).  UPDATE MODE (coupon_id provided):   Edits the coupon. Only the fields you pass are changed; omitted fields are left as-is.  CREATE MODE (no coupon_id):   Creates a new coupon. code, type, and value are required.  VALUE UNITS:   type &#x3D; \&quot;percentage\&quot;     → value is a percentage 0-100 off the order subtotal.   type &#x3D; \&quot;fixed\&quot;          → value is DOLLARS off the order subtotal (e.g. 10 &#x3D; $10 off).   type &#x3D; \&quot;free_delivery\&quot;  → value is ignored (pass 0); this type only waives the delivery fee.  min_order is a dollar minimum order subtotal required to use the coupon (pass dollars, e.g. 25 for a $25 minimum — the tool stores cents internally). Omit or pass 0 for no minimum.  limit_match_by (\&quot;email\&quot;|\&quot;phone\&quot;|\&quot;both\&quot;) controls how max_uses_per_customer is enforced. Using \&quot;phone\&quot; or \&quot;both\&quot; REQUIRES the tenant&#39;s \&quot;Require phone at checkout\&quot; setting to be on — otherwise the update is rejected, since customers without a phone on file could otherwise reuse the coupon past its per-customer limit.  SCHEDULE:   starts_at / expires_at are interpreted in the tenant&#39;s timezone and stored as UTC. Pass   null/omit for an always-on coupon.  NOT YET SUPPORTED BY THIS TOOL: scoping a coupon to specific products or categories (applies_to_ids) — only applies_to&#x3D;\&quot;all\&quot; is fully wired end to end today. Passing applies_to&#x3D;\&quot;products\&quot; or \&quot;categories\&quot; without further product/category tooling will save the coupon with no scoped items, which behaves the same as \&quot;all\&quot; in the current checkout logic.  Always call coupon_list first to get the coupon_id and confirm the current configuration.
+     * Create or update a discount coupon on behalf of a tenant. Coupons are customer-entered codes applied at checkout (distinct from bundles, which fire automatically on cart contents — use bundle_upsert for those).  UPDATE MODE (coupon_id provided):   Edits the coupon. Only the fields you pass are changed; omitted fields are left as-is.  CREATE MODE (no coupon_id):   Creates a new coupon. code, type, and value are required.  VALUE UNITS:   type &#x3D; \&quot;percentage\&quot;     → value is a percentage 0-100 off the order subtotal.   type &#x3D; \&quot;fixed\&quot;          → value is DOLLARS off the order subtotal (e.g. 10 &#x3D; $10 off).   type &#x3D; \&quot;free_delivery\&quot;  → value is ignored (pass 0); this type only waives the delivery fee.  min_order is a dollar minimum order subtotal required to use the coupon (pass dollars, e.g. 25 for a $25 minimum — the tool stores cents internally). Omit or pass 0 for no minimum.  freebie_id links this coupon to an existing Freebie (see freebie_list/freebie_upsert), turning it into a \&quot;code-triggered freebie\&quot;: a customer who applies the code while below min_order has the code parked (kept attached, not rejected) and sees cart progress toward unlocking it, instead of the code being discarded. Pass null to unlink. The freebie must belong to the same tenant.  limit_match_by (\&quot;email\&quot;|\&quot;phone\&quot;|\&quot;both\&quot;) controls how max_uses_per_customer is enforced. Using \&quot;phone\&quot; or \&quot;both\&quot; REQUIRES the tenant&#39;s \&quot;Require phone at checkout\&quot; setting to be on — otherwise the update is rejected, since customers without a phone on file could otherwise reuse the coupon past its per-customer limit.  SCHEDULE:   starts_at / expires_at are interpreted in the tenant&#39;s timezone and stored as UTC. Pass   null/omit for an always-on coupon.  PRODUCT/CATEGORY SCOPING:   applies_to&#x3D;\&quot;products\&quot; or \&quot;categories\&quot; restricts the discount to matching cart lines only —   checkout math is fully scope-aware (a scoped coupon never discounts the whole cart). Pass   applies_to_ids as an array of product ids (when applies_to&#x3D;\&quot;products\&quot;) or category ids (when   applies_to&#x3D;\&quot;categories\&quot;) — all ids must belong to this tenant. Passing applies_to&#x3D;\&quot;products\&quot;/   \&quot;categories\&quot; with an empty or omitted applies_to_ids behaves the same as \&quot;all\&quot; (no scope   configured yet). Switching back to applies_to&#x3D;\&quot;all\&quot; does not automatically clear a   previously-set applies_to_ids — pass applies_to_ids&#x3D;[] explicitly to clear it.  SUBSCRIPTION MOUNTING DISCOUNT LADDERS (subscribe-and-save retention):   A coupon can carry a \&quot;mounting ladder\&quot; so its discount climbs with each successive order a   customer&#39;s delivery subscription generates, pegging at a ceiling — e.g. order 1 &#x3D; 0% off,   then +5% every order up to a 20% cap. This only affects orders generated for a subscription   linked to this coupon (DeliverySubscription.coupon_id) — it has no effect on ordinary   one-off checkout use of the code, which still uses type/value as normal.    subscription_ladder_id: link to an existing ladder (from another coupon) by id, or pass null   to unlink. Must belong to the same tenant.    ladder_start_percent / ladder_step_percent / ladder_cap_percent / ladder_start_order_index:   pass any of these to CREATE a new ladder inline (on coupon create) or EDIT the tiers of the   ladder already linked to this coupon (on update) — do not combine with subscription_ladder_id   in the same call. All four are whole-number percentages (0-100) except start_order_index,   which is the 1-based order number the climb begins at (orders before it stay at   ladder_start_percent). Omitted ladder_* fields default to 0% start / 5% step / 20% cap /   order 1 on create; on update, only the fields you pass are changed.  Always call coupon_list first to get the coupon_id and confirm the current configuration.
      *
      * @param  \ShadowSoftware\DabDash\Model\CouponUpsertRequest|null $coupon_upsert_request coupon_upsert_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['couponUpsert'] to see the possible values for this operation
@@ -3602,7 +3947,7 @@ class WriteApi
     /**
      * Operation couponUpsertWithHttpInfo
      *
-     * Create or update a discount coupon on behalf of a tenant. Coupons are customer-entered codes applied at checkout (distinct from bundles, which fire automatically on cart contents — use bundle_upsert for those).  UPDATE MODE (coupon_id provided):   Edits the coupon. Only the fields you pass are changed; omitted fields are left as-is.  CREATE MODE (no coupon_id):   Creates a new coupon. code, type, and value are required.  VALUE UNITS:   type &#x3D; \&quot;percentage\&quot;     → value is a percentage 0-100 off the order subtotal.   type &#x3D; \&quot;fixed\&quot;          → value is DOLLARS off the order subtotal (e.g. 10 &#x3D; $10 off).   type &#x3D; \&quot;free_delivery\&quot;  → value is ignored (pass 0); this type only waives the delivery fee.  min_order is a dollar minimum order subtotal required to use the coupon (pass dollars, e.g. 25 for a $25 minimum — the tool stores cents internally). Omit or pass 0 for no minimum.  limit_match_by (\&quot;email\&quot;|\&quot;phone\&quot;|\&quot;both\&quot;) controls how max_uses_per_customer is enforced. Using \&quot;phone\&quot; or \&quot;both\&quot; REQUIRES the tenant&#39;s \&quot;Require phone at checkout\&quot; setting to be on — otherwise the update is rejected, since customers without a phone on file could otherwise reuse the coupon past its per-customer limit.  SCHEDULE:   starts_at / expires_at are interpreted in the tenant&#39;s timezone and stored as UTC. Pass   null/omit for an always-on coupon.  NOT YET SUPPORTED BY THIS TOOL: scoping a coupon to specific products or categories (applies_to_ids) — only applies_to&#x3D;\&quot;all\&quot; is fully wired end to end today. Passing applies_to&#x3D;\&quot;products\&quot; or \&quot;categories\&quot; without further product/category tooling will save the coupon with no scoped items, which behaves the same as \&quot;all\&quot; in the current checkout logic.  Always call coupon_list first to get the coupon_id and confirm the current configuration.
+     * Create or update a discount coupon on behalf of a tenant. Coupons are customer-entered codes applied at checkout (distinct from bundles, which fire automatically on cart contents — use bundle_upsert for those).  UPDATE MODE (coupon_id provided):   Edits the coupon. Only the fields you pass are changed; omitted fields are left as-is.  CREATE MODE (no coupon_id):   Creates a new coupon. code, type, and value are required.  VALUE UNITS:   type &#x3D; \&quot;percentage\&quot;     → value is a percentage 0-100 off the order subtotal.   type &#x3D; \&quot;fixed\&quot;          → value is DOLLARS off the order subtotal (e.g. 10 &#x3D; $10 off).   type &#x3D; \&quot;free_delivery\&quot;  → value is ignored (pass 0); this type only waives the delivery fee.  min_order is a dollar minimum order subtotal required to use the coupon (pass dollars, e.g. 25 for a $25 minimum — the tool stores cents internally). Omit or pass 0 for no minimum.  freebie_id links this coupon to an existing Freebie (see freebie_list/freebie_upsert), turning it into a \&quot;code-triggered freebie\&quot;: a customer who applies the code while below min_order has the code parked (kept attached, not rejected) and sees cart progress toward unlocking it, instead of the code being discarded. Pass null to unlink. The freebie must belong to the same tenant.  limit_match_by (\&quot;email\&quot;|\&quot;phone\&quot;|\&quot;both\&quot;) controls how max_uses_per_customer is enforced. Using \&quot;phone\&quot; or \&quot;both\&quot; REQUIRES the tenant&#39;s \&quot;Require phone at checkout\&quot; setting to be on — otherwise the update is rejected, since customers without a phone on file could otherwise reuse the coupon past its per-customer limit.  SCHEDULE:   starts_at / expires_at are interpreted in the tenant&#39;s timezone and stored as UTC. Pass   null/omit for an always-on coupon.  PRODUCT/CATEGORY SCOPING:   applies_to&#x3D;\&quot;products\&quot; or \&quot;categories\&quot; restricts the discount to matching cart lines only —   checkout math is fully scope-aware (a scoped coupon never discounts the whole cart). Pass   applies_to_ids as an array of product ids (when applies_to&#x3D;\&quot;products\&quot;) or category ids (when   applies_to&#x3D;\&quot;categories\&quot;) — all ids must belong to this tenant. Passing applies_to&#x3D;\&quot;products\&quot;/   \&quot;categories\&quot; with an empty or omitted applies_to_ids behaves the same as \&quot;all\&quot; (no scope   configured yet). Switching back to applies_to&#x3D;\&quot;all\&quot; does not automatically clear a   previously-set applies_to_ids — pass applies_to_ids&#x3D;[] explicitly to clear it.  SUBSCRIPTION MOUNTING DISCOUNT LADDERS (subscribe-and-save retention):   A coupon can carry a \&quot;mounting ladder\&quot; so its discount climbs with each successive order a   customer&#39;s delivery subscription generates, pegging at a ceiling — e.g. order 1 &#x3D; 0% off,   then +5% every order up to a 20% cap. This only affects orders generated for a subscription   linked to this coupon (DeliverySubscription.coupon_id) — it has no effect on ordinary   one-off checkout use of the code, which still uses type/value as normal.    subscription_ladder_id: link to an existing ladder (from another coupon) by id, or pass null   to unlink. Must belong to the same tenant.    ladder_start_percent / ladder_step_percent / ladder_cap_percent / ladder_start_order_index:   pass any of these to CREATE a new ladder inline (on coupon create) or EDIT the tiers of the   ladder already linked to this coupon (on update) — do not combine with subscription_ladder_id   in the same call. All four are whole-number percentages (0-100) except start_order_index,   which is the 1-based order number the climb begins at (orders before it stay at   ladder_start_percent). Omitted ladder_* fields default to 0% start / 5% step / 20% cap /   order 1 on create; on update, only the fields you pass are changed.  Always call coupon_list first to get the coupon_id and confirm the current configuration.
      *
      * @param  \ShadowSoftware\DabDash\Model\CouponUpsertRequest|null $coupon_upsert_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['couponUpsert'] to see the possible values for this operation
@@ -3757,7 +4102,7 @@ class WriteApi
     /**
      * Operation couponUpsertAsync
      *
-     * Create or update a discount coupon on behalf of a tenant. Coupons are customer-entered codes applied at checkout (distinct from bundles, which fire automatically on cart contents — use bundle_upsert for those).  UPDATE MODE (coupon_id provided):   Edits the coupon. Only the fields you pass are changed; omitted fields are left as-is.  CREATE MODE (no coupon_id):   Creates a new coupon. code, type, and value are required.  VALUE UNITS:   type &#x3D; \&quot;percentage\&quot;     → value is a percentage 0-100 off the order subtotal.   type &#x3D; \&quot;fixed\&quot;          → value is DOLLARS off the order subtotal (e.g. 10 &#x3D; $10 off).   type &#x3D; \&quot;free_delivery\&quot;  → value is ignored (pass 0); this type only waives the delivery fee.  min_order is a dollar minimum order subtotal required to use the coupon (pass dollars, e.g. 25 for a $25 minimum — the tool stores cents internally). Omit or pass 0 for no minimum.  limit_match_by (\&quot;email\&quot;|\&quot;phone\&quot;|\&quot;both\&quot;) controls how max_uses_per_customer is enforced. Using \&quot;phone\&quot; or \&quot;both\&quot; REQUIRES the tenant&#39;s \&quot;Require phone at checkout\&quot; setting to be on — otherwise the update is rejected, since customers without a phone on file could otherwise reuse the coupon past its per-customer limit.  SCHEDULE:   starts_at / expires_at are interpreted in the tenant&#39;s timezone and stored as UTC. Pass   null/omit for an always-on coupon.  NOT YET SUPPORTED BY THIS TOOL: scoping a coupon to specific products or categories (applies_to_ids) — only applies_to&#x3D;\&quot;all\&quot; is fully wired end to end today. Passing applies_to&#x3D;\&quot;products\&quot; or \&quot;categories\&quot; without further product/category tooling will save the coupon with no scoped items, which behaves the same as \&quot;all\&quot; in the current checkout logic.  Always call coupon_list first to get the coupon_id and confirm the current configuration.
+     * Create or update a discount coupon on behalf of a tenant. Coupons are customer-entered codes applied at checkout (distinct from bundles, which fire automatically on cart contents — use bundle_upsert for those).  UPDATE MODE (coupon_id provided):   Edits the coupon. Only the fields you pass are changed; omitted fields are left as-is.  CREATE MODE (no coupon_id):   Creates a new coupon. code, type, and value are required.  VALUE UNITS:   type &#x3D; \&quot;percentage\&quot;     → value is a percentage 0-100 off the order subtotal.   type &#x3D; \&quot;fixed\&quot;          → value is DOLLARS off the order subtotal (e.g. 10 &#x3D; $10 off).   type &#x3D; \&quot;free_delivery\&quot;  → value is ignored (pass 0); this type only waives the delivery fee.  min_order is a dollar minimum order subtotal required to use the coupon (pass dollars, e.g. 25 for a $25 minimum — the tool stores cents internally). Omit or pass 0 for no minimum.  freebie_id links this coupon to an existing Freebie (see freebie_list/freebie_upsert), turning it into a \&quot;code-triggered freebie\&quot;: a customer who applies the code while below min_order has the code parked (kept attached, not rejected) and sees cart progress toward unlocking it, instead of the code being discarded. Pass null to unlink. The freebie must belong to the same tenant.  limit_match_by (\&quot;email\&quot;|\&quot;phone\&quot;|\&quot;both\&quot;) controls how max_uses_per_customer is enforced. Using \&quot;phone\&quot; or \&quot;both\&quot; REQUIRES the tenant&#39;s \&quot;Require phone at checkout\&quot; setting to be on — otherwise the update is rejected, since customers without a phone on file could otherwise reuse the coupon past its per-customer limit.  SCHEDULE:   starts_at / expires_at are interpreted in the tenant&#39;s timezone and stored as UTC. Pass   null/omit for an always-on coupon.  PRODUCT/CATEGORY SCOPING:   applies_to&#x3D;\&quot;products\&quot; or \&quot;categories\&quot; restricts the discount to matching cart lines only —   checkout math is fully scope-aware (a scoped coupon never discounts the whole cart). Pass   applies_to_ids as an array of product ids (when applies_to&#x3D;\&quot;products\&quot;) or category ids (when   applies_to&#x3D;\&quot;categories\&quot;) — all ids must belong to this tenant. Passing applies_to&#x3D;\&quot;products\&quot;/   \&quot;categories\&quot; with an empty or omitted applies_to_ids behaves the same as \&quot;all\&quot; (no scope   configured yet). Switching back to applies_to&#x3D;\&quot;all\&quot; does not automatically clear a   previously-set applies_to_ids — pass applies_to_ids&#x3D;[] explicitly to clear it.  SUBSCRIPTION MOUNTING DISCOUNT LADDERS (subscribe-and-save retention):   A coupon can carry a \&quot;mounting ladder\&quot; so its discount climbs with each successive order a   customer&#39;s delivery subscription generates, pegging at a ceiling — e.g. order 1 &#x3D; 0% off,   then +5% every order up to a 20% cap. This only affects orders generated for a subscription   linked to this coupon (DeliverySubscription.coupon_id) — it has no effect on ordinary   one-off checkout use of the code, which still uses type/value as normal.    subscription_ladder_id: link to an existing ladder (from another coupon) by id, or pass null   to unlink. Must belong to the same tenant.    ladder_start_percent / ladder_step_percent / ladder_cap_percent / ladder_start_order_index:   pass any of these to CREATE a new ladder inline (on coupon create) or EDIT the tiers of the   ladder already linked to this coupon (on update) — do not combine with subscription_ladder_id   in the same call. All four are whole-number percentages (0-100) except start_order_index,   which is the 1-based order number the climb begins at (orders before it stay at   ladder_start_percent). Omitted ladder_* fields default to 0% start / 5% step / 20% cap /   order 1 on create; on update, only the fields you pass are changed.  Always call coupon_list first to get the coupon_id and confirm the current configuration.
      *
      * @param  \ShadowSoftware\DabDash\Model\CouponUpsertRequest|null $coupon_upsert_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['couponUpsert'] to see the possible values for this operation
@@ -3778,7 +4123,7 @@ class WriteApi
     /**
      * Operation couponUpsertAsyncWithHttpInfo
      *
-     * Create or update a discount coupon on behalf of a tenant. Coupons are customer-entered codes applied at checkout (distinct from bundles, which fire automatically on cart contents — use bundle_upsert for those).  UPDATE MODE (coupon_id provided):   Edits the coupon. Only the fields you pass are changed; omitted fields are left as-is.  CREATE MODE (no coupon_id):   Creates a new coupon. code, type, and value are required.  VALUE UNITS:   type &#x3D; \&quot;percentage\&quot;     → value is a percentage 0-100 off the order subtotal.   type &#x3D; \&quot;fixed\&quot;          → value is DOLLARS off the order subtotal (e.g. 10 &#x3D; $10 off).   type &#x3D; \&quot;free_delivery\&quot;  → value is ignored (pass 0); this type only waives the delivery fee.  min_order is a dollar minimum order subtotal required to use the coupon (pass dollars, e.g. 25 for a $25 minimum — the tool stores cents internally). Omit or pass 0 for no minimum.  limit_match_by (\&quot;email\&quot;|\&quot;phone\&quot;|\&quot;both\&quot;) controls how max_uses_per_customer is enforced. Using \&quot;phone\&quot; or \&quot;both\&quot; REQUIRES the tenant&#39;s \&quot;Require phone at checkout\&quot; setting to be on — otherwise the update is rejected, since customers without a phone on file could otherwise reuse the coupon past its per-customer limit.  SCHEDULE:   starts_at / expires_at are interpreted in the tenant&#39;s timezone and stored as UTC. Pass   null/omit for an always-on coupon.  NOT YET SUPPORTED BY THIS TOOL: scoping a coupon to specific products or categories (applies_to_ids) — only applies_to&#x3D;\&quot;all\&quot; is fully wired end to end today. Passing applies_to&#x3D;\&quot;products\&quot; or \&quot;categories\&quot; without further product/category tooling will save the coupon with no scoped items, which behaves the same as \&quot;all\&quot; in the current checkout logic.  Always call coupon_list first to get the coupon_id and confirm the current configuration.
+     * Create or update a discount coupon on behalf of a tenant. Coupons are customer-entered codes applied at checkout (distinct from bundles, which fire automatically on cart contents — use bundle_upsert for those).  UPDATE MODE (coupon_id provided):   Edits the coupon. Only the fields you pass are changed; omitted fields are left as-is.  CREATE MODE (no coupon_id):   Creates a new coupon. code, type, and value are required.  VALUE UNITS:   type &#x3D; \&quot;percentage\&quot;     → value is a percentage 0-100 off the order subtotal.   type &#x3D; \&quot;fixed\&quot;          → value is DOLLARS off the order subtotal (e.g. 10 &#x3D; $10 off).   type &#x3D; \&quot;free_delivery\&quot;  → value is ignored (pass 0); this type only waives the delivery fee.  min_order is a dollar minimum order subtotal required to use the coupon (pass dollars, e.g. 25 for a $25 minimum — the tool stores cents internally). Omit or pass 0 for no minimum.  freebie_id links this coupon to an existing Freebie (see freebie_list/freebie_upsert), turning it into a \&quot;code-triggered freebie\&quot;: a customer who applies the code while below min_order has the code parked (kept attached, not rejected) and sees cart progress toward unlocking it, instead of the code being discarded. Pass null to unlink. The freebie must belong to the same tenant.  limit_match_by (\&quot;email\&quot;|\&quot;phone\&quot;|\&quot;both\&quot;) controls how max_uses_per_customer is enforced. Using \&quot;phone\&quot; or \&quot;both\&quot; REQUIRES the tenant&#39;s \&quot;Require phone at checkout\&quot; setting to be on — otherwise the update is rejected, since customers without a phone on file could otherwise reuse the coupon past its per-customer limit.  SCHEDULE:   starts_at / expires_at are interpreted in the tenant&#39;s timezone and stored as UTC. Pass   null/omit for an always-on coupon.  PRODUCT/CATEGORY SCOPING:   applies_to&#x3D;\&quot;products\&quot; or \&quot;categories\&quot; restricts the discount to matching cart lines only —   checkout math is fully scope-aware (a scoped coupon never discounts the whole cart). Pass   applies_to_ids as an array of product ids (when applies_to&#x3D;\&quot;products\&quot;) or category ids (when   applies_to&#x3D;\&quot;categories\&quot;) — all ids must belong to this tenant. Passing applies_to&#x3D;\&quot;products\&quot;/   \&quot;categories\&quot; with an empty or omitted applies_to_ids behaves the same as \&quot;all\&quot; (no scope   configured yet). Switching back to applies_to&#x3D;\&quot;all\&quot; does not automatically clear a   previously-set applies_to_ids — pass applies_to_ids&#x3D;[] explicitly to clear it.  SUBSCRIPTION MOUNTING DISCOUNT LADDERS (subscribe-and-save retention):   A coupon can carry a \&quot;mounting ladder\&quot; so its discount climbs with each successive order a   customer&#39;s delivery subscription generates, pegging at a ceiling — e.g. order 1 &#x3D; 0% off,   then +5% every order up to a 20% cap. This only affects orders generated for a subscription   linked to this coupon (DeliverySubscription.coupon_id) — it has no effect on ordinary   one-off checkout use of the code, which still uses type/value as normal.    subscription_ladder_id: link to an existing ladder (from another coupon) by id, or pass null   to unlink. Must belong to the same tenant.    ladder_start_percent / ladder_step_percent / ladder_cap_percent / ladder_start_order_index:   pass any of these to CREATE a new ladder inline (on coupon create) or EDIT the tiers of the   ladder already linked to this coupon (on update) — do not combine with subscription_ladder_id   in the same call. All four are whole-number percentages (0-100) except start_order_index,   which is the 1-based order number the climb begins at (orders before it stay at   ladder_start_percent). Omitted ladder_* fields default to 0% start / 5% step / 20% cap /   order 1 on create; on update, only the fields you pass are changed.  Always call coupon_list first to get the coupon_id and confirm the current configuration.
      *
      * @param  \ShadowSoftware\DabDash\Model\CouponUpsertRequest|null $coupon_upsert_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['couponUpsert'] to see the possible values for this operation
@@ -7255,6 +7600,345 @@ class WriteApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($pricing_structure_upsert_request));
             } else {
                 $httpBody = $pricing_structure_upsert_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation productFeatureManage
+     *
+     * List or set which products are featured on a tenant&#39;s storefront home page (the \&quot;Featured Products\&quot; section, HomeController — up to 8 shown, ordered by the tenant&#39;s default product sort).  ACTIONS:   list (default): return every is_featured&#x3D;true product with id, slug, name,          stock_status. Always call this first to see the current set before          changing it.   set: pass product_ids (array) and featured (bool) to set is_featured on          those products. Unlisted products are left untouched — this is an          additive/subtractive edit, not a replace-the-whole-set operation.  Products must be resolved to ids first (product_inspect or this tool&#39;s list action). Featuring an out-of-stock product is allowed but usually undesirable — check stock_status in the list output before featuring.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ProductFeatureManageRequest|null $product_feature_manage_request product_feature_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productFeatureManage'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \ShadowSoftware\DabDash\Model\ProductFeatureManage200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
+     */
+    public function productFeatureManage($product_feature_manage_request = null, string $contentType = self::contentTypes['productFeatureManage'][0])
+    {
+        list($response) = $this->productFeatureManageWithHttpInfo($product_feature_manage_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation productFeatureManageWithHttpInfo
+     *
+     * List or set which products are featured on a tenant&#39;s storefront home page (the \&quot;Featured Products\&quot; section, HomeController — up to 8 shown, ordered by the tenant&#39;s default product sort).  ACTIONS:   list (default): return every is_featured&#x3D;true product with id, slug, name,          stock_status. Always call this first to see the current set before          changing it.   set: pass product_ids (array) and featured (bool) to set is_featured on          those products. Unlisted products are left untouched — this is an          additive/subtractive edit, not a replace-the-whole-set operation.  Products must be resolved to ids first (product_inspect or this tool&#39;s list action). Featuring an out-of-stock product is allowed but usually undesirable — check stock_status in the list output before featuring.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ProductFeatureManageRequest|null $product_feature_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productFeatureManage'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \ShadowSoftware\DabDash\Model\ProductFeatureManage200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function productFeatureManageWithHttpInfo($product_feature_manage_request = null, string $contentType = self::contentTypes['productFeatureManage'][0])
+    {
+        $request = $this->productFeatureManageRequest($product_feature_manage_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\ProductFeatureManage200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $request,
+                        $response,
+                    );
+                case 402:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $request,
+                        $response,
+                    );
+                case 422:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\ShadowSoftware\DabDash\Model\ProductFeatureManage200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\ProductFeatureManage200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 402:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation productFeatureManageAsync
+     *
+     * List or set which products are featured on a tenant&#39;s storefront home page (the \&quot;Featured Products\&quot; section, HomeController — up to 8 shown, ordered by the tenant&#39;s default product sort).  ACTIONS:   list (default): return every is_featured&#x3D;true product with id, slug, name,          stock_status. Always call this first to see the current set before          changing it.   set: pass product_ids (array) and featured (bool) to set is_featured on          those products. Unlisted products are left untouched — this is an          additive/subtractive edit, not a replace-the-whole-set operation.  Products must be resolved to ids first (product_inspect or this tool&#39;s list action). Featuring an out-of-stock product is allowed but usually undesirable — check stock_status in the list output before featuring.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ProductFeatureManageRequest|null $product_feature_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productFeatureManage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function productFeatureManageAsync($product_feature_manage_request = null, string $contentType = self::contentTypes['productFeatureManage'][0])
+    {
+        return $this->productFeatureManageAsyncWithHttpInfo($product_feature_manage_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation productFeatureManageAsyncWithHttpInfo
+     *
+     * List or set which products are featured on a tenant&#39;s storefront home page (the \&quot;Featured Products\&quot; section, HomeController — up to 8 shown, ordered by the tenant&#39;s default product sort).  ACTIONS:   list (default): return every is_featured&#x3D;true product with id, slug, name,          stock_status. Always call this first to see the current set before          changing it.   set: pass product_ids (array) and featured (bool) to set is_featured on          those products. Unlisted products are left untouched — this is an          additive/subtractive edit, not a replace-the-whole-set operation.  Products must be resolved to ids first (product_inspect or this tool&#39;s list action). Featuring an out-of-stock product is allowed but usually undesirable — check stock_status in the list output before featuring.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ProductFeatureManageRequest|null $product_feature_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productFeatureManage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function productFeatureManageAsyncWithHttpInfo($product_feature_manage_request = null, string $contentType = self::contentTypes['productFeatureManage'][0])
+    {
+        $returnType = '\ShadowSoftware\DabDash\Model\ProductFeatureManage200Response';
+        $request = $this->productFeatureManageRequest($product_feature_manage_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'productFeatureManage'
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ProductFeatureManageRequest|null $product_feature_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productFeatureManage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function productFeatureManageRequest($product_feature_manage_request = null, string $contentType = self::contentTypes['productFeatureManage'][0])
+    {
+
+
+
+        $resourcePath = '/api/v1/tools/product_feature_manage';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($product_feature_manage_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($product_feature_manage_request));
+            } else {
+                $httpBody = $product_feature_manage_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

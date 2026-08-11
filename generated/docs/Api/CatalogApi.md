@@ -16,7 +16,9 @@ All URIs are relative to https://.dabdash.com, except if the operation defines a
 | [**pricingStructureList()**](CatalogApi.md#pricingStructureList) | **POST** /api/v1/tools/pricing_structure_list | List all pricing structures for a tenant with their kind (inline|bundle), product count, tracking type, and tier summary. Always call this before pricing_structure_upsert or pricing_structure_assign to get structure IDs and confirm which structures are bundles vs inline (1:1 product) structures.  kind&#x3D;inline  → hidden 1:1 structure tied to exactly one product (is_hidden&#x3D;true) kind&#x3D;bundle  → shared structure visible on /admin/pricing, used by 0 or more products (is_hidden&#x3D;false) |
 | [**pricingStructureRestore()**](CatalogApi.md#pricingStructureRestore) | **POST** /api/v1/tools/pricing_structure_restore | Surgical restore tool. Rebuilds a single product&#39;s pricing structure and variations EXACTLY to a specified state. Bypasses the standard syncVariationsForProduct routine — you control every field.  Use this AFTER inventory_audit_lookup has revealed the pre-incident state of variations whose names/prices/stock were destroyed by an erroneous bundle reassignment.  Behaviour: - Creates a NEW inline (hidden, 1:1) pricing structure with the given tracking_type, tier   definitions, and a name like \&quot;Product: &lt;product_name&gt; (Hidden)\&quot;. Old structure linkage is   replaced. The previous structure is NOT deleted by this tool. - For each tier in the spec, finds-or-creates a variation. Matching is by &#x60;restore_variation_id&#x60;   if provided, else by name. If found, the variation is updated in place (preserving its id and   its audit-log history). If not found, a new variation is created. - Stock_quantity is set EXACTLY to the value specified — this is the whole point of the tool. - Sets product.tracking_type, product.inventory_mode, product.base_unit per the new structure. - Variations on the product not referenced by any tier in the spec are DEACTIVATED (is_active&#x3D;false)   so they stop being shown but their audit history is retained. Pass &#x60;delete_unreferenced&#x3D;true&#x60; to   hard-delete them instead.  SAFETY: - Wrap each call in its own transaction. - Will refuse if the new tracking_type is incompatible with stored cost data. - Inline-only by design — bundles are not recreated by this tool. Use pricing_structure_assign   to put the product on a bundle if that&#39;s what you want. |
 | [**pricingStructureUpsert()**](CatalogApi.md#pricingStructureUpsert) | **POST** /api/v1/tools/pricing_structure_upsert | Create or edit a pricing structure&#39;s tiers, name, and tracking type. Operates in three modes:  BUNDLE MODE (structure_id provided, structure is not hidden):   Edit a shared bundle structure visible on /admin/pricing. Tiers are replaced and ALL products   linked to the bundle are re-synced. Returns how many products were affected as a warning.  INLINE MODE (product_slug or product_id provided, no structure_id):   Edit the hidden 1:1 pricing structure for a single product. Tiers are replaced and variations   are re-synced for that product only. Refuses if the product currently uses a bundle structure —   use pricing_structure_assign to detach from the bundle first.  CREATE BUNDLE MODE (no structure_id, no product_slug/product_id):   Create a new shared bundle structure. Does not link it to any products.  SAFETY RULES enforced by this tool: - Never accepts structure_id pointing to a hidden (inline) structure — always go via product_slug/product_id. - Tiers for weight/matrix types must have weight_grams &gt; 0. - Tiers for simple type: only the first tier is used; name and weight_grams are normalised. - Prices are accepted as dollar amounts (e.g. 12.99) and converted to cents internally. |
+| [**productFeatureManage()**](CatalogApi.md#productFeatureManage) | **POST** /api/v1/tools/product_feature_manage | List or set which products are featured on a tenant&#39;s storefront home page (the \&quot;Featured Products\&quot; section, HomeController — up to 8 shown, ordered by the tenant&#39;s default product sort).  ACTIONS:   list (default): return every is_featured&#x3D;true product with id, slug, name,          stock_status. Always call this first to see the current set before          changing it.   set: pass product_ids (array) and featured (bool) to set is_featured on          those products. Unlisted products are left untouched — this is an          additive/subtractive edit, not a replace-the-whole-set operation.  Products must be resolved to ids first (product_inspect or this tool&#39;s list action). Featuring an out-of-stock product is allowed but usually undesirable — check stock_status in the list output before featuring. |
 | [**productInspect()**](CatalogApi.md#productInspect) | **POST** /api/v1/tools/product_inspect | Inspect a specific product including every variation&#39;s price, compare_at_price, mix_match_tags, stock, and the tenant&#39;s mix &amp; match rule settings. Use this to audit pricing, sale state, and bundle configuration for support tickets. |
+| [**productUnitPriceSearch()**](CatalogApi.md#productUnitPriceSearch) | **POST** /api/v1/tools/product_unit_price_search | Search and rank a tenant&#39;s catalog by computed per-unit price (e.g. price per gram or price per ounce), across every weight-family product (types \&quot;weight\&quot; and \&quot;matrix\&quot;) — something product_inspect cannot do because it only looks up one product at a time by id/name/sku.  For each active, in-stock variation with a weight_value, computes price_per_gram &#x3D; price_cents / weight_value, then scales it to the requested unit (default \&quot;oz\&quot; &#x3D; 28g, matching the storefront&#39;s weight-tier convention). Use this to answer \&quot;what&#39;s the cheapest/most expensive product per ounce\&quot;, \&quot;find products under $X/g\&quot;, or to rank the catalog by unit economics for pricing audits and promo targeting.  Only weight-family products (weight, matrix) have a meaningful per-gram price — unit-family products (simple, unit, matrix_unit) are excluded since their variations are priced per item, not per weight. |
 | [**productUpdateBySku()**](CatalogApi.md#productUpdateBySku) | **POST** /api/v1/tools/product_update_by_sku | Update a simple product&#39;s stock quantity and/or price by SKU — the inventory-sync path for an external POS. v1 scope: SIMPLE products only (single implicit unit, no weight/variant tiers). Every other pricing type (weight, unit, matrix, matrix_unit) is rejected with a clear message; those need per-tier/per-variant targeting that a flat SKU+quantity+price payload cannot express safely. Always call product_inspect with sku first to confirm which product/type you are targeting. |
 
 
@@ -630,6 +632,67 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `productFeatureManage()`
+
+```php
+productFeatureManage($product_feature_manage_request): \ShadowSoftware\DabDash\Model\ProductFeatureManage200Response
+```
+
+List or set which products are featured on a tenant's storefront home page (the \"Featured Products\" section, HomeController — up to 8 shown, ordered by the tenant's default product sort).  ACTIONS:   list (default): return every is_featured=true product with id, slug, name,          stock_status. Always call this first to see the current set before          changing it.   set: pass product_ids (array) and featured (bool) to set is_featured on          those products. Unlisted products are left untouched — this is an          additive/subtractive edit, not a replace-the-whole-set operation.  Products must be resolved to ids first (product_inspect or this tool's list action). Featuring an out-of-stock product is allowed but usually undesirable — check stock_status in the list output before featuring.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: tenantOAuth
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure Bearer authorization: tenantApiKey
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new ShadowSoftware\DabDash\Api\CatalogApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$product_feature_manage_request = new \ShadowSoftware\DabDash\Model\ProductFeatureManageRequest(); // \ShadowSoftware\DabDash\Model\ProductFeatureManageRequest
+
+try {
+    $result = $apiInstance->productFeatureManage($product_feature_manage_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CatalogApi->productFeatureManage: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **product_feature_manage_request** | [**\ShadowSoftware\DabDash\Model\ProductFeatureManageRequest**](../Model/ProductFeatureManageRequest.md)|  | [optional] |
+
+### Return type
+
+[**\ShadowSoftware\DabDash\Model\ProductFeatureManage200Response**](../Model/ProductFeatureManage200Response.md)
+
+### Authorization
+
+[tenantOAuth](../../README.md#tenantOAuth), [tenantApiKey](../../README.md#tenantApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `productInspect()`
 
 ```php
@@ -677,6 +740,67 @@ try {
 ### Return type
 
 [**\ShadowSoftware\DabDash\Model\ProductInspect200Response**](../Model/ProductInspect200Response.md)
+
+### Authorization
+
+[tenantOAuth](../../README.md#tenantOAuth), [tenantApiKey](../../README.md#tenantApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `productUnitPriceSearch()`
+
+```php
+productUnitPriceSearch($product_unit_price_search_request): \ShadowSoftware\DabDash\Model\ProductUnitPriceSearch200Response
+```
+
+Search and rank a tenant's catalog by computed per-unit price (e.g. price per gram or price per ounce), across every weight-family product (types \"weight\" and \"matrix\") — something product_inspect cannot do because it only looks up one product at a time by id/name/sku.  For each active, in-stock variation with a weight_value, computes price_per_gram = price_cents / weight_value, then scales it to the requested unit (default \"oz\" = 28g, matching the storefront's weight-tier convention). Use this to answer \"what's the cheapest/most expensive product per ounce\", \"find products under $X/g\", or to rank the catalog by unit economics for pricing audits and promo targeting.  Only weight-family products (weight, matrix) have a meaningful per-gram price — unit-family products (simple, unit, matrix_unit) are excluded since their variations are priced per item, not per weight.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: tenantOAuth
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure Bearer authorization: tenantApiKey
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new ShadowSoftware\DabDash\Api\CatalogApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$product_unit_price_search_request = new \ShadowSoftware\DabDash\Model\ProductUnitPriceSearchRequest(); // \ShadowSoftware\DabDash\Model\ProductUnitPriceSearchRequest
+
+try {
+    $result = $apiInstance->productUnitPriceSearch($product_unit_price_search_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CatalogApi->productUnitPriceSearch: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **product_unit_price_search_request** | [**\ShadowSoftware\DabDash\Model\ProductUnitPriceSearchRequest**](../Model/ProductUnitPriceSearchRequest.md)|  | [optional] |
+
+### Return type
+
+[**\ShadowSoftware\DabDash\Model\ProductUnitPriceSearch200Response**](../Model/ProductUnitPriceSearch200Response.md)
 
 ### Authorization
 
