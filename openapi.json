@@ -395,9 +395,23 @@
                         "type": "integer"
                     },
                     "template_id": {
-                        "description": "System template id (e.g. \"summer-new-arrivals\"). Omit to list available templates.",
+                        "description": "System template id (e.g. \"summer-new-arrivals\"). Omit with use_month_default=true to apply this month's calendar default.",
                         "type": [
                             "string",
+                            "null"
+                        ]
+                    },
+                    "use_month_default": {
+                        "description": "When true and template_id is omitted, applies the month_calendar default for month (or the current month in the tenant timezone).",
+                        "type": [
+                            "boolean",
+                            "null"
+                        ]
+                    },
+                    "month": {
+                        "description": "Calendar month 1-12 for month_calendar lookup when use_month_default is true. Defaults to the current month.",
+                        "type": [
+                            "integer",
                             "null"
                         ]
                     }
@@ -453,6 +467,24 @@
                             "null"
                         ]
                     },
+                    "use_month_default": {
+                        "type": [
+                            "boolean",
+                            "null"
+                        ]
+                    },
+                    "month": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "theme": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
                     "html_body_length": {
                         "type": [
                             "integer",
@@ -470,6 +502,66 @@
                             "string",
                             "null"
                         ]
+                    }
+                },
+                "type": "object"
+            },
+            "CampaignAudienceInspectRequest": {
+                "properties": {
+                    "contact_list_ids": {
+                        "description": "Contact list IDs to scope the split. Omit or pass [] to use all subscribed contacts + customers.",
+                        "items": {
+                            "type": "integer"
+                        },
+                        "type": [
+                            "array",
+                            "null"
+                        ]
+                    },
+                    "include_customers": {
+                        "description": "Include store customers in the audience. Defaults to true.",
+                        "type": [
+                            "boolean",
+                            "null"
+                        ]
+                    },
+                    "channel": {
+                        "description": "\"email\" or \"sms\". Defaults to email.",
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    }
+                },
+                "type": "object"
+            },
+            "CampaignAudienceInspectResponse": {
+                "properties": {
+                    "tenant": {
+                        "properties": {
+                            "id": {
+                                "type": "integer"
+                            },
+                            "slug": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "channel": {
+                        "type": "string"
+                    },
+                    "include_customers": {
+                        "type": "boolean"
+                    },
+                    "warm": {
+                        "type": "integer"
+                    },
+                    "cold": {
+                        "type": "integer"
+                    },
+                    "guidance": {
+                        "type": "string"
                     }
                 },
                 "type": "object"
@@ -735,6 +827,120 @@
                     },
                     "image_in_body": {
                         "type": "boolean"
+                    },
+                    "message": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "CampaignSpamScoreRequest": {
+                "properties": {
+                    "campaign_id": {
+                        "description": "Load content from this campaign. Omit to score inline subject/html_body or sms_body.",
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "channel": {
+                        "description": "\"email\" or \"sms\". Required when scoring inline content without campaign_id.",
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "subject": {
+                        "description": "Email subject (inline mode).",
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "html_body": {
+                        "description": "Email HTML body (inline mode).",
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "sms_body": {
+                        "description": "SMS body (inline mode).",
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "for_send": {
+                        "description": "If true, fold the send-time deep check into the same 0–100 score (email only). Default false (live rules).",
+                        "type": [
+                            "boolean",
+                            "null"
+                        ]
+                    }
+                },
+                "type": "object"
+            },
+            "CampaignSpamScoreResponse": {
+                "properties": {
+                    "score": {
+                        "type": "integer"
+                    },
+                    "band": {
+                        "type": "string"
+                    },
+                    "channel": {
+                        "type": "string"
+                    },
+                    "summary": {
+                        "type": "string"
+                    },
+                    "version": {
+                        "type": "string"
+                    },
+                    "findings": {
+                        "items": {
+                            "properties": {
+                                "code": {
+                                    "type": "string"
+                                },
+                                "severity": {
+                                    "type": "string"
+                                },
+                                "penalty": {
+                                    "type": "integer"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "hint": {
+                                    "type": "string"
+                                },
+                                "evidence": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    },
+                    "can_send": {
+                        "type": "boolean"
+                    },
+                    "min_send_score": {
+                        "type": "integer"
+                    },
+                    "deep_check_applied": {
+                        "type": "boolean"
+                    },
+                    "campaign_id": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
                     },
                     "message": {
                         "type": "string"
@@ -4580,6 +4786,342 @@
                 },
                 "type": "object"
             },
+            "ProductImageAssignRequest": {
+                "properties": {
+                    "product_id": {
+                        "description": "Product id to update.",
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "media_id": {
+                        "description": "Tenant media library asset id for featured_image.",
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "gallery_media_ids": {
+                        "description": "Tenant media library asset ids that replace gallery_images (empty array clears).",
+                        "items": {
+                            "type": "integer"
+                        },
+                        "type": [
+                            "array",
+                            "null"
+                        ]
+                    },
+                    "clear_featured": {
+                        "description": "When true, clear featured_image. Mutually exclusive with media_id.",
+                        "type": [
+                            "boolean",
+                            "null"
+                        ]
+                    },
+                    "dry_run": {
+                        "description": "Preview without writing. Defaults true.",
+                        "type": [
+                            "boolean",
+                            "null"
+                        ]
+                    },
+                    "overwrite": {
+                        "description": "Replace an existing featured_image. Defaults false.",
+                        "type": [
+                            "boolean",
+                            "null"
+                        ]
+                    }
+                },
+                "type": "object"
+            },
+            "ProductImageAssignResponse": {
+                "properties": {
+                    "action": {
+                        "type": "string"
+                    },
+                    "dry_run": {
+                        "type": "boolean"
+                    },
+                    "tenant": {
+                        "properties": {
+                            "id": {
+                                "type": "integer"
+                            },
+                            "slug": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "product": {
+                        "properties": {
+                            "id": {
+                                "type": "integer"
+                            },
+                            "slug": {
+                                "type": "string"
+                            },
+                            "featured_image": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "featured_image_url": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "gallery_images": {
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": [
+                                    "array",
+                                    "null"
+                                ]
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "changes": {
+                        "properties": {
+                            "featured_image": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "gallery_images": {
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": [
+                                    "array",
+                                    "null"
+                                ]
+                            }
+                        },
+                        "type": [
+                            "object",
+                            "null"
+                        ]
+                    }
+                },
+                "type": "object"
+            },
+            "ProductImageStrainAssignRequest": {
+                "properties": {
+                    "assignments": {
+                        "description": "Explicit product_id/strain_id pairs to assign. Mutually exclusive with auto_match.",
+                        "items": {
+                            "properties": {
+                                "product_id": {
+                                    "type": "integer"
+                                },
+                                "strain_id": {
+                                    "type": "integer"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": [
+                            "array",
+                            "null"
+                        ]
+                    },
+                    "auto_match": {
+                        "description": "When true, find and assign matches automatically instead of using assignments.",
+                        "type": [
+                            "boolean",
+                            "null"
+                        ]
+                    },
+                    "search": {
+                        "description": "auto_match only: filter candidate products by name.",
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "limit": {
+                        "description": "auto_match only: max products to consider. Default 25, max 100.",
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "dry_run": {
+                        "description": "Preview without writing. Defaults true.",
+                        "type": [
+                            "boolean",
+                            "null"
+                        ]
+                    },
+                    "overwrite": {
+                        "description": "Replace an existing featured_image. Defaults false.",
+                        "type": [
+                            "boolean",
+                            "null"
+                        ]
+                    }
+                },
+                "type": "object"
+            },
+            "ProductImageStrainAssignResponse": {
+                "properties": {
+                    "tenant": {
+                        "properties": {
+                            "id": {
+                                "type": "integer"
+                            },
+                            "slug": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "dry_run": {
+                        "type": "boolean"
+                    },
+                    "summary": {
+                        "properties": {
+                            "assigned": {
+                                "type": "integer"
+                            },
+                            "skipped": {
+                                "type": "integer"
+                            },
+                            "failed": {
+                                "type": "integer"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "results": {
+                        "items": {
+                            "properties": {
+                                "product_id": {
+                                    "type": "integer"
+                                },
+                                "status": {
+                                    "type": "string"
+                                },
+                                "reason": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "image_url": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    }
+                },
+                "type": "object"
+            },
+            "ProductImageStrainMatchRequest": {
+                "properties": {
+                    "product_ids": {
+                        "description": "Limit the search to these product ids. Omit to scan all products missing a featured image.",
+                        "items": {
+                            "type": "integer"
+                        },
+                        "type": [
+                            "array",
+                            "null"
+                        ]
+                    },
+                    "search": {
+                        "description": "Filter candidate products by name (case-insensitive contains).",
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "limit": {
+                        "description": "Max products to propose matches for. Default 25, max 100.",
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    }
+                },
+                "type": "object"
+            },
+            "ProductImageStrainMatchResponse": {
+                "properties": {
+                    "tenant": {
+                        "properties": {
+                            "id": {
+                                "type": "integer"
+                            },
+                            "slug": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "total": {
+                        "type": "integer"
+                    },
+                    "proposals": {
+                        "items": {
+                            "properties": {
+                                "product_id": {
+                                    "type": "integer"
+                                },
+                                "product_name": {
+                                    "type": "string"
+                                },
+                                "current_featured_image": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "proposed_strain_id": {
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ]
+                                },
+                                "proposed_strain_name": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "proposed_image_url": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "match_method": {
+                                    "type": "string"
+                                },
+                                "confidence": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    }
+                },
+                "type": "object"
+            },
             "ProductInspectRequest": {
                 "properties": {
                     "product_id": {
@@ -4726,6 +5268,168 @@
                             "type": "object"
                         },
                         "type": "array"
+                    }
+                },
+                "type": "object"
+            },
+            "ProductManageRequest": {
+                "properties": {
+                    "action": {
+                        "description": "\"create\" (default).",
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "name": {
+                        "description": "Product name shown to customers. Required for create.",
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "price": {
+                        "description": "Unit price in dollars (e.g. 24.99). Omit to leave $0 until edited.",
+                        "type": [
+                            "number",
+                            "null"
+                        ]
+                    },
+                    "sku": {
+                        "description": "SKU for the default variation.",
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "stock_quantity": {
+                        "description": "On-hand unit count. Omit to leave unset.",
+                        "type": [
+                            "number",
+                            "null"
+                        ]
+                    },
+                    "category_ids": {
+                        "description": "Storefront category ids to attach.",
+                        "items": {
+                            "type": "integer"
+                        },
+                        "type": [
+                            "array",
+                            "null"
+                        ]
+                    },
+                    "description": {
+                        "description": "Product description. Strain enrich fills this when omitted.",
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "strain_id": {
+                        "description": "Platform strain id from strain_lookup. Copies strain data onto the product.",
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "skip_strain_enrich": {
+                        "description": "If true, do not auto-match or apply a strain from the product name.",
+                        "type": [
+                            "boolean",
+                            "null"
+                        ]
+                    }
+                },
+                "type": "object"
+            },
+            "ProductManageResponse": {
+                "properties": {
+                    "action": {
+                        "type": "string"
+                    },
+                    "tenant": {
+                        "properties": {
+                            "id": {
+                                "type": "integer"
+                            },
+                            "slug": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "product": {
+                        "properties": {
+                            "id": {
+                                "type": "integer"
+                            },
+                            "name": {
+                                "type": "string"
+                            },
+                            "slug": {
+                                "type": "string"
+                            },
+                            "strain_id": {
+                                "type": [
+                                    "integer",
+                                    "null"
+                                ]
+                            },
+                            "featured_image": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            }
+                        },
+                        "type": [
+                            "object",
+                            "null"
+                        ]
+                    },
+                    "strain_applied": {
+                        "properties": {
+                            "id": {
+                                "type": "integer"
+                            },
+                            "name": {
+                                "type": "string"
+                            },
+                            "confidence": {
+                                "type": "string"
+                            }
+                        },
+                        "type": [
+                            "object",
+                            "null"
+                        ]
+                    },
+                    "strain_matches": {
+                        "items": {
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "confidence": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": [
+                            "array",
+                            "null"
+                        ]
+                    },
+                    "message": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
                     }
                 },
                 "type": "object"
@@ -5440,6 +6144,131 @@
                 },
                 "type": "object"
             },
+            "PurchaseOrderDraftCreateRequest": {
+                "properties": {
+                    "supplier_id": {
+                        "description": "Supplier id from supplier_upsert.",
+                        "type": "integer"
+                    },
+                    "notes": {
+                        "description": "Optional notes stored on the draft (invoice number, delivery date, etc.).",
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    }
+                },
+                "type": "object"
+            },
+            "PurchaseOrderDraftCreateResponse": {
+                "properties": {
+                    "purchase_order": {
+                        "properties": {
+                            "id": {
+                                "type": "integer"
+                            },
+                            "po_number": {
+                                "type": "string"
+                            },
+                            "status": {
+                                "type": "string"
+                            },
+                            "supplier_id": {
+                                "type": "integer"
+                            },
+                            "edit_path": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            },
+            "PurchaseOrderLineAddRequest": {
+                "properties": {
+                    "purchase_order_id": {
+                        "description": "Draft purchase order id from purchase_order_draft_create.",
+                        "type": "integer"
+                    },
+                    "product_id": {
+                        "description": "Catalog product id to order.",
+                        "type": "integer"
+                    },
+                    "variation_id": {
+                        "description": "Size/variation id when the product uses variation inventory.",
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "qty": {
+                        "description": "Quantity to order (grams or units, matching the product).",
+                        "type": "number"
+                    },
+                    "unit_cost": {
+                        "description": "Unit cost in dollars. Omit to use the last cost for this supplier.",
+                        "type": [
+                            "number",
+                            "null"
+                        ]
+                    },
+                    "match_confidence": {
+                        "description": "How confident the catalog match is, from 0 to 1. Pass when importing from OCR.",
+                        "type": [
+                            "number",
+                            "null"
+                        ]
+                    }
+                },
+                "type": "object"
+            },
+            "PurchaseOrderLineAddResponse": {
+                "properties": {
+                    "line": {
+                        "properties": {
+                            "id": {
+                                "type": "integer"
+                            },
+                            "purchase_order_id": {
+                                "type": "integer"
+                            },
+                            "product_id": {
+                                "type": "integer"
+                            },
+                            "variation_id": {
+                                "type": [
+                                    "integer",
+                                    "null"
+                                ]
+                            },
+                            "product_name": {
+                                "type": "string"
+                            },
+                            "variation_name": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "qty_ordered": {
+                                "type": "number"
+                            },
+                            "unit_cost_cents": {
+                                "type": "integer"
+                            },
+                            "match_confidence": {
+                                "type": [
+                                    "number",
+                                    "null"
+                                ]
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            },
             "PushNotificationDiagnosticsRequest": {
                 "properties": {
                     "hours": {
@@ -5796,6 +6625,370 @@
                             }
                         },
                         "type": "object"
+                    }
+                },
+                "type": "object"
+            },
+            "StrainLookupRequest": {
+                "properties": {
+                    "query": {
+                        "description": "Strain name to search (e.g. \"Blue Dream\").",
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "query"
+                ]
+            },
+            "StrainLookupResponse": {
+                "properties": {
+                    "query": {
+                        "type": "string"
+                    },
+                    "total": {
+                        "type": "integer"
+                    },
+                    "strains": {
+                        "items": {
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "slug": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "type": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "thc_percentage": {
+                                    "type": [
+                                        "number",
+                                        "null"
+                                    ]
+                                },
+                                "cbd_percentage": {
+                                    "type": [
+                                        "number",
+                                        "null"
+                                    ]
+                                },
+                                "indica_percentage": {
+                                    "type": [
+                                        "number",
+                                        "null"
+                                    ]
+                                },
+                                "sativa_percentage": {
+                                    "type": [
+                                        "number",
+                                        "null"
+                                    ]
+                                },
+                                "short_description": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "has_hosted_image": {
+                                    "type": "boolean"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    }
+                },
+                "type": "object"
+            },
+            "SupplierUpsertRequest": {
+                "properties": {
+                    "supplier_id": {
+                        "description": "Existing supplier id to update. Omit to create (or match by name).",
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "name": {
+                        "description": "Supplier name. Required when creating.",
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "email": {
+                        "description": "Supplier email for sending purchase orders.",
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "phone": {
+                        "description": "Supplier phone.",
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "license_number": {
+                        "description": "License or account number if you store one.",
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "notes": {
+                        "description": "Internal notes about this supplier.",
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "lead_time_days": {
+                        "description": "Typical lead time in days (0–365). Defaults to 0 on create.",
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "is_active": {
+                        "description": "Whether this supplier can be used on new purchase orders. Defaults to true on create.",
+                        "type": [
+                            "boolean",
+                            "null"
+                        ]
+                    }
+                },
+                "type": "object"
+            },
+            "SupplierUpsertResponse": {
+                "properties": {
+                    "created": {
+                        "type": "boolean"
+                    },
+                    "supplier": {
+                        "properties": {
+                            "id": {
+                                "type": "integer"
+                            },
+                            "name": {
+                                "type": "string"
+                            },
+                            "email": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "phone": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "license_number": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "lead_time_days": {
+                                "type": "integer"
+                            },
+                            "is_active": {
+                                "type": "boolean"
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            },
+            "TenantBrandingManageRequest": {
+                "properties": {
+                    "action": {
+                        "description": "\"show\" (default) or \"set\".",
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "media_id": {
+                        "description": "Library asset to use as the store logo. Required to change the logo.",
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "hero_media_id": {
+                        "description": "Library asset to use as the homepage hero (settings.hero_image_path).",
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "clear_hero": {
+                        "description": "When true, remove the homepage hero. Mutually exclusive with hero_media_id.",
+                        "type": [
+                            "boolean",
+                            "null"
+                        ]
+                    },
+                    "source_url": {
+                        "description": "Public http(s) URL of a BIMI SVG. Provide exactly one BIMI source.",
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "source_path": {
+                        "description": "Local file path of a BIMI SVG. Provide exactly one BIMI source.",
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "source_base64": {
+                        "description": "Base64-encoded BIMI SVG bytes. Provide exactly one BIMI source.",
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "dry_run": {
+                        "description": "If true (the default for set), report only and write nothing.",
+                        "type": [
+                            "boolean",
+                            "null"
+                        ]
+                    }
+                },
+                "type": "object"
+            },
+            "TenantBrandingManageResponse": {
+                "properties": {
+                    "action": {
+                        "type": "string"
+                    },
+                    "dry_run": {
+                        "type": [
+                            "boolean",
+                            "null"
+                        ]
+                    },
+                    "tenant": {
+                        "properties": {
+                            "id": {
+                                "type": "integer"
+                            },
+                            "slug": {
+                                "type": "string"
+                            },
+                            "storefront_url": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "logo_path": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "logo_url": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "hero_image_path": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "hero_image_url": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "bimi_logo_path": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "bimi_url": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "bimi_txt": {
+                        "properties": {
+                            "name": {
+                                "type": "string"
+                            },
+                            "type": {
+                                "type": "string"
+                            },
+                            "value": {
+                                "type": "string"
+                            }
+                        },
+                        "type": [
+                            "object",
+                            "null"
+                        ]
+                    },
+                    "cloudflare_connected": {
+                        "type": "boolean"
+                    },
+                    "dns_updated": {
+                        "type": [
+                            "boolean",
+                            "null"
+                        ]
+                    },
+                    "would_set_logo": {
+                        "type": [
+                            "boolean",
+                            "null"
+                        ]
+                    },
+                    "would_set_hero": {
+                        "type": [
+                            "boolean",
+                            "null"
+                        ]
+                    },
+                    "would_clear_hero": {
+                        "type": [
+                            "boolean",
+                            "null"
+                        ]
+                    },
+                    "would_set_bimi": {
+                        "type": [
+                            "boolean",
+                            "null"
+                        ]
+                    },
+                    "message": {
+                        "type": "string"
                     }
                 },
                 "type": "object"
@@ -6936,6 +8129,179 @@
                 ]
             }
         },
+        "/api/v1/tools/campaign_audience_inspect": {
+            "post": {
+                "operationId": "campaign_audience_inspect",
+                "summary": "Split the tenant's campaign audience into warm (≥1 past order) vs cold (no order history)\nrecipients. Use this before drafting a newsletter or SMS in the Create Promotion flow:\nwarm audiences can get exclusive codes and commercial copy; cold audiences need\npersonalized, spam-safe language — never hard-sell or aggressive exclusive deals.\n\nReturns counts only — it does not create or send a campaign.",
+                "tags": [
+                    "marketing",
+                    "read"
+                ],
+                "requestBody": {
+                    "required": false,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CampaignAudienceInspectRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "tool": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "$ref": "#/components/schemas/CampaignAudienceInspectResponse"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Missing or invalid tenant credentials.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "402": {
+                        "description": "The tenant has no active trial, subscription, or grace period.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "A read-scoped key was used to call a write tool.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unknown tool name.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Request validation failed, or the tool reported a business error.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "tenantApiKey": []
+                    },
+                    {
+                        "tenantOAuth": []
+                    }
+                ]
+            }
+        },
         "/api/v1/tools/campaign_control": {
             "post": {
                 "operationId": "campaign_control",
@@ -7486,6 +8852,179 @@
                                         },
                                         "data": {
                                             "$ref": "#/components/schemas/CampaignSetImageResponse"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Missing or invalid tenant credentials.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "402": {
+                        "description": "The tenant has no active trial, subscription, or grace period.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "A read-scoped key was used to call a write tool.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unknown tool name.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Request validation failed, or the tool reported a business error.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "tenantApiKey": []
+                    },
+                    {
+                        "tenantOAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/tools/campaign_spam_score": {
+            "post": {
+                "operationId": "campaign_spam_score",
+                "summary": "Score vendor campaign copy for inbox risk (email HTML or SMS).\n\nOne score only: 0–100 (0 = spam, 100 = primary-inbox friendly). Live scoring uses\nfirst-party rules. Pass for_send=true to run the same deep filter check used on\nsend/schedule and fold it into that single number (never a second score).\n\nVendors cannot send or schedule below the platform minimum (default 80). Aim for\n80+ before handoff; 85+ is excellent.\n\nPass campaign_id (loads draft content) OR inline channel + content fields.",
+                "tags": [
+                    "marketing",
+                    "read"
+                ],
+                "requestBody": {
+                    "required": false,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CampaignSpamScoreRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "tool": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "$ref": "#/components/schemas/CampaignSpamScoreResponse"
                                         }
                                     }
                                 }
@@ -10570,7 +12109,7 @@
         "/api/v1/tools/media_compose": {
             "post": {
                 "operationId": "media_compose",
-                "summary": "Build a finished campaign image ON THE SERVER: take a base picture, drop the vendor's logo on\ntop, add a headline and subtitle, and save the result straight into the tenant's media library.\nReturns a media_id + public URL ready for campaign_set_image. Nothing has to be uploaded from\nyour machine — pass IDs and URLs and the server does the artwork.\n\nPROVIDE THE BASE (exactly one):\n  - base_media_id — an image already in the tenant's library (see media_list).\n  - base_url      — a public https image URL, e.g. the output of an image-generation tool.\n\nPROVIDE THE LOGO (optional, at most one):\n  - logo_media_id / logo_url — same two options as the base.\n  THE LOGO IS NEVER ALTERED. It is scaled to fit (aspect ratio locked) and placed as-is —\n  its colours, strokes and transparency are left exactly as supplied. For legibility on busy\n  artwork use the `scrim` option, which darkens the area BEHIND the logo and text.\n\nLAYOUT: logo on top, headline under it, subtitle under that — the block is centred\nhorizontally and positioned with logo_position (top / center / bottom). Sizes are given as a\nfraction of the base image width so they scale with any canvas. Long text is word-wrapped\nautomatically; the response's `wrapped` flag tells you when that happened so you can shorten it.\n\nCONSTRAINTS: sources max 5 MB, JPEG/PNG/WebP/GIF, max 8000x8000. The finished image goes\nthrough the same pipeline as media_upload — re-encoded to WebP, resized to fit, de-duplicated\nby content — so identical inputs return the existing media_id instead of a duplicate.\n\nTypical flow: (generate or pick a base image) -> media_compose -> campaign_set_image.\n\nSTOREFRONT SWAG MODE (category_id or widget_id): instead of the manual layout above,\npass category_id or widget_id to run the platform's own storefront branding pipeline\n(SwagImagesService) against that exact category or widget — the same compositor used by\nthe dev seeder and vendor admin: tenant logo eyebrow, Bebas Neue headline (shrunk to fit\nlong names automatically), brand-colour accent rule, and a sub-label (the tenant's live\ndomain for categories, the widget's own subtitle for widgets). Pass base_media_id or\nbase_url to set/replace the row's base_image_path first; omit both to recompose from\nwhatever base_image_path is already saved. Saves directly to image_path on that category\nor widget — this is an internal/admin tool, not exposed to vendors.",
+                "summary": "Build a finished campaign/storefront creative ON THE SERVER: take a base picture, drop the\nvendor's logo on top, add a headline and subtitle, and save the RESULT straight into the\ntenant's media library. Returns a media_id + public URL ready to place with campaign_set_image,\ncategory_manage, widget_manage, tenant_branding_manage, product_image_assign, or\ntenant_blog_upsert.\n\nPROVIDE THE BASE (exactly one):\n  - base_media_id — preferred for tenant-owned photos already in the library (media_list /\n    media_upload). Keeps the source visible in Admin → Media.\n  - base_url      — public https URL for external/generated artwork. Only the composed\n    OUTPUT is saved as a library row; the raw URL bytes are not separately ingested. Prefer\n    media_upload → base_media_id when the photo should remain in the media library (#184).\n\nPROVIDE THE LOGO (optional, at most one):\n  - logo_media_id / logo_url — same two options as the base (prefer logo_media_id for the\n    tenant logo so it stays linked in Media).\n  THE LOGO IS NEVER ALTERED. It is scaled to fit (aspect ratio locked) and placed as-is —\n  its colours, strokes and transparency are left exactly as supplied. For legibility on busy\n  artwork use the `scrim` option, which darkens the area BEHIND the logo and text.\n\nLAYOUT: logo on top, headline under it, subtitle under that — the block is centred\nhorizontally and positioned with logo_position (top / center / bottom). Sizes are given as a\nfraction of the base image width so they scale with any canvas. Long text is word-wrapped\nautomatically; the response's `wrapped` flag tells you when that happened so you can shorten it.\n\nCONSTRAINTS: sources max 5 MB, JPEG/PNG/WebP/GIF, max 8000x8000. The finished image goes\nthrough the same pipeline as media_upload — re-encoded to WebP, resized to fit, de-duplicated\nby content — so identical inputs return the existing media_id instead of a duplicate.\n\nTypical flow: media_upload (or media_list) → media_compose → place with media_id.\n\nSTOREFRONT SWAG MODE (category_id or widget_id): instead of the manual layout above,\npass category_id or widget_id to run the platform's own storefront branding pipeline\n(SwagImagesService) against that exact category or widget — the same compositor used by\nthe dev seeder and vendor admin: tenant logo eyebrow, Bebas Neue headline (shrunk to fit\nlong names automatically), brand-colour accent rule, and a sub-label (the tenant's live\ndomain for categories, the widget's own subtitle for widgets). Pass base_media_id or\nbase_url to set/replace the row's base_image_path first; omit both to recompose from\nwhatever base_image_path is already saved. Saves directly to image_path on that category\nor widget — this is an internal/admin tool, not exposed to vendors.",
                 "tags": [
                     "media",
                     "write"
@@ -10916,7 +12455,7 @@
         "/api/v1/tools/media_upload": {
             "post": {
                 "operationId": "media_upload",
-                "summary": "Upload an image into a tenant's media library (the same library the vendor admin uses). The image\nis ingested through the platform's shared media pipeline — re-encoded to WebP, resized to fit, EXIF-\noriented, content-addressed for dedup — and a media_assets row is created. It ALWAYS lands in the\nlibrary, and the tool returns the new media_id and public URL you can then place into a campaign\nwith campaign_set_image.\n\nPROVIDE THE IMAGE ONE OF THREE WAYS (exactly one):\n  - source_url    — fetch the image from a public http(s) URL.\n  - source_path   — read a local file path on the server/agent host.\n  - source_base64 — raw base64 of the image bytes (no data: prefix needed; a data: prefix is stripped).\n\nCONSTRAINTS: max 5 MB; JPEG, PNG, WebP, or GIF. Identical bytes already in the library are de-duped\n(you get the existing media_id back). Uploads default to public visibility so the image is emailable.\n\nOptional alt_text and folder help organise and caption the asset. Confirm the tenant_slug with\ntenant_list first. To see what's already in the library, use media_list.",
+                "summary": "Upload an image into a tenant's media library (the same library the vendor admin uses). The image\nis ingested through the platform's shared media pipeline — re-encoded to WebP, resized to fit, EXIF-\noriented, content-addressed for dedup — and a media_assets row is created. It ALWAYS lands in the\nlibrary, and the tool returns the new media_id and public URL.\n\nPLACE the media_id with the matching tool (never hotlink the URL as a product/blog/hero path):\n  - campaign_set_image — email campaign HTML\n  - category_manage / widget_manage — storefront images (media_id / base_media_id)\n  - tenant_branding_manage — store logo (media_id) or homepage hero (hero_media_id)\n  - product_image_assign — product featured / gallery\n  - tenant_blog_upsert — vendor blog featured image\n  - media_compose — base_media_id / logo_media_id for composed creatives\n\nPROVIDE THE IMAGE ONE OF THREE WAYS (exactly one):\n  - source_url    — fetch the image from a public http(s) URL (preferred for remote agents).\n  - source_path   — read a local file path on the server/agent host (often broken on prod FS).\n  - source_base64 — raw base64 of the image bytes (no data: prefix needed; a data: prefix is stripped).\n\nCONSTRAINTS: max 5 MB; JPEG, PNG, WebP, or GIF. Identical bytes already in the library are de-duped\n(you get the existing media_id back). Uploads default to public visibility so the image is emailable.\n\nOptional alt_text and folder help organise and caption the asset. Confirm the tenant_slug with\ntenant_list first. To see what's already in the library, use media_list.",
                 "tags": [
                     "media",
                     "write"
@@ -12470,6 +14009,525 @@
                 ]
             }
         },
+        "/api/v1/tools/product_image_assign": {
+            "post": {
+                "operationId": "product_image_assign",
+                "summary": "Set a product's featured image and/or gallery from the tenant media library.\nPass media_id (from media_list / media_upload) for featured_image, and/or\ngallery_media_ids to replace gallery_images. Does not upload bytes and does\nnot create media_assets rows — ingest first with media_upload. Assets must be\npublic (private library items have no storefront URL).\n\ndry_run (default true) previews without writing. overwrite (default false)\nrefuses to replace an existing featured_image unless true. clear_featured\nclears featured_image without setting a new one.\n\nDistinct from product_image_strain_assign, which writes a shared platform\nstrain CDN URL and never creates a tenant library row (GitHub #72 / #184).",
+                "tags": [
+                    "catalog",
+                    "write"
+                ],
+                "requestBody": {
+                    "required": false,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ProductImageAssignRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "tool": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "$ref": "#/components/schemas/ProductImageAssignResponse"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Missing or invalid tenant credentials.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "402": {
+                        "description": "The tenant has no active trial, subscription, or grace period.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "A read-scoped key was used to call a write tool.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unknown tool name.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Request validation failed, or the tool reported a business error.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "tenantApiKey": []
+                    },
+                    {
+                        "tenantOAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/tools/product_image_strain_assign": {
+            "post": {
+                "operationId": "product_image_strain_assign",
+                "summary": "Apply a hosted platform strain photo to a product's featured_image.\nWrites a URL string to the product row only — never uploads/copies bytes,\nnever creates a tenant media_assets row (this is the shared strain\nlibrary, not tenant media).\n\nTwo modes (exactly one required):\n  assignments: explicit [{product_id, strain_id}, ...] pairs you already\n    decided on (e.g. from product_image_strain_match's proposals).\n  auto_match: true — re-runs product_image_strain_match's own matching\n    internally against products missing a featured image (optionally\n    scoped by search/limit) and applies every exact/partial match found.\n\ndry_run (default true) previews without writing — always call once with\ndry_run=true and review the results before dry_run=false.\n\noverwrite (default false) — a product that already has a featured_image\nis skipped, never replaced, unless overwrite=true. Idempotent: if a\nproduct's featured_image already equals the target strain's hosted URL,\nit is reported skipped/already_set regardless of overwrite (nothing to\ndo, not an error).\n\nRefuses to assign a strain whose image is not hosted on the platform\n(skipped/strain_image_not_hosted) — never writes a dead or third-party\nhotlinked URL as a product's featured image.",
+                "tags": [
+                    "catalog",
+                    "write"
+                ],
+                "requestBody": {
+                    "required": false,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ProductImageStrainAssignRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "tool": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "$ref": "#/components/schemas/ProductImageStrainAssignResponse"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Missing or invalid tenant credentials.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "402": {
+                        "description": "The tenant has no active trial, subscription, or grace period.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "A read-scoped key was used to call a write tool.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unknown tool name.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Request validation failed, or the tool reported a business error.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "tenantApiKey": []
+                    },
+                    {
+                        "tenantOAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/tools/product_image_strain_match": {
+            "post": {
+                "operationId": "product_image_strain_match",
+                "summary": "Find products on a tenant's storefront that have no featured image, and\npropose a hosted platform strain photo for each by matching product name\nagainst the strain library. Read-only — never writes to a product; pass\nthe results to product_image_strain_assign to actually apply them.\n\nOnly proposes strains whose photo is already hosted on the platform\n(cdn.strains.dabdash.com/strains/... — see StrainImageService::isHostedUrl). A name match\nagainst an unhosted/dead-remote strain is reported as match_method=none\nrather than proposing a broken or third-party hotlinked image.\n\nMatch order per product: 1) the product's own strain_id FK, if set\n(match_method=strain_id_fk, confidence=exact) 2) case-insensitive exact\nname match (confidence=exact) 3) prefix/contains name match, shortest\nstrain name wins ties (confidence=partial) 4) no match\n(match_method=none, confidence=none).",
+                "tags": [
+                    "catalog",
+                    "read"
+                ],
+                "requestBody": {
+                    "required": false,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ProductImageStrainMatchRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "tool": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "$ref": "#/components/schemas/ProductImageStrainMatchResponse"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Missing or invalid tenant credentials.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "402": {
+                        "description": "The tenant has no active trial, subscription, or grace period.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "A read-scoped key was used to call a write tool.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unknown tool name.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Request validation failed, or the tool reported a business error.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "tenantApiKey": []
+                    },
+                    {
+                        "tenantOAuth": []
+                    }
+                ]
+            }
+        },
         "/api/v1/tools/product_inspect": {
             "post": {
                 "operationId": "product_inspect",
@@ -12501,6 +14559,179 @@
                                         },
                                         "data": {
                                             "$ref": "#/components/schemas/ProductInspectResponse"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Missing or invalid tenant credentials.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "402": {
+                        "description": "The tenant has no active trial, subscription, or grace period.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "A read-scoped key was used to call a write tool.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unknown tool name.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Request validation failed, or the tool reported a business error.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "tenantApiKey": []
+                    },
+                    {
+                        "tenantOAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/tools/product_manage": {
+            "post": {
+                "operationId": "product_manage",
+                "summary": "Create a simple product for a tenant (v1: one price, unit tracking — the same\ndefault as a blank create-product page). Call strain_lookup first when the\nname looks like a strain, then pass strain_id so description, type, THC/CBD,\nindica/sativa, effects, flavors, rating, and the hosted strain photo fill in\nexactly like the vendor create page.\n\nIf strain_id is omitted, this tool name-matches the platform strain library\nitself: an exact name match is applied automatically; close matches are\nreturned as strain_matches so you can offer them. Pass skip_strain_enrich=true\nto skip that.\n\nACTIONS:\n  create: requires name. Optional price (dollars), sku, stock_quantity,\n          category_ids, description, strain_id.",
+                "tags": [
+                    "catalog",
+                    "write"
+                ],
+                "requestBody": {
+                    "required": false,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ProductManageRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "tool": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "$ref": "#/components/schemas/ProductManageResponse"
                                         }
                                     }
                                 }
@@ -13335,6 +15566,352 @@
                 ]
             }
         },
+        "/api/v1/tools/purchase_order_draft_create": {
+            "post": {
+                "operationId": "purchase_order_draft_create",
+                "summary": "Create a draft purchase order for a supplier. Does not receive stock.\nAfter creating, add lines with purchase_order_line_add, then tell the\nvendor to review the draft in admin (never auto-receive).",
+                "tags": [
+                    "catalog",
+                    "write"
+                ],
+                "requestBody": {
+                    "required": false,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PurchaseOrderDraftCreateRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "tool": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "$ref": "#/components/schemas/PurchaseOrderDraftCreateResponse"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Missing or invalid tenant credentials.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "402": {
+                        "description": "The tenant has no active trial, subscription, or grace period.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "A read-scoped key was used to call a write tool.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unknown tool name.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Request validation failed, or the tool reported a business error.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "tenantApiKey": []
+                    },
+                    {
+                        "tenantOAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/tools/purchase_order_line_add": {
+            "post": {
+                "operationId": "purchase_order_line_add",
+                "summary": "Add a product line to a draft purchase order. Pass product_id (and\nvariation_id when the product tracks stock by size). qty is the ordered\nquantity. unit_cost is dollars per unit; omit to use last cost.",
+                "tags": [
+                    "catalog",
+                    "write"
+                ],
+                "requestBody": {
+                    "required": false,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PurchaseOrderLineAddRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "tool": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "$ref": "#/components/schemas/PurchaseOrderLineAddResponse"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Missing or invalid tenant credentials.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "402": {
+                        "description": "The tenant has no active trial, subscription, or grace period.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "A read-scoped key was used to call a write tool.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unknown tool name.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Request validation failed, or the tool reported a business error.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "tenantApiKey": []
+                    },
+                    {
+                        "tenantOAuth": []
+                    }
+                ]
+            }
+        },
         "/api/v1/tools/push_notification_diagnostics": {
             "post": {
                 "operationId": "push_notification_diagnostics",
@@ -13712,6 +16289,525 @@
                                         },
                                         "data": {
                                             "$ref": "#/components/schemas/StoreInfoResponse"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Missing or invalid tenant credentials.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "402": {
+                        "description": "The tenant has no active trial, subscription, or grace period.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "A read-scoped key was used to call a write tool.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unknown tool name.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Request validation failed, or the tool reported a business error.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "tenantApiKey": []
+                    },
+                    {
+                        "tenantOAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/tools/strain_lookup": {
+            "post": {
+                "operationId": "strain_lookup",
+                "summary": "Search the platform strain database — the same catalog vendors search on the\ncreate-product page. Returns name, type, cannabinoids, effects, flavors, and\nwhether a hosted photo exists. Use this BEFORE creating a product whose name\nlooks like a strain, then pass strain_id to product_manage so the product is\nfilled from that row. Not tenant-owned media; photos stay on the shared\nstrain CDN.",
+                "tags": [
+                    "catalog",
+                    "read"
+                ],
+                "requestBody": {
+                    "required": false,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/StrainLookupRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "tool": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "$ref": "#/components/schemas/StrainLookupResponse"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Missing or invalid tenant credentials.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "402": {
+                        "description": "The tenant has no active trial, subscription, or grace period.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "A read-scoped key was used to call a write tool.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unknown tool name.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Request validation failed, or the tool reported a business error.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "tenantApiKey": []
+                    },
+                    {
+                        "tenantOAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/tools/supplier_upsert": {
+            "post": {
+                "operationId": "supplier_upsert",
+                "summary": "Create or update a product supplier for purchase orders.\n\nUPDATE MODE (supplier_id): only the fields you pass are changed.\nCREATE MODE (no supplier_id): name is required. If a supplier with the\nsame name already exists for this vendor, that row is updated instead.\n\nAlways resolve the supplier_id before purchase_order_draft_create.",
+                "tags": [
+                    "catalog",
+                    "write"
+                ],
+                "requestBody": {
+                    "required": false,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SupplierUpsertRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "tool": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "$ref": "#/components/schemas/SupplierUpsertResponse"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Missing or invalid tenant credentials.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "402": {
+                        "description": "The tenant has no active trial, subscription, or grace period.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "A read-scoped key was used to call a write tool.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unknown tool name.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Request validation failed, or the tool reported a business error.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "tenantApiKey": []
+                    },
+                    {
+                        "tenantOAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/tools/tenant_branding_manage": {
+            "post": {
+                "operationId": "tenant_branding_manage",
+                "summary": "Show or update a tenant's store logo, homepage hero image, and BIMI email\nlogo, then upsert the Cloudflare `default._bimi` TXT record when the zone\nis connected.\n\nACTIONS:\n  show (default): current logo_path, storefront logo URL (custom domain when\n         set), hero_image_path/URL, BIMI path/URL, the TXT value to publish,\n         and whether Cloudflare is connected.\n  set: pass media_id (from media_list / media_upload) to point logo_path at a\n         library asset. Pass hero_media_id for settings.hero_image_path, or\n         clear_hero=true to remove the hero. Pass exactly one of source_base64 /\n         source_path / source_url for an SVG to store the BIMI logo at\n         tenants/{id}/bimi-logo.svg (media_upload cannot take SVG). dry_run\n         defaults true — the first call reports what would happen.\n\nLogo URLs and BIMI `l=` values always use the tenant storefront host\n(custom domain or {slug}.dabdash.com), never the platform APP_URL.",
+                "tags": [
+                    "integrations",
+                    "write"
+                ],
+                "requestBody": {
+                    "required": false,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TenantBrandingManageRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "tool": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "$ref": "#/components/schemas/TenantBrandingManageResponse"
                                         }
                                     }
                                 }
