@@ -1,6 +1,6 @@
 <?php
 /**
- * CampaignUpsertResponseSpamFindingsInnerTest
+ * PurchaseOrderLineAddRequestTest
  *
  * PHP version 8.1
  *
@@ -31,15 +31,15 @@ namespace ShadowSoftware\DabDash\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * CampaignUpsertResponseSpamFindingsInnerTest Class Doc Comment
+ * PurchaseOrderLineAddRequestTest Class Doc Comment
  *
  * @category    Class
- * @description CampaignUpsertResponseSpamFindingsInner
+ * @description PurchaseOrderLineAddRequest
  * @package     ShadowSoftware\DabDash
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class CampaignUpsertResponseSpamFindingsInnerTest extends TestCase
+class PurchaseOrderLineAddRequestTest extends TestCase
 {
 
     /**
@@ -71,63 +71,63 @@ class CampaignUpsertResponseSpamFindingsInnerTest extends TestCase
     }
 
     /**
-     * Test "CampaignUpsertResponseSpamFindingsInner"
+     * Test "PurchaseOrderLineAddRequest"
      */
-    public function testCampaignUpsertResponseSpamFindingsInner()
+    public function testPurchaseOrderLineAddRequest()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "code"
+     * Test attribute "purchase_order_id"
      */
-    public function testPropertyCode()
+    public function testPropertyPurchaseOrderId()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "severity"
+     * Test attribute "product_id"
      */
-    public function testPropertySeverity()
+    public function testPropertyProductId()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "penalty"
+     * Test attribute "variation_id"
      */
-    public function testPropertyPenalty()
+    public function testPropertyVariationId()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "message"
+     * Test attribute "qty"
      */
-    public function testPropertyMessage()
+    public function testPropertyQty()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "hint"
+     * Test attribute "unit_cost"
      */
-    public function testPropertyHint()
+    public function testPropertyUnitCost()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "evidence"
+     * Test attribute "match_confidence"
      */
-    public function testPropertyEvidence()
+    public function testPropertyMatchConfidence()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

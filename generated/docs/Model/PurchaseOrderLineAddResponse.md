@@ -1,0 +1,9 @@
+# PurchaseOrderLineAddResponse
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**line** | [**\ShadowSoftware\DabDash\Model\PurchaseOrderLineAddResponseLine**](PurchaseOrderLineAddResponseLine.md) |  | [optional]
+
+[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

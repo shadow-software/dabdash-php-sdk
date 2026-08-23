@@ -7,6 +7,8 @@ All URIs are relative to https://.dabdash.com, except if the operation defines a
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**analyticsQuery()**](ReadApi.md#analyticsQuery) | **POST** /api/v1/tools/analytics_query | Run read-only analytics queries against the production database. Available reports: revenue_by_tenant, orders_by_status, top_products, revenue_over_time, customer_stats. Revenue dating uses RevenueAttribution (pass tenant_slug for delivered-mode tenants). |
+| [**campaignAudienceInspect()**](ReadApi.md#campaignAudienceInspect) | **POST** /api/v1/tools/campaign_audience_inspect | Split the tenant&#39;s campaign audience into warm (≥1 past order) vs cold (no order history) recipients. Use this before drafting a newsletter or SMS in the Create Promotion flow: warm audiences can get exclusive codes and commercial copy; cold audiences need personalized, spam-safe language — never hard-sell or aggressive exclusive deals.  Returns counts only — it does not create or send a campaign. |
+| [**campaignSpamScore()**](ReadApi.md#campaignSpamScore) | **POST** /api/v1/tools/campaign_spam_score | Score vendor campaign copy for inbox risk (email HTML or SMS).  One score only: 0–100 (0 &#x3D; spam, 100 &#x3D; primary-inbox friendly). Live scoring uses first-party rules. Pass for_send&#x3D;true to run the same deep filter check used on send/schedule and fold it into that single number (never a second score).  Vendors cannot send or schedule below the platform minimum (default 80). Aim for 80+ before handoff; 85+ is excellent.  Pass campaign_id (loads draft content) OR inline channel + content fields. |
 | [**catalogFlatteningAudit()**](ReadApi.md#catalogFlatteningAudit) | **POST** /api/v1/tools/catalog_flattening_audit | Read-only. Finds products whose sizes were split into separate products instead of tiers.  This happens when a catalog is imported from a store that put the size in the product NAME (\&quot;Blue Dream - 3.5G\&quot;, \&quot;Blue Dream - 7G\&quot;) instead of a size option column. The importer has no size column to read, so each size becomes its own product with a single \&quot;Default\&quot; option, and the store ends up with a long flat menu that cannot use weight pricing or mix &amp; match deals.  Returns each group of products that belong together (\&quot;family\&quot;), the sizes and prices found, and whether the group can be safely merged. A group is NOT mergeable when two of its products claim the same size — that must be resolved by hand first.  Nothing is changed. Use catalog_collapse to merge a group. |
 | [**couponList()**](ReadApi.md#couponList) | **POST** /api/v1/tools/coupon_list | List a tenant&#39;s discount coupons with code, type, value, usage limits, redemption count, active state, and schedule window. Coupons are customer-entered codes applied at checkout (distinct from bundles, which fire automatically on cart contents — use bundle_list for those).  type:   percentage     → value is a percentage 0-100 off the order subtotal.   fixed          → value is dollars off the order subtotal.   free_delivery  → waives the delivery fee only; value is unused for this type.  Always call this before making coupon-related decisions to see current codes, usage caps, and whether a coupon has already been exhausted (used_count vs max_uses). |
 | [**customerAddresses()**](ReadApi.md#customerAddresses) | **POST** /api/v1/tools/customer_addresses | Return a customer&#39;s saved addresses, coordinates, saved zones, and zone mismatch diagnostics. |
@@ -19,6 +21,7 @@ All URIs are relative to https://.dabdash.com, except if the operation defines a
 | [**mailboxInspect()**](ReadApi.md#mailboxInspect) | **POST** /api/v1/tools/mailbox_inspect | Inspect a tenant inbound mailbox: sync watermark, last error, recent ingestion counts (inbound/outbound), and a healthy/bootstrap/stalled/quiet verdict. Pass a tenant_slug, or pass platform&#x3D;true for a platform-owned mailbox (tenant_id IS NULL). |
 | [**metrcDiagnostics()**](ReadApi.md#metrcDiagnostics) | **POST** /api/v1/tools/metrc_diagnostics | Returns a JSON summary of Metrc compliance status for a tenant: integration mode, sync states, audit log counts by HTTP status, and pending/failed report counts. Pass a tenant_slug to inspect a specific tenant. |
 | [**orderDashboard()**](ReadApi.md#orderDashboard) | **POST** /api/v1/tools/order_dashboard | Query orders across all tenants. Filter by status, order number, customer clues, date range, amount, or tenant. Returns order list with pricing context. |
+| [**productImageStrainMatch()**](ReadApi.md#productImageStrainMatch) | **POST** /api/v1/tools/product_image_strain_match | Find products on a tenant&#39;s storefront that have no featured image, and propose a hosted platform strain photo for each by matching product name against the strain library. Read-only — never writes to a product; pass the results to product_image_strain_assign to actually apply them.  Only proposes strains whose photo is already hosted on the platform (cdn.strains.dabdash.com/strains/... — see StrainImageService::isHostedUrl). A name match against an unhosted/dead-remote strain is reported as match_method&#x3D;none rather than proposing a broken or third-party hotlinked image.  Match order per product: 1) the product&#39;s own strain_id FK, if set (match_method&#x3D;strain_id_fk, confidence&#x3D;exact) 2) case-insensitive exact name match (confidence&#x3D;exact) 3) prefix/contains name match, shortest strain name wins ties (confidence&#x3D;partial) 4) no match (match_method&#x3D;none, confidence&#x3D;none). |
 | [**productInspect()**](ReadApi.md#productInspect) | **POST** /api/v1/tools/product_inspect | Inspect a specific product including every variation&#39;s price, compare_at_price, mix_match_tags, stock, and the tenant&#39;s mix &amp; match rule settings. Use this to audit pricing, sale state, and bundle configuration for support tickets. |
 | [**productProfitability()**](ReadApi.md#productProfitability) | **POST** /api/v1/tools/product_profitability | Rank a tenant&#39;s products by real net margin using order-line COGS (order_items.cost_price), not price-tier approximations. Use this before recommending sales, coupons, freebies, or subscription mounting ladders — only promote SKUs with enough margin headroom.  Revenue dating follows RevenueAttribution (placed vs delivered) for the tenant. Freebie gift lines are excluded from COGS so giveaways do not distort product margins. Results include current catalog stock_status and a promo_headroom_ok flag (margin_percent &gt;&#x3D; min_margin_percent).  Sort: margin (default), revenue, or units. Pass a wide date_from for tenants with older imported history. |
 | [**productUnitPriceSearch()**](ReadApi.md#productUnitPriceSearch) | **POST** /api/v1/tools/product_unit_price_search | Search and rank a tenant&#39;s catalog by computed per-unit price (e.g. price per gram or price per ounce), across every weight-family product (types \&quot;weight\&quot; and \&quot;matrix\&quot;) — something product_inspect cannot do because it only looks up one product at a time by id/name/sku.  For each active, in-stock variation with a weight_value, computes price_per_gram &#x3D; price_cents / weight_value, then scales it to the requested unit (default \&quot;oz\&quot; &#x3D; 28g, matching the storefront&#39;s weight-tier convention). Use this to answer \&quot;what&#39;s the cheapest/most expensive product per ounce\&quot;, \&quot;find products under $X/g\&quot;, or to rank the catalog by unit economics for pricing audits and promo targeting.  Only weight-family products (weight, matrix) have a meaningful per-gram price — unit-family products (simple, unit, matrix_unit) are excluded since their variations are priced per item, not per weight. |
@@ -26,6 +29,7 @@ All URIs are relative to https://.dabdash.com, except if the operation defines a
 | [**pushNotificationDiagnostics()**](ReadApi.md#pushNotificationDiagnostics) | **POST** /api/v1/tools/push_notification_diagnostics | Diagnose push notification (FCM) delivery for a vendor. Surfaces token health, notification settings, recent send history with push/email flags, and a plain-language diagnosis of why pushes are or are not being delivered. |
 | [**searchConsole()**](ReadApi.md#searchConsole) | **POST** /api/v1/tools/search_console | Query Google Search Console data for the platform (dabdash.com) or a specific tenant with a connected GSC integration. Returns search overview, top queries, top pages, and daily trend. |
 | [**storeInfo()**](ReadApi.md#storeInfo) | **POST** /api/v1/tools/store_info | Identify the connected store — name, slug, timezone, currency, country, and subscription status. Use to validate an API token during setup. |
+| [**strainLookup()**](ReadApi.md#strainLookup) | **POST** /api/v1/tools/strain_lookup | Search the platform strain database — the same catalog vendors search on the create-product page. Returns name, type, cannabinoids, effects, flavors, and whether a hosted photo exists. Use this BEFORE creating a product whose name looks like a strain, then pass strain_id to product_manage so the product is filled from that row. Not tenant-owned media; photos stay on the shared strain CDN. |
 | [**zoneDiagnostics()**](ReadApi.md#zoneDiagnostics) | **POST** /api/v1/tools/zone_diagnostics | Inspect zone polygons against customer or order coordinates to explain why an address is inside or outside delivery coverage. |
 
 
@@ -76,6 +80,128 @@ try {
 ### Return type
 
 [**\ShadowSoftware\DabDash\Model\AnalyticsQuery200Response**](../Model/AnalyticsQuery200Response.md)
+
+### Authorization
+
+[tenantOAuth](../../README.md#tenantOAuth), [tenantApiKey](../../README.md#tenantApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `campaignAudienceInspect()`
+
+```php
+campaignAudienceInspect($campaign_audience_inspect_request): \ShadowSoftware\DabDash\Model\CampaignAudienceInspect200Response
+```
+
+Split the tenant's campaign audience into warm (≥1 past order) vs cold (no order history) recipients. Use this before drafting a newsletter or SMS in the Create Promotion flow: warm audiences can get exclusive codes and commercial copy; cold audiences need personalized, spam-safe language — never hard-sell or aggressive exclusive deals.  Returns counts only — it does not create or send a campaign.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: tenantOAuth
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure Bearer authorization: tenantApiKey
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new ShadowSoftware\DabDash\Api\ReadApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$campaign_audience_inspect_request = new \ShadowSoftware\DabDash\Model\CampaignAudienceInspectRequest(); // \ShadowSoftware\DabDash\Model\CampaignAudienceInspectRequest
+
+try {
+    $result = $apiInstance->campaignAudienceInspect($campaign_audience_inspect_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ReadApi->campaignAudienceInspect: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **campaign_audience_inspect_request** | [**\ShadowSoftware\DabDash\Model\CampaignAudienceInspectRequest**](../Model/CampaignAudienceInspectRequest.md)|  | [optional] |
+
+### Return type
+
+[**\ShadowSoftware\DabDash\Model\CampaignAudienceInspect200Response**](../Model/CampaignAudienceInspect200Response.md)
+
+### Authorization
+
+[tenantOAuth](../../README.md#tenantOAuth), [tenantApiKey](../../README.md#tenantApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `campaignSpamScore()`
+
+```php
+campaignSpamScore($campaign_spam_score_request): \ShadowSoftware\DabDash\Model\CampaignSpamScore200Response
+```
+
+Score vendor campaign copy for inbox risk (email HTML or SMS).  One score only: 0–100 (0 = spam, 100 = primary-inbox friendly). Live scoring uses first-party rules. Pass for_send=true to run the same deep filter check used on send/schedule and fold it into that single number (never a second score).  Vendors cannot send or schedule below the platform minimum (default 80). Aim for 80+ before handoff; 85+ is excellent.  Pass campaign_id (loads draft content) OR inline channel + content fields.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: tenantOAuth
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure Bearer authorization: tenantApiKey
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new ShadowSoftware\DabDash\Api\ReadApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$campaign_spam_score_request = new \ShadowSoftware\DabDash\Model\CampaignSpamScoreRequest(); // \ShadowSoftware\DabDash\Model\CampaignSpamScoreRequest
+
+try {
+    $result = $apiInstance->campaignSpamScore($campaign_spam_score_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ReadApi->campaignSpamScore: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **campaign_spam_score_request** | [**\ShadowSoftware\DabDash\Model\CampaignSpamScoreRequest**](../Model/CampaignSpamScoreRequest.md)|  | [optional] |
+
+### Return type
+
+[**\ShadowSoftware\DabDash\Model\CampaignSpamScore200Response**](../Model/CampaignSpamScore200Response.md)
 
 ### Authorization
 
@@ -822,6 +948,67 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `productImageStrainMatch()`
+
+```php
+productImageStrainMatch($product_image_strain_match_request): \ShadowSoftware\DabDash\Model\ProductImageStrainMatch200Response
+```
+
+Find products on a tenant's storefront that have no featured image, and propose a hosted platform strain photo for each by matching product name against the strain library. Read-only — never writes to a product; pass the results to product_image_strain_assign to actually apply them.  Only proposes strains whose photo is already hosted on the platform (cdn.strains.dabdash.com/strains/... — see StrainImageService::isHostedUrl). A name match against an unhosted/dead-remote strain is reported as match_method=none rather than proposing a broken or third-party hotlinked image.  Match order per product: 1) the product's own strain_id FK, if set (match_method=strain_id_fk, confidence=exact) 2) case-insensitive exact name match (confidence=exact) 3) prefix/contains name match, shortest strain name wins ties (confidence=partial) 4) no match (match_method=none, confidence=none).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: tenantOAuth
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure Bearer authorization: tenantApiKey
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new ShadowSoftware\DabDash\Api\ReadApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$product_image_strain_match_request = new \ShadowSoftware\DabDash\Model\ProductImageStrainMatchRequest(); // \ShadowSoftware\DabDash\Model\ProductImageStrainMatchRequest
+
+try {
+    $result = $apiInstance->productImageStrainMatch($product_image_strain_match_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ReadApi->productImageStrainMatch: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **product_image_strain_match_request** | [**\ShadowSoftware\DabDash\Model\ProductImageStrainMatchRequest**](../Model/ProductImageStrainMatchRequest.md)|  | [optional] |
+
+### Return type
+
+[**\ShadowSoftware\DabDash\Model\ProductImageStrainMatch200Response**](../Model/ProductImageStrainMatch200Response.md)
+
+### Authorization
+
+[tenantOAuth](../../README.md#tenantOAuth), [tenantApiKey](../../README.md#tenantApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `productInspect()`
 
 ```php
@@ -1235,6 +1422,67 @@ try {
 ### Return type
 
 [**\ShadowSoftware\DabDash\Model\StoreInfo200Response**](../Model/StoreInfo200Response.md)
+
+### Authorization
+
+[tenantOAuth](../../README.md#tenantOAuth), [tenantApiKey](../../README.md#tenantApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `strainLookup()`
+
+```php
+strainLookup($strain_lookup_request): \ShadowSoftware\DabDash\Model\StrainLookup200Response
+```
+
+Search the platform strain database — the same catalog vendors search on the create-product page. Returns name, type, cannabinoids, effects, flavors, and whether a hosted photo exists. Use this BEFORE creating a product whose name looks like a strain, then pass strain_id to product_manage so the product is filled from that row. Not tenant-owned media; photos stay on the shared strain CDN.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: tenantOAuth
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure Bearer authorization: tenantApiKey
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new ShadowSoftware\DabDash\Api\ReadApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$strain_lookup_request = new \ShadowSoftware\DabDash\Model\StrainLookupRequest(); // \ShadowSoftware\DabDash\Model\StrainLookupRequest
+
+try {
+    $result = $apiInstance->strainLookup($strain_lookup_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ReadApi->strainLookup: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **strain_lookup_request** | [**\ShadowSoftware\DabDash\Model\StrainLookupRequest**](../Model/StrainLookupRequest.md)|  | [optional] |
+
+### Return type
+
+[**\ShadowSoftware\DabDash\Model\StrainLookup200Response**](../Model/StrainLookup200Response.md)
 
 ### Authorization
 

@@ -75,7 +75,7 @@ class CampaignUpsertResponse implements ModelInterface, ArrayAccess, \JsonSerial
         'spam_summary' => 'string',
         'spam_can_send' => 'bool',
         'spam_min_send_score' => 'int',
-        'spam_findings' => '\ShadowSoftware\DabDash\Model\CampaignUpsertResponseSpamFindingsInner[]'
+        'spam_findings' => '\ShadowSoftware\DabDash\Model\CampaignSpamScoreResponseFindingsInner[]'
     ];
 
     /**
@@ -974,7 +974,7 @@ class CampaignUpsertResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets spam_findings
      *
-     * @return \ShadowSoftware\DabDash\Model\CampaignUpsertResponseSpamFindingsInner[]|null
+     * @return \ShadowSoftware\DabDash\Model\CampaignSpamScoreResponseFindingsInner[]|null
      */
     public function getSpamFindings()
     {
@@ -984,7 +984,7 @@ class CampaignUpsertResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets spam_findings
      *
-     * @param \ShadowSoftware\DabDash\Model\CampaignUpsertResponseSpamFindingsInner[]|null $spam_findings spam_findings
+     * @param \ShadowSoftware\DabDash\Model\CampaignSpamScoreResponseFindingsInner[]|null $spam_findings spam_findings
      *
      * @return self
      */

@@ -96,4 +96,22 @@ class CampaignApplyTemplateRequestTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "use_month_default"
+     */
+    public function testPropertyUseMonthDefault()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "month"
+     */
+    public function testPropertyMonth()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

@@ -84,6 +84,30 @@ class ReadApiTest extends TestCase
     }
 
     /**
+     * Test case for campaignAudienceInspect
+     *
+     * Split the tenant's campaign audience into warm (≥1 past order) vs cold (no order history) recipients. Use this before drafting a newsletter or SMS in the Create Promotion flow: warm audiences can get exclusive codes and commercial copy; cold audiences need personalized, spam-safe language — never hard-sell or aggressive exclusive deals.  Returns counts only — it does not create or send a campaign..
+     *
+     */
+    public function testCampaignAudienceInspect()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for campaignSpamScore
+     *
+     * Score vendor campaign copy for inbox risk (email HTML or SMS).  One score only: 0–100 (0 = spam, 100 = primary-inbox friendly). Live scoring uses first-party rules. Pass for_send=true to run the same deep filter check used on send/schedule and fold it into that single number (never a second score).  Vendors cannot send or schedule below the platform minimum (default 80). Aim for 80+ before handoff; 85+ is excellent.  Pass campaign_id (loads draft content) OR inline channel + content fields..
+     *
+     */
+    public function testCampaignSpamScore()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for catalogFlatteningAudit
      *
      * Read-only. Finds products whose sizes were split into separate products instead of tiers.  This happens when a catalog is imported from a store that put the size in the product NAME (\"Blue Dream - 3.5G\", \"Blue Dream - 7G\") instead of a size option column. The importer has no size column to read, so each size becomes its own product with a single \"Default\" option, and the store ends up with a long flat menu that cannot use weight pricing or mix & match deals.  Returns each group of products that belong together (\"family\"), the sizes and prices found, and whether the group can be safely merged. A group is NOT mergeable when two of its products claim the same size — that must be resolved by hand first.  Nothing is changed. Use catalog_collapse to merge a group..
@@ -228,6 +252,18 @@ class ReadApiTest extends TestCase
     }
 
     /**
+     * Test case for productImageStrainMatch
+     *
+     * Find products on a tenant's storefront that have no featured image, and propose a hosted platform strain photo for each by matching product name against the strain library. Read-only — never writes to a product; pass the results to product_image_strain_assign to actually apply them.  Only proposes strains whose photo is already hosted on the platform (cdn.strains.dabdash.com/strains/... — see StrainImageService::isHostedUrl). A name match against an unhosted/dead-remote strain is reported as match_method=none rather than proposing a broken or third-party hotlinked image.  Match order per product: 1) the product's own strain_id FK, if set (match_method=strain_id_fk, confidence=exact) 2) case-insensitive exact name match (confidence=exact) 3) prefix/contains name match, shortest strain name wins ties (confidence=partial) 4) no match (match_method=none, confidence=none)..
+     *
+     */
+    public function testProductImageStrainMatch()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for productInspect
      *
      * Inspect a specific product including every variation's price, compare_at_price, mix_match_tags, stock, and the tenant's mix & match rule settings. Use this to audit pricing, sale state, and bundle configuration for support tickets..
@@ -306,6 +342,18 @@ class ReadApiTest extends TestCase
      *
      */
     public function testStoreInfo()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for strainLookup
+     *
+     * Search the platform strain database — the same catalog vendors search on the create-product page. Returns name, type, cannabinoids, effects, flavors, and whether a hosted photo exists. Use this BEFORE creating a product whose name looks like a strain, then pass strain_id to product_manage so the product is filled from that row. Not tenant-owned media; photos stay on the shared strain CDN..
+     *
+     */
+    public function testStrainLookup()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

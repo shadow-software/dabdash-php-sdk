@@ -58,7 +58,9 @@ class CampaignApplyTemplateRequest implements ModelInterface, ArrayAccess, \Json
      */
     protected static $openAPITypes = [
         'campaign_id' => 'int',
-        'template_id' => 'string'
+        'template_id' => 'string',
+        'use_month_default' => 'bool',
+        'month' => 'int'
     ];
 
     /**
@@ -70,7 +72,9 @@ class CampaignApplyTemplateRequest implements ModelInterface, ArrayAccess, \Json
      */
     protected static $openAPIFormats = [
         'campaign_id' => null,
-        'template_id' => null
+        'template_id' => null,
+        'use_month_default' => null,
+        'month' => null
     ];
 
     /**
@@ -80,7 +84,9 @@ class CampaignApplyTemplateRequest implements ModelInterface, ArrayAccess, \Json
      */
     protected static array $openAPINullables = [
         'campaign_id' => false,
-        'template_id' => true
+        'template_id' => true,
+        'use_month_default' => true,
+        'month' => true
     ];
 
     /**
@@ -170,7 +176,9 @@ class CampaignApplyTemplateRequest implements ModelInterface, ArrayAccess, \Json
      */
     protected static $attributeMap = [
         'campaign_id' => 'campaign_id',
-        'template_id' => 'template_id'
+        'template_id' => 'template_id',
+        'use_month_default' => 'use_month_default',
+        'month' => 'month'
     ];
 
     /**
@@ -180,7 +188,9 @@ class CampaignApplyTemplateRequest implements ModelInterface, ArrayAccess, \Json
      */
     protected static $setters = [
         'campaign_id' => 'setCampaignId',
-        'template_id' => 'setTemplateId'
+        'template_id' => 'setTemplateId',
+        'use_month_default' => 'setUseMonthDefault',
+        'month' => 'setMonth'
     ];
 
     /**
@@ -190,7 +200,9 @@ class CampaignApplyTemplateRequest implements ModelInterface, ArrayAccess, \Json
      */
     protected static $getters = [
         'campaign_id' => 'getCampaignId',
-        'template_id' => 'getTemplateId'
+        'template_id' => 'getTemplateId',
+        'use_month_default' => 'getUseMonthDefault',
+        'month' => 'getMonth'
     ];
 
     /**
@@ -252,6 +264,8 @@ class CampaignApplyTemplateRequest implements ModelInterface, ArrayAccess, \Json
     {
         $this->setIfExists('campaign_id', $data ?? [], null);
         $this->setIfExists('template_id', $data ?? [], null);
+        $this->setIfExists('use_month_default', $data ?? [], null);
+        $this->setIfExists('month', $data ?? [], null);
     }
 
     /**
@@ -339,7 +353,7 @@ class CampaignApplyTemplateRequest implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets template_id
      *
-     * @param string|null $template_id System template id (e.g. \"summer-new-arrivals\"). Omit to list available templates.
+     * @param string|null $template_id System template id (e.g. \"summer-new-arrivals\"). Omit with use_month_default=true to apply this month's calendar default.
      *
      * @return self
      */
@@ -356,6 +370,74 @@ class CampaignApplyTemplateRequest implements ModelInterface, ArrayAccess, \Json
             }
         }
         $this->container['template_id'] = $template_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets use_month_default
+     *
+     * @return bool|null
+     */
+    public function getUseMonthDefault()
+    {
+        return $this->container['use_month_default'];
+    }
+
+    /**
+     * Sets use_month_default
+     *
+     * @param bool|null $use_month_default When true and template_id is omitted, applies the month_calendar default for month (or the current month in the tenant timezone).
+     *
+     * @return self
+     */
+    public function setUseMonthDefault($use_month_default)
+    {
+        if (is_null($use_month_default)) {
+            array_push($this->openAPINullablesSetToNull, 'use_month_default');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('use_month_default', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['use_month_default'] = $use_month_default;
+
+        return $this;
+    }
+
+    /**
+     * Gets month
+     *
+     * @return int|null
+     */
+    public function getMonth()
+    {
+        return $this->container['month'];
+    }
+
+    /**
+     * Sets month
+     *
+     * @param int|null $month Calendar month 1-12 for month_calendar lookup when use_month_default is true. Defaults to the current month.
+     *
+     * @return self
+     */
+    public function setMonth($month)
+    {
+        if (is_null($month)) {
+            array_push($this->openAPINullablesSetToNull, 'month');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('month', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['month'] = $month;
 
         return $this;
     }

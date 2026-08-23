@@ -204,12 +204,60 @@ class CatalogApiTest extends TestCase
     }
 
     /**
+     * Test case for productImageAssign
+     *
+     * Set a product's featured image and/or gallery from the tenant media library. Pass media_id (from media_list / media_upload) for featured_image, and/or gallery_media_ids to replace gallery_images. Does not upload bytes and does not create media_assets rows — ingest first with media_upload. Assets must be public (private library items have no storefront URL).  dry_run (default true) previews without writing. overwrite (default false) refuses to replace an existing featured_image unless true. clear_featured clears featured_image without setting a new one.  Distinct from product_image_strain_assign, which writes a shared platform strain CDN URL and never creates a tenant library row (GitHub #72 / #184)..
+     *
+     */
+    public function testProductImageAssign()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for productImageStrainAssign
+     *
+     * Apply a hosted platform strain photo to a product's featured_image. Writes a URL string to the product row only — never uploads/copies bytes, never creates a tenant media_assets row (this is the shared strain library, not tenant media).  Two modes (exactly one required):   assignments: explicit [{product_id, strain_id}, ...] pairs you already     decided on (e.g. from product_image_strain_match's proposals).   auto_match: true — re-runs product_image_strain_match's own matching     internally against products missing a featured image (optionally     scoped by search/limit) and applies every exact/partial match found.  dry_run (default true) previews without writing — always call once with dry_run=true and review the results before dry_run=false.  overwrite (default false) — a product that already has a featured_image is skipped, never replaced, unless overwrite=true. Idempotent: if a product's featured_image already equals the target strain's hosted URL, it is reported skipped/already_set regardless of overwrite (nothing to do, not an error).  Refuses to assign a strain whose image is not hosted on the platform (skipped/strain_image_not_hosted) — never writes a dead or third-party hotlinked URL as a product's featured image..
+     *
+     */
+    public function testProductImageStrainAssign()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for productImageStrainMatch
+     *
+     * Find products on a tenant's storefront that have no featured image, and propose a hosted platform strain photo for each by matching product name against the strain library. Read-only — never writes to a product; pass the results to product_image_strain_assign to actually apply them.  Only proposes strains whose photo is already hosted on the platform (cdn.strains.dabdash.com/strains/... — see StrainImageService::isHostedUrl). A name match against an unhosted/dead-remote strain is reported as match_method=none rather than proposing a broken or third-party hotlinked image.  Match order per product: 1) the product's own strain_id FK, if set (match_method=strain_id_fk, confidence=exact) 2) case-insensitive exact name match (confidence=exact) 3) prefix/contains name match, shortest strain name wins ties (confidence=partial) 4) no match (match_method=none, confidence=none)..
+     *
+     */
+    public function testProductImageStrainMatch()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for productInspect
      *
      * Inspect a specific product including every variation's price, compare_at_price, mix_match_tags, stock, and the tenant's mix & match rule settings. Use this to audit pricing, sale state, and bundle configuration for support tickets..
      *
      */
     public function testProductInspect()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for productManage
+     *
+     * Create a simple product for a tenant (v1: one price, unit tracking — the same default as a blank create-product page). Call strain_lookup first when the name looks like a strain, then pass strain_id so description, type, THC/CBD, indica/sativa, effects, flavors, rating, and the hosted strain photo fill in exactly like the vendor create page.  If strain_id is omitted, this tool name-matches the platform strain library itself: an exact name match is applied automatically; close matches are returned as strain_matches so you can offer them. Pass skip_strain_enrich=true to skip that.  ACTIONS:   create: requires name. Optional price (dollars), sku, stock_quantity,           category_ids, description, strain_id..
+     *
+     */
+    public function testProductManage()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -234,6 +282,54 @@ class CatalogApiTest extends TestCase
      *
      */
     public function testProductUpdateBySku()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for purchaseOrderDraftCreate
+     *
+     * Create a draft purchase order for a supplier. Does not receive stock. After creating, add lines with purchase_order_line_add, then tell the vendor to review the draft in admin (never auto-receive)..
+     *
+     */
+    public function testPurchaseOrderDraftCreate()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for purchaseOrderLineAdd
+     *
+     * Add a product line to a draft purchase order. Pass product_id (and variation_id when the product tracks stock by size). qty is the ordered quantity. unit_cost is dollars per unit; omit to use last cost..
+     *
+     */
+    public function testPurchaseOrderLineAdd()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for strainLookup
+     *
+     * Search the platform strain database — the same catalog vendors search on the create-product page. Returns name, type, cannabinoids, effects, flavors, and whether a hosted photo exists. Use this BEFORE creating a product whose name looks like a strain, then pass strain_id to product_manage so the product is filled from that row. Not tenant-owned media; photos stay on the shared strain CDN..
+     *
+     */
+    public function testStrainLookup()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for supplierUpsert
+     *
+     * Create or update a product supplier for purchase orders.  UPDATE MODE (supplier_id): only the fields you pass are changed. CREATE MODE (no supplier_id): name is required. If a supplier with the same name already exists for this vendor, that row is updated instead.  Always resolve the supplier_id before purchase_order_draft_create..
+     *
+     */
+    public function testSupplierUpsert()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

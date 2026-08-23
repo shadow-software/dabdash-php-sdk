@@ -62,6 +62,9 @@ class CampaignApplyTemplateResponse implements ModelInterface, ArrayAccess, \Jso
         'action' => 'string',
         'campaign_id' => 'int',
         'template_id' => 'string',
+        'use_month_default' => 'bool',
+        'month' => 'int',
+        'theme' => 'string',
         'html_body_length' => 'int',
         'has_unsubscribe_token' => 'bool',
         'message' => 'string'
@@ -80,6 +83,9 @@ class CampaignApplyTemplateResponse implements ModelInterface, ArrayAccess, \Jso
         'action' => null,
         'campaign_id' => null,
         'template_id' => null,
+        'use_month_default' => null,
+        'month' => null,
+        'theme' => null,
         'html_body_length' => null,
         'has_unsubscribe_token' => null,
         'message' => null
@@ -96,6 +102,9 @@ class CampaignApplyTemplateResponse implements ModelInterface, ArrayAccess, \Jso
         'action' => true,
         'campaign_id' => true,
         'template_id' => true,
+        'use_month_default' => true,
+        'month' => true,
+        'theme' => true,
         'html_body_length' => true,
         'has_unsubscribe_token' => true,
         'message' => true
@@ -192,6 +201,9 @@ class CampaignApplyTemplateResponse implements ModelInterface, ArrayAccess, \Jso
         'action' => 'action',
         'campaign_id' => 'campaign_id',
         'template_id' => 'template_id',
+        'use_month_default' => 'use_month_default',
+        'month' => 'month',
+        'theme' => 'theme',
         'html_body_length' => 'html_body_length',
         'has_unsubscribe_token' => 'has_unsubscribe_token',
         'message' => 'message'
@@ -208,6 +220,9 @@ class CampaignApplyTemplateResponse implements ModelInterface, ArrayAccess, \Jso
         'action' => 'setAction',
         'campaign_id' => 'setCampaignId',
         'template_id' => 'setTemplateId',
+        'use_month_default' => 'setUseMonthDefault',
+        'month' => 'setMonth',
+        'theme' => 'setTheme',
         'html_body_length' => 'setHtmlBodyLength',
         'has_unsubscribe_token' => 'setHasUnsubscribeToken',
         'message' => 'setMessage'
@@ -224,6 +239,9 @@ class CampaignApplyTemplateResponse implements ModelInterface, ArrayAccess, \Jso
         'action' => 'getAction',
         'campaign_id' => 'getCampaignId',
         'template_id' => 'getTemplateId',
+        'use_month_default' => 'getUseMonthDefault',
+        'month' => 'getMonth',
+        'theme' => 'getTheme',
         'html_body_length' => 'getHtmlBodyLength',
         'has_unsubscribe_token' => 'getHasUnsubscribeToken',
         'message' => 'getMessage'
@@ -291,6 +309,9 @@ class CampaignApplyTemplateResponse implements ModelInterface, ArrayAccess, \Jso
         $this->setIfExists('action', $data ?? [], null);
         $this->setIfExists('campaign_id', $data ?? [], null);
         $this->setIfExists('template_id', $data ?? [], null);
+        $this->setIfExists('use_month_default', $data ?? [], null);
+        $this->setIfExists('month', $data ?? [], null);
+        $this->setIfExists('theme', $data ?? [], null);
         $this->setIfExists('html_body_length', $data ?? [], null);
         $this->setIfExists('has_unsubscribe_token', $data ?? [], null);
         $this->setIfExists('message', $data ?? [], null);
@@ -504,6 +525,108 @@ class CampaignApplyTemplateResponse implements ModelInterface, ArrayAccess, \Jso
             }
         }
         $this->container['template_id'] = $template_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets use_month_default
+     *
+     * @return bool|null
+     */
+    public function getUseMonthDefault()
+    {
+        return $this->container['use_month_default'];
+    }
+
+    /**
+     * Sets use_month_default
+     *
+     * @param bool|null $use_month_default use_month_default
+     *
+     * @return self
+     */
+    public function setUseMonthDefault($use_month_default)
+    {
+        if (is_null($use_month_default)) {
+            array_push($this->openAPINullablesSetToNull, 'use_month_default');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('use_month_default', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['use_month_default'] = $use_month_default;
+
+        return $this;
+    }
+
+    /**
+     * Gets month
+     *
+     * @return int|null
+     */
+    public function getMonth()
+    {
+        return $this->container['month'];
+    }
+
+    /**
+     * Sets month
+     *
+     * @param int|null $month month
+     *
+     * @return self
+     */
+    public function setMonth($month)
+    {
+        if (is_null($month)) {
+            array_push($this->openAPINullablesSetToNull, 'month');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('month', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['month'] = $month;
+
+        return $this;
+    }
+
+    /**
+     * Gets theme
+     *
+     * @return string|null
+     */
+    public function getTheme()
+    {
+        return $this->container['theme'];
+    }
+
+    /**
+     * Sets theme
+     *
+     * @param string|null $theme theme
+     *
+     * @return self
+     */
+    public function setTheme($theme)
+    {
+        if (is_null($theme)) {
+            array_push($this->openAPINullablesSetToNull, 'theme');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('theme', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['theme'] = $theme;
 
         return $this;
     }

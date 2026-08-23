@@ -242,7 +242,7 @@ class WriteApiTest extends TestCase
     /**
      * Test case for mediaCompose
      *
-     * Build a finished campaign image ON THE SERVER: take a base picture, drop the vendor's logo on top, add a headline and subtitle, and save the result straight into the tenant's media library. Returns a media_id + public URL ready for campaign_set_image. Nothing has to be uploaded from your machine — pass IDs and URLs and the server does the artwork.  PROVIDE THE BASE (exactly one):   - base_media_id — an image already in the tenant's library (see media_list).   - base_url      — a public https image URL, e.g. the output of an image-generation tool.  PROVIDE THE LOGO (optional, at most one):   - logo_media_id / logo_url — same two options as the base.   THE LOGO IS NEVER ALTERED. It is scaled to fit (aspect ratio locked) and placed as-is —   its colours, strokes and transparency are left exactly as supplied. For legibility on busy   artwork use the `scrim` option, which darkens the area BEHIND the logo and text.  LAYOUT: logo on top, headline under it, subtitle under that — the block is centred horizontally and positioned with logo_position (top / center / bottom). Sizes are given as a fraction of the base image width so they scale with any canvas. Long text is word-wrapped automatically; the response's `wrapped` flag tells you when that happened so you can shorten it.  CONSTRAINTS: sources max 5 MB, JPEG/PNG/WebP/GIF, max 8000x8000. The finished image goes through the same pipeline as media_upload — re-encoded to WebP, resized to fit, de-duplicated by content — so identical inputs return the existing media_id instead of a duplicate.  Typical flow: (generate or pick a base image) -> media_compose -> campaign_set_image.  STOREFRONT SWAG MODE (category_id or widget_id): instead of the manual layout above, pass category_id or widget_id to run the platform's own storefront branding pipeline (SwagImagesService) against that exact category or widget — the same compositor used by the dev seeder and vendor admin: tenant logo eyebrow, Bebas Neue headline (shrunk to fit long names automatically), brand-colour accent rule, and a sub-label (the tenant's live domain for categories, the widget's own subtitle for widgets). Pass base_media_id or base_url to set/replace the row's base_image_path first; omit both to recompose from whatever base_image_path is already saved. Saves directly to image_path on that category or widget — this is an internal/admin tool, not exposed to vendors..
+     * Build a finished campaign/storefront creative ON THE SERVER: take a base picture, drop the vendor's logo on top, add a headline and subtitle, and save the RESULT straight into the tenant's media library. Returns a media_id + public URL ready to place with campaign_set_image, category_manage, widget_manage, tenant_branding_manage, product_image_assign, or tenant_blog_upsert.  PROVIDE THE BASE (exactly one):   - base_media_id — preferred for tenant-owned photos already in the library (media_list /     media_upload). Keeps the source visible in Admin → Media.   - base_url      — public https URL for external/generated artwork. Only the composed     OUTPUT is saved as a library row; the raw URL bytes are not separately ingested. Prefer     media_upload → base_media_id when the photo should remain in the media library (#184).  PROVIDE THE LOGO (optional, at most one):   - logo_media_id / logo_url — same two options as the base (prefer logo_media_id for the     tenant logo so it stays linked in Media).   THE LOGO IS NEVER ALTERED. It is scaled to fit (aspect ratio locked) and placed as-is —   its colours, strokes and transparency are left exactly as supplied. For legibility on busy   artwork use the `scrim` option, which darkens the area BEHIND the logo and text.  LAYOUT: logo on top, headline under it, subtitle under that — the block is centred horizontally and positioned with logo_position (top / center / bottom). Sizes are given as a fraction of the base image width so they scale with any canvas. Long text is word-wrapped automatically; the response's `wrapped` flag tells you when that happened so you can shorten it.  CONSTRAINTS: sources max 5 MB, JPEG/PNG/WebP/GIF, max 8000x8000. The finished image goes through the same pipeline as media_upload — re-encoded to WebP, resized to fit, de-duplicated by content — so identical inputs return the existing media_id instead of a duplicate.  Typical flow: media_upload (or media_list) → media_compose → place with media_id.  STOREFRONT SWAG MODE (category_id or widget_id): instead of the manual layout above, pass category_id or widget_id to run the platform's own storefront branding pipeline (SwagImagesService) against that exact category or widget — the same compositor used by the dev seeder and vendor admin: tenant logo eyebrow, Bebas Neue headline (shrunk to fit long names automatically), brand-colour accent rule, and a sub-label (the tenant's live domain for categories, the widget's own subtitle for widgets). Pass base_media_id or base_url to set/replace the row's base_image_path first; omit both to recompose from whatever base_image_path is already saved. Saves directly to image_path on that category or widget — this is an internal/admin tool, not exposed to vendors..
      *
      */
     public function testMediaCompose()
@@ -266,7 +266,7 @@ class WriteApiTest extends TestCase
     /**
      * Test case for mediaUpload
      *
-     * Upload an image into a tenant's media library (the same library the vendor admin uses). The image is ingested through the platform's shared media pipeline — re-encoded to WebP, resized to fit, EXIF- oriented, content-addressed for dedup — and a media_assets row is created. It ALWAYS lands in the library, and the tool returns the new media_id and public URL you can then place into a campaign with campaign_set_image.  PROVIDE THE IMAGE ONE OF THREE WAYS (exactly one):   - source_url    — fetch the image from a public http(s) URL.   - source_path   — read a local file path on the server/agent host.   - source_base64 — raw base64 of the image bytes (no data: prefix needed; a data: prefix is stripped).  CONSTRAINTS: max 5 MB; JPEG, PNG, WebP, or GIF. Identical bytes already in the library are de-duped (you get the existing media_id back). Uploads default to public visibility so the image is emailable.  Optional alt_text and folder help organise and caption the asset. Confirm the tenant_slug with tenant_list first. To see what's already in the library, use media_list..
+     * Upload an image into a tenant's media library (the same library the vendor admin uses). The image is ingested through the platform's shared media pipeline — re-encoded to WebP, resized to fit, EXIF- oriented, content-addressed for dedup — and a media_assets row is created. It ALWAYS lands in the library, and the tool returns the new media_id and public URL.  PLACE the media_id with the matching tool (never hotlink the URL as a product/blog/hero path):   - campaign_set_image — email campaign HTML   - category_manage / widget_manage — storefront images (media_id / base_media_id)   - tenant_branding_manage — store logo (media_id) or homepage hero (hero_media_id)   - product_image_assign — product featured / gallery   - tenant_blog_upsert — vendor blog featured image   - media_compose — base_media_id / logo_media_id for composed creatives  PROVIDE THE IMAGE ONE OF THREE WAYS (exactly one):   - source_url    — fetch the image from a public http(s) URL (preferred for remote agents).   - source_path   — read a local file path on the server/agent host (often broken on prod FS).   - source_base64 — raw base64 of the image bytes (no data: prefix needed; a data: prefix is stripped).  CONSTRAINTS: max 5 MB; JPEG, PNG, WebP, or GIF. Identical bytes already in the library are de-duped (you get the existing media_id back). Uploads default to public visibility so the image is emailable.  Optional alt_text and folder help organise and caption the asset. Confirm the tenant_slug with tenant_list first. To see what's already in the library, use media_list..
      *
      */
     public function testMediaUpload()
@@ -348,12 +348,96 @@ class WriteApiTest extends TestCase
     }
 
     /**
+     * Test case for productImageAssign
+     *
+     * Set a product's featured image and/or gallery from the tenant media library. Pass media_id (from media_list / media_upload) for featured_image, and/or gallery_media_ids to replace gallery_images. Does not upload bytes and does not create media_assets rows — ingest first with media_upload. Assets must be public (private library items have no storefront URL).  dry_run (default true) previews without writing. overwrite (default false) refuses to replace an existing featured_image unless true. clear_featured clears featured_image without setting a new one.  Distinct from product_image_strain_assign, which writes a shared platform strain CDN URL and never creates a tenant library row (GitHub #72 / #184)..
+     *
+     */
+    public function testProductImageAssign()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for productImageStrainAssign
+     *
+     * Apply a hosted platform strain photo to a product's featured_image. Writes a URL string to the product row only — never uploads/copies bytes, never creates a tenant media_assets row (this is the shared strain library, not tenant media).  Two modes (exactly one required):   assignments: explicit [{product_id, strain_id}, ...] pairs you already     decided on (e.g. from product_image_strain_match's proposals).   auto_match: true — re-runs product_image_strain_match's own matching     internally against products missing a featured image (optionally     scoped by search/limit) and applies every exact/partial match found.  dry_run (default true) previews without writing — always call once with dry_run=true and review the results before dry_run=false.  overwrite (default false) — a product that already has a featured_image is skipped, never replaced, unless overwrite=true. Idempotent: if a product's featured_image already equals the target strain's hosted URL, it is reported skipped/already_set regardless of overwrite (nothing to do, not an error).  Refuses to assign a strain whose image is not hosted on the platform (skipped/strain_image_not_hosted) — never writes a dead or third-party hotlinked URL as a product's featured image..
+     *
+     */
+    public function testProductImageStrainAssign()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for productManage
+     *
+     * Create a simple product for a tenant (v1: one price, unit tracking — the same default as a blank create-product page). Call strain_lookup first when the name looks like a strain, then pass strain_id so description, type, THC/CBD, indica/sativa, effects, flavors, rating, and the hosted strain photo fill in exactly like the vendor create page.  If strain_id is omitted, this tool name-matches the platform strain library itself: an exact name match is applied automatically; close matches are returned as strain_matches so you can offer them. Pass skip_strain_enrich=true to skip that.  ACTIONS:   create: requires name. Optional price (dollars), sku, stock_quantity,           category_ids, description, strain_id..
+     *
+     */
+    public function testProductManage()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for productUpdateBySku
      *
      * Update a simple product's stock quantity and/or price by SKU — the inventory-sync path for an external POS. v1 scope: SIMPLE products only (single implicit unit, no weight/variant tiers). Every other pricing type (weight, unit, matrix, matrix_unit) is rejected with a clear message; those need per-tier/per-variant targeting that a flat SKU+quantity+price payload cannot express safely. Always call product_inspect with sku first to confirm which product/type you are targeting..
      *
      */
     public function testProductUpdateBySku()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for purchaseOrderDraftCreate
+     *
+     * Create a draft purchase order for a supplier. Does not receive stock. After creating, add lines with purchase_order_line_add, then tell the vendor to review the draft in admin (never auto-receive)..
+     *
+     */
+    public function testPurchaseOrderDraftCreate()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for purchaseOrderLineAdd
+     *
+     * Add a product line to a draft purchase order. Pass product_id (and variation_id when the product tracks stock by size). qty is the ordered quantity. unit_cost is dollars per unit; omit to use last cost..
+     *
+     */
+    public function testPurchaseOrderLineAdd()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for supplierUpsert
+     *
+     * Create or update a product supplier for purchase orders.  UPDATE MODE (supplier_id): only the fields you pass are changed. CREATE MODE (no supplier_id): name is required. If a supplier with the same name already exists for this vendor, that row is updated instead.  Always resolve the supplier_id before purchase_order_draft_create..
+     *
+     */
+    public function testSupplierUpsert()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for tenantBrandingManage
+     *
+     * Show or update a tenant's store logo, homepage hero image, and BIMI email logo, then upsert the Cloudflare `default._bimi` TXT record when the zone is connected.  ACTIONS:   show (default): current logo_path, storefront logo URL (custom domain when          set), hero_image_path/URL, BIMI path/URL, the TXT value to publish,          and whether Cloudflare is connected.   set: pass media_id (from media_list / media_upload) to point logo_path at a          library asset. Pass hero_media_id for settings.hero_image_path, or          clear_hero=true to remove the hero. Pass exactly one of source_base64 /          source_path / source_url for an SVG to store the BIMI logo at          tenants/{id}/bimi-logo.svg (media_upload cannot take SVG). dry_run          defaults true — the first call reports what would happen.  Logo URLs and BIMI `l=` values always use the tenant storefront host (custom domain or {slug}.dabdash.com), never the platform APP_URL..
+     *
+     */
+    public function testTenantBrandingManage()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

@@ -125,6 +125,33 @@ class CampaignApplyTemplateResponseTest extends TestCase
     }
 
     /**
+     * Test attribute "use_month_default"
+     */
+    public function testPropertyUseMonthDefault()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "month"
+     */
+    public function testPropertyMonth()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "theme"
+     */
+    public function testPropertyTheme()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "html_body_length"
      */
     public function testPropertyHtmlBodyLength()

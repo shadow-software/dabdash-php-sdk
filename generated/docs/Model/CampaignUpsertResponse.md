@@ -22,6 +22,6 @@ Name | Type | Description | Notes
 **spam_summary** | **string** |  | [optional]
 **spam_can_send** | **bool** |  | [optional]
 **spam_min_send_score** | **int** |  | [optional]
-**spam_findings** | [**\ShadowSoftware\DabDash\Model\CampaignUpsertResponseSpamFindingsInner[]**](CampaignUpsertResponseSpamFindingsInner.md) |  | [optional]
+**spam_findings** | [**\ShadowSoftware\DabDash\Model\CampaignSpamScoreResponseFindingsInner[]**](CampaignSpamScoreResponseFindingsInner.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

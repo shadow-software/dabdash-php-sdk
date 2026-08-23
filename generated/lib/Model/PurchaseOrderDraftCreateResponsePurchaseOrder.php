@@ -1,6 +1,6 @@
 <?php
 /**
- * CampaignUpsertResponseSpamFindingsInner
+ * PurchaseOrderDraftCreateResponsePurchaseOrder
  *
  * PHP version 8.1
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \ShadowSoftware\DabDash\ObjectSerializer;
 
 /**
- * CampaignUpsertResponseSpamFindingsInner Class Doc Comment
+ * PurchaseOrderDraftCreateResponsePurchaseOrder Class Doc Comment
  *
  * @category Class
  * @package  ShadowSoftware\DabDash
@@ -40,7 +40,7 @@ use \ShadowSoftware\DabDash\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CampaignUpsertResponseSpamFindingsInner implements ModelInterface, ArrayAccess, \JsonSerializable
+class PurchaseOrderDraftCreateResponsePurchaseOrder implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class CampaignUpsertResponseSpamFindingsInner implements ModelInterface, ArrayAc
      *
      * @var string
      */
-    protected static $openAPIModelName = 'CampaignUpsertResponse_spam_findings_inner';
+    protected static $openAPIModelName = 'PurchaseOrderDraftCreateResponse_purchase_order';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -57,12 +57,11 @@ class CampaignUpsertResponseSpamFindingsInner implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $openAPITypes = [
-        'code' => 'string',
-        'severity' => 'string',
-        'penalty' => 'int',
-        'message' => 'string',
-        'hint' => 'string',
-        'evidence' => 'string'
+        'id' => 'int',
+        'po_number' => 'string',
+        'status' => 'string',
+        'supplier_id' => 'int',
+        'edit_path' => 'string'
     ];
 
     /**
@@ -73,12 +72,11 @@ class CampaignUpsertResponseSpamFindingsInner implements ModelInterface, ArrayAc
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'code' => null,
-        'severity' => null,
-        'penalty' => null,
-        'message' => null,
-        'hint' => null,
-        'evidence' => null
+        'id' => null,
+        'po_number' => null,
+        'status' => null,
+        'supplier_id' => null,
+        'edit_path' => null
     ];
 
     /**
@@ -87,12 +85,11 @@ class CampaignUpsertResponseSpamFindingsInner implements ModelInterface, ArrayAc
      * @var boolean[]
      */
     protected static array $openAPINullables = [
-        'code' => false,
-        'severity' => false,
-        'penalty' => false,
-        'message' => false,
-        'hint' => false,
-        'evidence' => true
+        'id' => false,
+        'po_number' => false,
+        'status' => false,
+        'supplier_id' => false,
+        'edit_path' => false
     ];
 
     /**
@@ -181,12 +178,11 @@ class CampaignUpsertResponseSpamFindingsInner implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $attributeMap = [
-        'code' => 'code',
-        'severity' => 'severity',
-        'penalty' => 'penalty',
-        'message' => 'message',
-        'hint' => 'hint',
-        'evidence' => 'evidence'
+        'id' => 'id',
+        'po_number' => 'po_number',
+        'status' => 'status',
+        'supplier_id' => 'supplier_id',
+        'edit_path' => 'edit_path'
     ];
 
     /**
@@ -195,12 +191,11 @@ class CampaignUpsertResponseSpamFindingsInner implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $setters = [
-        'code' => 'setCode',
-        'severity' => 'setSeverity',
-        'penalty' => 'setPenalty',
-        'message' => 'setMessage',
-        'hint' => 'setHint',
-        'evidence' => 'setEvidence'
+        'id' => 'setId',
+        'po_number' => 'setPoNumber',
+        'status' => 'setStatus',
+        'supplier_id' => 'setSupplierId',
+        'edit_path' => 'setEditPath'
     ];
 
     /**
@@ -209,12 +204,11 @@ class CampaignUpsertResponseSpamFindingsInner implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $getters = [
-        'code' => 'getCode',
-        'severity' => 'getSeverity',
-        'penalty' => 'getPenalty',
-        'message' => 'getMessage',
-        'hint' => 'getHint',
-        'evidence' => 'getEvidence'
+        'id' => 'getId',
+        'po_number' => 'getPoNumber',
+        'status' => 'getStatus',
+        'supplier_id' => 'getSupplierId',
+        'edit_path' => 'getEditPath'
     ];
 
     /**
@@ -274,12 +268,11 @@ class CampaignUpsertResponseSpamFindingsInner implements ModelInterface, ArrayAc
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('code', $data ?? [], null);
-        $this->setIfExists('severity', $data ?? [], null);
-        $this->setIfExists('penalty', $data ?? [], null);
-        $this->setIfExists('message', $data ?? [], null);
-        $this->setIfExists('hint', $data ?? [], null);
-        $this->setIfExists('evidence', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('po_number', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('supplier_id', $data ?? [], null);
+        $this->setIfExists('edit_path', $data ?? [], null);
     }
 
     /**
@@ -325,170 +318,136 @@ class CampaignUpsertResponseSpamFindingsInner implements ModelInterface, ArrayAc
 
 
     /**
-     * Gets code
-     *
-     * @return string|null
-     */
-    public function getCode()
-    {
-        return $this->container['code'];
-    }
-
-    /**
-     * Sets code
-     *
-     * @param string|null $code code
-     *
-     * @return self
-     */
-    public function setCode($code)
-    {
-        if (is_null($code)) {
-            throw new \InvalidArgumentException('non-nullable code cannot be null');
-        }
-        $this->container['code'] = $code;
-
-        return $this;
-    }
-
-    /**
-     * Gets severity
-     *
-     * @return string|null
-     */
-    public function getSeverity()
-    {
-        return $this->container['severity'];
-    }
-
-    /**
-     * Sets severity
-     *
-     * @param string|null $severity severity
-     *
-     * @return self
-     */
-    public function setSeverity($severity)
-    {
-        if (is_null($severity)) {
-            throw new \InvalidArgumentException('non-nullable severity cannot be null');
-        }
-        $this->container['severity'] = $severity;
-
-        return $this;
-    }
-
-    /**
-     * Gets penalty
+     * Gets id
      *
      * @return int|null
      */
-    public function getPenalty()
+    public function getId()
     {
-        return $this->container['penalty'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets penalty
+     * Sets id
      *
-     * @param int|null $penalty penalty
+     * @param int|null $id id
      *
      * @return self
      */
-    public function setPenalty($penalty)
+    public function setId($id)
     {
-        if (is_null($penalty)) {
-            throw new \InvalidArgumentException('non-nullable penalty cannot be null');
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
-        $this->container['penalty'] = $penalty;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets message
+     * Gets po_number
      *
      * @return string|null
      */
-    public function getMessage()
+    public function getPoNumber()
     {
-        return $this->container['message'];
+        return $this->container['po_number'];
     }
 
     /**
-     * Sets message
+     * Sets po_number
      *
-     * @param string|null $message message
+     * @param string|null $po_number po_number
      *
      * @return self
      */
-    public function setMessage($message)
+    public function setPoNumber($po_number)
     {
-        if (is_null($message)) {
-            throw new \InvalidArgumentException('non-nullable message cannot be null');
+        if (is_null($po_number)) {
+            throw new \InvalidArgumentException('non-nullable po_number cannot be null');
         }
-        $this->container['message'] = $message;
+        $this->container['po_number'] = $po_number;
 
         return $this;
     }
 
     /**
-     * Gets hint
+     * Gets status
      *
      * @return string|null
      */
-    public function getHint()
+    public function getStatus()
     {
-        return $this->container['hint'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets hint
+     * Sets status
      *
-     * @param string|null $hint hint
+     * @param string|null $status status
      *
      * @return self
      */
-    public function setHint($hint)
+    public function setStatus($status)
     {
-        if (is_null($hint)) {
-            throw new \InvalidArgumentException('non-nullable hint cannot be null');
+        if (is_null($status)) {
+            throw new \InvalidArgumentException('non-nullable status cannot be null');
         }
-        $this->container['hint'] = $hint;
+        $this->container['status'] = $status;
 
         return $this;
     }
 
     /**
-     * Gets evidence
+     * Gets supplier_id
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getEvidence()
+    public function getSupplierId()
     {
-        return $this->container['evidence'];
+        return $this->container['supplier_id'];
     }
 
     /**
-     * Sets evidence
+     * Sets supplier_id
      *
-     * @param string|null $evidence evidence
+     * @param int|null $supplier_id supplier_id
      *
      * @return self
      */
-    public function setEvidence($evidence)
+    public function setSupplierId($supplier_id)
     {
-        if (is_null($evidence)) {
-            array_push($this->openAPINullablesSetToNull, 'evidence');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('evidence', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($supplier_id)) {
+            throw new \InvalidArgumentException('non-nullable supplier_id cannot be null');
         }
-        $this->container['evidence'] = $evidence;
+        $this->container['supplier_id'] = $supplier_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets edit_path
+     *
+     * @return string|null
+     */
+    public function getEditPath()
+    {
+        return $this->container['edit_path'];
+    }
+
+    /**
+     * Sets edit_path
+     *
+     * @param string|null $edit_path edit_path
+     *
+     * @return self
+     */
+    public function setEditPath($edit_path)
+    {
+        if (is_null($edit_path)) {
+            throw new \InvalidArgumentException('non-nullable edit_path cannot be null');
+        }
+        $this->container['edit_path'] = $edit_path;
 
         return $this;
     }
