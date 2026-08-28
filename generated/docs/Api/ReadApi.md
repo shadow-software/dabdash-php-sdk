@@ -8,6 +8,7 @@ All URIs are relative to https://.dabdash.com, except if the operation defines a
 | ------------- | ------------- | ------------- |
 | [**analyticsQuery()**](ReadApi.md#analyticsQuery) | **POST** /api/v1/tools/analytics_query | Run read-only analytics queries against the production database. Available reports: revenue_by_tenant, orders_by_status, top_products, revenue_over_time, customer_stats. Revenue dating uses RevenueAttribution (pass tenant_slug for delivered-mode tenants). |
 | [**campaignAudienceInspect()**](ReadApi.md#campaignAudienceInspect) | **POST** /api/v1/tools/campaign_audience_inspect | Split the tenant&#39;s campaign audience into warm (≥1 past order) vs cold (no order history) recipients. Use this before drafting a newsletter or SMS in the Create Promotion flow: warm audiences can get exclusive codes and commercial copy; cold audiences need personalized, spam-safe language — never hard-sell or aggressive exclusive deals.  Returns counts only — it does not create or send a campaign. |
+| [**campaignGet()**](ReadApi.md#campaignGet) | **POST** /api/v1/tools/campaign_get | Read a campaign back, including the message body you are about to edit.  Every other campaign tool reports html_body_length — a character count — so without this you would be rewriting a document you have never seen. Call this first whenever you are asked to change, finish, or comment on existing copy.  Email campaigns return html_body; text campaigns return sms_body. A rendered system template runs 10-32KB, so read once and edit from what you read rather than re-fetching between changes. |
 | [**campaignSpamScore()**](ReadApi.md#campaignSpamScore) | **POST** /api/v1/tools/campaign_spam_score | Score vendor campaign copy for inbox risk (email HTML or SMS).  One score only: 0–100 (0 &#x3D; spam, 100 &#x3D; primary-inbox friendly). Live scoring uses first-party rules. Pass for_send&#x3D;true to run the same deep filter check used on send/schedule and fold it into that single number (never a second score).  Vendors cannot send or schedule below the platform minimum (default 80). Aim for 80+ before handoff; 85+ is excellent.  Pass campaign_id (loads draft content) OR inline channel + content fields. |
 | [**catalogFlatteningAudit()**](ReadApi.md#catalogFlatteningAudit) | **POST** /api/v1/tools/catalog_flattening_audit | Read-only. Finds products whose sizes were split into separate products instead of tiers.  This happens when a catalog is imported from a store that put the size in the product NAME (\&quot;Blue Dream - 3.5G\&quot;, \&quot;Blue Dream - 7G\&quot;) instead of a size option column. The importer has no size column to read, so each size becomes its own product with a single \&quot;Default\&quot; option, and the store ends up with a long flat menu that cannot use weight pricing or mix &amp; match deals.  Returns each group of products that belong together (\&quot;family\&quot;), the sizes and prices found, and whether the group can be safely merged. A group is NOT mergeable when two of its products claim the same size — that must be resolved by hand first.  Nothing is changed. Use catalog_collapse to merge a group. |
 | [**couponList()**](ReadApi.md#couponList) | **POST** /api/v1/tools/coupon_list | List a tenant&#39;s discount coupons with code, type, value, usage limits, redemption count, active state, and schedule window. Coupons are customer-entered codes applied at checkout (distinct from bundles, which fire automatically on cart contents — use bundle_list for those).  type:   percentage     → value is a percentage 0-100 off the order subtotal.   fixed          → value is dollars off the order subtotal.   free_delivery  → waives the delivery fee only; value is unused for this type.  Always call this before making coupon-related decisions to see current codes, usage caps, and whether a coupon has already been exhausted (used_count vs max_uses). |
@@ -141,6 +142,67 @@ try {
 ### Return type
 
 [**\ShadowSoftware\DabDash\Model\CampaignAudienceInspect200Response**](../Model/CampaignAudienceInspect200Response.md)
+
+### Authorization
+
+[tenantOAuth](../../README.md#tenantOAuth), [tenantApiKey](../../README.md#tenantApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `campaignGet()`
+
+```php
+campaignGet($campaign_get_request): \ShadowSoftware\DabDash\Model\CampaignGet200Response
+```
+
+Read a campaign back, including the message body you are about to edit.  Every other campaign tool reports html_body_length — a character count — so without this you would be rewriting a document you have never seen. Call this first whenever you are asked to change, finish, or comment on existing copy.  Email campaigns return html_body; text campaigns return sms_body. A rendered system template runs 10-32KB, so read once and edit from what you read rather than re-fetching between changes.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: tenantOAuth
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure Bearer authorization: tenantApiKey
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new ShadowSoftware\DabDash\Api\ReadApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$campaign_get_request = new \ShadowSoftware\DabDash\Model\CampaignGetRequest(); // \ShadowSoftware\DabDash\Model\CampaignGetRequest
+
+try {
+    $result = $apiInstance->campaignGet($campaign_get_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ReadApi->campaignGet: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **campaign_get_request** | [**\ShadowSoftware\DabDash\Model\CampaignGetRequest**](../Model/CampaignGetRequest.md)|  | [optional] |
+
+### Return type
+
+[**\ShadowSoftware\DabDash\Model\CampaignGet200Response**](../Model/CampaignGet200Response.md)
 
 ### Authorization
 

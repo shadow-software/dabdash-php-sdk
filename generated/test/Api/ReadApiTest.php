@@ -96,6 +96,18 @@ class ReadApiTest extends TestCase
     }
 
     /**
+     * Test case for campaignGet
+     *
+     * Read a campaign back, including the message body you are about to edit.  Every other campaign tool reports html_body_length — a character count — so without this you would be rewriting a document you have never seen. Call this first whenever you are asked to change, finish, or comment on existing copy.  Email campaigns return html_body; text campaigns return sms_body. A rendered system template runs 10-32KB, so read once and edit from what you read rather than re-fetching between changes..
+     *
+     */
+    public function testCampaignGet()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for campaignSpamScore
      *
      * Score vendor campaign copy for inbox risk (email HTML or SMS).  One score only: 0–100 (0 = spam, 100 = primary-inbox friendly). Live scoring uses first-party rules. Pass for_send=true to run the same deep filter check used on send/schedule and fold it into that single number (never a second score).  Vendors cannot send or schedule below the platform minimum (default 80). Aim for 80+ before handoff; 85+ is excellent.  Pass campaign_id (loads draft content) OR inline channel + content fields..
