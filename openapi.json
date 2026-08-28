@@ -619,6 +619,241 @@
                 },
                 "type": "object"
             },
+            "CampaignFlyerStylePackRequest": {
+                "properties": {
+                    "action": {
+                        "description": "\"show\" (default behaviour), \"set\", or \"clear\".",
+                        "type": "string"
+                    },
+                    "label": {
+                        "description": "set: a short name for the pack, e.g. \"Past in-house flyers\".",
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "prompt_lines": {
+                        "description": "set: the art direction, one short line each. Replaces what is saved.",
+                        "type": [
+                            "array",
+                            "null"
+                        ]
+                    },
+                    "media_ids": {
+                        "description": "set: media library ids to use as style references. They move into the style-reference folder.",
+                        "type": [
+                            "array",
+                            "null"
+                        ]
+                    },
+                    "clear_images": {
+                        "description": "clear: also take the images out of the style-reference folder. They stay in the library.",
+                        "type": [
+                            "boolean",
+                            "null"
+                        ]
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "action"
+                ]
+            },
+            "CampaignFlyerStylePackResponse": {
+                "properties": {
+                    "action": {
+                        "type": "string"
+                    },
+                    "tenant_slug": {
+                        "type": "string"
+                    },
+                    "enabled": {
+                        "type": "boolean"
+                    },
+                    "label": {
+                        "type": "string"
+                    },
+                    "prompt_lines": {
+                        "type": "array"
+                    },
+                    "images": {
+                        "type": "array"
+                    },
+                    "images_used_per_flyer": {
+                        "type": "integer"
+                    },
+                    "message": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "CampaignGenerateFlyerRequest": {
+                "properties": {
+                    "theme": {
+                        "description": "What the flyer is for, in plain words. E.g. \"September restock — cosy autumn mood, warm light\".",
+                        "type": "string"
+                    },
+                    "product_ids": {
+                        "description": "Product IDs to feature. Their photos anchor the artwork. Omit to auto-pick the newest featured products that have images.",
+                        "type": [
+                            "array",
+                            "null"
+                        ]
+                    },
+                    "campaign_id": {
+                        "description": "DRAFT campaign to place the artwork into. Omit to only add it to the media library.",
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "slot_index": {
+                        "description": "1-based image slot to fill. Defaults to 1, the hero slot.",
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "aspect_ratio": {
+                        "description": "Shape of the artwork: \"4:3\" (default, email banner), \"1:1\", \"16:9\", \"3:4\". Anything else falls back to the default.",
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "alt_text": {
+                        "description": "Alt text for the placed image. Defaults to the theme.",
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "reference_media_ids": {
+                        "description": "Media library ids of images to use as one-off style/composition references for THIS generation (e.g. a past flyer the vendor just attached to this chat — its media_id is noted right after the attachment). Max 3. Not persisted; use campaign_flyer_style_pack for a look that should repeat.",
+                        "type": [
+                            "array",
+                            "null"
+                        ]
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "theme"
+                ]
+            },
+            "CampaignGenerateFlyerResponse": {
+                "properties": {
+                    "action": {
+                        "type": "string"
+                    },
+                    "media_id": {
+                        "type": "integer"
+                    },
+                    "image_url": {
+                        "type": "string"
+                    },
+                    "campaign_id": {
+                        "type": "integer"
+                    },
+                    "placed": {
+                        "type": "boolean"
+                    },
+                    "filled_placeholder": {
+                        "type": "boolean"
+                    },
+                    "remaining_slots": {
+                        "type": "integer"
+                    },
+                    "featured_products": {
+                        "type": "array"
+                    },
+                    "message": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "CampaignGetRequest": {
+                "properties": {
+                    "campaign_id": {
+                        "description": "ID of the campaign to read.",
+                        "type": "integer"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "campaign_id"
+                ]
+            },
+            "CampaignGetResponse": {
+                "properties": {
+                    "campaign_id": {
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "channel": {
+                        "type": "string"
+                    },
+                    "subject": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "fallback_first_name": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "mode": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "string"
+                    },
+                    "audience_includes_customers": {
+                        "type": "boolean"
+                    },
+                    "html_body": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "html_body_length": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "plain_body": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "sms_body": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "sms_body_length": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "message": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
             "CampaignRecipientsRequeueRequest": {
                 "properties": {
                     "campaign_id": {
@@ -8475,6 +8710,525 @@
                 ]
             }
         },
+        "/api/v1/tools/campaign_flyer_style_pack": {
+            "post": {
+                "operationId": "campaign_flyer_style_pack",
+                "summary": "Teach campaign_generate_flyer what this shop's flyers look like, using their OWN past work.\n\nA style pack is two things, both stored on the shop itself:\n  - Images: one or more past flyers or mood boards, held in the shop's media library.\n  - Art direction: short lines describing the look to carry forward (\"seasonal scenes, deal-dense\n    grids, deep green and gold, calm lower third\").\n\nWhen a pack is saved, every flyer generation attaches it ahead of the product photos and asks the\nmodel to match the MOOD and COMPOSITION — never to copy text, logos or prices out of it.\n\nACTIONS:\n  - show  — what is saved right now: the direction lines and the images on file.\n  - set   — save direction lines and/or point the pack at media library images.\n            prompt_lines replaces the saved direction. media_ids MOVES those library assets into\n            the style-reference folder (they stay ordinary library assets, reusable elsewhere).\n  - clear — remove the direction lines, and with clear_images=true also take the images back out\n            of the style-reference folder. Nothing is deleted from the library.\n\nHOW TO GET AN IMAGE IN: upload the flyer through the shop's media library (or send it to Dabby in\nchat, which files it there), then pass its media_id here. The pack lives entirely in the database,\nso it survives every deploy and can be changed at any time without one.",
+                "tags": [
+                    "marketing",
+                    "write"
+                ],
+                "requestBody": {
+                    "required": false,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CampaignFlyerStylePackRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "tool": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "$ref": "#/components/schemas/CampaignFlyerStylePackResponse"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Missing or invalid tenant credentials.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "402": {
+                        "description": "The tenant has no active trial, subscription, or grace period.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "A read-scoped key was used to call a write tool.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unknown tool name.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Request validation failed, or the tool reported a business error.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "tenantApiKey": []
+                    },
+                    {
+                        "tenantOAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/tools/campaign_generate_flyer": {
+            "post": {
+                "operationId": "campaign_generate_flyer",
+                "summary": "Generate BESPOKE flyer artwork for a campaign from the shop's own product photos, then drop it\nstraight into the campaign design. This is the intended way to make a marketing email look like\na designed flyer instead of a text layout — reach for it before writing copy, because the rest of\nthe email is built to sit under the artwork.\n\nWHAT IT PRODUCES:\n  A layered, dimensional flyer illustration in the shop's brand colours, composed around the real\n  packaging from the product photos you name. It renders NO text — the email supplies every word\n  as real text so it stays readable, translatable, and safe with images disabled.\n\nREQUIREMENTS:\n  The shop must have its own AI key connected (Settings → Dab AI). Generation is billed to that\n  key, not to the platform, so a shop without one gets a clear message instead of a flyer. Use\n  the highest-quality model available on the key; that is the default and it is the point.\n  A shop that has saved a style pack (campaign_flyer_style_pack) automatically gets its own past\n  flyers attached as references, so the artwork matches the creative it already sends.\n\nHOW TO USE IT:\n  - theme        — what the flyer is for, in plain words (\"September restock, cosy autumn mood\").\n  - product_ids  — the products to feature. Omit and it picks the shop's newest featured products\n                   that actually have photos.\n  - campaign_id  — a DRAFT campaign to place the artwork into. Omit to just add it to the media\n                   library and place it later with campaign_set_image.\n  - slot_index   — which image slot to fill (1-based). Defaults to the first, which is the hero.\n  - reference_media_ids — if the vendor just attached a past flyer (or any image) to THIS chat and\n                   asked for something \"in the same style\" or \"like this one\", pass its media_id\n                   here. The conversation shows it as \"[Library image saved: media_id=N, ...]\"\n                   right after the attachment. This is a one-off style/composition reference for\n                   this generation only — it steers mood, layout and palette, it is never\n                   reproduced verbatim, and it is not saved for next time. Never ask the vendor\n                   for a URL or to re-upload when their image is already attached to the chat —\n                   read its media_id from the conversation and pass it here instead. For a shop\n                   that wants the same look on every flyer going forward, save it once with\n                   campaign_flyer_style_pack instead of repeating reference_media_ids.\n\nTypical flow: campaign_upsert (create) → campaign_apply_template (design) →\ncampaign_upsert (real copy) → campaign_generate_flyer (hero artwork LAST) → campaign_send_test.\nGenerate the artwork only after the copy is final — html_body on campaign_upsert is a full\nreplacement, so calling campaign_upsert again after the artwork is placed erases it.\n\nThe result always lands in the media library, so it can be reused on the storefront or in a later\nsend without generating twice.",
+                "tags": [
+                    "marketing",
+                    "write"
+                ],
+                "requestBody": {
+                    "required": false,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CampaignGenerateFlyerRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "tool": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "$ref": "#/components/schemas/CampaignGenerateFlyerResponse"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Missing or invalid tenant credentials.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "402": {
+                        "description": "The tenant has no active trial, subscription, or grace period.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "A read-scoped key was used to call a write tool.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unknown tool name.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Request validation failed, or the tool reported a business error.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "tenantApiKey": []
+                    },
+                    {
+                        "tenantOAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/tools/campaign_get": {
+            "post": {
+                "operationId": "campaign_get",
+                "summary": "Read a campaign back, including the message body you are about to edit.\n\nEvery other campaign tool reports html_body_length — a character count — so\nwithout this you would be rewriting a document you have never seen. Call this\nfirst whenever you are asked to change, finish, or comment on existing copy.\n\nEmail campaigns return html_body; text campaigns return sms_body. A rendered\nsystem template runs 10-32KB, so read once and edit from what you read rather\nthan re-fetching between changes.",
+                "tags": [
+                    "marketing",
+                    "read"
+                ],
+                "requestBody": {
+                    "required": false,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CampaignGetRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "tool": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "$ref": "#/components/schemas/CampaignGetResponse"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Missing or invalid tenant credentials.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "402": {
+                        "description": "The tenant has no active trial, subscription, or grace period.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "A read-scoped key was used to call a write tool.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unknown tool name.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Request validation failed, or the tool reported a business error.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "tenantApiKey": []
+                    },
+                    {
+                        "tenantOAuth": []
+                    }
+                ]
+            }
+        },
         "/api/v1/tools/campaign_recipients_requeue": {
             "post": {
                 "operationId": "campaign_recipients_requeue",
@@ -8824,7 +9578,7 @@
         "/api/v1/tools/campaign_set_image": {
             "post": {
                 "operationId": "campaign_set_image",
-                "summary": "Drop an image from the tenant's media library into a DRAFT campaign — no link copying, no manual\nHTML. Give it a campaign_id and a media_id (from the tenant's own library) and it fills an image\nplaceholder in the campaign body with that image, using the library image's own public URL and\nalt text. The URL is on the tenant's public disk, so it passes the campaign HTML sanitizer\nuntouched and renders in email clients.\n\nWHICH SLOT IT FILLS:\n  System templates render image placeholders labelled \"Add image\". By default this tool fills the\n  FIRST remaining placeholder. Pass slot_index (1-based) to target a specific placeholder when a\n  template has more than one. If the body has no placeholder left, the image is appended at the end.\n\nREQUIREMENTS:\n  - The campaign must be a DRAFT and belong to the tenant.\n  - The media asset must belong to the tenant and be public (private assets have no shareable URL).\n\nTypical flow: campaign_upsert (create) → campaign_apply_template (design with placeholders) →\ncampaign_set_image (fill each placeholder) → campaign_upsert (real copy) → campaign_send_test.",
+                "summary": "Drop an image from the tenant's media library into a DRAFT campaign — no link copying, no manual\nHTML. Give it a campaign_id and a media_id (from the tenant's own library) and it fills an image\nplaceholder in the campaign body with that image, using the library image's own public URL and\nalt text. The URL is on the tenant's public disk, so it passes the campaign HTML sanitizer\nuntouched and renders in email clients.\n\nWHICH SLOT IT FILLS:\n  System templates render image placeholders labelled \"Add image\". By default this tool fills the\n  FIRST remaining placeholder. Pass slot_index (1-based) to target a specific placeholder when a\n  template has more than one. If the body has no placeholder left, the image is appended at the end.\n\nREQUIREMENTS:\n  - The campaign must be a DRAFT and belong to the tenant.\n  - The media asset must belong to the tenant and be public (private assets have no shareable URL).\n\nTypical flow: campaign_upsert (create) → campaign_apply_template (design with placeholders) →\ncampaign_upsert (real copy) → campaign_set_image (fill each placeholder LAST) → campaign_send_test.\nFill placeholders only after the copy is final — html_body on campaign_upsert is a full\nreplacement, so calling campaign_upsert again after an image is placed erases it.",
                 "tags": [
                     "marketing",
                     "write"
@@ -9170,7 +9924,7 @@
         "/api/v1/tools/campaign_upsert": {
             "post": {
                 "operationId": "campaign_upsert",
-                "summary": "Create or edit a vendor email campaign on behalf of a tenant. This is the vendor → their-customers\ncampaign universe (NOT the platform drip-to-leads system). Completed campaigns cannot be edited.\n\nCREATE MODE (no campaign_id):\n  Creates a new draft. For email campaigns, `name` and `subject` are required; `html_body` is optional\n  on create — omit it to start blank and apply a system template afterwards with campaign_apply_template.\n  For text (SMS) campaigns, set channel to \"sms\" and pass `sms_body` (name required). Twilio must be\n  connected on the tenant.\n\nUPDATE MODE (campaign_id provided):\n  Edits an existing campaign. Only the fields you pass are changed; omitted fields are left as-is.\n  Drafts accept all fields. Sending or paused campaigns accept content fields only — for email that is\n  name, subject, html_body, plain_body, fallback_first_name; for text that is name, sms_body,\n  and fallback_first_name. Sending campaigns keep\n  running and unreached recipients get the latest version. Scheduled, cancelled, and failed campaigns\n  must be edited from the vendor admin.\n\nHTML BODY (email only):\n  Pass the full email HTML in `html_body`. It is sanitized exactly like the vendor admin editor:\n  a full document (<!DOCTYPE …> / <html>) keeps its table-based structure; a fragment is run\n  through the stricter inline allowlist. Use the literal token {{unsubscribe_url}} where the\n  unsubscribe link should appear — it is replaced per-recipient at send time and a List-Unsubscribe\n  header is added automatically. Personalization tokens {{first_name}} and {{last_name}} are also\n  replaced at send time. When {{first_name}} is blank, fallback_first_name is used (default \"there\"\n  when unset). Pass fallback_first_name as \"\" to clear an override.\n\nSMS BODY (text only):\n  Pass the message in `sms_body` (max 1600 chars). Tokens {{first_name}} and {{last_name}} are\n  replaced at send time (same first-name fallback as email). Text campaigns only target opted-in shop customers.\n\nAUDIENCE / MODE (email only):\n  mode is \"smtp\" (default) or \"webhook\". audience_includes_customers (default true) targets the\n  tenant's own customers. This tool does not send anything — use campaign_send_test to preview,\n  then the vendor sends from the admin.\n\nAlways confirm the tenant_slug with tenant_list first. To populate a draft from a built-in design,\ncreate it here, then call campaign_apply_template.",
+                "summary": "Create or edit a vendor email campaign on behalf of a tenant. This is the vendor → their-customers\ncampaign universe (NOT the platform drip-to-leads system). Completed campaigns cannot be edited.\n\nCREATE MODE (no campaign_id):\n  Creates a new draft. For email campaigns, `name` and `subject` are required; `html_body` is optional\n  on create — omit it to start blank and apply a system template afterwards with campaign_apply_template.\n  For text (SMS) campaigns, set channel to \"sms\" and pass `sms_body` (name required). Twilio must be\n  connected on the tenant.\n\nUPDATE MODE (campaign_id provided):\n  Edits an existing campaign. Only the fields you pass are changed; omitted fields are left as-is.\n  Drafts accept all fields. Sending or paused campaigns accept content fields only — for email that is\n  name, subject, html_body, plain_body, fallback_first_name; for text that is name, sms_body,\n  and fallback_first_name. Sending campaigns keep\n  running and unreached recipients get the latest version. Scheduled, cancelled, and failed campaigns\n  must be edited from the vendor admin.\n\nHTML BODY (email only):\n  Pass the full email HTML in `html_body`. It is sanitized exactly like the vendor admin editor:\n  a full document (<!DOCTYPE …> / <html>) keeps its table-based structure; a fragment is run\n  through the stricter inline allowlist. Use the literal token {{unsubscribe_url}} where the\n  unsubscribe link should appear — it is replaced per-recipient at send time and a List-Unsubscribe\n  header is added automatically. Personalization tokens {{first_name}} and {{last_name}} are also\n  replaced at send time. When {{first_name}} is blank, fallback_first_name is used (default \"there\"\n  when unset). Pass fallback_first_name as \"\" to clear an override.\n\nSMS BODY (text only):\n  Pass the message in `sms_body` (max 1600 chars). Tokens {{first_name}} and {{last_name}} are\n  replaced at send time (same first-name fallback as email). Text campaigns only target opted-in shop customers.\n\nAUDIENCE / MODE (email only):\n  mode is \"smtp\" (default) or \"webhook\". audience_includes_customers (default true) targets the\n  tenant's own customers. This tool does not send anything — use campaign_send_test to preview,\n  then the vendor sends from the admin.\n\nAlways confirm the tenant_slug with tenant_list first. To populate a draft from a built-in design,\ncreate it here, then call campaign_apply_template.\n\nORDERING WARNING: html_body is a full replacement, not a merge. If campaign_generate_flyer or\ncampaign_set_image has already placed an image into this campaign's body, do NOT call this tool\nagain with a new html_body afterward — it silently erases the placed image. Finalize all copy with\nthis tool FIRST, then place images last.",
                 "tags": [
                     "marketing",
                     "write"
