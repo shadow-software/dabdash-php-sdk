@@ -485,6 +485,12 @@
                             "null"
                         ]
                     },
+                    "archetype": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
                     "html_body_length": {
                         "type": [
                             "integer",
@@ -1170,6 +1176,35 @@
                     },
                     "deep_check_applied": {
                         "type": "boolean"
+                    },
+                    "spamassassin_score": {
+                        "type": [
+                            "number",
+                            "null"
+                        ]
+                    },
+                    "deep_check_rules": {
+                        "items": {
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "score": {
+                                    "type": "number"
+                                },
+                                "description": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    },
+                    "deep_check_error": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
                     },
                     "campaign_id": {
                         "type": [
@@ -2257,6 +2292,53 @@
                 },
                 "type": "object"
             },
+            "CustomerConversationContextRequest": {
+                "properties": {
+                    "limit": {
+                        "description": "Number of customer messages to return, from 1 to 25.",
+                        "default": 10,
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "CustomerConversationContextResponse": {
+                "properties": {
+                    "conversations": {
+                        "items": {
+                            "properties": {
+                                "conversation_id": {
+                                    "type": "integer"
+                                },
+                                "channel": {
+                                    "type": "string"
+                                },
+                                "customer_name": {
+                                    "type": "string"
+                                },
+                                "subject": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "last_customer_message": {
+                                    "type": "string"
+                                },
+                                "last_message_at": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    }
+                },
+                "type": "object"
+            },
             "CustomerListRequest": {
                 "properties": {
                     "updated_since": {
@@ -2636,6 +2718,74 @@
                 },
                 "type": "object"
             },
+            "CustomerMessageDraftsCreateRequest": {
+                "properties": {
+                    "drafts": {
+                        "description": "One to twenty-five proposed replies.",
+                        "items": {
+                            "properties": {
+                                "conversation_id": {
+                                    "description": "Existing customer email or live-chat conversation to reply to.",
+                                    "type": "integer"
+                                },
+                                "body": {
+                                    "description": "Proposed customer-facing message. Plain, specific, and ready for staff review.",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    }
+                },
+                "type": "object"
+            },
+            "CustomerMessageDraftsCreateResponse": {
+                "properties": {
+                    "draft_count": {
+                        "type": "integer"
+                    },
+                    "review_note": {
+                        "type": "string"
+                    },
+                    "drafts": {
+                        "items": {
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "recipient_name": {
+                                    "type": "string"
+                                },
+                                "channel": {
+                                    "type": "string"
+                                },
+                                "subject": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "original_message": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "body": {
+                                    "type": "string"
+                                },
+                                "status": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    }
+                },
+                "type": "object"
+            },
             "CustomerUpdateRequest": {
                 "properties": {
                     "customer_id": {
@@ -2730,6 +2880,32 @@
                     "updated_fields": {
                         "items": {
                             "type": "string"
+                        },
+                        "type": "array"
+                    }
+                },
+                "type": "object"
+            },
+            "DeliveryDelayMessageDraftsCreateRequest": {
+                "properties": {
+                    "drafts": {
+                        "description": "One to twenty-five delivery-delay drafts.",
+                        "items": {
+                            "properties": {
+                                "order_id": {
+                                    "description": "Out-for-delivery order to notify.",
+                                    "type": "integer"
+                                },
+                                "subject": {
+                                    "description": "Clear transactional email subject.",
+                                    "type": "string"
+                                },
+                                "body": {
+                                    "description": "Specific delay update for this customer.",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
                         },
                         "type": "array"
                     }
@@ -8194,7 +8370,7 @@
         "/api/v1/tools/campaign_apply_template": {
             "post": {
                 "operationId": "campaign_apply_template",
-                "summary": "Apply a built-in system email template to a DRAFT campaign, replacing its html_body with the\nrendered, tenant-branded design. This mirrors the \"Choose template\" action in the vendor admin.\n\nThe template is rendered with the tenant's own branding (theme colour, logo, name, address, phone),\nthen sanitized and written to the campaign's html_body. The {{unsubscribe_url}} token is preserved.\nThe design ships with placeholder copy ([Product name], $00, \"Your headline here\", etc.) — after\napplying, use campaign_upsert to set the real html_body with this tenant's products, prices, and\noffers, or hand off to the vendor to fill in.\n\nOnly DRAFT campaigns can have a template applied. To discover valid template_id values, omit\ntemplate_id (or pass an unknown one) and the tool returns the list of available templates.\n\nTypical flow: campaign_upsert (create draft) → campaign_apply_template (lay down the design) →\ncampaign_upsert (replace html_body with real data) → campaign_send_test (preview).",
+                "summary": "Apply a built-in system email template to a DRAFT campaign, replacing its html_body with the\nrendered, tenant-branded design. This mirrors the \"Choose template\" action in the vendor admin.\n\nThe template is rendered with the tenant's own branding (theme colour, logo, name, address, phone),\nthen sanitized and written to the campaign's html_body. The {{unsubscribe_url}} token is preserved.\nThe design ships with placeholder copy ([Product name], $00, \"Your headline here\", etc.) — after\napplying, call campaign_get, then campaign_upsert to swap placeholder copy/prices inside the\nexisting html_body (do NOT replace the whole body — that deletes the template layout). Use\ncampaign_set_image for product photos. Or hand off to the vendor to fill in.\n\nOnly DRAFT campaigns can have a template applied. To discover valid template_id values, omit\ntemplate_id (or pass an unknown one) and the tool returns the list of available templates.\n\nTypical flow: campaign_upsert (create draft) → campaign_apply_template (lay down the design) →\ncampaign_get + campaign_upsert (edit copy in place) + campaign_set_image (photos) →\ncampaign_send_test (preview).",
                 "tags": [
                     "marketing",
                     "write"
@@ -9751,7 +9927,7 @@
         "/api/v1/tools/campaign_spam_score": {
             "post": {
                 "operationId": "campaign_spam_score",
-                "summary": "Score vendor campaign copy for inbox risk (email HTML or SMS).\n\nOne score only: 0–100 (0 = spam, 100 = primary-inbox friendly). Live scoring uses\nfirst-party rules. Pass for_send=true to run the same deep filter check used on\nsend/schedule and fold it into that single number (never a second score).\n\nVendors cannot send or schedule below the platform minimum (default 80). Aim for\n80+ before handoff; 85+ is excellent.\n\nPass campaign_id (loads draft content) OR inline channel + content fields.",
+                "summary": "Score vendor campaign copy for inbox risk (email HTML or SMS).\n\nOne score only: 0–100 (0 = spam, 100 = primary-inbox friendly). Live scoring uses\nfirst-party rules. Pass for_send=true to run the same deep filter check used on\nsend/schedule and fold it into that single number (never a second score).\n\nWhen for_send=true on email, the response also includes spamassassin_score and\ndeep_check_rules[] (Postmark/SpamAssassin hits with name, score, description) plus\nfindings[] entries with actionable hints — use these to fix blocked campaigns.\n\nVendors cannot send or schedule below the platform minimum (default 80). Aim for\n80+ before handoff; 85+ is excellent.\n\nPass campaign_id (loads draft content) OR inline channel + content fields.",
                 "tags": [
                     "marketing",
                     "read"
@@ -11303,6 +11479,179 @@
                 ]
             }
         },
+        "/api/v1/tools/customer_conversation_context": {
+            "post": {
+                "operationId": "customer_conversation_context",
+                "summary": "Find recent email and live-chat conversations whose latest message is from a customer. Returns only the latest customer message needed to prepare a reply.",
+                "tags": [
+                    "customers",
+                    "read"
+                ],
+                "requestBody": {
+                    "required": false,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CustomerConversationContextRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "tool": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "$ref": "#/components/schemas/CustomerConversationContextResponse"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Missing or invalid tenant credentials.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "402": {
+                        "description": "The tenant has no active trial, subscription, or grace period.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "A read-scoped key was used to call a write tool.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unknown tool name.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Request validation failed, or the tool reported a business error.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "tenantApiKey": []
+                    },
+                    {
+                        "tenantOAuth": []
+                    }
+                ]
+            }
+        },
         "/api/v1/tools/customer_list": {
             "post": {
                 "operationId": "customer_list",
@@ -11649,6 +11998,179 @@
                 ]
             }
         },
+        "/api/v1/tools/customer_message_drafts_create": {
+            "post": {
+                "operationId": "customer_message_drafts_create",
+                "summary": "Create reply drafts only when the user explicitly asks in their current message to draft or prepare customer replies. Never call merely because unanswered messages exist. This tool never sends messages; Dabby presents each original customer message and proposed reply in chat for explicit confirmation.",
+                "tags": [
+                    "customers",
+                    "write"
+                ],
+                "requestBody": {
+                    "required": false,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CustomerMessageDraftsCreateRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "tool": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "$ref": "#/components/schemas/CustomerMessageDraftsCreateResponse"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Missing or invalid tenant credentials.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "402": {
+                        "description": "The tenant has no active trial, subscription, or grace period.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "A read-scoped key was used to call a write tool.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unknown tool name.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Request validation failed, or the tool reported a business error.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "tenantApiKey": []
+                    },
+                    {
+                        "tenantOAuth": []
+                    }
+                ]
+            }
+        },
         "/api/v1/tools/customer_update": {
             "post": {
                 "operationId": "customer_update",
@@ -11681,6 +12203,177 @@
                                         "data": {
                                             "$ref": "#/components/schemas/CustomerUpdateResponse"
                                         }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Missing or invalid tenant credentials.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "402": {
+                        "description": "The tenant has no active trial, subscription, or grace period.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "A read-scoped key was used to call a write tool.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unknown tool name.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Request validation failed, or the tool reported a business error.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "tenantApiKey": []
+                    },
+                    {
+                        "tenantOAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/tools/delivery_delay_message_drafts_create": {
+            "post": {
+                "operationId": "delivery_delay_message_drafts_create",
+                "summary": "Create delivery-delay email drafts only when the user explicitly asks in their current message to prepare or send a delivery update. Use only after order status confirms the customer is out for delivery. This tool never sends email; Dabby presents each proposal in chat for explicit confirmation.",
+                "tags": [
+                    "customers",
+                    "write"
+                ],
+                "requestBody": {
+                    "required": false,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/DeliveryDelayMessageDraftsCreateRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "tool": {
+                                            "type": "string"
+                                        },
+                                        "data": {}
                                     }
                                 }
                             }
