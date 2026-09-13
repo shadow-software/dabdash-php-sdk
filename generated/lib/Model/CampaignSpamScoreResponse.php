@@ -66,6 +66,9 @@ class CampaignSpamScoreResponse implements ModelInterface, ArrayAccess, \JsonSer
         'can_send' => 'bool',
         'min_send_score' => 'int',
         'deep_check_applied' => 'bool',
+        'spamassassin_score' => 'float',
+        'deep_check_rules' => '\ShadowSoftware\DabDash\Model\CampaignSpamScoreResponseDeepCheckRulesInner[]',
+        'deep_check_error' => 'string',
         'campaign_id' => 'int',
         'message' => 'string'
     ];
@@ -87,6 +90,9 @@ class CampaignSpamScoreResponse implements ModelInterface, ArrayAccess, \JsonSer
         'can_send' => null,
         'min_send_score' => null,
         'deep_check_applied' => null,
+        'spamassassin_score' => null,
+        'deep_check_rules' => null,
+        'deep_check_error' => null,
         'campaign_id' => null,
         'message' => null
     ];
@@ -106,6 +112,9 @@ class CampaignSpamScoreResponse implements ModelInterface, ArrayAccess, \JsonSer
         'can_send' => false,
         'min_send_score' => false,
         'deep_check_applied' => false,
+        'spamassassin_score' => true,
+        'deep_check_rules' => false,
+        'deep_check_error' => true,
         'campaign_id' => true,
         'message' => false
     ];
@@ -205,6 +214,9 @@ class CampaignSpamScoreResponse implements ModelInterface, ArrayAccess, \JsonSer
         'can_send' => 'can_send',
         'min_send_score' => 'min_send_score',
         'deep_check_applied' => 'deep_check_applied',
+        'spamassassin_score' => 'spamassassin_score',
+        'deep_check_rules' => 'deep_check_rules',
+        'deep_check_error' => 'deep_check_error',
         'campaign_id' => 'campaign_id',
         'message' => 'message'
     ];
@@ -224,6 +236,9 @@ class CampaignSpamScoreResponse implements ModelInterface, ArrayAccess, \JsonSer
         'can_send' => 'setCanSend',
         'min_send_score' => 'setMinSendScore',
         'deep_check_applied' => 'setDeepCheckApplied',
+        'spamassassin_score' => 'setSpamassassinScore',
+        'deep_check_rules' => 'setDeepCheckRules',
+        'deep_check_error' => 'setDeepCheckError',
         'campaign_id' => 'setCampaignId',
         'message' => 'setMessage'
     ];
@@ -243,6 +258,9 @@ class CampaignSpamScoreResponse implements ModelInterface, ArrayAccess, \JsonSer
         'can_send' => 'getCanSend',
         'min_send_score' => 'getMinSendScore',
         'deep_check_applied' => 'getDeepCheckApplied',
+        'spamassassin_score' => 'getSpamassassinScore',
+        'deep_check_rules' => 'getDeepCheckRules',
+        'deep_check_error' => 'getDeepCheckError',
         'campaign_id' => 'getCampaignId',
         'message' => 'getMessage'
     ];
@@ -313,6 +331,9 @@ class CampaignSpamScoreResponse implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('can_send', $data ?? [], null);
         $this->setIfExists('min_send_score', $data ?? [], null);
         $this->setIfExists('deep_check_applied', $data ?? [], null);
+        $this->setIfExists('spamassassin_score', $data ?? [], null);
+        $this->setIfExists('deep_check_rules', $data ?? [], null);
+        $this->setIfExists('deep_check_error', $data ?? [], null);
         $this->setIfExists('campaign_id', $data ?? [], null);
         $this->setIfExists('message', $data ?? [], null);
     }
@@ -598,6 +619,101 @@ class CampaignSpamScoreResponse implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable deep_check_applied cannot be null');
         }
         $this->container['deep_check_applied'] = $deep_check_applied;
+
+        return $this;
+    }
+
+    /**
+     * Gets spamassassin_score
+     *
+     * @return float|null
+     */
+    public function getSpamassassinScore()
+    {
+        return $this->container['spamassassin_score'];
+    }
+
+    /**
+     * Sets spamassassin_score
+     *
+     * @param float|null $spamassassin_score spamassassin_score
+     *
+     * @return self
+     */
+    public function setSpamassassinScore($spamassassin_score)
+    {
+        if (is_null($spamassassin_score)) {
+            array_push($this->openAPINullablesSetToNull, 'spamassassin_score');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('spamassassin_score', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['spamassassin_score'] = $spamassassin_score;
+
+        return $this;
+    }
+
+    /**
+     * Gets deep_check_rules
+     *
+     * @return \ShadowSoftware\DabDash\Model\CampaignSpamScoreResponseDeepCheckRulesInner[]|null
+     */
+    public function getDeepCheckRules()
+    {
+        return $this->container['deep_check_rules'];
+    }
+
+    /**
+     * Sets deep_check_rules
+     *
+     * @param \ShadowSoftware\DabDash\Model\CampaignSpamScoreResponseDeepCheckRulesInner[]|null $deep_check_rules deep_check_rules
+     *
+     * @return self
+     */
+    public function setDeepCheckRules($deep_check_rules)
+    {
+        if (is_null($deep_check_rules)) {
+            throw new \InvalidArgumentException('non-nullable deep_check_rules cannot be null');
+        }
+        $this->container['deep_check_rules'] = $deep_check_rules;
+
+        return $this;
+    }
+
+    /**
+     * Gets deep_check_error
+     *
+     * @return string|null
+     */
+    public function getDeepCheckError()
+    {
+        return $this->container['deep_check_error'];
+    }
+
+    /**
+     * Sets deep_check_error
+     *
+     * @param string|null $deep_check_error deep_check_error
+     *
+     * @return self
+     */
+    public function setDeepCheckError($deep_check_error)
+    {
+        if (is_null($deep_check_error)) {
+            array_push($this->openAPINullablesSetToNull, 'deep_check_error');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('deep_check_error', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['deep_check_error'] = $deep_check_error;
 
         return $this;
     }

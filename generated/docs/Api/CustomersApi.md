@@ -8,9 +8,12 @@ All URIs are relative to https://.dabdash.com, except if the operation defines a
 | ------------- | ------------- | ------------- |
 | [**contactCleanup()**](CustomersApi.md#contactCleanup) | **POST** /api/v1/tools/contact_cleanup | Removes contacts that failed email validation from an imported list.  Typical use: a CSV import brought in thousands of addresses, the validator graded them, and the list is now full of dead addresses that will bounce and hurt sending reputation.  SAFETY: - dry_run defaults to TRUE. Nothing is deleted until you pass dry_run&#x3D;false. The dry run   returns exactly how many contacts match and a sample of them. - Only statuses \&quot;invalid\&quot; and \&quot;risky\&quot; can be purged. \&quot;unknown\&quot; means the validator has not   graded that contact YET — those are never deleted, and asking for them is refused. - Scoped to one contact list when list_id is given, otherwise the whole store. - Contacts are deleted, not unsubscribed. This cannot be undone from here. |
 | [**customerAddresses()**](CustomersApi.md#customerAddresses) | **POST** /api/v1/tools/customer_addresses | Return a customer&#39;s saved addresses, coordinates, saved zones, and zone mismatch diagnostics. |
+| [**customerConversationContext()**](CustomersApi.md#customerConversationContext) | **POST** /api/v1/tools/customer_conversation_context | Find recent email and live-chat conversations whose latest message is from a customer. Returns only the latest customer message needed to prepare a reply. |
 | [**customerList()**](CustomersApi.md#customerList) | **POST** /api/v1/tools/customer_list | Page through all customers for a tenant, optionally filtered to those updated since a given time. Built for bulk sync — use customer_lookup instead for a single targeted search. |
 | [**customerLookup()**](CustomersApi.md#customerLookup) | **POST** /api/v1/tools/customer_lookup | Find customers by id, email, phone, or name and return their recent addresses, orders, and support context. |
+| [**customerMessageDraftsCreate()**](CustomersApi.md#customerMessageDraftsCreate) | **POST** /api/v1/tools/customer_message_drafts_create | Create reply drafts only when the user explicitly asks in their current message to draft or prepare customer replies. Never call merely because unanswered messages exist. This tool never sends messages; Dabby presents each original customer message and proposed reply in chat for explicit confirmation. |
 | [**customerUpdate()**](CustomersApi.md#customerUpdate) | **POST** /api/v1/tools/customer_update | Update a customer&#39;s contact fields (name, email, phone) and/or suppress marketing consent (email_opt_out, sms_marketing_opt_out, sms_notifications_muted — one-way, cannot un-suppress). Verification, loyalty, and other DabDash-owned fields cannot be set here. |
+| [**deliveryDelayMessageDraftsCreate()**](CustomersApi.md#deliveryDelayMessageDraftsCreate) | **POST** /api/v1/tools/delivery_delay_message_drafts_create | Create delivery-delay email drafts only when the user explicitly asks in their current message to prepare or send a delivery update. Use only after order status confirms the customer is out for delivery. This tool never sends email; Dabby presents each proposal in chat for explicit confirmation. |
 | [**mailboxInspect()**](CustomersApi.md#mailboxInspect) | **POST** /api/v1/tools/mailbox_inspect | Inspect a tenant inbound mailbox: sync watermark, last error, recent ingestion counts (inbound/outbound), and a healthy/bootstrap/stalled/quiet verdict. Pass a tenant_slug, or pass platform&#x3D;true for a platform-owned mailbox (tenant_id IS NULL). |
 
 
@@ -122,6 +125,67 @@ try {
 ### Return type
 
 [**\ShadowSoftware\DabDash\Model\CustomerAddresses200Response**](../Model/CustomerAddresses200Response.md)
+
+### Authorization
+
+[tenantOAuth](../../README.md#tenantOAuth), [tenantApiKey](../../README.md#tenantApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `customerConversationContext()`
+
+```php
+customerConversationContext($customer_conversation_context_request): \ShadowSoftware\DabDash\Model\CustomerConversationContext200Response
+```
+
+Find recent email and live-chat conversations whose latest message is from a customer. Returns only the latest customer message needed to prepare a reply.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: tenantOAuth
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure Bearer authorization: tenantApiKey
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new ShadowSoftware\DabDash\Api\CustomersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$customer_conversation_context_request = new \ShadowSoftware\DabDash\Model\CustomerConversationContextRequest(); // \ShadowSoftware\DabDash\Model\CustomerConversationContextRequest
+
+try {
+    $result = $apiInstance->customerConversationContext($customer_conversation_context_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CustomersApi->customerConversationContext: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **customer_conversation_context_request** | [**\ShadowSoftware\DabDash\Model\CustomerConversationContextRequest**](../Model/CustomerConversationContextRequest.md)|  | [optional] |
+
+### Return type
+
+[**\ShadowSoftware\DabDash\Model\CustomerConversationContext200Response**](../Model/CustomerConversationContext200Response.md)
 
 ### Authorization
 
@@ -258,6 +322,67 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `customerMessageDraftsCreate()`
+
+```php
+customerMessageDraftsCreate($customer_message_drafts_create_request): \ShadowSoftware\DabDash\Model\CustomerMessageDraftsCreate200Response
+```
+
+Create reply drafts only when the user explicitly asks in their current message to draft or prepare customer replies. Never call merely because unanswered messages exist. This tool never sends messages; Dabby presents each original customer message and proposed reply in chat for explicit confirmation.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: tenantOAuth
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure Bearer authorization: tenantApiKey
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new ShadowSoftware\DabDash\Api\CustomersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$customer_message_drafts_create_request = new \ShadowSoftware\DabDash\Model\CustomerMessageDraftsCreateRequest(); // \ShadowSoftware\DabDash\Model\CustomerMessageDraftsCreateRequest
+
+try {
+    $result = $apiInstance->customerMessageDraftsCreate($customer_message_drafts_create_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CustomersApi->customerMessageDraftsCreate: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **customer_message_drafts_create_request** | [**\ShadowSoftware\DabDash\Model\CustomerMessageDraftsCreateRequest**](../Model/CustomerMessageDraftsCreateRequest.md)|  | [optional] |
+
+### Return type
+
+[**\ShadowSoftware\DabDash\Model\CustomerMessageDraftsCreate200Response**](../Model/CustomerMessageDraftsCreate200Response.md)
+
+### Authorization
+
+[tenantOAuth](../../README.md#tenantOAuth), [tenantApiKey](../../README.md#tenantApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `customerUpdate()`
 
 ```php
@@ -305,6 +430,67 @@ try {
 ### Return type
 
 [**\ShadowSoftware\DabDash\Model\CustomerUpdate200Response**](../Model/CustomerUpdate200Response.md)
+
+### Authorization
+
+[tenantOAuth](../../README.md#tenantOAuth), [tenantApiKey](../../README.md#tenantApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deliveryDelayMessageDraftsCreate()`
+
+```php
+deliveryDelayMessageDraftsCreate($delivery_delay_message_drafts_create_request): \ShadowSoftware\DabDash\Model\ContactCleanup200Response
+```
+
+Create delivery-delay email drafts only when the user explicitly asks in their current message to prepare or send a delivery update. Use only after order status confirms the customer is out for delivery. This tool never sends email; Dabby presents each proposal in chat for explicit confirmation.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: tenantOAuth
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure Bearer authorization: tenantApiKey
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new ShadowSoftware\DabDash\Api\CustomersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$delivery_delay_message_drafts_create_request = new \ShadowSoftware\DabDash\Model\DeliveryDelayMessageDraftsCreateRequest(); // \ShadowSoftware\DabDash\Model\DeliveryDelayMessageDraftsCreateRequest
+
+try {
+    $result = $apiInstance->deliveryDelayMessageDraftsCreate($delivery_delay_message_drafts_create_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CustomersApi->deliveryDelayMessageDraftsCreate: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **delivery_delay_message_drafts_create_request** | [**\ShadowSoftware\DabDash\Model\DeliveryDelayMessageDraftsCreateRequest**](../Model/DeliveryDelayMessageDraftsCreateRequest.md)|  | [optional] |
+
+### Return type
+
+[**\ShadowSoftware\DabDash\Model\ContactCleanup200Response**](../Model/ContactCleanup200Response.md)
 
 ### Authorization
 

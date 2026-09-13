@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **use_month_default** | **bool** |  | [optional]
 **month** | **int** |  | [optional]
 **theme** | **string** |  | [optional]
+**archetype** | **string** |  | [optional]
 **html_body_length** | **int** |  | [optional]
 **has_unsubscribe_token** | **bool** |  | [optional]
 **message** | **string** |  | [optional]

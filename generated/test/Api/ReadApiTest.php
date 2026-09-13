@@ -110,7 +110,7 @@ class ReadApiTest extends TestCase
     /**
      * Test case for campaignSpamScore
      *
-     * Score vendor campaign copy for inbox risk (email HTML or SMS).  One score only: 0–100 (0 = spam, 100 = primary-inbox friendly). Live scoring uses first-party rules. Pass for_send=true to run the same deep filter check used on send/schedule and fold it into that single number (never a second score).  Vendors cannot send or schedule below the platform minimum (default 80). Aim for 80+ before handoff; 85+ is excellent.  Pass campaign_id (loads draft content) OR inline channel + content fields..
+     * Score vendor campaign copy for inbox risk (email HTML or SMS).  One score only: 0–100 (0 = spam, 100 = primary-inbox friendly). Live scoring uses first-party rules. Pass for_send=true to run the same deep filter check used on send/schedule and fold it into that single number (never a second score).  When for_send=true on email, the response also includes spamassassin_score and deep_check_rules[] (Postmark/SpamAssassin hits with name, score, description) plus findings[] entries with actionable hints — use these to fix blocked campaigns.  Vendors cannot send or schedule below the platform minimum (default 80). Aim for 80+ before handoff; 85+ is excellent.  Pass campaign_id (loads draft content) OR inline channel + content fields..
      *
      */
     public function testCampaignSpamScore()
@@ -150,6 +150,18 @@ class ReadApiTest extends TestCase
      *
      */
     public function testCustomerAddresses()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for customerConversationContext
+     *
+     * Find recent email and live-chat conversations whose latest message is from a customer. Returns only the latest customer message needed to prepare a reply..
+     *
+     */
+    public function testCustomerConversationContext()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

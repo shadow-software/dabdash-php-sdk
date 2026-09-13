@@ -65,6 +65,7 @@ class CampaignApplyTemplateResponse implements ModelInterface, ArrayAccess, \Jso
         'use_month_default' => 'bool',
         'month' => 'int',
         'theme' => 'string',
+        'archetype' => 'string',
         'html_body_length' => 'int',
         'has_unsubscribe_token' => 'bool',
         'message' => 'string'
@@ -86,6 +87,7 @@ class CampaignApplyTemplateResponse implements ModelInterface, ArrayAccess, \Jso
         'use_month_default' => null,
         'month' => null,
         'theme' => null,
+        'archetype' => null,
         'html_body_length' => null,
         'has_unsubscribe_token' => null,
         'message' => null
@@ -105,6 +107,7 @@ class CampaignApplyTemplateResponse implements ModelInterface, ArrayAccess, \Jso
         'use_month_default' => true,
         'month' => true,
         'theme' => true,
+        'archetype' => true,
         'html_body_length' => true,
         'has_unsubscribe_token' => true,
         'message' => true
@@ -204,6 +207,7 @@ class CampaignApplyTemplateResponse implements ModelInterface, ArrayAccess, \Jso
         'use_month_default' => 'use_month_default',
         'month' => 'month',
         'theme' => 'theme',
+        'archetype' => 'archetype',
         'html_body_length' => 'html_body_length',
         'has_unsubscribe_token' => 'has_unsubscribe_token',
         'message' => 'message'
@@ -223,6 +227,7 @@ class CampaignApplyTemplateResponse implements ModelInterface, ArrayAccess, \Jso
         'use_month_default' => 'setUseMonthDefault',
         'month' => 'setMonth',
         'theme' => 'setTheme',
+        'archetype' => 'setArchetype',
         'html_body_length' => 'setHtmlBodyLength',
         'has_unsubscribe_token' => 'setHasUnsubscribeToken',
         'message' => 'setMessage'
@@ -242,6 +247,7 @@ class CampaignApplyTemplateResponse implements ModelInterface, ArrayAccess, \Jso
         'use_month_default' => 'getUseMonthDefault',
         'month' => 'getMonth',
         'theme' => 'getTheme',
+        'archetype' => 'getArchetype',
         'html_body_length' => 'getHtmlBodyLength',
         'has_unsubscribe_token' => 'getHasUnsubscribeToken',
         'message' => 'getMessage'
@@ -312,6 +318,7 @@ class CampaignApplyTemplateResponse implements ModelInterface, ArrayAccess, \Jso
         $this->setIfExists('use_month_default', $data ?? [], null);
         $this->setIfExists('month', $data ?? [], null);
         $this->setIfExists('theme', $data ?? [], null);
+        $this->setIfExists('archetype', $data ?? [], null);
         $this->setIfExists('html_body_length', $data ?? [], null);
         $this->setIfExists('has_unsubscribe_token', $data ?? [], null);
         $this->setIfExists('message', $data ?? [], null);
@@ -627,6 +634,40 @@ class CampaignApplyTemplateResponse implements ModelInterface, ArrayAccess, \Jso
             }
         }
         $this->container['theme'] = $theme;
+
+        return $this;
+    }
+
+    /**
+     * Gets archetype
+     *
+     * @return string|null
+     */
+    public function getArchetype()
+    {
+        return $this->container['archetype'];
+    }
+
+    /**
+     * Sets archetype
+     *
+     * @param string|null $archetype archetype
+     *
+     * @return self
+     */
+    public function setArchetype($archetype)
+    {
+        if (is_null($archetype)) {
+            array_push($this->openAPINullablesSetToNull, 'archetype');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('archetype', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['archetype'] = $archetype;
 
         return $this;
     }

@@ -13,6 +13,9 @@ Name | Type | Description | Notes
 **can_send** | **bool** |  | [optional]
 **min_send_score** | **int** |  | [optional]
 **deep_check_applied** | **bool** |  | [optional]
+**spamassassin_score** | **float** |  | [optional]
+**deep_check_rules** | [**\ShadowSoftware\DabDash\Model\CampaignSpamScoreResponseDeepCheckRulesInner[]**](CampaignSpamScoreResponseDeepCheckRulesInner.md) |  | [optional]
+**deep_check_error** | **string** |  | [optional]
 **campaign_id** | **int** |  | [optional]
 **message** | **string** |  | [optional]
 

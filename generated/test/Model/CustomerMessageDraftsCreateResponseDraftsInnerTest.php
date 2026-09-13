@@ -1,6 +1,6 @@
 <?php
 /**
- * CampaignApplyTemplateResponseTest
+ * CustomerMessageDraftsCreateResponseDraftsInnerTest
  *
  * PHP version 8.1
  *
@@ -31,15 +31,15 @@ namespace ShadowSoftware\DabDash\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * CampaignApplyTemplateResponseTest Class Doc Comment
+ * CustomerMessageDraftsCreateResponseDraftsInnerTest Class Doc Comment
  *
  * @category    Class
- * @description CampaignApplyTemplateResponse
+ * @description CustomerMessageDraftsCreateResponseDraftsInner
  * @package     ShadowSoftware\DabDash
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class CampaignApplyTemplateResponseTest extends TestCase
+class CustomerMessageDraftsCreateResponseDraftsInnerTest extends TestCase
 {
 
     /**
@@ -71,117 +71,72 @@ class CampaignApplyTemplateResponseTest extends TestCase
     }
 
     /**
-     * Test "CampaignApplyTemplateResponse"
+     * Test "CustomerMessageDraftsCreateResponseDraftsInner"
      */
-    public function testCampaignApplyTemplateResponse()
+    public function testCustomerMessageDraftsCreateResponseDraftsInner()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "error"
+     * Test attribute "id"
      */
-    public function testPropertyError()
+    public function testPropertyId()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "available_templates"
+     * Test attribute "recipient_name"
      */
-    public function testPropertyAvailableTemplates()
+    public function testPropertyRecipientName()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "action"
+     * Test attribute "channel"
      */
-    public function testPropertyAction()
+    public function testPropertyChannel()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "campaign_id"
+     * Test attribute "subject"
      */
-    public function testPropertyCampaignId()
+    public function testPropertySubject()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "template_id"
+     * Test attribute "original_message"
      */
-    public function testPropertyTemplateId()
+    public function testPropertyOriginalMessage()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "use_month_default"
+     * Test attribute "body"
      */
-    public function testPropertyUseMonthDefault()
+    public function testPropertyBody()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "month"
+     * Test attribute "status"
      */
-    public function testPropertyMonth()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "theme"
-     */
-    public function testPropertyTheme()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "archetype"
-     */
-    public function testPropertyArchetype()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "html_body_length"
-     */
-    public function testPropertyHtmlBodyLength()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "has_unsubscribe_token"
-     */
-    public function testPropertyHasUnsubscribeToken()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "message"
-     */
-    public function testPropertyMessage()
+    public function testPropertyStatus()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

@@ -1,0 +1,15 @@
+# CustomerMessageDraftsCreateResponseDraftsInner
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**id** | **int** |  | [optional]
+**recipient_name** | **string** |  | [optional]
+**channel** | **string** |  | [optional]
+**subject** | **string** |  | [optional]
+**original_message** | **string** |  | [optional]
+**body** | **string** |  | [optional]
+**status** | **string** |  | [optional]
+
+[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

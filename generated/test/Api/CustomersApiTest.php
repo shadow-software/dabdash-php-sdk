@@ -96,6 +96,18 @@ class CustomersApiTest extends TestCase
     }
 
     /**
+     * Test case for customerConversationContext
+     *
+     * Find recent email and live-chat conversations whose latest message is from a customer. Returns only the latest customer message needed to prepare a reply..
+     *
+     */
+    public function testCustomerConversationContext()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for customerList
      *
      * Page through all customers for a tenant, optionally filtered to those updated since a given time. Built for bulk sync — use customer_lookup instead for a single targeted search..
@@ -120,12 +132,36 @@ class CustomersApiTest extends TestCase
     }
 
     /**
+     * Test case for customerMessageDraftsCreate
+     *
+     * Create reply drafts only when the user explicitly asks in their current message to draft or prepare customer replies. Never call merely because unanswered messages exist. This tool never sends messages; Dabby presents each original customer message and proposed reply in chat for explicit confirmation..
+     *
+     */
+    public function testCustomerMessageDraftsCreate()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for customerUpdate
      *
      * Update a customer's contact fields (name, email, phone) and/or suppress marketing consent (email_opt_out, sms_marketing_opt_out, sms_notifications_muted — one-way, cannot un-suppress). Verification, loyalty, and other DabDash-owned fields cannot be set here..
      *
      */
     public function testCustomerUpdate()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for deliveryDelayMessageDraftsCreate
+     *
+     * Create delivery-delay email drafts only when the user explicitly asks in their current message to prepare or send a delivery update. Use only after order status confirms the customer is out for delivery. This tool never sends email; Dabby presents each proposal in chat for explicit confirmation..
+     *
+     */
+    public function testDeliveryDelayMessageDraftsCreate()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

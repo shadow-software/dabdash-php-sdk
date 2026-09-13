@@ -161,6 +161,33 @@ class CampaignSpamScoreResponseTest extends TestCase
     }
 
     /**
+     * Test attribute "spamassassin_score"
+     */
+    public function testPropertySpamassassinScore()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "deep_check_rules"
+     */
+    public function testPropertyDeepCheckRules()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "deep_check_error"
+     */
+    public function testPropertyDeepCheckError()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "campaign_id"
      */
     public function testPropertyCampaignId()
