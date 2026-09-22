@@ -18,11 +18,13 @@
 </p>
 
 <p align="center">
-  <b><a href="https://packagist.org/packages/shadow-software/dabdash-php-sdk">Packagist →</a></b>
+  <b><a href="https://dabdash.com/">Platform</a></b>
   &nbsp;·&nbsp;
-  <a href="https://github.com/shadow-software/dabdash-for-woocommerce">WooCommerce plugin</a>
+  <a href="https://dabdash.com/docs/api">API docs</a>
   &nbsp;·&nbsp;
   <a href="https://github.com/shadow-software/dabdash-sdk">TypeScript SDK</a>
+  &nbsp;·&nbsp;
+  <a href="https://github.com/shadow-software/dabdash-for-woocommerce">WooCommerce plugin</a>
 </p>
 
 ---
@@ -65,12 +67,13 @@ plugin depends on this package (`^6.0`) and ships `vendor/` in its release ZIP.
 
 ---
 
-## Also by Shadow Software
+## DabDash ecosystem
 
 | | |
 |---|---|
-| [`shadow-software/agt-php-sdk`](https://github.com/shadow-software/agt-php-sdk) | AGT Dealer API (PHP) |
-| [`@shadow-software/dabdash-sdk`](https://github.com/shadow-software/dabdash-sdk) | DabDash Tenant API (TypeScript) |
+| [dabdash.com](https://dabdash.com) | Platform & tenant storefronts |
+| [API reference](https://dabdash.com/docs/api) | Tenant API docs & OpenAPI spec |
+| [`@shadow-software/dabdash-sdk`](https://github.com/shadow-software/dabdash-sdk) | TypeScript SDK |
 | [DabDash for WooCommerce](https://github.com/shadow-software/dabdash-for-woocommerce) | WordPress / WooCommerce sync plugin |
 
 <p align="center">

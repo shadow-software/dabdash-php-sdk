@@ -1,6 +1,7 @@
 {
     "name": "shadow-software/dabdash-php-sdk",
     "description": "PHP SDK for the DabDash Tenant API",
+    "homepage": "https://dabdash.com/docs/api",
     "type": "library",
     "license": "MIT",
     "require": {
