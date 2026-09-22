@@ -18,10 +18,14 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: release
+  cancel-in-progress: false
+
 jobs:
   release:
     name: Generate, build, test, publish
-    runs-on: ${{ fromJSON(vars.CI_RUNNER || '["ubuntu-latest"]') }}
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout SDK package
         uses: actions/checkout@v7
