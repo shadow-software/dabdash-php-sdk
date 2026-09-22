@@ -1,0 +1,26 @@
+# Push/PR gate — autoload + smoke tests on the committed generated client.
+#
+# Self-hosted CI (optional):
+#   gh variable set CI_RUNNER '["self-hosted","ci"]' -R shadow-software/dabdash-php-sdk
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  test:
+    name: Smoke test
+    runs-on: ${{ fromJSON(vars.CI_RUNNER || '["ubuntu-latest"]') }}
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.3"
+          tools: composer:v2
+
+      - run: composer install --prefer-dist --no-interaction --no-progress
+      - run: composer test

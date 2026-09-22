@@ -22,11 +22,12 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "ShadowSoftware\\DabDash\\Test\\": "generated/test/"
+            "ShadowSoftware\\DabDash\\Test\\": "generated/test/",
+            "ShadowSoftware\\DabDash\\Tests\\": "tests/"
         }
     },
     "scripts": {
-        "test": "if [ -d generated/test ]; then phpunit --bootstrap vendor/autoload.php generated/test; else echo \"no generated client yet\"; fi"
+        "test": "phpunit --configuration phpunit.xml.dist"
     },
     "version": "6.3.0"
 }
