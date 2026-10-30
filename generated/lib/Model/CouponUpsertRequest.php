@@ -70,6 +70,7 @@ class CouponUpsertRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'applies_to_ids' => 'int[]',
         'requires_subscribed_customer' => 'bool',
         'subscription_ladder_id' => 'int',
+        'contact_list_id' => 'int',
         'ladder_start_percent' => 'int',
         'ladder_step_percent' => 'int',
         'ladder_cap_percent' => 'int',
@@ -100,6 +101,7 @@ class CouponUpsertRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'applies_to_ids' => null,
         'requires_subscribed_customer' => null,
         'subscription_ladder_id' => null,
+        'contact_list_id' => null,
         'ladder_start_percent' => null,
         'ladder_step_percent' => null,
         'ladder_cap_percent' => null,
@@ -128,6 +130,7 @@ class CouponUpsertRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'applies_to_ids' => true,
         'requires_subscribed_customer' => true,
         'subscription_ladder_id' => true,
+        'contact_list_id' => true,
         'ladder_start_percent' => true,
         'ladder_step_percent' => true,
         'ladder_cap_percent' => true,
@@ -236,6 +239,7 @@ class CouponUpsertRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'applies_to_ids' => 'applies_to_ids',
         'requires_subscribed_customer' => 'requires_subscribed_customer',
         'subscription_ladder_id' => 'subscription_ladder_id',
+        'contact_list_id' => 'contact_list_id',
         'ladder_start_percent' => 'ladder_start_percent',
         'ladder_step_percent' => 'ladder_step_percent',
         'ladder_cap_percent' => 'ladder_cap_percent',
@@ -264,6 +268,7 @@ class CouponUpsertRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'applies_to_ids' => 'setAppliesToIds',
         'requires_subscribed_customer' => 'setRequiresSubscribedCustomer',
         'subscription_ladder_id' => 'setSubscriptionLadderId',
+        'contact_list_id' => 'setContactListId',
         'ladder_start_percent' => 'setLadderStartPercent',
         'ladder_step_percent' => 'setLadderStepPercent',
         'ladder_cap_percent' => 'setLadderCapPercent',
@@ -292,6 +297,7 @@ class CouponUpsertRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'applies_to_ids' => 'getAppliesToIds',
         'requires_subscribed_customer' => 'getRequiresSubscribedCustomer',
         'subscription_ladder_id' => 'getSubscriptionLadderId',
+        'contact_list_id' => 'getContactListId',
         'ladder_start_percent' => 'getLadderStartPercent',
         'ladder_step_percent' => 'getLadderStepPercent',
         'ladder_cap_percent' => 'getLadderCapPercent',
@@ -371,6 +377,7 @@ class CouponUpsertRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->setIfExists('applies_to_ids', $data ?? [], null);
         $this->setIfExists('requires_subscribed_customer', $data ?? [], null);
         $this->setIfExists('subscription_ladder_id', $data ?? [], null);
+        $this->setIfExists('contact_list_id', $data ?? [], null);
         $this->setIfExists('ladder_start_percent', $data ?? [], null);
         $this->setIfExists('ladder_step_percent', $data ?? [], null);
         $this->setIfExists('ladder_cap_percent', $data ?? [], null);
@@ -860,6 +867,40 @@ class CouponUpsertRequest implements ModelInterface, ArrayAccess, \JsonSerializa
             }
         }
         $this->container['subscription_ladder_id'] = $subscription_ladder_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets contact_list_id
+     *
+     * @return int|null
+     */
+    public function getContactListId()
+    {
+        return $this->container['contact_list_id'];
+    }
+
+    /**
+     * Sets contact_list_id
+     *
+     * @param int|null $contact_list_id Optional tenant-owned manual or Smart List id. Only list members may redeem the coupon; pass null to unlink.
+     *
+     * @return self
+     */
+    public function setContactListId($contact_list_id)
+    {
+        if (is_null($contact_list_id)) {
+            array_push($this->openAPINullablesSetToNull, 'contact_list_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('contact_list_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['contact_list_id'] = $contact_list_id;
 
         return $this;
     }

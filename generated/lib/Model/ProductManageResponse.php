@@ -58,7 +58,7 @@ class ProductManageResponse implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     protected static $openAPITypes = [
         'action' => 'string',
-        'tenant' => '\ShadowSoftware\DabDash\Model\BundleListResponseTenant',
+        'tenant' => '\ShadowSoftware\DabDash\Model\BundleHealthResponseTenant',
         'product' => '\ShadowSoftware\DabDash\Model\ProductManageResponseProduct',
         'strain_applied' => '\ShadowSoftware\DabDash\Model\ProductManageResponseStrainApplied',
         'strain_matches' => '\ShadowSoftware\DabDash\Model\ProductManageResponseStrainMatchesInner[]',
@@ -354,7 +354,7 @@ class ProductManageResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets tenant
      *
-     * @return \ShadowSoftware\DabDash\Model\BundleListResponseTenant|null
+     * @return \ShadowSoftware\DabDash\Model\BundleHealthResponseTenant|null
      */
     public function getTenant()
     {
@@ -364,7 +364,7 @@ class ProductManageResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets tenant
      *
-     * @param \ShadowSoftware\DabDash\Model\BundleListResponseTenant|null $tenant tenant
+     * @param \ShadowSoftware\DabDash\Model\BundleHealthResponseTenant|null $tenant tenant
      *
      * @return self
      */

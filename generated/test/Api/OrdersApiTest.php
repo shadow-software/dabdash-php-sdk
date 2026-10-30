@@ -74,7 +74,7 @@ class OrdersApiTest extends TestCase
     /**
      * Test case for orderDashboard
      *
-     * Query orders across all tenants. Filter by status, order number, customer clues, date range, amount, or tenant. Returns order list with pricing context..
+     * Query orders with filters and stable cursor pagination. Use limit plus next_cursor to walk every order; set include_items=true for a complete order export with line items. Tenant access is always enforced..
      *
      */
     public function testOrderDashboard()

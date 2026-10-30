@@ -58,7 +58,7 @@ class ProductFeatureManageResponse implements ModelInterface, ArrayAccess, \Json
      */
     protected static $openAPITypes = [
         'action' => 'string',
-        'tenant' => '\ShadowSoftware\DabDash\Model\BundleListResponseTenant',
+        'tenant' => '\ShadowSoftware\DabDash\Model\BundleHealthResponseTenant',
         'total' => 'int',
         'products' => '\ShadowSoftware\DabDash\Model\ProductFeatureManageResponseProductsInner[]',
         'updated' => 'int[]',
@@ -361,7 +361,7 @@ class ProductFeatureManageResponse implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets tenant
      *
-     * @return \ShadowSoftware\DabDash\Model\BundleListResponseTenant|null
+     * @return \ShadowSoftware\DabDash\Model\BundleHealthResponseTenant|null
      */
     public function getTenant()
     {
@@ -371,7 +371,7 @@ class ProductFeatureManageResponse implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets tenant
      *
-     * @param \ShadowSoftware\DabDash\Model\BundleListResponseTenant|null $tenant tenant
+     * @param \ShadowSoftware\DabDash\Model\BundleHealthResponseTenant|null $tenant tenant
      *
      * @return self
      */

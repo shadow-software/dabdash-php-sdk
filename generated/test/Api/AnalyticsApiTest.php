@@ -86,7 +86,7 @@ class AnalyticsApiTest extends TestCase
     /**
      * Test case for googleAnalytics
      *
-     * Query Google Analytics (GA4) data for the platform (dabdash.com) or a specific tenant with a connected GA integration. Returns traffic overview, top pages, traffic sources, top events, and daily trend..
+     * Query Google Analytics (GA4) data for a tenant with a connected GA integration. Returns traffic overview, top pages, traffic sources, top events, and daily trend..
      *
      */
     public function testGoogleAnalytics()

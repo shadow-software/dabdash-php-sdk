@@ -58,14 +58,19 @@ class ProductManageRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $openAPITypes = [
         'action' => 'string',
+        'product_id' => 'int',
         'name' => 'string',
         'price' => 'float',
         'sku' => 'string',
         'stock_quantity' => 'float',
         'category_ids' => 'int[]',
         'description' => 'string',
+        'meta_title' => 'string',
+        'meta_description' => 'string',
         'strain_id' => 'int',
-        'skip_strain_enrich' => 'bool'
+        'skip_strain_enrich' => 'bool',
+        'expected_variation_count' => 'int',
+        'variations' => '\ShadowSoftware\DabDash\Model\CatalogImportRequestProductsInnerVariationsInner[]'
     ];
 
     /**
@@ -77,14 +82,19 @@ class ProductManageRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $openAPIFormats = [
         'action' => null,
+        'product_id' => null,
         'name' => null,
         'price' => null,
         'sku' => null,
         'stock_quantity' => null,
         'category_ids' => null,
         'description' => null,
+        'meta_title' => null,
+        'meta_description' => null,
         'strain_id' => null,
-        'skip_strain_enrich' => null
+        'skip_strain_enrich' => null,
+        'expected_variation_count' => null,
+        'variations' => null
     ];
 
     /**
@@ -94,14 +104,19 @@ class ProductManageRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static array $openAPINullables = [
         'action' => true,
+        'product_id' => true,
         'name' => true,
         'price' => true,
         'sku' => true,
         'stock_quantity' => true,
         'category_ids' => true,
         'description' => true,
+        'meta_title' => true,
+        'meta_description' => true,
         'strain_id' => true,
-        'skip_strain_enrich' => true
+        'skip_strain_enrich' => true,
+        'expected_variation_count' => true,
+        'variations' => true
     ];
 
     /**
@@ -191,14 +206,19 @@ class ProductManageRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $attributeMap = [
         'action' => 'action',
+        'product_id' => 'product_id',
         'name' => 'name',
         'price' => 'price',
         'sku' => 'sku',
         'stock_quantity' => 'stock_quantity',
         'category_ids' => 'category_ids',
         'description' => 'description',
+        'meta_title' => 'meta_title',
+        'meta_description' => 'meta_description',
         'strain_id' => 'strain_id',
-        'skip_strain_enrich' => 'skip_strain_enrich'
+        'skip_strain_enrich' => 'skip_strain_enrich',
+        'expected_variation_count' => 'expected_variation_count',
+        'variations' => 'variations'
     ];
 
     /**
@@ -208,14 +228,19 @@ class ProductManageRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $setters = [
         'action' => 'setAction',
+        'product_id' => 'setProductId',
         'name' => 'setName',
         'price' => 'setPrice',
         'sku' => 'setSku',
         'stock_quantity' => 'setStockQuantity',
         'category_ids' => 'setCategoryIds',
         'description' => 'setDescription',
+        'meta_title' => 'setMetaTitle',
+        'meta_description' => 'setMetaDescription',
         'strain_id' => 'setStrainId',
-        'skip_strain_enrich' => 'setSkipStrainEnrich'
+        'skip_strain_enrich' => 'setSkipStrainEnrich',
+        'expected_variation_count' => 'setExpectedVariationCount',
+        'variations' => 'setVariations'
     ];
 
     /**
@@ -225,14 +250,19 @@ class ProductManageRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $getters = [
         'action' => 'getAction',
+        'product_id' => 'getProductId',
         'name' => 'getName',
         'price' => 'getPrice',
         'sku' => 'getSku',
         'stock_quantity' => 'getStockQuantity',
         'category_ids' => 'getCategoryIds',
         'description' => 'getDescription',
+        'meta_title' => 'getMetaTitle',
+        'meta_description' => 'getMetaDescription',
         'strain_id' => 'getStrainId',
-        'skip_strain_enrich' => 'getSkipStrainEnrich'
+        'skip_strain_enrich' => 'getSkipStrainEnrich',
+        'expected_variation_count' => 'getExpectedVariationCount',
+        'variations' => 'getVariations'
     ];
 
     /**
@@ -293,14 +323,19 @@ class ProductManageRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     public function __construct(?array $data = null)
     {
         $this->setIfExists('action', $data ?? [], null);
+        $this->setIfExists('product_id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('price', $data ?? [], null);
         $this->setIfExists('sku', $data ?? [], null);
         $this->setIfExists('stock_quantity', $data ?? [], null);
         $this->setIfExists('category_ids', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
+        $this->setIfExists('meta_title', $data ?? [], null);
+        $this->setIfExists('meta_description', $data ?? [], null);
         $this->setIfExists('strain_id', $data ?? [], null);
         $this->setIfExists('skip_strain_enrich', $data ?? [], null);
+        $this->setIfExists('expected_variation_count', $data ?? [], null);
+        $this->setIfExists('variations', $data ?? [], null);
     }
 
     /**
@@ -358,7 +393,7 @@ class ProductManageRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets action
      *
-     * @param string|null $action \"create\" (default).
+     * @param string|null $action \"create\" (default) or \"update\".
      *
      * @return self
      */
@@ -375,6 +410,40 @@ class ProductManageRequest implements ModelInterface, ArrayAccess, \JsonSerializ
             }
         }
         $this->container['action'] = $action;
+
+        return $this;
+    }
+
+    /**
+     * Gets product_id
+     *
+     * @return int|null
+     */
+    public function getProductId()
+    {
+        return $this->container['product_id'];
+    }
+
+    /**
+     * Sets product_id
+     *
+     * @param int|null $product_id Existing product id required for update.
+     *
+     * @return self
+     */
+    public function setProductId($product_id)
+    {
+        if (is_null($product_id)) {
+            array_push($this->openAPINullablesSetToNull, 'product_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('product_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['product_id'] = $product_id;
 
         return $this;
     }
@@ -584,6 +653,74 @@ class ProductManageRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
+     * Gets meta_title
+     *
+     * @return string|null
+     */
+    public function getMetaTitle()
+    {
+        return $this->container['meta_title'];
+    }
+
+    /**
+     * Sets meta_title
+     *
+     * @param string|null $meta_title SEO title override (max 60). Empty string clears.
+     *
+     * @return self
+     */
+    public function setMetaTitle($meta_title)
+    {
+        if (is_null($meta_title)) {
+            array_push($this->openAPINullablesSetToNull, 'meta_title');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('meta_title', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['meta_title'] = $meta_title;
+
+        return $this;
+    }
+
+    /**
+     * Gets meta_description
+     *
+     * @return string|null
+     */
+    public function getMetaDescription()
+    {
+        return $this->container['meta_description'];
+    }
+
+    /**
+     * Sets meta_description
+     *
+     * @param string|null $meta_description SEO meta description override (max 160). Empty string clears.
+     *
+     * @return self
+     */
+    public function setMetaDescription($meta_description)
+    {
+        if (is_null($meta_description)) {
+            array_push($this->openAPINullablesSetToNull, 'meta_description');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('meta_description', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['meta_description'] = $meta_description;
+
+        return $this;
+    }
+
+    /**
      * Gets strain_id
      *
      * @return int|null
@@ -647,6 +784,74 @@ class ProductManageRequest implements ModelInterface, ArrayAccess, \JsonSerializ
             }
         }
         $this->container['skip_strain_enrich'] = $skip_strain_enrich;
+
+        return $this;
+    }
+
+    /**
+     * Gets expected_variation_count
+     *
+     * @return int|null
+     */
+    public function getExpectedVariationCount()
+    {
+        return $this->container['expected_variation_count'];
+    }
+
+    /**
+     * Sets expected_variation_count
+     *
+     * @param int|null $expected_variation_count Required with variations: exact number of variation rows; partial payloads are rejected.
+     *
+     * @return self
+     */
+    public function setExpectedVariationCount($expected_variation_count)
+    {
+        if (is_null($expected_variation_count)) {
+            array_push($this->openAPINullablesSetToNull, 'expected_variation_count');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('expected_variation_count', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['expected_variation_count'] = $expected_variation_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets variations
+     *
+     * @return \ShadowSoftware\DabDash\Model\CatalogImportRequestProductsInnerVariationsInner[]|null
+     */
+    public function getVariations()
+    {
+        return $this->container['variations'];
+    }
+
+    /**
+     * Sets variations
+     *
+     * @param \ShadowSoftware\DabDash\Model\CatalogImportRequestProductsInnerVariationsInner[]|null $variations Complete named variant rows. Each row requires name, price, and stock_quantity.
+     *
+     * @return self
+     */
+    public function setVariations($variations)
+    {
+        if (is_null($variations)) {
+            array_push($this->openAPINullablesSetToNull, 'variations');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('variations', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['variations'] = $variations;
 
         return $this;
     }

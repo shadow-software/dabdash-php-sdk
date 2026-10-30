@@ -68,6 +68,9 @@ class BundleUpsertResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'starts_at' => 'string',
         'ends_at' => 'string',
         'variation_count' => 'int',
+        'has_rule' => 'bool',
+        'rule_added_count' => 'int',
+        'rule_removed_count' => 'int',
         'message' => 'string'
     ];
 
@@ -90,6 +93,9 @@ class BundleUpsertResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'starts_at' => null,
         'ends_at' => null,
         'variation_count' => null,
+        'has_rule' => null,
+        'rule_added_count' => null,
+        'rule_removed_count' => null,
         'message' => null
     ];
 
@@ -110,6 +116,9 @@ class BundleUpsertResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'starts_at' => true,
         'ends_at' => true,
         'variation_count' => false,
+        'has_rule' => false,
+        'rule_added_count' => true,
+        'rule_removed_count' => true,
         'message' => false
     ];
 
@@ -210,6 +219,9 @@ class BundleUpsertResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'starts_at' => 'starts_at',
         'ends_at' => 'ends_at',
         'variation_count' => 'variation_count',
+        'has_rule' => 'has_rule',
+        'rule_added_count' => 'rule_added_count',
+        'rule_removed_count' => 'rule_removed_count',
         'message' => 'message'
     ];
 
@@ -230,6 +242,9 @@ class BundleUpsertResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'starts_at' => 'setStartsAt',
         'ends_at' => 'setEndsAt',
         'variation_count' => 'setVariationCount',
+        'has_rule' => 'setHasRule',
+        'rule_added_count' => 'setRuleAddedCount',
+        'rule_removed_count' => 'setRuleRemovedCount',
         'message' => 'setMessage'
     ];
 
@@ -250,6 +265,9 @@ class BundleUpsertResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'starts_at' => 'getStartsAt',
         'ends_at' => 'getEndsAt',
         'variation_count' => 'getVariationCount',
+        'has_rule' => 'getHasRule',
+        'rule_added_count' => 'getRuleAddedCount',
+        'rule_removed_count' => 'getRuleRemovedCount',
         'message' => 'getMessage'
     ];
 
@@ -321,6 +339,9 @@ class BundleUpsertResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->setIfExists('starts_at', $data ?? [], null);
         $this->setIfExists('ends_at', $data ?? [], null);
         $this->setIfExists('variation_count', $data ?? [], null);
+        $this->setIfExists('has_rule', $data ?? [], null);
+        $this->setIfExists('rule_added_count', $data ?? [], null);
+        $this->setIfExists('rule_removed_count', $data ?? [], null);
         $this->setIfExists('message', $data ?? [], null);
     }
 
@@ -673,6 +694,101 @@ class BundleUpsertResponse implements ModelInterface, ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable variation_count cannot be null');
         }
         $this->container['variation_count'] = $variation_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets has_rule
+     *
+     * @return bool|null
+     */
+    public function getHasRule()
+    {
+        return $this->container['has_rule'];
+    }
+
+    /**
+     * Sets has_rule
+     *
+     * @param bool|null $has_rule has_rule
+     *
+     * @return self
+     */
+    public function setHasRule($has_rule)
+    {
+        if (is_null($has_rule)) {
+            throw new \InvalidArgumentException('non-nullable has_rule cannot be null');
+        }
+        $this->container['has_rule'] = $has_rule;
+
+        return $this;
+    }
+
+    /**
+     * Gets rule_added_count
+     *
+     * @return int|null
+     */
+    public function getRuleAddedCount()
+    {
+        return $this->container['rule_added_count'];
+    }
+
+    /**
+     * Sets rule_added_count
+     *
+     * @param int|null $rule_added_count rule_added_count
+     *
+     * @return self
+     */
+    public function setRuleAddedCount($rule_added_count)
+    {
+        if (is_null($rule_added_count)) {
+            array_push($this->openAPINullablesSetToNull, 'rule_added_count');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('rule_added_count', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['rule_added_count'] = $rule_added_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets rule_removed_count
+     *
+     * @return int|null
+     */
+    public function getRuleRemovedCount()
+    {
+        return $this->container['rule_removed_count'];
+    }
+
+    /**
+     * Sets rule_removed_count
+     *
+     * @param int|null $rule_removed_count rule_removed_count
+     *
+     * @return self
+     */
+    public function setRuleRemovedCount($rule_removed_count)
+    {
+        if (is_null($rule_removed_count)) {
+            array_push($this->openAPINullablesSetToNull, 'rule_removed_count');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('rule_removed_count', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['rule_removed_count'] = $rule_removed_count;
 
         return $this;
     }

@@ -125,6 +125,24 @@ class CategoryManageRequestTest extends TestCase
     }
 
     /**
+     * Test attribute "meta_title"
+     */
+    public function testPropertyMetaTitle()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "meta_description"
+     */
+    public function testPropertyMetaDescription()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "parent_id"
      */
     public function testPropertyParentId()

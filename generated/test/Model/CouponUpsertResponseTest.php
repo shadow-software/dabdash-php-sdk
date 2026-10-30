@@ -161,6 +161,15 @@ class CouponUpsertResponseTest extends TestCase
     }
 
     /**
+     * Test attribute "contact_list_id"
+     */
+    public function testPropertyContactListId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "applies_to"
      */
     public function testPropertyAppliesTo()

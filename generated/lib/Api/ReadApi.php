@@ -89,10 +89,16 @@ class ReadApi
         'catalogFlatteningAudit' => [
             'application/json',
         ],
+        'catalogVariantAudit' => [
+            'application/json',
+        ],
         'couponList' => [
             'application/json',
         ],
         'customerAddresses' => [
+            'application/json',
+        ],
+        'customerBlockStatus' => [
             'application/json',
         ],
         'customerConversationContext' => [
@@ -213,7 +219,7 @@ class ReadApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\DabDash\Model\AnalyticsQuery200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\AnalyticsQuery200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
      */
     public function analyticsQuery($analytics_query_request = null, string $contentType = self::contentTypes['analyticsQuery'][0])
     {
@@ -231,7 +237,7 @@ class ReadApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\DabDash\Model\AnalyticsQuery200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\AnalyticsQuery200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function analyticsQueryWithHttpInfo($analytics_query_request = null, string $contentType = self::contentTypes['analyticsQuery'][0])
     {
@@ -269,31 +275,31 @@ class ReadApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
@@ -332,7 +338,7 @@ class ReadApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -340,7 +346,7 @@ class ReadApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -348,7 +354,7 @@ class ReadApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -356,7 +362,7 @@ class ReadApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -364,7 +370,7 @@ class ReadApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -552,7 +558,7 @@ class ReadApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\DabDash\Model\CampaignAudienceInspect200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\CampaignAudienceInspect200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
      */
     public function campaignAudienceInspect($campaign_audience_inspect_request = null, string $contentType = self::contentTypes['campaignAudienceInspect'][0])
     {
@@ -570,7 +576,7 @@ class ReadApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\DabDash\Model\CampaignAudienceInspect200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\CampaignAudienceInspect200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function campaignAudienceInspectWithHttpInfo($campaign_audience_inspect_request = null, string $contentType = self::contentTypes['campaignAudienceInspect'][0])
     {
@@ -608,31 +614,31 @@ class ReadApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
@@ -671,7 +677,7 @@ class ReadApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -679,7 +685,7 @@ class ReadApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -687,7 +693,7 @@ class ReadApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -695,7 +701,7 @@ class ReadApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -703,7 +709,7 @@ class ReadApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -891,7 +897,7 @@ class ReadApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\DabDash\Model\CampaignGet200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\CampaignGet200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
      */
     public function campaignGet($campaign_get_request = null, string $contentType = self::contentTypes['campaignGet'][0])
     {
@@ -909,7 +915,7 @@ class ReadApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\DabDash\Model\CampaignGet200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\CampaignGet200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function campaignGetWithHttpInfo($campaign_get_request = null, string $contentType = self::contentTypes['campaignGet'][0])
     {
@@ -947,31 +953,31 @@ class ReadApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
@@ -1010,7 +1016,7 @@ class ReadApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1018,7 +1024,7 @@ class ReadApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1026,7 +1032,7 @@ class ReadApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1034,7 +1040,7 @@ class ReadApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1042,7 +1048,7 @@ class ReadApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1230,7 +1236,7 @@ class ReadApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\DabDash\Model\CampaignSpamScore200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\CampaignSpamScore200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
      */
     public function campaignSpamScore($campaign_spam_score_request = null, string $contentType = self::contentTypes['campaignSpamScore'][0])
     {
@@ -1248,7 +1254,7 @@ class ReadApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\DabDash\Model\CampaignSpamScore200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\CampaignSpamScore200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function campaignSpamScoreWithHttpInfo($campaign_spam_score_request = null, string $contentType = self::contentTypes['campaignSpamScore'][0])
     {
@@ -1286,31 +1292,31 @@ class ReadApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
@@ -1349,7 +1355,7 @@ class ReadApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1357,7 +1363,7 @@ class ReadApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1365,7 +1371,7 @@ class ReadApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1373,7 +1379,7 @@ class ReadApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1381,7 +1387,7 @@ class ReadApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1569,7 +1575,7 @@ class ReadApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\DabDash\Model\CatalogFlatteningAudit200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\CatalogFlatteningAudit200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
      */
     public function catalogFlatteningAudit($body = null, string $contentType = self::contentTypes['catalogFlatteningAudit'][0])
     {
@@ -1587,7 +1593,7 @@ class ReadApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\DabDash\Model\CatalogFlatteningAudit200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\CatalogFlatteningAudit200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function catalogFlatteningAuditWithHttpInfo($body = null, string $contentType = self::contentTypes['catalogFlatteningAudit'][0])
     {
@@ -1625,31 +1631,31 @@ class ReadApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
@@ -1688,7 +1694,7 @@ class ReadApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1696,7 +1702,7 @@ class ReadApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1704,7 +1710,7 @@ class ReadApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1712,7 +1718,7 @@ class ReadApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1720,7 +1726,7 @@ class ReadApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1899,6 +1905,345 @@ class ReadApi
     }
 
     /**
+     * Operation catalogVariantAudit
+     *
+     * Lists explicit unit products and their variations for safe catalog compaction review. Read-only.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\CatalogVariantAuditRequest|null $catalog_variant_audit_request catalog_variant_audit_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['catalogVariantAudit'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \ShadowSoftware\DabDash\Model\CatalogVariantAudit200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
+     */
+    public function catalogVariantAudit($catalog_variant_audit_request = null, string $contentType = self::contentTypes['catalogVariantAudit'][0])
+    {
+        list($response) = $this->catalogVariantAuditWithHttpInfo($catalog_variant_audit_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation catalogVariantAuditWithHttpInfo
+     *
+     * Lists explicit unit products and their variations for safe catalog compaction review. Read-only.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\CatalogVariantAuditRequest|null $catalog_variant_audit_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['catalogVariantAudit'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \ShadowSoftware\DabDash\Model\CatalogVariantAudit200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function catalogVariantAuditWithHttpInfo($catalog_variant_audit_request = null, string $contentType = self::contentTypes['catalogVariantAudit'][0])
+    {
+        $request = $this->catalogVariantAuditRequest($catalog_variant_audit_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\CatalogVariantAudit200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 402:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 422:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\ShadowSoftware\DabDash\Model\CatalogVariantAudit200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\CatalogVariantAudit200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 402:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation catalogVariantAuditAsync
+     *
+     * Lists explicit unit products and their variations for safe catalog compaction review. Read-only.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\CatalogVariantAuditRequest|null $catalog_variant_audit_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['catalogVariantAudit'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function catalogVariantAuditAsync($catalog_variant_audit_request = null, string $contentType = self::contentTypes['catalogVariantAudit'][0])
+    {
+        return $this->catalogVariantAuditAsyncWithHttpInfo($catalog_variant_audit_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation catalogVariantAuditAsyncWithHttpInfo
+     *
+     * Lists explicit unit products and their variations for safe catalog compaction review. Read-only.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\CatalogVariantAuditRequest|null $catalog_variant_audit_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['catalogVariantAudit'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function catalogVariantAuditAsyncWithHttpInfo($catalog_variant_audit_request = null, string $contentType = self::contentTypes['catalogVariantAudit'][0])
+    {
+        $returnType = '\ShadowSoftware\DabDash\Model\CatalogVariantAudit200Response';
+        $request = $this->catalogVariantAuditRequest($catalog_variant_audit_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'catalogVariantAudit'
+     *
+     * @param  \ShadowSoftware\DabDash\Model\CatalogVariantAuditRequest|null $catalog_variant_audit_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['catalogVariantAudit'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function catalogVariantAuditRequest($catalog_variant_audit_request = null, string $contentType = self::contentTypes['catalogVariantAudit'][0])
+    {
+
+
+
+        $resourcePath = '/api/v1/tools/catalog_variant_audit';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($catalog_variant_audit_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($catalog_variant_audit_request));
+            } else {
+                $httpBody = $catalog_variant_audit_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation couponList
      *
      * List a tenant&#39;s discount coupons with code, type, value, usage limits, redemption count, active state, and schedule window. Coupons are customer-entered codes applied at checkout (distinct from bundles, which fire automatically on cart contents — use bundle_list for those).  type:   percentage     → value is a percentage 0-100 off the order subtotal.   fixed          → value is dollars off the order subtotal.   free_delivery  → waives the delivery fee only; value is unused for this type.  Always call this before making coupon-related decisions to see current codes, usage caps, and whether a coupon has already been exhausted (used_count vs max_uses).
@@ -1908,7 +2253,7 @@ class ReadApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\DabDash\Model\CouponList200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\CouponList200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
      */
     public function couponList($coupon_list_request = null, string $contentType = self::contentTypes['couponList'][0])
     {
@@ -1926,7 +2271,7 @@ class ReadApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\DabDash\Model\CouponList200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\CouponList200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function couponListWithHttpInfo($coupon_list_request = null, string $contentType = self::contentTypes['couponList'][0])
     {
@@ -1964,31 +2309,31 @@ class ReadApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
@@ -2027,7 +2372,7 @@ class ReadApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2035,7 +2380,7 @@ class ReadApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2043,7 +2388,7 @@ class ReadApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2051,7 +2396,7 @@ class ReadApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2059,7 +2404,7 @@ class ReadApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2247,7 +2592,7 @@ class ReadApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\DabDash\Model\CustomerAddresses200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\CustomerAddresses200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
      */
     public function customerAddresses($customer_addresses_request = null, string $contentType = self::contentTypes['customerAddresses'][0])
     {
@@ -2265,7 +2610,7 @@ class ReadApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\DabDash\Model\CustomerAddresses200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\CustomerAddresses200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function customerAddressesWithHttpInfo($customer_addresses_request = null, string $contentType = self::contentTypes['customerAddresses'][0])
     {
@@ -2303,31 +2648,31 @@ class ReadApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
@@ -2366,7 +2711,7 @@ class ReadApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2374,7 +2719,7 @@ class ReadApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2382,7 +2727,7 @@ class ReadApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2390,7 +2735,7 @@ class ReadApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2398,7 +2743,7 @@ class ReadApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2577,6 +2922,345 @@ class ReadApi
     }
 
     /**
+     * Operation customerBlockStatus
+     *
+     * Read a customer&#39;s normalized email/phone block status within one tenant. Returns the snapshot required to apply a block or unblock. These are shared identifier blocks, not an account-ID ban or a guarantee checkout will otherwise succeed.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\CustomerBlockStatusRequest|null $customer_block_status_request customer_block_status_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['customerBlockStatus'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \ShadowSoftware\DabDash\Model\CustomerBlockStatus200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
+     */
+    public function customerBlockStatus($customer_block_status_request = null, string $contentType = self::contentTypes['customerBlockStatus'][0])
+    {
+        list($response) = $this->customerBlockStatusWithHttpInfo($customer_block_status_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation customerBlockStatusWithHttpInfo
+     *
+     * Read a customer&#39;s normalized email/phone block status within one tenant. Returns the snapshot required to apply a block or unblock. These are shared identifier blocks, not an account-ID ban or a guarantee checkout will otherwise succeed.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\CustomerBlockStatusRequest|null $customer_block_status_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['customerBlockStatus'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \ShadowSoftware\DabDash\Model\CustomerBlockStatus200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function customerBlockStatusWithHttpInfo($customer_block_status_request = null, string $contentType = self::contentTypes['customerBlockStatus'][0])
+    {
+        $request = $this->customerBlockStatusRequest($customer_block_status_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\CustomerBlockStatus200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 402:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 422:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\ShadowSoftware\DabDash\Model\CustomerBlockStatus200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\CustomerBlockStatus200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 402:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation customerBlockStatusAsync
+     *
+     * Read a customer&#39;s normalized email/phone block status within one tenant. Returns the snapshot required to apply a block or unblock. These are shared identifier blocks, not an account-ID ban or a guarantee checkout will otherwise succeed.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\CustomerBlockStatusRequest|null $customer_block_status_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['customerBlockStatus'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function customerBlockStatusAsync($customer_block_status_request = null, string $contentType = self::contentTypes['customerBlockStatus'][0])
+    {
+        return $this->customerBlockStatusAsyncWithHttpInfo($customer_block_status_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation customerBlockStatusAsyncWithHttpInfo
+     *
+     * Read a customer&#39;s normalized email/phone block status within one tenant. Returns the snapshot required to apply a block or unblock. These are shared identifier blocks, not an account-ID ban or a guarantee checkout will otherwise succeed.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\CustomerBlockStatusRequest|null $customer_block_status_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['customerBlockStatus'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function customerBlockStatusAsyncWithHttpInfo($customer_block_status_request = null, string $contentType = self::contentTypes['customerBlockStatus'][0])
+    {
+        $returnType = '\ShadowSoftware\DabDash\Model\CustomerBlockStatus200Response';
+        $request = $this->customerBlockStatusRequest($customer_block_status_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'customerBlockStatus'
+     *
+     * @param  \ShadowSoftware\DabDash\Model\CustomerBlockStatusRequest|null $customer_block_status_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['customerBlockStatus'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function customerBlockStatusRequest($customer_block_status_request = null, string $contentType = self::contentTypes['customerBlockStatus'][0])
+    {
+
+
+
+        $resourcePath = '/api/v1/tools/customer_block_status';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($customer_block_status_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($customer_block_status_request));
+            } else {
+                $httpBody = $customer_block_status_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation customerConversationContext
      *
      * Find recent email and live-chat conversations whose latest message is from a customer. Returns only the latest customer message needed to prepare a reply.
@@ -2586,7 +3270,7 @@ class ReadApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\DabDash\Model\CustomerConversationContext200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\CustomerConversationContext200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
      */
     public function customerConversationContext($customer_conversation_context_request = null, string $contentType = self::contentTypes['customerConversationContext'][0])
     {
@@ -2604,7 +3288,7 @@ class ReadApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\DabDash\Model\CustomerConversationContext200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\CustomerConversationContext200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function customerConversationContextWithHttpInfo($customer_conversation_context_request = null, string $contentType = self::contentTypes['customerConversationContext'][0])
     {
@@ -2642,31 +3326,31 @@ class ReadApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
@@ -2705,7 +3389,7 @@ class ReadApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2713,7 +3397,7 @@ class ReadApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2721,7 +3405,7 @@ class ReadApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2729,7 +3413,7 @@ class ReadApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2737,7 +3421,7 @@ class ReadApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2925,7 +3609,7 @@ class ReadApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\DabDash\Model\CustomerList200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\CustomerList200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
      */
     public function customerList($customer_list_request = null, string $contentType = self::contentTypes['customerList'][0])
     {
@@ -2943,7 +3627,7 @@ class ReadApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\DabDash\Model\CustomerList200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\CustomerList200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function customerListWithHttpInfo($customer_list_request = null, string $contentType = self::contentTypes['customerList'][0])
     {
@@ -2981,31 +3665,31 @@ class ReadApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
@@ -3044,7 +3728,7 @@ class ReadApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3052,7 +3736,7 @@ class ReadApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3060,7 +3744,7 @@ class ReadApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3068,7 +3752,7 @@ class ReadApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3076,7 +3760,7 @@ class ReadApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3264,7 +3948,7 @@ class ReadApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\DabDash\Model\CustomerLookup200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\CustomerLookup200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
      */
     public function customerLookup($customer_lookup_request = null, string $contentType = self::contentTypes['customerLookup'][0])
     {
@@ -3282,7 +3966,7 @@ class ReadApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\DabDash\Model\CustomerLookup200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\CustomerLookup200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function customerLookupWithHttpInfo($customer_lookup_request = null, string $contentType = self::contentTypes['customerLookup'][0])
     {
@@ -3320,31 +4004,31 @@ class ReadApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
@@ -3383,7 +4067,7 @@ class ReadApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3391,7 +4075,7 @@ class ReadApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3399,7 +4083,7 @@ class ReadApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3407,7 +4091,7 @@ class ReadApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3415,7 +4099,7 @@ class ReadApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3596,14 +4280,14 @@ class ReadApi
     /**
      * Operation freebieList
      *
-     * List a tenant&#39;s freebie rules (\&quot;spend $X, get a free item\&quot;) with id, name, spend threshold, the product/variation given away, quantity, stackable flag, active state, and schedule window. Freebies are evaluated on every cart change by FreebieService: a rule fires once its spend_threshold is met, adding &#x60;quantity&#x60; of the configured product/variation to the cart.  IMPORTANT: this reads the &#x60;freebies&#x60; table — the source of truth the storefront cart uses. It is NOT the legacy freebie summary promotion_audit surfaces alongside coupons/bundles; that view is stale display-only data built for a different purpose. Trust this tool for what actually applies at checkout.  is_merch_product: true when the freebie&#39;s product is tagged \&quot;merch\&quot; (Product.tags contains \&quot;merch\&quot;) — a branded giveaway item (hats, apparel) rather than sellable cannabis inventory. Prefer merch-tagged products over high-COGS flower when recommending a NEW freebie: giving away promo materials protects margin the same way a discount code doesn&#39;t.  is_stackable:   true   → this rule can fire alongside OTHER DIFFERENT freebie rules on the same order (each            rule still only fires once, at its configured quantity, regardless of how far above            its own threshold the cart is).   false  → this rule cannot combine with other freebie rules; if multiple non-stackable rules            qualify, FreebieService applies its own precedence to pick one.   This flag does NOT multiply a single rule&#39;s quantity by how many multiples of the threshold   the cart reaches — a $50-threshold rule at $150 spent still gives quantity 1, not 3.
+     * List a tenant&#39;s freebie rules (\&quot;spend $X, get a free item\&quot;) with id, name, spend threshold, the product/variation given away, quantity, stackable flag, active state, and schedule window. Freebies are evaluated on every cart change by FreebieService: a rule fires once its spend_threshold is met, adding &#x60;quantity&#x60; of the configured product/variation to the cart.  IMPORTANT: this reads the &#x60;freebies&#x60; table — the source of truth the storefront cart uses. It is NOT the legacy freebie summary promotion_audit surfaces alongside coupons/bundles; that view is stale display-only data built for a different purpose. Trust this tool for what actually applies at checkout.  is_merch_product: true when the freebie&#39;s product is tagged \&quot;merch\&quot; (Product.tags contains \&quot;merch\&quot;) — a branded giveaway item (hats, apparel) rather than sellable cannabis inventory. Prefer merch-tagged products over high-COGS flower when recommending a NEW freebie: giving away promo materials protects margin the same way a discount code doesn&#39;t.  is_stackable:   true   → this rule can fire alongside OTHER DIFFERENT freebie rules on the same order (each            rule still only fires once, at its configured quantity, regardless of how far above            its own threshold the cart is). When several stackable rules gift the SAME            variation, they collapse to one cart line whose quantity is the SUM of those rules            (cart_items is unique on cart_id+variation_id — without summing, higher tiers were            silently dropped).   false  → this rule cannot combine with other freebie rules that gift the same variation; if            multiple non-stackable rules share a SKU, the highest spend_threshold wins.   This flag does NOT multiply a single rule&#39;s quantity by how many multiples of the threshold   the cart reaches — a $50-threshold rule at $150 spent still gives quantity 1, not 3.
      *
      * @param  \ShadowSoftware\DabDash\Model\FreebieListRequest|null $freebie_list_request freebie_list_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['freebieList'] to see the possible values for this operation
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\DabDash\Model\FreebieList200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\FreebieList200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
      */
     public function freebieList($freebie_list_request = null, string $contentType = self::contentTypes['freebieList'][0])
     {
@@ -3614,14 +4298,14 @@ class ReadApi
     /**
      * Operation freebieListWithHttpInfo
      *
-     * List a tenant&#39;s freebie rules (\&quot;spend $X, get a free item\&quot;) with id, name, spend threshold, the product/variation given away, quantity, stackable flag, active state, and schedule window. Freebies are evaluated on every cart change by FreebieService: a rule fires once its spend_threshold is met, adding &#x60;quantity&#x60; of the configured product/variation to the cart.  IMPORTANT: this reads the &#x60;freebies&#x60; table — the source of truth the storefront cart uses. It is NOT the legacy freebie summary promotion_audit surfaces alongside coupons/bundles; that view is stale display-only data built for a different purpose. Trust this tool for what actually applies at checkout.  is_merch_product: true when the freebie&#39;s product is tagged \&quot;merch\&quot; (Product.tags contains \&quot;merch\&quot;) — a branded giveaway item (hats, apparel) rather than sellable cannabis inventory. Prefer merch-tagged products over high-COGS flower when recommending a NEW freebie: giving away promo materials protects margin the same way a discount code doesn&#39;t.  is_stackable:   true   → this rule can fire alongside OTHER DIFFERENT freebie rules on the same order (each            rule still only fires once, at its configured quantity, regardless of how far above            its own threshold the cart is).   false  → this rule cannot combine with other freebie rules; if multiple non-stackable rules            qualify, FreebieService applies its own precedence to pick one.   This flag does NOT multiply a single rule&#39;s quantity by how many multiples of the threshold   the cart reaches — a $50-threshold rule at $150 spent still gives quantity 1, not 3.
+     * List a tenant&#39;s freebie rules (\&quot;spend $X, get a free item\&quot;) with id, name, spend threshold, the product/variation given away, quantity, stackable flag, active state, and schedule window. Freebies are evaluated on every cart change by FreebieService: a rule fires once its spend_threshold is met, adding &#x60;quantity&#x60; of the configured product/variation to the cart.  IMPORTANT: this reads the &#x60;freebies&#x60; table — the source of truth the storefront cart uses. It is NOT the legacy freebie summary promotion_audit surfaces alongside coupons/bundles; that view is stale display-only data built for a different purpose. Trust this tool for what actually applies at checkout.  is_merch_product: true when the freebie&#39;s product is tagged \&quot;merch\&quot; (Product.tags contains \&quot;merch\&quot;) — a branded giveaway item (hats, apparel) rather than sellable cannabis inventory. Prefer merch-tagged products over high-COGS flower when recommending a NEW freebie: giving away promo materials protects margin the same way a discount code doesn&#39;t.  is_stackable:   true   → this rule can fire alongside OTHER DIFFERENT freebie rules on the same order (each            rule still only fires once, at its configured quantity, regardless of how far above            its own threshold the cart is). When several stackable rules gift the SAME            variation, they collapse to one cart line whose quantity is the SUM of those rules            (cart_items is unique on cart_id+variation_id — without summing, higher tiers were            silently dropped).   false  → this rule cannot combine with other freebie rules that gift the same variation; if            multiple non-stackable rules share a SKU, the highest spend_threshold wins.   This flag does NOT multiply a single rule&#39;s quantity by how many multiples of the threshold   the cart reaches — a $50-threshold rule at $150 spent still gives quantity 1, not 3.
      *
      * @param  \ShadowSoftware\DabDash\Model\FreebieListRequest|null $freebie_list_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['freebieList'] to see the possible values for this operation
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\DabDash\Model\FreebieList200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\FreebieList200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function freebieListWithHttpInfo($freebie_list_request = null, string $contentType = self::contentTypes['freebieList'][0])
     {
@@ -3659,31 +4343,31 @@ class ReadApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
@@ -3722,7 +4406,7 @@ class ReadApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3730,7 +4414,7 @@ class ReadApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3738,7 +4422,7 @@ class ReadApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3746,7 +4430,7 @@ class ReadApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3754,7 +4438,7 @@ class ReadApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3769,7 +4453,7 @@ class ReadApi
     /**
      * Operation freebieListAsync
      *
-     * List a tenant&#39;s freebie rules (\&quot;spend $X, get a free item\&quot;) with id, name, spend threshold, the product/variation given away, quantity, stackable flag, active state, and schedule window. Freebies are evaluated on every cart change by FreebieService: a rule fires once its spend_threshold is met, adding &#x60;quantity&#x60; of the configured product/variation to the cart.  IMPORTANT: this reads the &#x60;freebies&#x60; table — the source of truth the storefront cart uses. It is NOT the legacy freebie summary promotion_audit surfaces alongside coupons/bundles; that view is stale display-only data built for a different purpose. Trust this tool for what actually applies at checkout.  is_merch_product: true when the freebie&#39;s product is tagged \&quot;merch\&quot; (Product.tags contains \&quot;merch\&quot;) — a branded giveaway item (hats, apparel) rather than sellable cannabis inventory. Prefer merch-tagged products over high-COGS flower when recommending a NEW freebie: giving away promo materials protects margin the same way a discount code doesn&#39;t.  is_stackable:   true   → this rule can fire alongside OTHER DIFFERENT freebie rules on the same order (each            rule still only fires once, at its configured quantity, regardless of how far above            its own threshold the cart is).   false  → this rule cannot combine with other freebie rules; if multiple non-stackable rules            qualify, FreebieService applies its own precedence to pick one.   This flag does NOT multiply a single rule&#39;s quantity by how many multiples of the threshold   the cart reaches — a $50-threshold rule at $150 spent still gives quantity 1, not 3.
+     * List a tenant&#39;s freebie rules (\&quot;spend $X, get a free item\&quot;) with id, name, spend threshold, the product/variation given away, quantity, stackable flag, active state, and schedule window. Freebies are evaluated on every cart change by FreebieService: a rule fires once its spend_threshold is met, adding &#x60;quantity&#x60; of the configured product/variation to the cart.  IMPORTANT: this reads the &#x60;freebies&#x60; table — the source of truth the storefront cart uses. It is NOT the legacy freebie summary promotion_audit surfaces alongside coupons/bundles; that view is stale display-only data built for a different purpose. Trust this tool for what actually applies at checkout.  is_merch_product: true when the freebie&#39;s product is tagged \&quot;merch\&quot; (Product.tags contains \&quot;merch\&quot;) — a branded giveaway item (hats, apparel) rather than sellable cannabis inventory. Prefer merch-tagged products over high-COGS flower when recommending a NEW freebie: giving away promo materials protects margin the same way a discount code doesn&#39;t.  is_stackable:   true   → this rule can fire alongside OTHER DIFFERENT freebie rules on the same order (each            rule still only fires once, at its configured quantity, regardless of how far above            its own threshold the cart is). When several stackable rules gift the SAME            variation, they collapse to one cart line whose quantity is the SUM of those rules            (cart_items is unique on cart_id+variation_id — without summing, higher tiers were            silently dropped).   false  → this rule cannot combine with other freebie rules that gift the same variation; if            multiple non-stackable rules share a SKU, the highest spend_threshold wins.   This flag does NOT multiply a single rule&#39;s quantity by how many multiples of the threshold   the cart reaches — a $50-threshold rule at $150 spent still gives quantity 1, not 3.
      *
      * @param  \ShadowSoftware\DabDash\Model\FreebieListRequest|null $freebie_list_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['freebieList'] to see the possible values for this operation
@@ -3790,7 +4474,7 @@ class ReadApi
     /**
      * Operation freebieListAsyncWithHttpInfo
      *
-     * List a tenant&#39;s freebie rules (\&quot;spend $X, get a free item\&quot;) with id, name, spend threshold, the product/variation given away, quantity, stackable flag, active state, and schedule window. Freebies are evaluated on every cart change by FreebieService: a rule fires once its spend_threshold is met, adding &#x60;quantity&#x60; of the configured product/variation to the cart.  IMPORTANT: this reads the &#x60;freebies&#x60; table — the source of truth the storefront cart uses. It is NOT the legacy freebie summary promotion_audit surfaces alongside coupons/bundles; that view is stale display-only data built for a different purpose. Trust this tool for what actually applies at checkout.  is_merch_product: true when the freebie&#39;s product is tagged \&quot;merch\&quot; (Product.tags contains \&quot;merch\&quot;) — a branded giveaway item (hats, apparel) rather than sellable cannabis inventory. Prefer merch-tagged products over high-COGS flower when recommending a NEW freebie: giving away promo materials protects margin the same way a discount code doesn&#39;t.  is_stackable:   true   → this rule can fire alongside OTHER DIFFERENT freebie rules on the same order (each            rule still only fires once, at its configured quantity, regardless of how far above            its own threshold the cart is).   false  → this rule cannot combine with other freebie rules; if multiple non-stackable rules            qualify, FreebieService applies its own precedence to pick one.   This flag does NOT multiply a single rule&#39;s quantity by how many multiples of the threshold   the cart reaches — a $50-threshold rule at $150 spent still gives quantity 1, not 3.
+     * List a tenant&#39;s freebie rules (\&quot;spend $X, get a free item\&quot;) with id, name, spend threshold, the product/variation given away, quantity, stackable flag, active state, and schedule window. Freebies are evaluated on every cart change by FreebieService: a rule fires once its spend_threshold is met, adding &#x60;quantity&#x60; of the configured product/variation to the cart.  IMPORTANT: this reads the &#x60;freebies&#x60; table — the source of truth the storefront cart uses. It is NOT the legacy freebie summary promotion_audit surfaces alongside coupons/bundles; that view is stale display-only data built for a different purpose. Trust this tool for what actually applies at checkout.  is_merch_product: true when the freebie&#39;s product is tagged \&quot;merch\&quot; (Product.tags contains \&quot;merch\&quot;) — a branded giveaway item (hats, apparel) rather than sellable cannabis inventory. Prefer merch-tagged products over high-COGS flower when recommending a NEW freebie: giving away promo materials protects margin the same way a discount code doesn&#39;t.  is_stackable:   true   → this rule can fire alongside OTHER DIFFERENT freebie rules on the same order (each            rule still only fires once, at its configured quantity, regardless of how far above            its own threshold the cart is). When several stackable rules gift the SAME            variation, they collapse to one cart line whose quantity is the SUM of those rules            (cart_items is unique on cart_id+variation_id — without summing, higher tiers were            silently dropped).   false  → this rule cannot combine with other freebie rules that gift the same variation; if            multiple non-stackable rules share a SKU, the highest spend_threshold wins.   This flag does NOT multiply a single rule&#39;s quantity by how many multiples of the threshold   the cart reaches — a $50-threshold rule at $150 spent still gives quantity 1, not 3.
      *
      * @param  \ShadowSoftware\DabDash\Model\FreebieListRequest|null $freebie_list_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['freebieList'] to see the possible values for this operation
@@ -3935,14 +4619,14 @@ class ReadApi
     /**
      * Operation googleAnalytics
      *
-     * Query Google Analytics (GA4) data for the platform (dabdash.com) or a specific tenant with a connected GA integration. Returns traffic overview, top pages, traffic sources, top events, and daily trend.
+     * Query Google Analytics (GA4) data for a tenant with a connected GA integration. Returns traffic overview, top pages, traffic sources, top events, and daily trend.
      *
      * @param  \ShadowSoftware\DabDash\Model\GoogleAnalyticsRequest|null $google_analytics_request google_analytics_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['googleAnalytics'] to see the possible values for this operation
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\DabDash\Model\GoogleAnalytics200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\GoogleAnalytics200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
      */
     public function googleAnalytics($google_analytics_request = null, string $contentType = self::contentTypes['googleAnalytics'][0])
     {
@@ -3953,14 +4637,14 @@ class ReadApi
     /**
      * Operation googleAnalyticsWithHttpInfo
      *
-     * Query Google Analytics (GA4) data for the platform (dabdash.com) or a specific tenant with a connected GA integration. Returns traffic overview, top pages, traffic sources, top events, and daily trend.
+     * Query Google Analytics (GA4) data for a tenant with a connected GA integration. Returns traffic overview, top pages, traffic sources, top events, and daily trend.
      *
      * @param  \ShadowSoftware\DabDash\Model\GoogleAnalyticsRequest|null $google_analytics_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['googleAnalytics'] to see the possible values for this operation
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\DabDash\Model\GoogleAnalytics200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\GoogleAnalytics200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function googleAnalyticsWithHttpInfo($google_analytics_request = null, string $contentType = self::contentTypes['googleAnalytics'][0])
     {
@@ -3998,31 +4682,31 @@ class ReadApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
@@ -4061,7 +4745,7 @@ class ReadApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4069,7 +4753,7 @@ class ReadApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4077,7 +4761,7 @@ class ReadApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4085,7 +4769,7 @@ class ReadApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4093,7 +4777,7 @@ class ReadApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4108,7 +4792,7 @@ class ReadApi
     /**
      * Operation googleAnalyticsAsync
      *
-     * Query Google Analytics (GA4) data for the platform (dabdash.com) or a specific tenant with a connected GA integration. Returns traffic overview, top pages, traffic sources, top events, and daily trend.
+     * Query Google Analytics (GA4) data for a tenant with a connected GA integration. Returns traffic overview, top pages, traffic sources, top events, and daily trend.
      *
      * @param  \ShadowSoftware\DabDash\Model\GoogleAnalyticsRequest|null $google_analytics_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['googleAnalytics'] to see the possible values for this operation
@@ -4129,7 +4813,7 @@ class ReadApi
     /**
      * Operation googleAnalyticsAsyncWithHttpInfo
      *
-     * Query Google Analytics (GA4) data for the platform (dabdash.com) or a specific tenant with a connected GA integration. Returns traffic overview, top pages, traffic sources, top events, and daily trend.
+     * Query Google Analytics (GA4) data for a tenant with a connected GA integration. Returns traffic overview, top pages, traffic sources, top events, and daily trend.
      *
      * @param  \ShadowSoftware\DabDash\Model\GoogleAnalyticsRequest|null $google_analytics_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['googleAnalytics'] to see the possible values for this operation
@@ -4281,7 +4965,7 @@ class ReadApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\DabDash\Model\InventoryAuditLookup200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\InventoryAuditLookup200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
      */
     public function inventoryAuditLookup($inventory_audit_lookup_request = null, string $contentType = self::contentTypes['inventoryAuditLookup'][0])
     {
@@ -4299,7 +4983,7 @@ class ReadApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\DabDash\Model\InventoryAuditLookup200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\InventoryAuditLookup200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function inventoryAuditLookupWithHttpInfo($inventory_audit_lookup_request = null, string $contentType = self::contentTypes['inventoryAuditLookup'][0])
     {
@@ -4337,31 +5021,31 @@ class ReadApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
@@ -4400,7 +5084,7 @@ class ReadApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4408,7 +5092,7 @@ class ReadApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4416,7 +5100,7 @@ class ReadApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4424,7 +5108,7 @@ class ReadApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4432,7 +5116,7 @@ class ReadApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4620,7 +5304,7 @@ class ReadApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\DabDash\Model\InventoryStatus200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\InventoryStatus200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
      */
     public function inventoryStatus($inventory_status_request = null, string $contentType = self::contentTypes['inventoryStatus'][0])
     {
@@ -4638,7 +5322,7 @@ class ReadApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\DabDash\Model\InventoryStatus200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\InventoryStatus200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function inventoryStatusWithHttpInfo($inventory_status_request = null, string $contentType = self::contentTypes['inventoryStatus'][0])
     {
@@ -4676,31 +5360,31 @@ class ReadApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
@@ -4739,7 +5423,7 @@ class ReadApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4747,7 +5431,7 @@ class ReadApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4755,7 +5439,7 @@ class ReadApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4763,7 +5447,7 @@ class ReadApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4771,7 +5455,7 @@ class ReadApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4952,14 +5636,14 @@ class ReadApi
     /**
      * Operation mailboxInspect
      *
-     * Inspect a tenant inbound mailbox: sync watermark, last error, recent ingestion counts (inbound/outbound), and a healthy/bootstrap/stalled/quiet verdict. Pass a tenant_slug, or pass platform&#x3D;true for a platform-owned mailbox (tenant_id IS NULL).
+     * Inspect a tenant mailbox: independent INBOX/Sent sync watermarks, errors, recent ingestion counts (inbound/outbound), and a healthy/bootstrap/stalled/quiet verdict. Pass a tenant_slug, or pass platform&#x3D;true for a platform-owned mailbox (tenant_id IS NULL).
      *
      * @param  \ShadowSoftware\DabDash\Model\MailboxInspectRequest|null $mailbox_inspect_request mailbox_inspect_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['mailboxInspect'] to see the possible values for this operation
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\DabDash\Model\MailboxInspect200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\MailboxInspect200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
      */
     public function mailboxInspect($mailbox_inspect_request = null, string $contentType = self::contentTypes['mailboxInspect'][0])
     {
@@ -4970,14 +5654,14 @@ class ReadApi
     /**
      * Operation mailboxInspectWithHttpInfo
      *
-     * Inspect a tenant inbound mailbox: sync watermark, last error, recent ingestion counts (inbound/outbound), and a healthy/bootstrap/stalled/quiet verdict. Pass a tenant_slug, or pass platform&#x3D;true for a platform-owned mailbox (tenant_id IS NULL).
+     * Inspect a tenant mailbox: independent INBOX/Sent sync watermarks, errors, recent ingestion counts (inbound/outbound), and a healthy/bootstrap/stalled/quiet verdict. Pass a tenant_slug, or pass platform&#x3D;true for a platform-owned mailbox (tenant_id IS NULL).
      *
      * @param  \ShadowSoftware\DabDash\Model\MailboxInspectRequest|null $mailbox_inspect_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['mailboxInspect'] to see the possible values for this operation
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\DabDash\Model\MailboxInspect200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\MailboxInspect200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function mailboxInspectWithHttpInfo($mailbox_inspect_request = null, string $contentType = self::contentTypes['mailboxInspect'][0])
     {
@@ -5015,31 +5699,31 @@ class ReadApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
@@ -5078,7 +5762,7 @@ class ReadApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5086,7 +5770,7 @@ class ReadApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5094,7 +5778,7 @@ class ReadApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5102,7 +5786,7 @@ class ReadApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5110,7 +5794,7 @@ class ReadApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5125,7 +5809,7 @@ class ReadApi
     /**
      * Operation mailboxInspectAsync
      *
-     * Inspect a tenant inbound mailbox: sync watermark, last error, recent ingestion counts (inbound/outbound), and a healthy/bootstrap/stalled/quiet verdict. Pass a tenant_slug, or pass platform&#x3D;true for a platform-owned mailbox (tenant_id IS NULL).
+     * Inspect a tenant mailbox: independent INBOX/Sent sync watermarks, errors, recent ingestion counts (inbound/outbound), and a healthy/bootstrap/stalled/quiet verdict. Pass a tenant_slug, or pass platform&#x3D;true for a platform-owned mailbox (tenant_id IS NULL).
      *
      * @param  \ShadowSoftware\DabDash\Model\MailboxInspectRequest|null $mailbox_inspect_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['mailboxInspect'] to see the possible values for this operation
@@ -5146,7 +5830,7 @@ class ReadApi
     /**
      * Operation mailboxInspectAsyncWithHttpInfo
      *
-     * Inspect a tenant inbound mailbox: sync watermark, last error, recent ingestion counts (inbound/outbound), and a healthy/bootstrap/stalled/quiet verdict. Pass a tenant_slug, or pass platform&#x3D;true for a platform-owned mailbox (tenant_id IS NULL).
+     * Inspect a tenant mailbox: independent INBOX/Sent sync watermarks, errors, recent ingestion counts (inbound/outbound), and a healthy/bootstrap/stalled/quiet verdict. Pass a tenant_slug, or pass platform&#x3D;true for a platform-owned mailbox (tenant_id IS NULL).
      *
      * @param  \ShadowSoftware\DabDash\Model\MailboxInspectRequest|null $mailbox_inspect_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['mailboxInspect'] to see the possible values for this operation
@@ -5298,7 +5982,7 @@ class ReadApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\DabDash\Model\MetrcDiagnostics200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\MetrcDiagnostics200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
      */
     public function metrcDiagnostics($body = null, string $contentType = self::contentTypes['metrcDiagnostics'][0])
     {
@@ -5316,7 +6000,7 @@ class ReadApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\DabDash\Model\MetrcDiagnostics200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\MetrcDiagnostics200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function metrcDiagnosticsWithHttpInfo($body = null, string $contentType = self::contentTypes['metrcDiagnostics'][0])
     {
@@ -5354,31 +6038,31 @@ class ReadApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
@@ -5417,7 +6101,7 @@ class ReadApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5425,7 +6109,7 @@ class ReadApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5433,7 +6117,7 @@ class ReadApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5441,7 +6125,7 @@ class ReadApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5449,7 +6133,7 @@ class ReadApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5630,14 +6314,14 @@ class ReadApi
     /**
      * Operation orderDashboard
      *
-     * Query orders across all tenants. Filter by status, order number, customer clues, date range, amount, or tenant. Returns order list with pricing context.
+     * Query orders with filters and stable cursor pagination. Use limit plus next_cursor to walk every order; set include_items&#x3D;true for a complete order export with line items. Tenant access is always enforced.
      *
      * @param  \ShadowSoftware\DabDash\Model\OrderDashboardRequest|null $order_dashboard_request order_dashboard_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['orderDashboard'] to see the possible values for this operation
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\DabDash\Model\OrderDashboard200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\OrderDashboard200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
      */
     public function orderDashboard($order_dashboard_request = null, string $contentType = self::contentTypes['orderDashboard'][0])
     {
@@ -5648,14 +6332,14 @@ class ReadApi
     /**
      * Operation orderDashboardWithHttpInfo
      *
-     * Query orders across all tenants. Filter by status, order number, customer clues, date range, amount, or tenant. Returns order list with pricing context.
+     * Query orders with filters and stable cursor pagination. Use limit plus next_cursor to walk every order; set include_items&#x3D;true for a complete order export with line items. Tenant access is always enforced.
      *
      * @param  \ShadowSoftware\DabDash\Model\OrderDashboardRequest|null $order_dashboard_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['orderDashboard'] to see the possible values for this operation
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\DabDash\Model\OrderDashboard200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\OrderDashboard200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function orderDashboardWithHttpInfo($order_dashboard_request = null, string $contentType = self::contentTypes['orderDashboard'][0])
     {
@@ -5693,31 +6377,31 @@ class ReadApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
@@ -5756,7 +6440,7 @@ class ReadApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5764,7 +6448,7 @@ class ReadApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5772,7 +6456,7 @@ class ReadApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5780,7 +6464,7 @@ class ReadApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5788,7 +6472,7 @@ class ReadApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5803,7 +6487,7 @@ class ReadApi
     /**
      * Operation orderDashboardAsync
      *
-     * Query orders across all tenants. Filter by status, order number, customer clues, date range, amount, or tenant. Returns order list with pricing context.
+     * Query orders with filters and stable cursor pagination. Use limit plus next_cursor to walk every order; set include_items&#x3D;true for a complete order export with line items. Tenant access is always enforced.
      *
      * @param  \ShadowSoftware\DabDash\Model\OrderDashboardRequest|null $order_dashboard_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['orderDashboard'] to see the possible values for this operation
@@ -5824,7 +6508,7 @@ class ReadApi
     /**
      * Operation orderDashboardAsyncWithHttpInfo
      *
-     * Query orders across all tenants. Filter by status, order number, customer clues, date range, amount, or tenant. Returns order list with pricing context.
+     * Query orders with filters and stable cursor pagination. Use limit plus next_cursor to walk every order; set include_items&#x3D;true for a complete order export with line items. Tenant access is always enforced.
      *
      * @param  \ShadowSoftware\DabDash\Model\OrderDashboardRequest|null $order_dashboard_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['orderDashboard'] to see the possible values for this operation
@@ -5976,7 +6660,7 @@ class ReadApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\DabDash\Model\ProductImageStrainMatch200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\ProductImageStrainMatch200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
      */
     public function productImageStrainMatch($product_image_strain_match_request = null, string $contentType = self::contentTypes['productImageStrainMatch'][0])
     {
@@ -5994,7 +6678,7 @@ class ReadApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\DabDash\Model\ProductImageStrainMatch200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\ProductImageStrainMatch200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function productImageStrainMatchWithHttpInfo($product_image_strain_match_request = null, string $contentType = self::contentTypes['productImageStrainMatch'][0])
     {
@@ -6032,31 +6716,31 @@ class ReadApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
@@ -6095,7 +6779,7 @@ class ReadApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6103,7 +6787,7 @@ class ReadApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6111,7 +6795,7 @@ class ReadApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6119,7 +6803,7 @@ class ReadApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6127,7 +6811,7 @@ class ReadApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6315,7 +6999,7 @@ class ReadApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\DabDash\Model\ProductInspect200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\ProductInspect200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
      */
     public function productInspect($product_inspect_request = null, string $contentType = self::contentTypes['productInspect'][0])
     {
@@ -6333,7 +7017,7 @@ class ReadApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\DabDash\Model\ProductInspect200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\ProductInspect200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function productInspectWithHttpInfo($product_inspect_request = null, string $contentType = self::contentTypes['productInspect'][0])
     {
@@ -6371,31 +7055,31 @@ class ReadApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
@@ -6434,7 +7118,7 @@ class ReadApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6442,7 +7126,7 @@ class ReadApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6450,7 +7134,7 @@ class ReadApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6458,7 +7142,7 @@ class ReadApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6466,7 +7150,7 @@ class ReadApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6654,7 +7338,7 @@ class ReadApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\DabDash\Model\ProductProfitability200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\ProductProfitability200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
      */
     public function productProfitability($product_profitability_request = null, string $contentType = self::contentTypes['productProfitability'][0])
     {
@@ -6672,7 +7356,7 @@ class ReadApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\DabDash\Model\ProductProfitability200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\ProductProfitability200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function productProfitabilityWithHttpInfo($product_profitability_request = null, string $contentType = self::contentTypes['productProfitability'][0])
     {
@@ -6710,31 +7394,31 @@ class ReadApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
@@ -6773,7 +7457,7 @@ class ReadApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6781,7 +7465,7 @@ class ReadApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6789,7 +7473,7 @@ class ReadApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6797,7 +7481,7 @@ class ReadApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6805,7 +7489,7 @@ class ReadApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6993,7 +7677,7 @@ class ReadApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\DabDash\Model\ProductUnitPriceSearch200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\ProductUnitPriceSearch200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
      */
     public function productUnitPriceSearch($product_unit_price_search_request = null, string $contentType = self::contentTypes['productUnitPriceSearch'][0])
     {
@@ -7011,7 +7695,7 @@ class ReadApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\DabDash\Model\ProductUnitPriceSearch200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\ProductUnitPriceSearch200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function productUnitPriceSearchWithHttpInfo($product_unit_price_search_request = null, string $contentType = self::contentTypes['productUnitPriceSearch'][0])
     {
@@ -7049,31 +7733,31 @@ class ReadApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
@@ -7112,7 +7796,7 @@ class ReadApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7120,7 +7804,7 @@ class ReadApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7128,7 +7812,7 @@ class ReadApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7136,7 +7820,7 @@ class ReadApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7144,7 +7828,7 @@ class ReadApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7332,7 +8016,7 @@ class ReadApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\DabDash\Model\PromotionAudit200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\PromotionAudit200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
      */
     public function promotionAudit($promotion_audit_request = null, string $contentType = self::contentTypes['promotionAudit'][0])
     {
@@ -7350,7 +8034,7 @@ class ReadApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\DabDash\Model\PromotionAudit200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\PromotionAudit200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function promotionAuditWithHttpInfo($promotion_audit_request = null, string $contentType = self::contentTypes['promotionAudit'][0])
     {
@@ -7388,31 +8072,31 @@ class ReadApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
@@ -7451,7 +8135,7 @@ class ReadApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7459,7 +8143,7 @@ class ReadApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7467,7 +8151,7 @@ class ReadApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7475,7 +8159,7 @@ class ReadApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7483,7 +8167,7 @@ class ReadApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7671,7 +8355,7 @@ class ReadApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\DabDash\Model\PushNotificationDiagnostics200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\PushNotificationDiagnostics200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
      */
     public function pushNotificationDiagnostics($push_notification_diagnostics_request = null, string $contentType = self::contentTypes['pushNotificationDiagnostics'][0])
     {
@@ -7689,7 +8373,7 @@ class ReadApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\DabDash\Model\PushNotificationDiagnostics200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\PushNotificationDiagnostics200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function pushNotificationDiagnosticsWithHttpInfo($push_notification_diagnostics_request = null, string $contentType = self::contentTypes['pushNotificationDiagnostics'][0])
     {
@@ -7727,31 +8411,31 @@ class ReadApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
@@ -7790,7 +8474,7 @@ class ReadApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7798,7 +8482,7 @@ class ReadApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7806,7 +8490,7 @@ class ReadApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7814,7 +8498,7 @@ class ReadApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7822,7 +8506,7 @@ class ReadApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8010,7 +8694,7 @@ class ReadApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\DabDash\Model\SearchConsole200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\SearchConsole200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
      */
     public function searchConsole($search_console_request = null, string $contentType = self::contentTypes['searchConsole'][0])
     {
@@ -8028,7 +8712,7 @@ class ReadApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\DabDash\Model\SearchConsole200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\SearchConsole200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function searchConsoleWithHttpInfo($search_console_request = null, string $contentType = self::contentTypes['searchConsole'][0])
     {
@@ -8066,31 +8750,31 @@ class ReadApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
@@ -8129,7 +8813,7 @@ class ReadApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8137,7 +8821,7 @@ class ReadApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8145,7 +8829,7 @@ class ReadApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8153,7 +8837,7 @@ class ReadApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8161,7 +8845,7 @@ class ReadApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8349,7 +9033,7 @@ class ReadApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\DabDash\Model\StoreInfo200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\StoreInfo200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
      */
     public function storeInfo($body = null, string $contentType = self::contentTypes['storeInfo'][0])
     {
@@ -8367,7 +9051,7 @@ class ReadApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\DabDash\Model\StoreInfo200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\StoreInfo200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function storeInfoWithHttpInfo($body = null, string $contentType = self::contentTypes['storeInfo'][0])
     {
@@ -8405,31 +9089,31 @@ class ReadApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
@@ -8468,7 +9152,7 @@ class ReadApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8476,7 +9160,7 @@ class ReadApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8484,7 +9168,7 @@ class ReadApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8492,7 +9176,7 @@ class ReadApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8500,7 +9184,7 @@ class ReadApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8688,7 +9372,7 @@ class ReadApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\DabDash\Model\StrainLookup200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\StrainLookup200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
      */
     public function strainLookup($strain_lookup_request = null, string $contentType = self::contentTypes['strainLookup'][0])
     {
@@ -8706,7 +9390,7 @@ class ReadApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\DabDash\Model\StrainLookup200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\StrainLookup200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function strainLookupWithHttpInfo($strain_lookup_request = null, string $contentType = self::contentTypes['strainLookup'][0])
     {
@@ -8744,31 +9428,31 @@ class ReadApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
@@ -8807,7 +9491,7 @@ class ReadApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8815,7 +9499,7 @@ class ReadApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8823,7 +9507,7 @@ class ReadApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8831,7 +9515,7 @@ class ReadApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8839,7 +9523,7 @@ class ReadApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -9027,7 +9711,7 @@ class ReadApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\DabDash\Model\ZoneDiagnostics200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\ZoneDiagnostics200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
      */
     public function zoneDiagnostics($zone_diagnostics_request = null, string $contentType = self::contentTypes['zoneDiagnostics'][0])
     {
@@ -9045,7 +9729,7 @@ class ReadApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\DabDash\Model\ZoneDiagnostics200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\ZoneDiagnostics200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function zoneDiagnosticsWithHttpInfo($zone_diagnostics_request = null, string $contentType = self::contentTypes['zoneDiagnostics'][0])
     {
@@ -9083,31 +9767,31 @@ class ReadApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
@@ -9146,7 +9830,7 @@ class ReadApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -9154,7 +9838,7 @@ class ReadApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -9162,7 +9846,7 @@ class ReadApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -9170,7 +9854,7 @@ class ReadApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -9178,7 +9862,7 @@ class ReadApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

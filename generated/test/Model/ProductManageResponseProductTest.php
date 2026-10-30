@@ -123,4 +123,22 @@ class ProductManageResponseProductTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "inventory_mode"
+     */
+    public function testPropertyInventoryMode()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "variation_count"
+     */
+    public function testPropertyVariationCount()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

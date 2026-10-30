@@ -15,6 +15,9 @@ Name | Type | Description | Notes
 **starts_at** | **string** |  | [optional]
 **ends_at** | **string** |  | [optional]
 **variation_count** | **int** |  | [optional]
+**has_rule** | **bool** |  | [optional]
+**rule_added_count** | **int** |  | [optional]
+**rule_removed_count** | **int** |  | [optional]
 **message** | **string** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -58,7 +58,7 @@ class CategoryManageResponse implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $openAPITypes = [
         'action' => 'string',
-        'tenant' => '\ShadowSoftware\DabDash\Model\BundleListResponseTenant',
+        'tenant' => '\ShadowSoftware\DabDash\Model\BundleHealthResponseTenant',
         'total' => 'int',
         'categories' => '\ShadowSoftware\DabDash\Model\CategoryManageResponseCategoriesInner[]',
         'category' => '\ShadowSoftware\DabDash\Model\CategoryManageResponseCategory',
@@ -354,7 +354,7 @@ class CategoryManageResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets tenant
      *
-     * @return \ShadowSoftware\DabDash\Model\BundleListResponseTenant|null
+     * @return \ShadowSoftware\DabDash\Model\BundleHealthResponseTenant|null
      */
     public function getTenant()
     {
@@ -364,7 +364,7 @@ class CategoryManageResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets tenant
      *
-     * @param \ShadowSoftware\DabDash\Model\BundleListResponseTenant|null $tenant tenant
+     * @param \ShadowSoftware\DabDash\Model\BundleHealthResponseTenant|null $tenant tenant
      *
      * @return self
      */

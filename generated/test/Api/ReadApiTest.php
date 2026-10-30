@@ -132,6 +132,18 @@ class ReadApiTest extends TestCase
     }
 
     /**
+     * Test case for catalogVariantAudit
+     *
+     * Lists explicit unit products and their variations for safe catalog compaction review. Read-only..
+     *
+     */
+    public function testCatalogVariantAudit()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for couponList
      *
      * List a tenant's discount coupons with code, type, value, usage limits, redemption count, active state, and schedule window. Coupons are customer-entered codes applied at checkout (distinct from bundles, which fire automatically on cart contents — use bundle_list for those).  type:   percentage     → value is a percentage 0-100 off the order subtotal.   fixed          → value is dollars off the order subtotal.   free_delivery  → waives the delivery fee only; value is unused for this type.  Always call this before making coupon-related decisions to see current codes, usage caps, and whether a coupon has already been exhausted (used_count vs max_uses)..
@@ -150,6 +162,18 @@ class ReadApiTest extends TestCase
      *
      */
     public function testCustomerAddresses()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for customerBlockStatus
+     *
+     * Read a customer's normalized email/phone block status within one tenant. Returns the snapshot required to apply a block or unblock. These are shared identifier blocks, not an account-ID ban or a guarantee checkout will otherwise succeed..
+     *
+     */
+    public function testCustomerBlockStatus()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -194,7 +218,7 @@ class ReadApiTest extends TestCase
     /**
      * Test case for freebieList
      *
-     * List a tenant's freebie rules (\"spend $X, get a free item\") with id, name, spend threshold, the product/variation given away, quantity, stackable flag, active state, and schedule window. Freebies are evaluated on every cart change by FreebieService: a rule fires once its spend_threshold is met, adding `quantity` of the configured product/variation to the cart.  IMPORTANT: this reads the `freebies` table — the source of truth the storefront cart uses. It is NOT the legacy freebie summary promotion_audit surfaces alongside coupons/bundles; that view is stale display-only data built for a different purpose. Trust this tool for what actually applies at checkout.  is_merch_product: true when the freebie's product is tagged \"merch\" (Product.tags contains \"merch\") — a branded giveaway item (hats, apparel) rather than sellable cannabis inventory. Prefer merch-tagged products over high-COGS flower when recommending a NEW freebie: giving away promo materials protects margin the same way a discount code doesn't.  is_stackable:   true   → this rule can fire alongside OTHER DIFFERENT freebie rules on the same order (each            rule still only fires once, at its configured quantity, regardless of how far above            its own threshold the cart is).   false  → this rule cannot combine with other freebie rules; if multiple non-stackable rules            qualify, FreebieService applies its own precedence to pick one.   This flag does NOT multiply a single rule's quantity by how many multiples of the threshold   the cart reaches — a $50-threshold rule at $150 spent still gives quantity 1, not 3..
+     * List a tenant's freebie rules (\"spend $X, get a free item\") with id, name, spend threshold, the product/variation given away, quantity, stackable flag, active state, and schedule window. Freebies are evaluated on every cart change by FreebieService: a rule fires once its spend_threshold is met, adding `quantity` of the configured product/variation to the cart.  IMPORTANT: this reads the `freebies` table — the source of truth the storefront cart uses. It is NOT the legacy freebie summary promotion_audit surfaces alongside coupons/bundles; that view is stale display-only data built for a different purpose. Trust this tool for what actually applies at checkout.  is_merch_product: true when the freebie's product is tagged \"merch\" (Product.tags contains \"merch\") — a branded giveaway item (hats, apparel) rather than sellable cannabis inventory. Prefer merch-tagged products over high-COGS flower when recommending a NEW freebie: giving away promo materials protects margin the same way a discount code doesn't.  is_stackable:   true   → this rule can fire alongside OTHER DIFFERENT freebie rules on the same order (each            rule still only fires once, at its configured quantity, regardless of how far above            its own threshold the cart is). When several stackable rules gift the SAME            variation, they collapse to one cart line whose quantity is the SUM of those rules            (cart_items is unique on cart_id+variation_id — without summing, higher tiers were            silently dropped).   false  → this rule cannot combine with other freebie rules that gift the same variation; if            multiple non-stackable rules share a SKU, the highest spend_threshold wins.   This flag does NOT multiply a single rule's quantity by how many multiples of the threshold   the cart reaches — a $50-threshold rule at $150 spent still gives quantity 1, not 3..
      *
      */
     public function testFreebieList()
@@ -206,7 +230,7 @@ class ReadApiTest extends TestCase
     /**
      * Test case for googleAnalytics
      *
-     * Query Google Analytics (GA4) data for the platform (dabdash.com) or a specific tenant with a connected GA integration. Returns traffic overview, top pages, traffic sources, top events, and daily trend..
+     * Query Google Analytics (GA4) data for a tenant with a connected GA integration. Returns traffic overview, top pages, traffic sources, top events, and daily trend..
      *
      */
     public function testGoogleAnalytics()
@@ -242,7 +266,7 @@ class ReadApiTest extends TestCase
     /**
      * Test case for mailboxInspect
      *
-     * Inspect a tenant inbound mailbox: sync watermark, last error, recent ingestion counts (inbound/outbound), and a healthy/bootstrap/stalled/quiet verdict. Pass a tenant_slug, or pass platform=true for a platform-owned mailbox (tenant_id IS NULL)..
+     * Inspect a tenant mailbox: independent INBOX/Sent sync watermarks, errors, recent ingestion counts (inbound/outbound), and a healthy/bootstrap/stalled/quiet verdict. Pass a tenant_slug, or pass platform=true for a platform-owned mailbox (tenant_id IS NULL)..
      *
      */
     public function testMailboxInspect()
@@ -266,7 +290,7 @@ class ReadApiTest extends TestCase
     /**
      * Test case for orderDashboard
      *
-     * Query orders across all tenants. Filter by status, order number, customer clues, date range, amount, or tenant. Returns order list with pricing context..
+     * Query orders with filters and stable cursor pagination. Use limit plus next_cursor to walk every order; set include_items=true for a complete order export with line items. Tenant access is always enforced..
      *
      */
     public function testOrderDashboard()

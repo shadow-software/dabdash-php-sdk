@@ -22,12 +22,11 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "ShadowSoftware\\DabDash\\Test\\": "generated/test/",
-            "ShadowSoftware\\DabDash\\Tests\\": "tests/"
+            "ShadowSoftware\\DabDash\\Test\\": "generated/test/"
         }
     },
     "scripts": {
         "test": "phpunit --configuration phpunit.xml.dist"
     },
-    "version": "6.3.0"
+    "version": "6.6.2"
 }

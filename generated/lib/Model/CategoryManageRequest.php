@@ -62,6 +62,8 @@ class CategoryManageRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'name' => 'string',
         'slug' => 'string',
         'description' => 'string',
+        'meta_title' => 'string',
+        'meta_description' => 'string',
         'parent_id' => 'int',
         'sort_order' => 'int',
         'is_active' => 'bool',
@@ -84,6 +86,8 @@ class CategoryManageRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'name' => null,
         'slug' => null,
         'description' => null,
+        'meta_title' => null,
+        'meta_description' => null,
         'parent_id' => null,
         'sort_order' => null,
         'is_active' => null,
@@ -104,6 +108,8 @@ class CategoryManageRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'name' => true,
         'slug' => true,
         'description' => true,
+        'meta_title' => true,
+        'meta_description' => true,
         'parent_id' => true,
         'sort_order' => true,
         'is_active' => true,
@@ -204,6 +210,8 @@ class CategoryManageRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'name' => 'name',
         'slug' => 'slug',
         'description' => 'description',
+        'meta_title' => 'meta_title',
+        'meta_description' => 'meta_description',
         'parent_id' => 'parent_id',
         'sort_order' => 'sort_order',
         'is_active' => 'is_active',
@@ -224,6 +232,8 @@ class CategoryManageRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'name' => 'setName',
         'slug' => 'setSlug',
         'description' => 'setDescription',
+        'meta_title' => 'setMetaTitle',
+        'meta_description' => 'setMetaDescription',
         'parent_id' => 'setParentId',
         'sort_order' => 'setSortOrder',
         'is_active' => 'setIsActive',
@@ -244,6 +254,8 @@ class CategoryManageRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'name' => 'getName',
         'slug' => 'getSlug',
         'description' => 'getDescription',
+        'meta_title' => 'getMetaTitle',
+        'meta_description' => 'getMetaDescription',
         'parent_id' => 'getParentId',
         'sort_order' => 'getSortOrder',
         'is_active' => 'getIsActive',
@@ -315,6 +327,8 @@ class CategoryManageRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('slug', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
+        $this->setIfExists('meta_title', $data ?? [], null);
+        $this->setIfExists('meta_description', $data ?? [], null);
         $this->setIfExists('parent_id', $data ?? [], null);
         $this->setIfExists('sort_order', $data ?? [], null);
         $this->setIfExists('is_active', $data ?? [], null);
@@ -532,6 +546,74 @@ class CategoryManageRequest implements ModelInterface, ArrayAccess, \JsonSeriali
             }
         }
         $this->container['description'] = $description;
+
+        return $this;
+    }
+
+    /**
+     * Gets meta_title
+     *
+     * @return string|null
+     */
+    public function getMetaTitle()
+    {
+        return $this->container['meta_title'];
+    }
+
+    /**
+     * Sets meta_title
+     *
+     * @param string|null $meta_title SEO title override (max 60). Empty string clears.
+     *
+     * @return self
+     */
+    public function setMetaTitle($meta_title)
+    {
+        if (is_null($meta_title)) {
+            array_push($this->openAPINullablesSetToNull, 'meta_title');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('meta_title', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['meta_title'] = $meta_title;
+
+        return $this;
+    }
+
+    /**
+     * Gets meta_description
+     *
+     * @return string|null
+     */
+    public function getMetaDescription()
+    {
+        return $this->container['meta_description'];
+    }
+
+    /**
+     * Sets meta_description
+     *
+     * @param string|null $meta_description SEO meta description override (max 160). Empty string clears.
+     *
+     * @return self
+     */
+    public function setMetaDescription($meta_description)
+    {
+        if (is_null($meta_description)) {
+            array_push($this->openAPINullablesSetToNull, 'meta_description');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('meta_description', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['meta_description'] = $meta_description;
 
         return $this;
     }

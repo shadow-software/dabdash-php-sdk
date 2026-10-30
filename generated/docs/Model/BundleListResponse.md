@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**tenant** | [**\ShadowSoftware\DabDash\Model\BundleListResponseTenant**](BundleListResponseTenant.md) |  | [optional]
+**tenant** | [**\ShadowSoftware\DabDash\Model\BundleHealthResponseTenant**](BundleHealthResponseTenant.md) |  | [optional]
 **summary** | [**\ShadowSoftware\DabDash\Model\BundleListResponseSummary**](BundleListResponseSummary.md) |  | [optional]
 **zero_discount_bundles** | **string[]** |  | [optional]
 **bundles** | [**\ShadowSoftware\DabDash\Model\BundleListResponseBundlesInner[]**](BundleListResponseBundlesInner.md) |  | [optional]

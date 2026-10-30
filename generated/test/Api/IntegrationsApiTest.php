@@ -72,6 +72,30 @@ class IntegrationsApiTest extends TestCase
     }
 
     /**
+     * Test case for customerBlockManage
+     *
+     * Block or unblock a customer's current email and/or phone using existing tenant Security lists. Preview by default. Apply only on explicit user instruction with dry_run=false, confirm=true, a reason and expected_snapshot from status/preview. Unblocking removes the selected shared identifier blocks, including pre-existing ones; affects anyone using them. Other restrictions remain. Does not delete customers, change orders or create an account-ID ban..
+     *
+     */
+    public function testCustomerBlockManage()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for customerBlockStatus
+     *
+     * Read a customer's normalized email/phone block status within one tenant. Returns the snapshot required to apply a block or unblock. These are shared identifier blocks, not an account-ID ban or a guarantee checkout will otherwise succeed..
+     *
+     */
+    public function testCustomerBlockStatus()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for metrcDiagnostics
      *
      * Returns a JSON summary of Metrc compliance status for a tenant: integration mode, sync states, audit log counts by HTTP status, and pending/failed report counts. Pass a tenant_slug to inspect a specific tenant..
@@ -96,12 +120,48 @@ class IntegrationsApiTest extends TestCase
     }
 
     /**
+     * Test case for storefrontThemeManage
+     *
+     * Show or update Modern storefront theme data: hero copy, the optional hero featured-product card, deals ticker, homepage sections, footer, and About cards.  The hero card is optional. hero_spotlight_mode is auto (newest sale product), product (pin one), or off (hide the card). Pass hero_spotlight_product (name or slug) or hero_spotlight_product_id to pin a product; omitting the mode then sets it to product. product_feature_manage only toggles the separate Featured Products grid. Vendors edit the same card in Settings → Theme → Hero features.  ACTIONS:   show (default): current saved fields. Unset custom text is null and uses the     storefront's shipped fallback; toggle values include their effective defaults.   set: pass only fields to change. Omitted fields are preserved. Empty text clears     the custom value. about_cards replaces the full card list. hero_ticker_items     replaces the custom ticker.   dry_run defaults true; pass dry_run=false to save.  The WhatsApp number is left untouched unless whatsapp_number is explicitly passed..
+     *
+     */
+    public function testStorefrontThemeManage()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for tenantBrandingManage
      *
      * Show or update a tenant's store logo, homepage hero image, and BIMI email logo, then upsert the Cloudflare `default._bimi` TXT record when the zone is connected.  ACTIONS:   show (default): current logo_path, storefront logo URL (custom domain when          set), hero_image_path/URL, BIMI path/URL, the TXT value to publish,          and whether Cloudflare is connected.   set: pass media_id (from media_list / media_upload) to point logo_path at a          library asset. Pass hero_media_id for settings.hero_image_path, or          clear_hero=true to remove the hero. Pass exactly one of source_base64 /          source_path / source_url for an SVG to store the BIMI logo at          tenants/{id}/bimi-logo.svg (media_upload cannot take SVG). dry_run          defaults true — the first call reports what would happen.  Logo URLs and BIMI `l=` values always use the tenant storefront host (custom domain or {slug}.dabdash.com), never the platform APP_URL..
      *
      */
     public function testTenantBrandingManage()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for tenantDomainManage
+     *
+     * Show, connect, verify, or remove a store's custom domain (e.g. maritimesmoke.com).  ACTIONS:   show (default): current domain, verified flag, and the DNS TXT record to add.   set: connect a domain (bare hostname, no http://). Resets verification. dry_run        defaults true; pass dry_run=false to save.   verify: checks the TXT record or the storefront domain-check URL and marks the        domain verified. Run after DNS has been changed.   remove: disconnect the custom domain. dry_run defaults true.  DNS records are not created here; show returns what to add at the registrar or in Cloudflare. Until verified the store keeps working on {slug}.dabdash.com..
+     *
+     */
+    public function testTenantDomainManage()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for tenantSmtpManage
+     *
+     * Show or update a tenant's SMTP settings used for transactional email.  ACTIONS:   show (default): returns the current SMTP settings with the password omitted.   set: updates only the supplied fields. dry_run defaults true; pass dry_run=false        to save. smtp_password is write-only and is never returned.  Keep from_address equal to the authenticated SMTP username unless the provider has explicitly authorized a different sender or alias. A successful settings update clears the tenant's stale SMTP health banner; the next send records any still-current failure..
+     *
+     */
+    public function testTenantSmtpManage()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

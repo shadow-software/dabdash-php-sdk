@@ -179,6 +179,33 @@ class BundleUpsertResponseTest extends TestCase
     }
 
     /**
+     * Test attribute "has_rule"
+     */
+    public function testPropertyHasRule()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "rule_added_count"
+     */
+    public function testPropertyRuleAddedCount()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "rule_removed_count"
+     */
+    public function testPropertyRuleRemovedCount()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "message"
      */
     public function testPropertyMessage()

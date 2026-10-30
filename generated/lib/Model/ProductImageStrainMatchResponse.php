@@ -57,7 +57,7 @@ class ProductImageStrainMatchResponse implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $openAPITypes = [
-        'tenant' => '\ShadowSoftware\DabDash\Model\BundleListResponseTenant',
+        'tenant' => '\ShadowSoftware\DabDash\Model\BundleHealthResponseTenant',
         'total' => 'int',
         'proposals' => '\ShadowSoftware\DabDash\Model\ProductImageStrainMatchResponseProposalsInner[]'
     ];
@@ -306,7 +306,7 @@ class ProductImageStrainMatchResponse implements ModelInterface, ArrayAccess, \J
     /**
      * Gets tenant
      *
-     * @return \ShadowSoftware\DabDash\Model\BundleListResponseTenant|null
+     * @return \ShadowSoftware\DabDash\Model\BundleHealthResponseTenant|null
      */
     public function getTenant()
     {
@@ -316,7 +316,7 @@ class ProductImageStrainMatchResponse implements ModelInterface, ArrayAccess, \J
     /**
      * Sets tenant
      *
-     * @param \ShadowSoftware\DabDash\Model\BundleListResponseTenant|null $tenant tenant
+     * @param \ShadowSoftware\DabDash\Model\BundleHealthResponseTenant|null $tenant tenant
      *
      * @return self
      */

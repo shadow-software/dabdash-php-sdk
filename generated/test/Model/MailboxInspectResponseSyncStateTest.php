@@ -132,4 +132,58 @@ class MailboxInspectResponseSyncStateTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "sent_last_synced_uid"
+     */
+    public function testPropertySentLastSyncedUid()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "sent_last_synced_at"
+     */
+    public function testPropertySentLastSyncedAt()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "minutes_since_sent_last_sync"
+     */
+    public function testPropertyMinutesSinceSentLastSync()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "sent_sync_error"
+     */
+    public function testPropertySentSyncError()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "sent_sync_error_at"
+     */
+    public function testPropertySentSyncErrorAt()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "minutes_since_sent_last_error"
+     */
+    public function testPropertyMinutesSinceSentLastError()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

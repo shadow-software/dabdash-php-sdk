@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**tenant** | [**\ShadowSoftware\DabDash\Model\BundleListResponseTenant**](BundleListResponseTenant.md) |  | [optional]
+**tenant** | [**\ShadowSoftware\DabDash\Model\BundleHealthResponseTenant**](BundleHealthResponseTenant.md) |  | [optional]
 **cutoff** | **string** |  | [optional]
 **not_found_product_ids** | **int[]** |  | [optional]
 **products** | [**\ShadowSoftware\DabDash\Model\InventoryAuditLookupResponseProductsInner[]**](InventoryAuditLookupResponseProductsInner.md) |  | [optional]

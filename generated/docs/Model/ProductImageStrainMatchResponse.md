@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**tenant** | [**\ShadowSoftware\DabDash\Model\BundleListResponseTenant**](BundleListResponseTenant.md) |  | [optional]
+**tenant** | [**\ShadowSoftware\DabDash\Model\BundleHealthResponseTenant**](BundleHealthResponseTenant.md) |  | [optional]
 **total** | **int** |  | [optional]
 **proposals** | [**\ShadowSoftware\DabDash\Model\ProductImageStrainMatchResponseProposalsInner[]**](ProductImageStrainMatchResponseProposalsInner.md) |  | [optional]
 

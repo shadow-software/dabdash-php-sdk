@@ -80,6 +80,15 @@ class CatalogApi
         'catalogFlatteningAudit' => [
             'application/json',
         ],
+        'catalogImport' => [
+            'application/json',
+        ],
+        'catalogVariantAudit' => [
+            'application/json',
+        ],
+        'catalogVariantCompact' => [
+            'application/json',
+        ],
         'categoryManage' => [
             'application/json',
         ],
@@ -126,6 +135,9 @@ class CatalogApi
             'application/json',
         ],
         'productUpdateBySku' => [
+            'application/json',
+        ],
+        'productVisibilityManage' => [
             'application/json',
         ],
         'purchaseOrderDraftCreate' => [
@@ -198,7 +210,7 @@ class CatalogApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\DabDash\Model\CatalogCollapse200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\CatalogCollapse200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
      */
     public function catalogCollapse($catalog_collapse_request = null, string $contentType = self::contentTypes['catalogCollapse'][0])
     {
@@ -216,7 +228,7 @@ class CatalogApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\DabDash\Model\CatalogCollapse200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\CatalogCollapse200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function catalogCollapseWithHttpInfo($catalog_collapse_request = null, string $contentType = self::contentTypes['catalogCollapse'][0])
     {
@@ -254,31 +266,31 @@ class CatalogApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
@@ -317,7 +329,7 @@ class CatalogApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -325,7 +337,7 @@ class CatalogApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -333,7 +345,7 @@ class CatalogApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -341,7 +353,7 @@ class CatalogApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -349,7 +361,7 @@ class CatalogApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -537,7 +549,7 @@ class CatalogApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\DabDash\Model\CatalogFlatteningAudit200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\CatalogFlatteningAudit200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
      */
     public function catalogFlatteningAudit($body = null, string $contentType = self::contentTypes['catalogFlatteningAudit'][0])
     {
@@ -555,7 +567,7 @@ class CatalogApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\DabDash\Model\CatalogFlatteningAudit200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\CatalogFlatteningAudit200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function catalogFlatteningAuditWithHttpInfo($body = null, string $contentType = self::contentTypes['catalogFlatteningAudit'][0])
     {
@@ -593,31 +605,31 @@ class CatalogApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
@@ -656,7 +668,7 @@ class CatalogApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -664,7 +676,7 @@ class CatalogApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -672,7 +684,7 @@ class CatalogApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -680,7 +692,7 @@ class CatalogApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -688,7 +700,7 @@ class CatalogApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -867,6 +879,1023 @@ class CatalogApi
     }
 
     /**
+     * Operation catalogImport
+     *
+     * Bulk-create categories and products in one call, for onboarding a store from a scraped or exported catalog. Built on category_manage, product_manage, media_upload and product_image_assign, so results match creating each item by hand.  Pass categories (name, optional parent name) and/or products (name, price in dollars, optional sku, stock_quantity, description, category names, image_url, or a complete expected_variation_count plus named variations list). Categories are matched by name (existing ones are reused, never duplicated); products are matched by exact name (existing ones are skipped, never overwritten). Up to 100 products per call.  dry_run defaults true: the first call reports what would be created and skipped. Pass dry_run&#x3D;false to write. Image failures never block a product; they are listed per item. Tiered pricing, bundles and strain-specific data are set afterwards with pricing_structure_*, bundle_* and product_manage.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\CatalogImportRequest|null $catalog_import_request catalog_import_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['catalogImport'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \ShadowSoftware\DabDash\Model\CatalogImport200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
+     */
+    public function catalogImport($catalog_import_request = null, string $contentType = self::contentTypes['catalogImport'][0])
+    {
+        list($response) = $this->catalogImportWithHttpInfo($catalog_import_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation catalogImportWithHttpInfo
+     *
+     * Bulk-create categories and products in one call, for onboarding a store from a scraped or exported catalog. Built on category_manage, product_manage, media_upload and product_image_assign, so results match creating each item by hand.  Pass categories (name, optional parent name) and/or products (name, price in dollars, optional sku, stock_quantity, description, category names, image_url, or a complete expected_variation_count plus named variations list). Categories are matched by name (existing ones are reused, never duplicated); products are matched by exact name (existing ones are skipped, never overwritten). Up to 100 products per call.  dry_run defaults true: the first call reports what would be created and skipped. Pass dry_run&#x3D;false to write. Image failures never block a product; they are listed per item. Tiered pricing, bundles and strain-specific data are set afterwards with pricing_structure_*, bundle_* and product_manage.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\CatalogImportRequest|null $catalog_import_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['catalogImport'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \ShadowSoftware\DabDash\Model\CatalogImport200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function catalogImportWithHttpInfo($catalog_import_request = null, string $contentType = self::contentTypes['catalogImport'][0])
+    {
+        $request = $this->catalogImportRequest($catalog_import_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\CatalogImport200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 402:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 422:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\ShadowSoftware\DabDash\Model\CatalogImport200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\CatalogImport200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 402:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation catalogImportAsync
+     *
+     * Bulk-create categories and products in one call, for onboarding a store from a scraped or exported catalog. Built on category_manage, product_manage, media_upload and product_image_assign, so results match creating each item by hand.  Pass categories (name, optional parent name) and/or products (name, price in dollars, optional sku, stock_quantity, description, category names, image_url, or a complete expected_variation_count plus named variations list). Categories are matched by name (existing ones are reused, never duplicated); products are matched by exact name (existing ones are skipped, never overwritten). Up to 100 products per call.  dry_run defaults true: the first call reports what would be created and skipped. Pass dry_run&#x3D;false to write. Image failures never block a product; they are listed per item. Tiered pricing, bundles and strain-specific data are set afterwards with pricing_structure_*, bundle_* and product_manage.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\CatalogImportRequest|null $catalog_import_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['catalogImport'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function catalogImportAsync($catalog_import_request = null, string $contentType = self::contentTypes['catalogImport'][0])
+    {
+        return $this->catalogImportAsyncWithHttpInfo($catalog_import_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation catalogImportAsyncWithHttpInfo
+     *
+     * Bulk-create categories and products in one call, for onboarding a store from a scraped or exported catalog. Built on category_manage, product_manage, media_upload and product_image_assign, so results match creating each item by hand.  Pass categories (name, optional parent name) and/or products (name, price in dollars, optional sku, stock_quantity, description, category names, image_url, or a complete expected_variation_count plus named variations list). Categories are matched by name (existing ones are reused, never duplicated); products are matched by exact name (existing ones are skipped, never overwritten). Up to 100 products per call.  dry_run defaults true: the first call reports what would be created and skipped. Pass dry_run&#x3D;false to write. Image failures never block a product; they are listed per item. Tiered pricing, bundles and strain-specific data are set afterwards with pricing_structure_*, bundle_* and product_manage.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\CatalogImportRequest|null $catalog_import_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['catalogImport'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function catalogImportAsyncWithHttpInfo($catalog_import_request = null, string $contentType = self::contentTypes['catalogImport'][0])
+    {
+        $returnType = '\ShadowSoftware\DabDash\Model\CatalogImport200Response';
+        $request = $this->catalogImportRequest($catalog_import_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'catalogImport'
+     *
+     * @param  \ShadowSoftware\DabDash\Model\CatalogImportRequest|null $catalog_import_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['catalogImport'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function catalogImportRequest($catalog_import_request = null, string $contentType = self::contentTypes['catalogImport'][0])
+    {
+
+
+
+        $resourcePath = '/api/v1/tools/catalog_import';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($catalog_import_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($catalog_import_request));
+            } else {
+                $httpBody = $catalog_import_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation catalogVariantAudit
+     *
+     * Lists explicit unit products and their variations for safe catalog compaction review. Read-only.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\CatalogVariantAuditRequest|null $catalog_variant_audit_request catalog_variant_audit_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['catalogVariantAudit'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \ShadowSoftware\DabDash\Model\CatalogVariantAudit200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
+     */
+    public function catalogVariantAudit($catalog_variant_audit_request = null, string $contentType = self::contentTypes['catalogVariantAudit'][0])
+    {
+        list($response) = $this->catalogVariantAuditWithHttpInfo($catalog_variant_audit_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation catalogVariantAuditWithHttpInfo
+     *
+     * Lists explicit unit products and their variations for safe catalog compaction review. Read-only.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\CatalogVariantAuditRequest|null $catalog_variant_audit_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['catalogVariantAudit'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \ShadowSoftware\DabDash\Model\CatalogVariantAudit200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function catalogVariantAuditWithHttpInfo($catalog_variant_audit_request = null, string $contentType = self::contentTypes['catalogVariantAudit'][0])
+    {
+        $request = $this->catalogVariantAuditRequest($catalog_variant_audit_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\CatalogVariantAudit200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 402:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 422:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\ShadowSoftware\DabDash\Model\CatalogVariantAudit200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\CatalogVariantAudit200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 402:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation catalogVariantAuditAsync
+     *
+     * Lists explicit unit products and their variations for safe catalog compaction review. Read-only.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\CatalogVariantAuditRequest|null $catalog_variant_audit_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['catalogVariantAudit'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function catalogVariantAuditAsync($catalog_variant_audit_request = null, string $contentType = self::contentTypes['catalogVariantAudit'][0])
+    {
+        return $this->catalogVariantAuditAsyncWithHttpInfo($catalog_variant_audit_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation catalogVariantAuditAsyncWithHttpInfo
+     *
+     * Lists explicit unit products and their variations for safe catalog compaction review. Read-only.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\CatalogVariantAuditRequest|null $catalog_variant_audit_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['catalogVariantAudit'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function catalogVariantAuditAsyncWithHttpInfo($catalog_variant_audit_request = null, string $contentType = self::contentTypes['catalogVariantAudit'][0])
+    {
+        $returnType = '\ShadowSoftware\DabDash\Model\CatalogVariantAudit200Response';
+        $request = $this->catalogVariantAuditRequest($catalog_variant_audit_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'catalogVariantAudit'
+     *
+     * @param  \ShadowSoftware\DabDash\Model\CatalogVariantAuditRequest|null $catalog_variant_audit_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['catalogVariantAudit'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function catalogVariantAuditRequest($catalog_variant_audit_request = null, string $contentType = self::contentTypes['catalogVariantAudit'][0])
+    {
+
+
+
+        $resourcePath = '/api/v1/tools/catalog_variant_audit';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($catalog_variant_audit_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($catalog_variant_audit_request));
+            } else {
+                $httpBody = $catalog_variant_audit_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation catalogVariantCompact
+     *
+     * Safely merges explicit same-family unit products into one product with named variants. Preview first; live mode preserves the survivor, moves variations, unions categories, records old-slug redirects, and removes absorbed products atomically.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\CatalogVariantCompactRequest|null $catalog_variant_compact_request catalog_variant_compact_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['catalogVariantCompact'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \ShadowSoftware\DabDash\Model\CatalogVariantCompact200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
+     */
+    public function catalogVariantCompact($catalog_variant_compact_request = null, string $contentType = self::contentTypes['catalogVariantCompact'][0])
+    {
+        list($response) = $this->catalogVariantCompactWithHttpInfo($catalog_variant_compact_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation catalogVariantCompactWithHttpInfo
+     *
+     * Safely merges explicit same-family unit products into one product with named variants. Preview first; live mode preserves the survivor, moves variations, unions categories, records old-slug redirects, and removes absorbed products atomically.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\CatalogVariantCompactRequest|null $catalog_variant_compact_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['catalogVariantCompact'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \ShadowSoftware\DabDash\Model\CatalogVariantCompact200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function catalogVariantCompactWithHttpInfo($catalog_variant_compact_request = null, string $contentType = self::contentTypes['catalogVariantCompact'][0])
+    {
+        $request = $this->catalogVariantCompactRequest($catalog_variant_compact_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\CatalogVariantCompact200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 402:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 422:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\ShadowSoftware\DabDash\Model\CatalogVariantCompact200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\CatalogVariantCompact200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 402:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation catalogVariantCompactAsync
+     *
+     * Safely merges explicit same-family unit products into one product with named variants. Preview first; live mode preserves the survivor, moves variations, unions categories, records old-slug redirects, and removes absorbed products atomically.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\CatalogVariantCompactRequest|null $catalog_variant_compact_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['catalogVariantCompact'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function catalogVariantCompactAsync($catalog_variant_compact_request = null, string $contentType = self::contentTypes['catalogVariantCompact'][0])
+    {
+        return $this->catalogVariantCompactAsyncWithHttpInfo($catalog_variant_compact_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation catalogVariantCompactAsyncWithHttpInfo
+     *
+     * Safely merges explicit same-family unit products into one product with named variants. Preview first; live mode preserves the survivor, moves variations, unions categories, records old-slug redirects, and removes absorbed products atomically.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\CatalogVariantCompactRequest|null $catalog_variant_compact_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['catalogVariantCompact'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function catalogVariantCompactAsyncWithHttpInfo($catalog_variant_compact_request = null, string $contentType = self::contentTypes['catalogVariantCompact'][0])
+    {
+        $returnType = '\ShadowSoftware\DabDash\Model\CatalogVariantCompact200Response';
+        $request = $this->catalogVariantCompactRequest($catalog_variant_compact_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'catalogVariantCompact'
+     *
+     * @param  \ShadowSoftware\DabDash\Model\CatalogVariantCompactRequest|null $catalog_variant_compact_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['catalogVariantCompact'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function catalogVariantCompactRequest($catalog_variant_compact_request = null, string $contentType = self::contentTypes['catalogVariantCompact'][0])
+    {
+
+
+
+        $resourcePath = '/api/v1/tools/catalog_variant_compact';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($catalog_variant_compact_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($catalog_variant_compact_request));
+            } else {
+                $httpBody = $catalog_variant_compact_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation categoryManage
      *
      * List, create, update, or delete a tenant&#39;s storefront categories.  ACTIONS:   list   (default): return every category with id, name, slug, parent, sort_order,          is_active, is_featured, and image_url. Always call this first to find a          category_id before update/delete, and to check for slug collisions before create.   create: requires name (slug is auto-generated from name if omitted).   update: requires category_id. Only the fields you pass are changed.   delete: requires category_id and confirm&#x3D;true. Refuses if the category still has          products or children attached (detach or reassign them first).  IMAGES: pass media_id (from media_list / media_upload) to set image_path (the final, customer-facing image) or base_image_path (the unbranded source canvas SwagImagesService composites branding onto). Omit both to leave images untouched.  Always call action&#x3D;list first to confirm category_id / slug before update or delete.
@@ -876,7 +1905,7 @@ class CatalogApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\DabDash\Model\CategoryManage200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\CategoryManage200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
      */
     public function categoryManage($category_manage_request = null, string $contentType = self::contentTypes['categoryManage'][0])
     {
@@ -894,7 +1923,7 @@ class CatalogApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\DabDash\Model\CategoryManage200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\CategoryManage200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function categoryManageWithHttpInfo($category_manage_request = null, string $contentType = self::contentTypes['categoryManage'][0])
     {
@@ -932,31 +1961,31 @@ class CatalogApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
@@ -995,7 +2024,7 @@ class CatalogApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1003,7 +2032,7 @@ class CatalogApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1011,7 +2040,7 @@ class CatalogApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1019,7 +2048,7 @@ class CatalogApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1027,7 +2056,7 @@ class CatalogApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1215,7 +2244,7 @@ class CatalogApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\DabDash\Model\InventoryAuditLookup200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\InventoryAuditLookup200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
      */
     public function inventoryAuditLookup($inventory_audit_lookup_request = null, string $contentType = self::contentTypes['inventoryAuditLookup'][0])
     {
@@ -1233,7 +2262,7 @@ class CatalogApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\DabDash\Model\InventoryAuditLookup200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\InventoryAuditLookup200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function inventoryAuditLookupWithHttpInfo($inventory_audit_lookup_request = null, string $contentType = self::contentTypes['inventoryAuditLookup'][0])
     {
@@ -1271,31 +2300,31 @@ class CatalogApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
@@ -1334,7 +2363,7 @@ class CatalogApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1342,7 +2371,7 @@ class CatalogApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1350,7 +2379,7 @@ class CatalogApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1358,7 +2387,7 @@ class CatalogApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1366,7 +2395,7 @@ class CatalogApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1554,7 +2583,7 @@ class CatalogApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\DabDash\Model\InventoryStatus200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\InventoryStatus200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
      */
     public function inventoryStatus($inventory_status_request = null, string $contentType = self::contentTypes['inventoryStatus'][0])
     {
@@ -1572,7 +2601,7 @@ class CatalogApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\DabDash\Model\InventoryStatus200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\InventoryStatus200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function inventoryStatusWithHttpInfo($inventory_status_request = null, string $contentType = self::contentTypes['inventoryStatus'][0])
     {
@@ -1610,31 +2639,31 @@ class CatalogApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
@@ -1673,7 +2702,7 @@ class CatalogApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1681,7 +2710,7 @@ class CatalogApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1689,7 +2718,7 @@ class CatalogApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1697,7 +2726,7 @@ class CatalogApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1705,7 +2734,7 @@ class CatalogApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1893,7 +2922,7 @@ class CatalogApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\DabDash\Model\PricingStructureAssign200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\PricingStructureAssign200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
      */
     public function pricingStructureAssign($pricing_structure_assign_request = null, string $contentType = self::contentTypes['pricingStructureAssign'][0])
     {
@@ -1911,7 +2940,7 @@ class CatalogApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\DabDash\Model\PricingStructureAssign200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\PricingStructureAssign200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function pricingStructureAssignWithHttpInfo($pricing_structure_assign_request = null, string $contentType = self::contentTypes['pricingStructureAssign'][0])
     {
@@ -1949,31 +2978,31 @@ class CatalogApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
@@ -2012,7 +3041,7 @@ class CatalogApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2020,7 +3049,7 @@ class CatalogApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2028,7 +3057,7 @@ class CatalogApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2036,7 +3065,7 @@ class CatalogApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2044,7 +3073,7 @@ class CatalogApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2232,7 +3261,7 @@ class CatalogApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\DabDash\Model\PricingStructureDelete200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\PricingStructureDelete200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
      */
     public function pricingStructureDelete($pricing_structure_delete_request = null, string $contentType = self::contentTypes['pricingStructureDelete'][0])
     {
@@ -2250,7 +3279,7 @@ class CatalogApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\DabDash\Model\PricingStructureDelete200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\PricingStructureDelete200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function pricingStructureDeleteWithHttpInfo($pricing_structure_delete_request = null, string $contentType = self::contentTypes['pricingStructureDelete'][0])
     {
@@ -2288,31 +3317,31 @@ class CatalogApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
@@ -2351,7 +3380,7 @@ class CatalogApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2359,7 +3388,7 @@ class CatalogApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2367,7 +3396,7 @@ class CatalogApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2375,7 +3404,7 @@ class CatalogApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2383,7 +3412,7 @@ class CatalogApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2571,7 +3600,7 @@ class CatalogApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\DabDash\Model\PricingStructureList200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\PricingStructureList200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
      */
     public function pricingStructureList($pricing_structure_list_request = null, string $contentType = self::contentTypes['pricingStructureList'][0])
     {
@@ -2589,7 +3618,7 @@ class CatalogApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\DabDash\Model\PricingStructureList200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\PricingStructureList200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function pricingStructureListWithHttpInfo($pricing_structure_list_request = null, string $contentType = self::contentTypes['pricingStructureList'][0])
     {
@@ -2627,31 +3656,31 @@ class CatalogApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
@@ -2690,7 +3719,7 @@ class CatalogApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2698,7 +3727,7 @@ class CatalogApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2706,7 +3735,7 @@ class CatalogApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2714,7 +3743,7 @@ class CatalogApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2722,7 +3751,7 @@ class CatalogApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2910,7 +3939,7 @@ class CatalogApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\DabDash\Model\PricingStructureRestore200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\PricingStructureRestore200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
      */
     public function pricingStructureRestore($pricing_structure_restore_request = null, string $contentType = self::contentTypes['pricingStructureRestore'][0])
     {
@@ -2928,7 +3957,7 @@ class CatalogApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\DabDash\Model\PricingStructureRestore200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\PricingStructureRestore200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function pricingStructureRestoreWithHttpInfo($pricing_structure_restore_request = null, string $contentType = self::contentTypes['pricingStructureRestore'][0])
     {
@@ -2966,31 +3995,31 @@ class CatalogApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
@@ -3029,7 +4058,7 @@ class CatalogApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3037,7 +4066,7 @@ class CatalogApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3045,7 +4074,7 @@ class CatalogApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3053,7 +4082,7 @@ class CatalogApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3061,7 +4090,7 @@ class CatalogApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3249,7 +4278,7 @@ class CatalogApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\DabDash\Model\PricingStructureUpsert200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\PricingStructureUpsert200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
      */
     public function pricingStructureUpsert($pricing_structure_upsert_request = null, string $contentType = self::contentTypes['pricingStructureUpsert'][0])
     {
@@ -3267,7 +4296,7 @@ class CatalogApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\DabDash\Model\PricingStructureUpsert200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\PricingStructureUpsert200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function pricingStructureUpsertWithHttpInfo($pricing_structure_upsert_request = null, string $contentType = self::contentTypes['pricingStructureUpsert'][0])
     {
@@ -3305,31 +4334,31 @@ class CatalogApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
@@ -3368,7 +4397,7 @@ class CatalogApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3376,7 +4405,7 @@ class CatalogApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3384,7 +4413,7 @@ class CatalogApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3392,7 +4421,7 @@ class CatalogApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3400,7 +4429,7 @@ class CatalogApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3581,14 +4610,14 @@ class CatalogApi
     /**
      * Operation productFeatureManage
      *
-     * List or set which products are featured on a tenant&#39;s storefront home page (the \&quot;Featured Products\&quot; section, HomeController — up to 8 shown, ordered by the tenant&#39;s default product sort).  ACTIONS:   list (default): return every is_featured&#x3D;true product with id, slug, name,          stock_status. Always call this first to see the current set before          changing it.   set: pass product_ids (array) and featured (bool) to set is_featured on          those products. Unlisted products are left untouched — this is an          additive/subtractive edit, not a replace-the-whole-set operation.  Products must be resolved to ids first (product_inspect or this tool&#39;s list action). Featuring an out-of-stock product is allowed but usually undesirable — check stock_status in the list output before featuring.
+     * List or set which products are featured on a tenant&#39;s storefront home page (the \&quot;Featured Products\&quot; section, HomeController — up to 8 shown, ordered by the tenant&#39;s default product sort). This does not change the Modern hero&#39;s optional featured-product card; use storefront_theme_manage or store_settings_manage (hero_spotlight_mode / hero_spotlight_product) for that.  ACTIONS:   list (default): return every is_featured&#x3D;true product with id, slug, name,          stock_status. Always call this first to see the current set before          changing it.   set: pass product_ids (array) and featured (bool) to set is_featured on          those products. Unlisted products are left untouched — this is an          additive/subtractive edit, not a replace-the-whole-set operation.  Products must be resolved to ids first (product_inspect or this tool&#39;s list action). Featuring an out-of-stock product is allowed but usually undesirable — check stock_status in the list output before featuring.
      *
      * @param  \ShadowSoftware\DabDash\Model\ProductFeatureManageRequest|null $product_feature_manage_request product_feature_manage_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productFeatureManage'] to see the possible values for this operation
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\DabDash\Model\ProductFeatureManage200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\ProductFeatureManage200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
      */
     public function productFeatureManage($product_feature_manage_request = null, string $contentType = self::contentTypes['productFeatureManage'][0])
     {
@@ -3599,14 +4628,14 @@ class CatalogApi
     /**
      * Operation productFeatureManageWithHttpInfo
      *
-     * List or set which products are featured on a tenant&#39;s storefront home page (the \&quot;Featured Products\&quot; section, HomeController — up to 8 shown, ordered by the tenant&#39;s default product sort).  ACTIONS:   list (default): return every is_featured&#x3D;true product with id, slug, name,          stock_status. Always call this first to see the current set before          changing it.   set: pass product_ids (array) and featured (bool) to set is_featured on          those products. Unlisted products are left untouched — this is an          additive/subtractive edit, not a replace-the-whole-set operation.  Products must be resolved to ids first (product_inspect or this tool&#39;s list action). Featuring an out-of-stock product is allowed but usually undesirable — check stock_status in the list output before featuring.
+     * List or set which products are featured on a tenant&#39;s storefront home page (the \&quot;Featured Products\&quot; section, HomeController — up to 8 shown, ordered by the tenant&#39;s default product sort). This does not change the Modern hero&#39;s optional featured-product card; use storefront_theme_manage or store_settings_manage (hero_spotlight_mode / hero_spotlight_product) for that.  ACTIONS:   list (default): return every is_featured&#x3D;true product with id, slug, name,          stock_status. Always call this first to see the current set before          changing it.   set: pass product_ids (array) and featured (bool) to set is_featured on          those products. Unlisted products are left untouched — this is an          additive/subtractive edit, not a replace-the-whole-set operation.  Products must be resolved to ids first (product_inspect or this tool&#39;s list action). Featuring an out-of-stock product is allowed but usually undesirable — check stock_status in the list output before featuring.
      *
      * @param  \ShadowSoftware\DabDash\Model\ProductFeatureManageRequest|null $product_feature_manage_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productFeatureManage'] to see the possible values for this operation
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\DabDash\Model\ProductFeatureManage200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\ProductFeatureManage200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function productFeatureManageWithHttpInfo($product_feature_manage_request = null, string $contentType = self::contentTypes['productFeatureManage'][0])
     {
@@ -3644,31 +4673,31 @@ class CatalogApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
@@ -3707,7 +4736,7 @@ class CatalogApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3715,7 +4744,7 @@ class CatalogApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3723,7 +4752,7 @@ class CatalogApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3731,7 +4760,7 @@ class CatalogApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3739,7 +4768,7 @@ class CatalogApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3754,7 +4783,7 @@ class CatalogApi
     /**
      * Operation productFeatureManageAsync
      *
-     * List or set which products are featured on a tenant&#39;s storefront home page (the \&quot;Featured Products\&quot; section, HomeController — up to 8 shown, ordered by the tenant&#39;s default product sort).  ACTIONS:   list (default): return every is_featured&#x3D;true product with id, slug, name,          stock_status. Always call this first to see the current set before          changing it.   set: pass product_ids (array) and featured (bool) to set is_featured on          those products. Unlisted products are left untouched — this is an          additive/subtractive edit, not a replace-the-whole-set operation.  Products must be resolved to ids first (product_inspect or this tool&#39;s list action). Featuring an out-of-stock product is allowed but usually undesirable — check stock_status in the list output before featuring.
+     * List or set which products are featured on a tenant&#39;s storefront home page (the \&quot;Featured Products\&quot; section, HomeController — up to 8 shown, ordered by the tenant&#39;s default product sort). This does not change the Modern hero&#39;s optional featured-product card; use storefront_theme_manage or store_settings_manage (hero_spotlight_mode / hero_spotlight_product) for that.  ACTIONS:   list (default): return every is_featured&#x3D;true product with id, slug, name,          stock_status. Always call this first to see the current set before          changing it.   set: pass product_ids (array) and featured (bool) to set is_featured on          those products. Unlisted products are left untouched — this is an          additive/subtractive edit, not a replace-the-whole-set operation.  Products must be resolved to ids first (product_inspect or this tool&#39;s list action). Featuring an out-of-stock product is allowed but usually undesirable — check stock_status in the list output before featuring.
      *
      * @param  \ShadowSoftware\DabDash\Model\ProductFeatureManageRequest|null $product_feature_manage_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productFeatureManage'] to see the possible values for this operation
@@ -3775,7 +4804,7 @@ class CatalogApi
     /**
      * Operation productFeatureManageAsyncWithHttpInfo
      *
-     * List or set which products are featured on a tenant&#39;s storefront home page (the \&quot;Featured Products\&quot; section, HomeController — up to 8 shown, ordered by the tenant&#39;s default product sort).  ACTIONS:   list (default): return every is_featured&#x3D;true product with id, slug, name,          stock_status. Always call this first to see the current set before          changing it.   set: pass product_ids (array) and featured (bool) to set is_featured on          those products. Unlisted products are left untouched — this is an          additive/subtractive edit, not a replace-the-whole-set operation.  Products must be resolved to ids first (product_inspect or this tool&#39;s list action). Featuring an out-of-stock product is allowed but usually undesirable — check stock_status in the list output before featuring.
+     * List or set which products are featured on a tenant&#39;s storefront home page (the \&quot;Featured Products\&quot; section, HomeController — up to 8 shown, ordered by the tenant&#39;s default product sort). This does not change the Modern hero&#39;s optional featured-product card; use storefront_theme_manage or store_settings_manage (hero_spotlight_mode / hero_spotlight_product) for that.  ACTIONS:   list (default): return every is_featured&#x3D;true product with id, slug, name,          stock_status. Always call this first to see the current set before          changing it.   set: pass product_ids (array) and featured (bool) to set is_featured on          those products. Unlisted products are left untouched — this is an          additive/subtractive edit, not a replace-the-whole-set operation.  Products must be resolved to ids first (product_inspect or this tool&#39;s list action). Featuring an out-of-stock product is allowed but usually undesirable — check stock_status in the list output before featuring.
      *
      * @param  \ShadowSoftware\DabDash\Model\ProductFeatureManageRequest|null $product_feature_manage_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productFeatureManage'] to see the possible values for this operation
@@ -3927,7 +4956,7 @@ class CatalogApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\DabDash\Model\ProductImageAssign200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\ProductImageAssign200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
      */
     public function productImageAssign($product_image_assign_request = null, string $contentType = self::contentTypes['productImageAssign'][0])
     {
@@ -3945,7 +4974,7 @@ class CatalogApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\DabDash\Model\ProductImageAssign200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\ProductImageAssign200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function productImageAssignWithHttpInfo($product_image_assign_request = null, string $contentType = self::contentTypes['productImageAssign'][0])
     {
@@ -3983,31 +5012,31 @@ class CatalogApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
@@ -4046,7 +5075,7 @@ class CatalogApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4054,7 +5083,7 @@ class CatalogApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4062,7 +5091,7 @@ class CatalogApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4070,7 +5099,7 @@ class CatalogApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4078,7 +5107,7 @@ class CatalogApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4266,7 +5295,7 @@ class CatalogApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\DabDash\Model\ProductImageStrainAssign200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\ProductImageStrainAssign200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
      */
     public function productImageStrainAssign($product_image_strain_assign_request = null, string $contentType = self::contentTypes['productImageStrainAssign'][0])
     {
@@ -4284,7 +5313,7 @@ class CatalogApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\DabDash\Model\ProductImageStrainAssign200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\ProductImageStrainAssign200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function productImageStrainAssignWithHttpInfo($product_image_strain_assign_request = null, string $contentType = self::contentTypes['productImageStrainAssign'][0])
     {
@@ -4322,31 +5351,31 @@ class CatalogApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
@@ -4385,7 +5414,7 @@ class CatalogApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4393,7 +5422,7 @@ class CatalogApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4401,7 +5430,7 @@ class CatalogApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4409,7 +5438,7 @@ class CatalogApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4417,7 +5446,7 @@ class CatalogApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4605,7 +5634,7 @@ class CatalogApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\DabDash\Model\ProductImageStrainMatch200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\ProductImageStrainMatch200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
      */
     public function productImageStrainMatch($product_image_strain_match_request = null, string $contentType = self::contentTypes['productImageStrainMatch'][0])
     {
@@ -4623,7 +5652,7 @@ class CatalogApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\DabDash\Model\ProductImageStrainMatch200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\ProductImageStrainMatch200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function productImageStrainMatchWithHttpInfo($product_image_strain_match_request = null, string $contentType = self::contentTypes['productImageStrainMatch'][0])
     {
@@ -4661,31 +5690,31 @@ class CatalogApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
@@ -4724,7 +5753,7 @@ class CatalogApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4732,7 +5761,7 @@ class CatalogApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4740,7 +5769,7 @@ class CatalogApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4748,7 +5777,7 @@ class CatalogApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4756,7 +5785,7 @@ class CatalogApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4944,7 +5973,7 @@ class CatalogApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\DabDash\Model\ProductInspect200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\ProductInspect200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
      */
     public function productInspect($product_inspect_request = null, string $contentType = self::contentTypes['productInspect'][0])
     {
@@ -4962,7 +5991,7 @@ class CatalogApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\DabDash\Model\ProductInspect200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\ProductInspect200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function productInspectWithHttpInfo($product_inspect_request = null, string $contentType = self::contentTypes['productInspect'][0])
     {
@@ -5000,31 +6029,31 @@ class CatalogApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
@@ -5063,7 +6092,7 @@ class CatalogApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5071,7 +6100,7 @@ class CatalogApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5079,7 +6108,7 @@ class CatalogApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5087,7 +6116,7 @@ class CatalogApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5095,7 +6124,7 @@ class CatalogApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5276,14 +6305,14 @@ class CatalogApi
     /**
      * Operation productManage
      *
-     * Create a simple product for a tenant (v1: one price, unit tracking — the same default as a blank create-product page). Call strain_lookup first when the name looks like a strain, then pass strain_id so description, type, THC/CBD, indica/sativa, effects, flavors, rating, and the hosted strain photo fill in exactly like the vendor create page.  If strain_id is omitted, this tool name-matches the platform strain library itself: an exact name match is applied automatically; close matches are returned as strain_matches so you can offer them. Pass skip_strain_enrich&#x3D;true to skip that.  ACTIONS:   create: requires name. Optional price (dollars), sku, stock_quantity,           category_ids, description, strain_id.
+     * Create a product for a tenant. With no variations this creates a simple one-price product, matching a blank create-product page. For named options, pass the complete variations list and expected_variation_count; the product is created as unit variation inventory and the pricing tiers are kept in sync. Call strain_lookup first when the name looks like a strain, then pass strain_id so description, type, THC/CBD, indica/sativa, effects, flavors, rating, and the hosted strain photo fill in exactly like the vendor create page.  If strain_id is omitted, this tool name-matches the platform strain library itself: an exact name match is applied automatically; close matches are returned as strain_matches so you can offer them. Pass skip_strain_enrich&#x3D;true to skip that.  ACTIONS:   create: requires name. Optional price (dollars), sku, stock_quantity,           category_ids, description, strain_id, or a complete variations list. update: requires product_id. Pass any of name, description, strain_id,           category_ids, meta_title, or meta_description to groom an existing           product without changing its price.           Strain enrichment never replaces an existing product photo; use           product_image_assign with a tenant media_id for photos.           meta_title max 60 chars; meta_description max 160 chars.
      *
      * @param  \ShadowSoftware\DabDash\Model\ProductManageRequest|null $product_manage_request product_manage_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productManage'] to see the possible values for this operation
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\DabDash\Model\ProductManage200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\ProductManage200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
      */
     public function productManage($product_manage_request = null, string $contentType = self::contentTypes['productManage'][0])
     {
@@ -5294,14 +6323,14 @@ class CatalogApi
     /**
      * Operation productManageWithHttpInfo
      *
-     * Create a simple product for a tenant (v1: one price, unit tracking — the same default as a blank create-product page). Call strain_lookup first when the name looks like a strain, then pass strain_id so description, type, THC/CBD, indica/sativa, effects, flavors, rating, and the hosted strain photo fill in exactly like the vendor create page.  If strain_id is omitted, this tool name-matches the platform strain library itself: an exact name match is applied automatically; close matches are returned as strain_matches so you can offer them. Pass skip_strain_enrich&#x3D;true to skip that.  ACTIONS:   create: requires name. Optional price (dollars), sku, stock_quantity,           category_ids, description, strain_id.
+     * Create a product for a tenant. With no variations this creates a simple one-price product, matching a blank create-product page. For named options, pass the complete variations list and expected_variation_count; the product is created as unit variation inventory and the pricing tiers are kept in sync. Call strain_lookup first when the name looks like a strain, then pass strain_id so description, type, THC/CBD, indica/sativa, effects, flavors, rating, and the hosted strain photo fill in exactly like the vendor create page.  If strain_id is omitted, this tool name-matches the platform strain library itself: an exact name match is applied automatically; close matches are returned as strain_matches so you can offer them. Pass skip_strain_enrich&#x3D;true to skip that.  ACTIONS:   create: requires name. Optional price (dollars), sku, stock_quantity,           category_ids, description, strain_id, or a complete variations list. update: requires product_id. Pass any of name, description, strain_id,           category_ids, meta_title, or meta_description to groom an existing           product without changing its price.           Strain enrichment never replaces an existing product photo; use           product_image_assign with a tenant media_id for photos.           meta_title max 60 chars; meta_description max 160 chars.
      *
      * @param  \ShadowSoftware\DabDash\Model\ProductManageRequest|null $product_manage_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productManage'] to see the possible values for this operation
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\DabDash\Model\ProductManage200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\ProductManage200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function productManageWithHttpInfo($product_manage_request = null, string $contentType = self::contentTypes['productManage'][0])
     {
@@ -5339,31 +6368,31 @@ class CatalogApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
@@ -5402,7 +6431,7 @@ class CatalogApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5410,7 +6439,7 @@ class CatalogApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5418,7 +6447,7 @@ class CatalogApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5426,7 +6455,7 @@ class CatalogApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5434,7 +6463,7 @@ class CatalogApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5449,7 +6478,7 @@ class CatalogApi
     /**
      * Operation productManageAsync
      *
-     * Create a simple product for a tenant (v1: one price, unit tracking — the same default as a blank create-product page). Call strain_lookup first when the name looks like a strain, then pass strain_id so description, type, THC/CBD, indica/sativa, effects, flavors, rating, and the hosted strain photo fill in exactly like the vendor create page.  If strain_id is omitted, this tool name-matches the platform strain library itself: an exact name match is applied automatically; close matches are returned as strain_matches so you can offer them. Pass skip_strain_enrich&#x3D;true to skip that.  ACTIONS:   create: requires name. Optional price (dollars), sku, stock_quantity,           category_ids, description, strain_id.
+     * Create a product for a tenant. With no variations this creates a simple one-price product, matching a blank create-product page. For named options, pass the complete variations list and expected_variation_count; the product is created as unit variation inventory and the pricing tiers are kept in sync. Call strain_lookup first when the name looks like a strain, then pass strain_id so description, type, THC/CBD, indica/sativa, effects, flavors, rating, and the hosted strain photo fill in exactly like the vendor create page.  If strain_id is omitted, this tool name-matches the platform strain library itself: an exact name match is applied automatically; close matches are returned as strain_matches so you can offer them. Pass skip_strain_enrich&#x3D;true to skip that.  ACTIONS:   create: requires name. Optional price (dollars), sku, stock_quantity,           category_ids, description, strain_id, or a complete variations list. update: requires product_id. Pass any of name, description, strain_id,           category_ids, meta_title, or meta_description to groom an existing           product without changing its price.           Strain enrichment never replaces an existing product photo; use           product_image_assign with a tenant media_id for photos.           meta_title max 60 chars; meta_description max 160 chars.
      *
      * @param  \ShadowSoftware\DabDash\Model\ProductManageRequest|null $product_manage_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productManage'] to see the possible values for this operation
@@ -5470,7 +6499,7 @@ class CatalogApi
     /**
      * Operation productManageAsyncWithHttpInfo
      *
-     * Create a simple product for a tenant (v1: one price, unit tracking — the same default as a blank create-product page). Call strain_lookup first when the name looks like a strain, then pass strain_id so description, type, THC/CBD, indica/sativa, effects, flavors, rating, and the hosted strain photo fill in exactly like the vendor create page.  If strain_id is omitted, this tool name-matches the platform strain library itself: an exact name match is applied automatically; close matches are returned as strain_matches so you can offer them. Pass skip_strain_enrich&#x3D;true to skip that.  ACTIONS:   create: requires name. Optional price (dollars), sku, stock_quantity,           category_ids, description, strain_id.
+     * Create a product for a tenant. With no variations this creates a simple one-price product, matching a blank create-product page. For named options, pass the complete variations list and expected_variation_count; the product is created as unit variation inventory and the pricing tiers are kept in sync. Call strain_lookup first when the name looks like a strain, then pass strain_id so description, type, THC/CBD, indica/sativa, effects, flavors, rating, and the hosted strain photo fill in exactly like the vendor create page.  If strain_id is omitted, this tool name-matches the platform strain library itself: an exact name match is applied automatically; close matches are returned as strain_matches so you can offer them. Pass skip_strain_enrich&#x3D;true to skip that.  ACTIONS:   create: requires name. Optional price (dollars), sku, stock_quantity,           category_ids, description, strain_id, or a complete variations list. update: requires product_id. Pass any of name, description, strain_id,           category_ids, meta_title, or meta_description to groom an existing           product without changing its price.           Strain enrichment never replaces an existing product photo; use           product_image_assign with a tenant media_id for photos.           meta_title max 60 chars; meta_description max 160 chars.
      *
      * @param  \ShadowSoftware\DabDash\Model\ProductManageRequest|null $product_manage_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productManage'] to see the possible values for this operation
@@ -5622,7 +6651,7 @@ class CatalogApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\DabDash\Model\ProductUnitPriceSearch200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\ProductUnitPriceSearch200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
      */
     public function productUnitPriceSearch($product_unit_price_search_request = null, string $contentType = self::contentTypes['productUnitPriceSearch'][0])
     {
@@ -5640,7 +6669,7 @@ class CatalogApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\DabDash\Model\ProductUnitPriceSearch200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\ProductUnitPriceSearch200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function productUnitPriceSearchWithHttpInfo($product_unit_price_search_request = null, string $contentType = self::contentTypes['productUnitPriceSearch'][0])
     {
@@ -5678,31 +6707,31 @@ class CatalogApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
@@ -5741,7 +6770,7 @@ class CatalogApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5749,7 +6778,7 @@ class CatalogApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5757,7 +6786,7 @@ class CatalogApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5765,7 +6794,7 @@ class CatalogApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5773,7 +6802,7 @@ class CatalogApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5961,7 +6990,7 @@ class CatalogApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\DabDash\Model\ProductUpdateBySku200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\ProductUpdateBySku200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
      */
     public function productUpdateBySku($product_update_by_sku_request = null, string $contentType = self::contentTypes['productUpdateBySku'][0])
     {
@@ -5979,7 +7008,7 @@ class CatalogApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\DabDash\Model\ProductUpdateBySku200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\ProductUpdateBySku200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function productUpdateBySkuWithHttpInfo($product_update_by_sku_request = null, string $contentType = self::contentTypes['productUpdateBySku'][0])
     {
@@ -6017,31 +7046,31 @@ class CatalogApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
@@ -6080,7 +7109,7 @@ class CatalogApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6088,7 +7117,7 @@ class CatalogApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6096,7 +7125,7 @@ class CatalogApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6104,7 +7133,7 @@ class CatalogApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6112,7 +7141,7 @@ class CatalogApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6291,6 +7320,345 @@ class CatalogApi
     }
 
     /**
+     * Operation productVisibilityManage
+     *
+     * Set whether tenant products are public or inventory-only without changing inventory, cost, price, category assignments, images, or variations.  visibility&#x3D;public maps to product status&#x3D;active. visibility&#x3D;inventory_only maps to status&#x3D;archived, which removes the product from storefront product, category, related-product, and sitemap queries while preserving the product and its inventory for vendor use. This is reversible.  dry_run defaults to true. A write requires dry_run&#x3D;false and confirm&#x3D;true. Always preview first. Only the explicitly listed product_ids are considered.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ProductVisibilityManageRequest|null $product_visibility_manage_request product_visibility_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productVisibilityManage'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \ShadowSoftware\DabDash\Model\ProductVisibilityManage200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
+     */
+    public function productVisibilityManage($product_visibility_manage_request = null, string $contentType = self::contentTypes['productVisibilityManage'][0])
+    {
+        list($response) = $this->productVisibilityManageWithHttpInfo($product_visibility_manage_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation productVisibilityManageWithHttpInfo
+     *
+     * Set whether tenant products are public or inventory-only without changing inventory, cost, price, category assignments, images, or variations.  visibility&#x3D;public maps to product status&#x3D;active. visibility&#x3D;inventory_only maps to status&#x3D;archived, which removes the product from storefront product, category, related-product, and sitemap queries while preserving the product and its inventory for vendor use. This is reversible.  dry_run defaults to true. A write requires dry_run&#x3D;false and confirm&#x3D;true. Always preview first. Only the explicitly listed product_ids are considered.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ProductVisibilityManageRequest|null $product_visibility_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productVisibilityManage'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \ShadowSoftware\DabDash\Model\ProductVisibilityManage200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function productVisibilityManageWithHttpInfo($product_visibility_manage_request = null, string $contentType = self::contentTypes['productVisibilityManage'][0])
+    {
+        $request = $this->productVisibilityManageRequest($product_visibility_manage_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\ProductVisibilityManage200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 402:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 422:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\ShadowSoftware\DabDash\Model\ProductVisibilityManage200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\ProductVisibilityManage200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 402:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation productVisibilityManageAsync
+     *
+     * Set whether tenant products are public or inventory-only without changing inventory, cost, price, category assignments, images, or variations.  visibility&#x3D;public maps to product status&#x3D;active. visibility&#x3D;inventory_only maps to status&#x3D;archived, which removes the product from storefront product, category, related-product, and sitemap queries while preserving the product and its inventory for vendor use. This is reversible.  dry_run defaults to true. A write requires dry_run&#x3D;false and confirm&#x3D;true. Always preview first. Only the explicitly listed product_ids are considered.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ProductVisibilityManageRequest|null $product_visibility_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productVisibilityManage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function productVisibilityManageAsync($product_visibility_manage_request = null, string $contentType = self::contentTypes['productVisibilityManage'][0])
+    {
+        return $this->productVisibilityManageAsyncWithHttpInfo($product_visibility_manage_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation productVisibilityManageAsyncWithHttpInfo
+     *
+     * Set whether tenant products are public or inventory-only without changing inventory, cost, price, category assignments, images, or variations.  visibility&#x3D;public maps to product status&#x3D;active. visibility&#x3D;inventory_only maps to status&#x3D;archived, which removes the product from storefront product, category, related-product, and sitemap queries while preserving the product and its inventory for vendor use. This is reversible.  dry_run defaults to true. A write requires dry_run&#x3D;false and confirm&#x3D;true. Always preview first. Only the explicitly listed product_ids are considered.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ProductVisibilityManageRequest|null $product_visibility_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productVisibilityManage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function productVisibilityManageAsyncWithHttpInfo($product_visibility_manage_request = null, string $contentType = self::contentTypes['productVisibilityManage'][0])
+    {
+        $returnType = '\ShadowSoftware\DabDash\Model\ProductVisibilityManage200Response';
+        $request = $this->productVisibilityManageRequest($product_visibility_manage_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'productVisibilityManage'
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ProductVisibilityManageRequest|null $product_visibility_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productVisibilityManage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function productVisibilityManageRequest($product_visibility_manage_request = null, string $contentType = self::contentTypes['productVisibilityManage'][0])
+    {
+
+
+
+        $resourcePath = '/api/v1/tools/product_visibility_manage';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($product_visibility_manage_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($product_visibility_manage_request));
+            } else {
+                $httpBody = $product_visibility_manage_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation purchaseOrderDraftCreate
      *
      * Create a draft purchase order for a supplier. Does not receive stock. After creating, add lines with purchase_order_line_add, then tell the vendor to review the draft in admin (never auto-receive).
@@ -6300,7 +7668,7 @@ class CatalogApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\DabDash\Model\PurchaseOrderDraftCreate200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\PurchaseOrderDraftCreate200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
      */
     public function purchaseOrderDraftCreate($purchase_order_draft_create_request = null, string $contentType = self::contentTypes['purchaseOrderDraftCreate'][0])
     {
@@ -6318,7 +7686,7 @@ class CatalogApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\DabDash\Model\PurchaseOrderDraftCreate200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\PurchaseOrderDraftCreate200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function purchaseOrderDraftCreateWithHttpInfo($purchase_order_draft_create_request = null, string $contentType = self::contentTypes['purchaseOrderDraftCreate'][0])
     {
@@ -6356,31 +7724,31 @@ class CatalogApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
@@ -6419,7 +7787,7 @@ class CatalogApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6427,7 +7795,7 @@ class CatalogApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6435,7 +7803,7 @@ class CatalogApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6443,7 +7811,7 @@ class CatalogApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6451,7 +7819,7 @@ class CatalogApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6639,7 +8007,7 @@ class CatalogApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\DabDash\Model\PurchaseOrderLineAdd200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\PurchaseOrderLineAdd200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
      */
     public function purchaseOrderLineAdd($purchase_order_line_add_request = null, string $contentType = self::contentTypes['purchaseOrderLineAdd'][0])
     {
@@ -6657,7 +8025,7 @@ class CatalogApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\DabDash\Model\PurchaseOrderLineAdd200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\PurchaseOrderLineAdd200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function purchaseOrderLineAddWithHttpInfo($purchase_order_line_add_request = null, string $contentType = self::contentTypes['purchaseOrderLineAdd'][0])
     {
@@ -6695,31 +8063,31 @@ class CatalogApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
@@ -6758,7 +8126,7 @@ class CatalogApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6766,7 +8134,7 @@ class CatalogApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6774,7 +8142,7 @@ class CatalogApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6782,7 +8150,7 @@ class CatalogApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6790,7 +8158,7 @@ class CatalogApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6978,7 +8346,7 @@ class CatalogApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\DabDash\Model\StrainLookup200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\StrainLookup200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
      */
     public function strainLookup($strain_lookup_request = null, string $contentType = self::contentTypes['strainLookup'][0])
     {
@@ -6996,7 +8364,7 @@ class CatalogApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\DabDash\Model\StrainLookup200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\StrainLookup200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function strainLookupWithHttpInfo($strain_lookup_request = null, string $contentType = self::contentTypes['strainLookup'][0])
     {
@@ -7034,31 +8402,31 @@ class CatalogApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
@@ -7097,7 +8465,7 @@ class CatalogApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7105,7 +8473,7 @@ class CatalogApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7113,7 +8481,7 @@ class CatalogApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7121,7 +8489,7 @@ class CatalogApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7129,7 +8497,7 @@ class CatalogApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7317,7 +8685,7 @@ class CatalogApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \ShadowSoftware\DabDash\Model\SupplierUpsert200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response
+     * @return \ShadowSoftware\DabDash\Model\SupplierUpsert200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
      */
     public function supplierUpsert($supplier_upsert_request = null, string $contentType = self::contentTypes['supplierUpsert'][0])
     {
@@ -7335,7 +8703,7 @@ class CatalogApi
      *
      * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \ShadowSoftware\DabDash\Model\SupplierUpsert200Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response|\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \ShadowSoftware\DabDash\Model\SupplierUpsert200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function supplierUpsertWithHttpInfo($supplier_upsert_request = null, string $contentType = self::contentTypes['supplierUpsert'][0])
     {
@@ -7373,31 +8741,31 @@ class CatalogApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $request,
                         $response,
                     );
@@ -7436,7 +8804,7 @@ class CatalogApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7444,7 +8812,7 @@ class CatalogApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7452,7 +8820,7 @@ class CatalogApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7460,7 +8828,7 @@ class CatalogApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7468,7 +8836,7 @@ class CatalogApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\ShadowSoftware\DabDash\Model\AnalyticsQuery401Response',
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

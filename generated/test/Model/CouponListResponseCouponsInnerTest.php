@@ -213,4 +213,13 @@ class CouponListResponseCouponsInnerTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "contact_list_id"
+     */
+    public function testPropertyContactListId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

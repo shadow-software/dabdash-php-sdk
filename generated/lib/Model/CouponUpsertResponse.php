@@ -66,6 +66,7 @@ class CouponUpsertResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'min_order_cents' => 'int',
         'freebie_id' => 'int',
         'subscription_ladder_id' => 'int',
+        'contact_list_id' => 'int',
         'applies_to' => 'string',
         'applies_to_ids' => 'int[]',
         'requires_subscribed_customer' => 'bool',
@@ -92,6 +93,7 @@ class CouponUpsertResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'min_order_cents' => null,
         'freebie_id' => null,
         'subscription_ladder_id' => null,
+        'contact_list_id' => null,
         'applies_to' => null,
         'applies_to_ids' => null,
         'requires_subscribed_customer' => null,
@@ -116,6 +118,7 @@ class CouponUpsertResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'min_order_cents' => false,
         'freebie_id' => true,
         'subscription_ladder_id' => true,
+        'contact_list_id' => true,
         'applies_to' => false,
         'applies_to_ids' => true,
         'requires_subscribed_customer' => false,
@@ -220,6 +223,7 @@ class CouponUpsertResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'min_order_cents' => 'min_order_cents',
         'freebie_id' => 'freebie_id',
         'subscription_ladder_id' => 'subscription_ladder_id',
+        'contact_list_id' => 'contact_list_id',
         'applies_to' => 'applies_to',
         'applies_to_ids' => 'applies_to_ids',
         'requires_subscribed_customer' => 'requires_subscribed_customer',
@@ -244,6 +248,7 @@ class CouponUpsertResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'min_order_cents' => 'setMinOrderCents',
         'freebie_id' => 'setFreebieId',
         'subscription_ladder_id' => 'setSubscriptionLadderId',
+        'contact_list_id' => 'setContactListId',
         'applies_to' => 'setAppliesTo',
         'applies_to_ids' => 'setAppliesToIds',
         'requires_subscribed_customer' => 'setRequiresSubscribedCustomer',
@@ -268,6 +273,7 @@ class CouponUpsertResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'min_order_cents' => 'getMinOrderCents',
         'freebie_id' => 'getFreebieId',
         'subscription_ladder_id' => 'getSubscriptionLadderId',
+        'contact_list_id' => 'getContactListId',
         'applies_to' => 'getAppliesTo',
         'applies_to_ids' => 'getAppliesToIds',
         'requires_subscribed_customer' => 'getRequiresSubscribedCustomer',
@@ -343,6 +349,7 @@ class CouponUpsertResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->setIfExists('min_order_cents', $data ?? [], null);
         $this->setIfExists('freebie_id', $data ?? [], null);
         $this->setIfExists('subscription_ladder_id', $data ?? [], null);
+        $this->setIfExists('contact_list_id', $data ?? [], null);
         $this->setIfExists('applies_to', $data ?? [], null);
         $this->setIfExists('applies_to_ids', $data ?? [], null);
         $this->setIfExists('requires_subscribed_customer', $data ?? [], null);
@@ -647,6 +654,40 @@ class CouponUpsertResponse implements ModelInterface, ArrayAccess, \JsonSerializ
             }
         }
         $this->container['subscription_ladder_id'] = $subscription_ladder_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets contact_list_id
+     *
+     * @return int|null
+     */
+    public function getContactListId()
+    {
+        return $this->container['contact_list_id'];
+    }
+
+    /**
+     * Sets contact_list_id
+     *
+     * @param int|null $contact_list_id contact_list_id
+     *
+     * @return self
+     */
+    public function setContactListId($contact_list_id)
+    {
+        if (is_null($contact_list_id)) {
+            array_push($this->openAPINullablesSetToNull, 'contact_list_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('contact_list_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['contact_list_id'] = $contact_list_id;
 
         return $this;
     }

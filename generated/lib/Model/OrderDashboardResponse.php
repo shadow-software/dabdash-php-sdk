@@ -58,6 +58,10 @@ class OrderDashboardResponse implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $openAPITypes = [
         'summary' => '\ShadowSoftware\DabDash\Model\OrderDashboardResponseSummary',
+        'has_more' => 'bool',
+        'next_cursor' => 'string',
+        'limit' => 'int',
+        'include_items' => 'bool',
         'orders' => '\ShadowSoftware\DabDash\Model\OrderDashboardResponseOrdersInner[]'
     ];
 
@@ -70,6 +74,10 @@ class OrderDashboardResponse implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $openAPIFormats = [
         'summary' => null,
+        'has_more' => null,
+        'next_cursor' => null,
+        'limit' => null,
+        'include_items' => null,
         'orders' => null
     ];
 
@@ -80,6 +88,10 @@ class OrderDashboardResponse implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static array $openAPINullables = [
         'summary' => false,
+        'has_more' => false,
+        'next_cursor' => true,
+        'limit' => false,
+        'include_items' => false,
         'orders' => false
     ];
 
@@ -170,6 +182,10 @@ class OrderDashboardResponse implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $attributeMap = [
         'summary' => 'summary',
+        'has_more' => 'has_more',
+        'next_cursor' => 'next_cursor',
+        'limit' => 'limit',
+        'include_items' => 'include_items',
         'orders' => 'orders'
     ];
 
@@ -180,6 +196,10 @@ class OrderDashboardResponse implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $setters = [
         'summary' => 'setSummary',
+        'has_more' => 'setHasMore',
+        'next_cursor' => 'setNextCursor',
+        'limit' => 'setLimit',
+        'include_items' => 'setIncludeItems',
         'orders' => 'setOrders'
     ];
 
@@ -190,6 +210,10 @@ class OrderDashboardResponse implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $getters = [
         'summary' => 'getSummary',
+        'has_more' => 'getHasMore',
+        'next_cursor' => 'getNextCursor',
+        'limit' => 'getLimit',
+        'include_items' => 'getIncludeItems',
         'orders' => 'getOrders'
     ];
 
@@ -251,6 +275,10 @@ class OrderDashboardResponse implements ModelInterface, ArrayAccess, \JsonSerial
     public function __construct(?array $data = null)
     {
         $this->setIfExists('summary', $data ?? [], null);
+        $this->setIfExists('has_more', $data ?? [], null);
+        $this->setIfExists('next_cursor', $data ?? [], null);
+        $this->setIfExists('limit', $data ?? [], null);
+        $this->setIfExists('include_items', $data ?? [], null);
         $this->setIfExists('orders', $data ?? [], null);
     }
 
@@ -319,6 +347,121 @@ class OrderDashboardResponse implements ModelInterface, ArrayAccess, \JsonSerial
             throw new \InvalidArgumentException('non-nullable summary cannot be null');
         }
         $this->container['summary'] = $summary;
+
+        return $this;
+    }
+
+    /**
+     * Gets has_more
+     *
+     * @return bool|null
+     */
+    public function getHasMore()
+    {
+        return $this->container['has_more'];
+    }
+
+    /**
+     * Sets has_more
+     *
+     * @param bool|null $has_more has_more
+     *
+     * @return self
+     */
+    public function setHasMore($has_more)
+    {
+        if (is_null($has_more)) {
+            throw new \InvalidArgumentException('non-nullable has_more cannot be null');
+        }
+        $this->container['has_more'] = $has_more;
+
+        return $this;
+    }
+
+    /**
+     * Gets next_cursor
+     *
+     * @return string|null
+     */
+    public function getNextCursor()
+    {
+        return $this->container['next_cursor'];
+    }
+
+    /**
+     * Sets next_cursor
+     *
+     * @param string|null $next_cursor next_cursor
+     *
+     * @return self
+     */
+    public function setNextCursor($next_cursor)
+    {
+        if (is_null($next_cursor)) {
+            array_push($this->openAPINullablesSetToNull, 'next_cursor');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('next_cursor', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['next_cursor'] = $next_cursor;
+
+        return $this;
+    }
+
+    /**
+     * Gets limit
+     *
+     * @return int|null
+     */
+    public function getLimit()
+    {
+        return $this->container['limit'];
+    }
+
+    /**
+     * Sets limit
+     *
+     * @param int|null $limit limit
+     *
+     * @return self
+     */
+    public function setLimit($limit)
+    {
+        if (is_null($limit)) {
+            throw new \InvalidArgumentException('non-nullable limit cannot be null');
+        }
+        $this->container['limit'] = $limit;
+
+        return $this;
+    }
+
+    /**
+     * Gets include_items
+     *
+     * @return bool|null
+     */
+    public function getIncludeItems()
+    {
+        return $this->container['include_items'];
+    }
+
+    /**
+     * Sets include_items
+     *
+     * @param bool|null $include_items include_items
+     *
+     * @return self
+     */
+    public function setIncludeItems($include_items)
+    {
+        if (is_null($include_items)) {
+            throw new \InvalidArgumentException('non-nullable include_items cannot be null');
+        }
+        $this->container['include_items'] = $include_items;
 
         return $this;
     }

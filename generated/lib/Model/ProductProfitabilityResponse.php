@@ -57,7 +57,7 @@ class ProductProfitabilityResponse implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $openAPITypes = [
-        'tenant' => '\ShadowSoftware\DabDash\Model\BundleListResponseTenant',
+        'tenant' => '\ShadowSoftware\DabDash\Model\BundleHealthResponseTenant',
         'period' => '\ShadowSoftware\DabDash\Model\AnalyticsQueryResponsePeriod',
         'summary' => '\ShadowSoftware\DabDash\Model\ProductProfitabilityResponseSummary',
         'products' => '\ShadowSoftware\DabDash\Model\ProductProfitabilityResponseProductsInner[]'
@@ -313,7 +313,7 @@ class ProductProfitabilityResponse implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets tenant
      *
-     * @return \ShadowSoftware\DabDash\Model\BundleListResponseTenant|null
+     * @return \ShadowSoftware\DabDash\Model\BundleHealthResponseTenant|null
      */
     public function getTenant()
     {
@@ -323,7 +323,7 @@ class ProductProfitabilityResponse implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets tenant
      *
-     * @param \ShadowSoftware\DabDash\Model\BundleListResponseTenant|null $tenant tenant
+     * @param \ShadowSoftware\DabDash\Model\BundleHealthResponseTenant|null $tenant tenant
      *
      * @return self
      */

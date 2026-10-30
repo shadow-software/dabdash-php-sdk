@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **applies_to_ids** | **int[]** | Product ids (applies_to&#x3D;\&quot;products\&quot;) or category ids (applies_to&#x3D;\&quot;categories\&quot;) this coupon is scoped to. All must belong to this tenant. Pass [] to clear. | [optional]
 **requires_subscribed_customer** | **bool** | Newsletter-subscriber-exclusive code: when true, only a registered customer who has NOT opted out of marketing email (email_opt_out&#x3D;false) can redeem it. Gates to store customers only — never platform leads. Guests are always rejected. Defaults to false. | [optional]
 **subscription_ladder_id** | **int** | ID of an existing SubscriptionDiscountLadder to link. Pass null to unlink. See tool description. | [optional]
+**contact_list_id** | **int** | Optional tenant-owned manual or Smart List id. Only list members may redeem the coupon; pass null to unlink. | [optional]
 **ladder_start_percent** | **int** | Mounting ladder: percent off for orders before start_order_index. 0-100. See tool description. | [optional]
 **ladder_step_percent** | **int** | Mounting ladder: percent the discount climbs each order once past start_order_index. 0-100. See tool description. | [optional]
 **ladder_cap_percent** | **int** | Mounting ladder: ceiling percent the discount pegs at once reached. 0-100. See tool description. | [optional]

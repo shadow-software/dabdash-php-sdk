@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**tenant** | [**\ShadowSoftware\DabDash\Model\BundleListResponseTenant**](BundleListResponseTenant.md) |  | [optional]
+**tenant** | [**\ShadowSoftware\DabDash\Model\BundleHealthResponseTenant**](BundleHealthResponseTenant.md) |  | [optional]
 **summary** | [**\ShadowSoftware\DabDash\Model\FreebieListResponseSummary**](FreebieListResponseSummary.md) |  | [optional]
 **freebies** | [**\ShadowSoftware\DabDash\Model\FreebieListResponseFreebiesInner[]**](FreebieListResponseFreebiesInner.md) |  | [optional]
 

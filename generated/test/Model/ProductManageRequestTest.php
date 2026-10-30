@@ -89,6 +89,15 @@ class ProductManageRequestTest extends TestCase
     }
 
     /**
+     * Test attribute "product_id"
+     */
+    public function testPropertyProductId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "name"
      */
     public function testPropertyName()
@@ -143,6 +152,24 @@ class ProductManageRequestTest extends TestCase
     }
 
     /**
+     * Test attribute "meta_title"
+     */
+    public function testPropertyMetaTitle()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "meta_description"
+     */
+    public function testPropertyMetaDescription()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "strain_id"
      */
     public function testPropertyStrainId()
@@ -155,6 +182,24 @@ class ProductManageRequestTest extends TestCase
      * Test attribute "skip_strain_enrich"
      */
     public function testPropertySkipStrainEnrich()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "expected_variation_count"
+     */
+    public function testPropertyExpectedVariationCount()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "variations"
+     */
+    public function testPropertyVariations()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

@@ -107,6 +107,15 @@ class OrderDashboardRequestTest extends TestCase
     }
 
     /**
+     * Test attribute "customer_name"
+     */
+    public function testPropertyCustomerName()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "status"
      */
     public function testPropertyStatus()
@@ -143,6 +152,15 @@ class OrderDashboardRequestTest extends TestCase
     }
 
     /**
+     * Test attribute "updated_since"
+     */
+    public function testPropertyUpdatedSince()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "min_total"
      */
     public function testPropertyMinTotal()
@@ -155,6 +173,24 @@ class OrderDashboardRequestTest extends TestCase
      * Test attribute "limit"
      */
     public function testPropertyLimit()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "cursor"
+     */
+    public function testPropertyCursor()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "include_items"
+     */
+    public function testPropertyIncludeItems()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

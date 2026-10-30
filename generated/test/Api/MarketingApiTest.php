@@ -72,6 +72,30 @@ class MarketingApiTest extends TestCase
     }
 
     /**
+     * Test case for abandonedCartRecoveryManage
+     *
+     * Show or configure one-time abandoned-cart recovery emails for a tenant. Eligible carts are sent to an account or guest email captured during checkout; carts must be idle for the configured delay and not already recovered. Sending also requires complete tenant SMTP settings. This tool does not send immediately.  ACTIONS:   show (default): current enabled state and delay.   set: pass enabled and/or delay_hours. Omitted values are preserved.   dry_run defaults true; pass dry_run=false to save..
+     *
+     */
+    public function testAbandonedCartRecoveryManage()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for blogImport
+     *
+     * Create many blog posts (and the storefront's legal pages) in one call. tenant_blog_upsert can only edit an existing post; this creates new ones.  Pass posts with title and body (HTML), and optionally slug, excerpt, category, tags, meta_title, meta_description, published (default true), published_at (ISO date) and image_url (downloaded into the media library and used as the featured image). Posts are matched by slug within the store: existing ones are skipped unless update_existing=true, in which case only the fields you pass are changed.  PRIVACY: a privacy-policy post remains at its own /blog/{slug} URL. When it is the store's policy, set that exact published URL with store_settings_manage privacy_url. Terms and refund remain available at their storefront policy URLs.  dry_run defaults true: the first call reports what would be created, updated or skipped. Pass dry_run=false to write. Image failures never block a post..
+     *
+     */
+    public function testBlogImport()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for campaignApplyTemplate
      *
      * Apply a built-in system email template to a DRAFT campaign, replacing its html_body with the rendered, tenant-branded design. This mirrors the \"Choose template\" action in the vendor admin.  The template is rendered with the tenant's own branding (theme colour, logo, name, address, phone), then sanitized and written to the campaign's html_body. The {{unsubscribe_url}} token is preserved. The design ships with placeholder copy ([Product name], $00, \"Your headline here\", etc.) — after applying, call campaign_get, then campaign_upsert to swap placeholder copy/prices inside the existing html_body (do NOT replace the whole body — that deletes the template layout). Use campaign_set_image for product photos. Or hand off to the vendor to fill in.  Only DRAFT campaigns can have a template applied. To discover valid template_id values, omit template_id (or pass an unknown one) and the tool returns the list of available templates.  Typical flow: campaign_upsert (create draft) → campaign_apply_template (lay down the design) → campaign_get + campaign_upsert (edit copy in place) + campaign_set_image (photos) → campaign_send_test (preview)..
@@ -198,6 +222,54 @@ class MarketingApiTest extends TestCase
      *
      */
     public function testCampaignUpsert()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for notificationSettingsManage
+     *
+     * Show or configure tenant-wide vendor order, low-stock, digest, restock, and storefront enquiry notification preferences. This tool deliberately excludes per-user opt-outs, SMS provider configuration, and WhatsApp. Set uses dry_run=true by default and writes are audited..
+     *
+     */
+    public function testNotificationSettingsManage()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for reviewsManage
+     *
+     * Show or configure verified-purchase product reviews for a tenant, and preview or apply moderation changes to one review. Customers can review products only after a delivered order. Hidden reviews are excluded from the product rating.  ACTIONS:   show (default): current review setting and moderation counts.   set: pass enabled to turn review collection on or off. dry_run defaults true.   hide or unhide: pass review_id. dry_run defaults true; applying a moderation   change also recalculates that product's rating..
+     *
+     */
+    public function testReviewsManage()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for seoMaxImageManage
+     *
+     * Manage the SEO Max product-image rollout without Artisan commands or seed data. Use action=status first. action=configure toggles AVIF product delivery and the AVIF-only image sitemap. action=backfill processes active products in bounded, resumable batches; dry_run=true only reports work. Repeat with next_cursor as after_id until it is null. action=submit notifies Google Search Console and IndexNow after the sitemap is live..
+     *
+     */
+    public function testSeoMaxImageManage()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for seoSettingsManage
+     *
+     * Show or update a tenant's standard SEO and SEO MAX settings. Standard fields control homepage metadata, title templates, sitemap, Open Graph, and Twitter metadata. SEO MAX fields control automated blog targeting and publishing, plus image delivery flags.  ACTIONS:   show (default): current values, including the stored featured-image canvas path.   set: pass only fields to change. dry_run defaults true; pass dry_run=false to save. Enabling SEO MAX requires an active SEO MAX subscription or trial and complete schedule settings. Featured-image canvas uploads are handled by media tools and are read-only here..
+     *
+     */
+    public function testSeoSettingsManage()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

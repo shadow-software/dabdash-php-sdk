@@ -6,7 +6,7 @@ All URIs are relative to https://.dabdash.com, except if the operation defines a
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**orderDashboard()**](OrdersApi.md#orderDashboard) | **POST** /api/v1/tools/order_dashboard | Query orders across all tenants. Filter by status, order number, customer clues, date range, amount, or tenant. Returns order list with pricing context. |
+| [**orderDashboard()**](OrdersApi.md#orderDashboard) | **POST** /api/v1/tools/order_dashboard | Query orders with filters and stable cursor pagination. Use limit plus next_cursor to walk every order; set include_items&#x3D;true for a complete order export with line items. Tenant access is always enforced. |
 
 
 ## `orderDashboard()`
@@ -15,7 +15,7 @@ All URIs are relative to https://.dabdash.com, except if the operation defines a
 orderDashboard($order_dashboard_request): \ShadowSoftware\DabDash\Model\OrderDashboard200Response
 ```
 
-Query orders across all tenants. Filter by status, order number, customer clues, date range, amount, or tenant. Returns order list with pricing context.
+Query orders with filters and stable cursor pagination. Use limit plus next_cursor to walk every order; set include_items=true for a complete order export with line items. Tenant access is always enforced.
 
 ### Example
 

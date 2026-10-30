@@ -59,7 +59,7 @@ class ProductImageAssignResponse implements ModelInterface, ArrayAccess, \JsonSe
     protected static $openAPITypes = [
         'action' => 'string',
         'dry_run' => 'bool',
-        'tenant' => '\ShadowSoftware\DabDash\Model\BundleListResponseTenant',
+        'tenant' => '\ShadowSoftware\DabDash\Model\BundleHealthResponseTenant',
         'product' => '\ShadowSoftware\DabDash\Model\ProductImageAssignResponseProduct',
         'changes' => '\ShadowSoftware\DabDash\Model\ProductImageAssignResponseChanges'
     ];
@@ -374,7 +374,7 @@ class ProductImageAssignResponse implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets tenant
      *
-     * @return \ShadowSoftware\DabDash\Model\BundleListResponseTenant|null
+     * @return \ShadowSoftware\DabDash\Model\BundleHealthResponseTenant|null
      */
     public function getTenant()
     {
@@ -384,7 +384,7 @@ class ProductImageAssignResponse implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets tenant
      *
-     * @param \ShadowSoftware\DabDash\Model\BundleListResponseTenant|null $tenant tenant
+     * @param \ShadowSoftware\DabDash\Model\BundleHealthResponseTenant|null $tenant tenant
      *
      * @return self
      */

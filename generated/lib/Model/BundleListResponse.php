@@ -57,7 +57,7 @@ class BundleListResponse implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $openAPITypes = [
-        'tenant' => '\ShadowSoftware\DabDash\Model\BundleListResponseTenant',
+        'tenant' => '\ShadowSoftware\DabDash\Model\BundleHealthResponseTenant',
         'summary' => '\ShadowSoftware\DabDash\Model\BundleListResponseSummary',
         'zero_discount_bundles' => 'string[]',
         'bundles' => '\ShadowSoftware\DabDash\Model\BundleListResponseBundlesInner[]'
@@ -313,7 +313,7 @@ class BundleListResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets tenant
      *
-     * @return \ShadowSoftware\DabDash\Model\BundleListResponseTenant|null
+     * @return \ShadowSoftware\DabDash\Model\BundleHealthResponseTenant|null
      */
     public function getTenant()
     {
@@ -323,7 +323,7 @@ class BundleListResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets tenant
      *
-     * @param \ShadowSoftware\DabDash\Model\BundleListResponseTenant|null $tenant tenant
+     * @param \ShadowSoftware\DabDash\Model\BundleHealthResponseTenant|null $tenant tenant
      *
      * @return self
      */

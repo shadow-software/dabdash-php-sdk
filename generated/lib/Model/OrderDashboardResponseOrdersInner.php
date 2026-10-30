@@ -58,22 +58,38 @@ class OrderDashboardResponseOrdersInner implements ModelInterface, ArrayAccess, 
      */
     protected static $openAPITypes = [
         'id' => 'int',
+        'customer_id' => 'int',
         'order_number' => 'string',
         'tenant' => 'string',
         'status' => 'string',
         'payment_status' => 'string',
-        'subtotal' => 'string',
-        'total' => 'string',
+        'payment_method' => 'string',
+        'currency' => 'string',
+        'customer_name' => 'string',
         'customer_email' => 'string',
         'customer_phone' => 'string',
+        'delivery_address' => 'mixed[]',
+        'delivery_notes' => 'string',
+        'notes' => 'string',
+        'subtotal_cents' => 'int',
+        'subtotal' => 'string',
+        'delivery_fee_cents' => 'int',
+        'service_fee_cents' => 'int',
+        'discount_amount_cents' => 'int',
+        'tax_amount_cents' => 'int',
+        'total_cents' => 'int',
+        'total' => 'string',
         'coupon_code' => 'string',
         'coupon_discount' => 'string',
         'mix_match_discount' => 'string',
+        'loyalty_tier_discount' => 'string',
         'loyalty_discount' => 'string',
         'is_asap' => 'bool',
         'scheduled_at' => 'string',
         'delivered_at' => 'string',
-        'created_at' => 'string'
+        'created_at' => 'string',
+        'updated_at' => 'string',
+        'items' => '\ShadowSoftware\DabDash\Model\OrderDashboardResponseOrdersInnerItemsInner[]'
     ];
 
     /**
@@ -85,22 +101,38 @@ class OrderDashboardResponseOrdersInner implements ModelInterface, ArrayAccess, 
      */
     protected static $openAPIFormats = [
         'id' => null,
+        'customer_id' => null,
         'order_number' => null,
         'tenant' => null,
         'status' => null,
         'payment_status' => null,
-        'subtotal' => null,
-        'total' => null,
+        'payment_method' => null,
+        'currency' => null,
+        'customer_name' => null,
         'customer_email' => null,
         'customer_phone' => null,
+        'delivery_address' => null,
+        'delivery_notes' => null,
+        'notes' => null,
+        'subtotal_cents' => null,
+        'subtotal' => null,
+        'delivery_fee_cents' => null,
+        'service_fee_cents' => null,
+        'discount_amount_cents' => null,
+        'tax_amount_cents' => null,
+        'total_cents' => null,
+        'total' => null,
         'coupon_code' => null,
         'coupon_discount' => null,
         'mix_match_discount' => null,
+        'loyalty_tier_discount' => null,
         'loyalty_discount' => null,
         'is_asap' => null,
         'scheduled_at' => null,
         'delivered_at' => null,
-        'created_at' => null
+        'created_at' => null,
+        'updated_at' => null,
+        'items' => null
     ];
 
     /**
@@ -110,22 +142,38 @@ class OrderDashboardResponseOrdersInner implements ModelInterface, ArrayAccess, 
      */
     protected static array $openAPINullables = [
         'id' => false,
+        'customer_id' => true,
         'order_number' => false,
         'tenant' => false,
         'status' => false,
         'payment_status' => false,
-        'subtotal' => false,
-        'total' => false,
+        'payment_method' => true,
+        'currency' => false,
+        'customer_name' => true,
         'customer_email' => true,
         'customer_phone' => true,
+        'delivery_address' => true,
+        'delivery_notes' => true,
+        'notes' => true,
+        'subtotal_cents' => false,
+        'subtotal' => false,
+        'delivery_fee_cents' => false,
+        'service_fee_cents' => false,
+        'discount_amount_cents' => false,
+        'tax_amount_cents' => false,
+        'total_cents' => false,
+        'total' => false,
         'coupon_code' => true,
         'coupon_discount' => false,
         'mix_match_discount' => false,
+        'loyalty_tier_discount' => false,
         'loyalty_discount' => false,
         'is_asap' => false,
         'scheduled_at' => true,
         'delivered_at' => true,
-        'created_at' => false
+        'created_at' => true,
+        'updated_at' => true,
+        'items' => false
     ];
 
     /**
@@ -215,22 +263,38 @@ class OrderDashboardResponseOrdersInner implements ModelInterface, ArrayAccess, 
      */
     protected static $attributeMap = [
         'id' => 'id',
+        'customer_id' => 'customer_id',
         'order_number' => 'order_number',
         'tenant' => 'tenant',
         'status' => 'status',
         'payment_status' => 'payment_status',
-        'subtotal' => 'subtotal',
-        'total' => 'total',
+        'payment_method' => 'payment_method',
+        'currency' => 'currency',
+        'customer_name' => 'customer_name',
         'customer_email' => 'customer_email',
         'customer_phone' => 'customer_phone',
+        'delivery_address' => 'delivery_address',
+        'delivery_notes' => 'delivery_notes',
+        'notes' => 'notes',
+        'subtotal_cents' => 'subtotal_cents',
+        'subtotal' => 'subtotal',
+        'delivery_fee_cents' => 'delivery_fee_cents',
+        'service_fee_cents' => 'service_fee_cents',
+        'discount_amount_cents' => 'discount_amount_cents',
+        'tax_amount_cents' => 'tax_amount_cents',
+        'total_cents' => 'total_cents',
+        'total' => 'total',
         'coupon_code' => 'coupon_code',
         'coupon_discount' => 'coupon_discount',
         'mix_match_discount' => 'mix_match_discount',
+        'loyalty_tier_discount' => 'loyalty_tier_discount',
         'loyalty_discount' => 'loyalty_discount',
         'is_asap' => 'is_asap',
         'scheduled_at' => 'scheduled_at',
         'delivered_at' => 'delivered_at',
-        'created_at' => 'created_at'
+        'created_at' => 'created_at',
+        'updated_at' => 'updated_at',
+        'items' => 'items'
     ];
 
     /**
@@ -240,22 +304,38 @@ class OrderDashboardResponseOrdersInner implements ModelInterface, ArrayAccess, 
      */
     protected static $setters = [
         'id' => 'setId',
+        'customer_id' => 'setCustomerId',
         'order_number' => 'setOrderNumber',
         'tenant' => 'setTenant',
         'status' => 'setStatus',
         'payment_status' => 'setPaymentStatus',
-        'subtotal' => 'setSubtotal',
-        'total' => 'setTotal',
+        'payment_method' => 'setPaymentMethod',
+        'currency' => 'setCurrency',
+        'customer_name' => 'setCustomerName',
         'customer_email' => 'setCustomerEmail',
         'customer_phone' => 'setCustomerPhone',
+        'delivery_address' => 'setDeliveryAddress',
+        'delivery_notes' => 'setDeliveryNotes',
+        'notes' => 'setNotes',
+        'subtotal_cents' => 'setSubtotalCents',
+        'subtotal' => 'setSubtotal',
+        'delivery_fee_cents' => 'setDeliveryFeeCents',
+        'service_fee_cents' => 'setServiceFeeCents',
+        'discount_amount_cents' => 'setDiscountAmountCents',
+        'tax_amount_cents' => 'setTaxAmountCents',
+        'total_cents' => 'setTotalCents',
+        'total' => 'setTotal',
         'coupon_code' => 'setCouponCode',
         'coupon_discount' => 'setCouponDiscount',
         'mix_match_discount' => 'setMixMatchDiscount',
+        'loyalty_tier_discount' => 'setLoyaltyTierDiscount',
         'loyalty_discount' => 'setLoyaltyDiscount',
         'is_asap' => 'setIsAsap',
         'scheduled_at' => 'setScheduledAt',
         'delivered_at' => 'setDeliveredAt',
-        'created_at' => 'setCreatedAt'
+        'created_at' => 'setCreatedAt',
+        'updated_at' => 'setUpdatedAt',
+        'items' => 'setItems'
     ];
 
     /**
@@ -265,22 +345,38 @@ class OrderDashboardResponseOrdersInner implements ModelInterface, ArrayAccess, 
      */
     protected static $getters = [
         'id' => 'getId',
+        'customer_id' => 'getCustomerId',
         'order_number' => 'getOrderNumber',
         'tenant' => 'getTenant',
         'status' => 'getStatus',
         'payment_status' => 'getPaymentStatus',
-        'subtotal' => 'getSubtotal',
-        'total' => 'getTotal',
+        'payment_method' => 'getPaymentMethod',
+        'currency' => 'getCurrency',
+        'customer_name' => 'getCustomerName',
         'customer_email' => 'getCustomerEmail',
         'customer_phone' => 'getCustomerPhone',
+        'delivery_address' => 'getDeliveryAddress',
+        'delivery_notes' => 'getDeliveryNotes',
+        'notes' => 'getNotes',
+        'subtotal_cents' => 'getSubtotalCents',
+        'subtotal' => 'getSubtotal',
+        'delivery_fee_cents' => 'getDeliveryFeeCents',
+        'service_fee_cents' => 'getServiceFeeCents',
+        'discount_amount_cents' => 'getDiscountAmountCents',
+        'tax_amount_cents' => 'getTaxAmountCents',
+        'total_cents' => 'getTotalCents',
+        'total' => 'getTotal',
         'coupon_code' => 'getCouponCode',
         'coupon_discount' => 'getCouponDiscount',
         'mix_match_discount' => 'getMixMatchDiscount',
+        'loyalty_tier_discount' => 'getLoyaltyTierDiscount',
         'loyalty_discount' => 'getLoyaltyDiscount',
         'is_asap' => 'getIsAsap',
         'scheduled_at' => 'getScheduledAt',
         'delivered_at' => 'getDeliveredAt',
-        'created_at' => 'getCreatedAt'
+        'created_at' => 'getCreatedAt',
+        'updated_at' => 'getUpdatedAt',
+        'items' => 'getItems'
     ];
 
     /**
@@ -341,22 +437,38 @@ class OrderDashboardResponseOrdersInner implements ModelInterface, ArrayAccess, 
     public function __construct(?array $data = null)
     {
         $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('customer_id', $data ?? [], null);
         $this->setIfExists('order_number', $data ?? [], null);
         $this->setIfExists('tenant', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('payment_status', $data ?? [], null);
-        $this->setIfExists('subtotal', $data ?? [], null);
-        $this->setIfExists('total', $data ?? [], null);
+        $this->setIfExists('payment_method', $data ?? [], null);
+        $this->setIfExists('currency', $data ?? [], null);
+        $this->setIfExists('customer_name', $data ?? [], null);
         $this->setIfExists('customer_email', $data ?? [], null);
         $this->setIfExists('customer_phone', $data ?? [], null);
+        $this->setIfExists('delivery_address', $data ?? [], null);
+        $this->setIfExists('delivery_notes', $data ?? [], null);
+        $this->setIfExists('notes', $data ?? [], null);
+        $this->setIfExists('subtotal_cents', $data ?? [], null);
+        $this->setIfExists('subtotal', $data ?? [], null);
+        $this->setIfExists('delivery_fee_cents', $data ?? [], null);
+        $this->setIfExists('service_fee_cents', $data ?? [], null);
+        $this->setIfExists('discount_amount_cents', $data ?? [], null);
+        $this->setIfExists('tax_amount_cents', $data ?? [], null);
+        $this->setIfExists('total_cents', $data ?? [], null);
+        $this->setIfExists('total', $data ?? [], null);
         $this->setIfExists('coupon_code', $data ?? [], null);
         $this->setIfExists('coupon_discount', $data ?? [], null);
         $this->setIfExists('mix_match_discount', $data ?? [], null);
+        $this->setIfExists('loyalty_tier_discount', $data ?? [], null);
         $this->setIfExists('loyalty_discount', $data ?? [], null);
         $this->setIfExists('is_asap', $data ?? [], null);
         $this->setIfExists('scheduled_at', $data ?? [], null);
         $this->setIfExists('delivered_at', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
+        $this->setIfExists('updated_at', $data ?? [], null);
+        $this->setIfExists('items', $data ?? [], null);
     }
 
     /**
@@ -424,6 +536,40 @@ class OrderDashboardResponseOrdersInner implements ModelInterface, ArrayAccess, 
             throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets customer_id
+     *
+     * @return int|null
+     */
+    public function getCustomerId()
+    {
+        return $this->container['customer_id'];
+    }
+
+    /**
+     * Sets customer_id
+     *
+     * @param int|null $customer_id customer_id
+     *
+     * @return self
+     */
+    public function setCustomerId($customer_id)
+    {
+        if (is_null($customer_id)) {
+            array_push($this->openAPINullablesSetToNull, 'customer_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('customer_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['customer_id'] = $customer_id;
 
         return $this;
     }
@@ -537,55 +683,96 @@ class OrderDashboardResponseOrdersInner implements ModelInterface, ArrayAccess, 
     }
 
     /**
-     * Gets subtotal
+     * Gets payment_method
      *
      * @return string|null
      */
-    public function getSubtotal()
+    public function getPaymentMethod()
     {
-        return $this->container['subtotal'];
+        return $this->container['payment_method'];
     }
 
     /**
-     * Sets subtotal
+     * Sets payment_method
      *
-     * @param string|null $subtotal subtotal
+     * @param string|null $payment_method payment_method
      *
      * @return self
      */
-    public function setSubtotal($subtotal)
+    public function setPaymentMethod($payment_method)
     {
-        if (is_null($subtotal)) {
-            throw new \InvalidArgumentException('non-nullable subtotal cannot be null');
+        if (is_null($payment_method)) {
+            array_push($this->openAPINullablesSetToNull, 'payment_method');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('payment_method', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['subtotal'] = $subtotal;
+        $this->container['payment_method'] = $payment_method;
 
         return $this;
     }
 
     /**
-     * Gets total
+     * Gets currency
      *
      * @return string|null
      */
-    public function getTotal()
+    public function getCurrency()
     {
-        return $this->container['total'];
+        return $this->container['currency'];
     }
 
     /**
-     * Sets total
+     * Sets currency
      *
-     * @param string|null $total total
+     * @param string|null $currency currency
      *
      * @return self
      */
-    public function setTotal($total)
+    public function setCurrency($currency)
     {
-        if (is_null($total)) {
-            throw new \InvalidArgumentException('non-nullable total cannot be null');
+        if (is_null($currency)) {
+            throw new \InvalidArgumentException('non-nullable currency cannot be null');
         }
-        $this->container['total'] = $total;
+        $this->container['currency'] = $currency;
+
+        return $this;
+    }
+
+    /**
+     * Gets customer_name
+     *
+     * @return string|null
+     */
+    public function getCustomerName()
+    {
+        return $this->container['customer_name'];
+    }
+
+    /**
+     * Sets customer_name
+     *
+     * @param string|null $customer_name customer_name
+     *
+     * @return self
+     */
+    public function setCustomerName($customer_name)
+    {
+        if (is_null($customer_name)) {
+            array_push($this->openAPINullablesSetToNull, 'customer_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('customer_name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['customer_name'] = $customer_name;
 
         return $this;
     }
@@ -654,6 +841,324 @@ class OrderDashboardResponseOrdersInner implements ModelInterface, ArrayAccess, 
             }
         }
         $this->container['customer_phone'] = $customer_phone;
+
+        return $this;
+    }
+
+    /**
+     * Gets delivery_address
+     *
+     * @return mixed[]|null
+     */
+    public function getDeliveryAddress()
+    {
+        return $this->container['delivery_address'];
+    }
+
+    /**
+     * Sets delivery_address
+     *
+     * @param mixed[]|null $delivery_address delivery_address
+     *
+     * @return self
+     */
+    public function setDeliveryAddress($delivery_address)
+    {
+        if (is_null($delivery_address)) {
+            array_push($this->openAPINullablesSetToNull, 'delivery_address');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('delivery_address', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['delivery_address'] = $delivery_address;
+
+        return $this;
+    }
+
+    /**
+     * Gets delivery_notes
+     *
+     * @return string|null
+     */
+    public function getDeliveryNotes()
+    {
+        return $this->container['delivery_notes'];
+    }
+
+    /**
+     * Sets delivery_notes
+     *
+     * @param string|null $delivery_notes delivery_notes
+     *
+     * @return self
+     */
+    public function setDeliveryNotes($delivery_notes)
+    {
+        if (is_null($delivery_notes)) {
+            array_push($this->openAPINullablesSetToNull, 'delivery_notes');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('delivery_notes', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['delivery_notes'] = $delivery_notes;
+
+        return $this;
+    }
+
+    /**
+     * Gets notes
+     *
+     * @return string|null
+     */
+    public function getNotes()
+    {
+        return $this->container['notes'];
+    }
+
+    /**
+     * Sets notes
+     *
+     * @param string|null $notes notes
+     *
+     * @return self
+     */
+    public function setNotes($notes)
+    {
+        if (is_null($notes)) {
+            array_push($this->openAPINullablesSetToNull, 'notes');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('notes', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['notes'] = $notes;
+
+        return $this;
+    }
+
+    /**
+     * Gets subtotal_cents
+     *
+     * @return int|null
+     */
+    public function getSubtotalCents()
+    {
+        return $this->container['subtotal_cents'];
+    }
+
+    /**
+     * Sets subtotal_cents
+     *
+     * @param int|null $subtotal_cents subtotal_cents
+     *
+     * @return self
+     */
+    public function setSubtotalCents($subtotal_cents)
+    {
+        if (is_null($subtotal_cents)) {
+            throw new \InvalidArgumentException('non-nullable subtotal_cents cannot be null');
+        }
+        $this->container['subtotal_cents'] = $subtotal_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets subtotal
+     *
+     * @return string|null
+     */
+    public function getSubtotal()
+    {
+        return $this->container['subtotal'];
+    }
+
+    /**
+     * Sets subtotal
+     *
+     * @param string|null $subtotal subtotal
+     *
+     * @return self
+     */
+    public function setSubtotal($subtotal)
+    {
+        if (is_null($subtotal)) {
+            throw new \InvalidArgumentException('non-nullable subtotal cannot be null');
+        }
+        $this->container['subtotal'] = $subtotal;
+
+        return $this;
+    }
+
+    /**
+     * Gets delivery_fee_cents
+     *
+     * @return int|null
+     */
+    public function getDeliveryFeeCents()
+    {
+        return $this->container['delivery_fee_cents'];
+    }
+
+    /**
+     * Sets delivery_fee_cents
+     *
+     * @param int|null $delivery_fee_cents delivery_fee_cents
+     *
+     * @return self
+     */
+    public function setDeliveryFeeCents($delivery_fee_cents)
+    {
+        if (is_null($delivery_fee_cents)) {
+            throw new \InvalidArgumentException('non-nullable delivery_fee_cents cannot be null');
+        }
+        $this->container['delivery_fee_cents'] = $delivery_fee_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets service_fee_cents
+     *
+     * @return int|null
+     */
+    public function getServiceFeeCents()
+    {
+        return $this->container['service_fee_cents'];
+    }
+
+    /**
+     * Sets service_fee_cents
+     *
+     * @param int|null $service_fee_cents service_fee_cents
+     *
+     * @return self
+     */
+    public function setServiceFeeCents($service_fee_cents)
+    {
+        if (is_null($service_fee_cents)) {
+            throw new \InvalidArgumentException('non-nullable service_fee_cents cannot be null');
+        }
+        $this->container['service_fee_cents'] = $service_fee_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets discount_amount_cents
+     *
+     * @return int|null
+     */
+    public function getDiscountAmountCents()
+    {
+        return $this->container['discount_amount_cents'];
+    }
+
+    /**
+     * Sets discount_amount_cents
+     *
+     * @param int|null $discount_amount_cents discount_amount_cents
+     *
+     * @return self
+     */
+    public function setDiscountAmountCents($discount_amount_cents)
+    {
+        if (is_null($discount_amount_cents)) {
+            throw new \InvalidArgumentException('non-nullable discount_amount_cents cannot be null');
+        }
+        $this->container['discount_amount_cents'] = $discount_amount_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets tax_amount_cents
+     *
+     * @return int|null
+     */
+    public function getTaxAmountCents()
+    {
+        return $this->container['tax_amount_cents'];
+    }
+
+    /**
+     * Sets tax_amount_cents
+     *
+     * @param int|null $tax_amount_cents tax_amount_cents
+     *
+     * @return self
+     */
+    public function setTaxAmountCents($tax_amount_cents)
+    {
+        if (is_null($tax_amount_cents)) {
+            throw new \InvalidArgumentException('non-nullable tax_amount_cents cannot be null');
+        }
+        $this->container['tax_amount_cents'] = $tax_amount_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets total_cents
+     *
+     * @return int|null
+     */
+    public function getTotalCents()
+    {
+        return $this->container['total_cents'];
+    }
+
+    /**
+     * Sets total_cents
+     *
+     * @param int|null $total_cents total_cents
+     *
+     * @return self
+     */
+    public function setTotalCents($total_cents)
+    {
+        if (is_null($total_cents)) {
+            throw new \InvalidArgumentException('non-nullable total_cents cannot be null');
+        }
+        $this->container['total_cents'] = $total_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets total
+     *
+     * @return string|null
+     */
+    public function getTotal()
+    {
+        return $this->container['total'];
+    }
+
+    /**
+     * Sets total
+     *
+     * @param string|null $total total
+     *
+     * @return self
+     */
+    public function setTotal($total)
+    {
+        if (is_null($total)) {
+            throw new \InvalidArgumentException('non-nullable total cannot be null');
+        }
+        $this->container['total'] = $total;
 
         return $this;
     }
@@ -742,6 +1247,33 @@ class OrderDashboardResponseOrdersInner implements ModelInterface, ArrayAccess, 
             throw new \InvalidArgumentException('non-nullable mix_match_discount cannot be null');
         }
         $this->container['mix_match_discount'] = $mix_match_discount;
+
+        return $this;
+    }
+
+    /**
+     * Gets loyalty_tier_discount
+     *
+     * @return string|null
+     */
+    public function getLoyaltyTierDiscount()
+    {
+        return $this->container['loyalty_tier_discount'];
+    }
+
+    /**
+     * Sets loyalty_tier_discount
+     *
+     * @param string|null $loyalty_tier_discount loyalty_tier_discount
+     *
+     * @return self
+     */
+    public function setLoyaltyTierDiscount($loyalty_tier_discount)
+    {
+        if (is_null($loyalty_tier_discount)) {
+            throw new \InvalidArgumentException('non-nullable loyalty_tier_discount cannot be null');
+        }
+        $this->container['loyalty_tier_discount'] = $loyalty_tier_discount;
 
         return $this;
     }
@@ -888,9 +1420,77 @@ class OrderDashboardResponseOrdersInner implements ModelInterface, ArrayAccess, 
     public function setCreatedAt($created_at)
     {
         if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'created_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('created_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated_at
+     *
+     * @return string|null
+     */
+    public function getUpdatedAt()
+    {
+        return $this->container['updated_at'];
+    }
+
+    /**
+     * Sets updated_at
+     *
+     * @param string|null $updated_at updated_at
+     *
+     * @return self
+     */
+    public function setUpdatedAt($updated_at)
+    {
+        if (is_null($updated_at)) {
+            array_push($this->openAPINullablesSetToNull, 'updated_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('updated_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['updated_at'] = $updated_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets items
+     *
+     * @return \ShadowSoftware\DabDash\Model\OrderDashboardResponseOrdersInnerItemsInner[]|null
+     */
+    public function getItems()
+    {
+        return $this->container['items'];
+    }
+
+    /**
+     * Sets items
+     *
+     * @param \ShadowSoftware\DabDash\Model\OrderDashboardResponseOrdersInnerItemsInner[]|null $items items
+     *
+     * @return self
+     */
+    public function setItems($items)
+    {
+        if (is_null($items)) {
+            throw new \InvalidArgumentException('non-nullable items cannot be null');
+        }
+        $this->container['items'] = $items;
 
         return $this;
     }

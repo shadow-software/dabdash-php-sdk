@@ -72,12 +72,36 @@ class ZonesApiTest extends TestCase
     }
 
     /**
+     * Test case for zoneClone
+     *
+     * Clone every polygon zone from a source tenant into the target tenant while preserving the target tenant's existing fee tiers. This is intended for importing a proven coverage map without importing another store's pricing.  The source zones are grouped into tiers by their minimum order, then mapped by rank to the target tenant's existing zones ordered by minimum order. The target tier's delivery_fee, service_fee, min_order, color, priority, and fulfillment_type are applied to every cloned source polygon. Existing target zones are replaced only when replace_existing=true and confirm=true. Zone colors use an evenly spaced spectrum from the target primary colour to its accent colour, one stop per fee rung. dry_run defaults true..
+     *
+     */
+    public function testZoneClone()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for zoneDiagnostics
      *
      * Inspect zone polygons against customer or order coordinates to explain why an address is inside or outside delivery coverage..
      *
      */
     public function testZoneDiagnostics()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for zoneUpsert
+     *
+     * Create or update a delivery/pickup/shipping zone. Use zone_manage to list or delete.  CREATE (no zone_id): name is required; a zone with the same name is updated instead. UPDATE (zone_id): only the fields you pass change.  Coverage shape — pass ONE of:   polygon: list of {lat, lng} points (or [lng, lat] pairs), at least 3, at most 500.   center_lat + center_lng + radius_km: builds a 32-point circle. Good enough when            the client only publishes a list of towns; refine the polygon later. Fees and minimum order are in dollars. dry_run defaults true: the first call reports what would be saved; pass dry_run=false to write..
+     *
+     */
+    public function testZoneUpsert()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **min_order_cents** | **int** |  | [optional]
 **freebie_id** | **int** |  | [optional]
 **subscription_ladder_id** | **int** |  | [optional]
+**contact_list_id** | **int** |  | [optional]
 **applies_to** | **string** |  | [optional]
 **applies_to_ids** | **int[]** |  | [optional]
 **requires_subscribed_customer** | **bool** |  | [optional]

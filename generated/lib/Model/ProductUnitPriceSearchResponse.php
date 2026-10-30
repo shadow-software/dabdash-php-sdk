@@ -57,7 +57,7 @@ class ProductUnitPriceSearchResponse implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $openAPITypes = [
-        'tenant' => '\ShadowSoftware\DabDash\Model\BundleListResponseTenant',
+        'tenant' => '\ShadowSoftware\DabDash\Model\BundleHealthResponseTenant',
         'unit' => 'string',
         'unit_grams' => 'float',
         'summary' => '\ShadowSoftware\DabDash\Model\ProductUnitPriceSearchResponseSummary',
@@ -320,7 +320,7 @@ class ProductUnitPriceSearchResponse implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets tenant
      *
-     * @return \ShadowSoftware\DabDash\Model\BundleListResponseTenant|null
+     * @return \ShadowSoftware\DabDash\Model\BundleHealthResponseTenant|null
      */
     public function getTenant()
     {
@@ -330,7 +330,7 @@ class ProductUnitPriceSearchResponse implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets tenant
      *
-     * @param \ShadowSoftware\DabDash\Model\BundleListResponseTenant|null $tenant tenant
+     * @param \ShadowSoftware\DabDash\Model\BundleHealthResponseTenant|null $tenant tenant
      *
      * @return self
      */

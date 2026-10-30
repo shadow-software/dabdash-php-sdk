@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **action** | **string** |  | [optional]
-**tenant** | [**\ShadowSoftware\DabDash\Model\BundleListResponseTenant**](BundleListResponseTenant.md) |  | [optional]
+**tenant** | [**\ShadowSoftware\DabDash\Model\BundleHealthResponseTenant**](BundleHealthResponseTenant.md) |  | [optional]
 **total** | **int** |  | [optional]
 **widgets** | [**\ShadowSoftware\DabDash\Model\WidgetManageResponseWidgetsInner[]**](WidgetManageResponseWidgetsInner.md) |  | [optional]
 **widget** | [**\ShadowSoftware\DabDash\Model\WidgetManageResponseWidget**](WidgetManageResponseWidget.md) |  | [optional]

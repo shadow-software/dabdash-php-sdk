@@ -96,6 +96,42 @@ class CatalogApiTest extends TestCase
     }
 
     /**
+     * Test case for catalogImport
+     *
+     * Bulk-create categories and products in one call, for onboarding a store from a scraped or exported catalog. Built on category_manage, product_manage, media_upload and product_image_assign, so results match creating each item by hand.  Pass categories (name, optional parent name) and/or products (name, price in dollars, optional sku, stock_quantity, description, category names, image_url, or a complete expected_variation_count plus named variations list). Categories are matched by name (existing ones are reused, never duplicated); products are matched by exact name (existing ones are skipped, never overwritten). Up to 100 products per call.  dry_run defaults true: the first call reports what would be created and skipped. Pass dry_run=false to write. Image failures never block a product; they are listed per item. Tiered pricing, bundles and strain-specific data are set afterwards with pricing_structure_*, bundle_* and product_manage..
+     *
+     */
+    public function testCatalogImport()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for catalogVariantAudit
+     *
+     * Lists explicit unit products and their variations for safe catalog compaction review. Read-only..
+     *
+     */
+    public function testCatalogVariantAudit()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for catalogVariantCompact
+     *
+     * Safely merges explicit same-family unit products into one product with named variants. Preview first; live mode preserves the survivor, moves variations, unions categories, records old-slug redirects, and removes absorbed products atomically..
+     *
+     */
+    public function testCatalogVariantCompact()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for categoryManage
      *
      * List, create, update, or delete a tenant's storefront categories.  ACTIONS:   list   (default): return every category with id, name, slug, parent, sort_order,          is_active, is_featured, and image_url. Always call this first to find a          category_id before update/delete, and to check for slug collisions before create.   create: requires name (slug is auto-generated from name if omitted).   update: requires category_id. Only the fields you pass are changed.   delete: requires category_id and confirm=true. Refuses if the category still has          products or children attached (detach or reassign them first).  IMAGES: pass media_id (from media_list / media_upload) to set image_path (the final, customer-facing image) or base_image_path (the unbranded source canvas SwagImagesService composites branding onto). Omit both to leave images untouched.  Always call action=list first to confirm category_id / slug before update or delete..
@@ -194,7 +230,7 @@ class CatalogApiTest extends TestCase
     /**
      * Test case for productFeatureManage
      *
-     * List or set which products are featured on a tenant's storefront home page (the \"Featured Products\" section, HomeController — up to 8 shown, ordered by the tenant's default product sort).  ACTIONS:   list (default): return every is_featured=true product with id, slug, name,          stock_status. Always call this first to see the current set before          changing it.   set: pass product_ids (array) and featured (bool) to set is_featured on          those products. Unlisted products are left untouched — this is an          additive/subtractive edit, not a replace-the-whole-set operation.  Products must be resolved to ids first (product_inspect or this tool's list action). Featuring an out-of-stock product is allowed but usually undesirable — check stock_status in the list output before featuring..
+     * List or set which products are featured on a tenant's storefront home page (the \"Featured Products\" section, HomeController — up to 8 shown, ordered by the tenant's default product sort). This does not change the Modern hero's optional featured-product card; use storefront_theme_manage or store_settings_manage (hero_spotlight_mode / hero_spotlight_product) for that.  ACTIONS:   list (default): return every is_featured=true product with id, slug, name,          stock_status. Always call this first to see the current set before          changing it.   set: pass product_ids (array) and featured (bool) to set is_featured on          those products. Unlisted products are left untouched — this is an          additive/subtractive edit, not a replace-the-whole-set operation.  Products must be resolved to ids first (product_inspect or this tool's list action). Featuring an out-of-stock product is allowed but usually undesirable — check stock_status in the list output before featuring..
      *
      */
     public function testProductFeatureManage()
@@ -254,7 +290,7 @@ class CatalogApiTest extends TestCase
     /**
      * Test case for productManage
      *
-     * Create a simple product for a tenant (v1: one price, unit tracking — the same default as a blank create-product page). Call strain_lookup first when the name looks like a strain, then pass strain_id so description, type, THC/CBD, indica/sativa, effects, flavors, rating, and the hosted strain photo fill in exactly like the vendor create page.  If strain_id is omitted, this tool name-matches the platform strain library itself: an exact name match is applied automatically; close matches are returned as strain_matches so you can offer them. Pass skip_strain_enrich=true to skip that.  ACTIONS:   create: requires name. Optional price (dollars), sku, stock_quantity,           category_ids, description, strain_id..
+     * Create a product for a tenant. With no variations this creates a simple one-price product, matching a blank create-product page. For named options, pass the complete variations list and expected_variation_count; the product is created as unit variation inventory and the pricing tiers are kept in sync. Call strain_lookup first when the name looks like a strain, then pass strain_id so description, type, THC/CBD, indica/sativa, effects, flavors, rating, and the hosted strain photo fill in exactly like the vendor create page.  If strain_id is omitted, this tool name-matches the platform strain library itself: an exact name match is applied automatically; close matches are returned as strain_matches so you can offer them. Pass skip_strain_enrich=true to skip that.  ACTIONS:   create: requires name. Optional price (dollars), sku, stock_quantity,           category_ids, description, strain_id, or a complete variations list. update: requires product_id. Pass any of name, description, strain_id,           category_ids, meta_title, or meta_description to groom an existing           product without changing its price.           Strain enrichment never replaces an existing product photo; use           product_image_assign with a tenant media_id for photos.           meta_title max 60 chars; meta_description max 160 chars..
      *
      */
     public function testProductManage()
@@ -282,6 +318,18 @@ class CatalogApiTest extends TestCase
      *
      */
     public function testProductUpdateBySku()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for productVisibilityManage
+     *
+     * Set whether tenant products are public or inventory-only without changing inventory, cost, price, category assignments, images, or variations.  visibility=public maps to product status=active. visibility=inventory_only maps to status=archived, which removes the product from storefront product, category, related-product, and sitemap queries while preserving the product and its inventory for vendor use. This is reversible.  dry_run defaults to true. A write requires dry_run=false and confirm=true. Always preview first. Only the explicitly listed product_ids are considered..
+     *
+     */
+    public function testProductVisibilityManage()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

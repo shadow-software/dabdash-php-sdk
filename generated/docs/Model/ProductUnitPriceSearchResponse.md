@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**tenant** | [**\ShadowSoftware\DabDash\Model\BundleListResponseTenant**](BundleListResponseTenant.md) |  | [optional]
+**tenant** | [**\ShadowSoftware\DabDash\Model\BundleHealthResponseTenant**](BundleHealthResponseTenant.md) |  | [optional]
 **unit** | **string** |  | [optional]
 **unit_grams** | **float** |  | [optional]
 **summary** | [**\ShadowSoftware\DabDash\Model\ProductUnitPriceSearchResponseSummary**](ProductUnitPriceSearchResponseSummary.md) |  | [optional]

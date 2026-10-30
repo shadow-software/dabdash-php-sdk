@@ -57,7 +57,7 @@ class CouponListResponse implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $openAPITypes = [
-        'tenant' => '\ShadowSoftware\DabDash\Model\BundleListResponseTenant',
+        'tenant' => '\ShadowSoftware\DabDash\Model\BundleHealthResponseTenant',
         'summary' => '\ShadowSoftware\DabDash\Model\CouponListResponseSummary',
         'coupons' => '\ShadowSoftware\DabDash\Model\CouponListResponseCouponsInner[]'
     ];
@@ -306,7 +306,7 @@ class CouponListResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets tenant
      *
-     * @return \ShadowSoftware\DabDash\Model\BundleListResponseTenant|null
+     * @return \ShadowSoftware\DabDash\Model\BundleHealthResponseTenant|null
      */
     public function getTenant()
     {
@@ -316,7 +316,7 @@ class CouponListResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets tenant
      *
-     * @param \ShadowSoftware\DabDash\Model\BundleListResponseTenant|null $tenant tenant
+     * @param \ShadowSoftware\DabDash\Model\BundleHealthResponseTenant|null $tenant tenant
      *
      * @return self
      */

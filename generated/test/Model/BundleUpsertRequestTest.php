@@ -168,4 +168,13 @@ class BundleUpsertRequestTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "rules"
+     */
+    public function testPropertyRules()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

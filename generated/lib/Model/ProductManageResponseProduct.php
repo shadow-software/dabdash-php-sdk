@@ -61,7 +61,9 @@ class ProductManageResponseProduct implements ModelInterface, ArrayAccess, \Json
         'name' => 'string',
         'slug' => 'string',
         'strain_id' => 'int',
-        'featured_image' => 'string'
+        'featured_image' => 'string',
+        'inventory_mode' => 'string',
+        'variation_count' => 'int'
     ];
 
     /**
@@ -76,7 +78,9 @@ class ProductManageResponseProduct implements ModelInterface, ArrayAccess, \Json
         'name' => null,
         'slug' => null,
         'strain_id' => null,
-        'featured_image' => null
+        'featured_image' => null,
+        'inventory_mode' => null,
+        'variation_count' => null
     ];
 
     /**
@@ -89,7 +93,9 @@ class ProductManageResponseProduct implements ModelInterface, ArrayAccess, \Json
         'name' => false,
         'slug' => false,
         'strain_id' => true,
-        'featured_image' => true
+        'featured_image' => true,
+        'inventory_mode' => false,
+        'variation_count' => false
     ];
 
     /**
@@ -182,7 +188,9 @@ class ProductManageResponseProduct implements ModelInterface, ArrayAccess, \Json
         'name' => 'name',
         'slug' => 'slug',
         'strain_id' => 'strain_id',
-        'featured_image' => 'featured_image'
+        'featured_image' => 'featured_image',
+        'inventory_mode' => 'inventory_mode',
+        'variation_count' => 'variation_count'
     ];
 
     /**
@@ -195,7 +203,9 @@ class ProductManageResponseProduct implements ModelInterface, ArrayAccess, \Json
         'name' => 'setName',
         'slug' => 'setSlug',
         'strain_id' => 'setStrainId',
-        'featured_image' => 'setFeaturedImage'
+        'featured_image' => 'setFeaturedImage',
+        'inventory_mode' => 'setInventoryMode',
+        'variation_count' => 'setVariationCount'
     ];
 
     /**
@@ -208,7 +218,9 @@ class ProductManageResponseProduct implements ModelInterface, ArrayAccess, \Json
         'name' => 'getName',
         'slug' => 'getSlug',
         'strain_id' => 'getStrainId',
-        'featured_image' => 'getFeaturedImage'
+        'featured_image' => 'getFeaturedImage',
+        'inventory_mode' => 'getInventoryMode',
+        'variation_count' => 'getVariationCount'
     ];
 
     /**
@@ -273,6 +285,8 @@ class ProductManageResponseProduct implements ModelInterface, ArrayAccess, \Json
         $this->setIfExists('slug', $data ?? [], null);
         $this->setIfExists('strain_id', $data ?? [], null);
         $this->setIfExists('featured_image', $data ?? [], null);
+        $this->setIfExists('inventory_mode', $data ?? [], null);
+        $this->setIfExists('variation_count', $data ?? [], null);
     }
 
     /**
@@ -462,6 +476,60 @@ class ProductManageResponseProduct implements ModelInterface, ArrayAccess, \Json
             }
         }
         $this->container['featured_image'] = $featured_image;
+
+        return $this;
+    }
+
+    /**
+     * Gets inventory_mode
+     *
+     * @return string|null
+     */
+    public function getInventoryMode()
+    {
+        return $this->container['inventory_mode'];
+    }
+
+    /**
+     * Sets inventory_mode
+     *
+     * @param string|null $inventory_mode inventory_mode
+     *
+     * @return self
+     */
+    public function setInventoryMode($inventory_mode)
+    {
+        if (is_null($inventory_mode)) {
+            throw new \InvalidArgumentException('non-nullable inventory_mode cannot be null');
+        }
+        $this->container['inventory_mode'] = $inventory_mode;
+
+        return $this;
+    }
+
+    /**
+     * Gets variation_count
+     *
+     * @return int|null
+     */
+    public function getVariationCount()
+    {
+        return $this->container['variation_count'];
+    }
+
+    /**
+     * Sets variation_count
+     *
+     * @param int|null $variation_count variation_count
+     *
+     * @return self
+     */
+    public function setVariationCount($variation_count)
+    {
+        if (is_null($variation_count)) {
+            throw new \InvalidArgumentException('non-nullable variation_count cannot be null');
+        }
+        $this->container['variation_count'] = $variation_count;
 
         return $this;
     }

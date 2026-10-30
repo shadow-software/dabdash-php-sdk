@@ -66,7 +66,8 @@ class BundleUpsertRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'starts_at' => 'string',
         'ends_at' => 'string',
         'variation_ids' => 'int[]',
-        'variation_mode' => 'string'
+        'variation_mode' => 'string',
+        'rules' => 'mixed[]'
     ];
 
     /**
@@ -86,7 +87,8 @@ class BundleUpsertRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'starts_at' => null,
         'ends_at' => null,
         'variation_ids' => null,
-        'variation_mode' => null
+        'variation_mode' => null,
+        'rules' => null
     ];
 
     /**
@@ -104,7 +106,8 @@ class BundleUpsertRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'starts_at' => true,
         'ends_at' => true,
         'variation_ids' => true,
-        'variation_mode' => true
+        'variation_mode' => true,
+        'rules' => true
     ];
 
     /**
@@ -202,7 +205,8 @@ class BundleUpsertRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'starts_at' => 'starts_at',
         'ends_at' => 'ends_at',
         'variation_ids' => 'variation_ids',
-        'variation_mode' => 'variation_mode'
+        'variation_mode' => 'variation_mode',
+        'rules' => 'rules'
     ];
 
     /**
@@ -220,7 +224,8 @@ class BundleUpsertRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'starts_at' => 'setStartsAt',
         'ends_at' => 'setEndsAt',
         'variation_ids' => 'setVariationIds',
-        'variation_mode' => 'setVariationMode'
+        'variation_mode' => 'setVariationMode',
+        'rules' => 'setRules'
     ];
 
     /**
@@ -238,7 +243,8 @@ class BundleUpsertRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'starts_at' => 'getStartsAt',
         'ends_at' => 'getEndsAt',
         'variation_ids' => 'getVariationIds',
-        'variation_mode' => 'getVariationMode'
+        'variation_mode' => 'getVariationMode',
+        'rules' => 'getRules'
     ];
 
     /**
@@ -308,6 +314,7 @@ class BundleUpsertRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->setIfExists('ends_at', $data ?? [], null);
         $this->setIfExists('variation_ids', $data ?? [], null);
         $this->setIfExists('variation_mode', $data ?? [], null);
+        $this->setIfExists('rules', $data ?? [], null);
     }
 
     /**
@@ -688,6 +695,40 @@ class BundleUpsertRequest implements ModelInterface, ArrayAccess, \JsonSerializa
             }
         }
         $this->container['variation_mode'] = $variation_mode;
+
+        return $this;
+    }
+
+    /**
+     * Gets rules
+     *
+     * @return mixed[]|null
+     */
+    public function getRules()
+    {
+        return $this->container['rules'];
+    }
+
+    /**
+     * Sets rules
+     *
+     * @param mixed[]|null $rules Replaces the bundle's membership rule (AND-ed conditions). Each item: {field: unit_price|category_id|exclude_category_id|weight_value|mix_match_tag|product_status|tracking_type, operator: eq|lt|lte|gt|gte|between (default eq), value}. Use exclude_category_id to omit products belonging to a category while matching another category. Pass [] or null to clear the bundle back to fully manual. Preview with bundle_rule_preview before saving. Omit to leave the current rule state untouched.
+     *
+     * @return self
+     */
+    public function setRules($rules)
+    {
+        if (is_null($rules)) {
+            array_push($this->openAPINullablesSetToNull, 'rules');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('rules', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['rules'] = $rules;
 
         return $this;
     }

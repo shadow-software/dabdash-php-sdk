@@ -9,6 +9,8 @@ Name | Type | Description | Notes
 **name** | **string** | Category name shown to customers. Required when creating. | [optional]
 **slug** | **string** | URL slug, unique per tenant. Auto-generated from name when omitted on create. | [optional]
 **description** | **string** | Optional category description. | [optional]
+**meta_title** | **string** | SEO title override (max 60). Empty string clears. | [optional]
+**meta_description** | **string** | SEO meta description override (max 160). Empty string clears. | [optional]
 **parent_id** | **int** | Parent category id, or null for a top-level category. | [optional]
 **sort_order** | **int** | Display order (lower sorts first). | [optional]
 **is_active** | **bool** | Whether the category is visible on the storefront. | [optional]

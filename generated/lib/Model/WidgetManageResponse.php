@@ -58,7 +58,7 @@ class WidgetManageResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $openAPITypes = [
         'action' => 'string',
-        'tenant' => '\ShadowSoftware\DabDash\Model\BundleListResponseTenant',
+        'tenant' => '\ShadowSoftware\DabDash\Model\BundleHealthResponseTenant',
         'total' => 'int',
         'widgets' => '\ShadowSoftware\DabDash\Model\WidgetManageResponseWidgetsInner[]',
         'widget' => '\ShadowSoftware\DabDash\Model\WidgetManageResponseWidget',
@@ -354,7 +354,7 @@ class WidgetManageResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets tenant
      *
-     * @return \ShadowSoftware\DabDash\Model\BundleListResponseTenant|null
+     * @return \ShadowSoftware\DabDash\Model\BundleHealthResponseTenant|null
      */
     public function getTenant()
     {
@@ -364,7 +364,7 @@ class WidgetManageResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets tenant
      *
-     * @param \ShadowSoftware\DabDash\Model\BundleListResponseTenant|null $tenant tenant
+     * @param \ShadowSoftware\DabDash\Model\BundleHealthResponseTenant|null $tenant tenant
      *
      * @return self
      */

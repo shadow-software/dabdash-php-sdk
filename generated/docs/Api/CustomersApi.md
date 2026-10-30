@@ -14,7 +14,7 @@ All URIs are relative to https://.dabdash.com, except if the operation defines a
 | [**customerMessageDraftsCreate()**](CustomersApi.md#customerMessageDraftsCreate) | **POST** /api/v1/tools/customer_message_drafts_create | Create reply drafts only when the user explicitly asks in their current message to draft or prepare customer replies. Never call merely because unanswered messages exist. This tool never sends messages; Dabby presents each original customer message and proposed reply in chat for explicit confirmation. |
 | [**customerUpdate()**](CustomersApi.md#customerUpdate) | **POST** /api/v1/tools/customer_update | Update a customer&#39;s contact fields (name, email, phone) and/or suppress marketing consent (email_opt_out, sms_marketing_opt_out, sms_notifications_muted — one-way, cannot un-suppress). Verification, loyalty, and other DabDash-owned fields cannot be set here. |
 | [**deliveryDelayMessageDraftsCreate()**](CustomersApi.md#deliveryDelayMessageDraftsCreate) | **POST** /api/v1/tools/delivery_delay_message_drafts_create | Create delivery-delay email drafts only when the user explicitly asks in their current message to prepare or send a delivery update. Use only after order status confirms the customer is out for delivery. This tool never sends email; Dabby presents each proposal in chat for explicit confirmation. |
-| [**mailboxInspect()**](CustomersApi.md#mailboxInspect) | **POST** /api/v1/tools/mailbox_inspect | Inspect a tenant inbound mailbox: sync watermark, last error, recent ingestion counts (inbound/outbound), and a healthy/bootstrap/stalled/quiet verdict. Pass a tenant_slug, or pass platform&#x3D;true for a platform-owned mailbox (tenant_id IS NULL). |
+| [**mailboxInspect()**](CustomersApi.md#mailboxInspect) | **POST** /api/v1/tools/mailbox_inspect | Inspect a tenant mailbox: independent INBOX/Sent sync watermarks, errors, recent ingestion counts (inbound/outbound), and a healthy/bootstrap/stalled/quiet verdict. Pass a tenant_slug, or pass platform&#x3D;true for a platform-owned mailbox (tenant_id IS NULL). |
 
 
 ## `contactCleanup()`
@@ -511,7 +511,7 @@ try {
 mailboxInspect($mailbox_inspect_request): \ShadowSoftware\DabDash\Model\MailboxInspect200Response
 ```
 
-Inspect a tenant inbound mailbox: sync watermark, last error, recent ingestion counts (inbound/outbound), and a healthy/bootstrap/stalled/quiet verdict. Pass a tenant_slug, or pass platform=true for a platform-owned mailbox (tenant_id IS NULL).
+Inspect a tenant mailbox: independent INBOX/Sent sync watermarks, errors, recent ingestion counts (inbound/outbound), and a healthy/bootstrap/stalled/quiet verdict. Pass a tenant_slug, or pass platform=true for a platform-owned mailbox (tenant_id IS NULL).
 
 ### Example
 

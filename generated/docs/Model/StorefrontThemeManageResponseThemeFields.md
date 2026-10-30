@@ -1,0 +1,47 @@
+# StorefrontThemeManageResponseThemeFields
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**whatsapp_number** | **string** |  | [optional]
+**footer_newsletter_enabled** | **bool** |  | [optional]
+**footer_newsletter_title** | **string** |  | [optional]
+**footer_newsletter_text** | **string** |  | [optional]
+**footer_newsletter_button** | **string** |  | [optional]
+**footer_show_departments** | **bool** |  | [optional]
+**footer_departments_title** | **string** |  | [optional]
+**footer_show_areas** | **bool** |  | [optional]
+**footer_areas_title** | **string** |  | [optional]
+**footer_show_notes** | **bool** |  | [optional]
+**footer_notes** | **string** |  | [optional]
+**show_home_widgets** | **bool** |  | [optional]
+**home_widgets_eyebrow** | **string** |  | [optional]
+**home_widgets_title** | **string** |  | [optional]
+**home_widgets_text** | **string** |  | [optional]
+**show_home_gifts** | **bool** |  | [optional]
+**home_gifts_eyebrow** | **string** |  | [optional]
+**home_gifts_title** | **string** |  | [optional]
+**home_gifts_text** | **string** |  | [optional]
+**delivery_band_enabled** | **bool** |  | [optional]
+**delivery_band_kicker** | **string** |  | [optional]
+**delivery_band_headline** | **string** |  | [optional]
+**delivery_band_amount** | **string** |  | [optional]
+**delivery_band_note** | **string** |  | [optional]
+**delivery_band_pills** | **string** |  | [optional]
+**show_home_fresh** | **bool** |  | [optional]
+**home_fresh_eyebrow** | **string** |  | [optional]
+**home_fresh_title** | **string** |  | [optional]
+**show_home_about** | **bool** |  | [optional]
+**about_eyebrow** | **string** |  | [optional]
+**about_title** | **string** |  | [optional]
+**about_lede** | **string** |  | [optional]
+**about_heading** | **string** |  | [optional]
+**about_closer** | **string** |  | [optional]
+**about_cta_label** | **string** |  | [optional]
+**show_home_area** | **bool** |  | [optional]
+**area_eyebrow** | **string** |  | [optional]
+**area_title** | **string** |  | [optional]
+**about_cards** | [**\ShadowSoftware\DabDash\Model\StorefrontThemeManageResponseThemeFieldsAboutCardsInner[]**](StorefrontThemeManageResponseThemeFieldsAboutCardsInner.md) |  | [optional]
+
+[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -62,7 +62,13 @@ class MailboxInspectResponseSyncState implements ModelInterface, ArrayAccess, \J
         'minutes_since_last_sync' => 'int',
         'last_sync_error' => 'string',
         'last_sync_error_at' => 'string',
-        'minutes_since_last_error' => 'int'
+        'minutes_since_last_error' => 'int',
+        'sent_last_synced_uid' => 'int',
+        'sent_last_synced_at' => 'string',
+        'minutes_since_sent_last_sync' => 'int',
+        'sent_sync_error' => 'string',
+        'sent_sync_error_at' => 'string',
+        'minutes_since_sent_last_error' => 'int'
     ];
 
     /**
@@ -78,7 +84,13 @@ class MailboxInspectResponseSyncState implements ModelInterface, ArrayAccess, \J
         'minutes_since_last_sync' => null,
         'last_sync_error' => null,
         'last_sync_error_at' => null,
-        'minutes_since_last_error' => null
+        'minutes_since_last_error' => null,
+        'sent_last_synced_uid' => null,
+        'sent_last_synced_at' => null,
+        'minutes_since_sent_last_sync' => null,
+        'sent_sync_error' => null,
+        'sent_sync_error_at' => null,
+        'minutes_since_sent_last_error' => null
     ];
 
     /**
@@ -92,7 +104,13 @@ class MailboxInspectResponseSyncState implements ModelInterface, ArrayAccess, \J
         'minutes_since_last_sync' => true,
         'last_sync_error' => true,
         'last_sync_error_at' => true,
-        'minutes_since_last_error' => true
+        'minutes_since_last_error' => true,
+        'sent_last_synced_uid' => true,
+        'sent_last_synced_at' => true,
+        'minutes_since_sent_last_sync' => true,
+        'sent_sync_error' => true,
+        'sent_sync_error_at' => true,
+        'minutes_since_sent_last_error' => true
     ];
 
     /**
@@ -186,7 +204,13 @@ class MailboxInspectResponseSyncState implements ModelInterface, ArrayAccess, \J
         'minutes_since_last_sync' => 'minutes_since_last_sync',
         'last_sync_error' => 'last_sync_error',
         'last_sync_error_at' => 'last_sync_error_at',
-        'minutes_since_last_error' => 'minutes_since_last_error'
+        'minutes_since_last_error' => 'minutes_since_last_error',
+        'sent_last_synced_uid' => 'sent_last_synced_uid',
+        'sent_last_synced_at' => 'sent_last_synced_at',
+        'minutes_since_sent_last_sync' => 'minutes_since_sent_last_sync',
+        'sent_sync_error' => 'sent_sync_error',
+        'sent_sync_error_at' => 'sent_sync_error_at',
+        'minutes_since_sent_last_error' => 'minutes_since_sent_last_error'
     ];
 
     /**
@@ -200,7 +224,13 @@ class MailboxInspectResponseSyncState implements ModelInterface, ArrayAccess, \J
         'minutes_since_last_sync' => 'setMinutesSinceLastSync',
         'last_sync_error' => 'setLastSyncError',
         'last_sync_error_at' => 'setLastSyncErrorAt',
-        'minutes_since_last_error' => 'setMinutesSinceLastError'
+        'minutes_since_last_error' => 'setMinutesSinceLastError',
+        'sent_last_synced_uid' => 'setSentLastSyncedUid',
+        'sent_last_synced_at' => 'setSentLastSyncedAt',
+        'minutes_since_sent_last_sync' => 'setMinutesSinceSentLastSync',
+        'sent_sync_error' => 'setSentSyncError',
+        'sent_sync_error_at' => 'setSentSyncErrorAt',
+        'minutes_since_sent_last_error' => 'setMinutesSinceSentLastError'
     ];
 
     /**
@@ -214,7 +244,13 @@ class MailboxInspectResponseSyncState implements ModelInterface, ArrayAccess, \J
         'minutes_since_last_sync' => 'getMinutesSinceLastSync',
         'last_sync_error' => 'getLastSyncError',
         'last_sync_error_at' => 'getLastSyncErrorAt',
-        'minutes_since_last_error' => 'getMinutesSinceLastError'
+        'minutes_since_last_error' => 'getMinutesSinceLastError',
+        'sent_last_synced_uid' => 'getSentLastSyncedUid',
+        'sent_last_synced_at' => 'getSentLastSyncedAt',
+        'minutes_since_sent_last_sync' => 'getMinutesSinceSentLastSync',
+        'sent_sync_error' => 'getSentSyncError',
+        'sent_sync_error_at' => 'getSentSyncErrorAt',
+        'minutes_since_sent_last_error' => 'getMinutesSinceSentLastError'
     ];
 
     /**
@@ -280,6 +316,12 @@ class MailboxInspectResponseSyncState implements ModelInterface, ArrayAccess, \J
         $this->setIfExists('last_sync_error', $data ?? [], null);
         $this->setIfExists('last_sync_error_at', $data ?? [], null);
         $this->setIfExists('minutes_since_last_error', $data ?? [], null);
+        $this->setIfExists('sent_last_synced_uid', $data ?? [], null);
+        $this->setIfExists('sent_last_synced_at', $data ?? [], null);
+        $this->setIfExists('minutes_since_sent_last_sync', $data ?? [], null);
+        $this->setIfExists('sent_sync_error', $data ?? [], null);
+        $this->setIfExists('sent_sync_error_at', $data ?? [], null);
+        $this->setIfExists('minutes_since_sent_last_error', $data ?? [], null);
     }
 
     /**
@@ -524,6 +566,210 @@ class MailboxInspectResponseSyncState implements ModelInterface, ArrayAccess, \J
             }
         }
         $this->container['minutes_since_last_error'] = $minutes_since_last_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets sent_last_synced_uid
+     *
+     * @return int|null
+     */
+    public function getSentLastSyncedUid()
+    {
+        return $this->container['sent_last_synced_uid'];
+    }
+
+    /**
+     * Sets sent_last_synced_uid
+     *
+     * @param int|null $sent_last_synced_uid sent_last_synced_uid
+     *
+     * @return self
+     */
+    public function setSentLastSyncedUid($sent_last_synced_uid)
+    {
+        if (is_null($sent_last_synced_uid)) {
+            array_push($this->openAPINullablesSetToNull, 'sent_last_synced_uid');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('sent_last_synced_uid', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['sent_last_synced_uid'] = $sent_last_synced_uid;
+
+        return $this;
+    }
+
+    /**
+     * Gets sent_last_synced_at
+     *
+     * @return string|null
+     */
+    public function getSentLastSyncedAt()
+    {
+        return $this->container['sent_last_synced_at'];
+    }
+
+    /**
+     * Sets sent_last_synced_at
+     *
+     * @param string|null $sent_last_synced_at sent_last_synced_at
+     *
+     * @return self
+     */
+    public function setSentLastSyncedAt($sent_last_synced_at)
+    {
+        if (is_null($sent_last_synced_at)) {
+            array_push($this->openAPINullablesSetToNull, 'sent_last_synced_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('sent_last_synced_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['sent_last_synced_at'] = $sent_last_synced_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets minutes_since_sent_last_sync
+     *
+     * @return int|null
+     */
+    public function getMinutesSinceSentLastSync()
+    {
+        return $this->container['minutes_since_sent_last_sync'];
+    }
+
+    /**
+     * Sets minutes_since_sent_last_sync
+     *
+     * @param int|null $minutes_since_sent_last_sync minutes_since_sent_last_sync
+     *
+     * @return self
+     */
+    public function setMinutesSinceSentLastSync($minutes_since_sent_last_sync)
+    {
+        if (is_null($minutes_since_sent_last_sync)) {
+            array_push($this->openAPINullablesSetToNull, 'minutes_since_sent_last_sync');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('minutes_since_sent_last_sync', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['minutes_since_sent_last_sync'] = $minutes_since_sent_last_sync;
+
+        return $this;
+    }
+
+    /**
+     * Gets sent_sync_error
+     *
+     * @return string|null
+     */
+    public function getSentSyncError()
+    {
+        return $this->container['sent_sync_error'];
+    }
+
+    /**
+     * Sets sent_sync_error
+     *
+     * @param string|null $sent_sync_error sent_sync_error
+     *
+     * @return self
+     */
+    public function setSentSyncError($sent_sync_error)
+    {
+        if (is_null($sent_sync_error)) {
+            array_push($this->openAPINullablesSetToNull, 'sent_sync_error');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('sent_sync_error', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['sent_sync_error'] = $sent_sync_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets sent_sync_error_at
+     *
+     * @return string|null
+     */
+    public function getSentSyncErrorAt()
+    {
+        return $this->container['sent_sync_error_at'];
+    }
+
+    /**
+     * Sets sent_sync_error_at
+     *
+     * @param string|null $sent_sync_error_at sent_sync_error_at
+     *
+     * @return self
+     */
+    public function setSentSyncErrorAt($sent_sync_error_at)
+    {
+        if (is_null($sent_sync_error_at)) {
+            array_push($this->openAPINullablesSetToNull, 'sent_sync_error_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('sent_sync_error_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['sent_sync_error_at'] = $sent_sync_error_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets minutes_since_sent_last_error
+     *
+     * @return int|null
+     */
+    public function getMinutesSinceSentLastError()
+    {
+        return $this->container['minutes_since_sent_last_error'];
+    }
+
+    /**
+     * Sets minutes_since_sent_last_error
+     *
+     * @param int|null $minutes_since_sent_last_error minutes_since_sent_last_error
+     *
+     * @return self
+     */
+    public function setMinutesSinceSentLastError($minutes_since_sent_last_error)
+    {
+        if (is_null($minutes_since_sent_last_error)) {
+            array_push($this->openAPINullablesSetToNull, 'minutes_since_sent_last_error');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('minutes_since_sent_last_error', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['minutes_since_sent_last_error'] = $minutes_since_sent_last_error;
 
         return $this;
     }

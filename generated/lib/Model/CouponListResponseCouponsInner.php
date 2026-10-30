@@ -71,7 +71,8 @@ class CouponListResponseCouponsInner implements ModelInterface, ArrayAccess, \Js
         'applies_to' => 'string',
         'is_active' => 'bool',
         'starts_at' => 'string',
-        'expires_at' => 'string'
+        'expires_at' => 'string',
+        'contact_list_id' => 'int'
     ];
 
     /**
@@ -96,7 +97,8 @@ class CouponListResponseCouponsInner implements ModelInterface, ArrayAccess, \Js
         'applies_to' => null,
         'is_active' => null,
         'starts_at' => null,
-        'expires_at' => null
+        'expires_at' => null,
+        'contact_list_id' => null
     ];
 
     /**
@@ -119,7 +121,8 @@ class CouponListResponseCouponsInner implements ModelInterface, ArrayAccess, \Js
         'applies_to' => false,
         'is_active' => false,
         'starts_at' => true,
-        'expires_at' => true
+        'expires_at' => true,
+        'contact_list_id' => true
     ];
 
     /**
@@ -222,7 +225,8 @@ class CouponListResponseCouponsInner implements ModelInterface, ArrayAccess, \Js
         'applies_to' => 'applies_to',
         'is_active' => 'is_active',
         'starts_at' => 'starts_at',
-        'expires_at' => 'expires_at'
+        'expires_at' => 'expires_at',
+        'contact_list_id' => 'contact_list_id'
     ];
 
     /**
@@ -245,7 +249,8 @@ class CouponListResponseCouponsInner implements ModelInterface, ArrayAccess, \Js
         'applies_to' => 'setAppliesTo',
         'is_active' => 'setIsActive',
         'starts_at' => 'setStartsAt',
-        'expires_at' => 'setExpiresAt'
+        'expires_at' => 'setExpiresAt',
+        'contact_list_id' => 'setContactListId'
     ];
 
     /**
@@ -268,7 +273,8 @@ class CouponListResponseCouponsInner implements ModelInterface, ArrayAccess, \Js
         'applies_to' => 'getAppliesTo',
         'is_active' => 'getIsActive',
         'starts_at' => 'getStartsAt',
-        'expires_at' => 'getExpiresAt'
+        'expires_at' => 'getExpiresAt',
+        'contact_list_id' => 'getContactListId'
     ];
 
     /**
@@ -343,6 +349,7 @@ class CouponListResponseCouponsInner implements ModelInterface, ArrayAccess, \Js
         $this->setIfExists('is_active', $data ?? [], null);
         $this->setIfExists('starts_at', $data ?? [], null);
         $this->setIfExists('expires_at', $data ?? [], null);
+        $this->setIfExists('contact_list_id', $data ?? [], null);
     }
 
     /**
@@ -809,6 +816,40 @@ class CouponListResponseCouponsInner implements ModelInterface, ArrayAccess, \Js
             }
         }
         $this->container['expires_at'] = $expires_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets contact_list_id
+     *
+     * @return int|null
+     */
+    public function getContactListId()
+    {
+        return $this->container['contact_list_id'];
+    }
+
+    /**
+     * Sets contact_list_id
+     *
+     * @param int|null $contact_list_id contact_list_id
+     *
+     * @return self
+     */
+    public function setContactListId($contact_list_id)
+    {
+        if (is_null($contact_list_id)) {
+            array_push($this->openAPINullablesSetToNull, 'contact_list_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('contact_list_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['contact_list_id'] = $contact_list_id;
 
         return $this;
     }

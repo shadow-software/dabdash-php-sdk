@@ -19,5 +19,6 @@ Name | Type | Description | Notes
 **is_active** | **bool** |  | [optional]
 **starts_at** | **string** |  | [optional]
 **expires_at** | **string** |  | [optional]
+**contact_list_id** | **int** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -89,6 +89,15 @@ class OrderDashboardResponseOrdersInnerTest extends TestCase
     }
 
     /**
+     * Test attribute "customer_id"
+     */
+    public function testPropertyCustomerId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "order_number"
      */
     public function testPropertyOrderNumber()
@@ -125,18 +134,27 @@ class OrderDashboardResponseOrdersInnerTest extends TestCase
     }
 
     /**
-     * Test attribute "subtotal"
+     * Test attribute "payment_method"
      */
-    public function testPropertySubtotal()
+    public function testPropertyPaymentMethod()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "total"
+     * Test attribute "currency"
      */
-    public function testPropertyTotal()
+    public function testPropertyCurrency()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "customer_name"
+     */
+    public function testPropertyCustomerName()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -155,6 +173,105 @@ class OrderDashboardResponseOrdersInnerTest extends TestCase
      * Test attribute "customer_phone"
      */
     public function testPropertyCustomerPhone()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "delivery_address"
+     */
+    public function testPropertyDeliveryAddress()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "delivery_notes"
+     */
+    public function testPropertyDeliveryNotes()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "notes"
+     */
+    public function testPropertyNotes()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "subtotal_cents"
+     */
+    public function testPropertySubtotalCents()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "subtotal"
+     */
+    public function testPropertySubtotal()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "delivery_fee_cents"
+     */
+    public function testPropertyDeliveryFeeCents()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "service_fee_cents"
+     */
+    public function testPropertyServiceFeeCents()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "discount_amount_cents"
+     */
+    public function testPropertyDiscountAmountCents()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "tax_amount_cents"
+     */
+    public function testPropertyTaxAmountCents()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "total_cents"
+     */
+    public function testPropertyTotalCents()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "total"
+     */
+    public function testPropertyTotal()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -182,6 +299,15 @@ class OrderDashboardResponseOrdersInnerTest extends TestCase
      * Test attribute "mix_match_discount"
      */
     public function testPropertyMixMatchDiscount()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "loyalty_tier_discount"
+     */
+    public function testPropertyLoyaltyTierDiscount()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -227,6 +353,24 @@ class OrderDashboardResponseOrdersInnerTest extends TestCase
      * Test attribute "created_at"
      */
     public function testPropertyCreatedAt()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "updated_at"
+     */
+    public function testPropertyUpdatedAt()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "items"
+     */
+    public function testPropertyItems()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

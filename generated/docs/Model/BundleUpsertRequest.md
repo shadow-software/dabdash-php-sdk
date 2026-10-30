@@ -14,5 +14,6 @@ Name | Type | Description | Notes
 **ends_at** | **string** | Optional end datetime (tenant timezone, stored as UTC). Must be on/after starts_at. Pass null to clear. | [optional]
 **variation_ids** | **int[]** | Product variation IDs to apply the bundle to. Omit to leave membership unchanged. | [optional]
 **variation_mode** | **string** | How to apply variation_ids: \&quot;replace\&quot; (default), \&quot;add\&quot;, or \&quot;detach\&quot;. | [optional]
+**rules** | **mixed[]** | Replaces the bundle&#39;s membership rule (AND-ed conditions). Each item: {field: unit_price|category_id|exclude_category_id|weight_value|mix_match_tag|product_status|tracking_type, operator: eq|lt|lte|gt|gte|between (default eq), value}. Use exclude_category_id to omit products belonging to a category while matching another category. Pass [] or null to clear the bundle back to fully manual. Preview with bundle_rule_preview before saving. Omit to leave the current rule state untouched. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

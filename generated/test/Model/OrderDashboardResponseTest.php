@@ -89,6 +89,42 @@ class OrderDashboardResponseTest extends TestCase
     }
 
     /**
+     * Test attribute "has_more"
+     */
+    public function testPropertyHasMore()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "next_cursor"
+     */
+    public function testPropertyNextCursor()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "limit"
+     */
+    public function testPropertyLimit()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "include_items"
+     */
+    public function testPropertyIncludeItems()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "orders"
      */
     public function testPropertyOrders()

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**tenant** | [**\ShadowSoftware\DabDash\Model\BundleListResponseTenant**](BundleListResponseTenant.md) |  | [optional]
+**tenant** | [**\ShadowSoftware\DabDash\Model\BundleHealthResponseTenant**](BundleHealthResponseTenant.md) |  | [optional]
 **mix_match_settings** | [**\ShadowSoftware\DabDash\Model\ProductInspectResponseMixMatchSettings**](ProductInspectResponseMixMatchSettings.md) |  | [optional]
 **products** | [**\ShadowSoftware\DabDash\Model\ProductInspectResponseProductsInner[]**](ProductInspectResponseProductsInner.md) |  | [optional]
 

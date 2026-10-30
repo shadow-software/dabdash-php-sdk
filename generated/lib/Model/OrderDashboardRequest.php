@@ -60,12 +60,16 @@ class OrderDashboardRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'order_number' => 'string',
         'customer_email' => 'string',
         'customer_phone' => 'string',
+        'customer_name' => 'string',
         'status' => 'string',
         'payment_status' => 'string',
         'date_from' => 'string',
         'date_to' => 'string',
+        'updated_since' => 'string',
         'min_total' => 'int',
-        'limit' => 'int'
+        'limit' => 'int',
+        'cursor' => 'string',
+        'include_items' => 'bool'
     ];
 
     /**
@@ -79,12 +83,16 @@ class OrderDashboardRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'order_number' => null,
         'customer_email' => null,
         'customer_phone' => null,
+        'customer_name' => null,
         'status' => null,
         'payment_status' => null,
         'date_from' => null,
         'date_to' => null,
+        'updated_since' => null,
         'min_total' => null,
-        'limit' => null
+        'limit' => null,
+        'cursor' => null,
+        'include_items' => null
     ];
 
     /**
@@ -96,12 +104,16 @@ class OrderDashboardRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'order_number' => true,
         'customer_email' => true,
         'customer_phone' => true,
+        'customer_name' => true,
         'status' => true,
         'payment_status' => true,
         'date_from' => true,
         'date_to' => true,
+        'updated_since' => true,
         'min_total' => true,
-        'limit' => true
+        'limit' => true,
+        'cursor' => true,
+        'include_items' => true
     ];
 
     /**
@@ -193,12 +205,16 @@ class OrderDashboardRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'order_number' => 'order_number',
         'customer_email' => 'customer_email',
         'customer_phone' => 'customer_phone',
+        'customer_name' => 'customer_name',
         'status' => 'status',
         'payment_status' => 'payment_status',
         'date_from' => 'date_from',
         'date_to' => 'date_to',
+        'updated_since' => 'updated_since',
         'min_total' => 'min_total',
-        'limit' => 'limit'
+        'limit' => 'limit',
+        'cursor' => 'cursor',
+        'include_items' => 'include_items'
     ];
 
     /**
@@ -210,12 +226,16 @@ class OrderDashboardRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'order_number' => 'setOrderNumber',
         'customer_email' => 'setCustomerEmail',
         'customer_phone' => 'setCustomerPhone',
+        'customer_name' => 'setCustomerName',
         'status' => 'setStatus',
         'payment_status' => 'setPaymentStatus',
         'date_from' => 'setDateFrom',
         'date_to' => 'setDateTo',
+        'updated_since' => 'setUpdatedSince',
         'min_total' => 'setMinTotal',
-        'limit' => 'setLimit'
+        'limit' => 'setLimit',
+        'cursor' => 'setCursor',
+        'include_items' => 'setIncludeItems'
     ];
 
     /**
@@ -227,12 +247,16 @@ class OrderDashboardRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'order_number' => 'getOrderNumber',
         'customer_email' => 'getCustomerEmail',
         'customer_phone' => 'getCustomerPhone',
+        'customer_name' => 'getCustomerName',
         'status' => 'getStatus',
         'payment_status' => 'getPaymentStatus',
         'date_from' => 'getDateFrom',
         'date_to' => 'getDateTo',
+        'updated_since' => 'getUpdatedSince',
         'min_total' => 'getMinTotal',
-        'limit' => 'getLimit'
+        'limit' => 'getLimit',
+        'cursor' => 'getCursor',
+        'include_items' => 'getIncludeItems'
     ];
 
     /**
@@ -281,7 +305,10 @@ class OrderDashboardRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     public const STATUS_PREPARING = 'preparing';
     public const STATUS_OUT_FOR_DELIVERY = 'out_for_delivery';
     public const STATUS_DELIVERED = 'delivered';
+    public const STATUS_COMPLETED = 'completed';
     public const STATUS_CANCELLED = 'cancelled';
+    public const STATUS_REFUNDED = 'refunded';
+    public const PAYMENT_STATUS_UNPAID = 'unpaid';
     public const PAYMENT_STATUS_PENDING = 'pending';
     public const PAYMENT_STATUS_PAID = 'paid';
     public const PAYMENT_STATUS_FAILED = 'failed';
@@ -300,7 +327,9 @@ class OrderDashboardRequest implements ModelInterface, ArrayAccess, \JsonSeriali
             self::STATUS_PREPARING,
             self::STATUS_OUT_FOR_DELIVERY,
             self::STATUS_DELIVERED,
+            self::STATUS_COMPLETED,
             self::STATUS_CANCELLED,
+            self::STATUS_REFUNDED,
         ];
     }
 
@@ -312,6 +341,7 @@ class OrderDashboardRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     public function getPaymentStatusAllowableValues()
     {
         return [
+            self::PAYMENT_STATUS_UNPAID,
             self::PAYMENT_STATUS_PENDING,
             self::PAYMENT_STATUS_PAID,
             self::PAYMENT_STATUS_FAILED,
@@ -337,12 +367,16 @@ class OrderDashboardRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->setIfExists('order_number', $data ?? [], null);
         $this->setIfExists('customer_email', $data ?? [], null);
         $this->setIfExists('customer_phone', $data ?? [], null);
+        $this->setIfExists('customer_name', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('payment_status', $data ?? [], null);
         $this->setIfExists('date_from', $data ?? [], null);
         $this->setIfExists('date_to', $data ?? [], null);
+        $this->setIfExists('updated_since', $data ?? [], null);
         $this->setIfExists('min_total', $data ?? [], null);
         $this->setIfExists('limit', $data ?? [], null);
+        $this->setIfExists('cursor', $data ?? [], null);
+        $this->setIfExists('include_items', $data ?? [], null);
     }
 
     /**
@@ -508,6 +542,40 @@ class OrderDashboardRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
+     * Gets customer_name
+     *
+     * @return string|null
+     */
+    public function getCustomerName()
+    {
+        return $this->container['customer_name'];
+    }
+
+    /**
+     * Sets customer_name
+     *
+     * @param string|null $customer_name Partial customer name match (optional)
+     *
+     * @return self
+     */
+    public function setCustomerName($customer_name)
+    {
+        if (is_null($customer_name)) {
+            array_push($this->openAPINullablesSetToNull, 'customer_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('customer_name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['customer_name'] = $customer_name;
+
+        return $this;
+    }
+
+    /**
      * Gets status
      *
      * @return string|null
@@ -520,7 +588,7 @@ class OrderDashboardRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets status
      *
-     * @param string|null $status Filter by order status: pending, confirmed, preparing, out_for_delivery, delivered, cancelled
+     * @param string|null $status Filter by order status
      *
      * @return self
      */
@@ -564,7 +632,7 @@ class OrderDashboardRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets payment_status
      *
-     * @param string|null $payment_status Filter by payment status: pending, paid, failed, refunded
+     * @param string|null $payment_status Filter by payment status
      *
      * @return self
      */
@@ -608,7 +676,7 @@ class OrderDashboardRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets date_from
      *
-     * @param string|null $date_from Start date filter (YYYY-MM-DD format)
+     * @param string|null $date_from Start created date filter (YYYY-MM-DD format)
      *
      * @return self
      */
@@ -642,7 +710,7 @@ class OrderDashboardRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets date_to
      *
-     * @param string|null $date_to End date filter (YYYY-MM-DD format)
+     * @param string|null $date_to End created date filter (YYYY-MM-DD format)
      *
      * @return self
      */
@@ -659,6 +727,40 @@ class OrderDashboardRequest implements ModelInterface, ArrayAccess, \JsonSeriali
             }
         }
         $this->container['date_to'] = $date_to;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated_since
+     *
+     * @return string|null
+     */
+    public function getUpdatedSince()
+    {
+        return $this->container['updated_since'];
+    }
+
+    /**
+     * Sets updated_since
+     *
+     * @param string|null $updated_since ISO-8601 timestamp; only orders updated at or after this time (optional)
+     *
+     * @return self
+     */
+    public function setUpdatedSince($updated_since)
+    {
+        if (is_null($updated_since)) {
+            array_push($this->openAPINullablesSetToNull, 'updated_since');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('updated_since', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['updated_since'] = $updated_since;
 
         return $this;
     }
@@ -727,6 +829,74 @@ class OrderDashboardRequest implements ModelInterface, ArrayAccess, \JsonSeriali
             }
         }
         $this->container['limit'] = $limit;
+
+        return $this;
+    }
+
+    /**
+     * Gets cursor
+     *
+     * @return string|null
+     */
+    public function getCursor()
+    {
+        return $this->container['cursor'];
+    }
+
+    /**
+     * Sets cursor
+     *
+     * @param string|null $cursor Opaque next_cursor from the previous response; omit to start at the newest order
+     *
+     * @return self
+     */
+    public function setCursor($cursor)
+    {
+        if (is_null($cursor)) {
+            array_push($this->openAPINullablesSetToNull, 'cursor');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cursor', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['cursor'] = $cursor;
+
+        return $this;
+    }
+
+    /**
+     * Gets include_items
+     *
+     * @return bool|null
+     */
+    public function getIncludeItems()
+    {
+        return $this->container['include_items'];
+    }
+
+    /**
+     * Sets include_items
+     *
+     * @param bool|null $include_items Include order line items for sync/export use (default false)
+     *
+     * @return self
+     */
+    public function setIncludeItems($include_items)
+    {
+        if (is_null($include_items)) {
+            array_push($this->openAPINullablesSetToNull, 'include_items');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('include_items', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['include_items'] = $include_items;
 
         return $this;
     }

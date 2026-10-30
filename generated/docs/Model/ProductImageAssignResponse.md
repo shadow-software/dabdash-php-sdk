@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **action** | **string** |  | [optional]
 **dry_run** | **bool** |  | [optional]
-**tenant** | [**\ShadowSoftware\DabDash\Model\BundleListResponseTenant**](BundleListResponseTenant.md) |  | [optional]
+**tenant** | [**\ShadowSoftware\DabDash\Model\BundleHealthResponseTenant**](BundleHealthResponseTenant.md) |  | [optional]
 **product** | [**\ShadowSoftware\DabDash\Model\ProductImageAssignResponseProduct**](ProductImageAssignResponseProduct.md) |  | [optional]
 **changes** | [**\ShadowSoftware\DabDash\Model\ProductImageAssignResponseChanges**](ProductImageAssignResponseChanges.md) |  | [optional]
 
