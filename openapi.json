@@ -2177,6 +2177,133 @@
                 },
                 "type": "object"
             },
+            "CatalogSaleManageRequest": {
+                "properties": {
+                    "action": {
+                        "description": "\"show\" (default), \"apply\", or \"remove\".",
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "type": {
+                        "description": "\"percent\" or \"flat\". Required for apply.",
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "amount": {
+                        "description": "Percent 0-100, or dollars off the Was price. Required for apply.",
+                        "type": [
+                            "number",
+                            "null"
+                        ]
+                    },
+                    "category_ids": {
+                        "description": "Category ids. Subcategories are included. Required for apply.",
+                        "items": {
+                            "type": "integer"
+                        },
+                        "type": [
+                            "array",
+                            "null"
+                        ]
+                    },
+                    "mode": {
+                        "description": "For remove: \"restore\" (default) puts the remembered sale back. \"keep\" makes the new price regular and forgets the old sale.",
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "dry_run": {
+                        "description": "Defaults true for apply and remove.",
+                        "type": [
+                            "boolean",
+                            "null"
+                        ]
+                    },
+                    "confirm": {
+                        "description": "Must be true when dry_run=false.",
+                        "type": [
+                            "boolean",
+                            "null"
+                        ]
+                    }
+                },
+                "type": "object"
+            },
+            "CatalogSaleManageResponse": {
+                "properties": {
+                    "action": {
+                        "type": "string"
+                    },
+                    "applied": {
+                        "type": "boolean"
+                    },
+                    "dry_run": {
+                        "type": [
+                            "boolean",
+                            "null"
+                        ]
+                    },
+                    "sale": {
+                        "properties": {
+                            "active": {
+                                "type": "boolean"
+                            },
+                            "type": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "amount": {
+                                "type": [
+                                    "number",
+                                    "null"
+                                ]
+                            },
+                            "basis": {
+                                "type": "string"
+                            },
+                            "category_ids": {
+                                "items": {
+                                    "type": "integer"
+                                },
+                                "type": "array"
+                            },
+                            "remembered_variations": {
+                                "type": [
+                                    "integer",
+                                    "null"
+                                ]
+                            },
+                            "variations": {
+                                "type": [
+                                    "integer",
+                                    "null"
+                                ]
+                            },
+                            "mode": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "samples": {
+                        "type": [
+                            "array",
+                            "null"
+                        ]
+                    }
+                },
+                "type": "object"
+            },
             "CatalogVariantAuditRequest": {
                 "properties": {
                     "name_query": {
@@ -8132,6 +8259,35 @@
                                     "number",
                                     "null"
                                 ]
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "catalog_sale": {
+                        "properties": {
+                            "active": {
+                                "type": "boolean"
+                            },
+                            "type": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "amount": {
+                                "type": [
+                                    "number",
+                                    "null"
+                                ]
+                            },
+                            "basis": {
+                                "type": "string"
+                            },
+                            "category_ids": {
+                                "items": {
+                                    "type": "integer"
+                                },
+                                "type": "array"
                             }
                         },
                         "type": "object"
@@ -15870,6 +16026,179 @@
                 ]
             }
         },
+        "/api/v1/tools/catalog_sale_manage": {
+            "post": {
+                "operationId": "catalog_sale_manage",
+                "summary": "Apply or remove a category shelf sale. The percent or dollar amount comes off\nthe Was price (the compare-at price when the item is already on sale, otherwise\nthe current price), never off the current sale price. Each changed variation's\nselling price and Was price are remembered. remove with mode \"restore\" writes\nboth back. mode \"keep\" leaves the new price and drops the Was badge, forgetting\nthe previous sale.\n\nSelected categories include their subcategories. Products in other categories\nstay untouched. One category sale at a time, and it cannot run during a\nstorewide sale. A storewide sale covers the whole catalog and discounts the\ncurrent selling price instead.\n\nThis is not a coupon. coupon_upsert only discounts the current cart price at\ncheckout and does not change or remember shelf prices.\n\nACTIONS:\n  show (default): whether a category sale is active and how many prices it remembers.\n  apply: type \"percent\" (0-100) or \"flat\" (dollars), amount, and category_ids.\n  remove: mode \"restore\" (default) or \"keep\".\n\napply and remove preview unless dry_run=false and confirm=true.\nResolve category ids with category_manage before applying.",
+                "tags": [
+                    "promotions",
+                    "write"
+                ],
+                "requestBody": {
+                    "required": false,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CatalogSaleManageRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "tool": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "$ref": "#/components/schemas/CatalogSaleManageResponse"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Missing or invalid tenant credentials.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "402": {
+                        "description": "The tenant has no active trial, subscription, or grace period.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "A read-scoped key was used to call a write tool.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unknown tool name.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Request validation failed, or the tool reported a business error.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "tenantApiKey": []
+                    },
+                    {
+                        "tenantOAuth": []
+                    }
+                ]
+            }
+        },
         "/api/v1/tools/catalog_variant_audit": {
             "post": {
                 "operationId": "catalog_variant_audit",
@@ -16736,7 +17065,7 @@
         "/api/v1/tools/coupon_upsert": {
             "post": {
                 "operationId": "coupon_upsert",
-                "summary": "Create or update a discount coupon on behalf of a tenant. Coupons are customer-entered codes\napplied at checkout (distinct from bundles, which fire automatically on cart contents — use\nbundle_upsert for those).\n\nUPDATE MODE (coupon_id provided):\n  Edits the coupon. Only the fields you pass are changed; omitted fields are left as-is.\n\nCREATE MODE (no coupon_id):\n  Creates a new coupon. code, type, and value are required.\n\nVALUE UNITS:\n  type = \"percentage\"     → value is a percentage 0-100 off the order subtotal.\n  type = \"fixed\"          → value is DOLLARS off the order subtotal (e.g. 10 = $10 off).\n  type = \"free_delivery\"  → value is ignored (pass 0); this type only waives the delivery fee.\n\nmin_order is a dollar minimum order subtotal required to use the coupon (pass dollars, e.g. 25\nfor a $25 minimum — the tool stores cents internally). Omit or pass 0 for no minimum.\n\nfreebie_id links this coupon to an existing Freebie (see freebie_list/freebie_upsert), turning it\ninto a \"code-triggered freebie\": a customer who applies the code while below min_order has the\ncode parked (kept attached, not rejected) and sees cart progress toward unlocking it, instead of\nthe code being discarded. Pass null to unlink. The freebie must belong to the same tenant.\n\nlimit_match_by (\"email\"|\"phone\"|\"both\") controls how max_uses_per_customer is enforced. Using\n\"phone\" or \"both\" REQUIRES the tenant's \"Require phone at checkout\" setting to be on — otherwise\nthe update is rejected, since customers without a phone on file could otherwise reuse the coupon\npast its per-customer limit.\n\nSCHEDULE:\n  starts_at / expires_at are interpreted in the tenant's timezone and stored as UTC. Pass\n  null/omit for an always-on coupon.\n\nPRODUCT/CATEGORY SCOPING:\n  applies_to=\"products\" or \"categories\" restricts the discount to matching cart lines only —\n  checkout math is fully scope-aware (a scoped coupon never discounts the whole cart). Pass\n  applies_to_ids as an array of product ids (when applies_to=\"products\") or category ids (when\n  applies_to=\"categories\") — all ids must belong to this tenant. Passing applies_to=\"products\"/\n  \"categories\" with an empty or omitted applies_to_ids behaves the same as \"all\" (no scope\n  configured yet). Switching back to applies_to=\"all\" does not automatically clear a\n  previously-set applies_to_ids — pass applies_to_ids=[] explicitly to clear it.\n\nSUBSCRIPTION MOUNTING DISCOUNT LADDERS (subscribe-and-save retention):\n  A coupon can carry a \"mounting ladder\" so its discount climbs with each successive order a\n  customer's delivery subscription generates, pegging at a ceiling — e.g. order 1 = 0% off,\n  then +5% every order up to a 20% cap. This only affects orders generated for a subscription\n  linked to this coupon (DeliverySubscription.coupon_id) — it has no effect on ordinary\n  one-off checkout use of the code, which still uses type/value as normal.\n\n  subscription_ladder_id: link to an existing ladder (from another coupon) by id, or pass null\n  to unlink. Must belong to the same tenant.\n\n  ladder_start_percent / ladder_step_percent / ladder_cap_percent / ladder_start_order_index:\n  pass any of these to CREATE a new ladder inline (on coupon create) or EDIT the tiers of the\n  ladder already linked to this coupon (on update) — do not combine with subscription_ladder_id\n  in the same call. All four are whole-number percentages (0-100) except start_order_index,\n  which is the 1-based order number the climb begins at (orders before it stay at\n  ladder_start_percent). Omitted ladder_* fields default to 0% start / 5% step / 20% cap /\n  order 1 on create; on update, only the fields you pass are changed.\n\ncontact_list_id optionally restricts redemption to a tenant-owned manual or Smart List.\nSmart Lists are re-evaluated live; manual-list customers and leads are matched by contact\nemail. The restriction is checked at cart apply and checkout redemption time. Pass null to\nremove it.\n\nAlways call coupon_list first to get the coupon_id and confirm the current configuration.",
+                "summary": "Create or update a discount coupon on behalf of a tenant. Coupons are customer-entered codes\napplied at checkout (distinct from bundles, which fire automatically on cart contents — use\nbundle_upsert for those). A coupon discounts the current cart price. It does not change the\nshelf price or the Was price, and it cannot put an earlier sale back. For a category shelf\nsale off the Was price that remembers and restores the previous sale, use catalog_sale_manage.\n\nUPDATE MODE (coupon_id provided):\n  Edits the coupon. Only the fields you pass are changed; omitted fields are left as-is.\n\nCREATE MODE (no coupon_id):\n  Creates a new coupon. code, type, and value are required.\n\nVALUE UNITS:\n  type = \"percentage\"     → value is a percentage 0-100 off the order subtotal.\n  type = \"fixed\"          → value is DOLLARS off the order subtotal (e.g. 10 = $10 off).\n  type = \"free_delivery\"  → value is ignored (pass 0); this type only waives the delivery fee.\n\nmin_order is a dollar minimum order subtotal required to use the coupon (pass dollars, e.g. 25\nfor a $25 minimum — the tool stores cents internally). Omit or pass 0 for no minimum.\n\nfreebie_id links this coupon to an existing Freebie (see freebie_list/freebie_upsert), turning it\ninto a \"code-triggered freebie\": a customer who applies the code while below min_order has the\ncode parked (kept attached, not rejected) and sees cart progress toward unlocking it, instead of\nthe code being discarded. Pass null to unlink. The freebie must belong to the same tenant.\n\nlimit_match_by (\"email\"|\"phone\"|\"both\") controls how max_uses_per_customer is enforced. Using\n\"phone\" or \"both\" REQUIRES the tenant's \"Require phone at checkout\" setting to be on — otherwise\nthe update is rejected, since customers without a phone on file could otherwise reuse the coupon\npast its per-customer limit.\n\nSCHEDULE:\n  starts_at / expires_at are interpreted in the tenant's timezone and stored as UTC. Pass\n  null/omit for an always-on coupon.\n\nPRODUCT/CATEGORY SCOPING:\n  applies_to=\"products\" or \"categories\" restricts the discount to matching cart lines only —\n  checkout math is fully scope-aware (a scoped coupon never discounts the whole cart). Pass\n  applies_to_ids as an array of product ids (when applies_to=\"products\") or category ids (when\n  applies_to=\"categories\") — all ids must belong to this tenant. Passing applies_to=\"products\"/\n  \"categories\" with an empty or omitted applies_to_ids behaves the same as \"all\" (no scope\n  configured yet). Switching back to applies_to=\"all\" does not automatically clear a\n  previously-set applies_to_ids — pass applies_to_ids=[] explicitly to clear it.\n\nSUBSCRIPTION MOUNTING DISCOUNT LADDERS (subscribe-and-save retention):\n  A coupon can carry a \"mounting ladder\" so its discount climbs with each successive order a\n  customer's delivery subscription generates, pegging at a ceiling — e.g. order 1 = 0% off,\n  then +5% every order up to a 20% cap. This only affects orders generated for a subscription\n  linked to this coupon (DeliverySubscription.coupon_id) — it has no effect on ordinary\n  one-off checkout use of the code, which still uses type/value as normal.\n\n  subscription_ladder_id: link to an existing ladder (from another coupon) by id, or pass null\n  to unlink. Must belong to the same tenant.\n\n  ladder_start_percent / ladder_step_percent / ladder_cap_percent / ladder_start_order_index:\n  pass any of these to CREATE a new ladder inline (on coupon create) or EDIT the tiers of the\n  ladder already linked to this coupon (on update) — do not combine with subscription_ladder_id\n  in the same call. All four are whole-number percentages (0-100) except start_order_index,\n  which is the 1-based order number the climb begins at (orders before it stay at\n  ladder_start_percent). Omitted ladder_* fields default to 0% start / 5% step / 20% cap /\n  order 1 on create; on update, only the fields you pass are changed.\n\ncontact_list_id optionally restricts redemption to a tenant-owned manual or Smart List.\nSmart Lists are re-evaluated live; manual-list customers and leads are matched by contact\nemail. The restriction is checked at cart apply and checkout redemption time. Pass null to\nremove it.\n\nAlways call coupon_list first to get the coupon_id and confirm the current configuration.",
                 "tags": [
                     "promotions",
                     "write"
