@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **tenant** | [**\ShadowSoftware\DabDash\Model\CustomerAddressesResponseTenant**](CustomerAddressesResponseTenant.md) |  | [optional]
 **order** | [**\ShadowSoftware\DabDash\Model\PromotionAuditResponseOrder**](PromotionAuditResponseOrder.md) |  | [optional]
 **storewide_sale** | [**\ShadowSoftware\DabDash\Model\PromotionAuditResponseStorewideSale**](PromotionAuditResponseStorewideSale.md) |  | [optional]
+**catalog_sale** | [**\ShadowSoftware\DabDash\Model\PromotionAuditResponseCatalogSale**](PromotionAuditResponseCatalogSale.md) |  | [optional]
 **loyalty** | [**\ShadowSoftware\DabDash\Model\PromotionAuditResponseLoyalty**](PromotionAuditResponseLoyalty.md) |  | [optional]
 **bundles** | [**\ShadowSoftware\DabDash\Model\PromotionAuditResponseBundlesInner[]**](PromotionAuditResponseBundlesInner.md) |  | [optional]
 **mix_match** | [**\ShadowSoftware\DabDash\Model\PromotionAuditResponseMixMatch**](PromotionAuditResponseMixMatch.md) |  | [optional]

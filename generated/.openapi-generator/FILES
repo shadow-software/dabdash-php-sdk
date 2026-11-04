@@ -108,6 +108,10 @@ docs/Model/CatalogImportRequestProductsInnerVariationsInner.md
 docs/Model/CatalogImportResponse.md
 docs/Model/CatalogImportResponseItemsInner.md
 docs/Model/CatalogImportResponseSummary.md
+docs/Model/CatalogSaleManage200Response.md
+docs/Model/CatalogSaleManageRequest.md
+docs/Model/CatalogSaleManageResponse.md
+docs/Model/CatalogSaleManageResponseSale.md
 docs/Model/CatalogVariantAudit200Response.md
 docs/Model/CatalogVariantAuditRequest.md
 docs/Model/CatalogVariantAuditResponse.md
@@ -315,6 +319,7 @@ docs/Model/PromotionAudit200Response.md
 docs/Model/PromotionAuditRequest.md
 docs/Model/PromotionAuditResponse.md
 docs/Model/PromotionAuditResponseBundlesInner.md
+docs/Model/PromotionAuditResponseCatalogSale.md
 docs/Model/PromotionAuditResponseCouponsInner.md
 docs/Model/PromotionAuditResponseFreebiesInner.md
 docs/Model/PromotionAuditResponseLoyalty.md
@@ -529,6 +534,10 @@ lib/Model/CatalogImportRequestProductsInnerVariationsInner.php
 lib/Model/CatalogImportResponse.php
 lib/Model/CatalogImportResponseItemsInner.php
 lib/Model/CatalogImportResponseSummary.php
+lib/Model/CatalogSaleManage200Response.php
+lib/Model/CatalogSaleManageRequest.php
+lib/Model/CatalogSaleManageResponse.php
+lib/Model/CatalogSaleManageResponseSale.php
 lib/Model/CatalogVariantAudit200Response.php
 lib/Model/CatalogVariantAuditRequest.php
 lib/Model/CatalogVariantAuditResponse.php
@@ -737,6 +746,7 @@ lib/Model/PromotionAudit200Response.php
 lib/Model/PromotionAuditRequest.php
 lib/Model/PromotionAuditResponse.php
 lib/Model/PromotionAuditResponseBundlesInner.php
+lib/Model/PromotionAuditResponseCatalogSale.php
 lib/Model/PromotionAuditResponseCouponsInner.php
 lib/Model/PromotionAuditResponseFreebiesInner.php
 lib/Model/PromotionAuditResponseLoyalty.php
@@ -948,6 +958,10 @@ test/Model/CatalogImportRequestTest.php
 test/Model/CatalogImportResponseItemsInnerTest.php
 test/Model/CatalogImportResponseSummaryTest.php
 test/Model/CatalogImportResponseTest.php
+test/Model/CatalogSaleManage200ResponseTest.php
+test/Model/CatalogSaleManageRequestTest.php
+test/Model/CatalogSaleManageResponseSaleTest.php
+test/Model/CatalogSaleManageResponseTest.php
 test/Model/CatalogVariantAudit200ResponseTest.php
 test/Model/CatalogVariantAuditRequestTest.php
 test/Model/CatalogVariantAuditResponseProductsInnerTest.php
@@ -1154,6 +1168,7 @@ test/Model/ProductVisibilityManageResponseTest.php
 test/Model/PromotionAudit200ResponseTest.php
 test/Model/PromotionAuditRequestTest.php
 test/Model/PromotionAuditResponseBundlesInnerTest.php
+test/Model/PromotionAuditResponseCatalogSaleTest.php
 test/Model/PromotionAuditResponseCouponsInnerTest.php
 test/Model/PromotionAuditResponseFreebiesInnerTest.php
 test/Model/PromotionAuditResponseLoyaltyTest.php

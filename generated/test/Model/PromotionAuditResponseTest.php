@@ -107,6 +107,15 @@ class PromotionAuditResponseTest extends TestCase
     }
 
     /**
+     * Test attribute "catalog_sale"
+     */
+    public function testPropertyCatalogSale()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "loyalty"
      */
     public function testPropertyLoyalty()

@@ -60,6 +60,7 @@ class PromotionAuditResponse implements ModelInterface, ArrayAccess, \JsonSerial
         'tenant' => '\ShadowSoftware\DabDash\Model\CustomerAddressesResponseTenant',
         'order' => '\ShadowSoftware\DabDash\Model\PromotionAuditResponseOrder',
         'storewide_sale' => '\ShadowSoftware\DabDash\Model\PromotionAuditResponseStorewideSale',
+        'catalog_sale' => '\ShadowSoftware\DabDash\Model\PromotionAuditResponseCatalogSale',
         'loyalty' => '\ShadowSoftware\DabDash\Model\PromotionAuditResponseLoyalty',
         'bundles' => '\ShadowSoftware\DabDash\Model\PromotionAuditResponseBundlesInner[]',
         'mix_match' => '\ShadowSoftware\DabDash\Model\PromotionAuditResponseMixMatch',
@@ -78,6 +79,7 @@ class PromotionAuditResponse implements ModelInterface, ArrayAccess, \JsonSerial
         'tenant' => null,
         'order' => null,
         'storewide_sale' => null,
+        'catalog_sale' => null,
         'loyalty' => null,
         'bundles' => null,
         'mix_match' => null,
@@ -94,6 +96,7 @@ class PromotionAuditResponse implements ModelInterface, ArrayAccess, \JsonSerial
         'tenant' => false,
         'order' => true,
         'storewide_sale' => false,
+        'catalog_sale' => false,
         'loyalty' => false,
         'bundles' => false,
         'mix_match' => false,
@@ -190,6 +193,7 @@ class PromotionAuditResponse implements ModelInterface, ArrayAccess, \JsonSerial
         'tenant' => 'tenant',
         'order' => 'order',
         'storewide_sale' => 'storewide_sale',
+        'catalog_sale' => 'catalog_sale',
         'loyalty' => 'loyalty',
         'bundles' => 'bundles',
         'mix_match' => 'mix_match',
@@ -206,6 +210,7 @@ class PromotionAuditResponse implements ModelInterface, ArrayAccess, \JsonSerial
         'tenant' => 'setTenant',
         'order' => 'setOrder',
         'storewide_sale' => 'setStorewideSale',
+        'catalog_sale' => 'setCatalogSale',
         'loyalty' => 'setLoyalty',
         'bundles' => 'setBundles',
         'mix_match' => 'setMixMatch',
@@ -222,6 +227,7 @@ class PromotionAuditResponse implements ModelInterface, ArrayAccess, \JsonSerial
         'tenant' => 'getTenant',
         'order' => 'getOrder',
         'storewide_sale' => 'getStorewideSale',
+        'catalog_sale' => 'getCatalogSale',
         'loyalty' => 'getLoyalty',
         'bundles' => 'getBundles',
         'mix_match' => 'getMixMatch',
@@ -289,6 +295,7 @@ class PromotionAuditResponse implements ModelInterface, ArrayAccess, \JsonSerial
         $this->setIfExists('tenant', $data ?? [], null);
         $this->setIfExists('order', $data ?? [], null);
         $this->setIfExists('storewide_sale', $data ?? [], null);
+        $this->setIfExists('catalog_sale', $data ?? [], null);
         $this->setIfExists('loyalty', $data ?? [], null);
         $this->setIfExists('bundles', $data ?? [], null);
         $this->setIfExists('mix_match', $data ?? [], null);
@@ -422,6 +429,33 @@ class PromotionAuditResponse implements ModelInterface, ArrayAccess, \JsonSerial
             throw new \InvalidArgumentException('non-nullable storewide_sale cannot be null');
         }
         $this->container['storewide_sale'] = $storewide_sale;
+
+        return $this;
+    }
+
+    /**
+     * Gets catalog_sale
+     *
+     * @return \ShadowSoftware\DabDash\Model\PromotionAuditResponseCatalogSale|null
+     */
+    public function getCatalogSale()
+    {
+        return $this->container['catalog_sale'];
+    }
+
+    /**
+     * Sets catalog_sale
+     *
+     * @param \ShadowSoftware\DabDash\Model\PromotionAuditResponseCatalogSale|null $catalog_sale catalog_sale
+     *
+     * @return self
+     */
+    public function setCatalogSale($catalog_sale)
+    {
+        if (is_null($catalog_sale)) {
+            throw new \InvalidArgumentException('non-nullable catalog_sale cannot be null');
+        }
+        $this->container['catalog_sale'] = $catalog_sale;
 
         return $this;
     }
