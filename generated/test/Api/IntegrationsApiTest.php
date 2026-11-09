@@ -156,12 +156,60 @@ class IntegrationsApiTest extends TestCase
     }
 
     /**
+     * Test case for tenantKlaviyoManage
+     *
+     * Show or manage a tenant's BYO Klaviyo integration (profiles, list sync, Smart List projection, order events). Prefer guiding vendors to Settings → Integrations.  ACTIONS:   show (default): connection status + settings (never the API key).   connect / disconnect: dry_run default true; apply needs dry_run=false+confirm.   update_settings: default_list_id, mapped_contact_list_id, smart_list_ids,     smart_list_sync_enabled.   sync_now / refresh_smart_lists / use_for_orders / available_lists..
+     *
+     */
+    public function testTenantKlaviyoManage()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for tenantMailgunManage
+     *
+     * Show or manage a tenant's Mailgun Send Email setup (campaigns + hybrid SMTP).  Prefer guiding vendors to Settings → Domain & Email → Send Email (/admin/settings/domain#send-email). That is the canonical setup home — not Integrations alone.  ACTIONS:   show (default): connection status, Ready sending names, SMTP bootstrap     flag, and the #send-email setup URL. Never returns the API key.   connect: validate + store a Mailgun private key. dry_run defaults true;     applying requires dry_run=false and confirm=true. Dry-run still     validates the key with Mailgun (read-only).   disconnect: remove the Mailgun integration row (SMTP left alone).     Applying requires dry_run=false and confirm=true.   sync: import domains from the Mailgun account into local rows.   add_domain: create/reuse one sending name under the store/CF apex.   verify_domain: ask Mailgun to re-check DNS for one sending name.   autoconfigure: create mail1..mail5 under the Cloudflare zone and push DNS.     Applying requires dry_run=false and confirm=true.   bootstrap_smtp: fill tenants.settings.smtp from a Ready Mailgun domain.     Applying requires dry_run=false; force_smtp=true also needs confirm=true.  Mutating actions default dry_run=true; pass dry_run=false to apply..
+     *
+     */
+    public function testTenantMailgunManage()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for tenantSmtpManage
      *
-     * Show or update a tenant's SMTP settings used for transactional email.  ACTIONS:   show (default): returns the current SMTP settings with the password omitted.   set: updates only the supplied fields. dry_run defaults true; pass dry_run=false        to save. smtp_password is write-only and is never returned.  Keep from_address equal to the authenticated SMTP username unless the provider has explicitly authorized a different sender or alias. A successful settings update clears the tenant's stale SMTP health banner; the next send records any still-current failure..
+     * Show or update Advanced store SMTP (manual host/user/password).  Prefer Mailgun Send Email for campaigns and easiest setup: use tenant_mailgun_manage, and send vendors to /admin/settings/domain#send-email. This tool is for Advanced / BYO SMTP only.  ACTIONS:   show (default): returns the current SMTP settings with the password omitted.   set: updates only the supplied fields. dry_run defaults true; pass dry_run=false        to save. smtp_password is write-only and is never returned.  Keep from_address equal to the authenticated SMTP username unless the provider has explicitly authorized a different sender or alias. A successful settings update clears the tenant's stale SMTP health banner; the next send records any still-current failure..
      *
      */
     public function testTenantSmtpManage()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for tenantTwilioManage
+     *
+     * Show or manage a tenant's Twilio SMS connection (required for text campaigns). Prefer Settings → Integrations.  ACTIONS: show | connect | disconnect | test. connect needs account_sid + auth_token + from_number or messaging_service_sid. Mutating actions: dry_run default true; apply needs dry_run=false + confirm=true..
+     *
+     */
+    public function testTenantTwilioManage()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for webhookManage
+     *
+     * List, create, update, or delete saved tenant webhooks (order events + campaign webhook mode).  ACTIONS: list | show | upsert | delete. upsert needs label + url (https). Optional health_url, events (order.created|order.shipped), is_active, custom_headers [{name,value}]. Signing secrets are generated server-side and returned once on create. Klaviyo-managed webhooks cannot be edited here — use tenant_klaviyo_manage. Assign to a campaign with campaign_upsert.saved_webhook_id..
+     *
+     */
+    public function testWebhookManage()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

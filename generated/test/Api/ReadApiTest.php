@@ -108,6 +108,42 @@ class ReadApiTest extends TestCase
     }
 
     /**
+     * Test case for campaignLinkAudit
+     *
+     * Audit every href in a draft campaign's HTML against the tenant catalog.  For /products/{slug} and /categories/{slug} links it resolves the row (including draft/archived products) and reports status, stock, and live price. A link that HTTP-200s to the wrong or unpublished product is still a blocking issue — do not rely on curl alone. Optional check_http=true also probes the live URL.  Returns links[] plus blocking_issues[] so launch prep can refuse send until product deep links are public and correct..
+     *
+     */
+    public function testCampaignLinkAudit()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for campaignList
+     *
+     * List recent vendor email/SMS campaigns for a tenant so you can find campaign_id without guessing. Filter by status, channel, or a name/subject substring (q). Returns transport mode, audience flags, and list counts — use campaign_get for the full HTML/SMS body..
+     *
+     */
+    public function testCampaignList()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for campaignPreviewImage
+     *
+     * Render a draft email campaign as a PNG screenshot so you (and the vendor) can see exactly how it looks — desktop (600px) or mobile (390px).  Call this AFTER you finish editing an email (template apply, copy upsert, flyer/image placement) to visually confirm your own work before declaring the campaign ready. Prefer desktop first; also call with viewport=mobile when the send matters on phones or when the design uses media queries.  When the connected model supports vision input, the response includes vision_review: either \"LOOKS GOOD\" or a short list of concrete layout problems. Fix those problems with campaign_upsert / campaign_set_image and re-check. When vision is unavailable, image_url is still returned for the vendor chat preview — say you cannot visually confirm on this model.  Pass campaign_id (loads stored html_body) OR inline html_body for unsaved markup. SMS campaigns are rejected..
+     *
+     */
+    public function testCampaignPreviewImage()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for campaignSpamScore
      *
      * Score vendor campaign copy for inbox risk (email HTML or SMS).  One score only: 0–100 (0 = spam, 100 = primary-inbox friendly). Live scoring uses first-party rules. Pass for_send=true to run the same deep filter check used on send/schedule and fold it into that single number (never a second score).  When for_send=true on email, the response also includes spamassassin_score and deep_check_rules[] (Postmark/SpamAssassin hits with name, score, description) plus findings[] entries with actionable hints — use these to fix blocked campaigns.  Vendors cannot send or schedule below the platform minimum (default 80). Aim for 80+ before handoff; 85+ is excellent.  Pass campaign_id (loads draft content) OR inline channel + content fields..
@@ -336,6 +372,18 @@ class ReadApiTest extends TestCase
     }
 
     /**
+     * Test case for productSearch
+     *
+     * Search a tenant's product catalog by name (and optionally category + status).  Returns id, name, slug, status, storefront_path, price, stock_status, and category_ids — enough to build campaign deep links or a Smart List of purchasers without cobbling product_unit_price_search + visibility dry-runs.  name_query is a case-insensitive substring on product name. Pass category_id or category_slug to restrict membership. status defaults to all (active, draft, archived) so historical / unpublished SKUs still appear when building buyer audiences..
+     *
+     */
+    public function testProductSearch()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for productUnitPriceSearch
      *
      * Search and rank a tenant's catalog by computed per-unit price (e.g. price per gram or price per ounce), across every weight-family product (types \"weight\" and \"matrix\") — something product_inspect cannot do because it only looks up one product at a time by id/name/sku.  For each active, in-stock variation with a weight_value, computes price_per_gram = price_cents / weight_value, then scales it to the requested unit (default \"oz\" = 28g, matching the storefront's weight-tier convention). Use this to answer \"what's the cheapest/most expensive product per ounce\", \"find products under $X/g\", or to rank the catalog by unit economics for pricing audits and promo targeting.  Only weight-family products (weight, matrix) have a meaningful per-gram price — unit-family products (simple, unit, matrix_unit) are excluded since their variations are priced per item, not per weight..
@@ -402,6 +450,30 @@ class ReadApiTest extends TestCase
      *
      */
     public function testStrainLookup()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for teachingGuide
+     *
+     * Fetch one Teaching Continuity unit or all units for a page, including body text and selector so you can coach a human through the live DabDash UI with the same wording as Dabby tooltips and Help tours..
+     *
+     */
+    public function testTeachingGuide()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for teachingIndex
+     *
+     * List DabDash UI teaching units (control-level tips shared with tours and Dabby tooltips). Filter by page, tour_key, or id prefix. Use teaching_guide for full body text when coaching a human through the UI..
+     *
+     */
+    public function testTeachingIndex()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

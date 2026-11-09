@@ -107,6 +107,9 @@ class WriteApi
         'campaignGenerateFlyer' => [
             'application/json',
         ],
+        'campaignLaunch' => [
+            'application/json',
+        ],
         'campaignRecipientsRequeue' => [
             'application/json',
         ],
@@ -135,6 +138,9 @@ class WriteApi
             'application/json',
         ],
         'contactCleanup' => [
+            'application/json',
+        ],
+        'contactListManage' => [
             'application/json',
         ],
         'couponUpsert' => [
@@ -203,6 +209,9 @@ class WriteApi
         'productUpdateBySku' => [
             'application/json',
         ],
+        'productVariationSync' => [
+            'application/json',
+        ],
         'productVisibilityManage' => [
             'application/json',
         ],
@@ -221,6 +230,9 @@ class WriteApi
         'seoSettingsManage' => [
             'application/json',
         ],
+        'smartListManage' => [
+            'application/json',
+        ],
         'storeSettingsManage' => [
             'application/json',
         ],
@@ -230,19 +242,40 @@ class WriteApi
         'supplierUpsert' => [
             'application/json',
         ],
+        'suppressionManage' => [
+            'application/json',
+        ],
+        'tenantBlogUpsert' => [
+            'application/json',
+        ],
         'tenantBrandingManage' => [
             'application/json',
         ],
         'tenantDomainManage' => [
             'application/json',
         ],
+        'tenantKlaviyoManage' => [
+            'application/json',
+        ],
+        'tenantMailgunManage' => [
+            'application/json',
+        ],
         'tenantSmtpManage' => [
+            'application/json',
+        ],
+        'tenantTwilioManage' => [
+            'application/json',
+        ],
+        'webhookManage' => [
             'application/json',
         ],
         'widgetManage' => [
             'application/json',
         ],
         'zoneClone' => [
+            'application/json',
+        ],
+        'zoneManage' => [
             'application/json',
         ],
         'zoneUpsert' => [
@@ -4026,6 +4059,345 @@ class WriteApi
     }
 
     /**
+     * Operation campaignLaunch
+     *
+     * Start, schedule, or cancel a vendor campaign after it is ready.  ACTIONS:   send_now — draft → materialize + send (or resume paused). Requires spam/inbox gate.   schedule — draft → scheduled_at (tenant timezone local datetime string).   cancel — sending/paused/recovering/scheduled/failed → cancelled.  dry_run defaults TRUE. Applying requires dry_run&#x3D;false AND confirm&#x3D;true. Always campaign_spam_score / campaign_send_test first, then confirm with the vendor.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\CampaignLaunchRequest|null $campaign_launch_request campaign_launch_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignLaunch'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \ShadowSoftware\DabDash\Model\CampaignLaunch200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
+     */
+    public function campaignLaunch($campaign_launch_request = null, string $contentType = self::contentTypes['campaignLaunch'][0])
+    {
+        list($response) = $this->campaignLaunchWithHttpInfo($campaign_launch_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation campaignLaunchWithHttpInfo
+     *
+     * Start, schedule, or cancel a vendor campaign after it is ready.  ACTIONS:   send_now — draft → materialize + send (or resume paused). Requires spam/inbox gate.   schedule — draft → scheduled_at (tenant timezone local datetime string).   cancel — sending/paused/recovering/scheduled/failed → cancelled.  dry_run defaults TRUE. Applying requires dry_run&#x3D;false AND confirm&#x3D;true. Always campaign_spam_score / campaign_send_test first, then confirm with the vendor.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\CampaignLaunchRequest|null $campaign_launch_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignLaunch'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \ShadowSoftware\DabDash\Model\CampaignLaunch200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function campaignLaunchWithHttpInfo($campaign_launch_request = null, string $contentType = self::contentTypes['campaignLaunch'][0])
+    {
+        $request = $this->campaignLaunchRequest($campaign_launch_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\CampaignLaunch200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 402:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 422:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\ShadowSoftware\DabDash\Model\CampaignLaunch200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\CampaignLaunch200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 402:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation campaignLaunchAsync
+     *
+     * Start, schedule, or cancel a vendor campaign after it is ready.  ACTIONS:   send_now — draft → materialize + send (or resume paused). Requires spam/inbox gate.   schedule — draft → scheduled_at (tenant timezone local datetime string).   cancel — sending/paused/recovering/scheduled/failed → cancelled.  dry_run defaults TRUE. Applying requires dry_run&#x3D;false AND confirm&#x3D;true. Always campaign_spam_score / campaign_send_test first, then confirm with the vendor.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\CampaignLaunchRequest|null $campaign_launch_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignLaunch'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function campaignLaunchAsync($campaign_launch_request = null, string $contentType = self::contentTypes['campaignLaunch'][0])
+    {
+        return $this->campaignLaunchAsyncWithHttpInfo($campaign_launch_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation campaignLaunchAsyncWithHttpInfo
+     *
+     * Start, schedule, or cancel a vendor campaign after it is ready.  ACTIONS:   send_now — draft → materialize + send (or resume paused). Requires spam/inbox gate.   schedule — draft → scheduled_at (tenant timezone local datetime string).   cancel — sending/paused/recovering/scheduled/failed → cancelled.  dry_run defaults TRUE. Applying requires dry_run&#x3D;false AND confirm&#x3D;true. Always campaign_spam_score / campaign_send_test first, then confirm with the vendor.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\CampaignLaunchRequest|null $campaign_launch_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignLaunch'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function campaignLaunchAsyncWithHttpInfo($campaign_launch_request = null, string $contentType = self::contentTypes['campaignLaunch'][0])
+    {
+        $returnType = '\ShadowSoftware\DabDash\Model\CampaignLaunch200Response';
+        $request = $this->campaignLaunchRequest($campaign_launch_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'campaignLaunch'
+     *
+     * @param  \ShadowSoftware\DabDash\Model\CampaignLaunchRequest|null $campaign_launch_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignLaunch'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function campaignLaunchRequest($campaign_launch_request = null, string $contentType = self::contentTypes['campaignLaunch'][0])
+    {
+
+
+
+        $resourcePath = '/api/v1/tools/campaign_launch';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($campaign_launch_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($campaign_launch_request));
+            } else {
+                $httpBody = $campaign_launch_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation campaignRecipientsRequeue
      *
      * Unstick a vendor email/SMS campaign that auto-paused or stalled mid-send.  Resets failed recipients (and optionally stale \&quot;sending\&quot; rows) back to pending, clears webhook_consecutive_failures / paused_reason / last_error, and sets the campaign status to sending so the dispatcher continues. Already-sent recipients are never touched.  Pass retry_sending_log_errors&#x3D;true to retry every recipient that appears in the campaign sending log with a retryable error (502/timeout/SMTP soft fail, etc.). Those jobs dispatch immediately (up to dispatch_limit) so they are not stuck behind a large pending queue. The log rows stay — they are diagnostic history.  Use when a webhook campaign froze after consecutive endpoint errors (or soft SMTP failures that were misclassified before the soft-fail fix) and pending + failed recipients remain.  dry_run defaults to TRUE — first call reports counts only. Pass dry_run&#x3D;false to apply. Always confirm tenant_slug with tenant_list and campaign_id with the vendor.
@@ -4367,7 +4739,7 @@ class WriteApi
     /**
      * Operation campaignSendTest
      *
-     * Send a single test copy of a campaign so the design and copy can be reviewed before the real send.  Email campaigns go out through the tenant&#39;s own SMTP settings — exactly the path a real send uses. Pass to_email. Requires complete SMTP settings.  Text (SMS) campaigns go out through the tenant&#39;s connected Twilio account. Pass to_phone instead of to_email. Requires Twilio to be connected.  This is a preview only: it does NOT start the campaign, does NOT touch the audience, and does NOT record any send/open/click stats. Personalization tokens render with sample values; unsubscribe links point at harmless test URLs.  Works on a campaign in any status (a draft preview is the common case). Always confirm the campaign_id with the vendor first.
+     * Send a single test copy of a campaign so the design and copy can be reviewed before the real send.  Email: routes by campaign mode —   smtp → tenant SMTP (requires complete SMTP settings)   mailgun → Mailgun Messages API via a Ready sending name on the campaign   webhook → posts a test payload to the campaign webhook (no inbox email) Pass to_email for smtp/mailgun. Webhook mode uses to_email only as the sample recipient identity in the payload.  Text (SMS): Twilio. Pass to_phone. Requires Twilio connected.  Preview only — does NOT start the campaign, touch the audience, or record stats.
      *
      * @param  \ShadowSoftware\DabDash\Model\CampaignSendTestRequest|null $campaign_send_test_request campaign_send_test_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignSendTest'] to see the possible values for this operation
@@ -4385,7 +4757,7 @@ class WriteApi
     /**
      * Operation campaignSendTestWithHttpInfo
      *
-     * Send a single test copy of a campaign so the design and copy can be reviewed before the real send.  Email campaigns go out through the tenant&#39;s own SMTP settings — exactly the path a real send uses. Pass to_email. Requires complete SMTP settings.  Text (SMS) campaigns go out through the tenant&#39;s connected Twilio account. Pass to_phone instead of to_email. Requires Twilio to be connected.  This is a preview only: it does NOT start the campaign, does NOT touch the audience, and does NOT record any send/open/click stats. Personalization tokens render with sample values; unsubscribe links point at harmless test URLs.  Works on a campaign in any status (a draft preview is the common case). Always confirm the campaign_id with the vendor first.
+     * Send a single test copy of a campaign so the design and copy can be reviewed before the real send.  Email: routes by campaign mode —   smtp → tenant SMTP (requires complete SMTP settings)   mailgun → Mailgun Messages API via a Ready sending name on the campaign   webhook → posts a test payload to the campaign webhook (no inbox email) Pass to_email for smtp/mailgun. Webhook mode uses to_email only as the sample recipient identity in the payload.  Text (SMS): Twilio. Pass to_phone. Requires Twilio connected.  Preview only — does NOT start the campaign, touch the audience, or record stats.
      *
      * @param  \ShadowSoftware\DabDash\Model\CampaignSendTestRequest|null $campaign_send_test_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignSendTest'] to see the possible values for this operation
@@ -4540,7 +4912,7 @@ class WriteApi
     /**
      * Operation campaignSendTestAsync
      *
-     * Send a single test copy of a campaign so the design and copy can be reviewed before the real send.  Email campaigns go out through the tenant&#39;s own SMTP settings — exactly the path a real send uses. Pass to_email. Requires complete SMTP settings.  Text (SMS) campaigns go out through the tenant&#39;s connected Twilio account. Pass to_phone instead of to_email. Requires Twilio to be connected.  This is a preview only: it does NOT start the campaign, does NOT touch the audience, and does NOT record any send/open/click stats. Personalization tokens render with sample values; unsubscribe links point at harmless test URLs.  Works on a campaign in any status (a draft preview is the common case). Always confirm the campaign_id with the vendor first.
+     * Send a single test copy of a campaign so the design and copy can be reviewed before the real send.  Email: routes by campaign mode —   smtp → tenant SMTP (requires complete SMTP settings)   mailgun → Mailgun Messages API via a Ready sending name on the campaign   webhook → posts a test payload to the campaign webhook (no inbox email) Pass to_email for smtp/mailgun. Webhook mode uses to_email only as the sample recipient identity in the payload.  Text (SMS): Twilio. Pass to_phone. Requires Twilio connected.  Preview only — does NOT start the campaign, touch the audience, or record stats.
      *
      * @param  \ShadowSoftware\DabDash\Model\CampaignSendTestRequest|null $campaign_send_test_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignSendTest'] to see the possible values for this operation
@@ -4561,7 +4933,7 @@ class WriteApi
     /**
      * Operation campaignSendTestAsyncWithHttpInfo
      *
-     * Send a single test copy of a campaign so the design and copy can be reviewed before the real send.  Email campaigns go out through the tenant&#39;s own SMTP settings — exactly the path a real send uses. Pass to_email. Requires complete SMTP settings.  Text (SMS) campaigns go out through the tenant&#39;s connected Twilio account. Pass to_phone instead of to_email. Requires Twilio to be connected.  This is a preview only: it does NOT start the campaign, does NOT touch the audience, and does NOT record any send/open/click stats. Personalization tokens render with sample values; unsubscribe links point at harmless test URLs.  Works on a campaign in any status (a draft preview is the common case). Always confirm the campaign_id with the vendor first.
+     * Send a single test copy of a campaign so the design and copy can be reviewed before the real send.  Email: routes by campaign mode —   smtp → tenant SMTP (requires complete SMTP settings)   mailgun → Mailgun Messages API via a Ready sending name on the campaign   webhook → posts a test payload to the campaign webhook (no inbox email) Pass to_email for smtp/mailgun. Webhook mode uses to_email only as the sample recipient identity in the payload.  Text (SMS): Twilio. Pass to_phone. Requires Twilio connected.  Preview only — does NOT start the campaign, touch the audience, or record stats.
      *
      * @param  \ShadowSoftware\DabDash\Model\CampaignSendTestRequest|null $campaign_send_test_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignSendTest'] to see the possible values for this operation
@@ -5045,7 +5417,7 @@ class WriteApi
     /**
      * Operation campaignUpsert
      *
-     * Create or edit a vendor email campaign on behalf of a tenant. This is the vendor → their-customers campaign universe (NOT the platform drip-to-leads system). Completed campaigns cannot be edited.  CREATE MODE (no campaign_id):   Creates a new draft. For email campaigns, &#x60;name&#x60; and &#x60;subject&#x60; are required; &#x60;html_body&#x60; is optional   on create — omit it to start blank and apply a system template afterwards with campaign_apply_template.   For text (SMS) campaigns, set channel to \&quot;sms\&quot; and pass &#x60;sms_body&#x60; (name required). Twilio must be   connected on the tenant.  UPDATE MODE (campaign_id provided):   Edits an existing campaign. Only the fields you pass are changed; omitted fields are left as-is.   Drafts accept all fields. Sending or paused campaigns accept content fields only — for email that is   name, subject, html_body, plain_body, fallback_first_name; for text that is name, sms_body,   and fallback_first_name. Sending campaigns keep   running and unreached recipients get the latest version. Scheduled, cancelled, and failed campaigns   must be edited from the vendor admin.  HTML BODY (email only):   Pass the full email HTML in &#x60;html_body&#x60;. It is sanitized exactly like the vendor admin editor:   a full document (&lt;!DOCTYPE …&gt; / &lt;html&gt;) keeps its table-based structure; a fragment is run   through the stricter inline allowlist. Use the literal token {{unsubscribe_url}} where the   unsubscribe link should appear — it is replaced per-recipient at send time and a List-Unsubscribe   header is added automatically. Personalization tokens {{first_name}} and {{last_name}} are also   replaced at send time. When {{first_name}} is blank, fallback_first_name is used (default \&quot;there\&quot;   when unset). Pass fallback_first_name as \&quot;\&quot; to clear an override.  SMS BODY (text only):   Pass the message in &#x60;sms_body&#x60; (max 1600 chars). Tokens {{first_name}} and {{last_name}} are   replaced at send time (same first-name fallback as email). Text campaigns only target opted-in shop customers.  AUDIENCE / MODE (email only):   mode is \&quot;smtp\&quot; (default) or \&quot;webhook\&quot;. audience_includes_customers (default true) targets the   tenant&#39;s own customers. This tool does not send anything — use campaign_send_test to preview,   then the vendor sends from the admin.  Always confirm the tenant_slug with tenant_list first. To populate a draft from a built-in design, create it here, then call campaign_apply_template.  ORDERING WARNING: html_body is a full replacement, not a merge. If campaign_generate_flyer or campaign_set_image has already placed an image into this campaign&#39;s body, do NOT call this tool again with a new html_body afterward — it silently erases the placed image. Finalize all copy with this tool FIRST, then place images last.
+     * Create or edit a vendor email/SMS campaign (vendor → their customers; NOT platform drip-to-leads). Completed campaigns cannot be edited.  CREATE (no campaign_id): draft. Email needs name+subject (html_body optional — then campaign_apply_template). SMS needs name+sms_body and connected Twilio.  UPDATE (campaign_id): only passed fields change. Drafts accept all fields. Sending/paused accept content only (email: name/subject/html_body/plain_body/fallback_first_name; SMS: name/sms_body/fallback_first_name).  TRANSPORT (email): mode &#x3D; smtp | webhook | mailgun.   mailgun: require Ready mailgun_domain_ids (from tenant_mailgun_manage show); optional   mailgun_pace drip|blast.   webhook: prefer saved_webhook_id, or inline webhook_url (+ optional headers/health). AUDIENCE: contact_list_ids (manual and/or Smart Lists) and/or audience_includes_customers (default true). Lead lists cannot use smtp — use mailgun or webhook. SMS may attach Smart Lists only (not imported manual lists). Discover lists with contact_list_manage / smart_list_manage.  Optional: throttle_per_minute/hour, send_interval_minutes (1–30), send_window_*.  Does not start a live send — use campaign_send_test, then campaign_launch (confirm) or the vendor admin Send button.  ORDERING: html_body is a full replace. Finalize copy before campaign_generate_flyer / campaign_set_image, or later html_body upserts erase placed images.
      *
      * @param  \ShadowSoftware\DabDash\Model\CampaignUpsertRequest|null $campaign_upsert_request campaign_upsert_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignUpsert'] to see the possible values for this operation
@@ -5063,7 +5435,7 @@ class WriteApi
     /**
      * Operation campaignUpsertWithHttpInfo
      *
-     * Create or edit a vendor email campaign on behalf of a tenant. This is the vendor → their-customers campaign universe (NOT the platform drip-to-leads system). Completed campaigns cannot be edited.  CREATE MODE (no campaign_id):   Creates a new draft. For email campaigns, &#x60;name&#x60; and &#x60;subject&#x60; are required; &#x60;html_body&#x60; is optional   on create — omit it to start blank and apply a system template afterwards with campaign_apply_template.   For text (SMS) campaigns, set channel to \&quot;sms\&quot; and pass &#x60;sms_body&#x60; (name required). Twilio must be   connected on the tenant.  UPDATE MODE (campaign_id provided):   Edits an existing campaign. Only the fields you pass are changed; omitted fields are left as-is.   Drafts accept all fields. Sending or paused campaigns accept content fields only — for email that is   name, subject, html_body, plain_body, fallback_first_name; for text that is name, sms_body,   and fallback_first_name. Sending campaigns keep   running and unreached recipients get the latest version. Scheduled, cancelled, and failed campaigns   must be edited from the vendor admin.  HTML BODY (email only):   Pass the full email HTML in &#x60;html_body&#x60;. It is sanitized exactly like the vendor admin editor:   a full document (&lt;!DOCTYPE …&gt; / &lt;html&gt;) keeps its table-based structure; a fragment is run   through the stricter inline allowlist. Use the literal token {{unsubscribe_url}} where the   unsubscribe link should appear — it is replaced per-recipient at send time and a List-Unsubscribe   header is added automatically. Personalization tokens {{first_name}} and {{last_name}} are also   replaced at send time. When {{first_name}} is blank, fallback_first_name is used (default \&quot;there\&quot;   when unset). Pass fallback_first_name as \&quot;\&quot; to clear an override.  SMS BODY (text only):   Pass the message in &#x60;sms_body&#x60; (max 1600 chars). Tokens {{first_name}} and {{last_name}} are   replaced at send time (same first-name fallback as email). Text campaigns only target opted-in shop customers.  AUDIENCE / MODE (email only):   mode is \&quot;smtp\&quot; (default) or \&quot;webhook\&quot;. audience_includes_customers (default true) targets the   tenant&#39;s own customers. This tool does not send anything — use campaign_send_test to preview,   then the vendor sends from the admin.  Always confirm the tenant_slug with tenant_list first. To populate a draft from a built-in design, create it here, then call campaign_apply_template.  ORDERING WARNING: html_body is a full replacement, not a merge. If campaign_generate_flyer or campaign_set_image has already placed an image into this campaign&#39;s body, do NOT call this tool again with a new html_body afterward — it silently erases the placed image. Finalize all copy with this tool FIRST, then place images last.
+     * Create or edit a vendor email/SMS campaign (vendor → their customers; NOT platform drip-to-leads). Completed campaigns cannot be edited.  CREATE (no campaign_id): draft. Email needs name+subject (html_body optional — then campaign_apply_template). SMS needs name+sms_body and connected Twilio.  UPDATE (campaign_id): only passed fields change. Drafts accept all fields. Sending/paused accept content only (email: name/subject/html_body/plain_body/fallback_first_name; SMS: name/sms_body/fallback_first_name).  TRANSPORT (email): mode &#x3D; smtp | webhook | mailgun.   mailgun: require Ready mailgun_domain_ids (from tenant_mailgun_manage show); optional   mailgun_pace drip|blast.   webhook: prefer saved_webhook_id, or inline webhook_url (+ optional headers/health). AUDIENCE: contact_list_ids (manual and/or Smart Lists) and/or audience_includes_customers (default true). Lead lists cannot use smtp — use mailgun or webhook. SMS may attach Smart Lists only (not imported manual lists). Discover lists with contact_list_manage / smart_list_manage.  Optional: throttle_per_minute/hour, send_interval_minutes (1–30), send_window_*.  Does not start a live send — use campaign_send_test, then campaign_launch (confirm) or the vendor admin Send button.  ORDERING: html_body is a full replace. Finalize copy before campaign_generate_flyer / campaign_set_image, or later html_body upserts erase placed images.
      *
      * @param  \ShadowSoftware\DabDash\Model\CampaignUpsertRequest|null $campaign_upsert_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignUpsert'] to see the possible values for this operation
@@ -5218,7 +5590,7 @@ class WriteApi
     /**
      * Operation campaignUpsertAsync
      *
-     * Create or edit a vendor email campaign on behalf of a tenant. This is the vendor → their-customers campaign universe (NOT the platform drip-to-leads system). Completed campaigns cannot be edited.  CREATE MODE (no campaign_id):   Creates a new draft. For email campaigns, &#x60;name&#x60; and &#x60;subject&#x60; are required; &#x60;html_body&#x60; is optional   on create — omit it to start blank and apply a system template afterwards with campaign_apply_template.   For text (SMS) campaigns, set channel to \&quot;sms\&quot; and pass &#x60;sms_body&#x60; (name required). Twilio must be   connected on the tenant.  UPDATE MODE (campaign_id provided):   Edits an existing campaign. Only the fields you pass are changed; omitted fields are left as-is.   Drafts accept all fields. Sending or paused campaigns accept content fields only — for email that is   name, subject, html_body, plain_body, fallback_first_name; for text that is name, sms_body,   and fallback_first_name. Sending campaigns keep   running and unreached recipients get the latest version. Scheduled, cancelled, and failed campaigns   must be edited from the vendor admin.  HTML BODY (email only):   Pass the full email HTML in &#x60;html_body&#x60;. It is sanitized exactly like the vendor admin editor:   a full document (&lt;!DOCTYPE …&gt; / &lt;html&gt;) keeps its table-based structure; a fragment is run   through the stricter inline allowlist. Use the literal token {{unsubscribe_url}} where the   unsubscribe link should appear — it is replaced per-recipient at send time and a List-Unsubscribe   header is added automatically. Personalization tokens {{first_name}} and {{last_name}} are also   replaced at send time. When {{first_name}} is blank, fallback_first_name is used (default \&quot;there\&quot;   when unset). Pass fallback_first_name as \&quot;\&quot; to clear an override.  SMS BODY (text only):   Pass the message in &#x60;sms_body&#x60; (max 1600 chars). Tokens {{first_name}} and {{last_name}} are   replaced at send time (same first-name fallback as email). Text campaigns only target opted-in shop customers.  AUDIENCE / MODE (email only):   mode is \&quot;smtp\&quot; (default) or \&quot;webhook\&quot;. audience_includes_customers (default true) targets the   tenant&#39;s own customers. This tool does not send anything — use campaign_send_test to preview,   then the vendor sends from the admin.  Always confirm the tenant_slug with tenant_list first. To populate a draft from a built-in design, create it here, then call campaign_apply_template.  ORDERING WARNING: html_body is a full replacement, not a merge. If campaign_generate_flyer or campaign_set_image has already placed an image into this campaign&#39;s body, do NOT call this tool again with a new html_body afterward — it silently erases the placed image. Finalize all copy with this tool FIRST, then place images last.
+     * Create or edit a vendor email/SMS campaign (vendor → their customers; NOT platform drip-to-leads). Completed campaigns cannot be edited.  CREATE (no campaign_id): draft. Email needs name+subject (html_body optional — then campaign_apply_template). SMS needs name+sms_body and connected Twilio.  UPDATE (campaign_id): only passed fields change. Drafts accept all fields. Sending/paused accept content only (email: name/subject/html_body/plain_body/fallback_first_name; SMS: name/sms_body/fallback_first_name).  TRANSPORT (email): mode &#x3D; smtp | webhook | mailgun.   mailgun: require Ready mailgun_domain_ids (from tenant_mailgun_manage show); optional   mailgun_pace drip|blast.   webhook: prefer saved_webhook_id, or inline webhook_url (+ optional headers/health). AUDIENCE: contact_list_ids (manual and/or Smart Lists) and/or audience_includes_customers (default true). Lead lists cannot use smtp — use mailgun or webhook. SMS may attach Smart Lists only (not imported manual lists). Discover lists with contact_list_manage / smart_list_manage.  Optional: throttle_per_minute/hour, send_interval_minutes (1–30), send_window_*.  Does not start a live send — use campaign_send_test, then campaign_launch (confirm) or the vendor admin Send button.  ORDERING: html_body is a full replace. Finalize copy before campaign_generate_flyer / campaign_set_image, or later html_body upserts erase placed images.
      *
      * @param  \ShadowSoftware\DabDash\Model\CampaignUpsertRequest|null $campaign_upsert_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignUpsert'] to see the possible values for this operation
@@ -5239,7 +5611,7 @@ class WriteApi
     /**
      * Operation campaignUpsertAsyncWithHttpInfo
      *
-     * Create or edit a vendor email campaign on behalf of a tenant. This is the vendor → their-customers campaign universe (NOT the platform drip-to-leads system). Completed campaigns cannot be edited.  CREATE MODE (no campaign_id):   Creates a new draft. For email campaigns, &#x60;name&#x60; and &#x60;subject&#x60; are required; &#x60;html_body&#x60; is optional   on create — omit it to start blank and apply a system template afterwards with campaign_apply_template.   For text (SMS) campaigns, set channel to \&quot;sms\&quot; and pass &#x60;sms_body&#x60; (name required). Twilio must be   connected on the tenant.  UPDATE MODE (campaign_id provided):   Edits an existing campaign. Only the fields you pass are changed; omitted fields are left as-is.   Drafts accept all fields. Sending or paused campaigns accept content fields only — for email that is   name, subject, html_body, plain_body, fallback_first_name; for text that is name, sms_body,   and fallback_first_name. Sending campaigns keep   running and unreached recipients get the latest version. Scheduled, cancelled, and failed campaigns   must be edited from the vendor admin.  HTML BODY (email only):   Pass the full email HTML in &#x60;html_body&#x60;. It is sanitized exactly like the vendor admin editor:   a full document (&lt;!DOCTYPE …&gt; / &lt;html&gt;) keeps its table-based structure; a fragment is run   through the stricter inline allowlist. Use the literal token {{unsubscribe_url}} where the   unsubscribe link should appear — it is replaced per-recipient at send time and a List-Unsubscribe   header is added automatically. Personalization tokens {{first_name}} and {{last_name}} are also   replaced at send time. When {{first_name}} is blank, fallback_first_name is used (default \&quot;there\&quot;   when unset). Pass fallback_first_name as \&quot;\&quot; to clear an override.  SMS BODY (text only):   Pass the message in &#x60;sms_body&#x60; (max 1600 chars). Tokens {{first_name}} and {{last_name}} are   replaced at send time (same first-name fallback as email). Text campaigns only target opted-in shop customers.  AUDIENCE / MODE (email only):   mode is \&quot;smtp\&quot; (default) or \&quot;webhook\&quot;. audience_includes_customers (default true) targets the   tenant&#39;s own customers. This tool does not send anything — use campaign_send_test to preview,   then the vendor sends from the admin.  Always confirm the tenant_slug with tenant_list first. To populate a draft from a built-in design, create it here, then call campaign_apply_template.  ORDERING WARNING: html_body is a full replacement, not a merge. If campaign_generate_flyer or campaign_set_image has already placed an image into this campaign&#39;s body, do NOT call this tool again with a new html_body afterward — it silently erases the placed image. Finalize all copy with this tool FIRST, then place images last.
+     * Create or edit a vendor email/SMS campaign (vendor → their customers; NOT platform drip-to-leads). Completed campaigns cannot be edited.  CREATE (no campaign_id): draft. Email needs name+subject (html_body optional — then campaign_apply_template). SMS needs name+sms_body and connected Twilio.  UPDATE (campaign_id): only passed fields change. Drafts accept all fields. Sending/paused accept content only (email: name/subject/html_body/plain_body/fallback_first_name; SMS: name/sms_body/fallback_first_name).  TRANSPORT (email): mode &#x3D; smtp | webhook | mailgun.   mailgun: require Ready mailgun_domain_ids (from tenant_mailgun_manage show); optional   mailgun_pace drip|blast.   webhook: prefer saved_webhook_id, or inline webhook_url (+ optional headers/health). AUDIENCE: contact_list_ids (manual and/or Smart Lists) and/or audience_includes_customers (default true). Lead lists cannot use smtp — use mailgun or webhook. SMS may attach Smart Lists only (not imported manual lists). Discover lists with contact_list_manage / smart_list_manage.  Optional: throttle_per_minute/hour, send_interval_minutes (1–30), send_window_*.  Does not start a live send — use campaign_send_test, then campaign_launch (confirm) or the vendor admin Send button.  ORDERING: html_body is a full replace. Finalize copy before campaign_generate_flyer / campaign_set_image, or later html_body upserts erase placed images.
      *
      * @param  \ShadowSoftware\DabDash\Model\CampaignUpsertRequest|null $campaign_upsert_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignUpsert'] to see the possible values for this operation
@@ -7360,6 +7732,345 @@ class WriteApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($contact_cleanup_request));
             } else {
                 $httpBody = $contact_cleanup_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation contactListManage
+     *
+     * Discover and manage contact lists (manual + Smart) for campaigns, coupons, and Klaviyo.  ACTIONS:   list (default): all lists with id, name, kind (manual|smart), default_type, contacts_count,     usable_for hints (email/sms/coupon/klaviyo).   show: one list by list_id (includes Smart List definition when kind&#x3D;smart).   create_manual: create an empty imported/manual list (name required; default_type lead|customer).   rename: update name/description/default_type on a manual list (not Smart — use smart_list_manage).   delete: remove a list (dry_run default true; applying needs dry_run&#x3D;false + confirm&#x3D;true).  CSV import stays in the vendor admin. Use smart_list_manage for Smart List CRUD/preview.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ContactListManageRequest|null $contact_list_manage_request contact_list_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['contactListManage'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \ShadowSoftware\DabDash\Model\ContactListManage200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
+     */
+    public function contactListManage($contact_list_manage_request = null, string $contentType = self::contentTypes['contactListManage'][0])
+    {
+        list($response) = $this->contactListManageWithHttpInfo($contact_list_manage_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation contactListManageWithHttpInfo
+     *
+     * Discover and manage contact lists (manual + Smart) for campaigns, coupons, and Klaviyo.  ACTIONS:   list (default): all lists with id, name, kind (manual|smart), default_type, contacts_count,     usable_for hints (email/sms/coupon/klaviyo).   show: one list by list_id (includes Smart List definition when kind&#x3D;smart).   create_manual: create an empty imported/manual list (name required; default_type lead|customer).   rename: update name/description/default_type on a manual list (not Smart — use smart_list_manage).   delete: remove a list (dry_run default true; applying needs dry_run&#x3D;false + confirm&#x3D;true).  CSV import stays in the vendor admin. Use smart_list_manage for Smart List CRUD/preview.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ContactListManageRequest|null $contact_list_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['contactListManage'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \ShadowSoftware\DabDash\Model\ContactListManage200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function contactListManageWithHttpInfo($contact_list_manage_request = null, string $contentType = self::contentTypes['contactListManage'][0])
+    {
+        $request = $this->contactListManageRequest($contact_list_manage_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\ContactListManage200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 402:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 422:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\ShadowSoftware\DabDash\Model\ContactListManage200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\ContactListManage200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 402:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation contactListManageAsync
+     *
+     * Discover and manage contact lists (manual + Smart) for campaigns, coupons, and Klaviyo.  ACTIONS:   list (default): all lists with id, name, kind (manual|smart), default_type, contacts_count,     usable_for hints (email/sms/coupon/klaviyo).   show: one list by list_id (includes Smart List definition when kind&#x3D;smart).   create_manual: create an empty imported/manual list (name required; default_type lead|customer).   rename: update name/description/default_type on a manual list (not Smart — use smart_list_manage).   delete: remove a list (dry_run default true; applying needs dry_run&#x3D;false + confirm&#x3D;true).  CSV import stays in the vendor admin. Use smart_list_manage for Smart List CRUD/preview.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ContactListManageRequest|null $contact_list_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['contactListManage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function contactListManageAsync($contact_list_manage_request = null, string $contentType = self::contentTypes['contactListManage'][0])
+    {
+        return $this->contactListManageAsyncWithHttpInfo($contact_list_manage_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation contactListManageAsyncWithHttpInfo
+     *
+     * Discover and manage contact lists (manual + Smart) for campaigns, coupons, and Klaviyo.  ACTIONS:   list (default): all lists with id, name, kind (manual|smart), default_type, contacts_count,     usable_for hints (email/sms/coupon/klaviyo).   show: one list by list_id (includes Smart List definition when kind&#x3D;smart).   create_manual: create an empty imported/manual list (name required; default_type lead|customer).   rename: update name/description/default_type on a manual list (not Smart — use smart_list_manage).   delete: remove a list (dry_run default true; applying needs dry_run&#x3D;false + confirm&#x3D;true).  CSV import stays in the vendor admin. Use smart_list_manage for Smart List CRUD/preview.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ContactListManageRequest|null $contact_list_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['contactListManage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function contactListManageAsyncWithHttpInfo($contact_list_manage_request = null, string $contentType = self::contentTypes['contactListManage'][0])
+    {
+        $returnType = '\ShadowSoftware\DabDash\Model\ContactListManage200Response';
+        $request = $this->contactListManageRequest($contact_list_manage_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'contactListManage'
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ContactListManageRequest|null $contact_list_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['contactListManage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function contactListManageRequest($contact_list_manage_request = null, string $contentType = self::contentTypes['contactListManage'][0])
+    {
+
+
+
+        $resourcePath = '/api/v1/tools/contact_list_manage';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($contact_list_manage_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($contact_list_manage_request));
+            } else {
+                $httpBody = $contact_list_manage_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -13181,7 +13892,7 @@ class WriteApi
     /**
      * Operation productFeatureManage
      *
-     * List or set which products are featured on a tenant&#39;s storefront home page (the \&quot;Featured Products\&quot; section, HomeController — up to 8 shown, ordered by the tenant&#39;s default product sort). This does not change the Modern hero&#39;s optional featured-product card; use storefront_theme_manage or store_settings_manage (hero_spotlight_mode / hero_spotlight_product) for that.  ACTIONS:   list (default): return every is_featured&#x3D;true product with id, slug, name,          stock_status. Always call this first to see the current set before          changing it.   set: pass product_ids (array) and featured (bool) to set is_featured on          those products. Unlisted products are left untouched — this is an          additive/subtractive edit, not a replace-the-whole-set operation.  Products must be resolved to ids first (product_inspect or this tool&#39;s list action). Featuring an out-of-stock product is allowed but usually undesirable — check stock_status in the list output before featuring.
+     * List or set which products appear in a tenant&#39;s curated storefront home grids (Classic and Modern). Each section shows up to 8 products, ordered by the tenant&#39;s default product sort, and hides itself when empty.  SECTIONS (pass as &#x60;section&#x60;):   featured (default) → is_featured → \&quot;Featured Products\&quot;   deals              → is_featured_deal → \&quot;Featured Deals\&quot;   new                → is_featured_new → \&quot;Featured New Inventory\&quot;  Optional schedule windows (starts_at / ends_at) are tenant-local calendar dates stored as UTC. Null start &#x3D; live now; null end &#x3D; never expires. Storefront membership is query-time (flag on + within window).  This does not change the Modern hero&#39;s optional spotlight card; use storefront_theme_manage or store_settings_manage (hero_spotlight_mode / hero_spotlight_product) for that.  ACTIONS:   list (default): return every product flagged for the chosen section          (including scheduled/ended) with id, slug, name, stock_status,          the three featured flags, schedule window, and status          (live|scheduled|ended).   set: pass product_ids (array) and featured (bool) to set the section&#39;s          flag on those products. Optional starts_at / ends_at apply when          featuring; turning featured off clears that section&#39;s window.          Unlisted products are left untouched.  Products must be resolved to ids first (product_inspect or this tool&#39;s list action). Featuring an out-of-stock product is allowed but usually undesirable — check stock_status in the list output before featuring.
      *
      * @param  \ShadowSoftware\DabDash\Model\ProductFeatureManageRequest|null $product_feature_manage_request product_feature_manage_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productFeatureManage'] to see the possible values for this operation
@@ -13199,7 +13910,7 @@ class WriteApi
     /**
      * Operation productFeatureManageWithHttpInfo
      *
-     * List or set which products are featured on a tenant&#39;s storefront home page (the \&quot;Featured Products\&quot; section, HomeController — up to 8 shown, ordered by the tenant&#39;s default product sort). This does not change the Modern hero&#39;s optional featured-product card; use storefront_theme_manage or store_settings_manage (hero_spotlight_mode / hero_spotlight_product) for that.  ACTIONS:   list (default): return every is_featured&#x3D;true product with id, slug, name,          stock_status. Always call this first to see the current set before          changing it.   set: pass product_ids (array) and featured (bool) to set is_featured on          those products. Unlisted products are left untouched — this is an          additive/subtractive edit, not a replace-the-whole-set operation.  Products must be resolved to ids first (product_inspect or this tool&#39;s list action). Featuring an out-of-stock product is allowed but usually undesirable — check stock_status in the list output before featuring.
+     * List or set which products appear in a tenant&#39;s curated storefront home grids (Classic and Modern). Each section shows up to 8 products, ordered by the tenant&#39;s default product sort, and hides itself when empty.  SECTIONS (pass as &#x60;section&#x60;):   featured (default) → is_featured → \&quot;Featured Products\&quot;   deals              → is_featured_deal → \&quot;Featured Deals\&quot;   new                → is_featured_new → \&quot;Featured New Inventory\&quot;  Optional schedule windows (starts_at / ends_at) are tenant-local calendar dates stored as UTC. Null start &#x3D; live now; null end &#x3D; never expires. Storefront membership is query-time (flag on + within window).  This does not change the Modern hero&#39;s optional spotlight card; use storefront_theme_manage or store_settings_manage (hero_spotlight_mode / hero_spotlight_product) for that.  ACTIONS:   list (default): return every product flagged for the chosen section          (including scheduled/ended) with id, slug, name, stock_status,          the three featured flags, schedule window, and status          (live|scheduled|ended).   set: pass product_ids (array) and featured (bool) to set the section&#39;s          flag on those products. Optional starts_at / ends_at apply when          featuring; turning featured off clears that section&#39;s window.          Unlisted products are left untouched.  Products must be resolved to ids first (product_inspect or this tool&#39;s list action). Featuring an out-of-stock product is allowed but usually undesirable — check stock_status in the list output before featuring.
      *
      * @param  \ShadowSoftware\DabDash\Model\ProductFeatureManageRequest|null $product_feature_manage_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productFeatureManage'] to see the possible values for this operation
@@ -13354,7 +14065,7 @@ class WriteApi
     /**
      * Operation productFeatureManageAsync
      *
-     * List or set which products are featured on a tenant&#39;s storefront home page (the \&quot;Featured Products\&quot; section, HomeController — up to 8 shown, ordered by the tenant&#39;s default product sort). This does not change the Modern hero&#39;s optional featured-product card; use storefront_theme_manage or store_settings_manage (hero_spotlight_mode / hero_spotlight_product) for that.  ACTIONS:   list (default): return every is_featured&#x3D;true product with id, slug, name,          stock_status. Always call this first to see the current set before          changing it.   set: pass product_ids (array) and featured (bool) to set is_featured on          those products. Unlisted products are left untouched — this is an          additive/subtractive edit, not a replace-the-whole-set operation.  Products must be resolved to ids first (product_inspect or this tool&#39;s list action). Featuring an out-of-stock product is allowed but usually undesirable — check stock_status in the list output before featuring.
+     * List or set which products appear in a tenant&#39;s curated storefront home grids (Classic and Modern). Each section shows up to 8 products, ordered by the tenant&#39;s default product sort, and hides itself when empty.  SECTIONS (pass as &#x60;section&#x60;):   featured (default) → is_featured → \&quot;Featured Products\&quot;   deals              → is_featured_deal → \&quot;Featured Deals\&quot;   new                → is_featured_new → \&quot;Featured New Inventory\&quot;  Optional schedule windows (starts_at / ends_at) are tenant-local calendar dates stored as UTC. Null start &#x3D; live now; null end &#x3D; never expires. Storefront membership is query-time (flag on + within window).  This does not change the Modern hero&#39;s optional spotlight card; use storefront_theme_manage or store_settings_manage (hero_spotlight_mode / hero_spotlight_product) for that.  ACTIONS:   list (default): return every product flagged for the chosen section          (including scheduled/ended) with id, slug, name, stock_status,          the three featured flags, schedule window, and status          (live|scheduled|ended).   set: pass product_ids (array) and featured (bool) to set the section&#39;s          flag on those products. Optional starts_at / ends_at apply when          featuring; turning featured off clears that section&#39;s window.          Unlisted products are left untouched.  Products must be resolved to ids first (product_inspect or this tool&#39;s list action). Featuring an out-of-stock product is allowed but usually undesirable — check stock_status in the list output before featuring.
      *
      * @param  \ShadowSoftware\DabDash\Model\ProductFeatureManageRequest|null $product_feature_manage_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productFeatureManage'] to see the possible values for this operation
@@ -13375,7 +14086,7 @@ class WriteApi
     /**
      * Operation productFeatureManageAsyncWithHttpInfo
      *
-     * List or set which products are featured on a tenant&#39;s storefront home page (the \&quot;Featured Products\&quot; section, HomeController — up to 8 shown, ordered by the tenant&#39;s default product sort). This does not change the Modern hero&#39;s optional featured-product card; use storefront_theme_manage or store_settings_manage (hero_spotlight_mode / hero_spotlight_product) for that.  ACTIONS:   list (default): return every is_featured&#x3D;true product with id, slug, name,          stock_status. Always call this first to see the current set before          changing it.   set: pass product_ids (array) and featured (bool) to set is_featured on          those products. Unlisted products are left untouched — this is an          additive/subtractive edit, not a replace-the-whole-set operation.  Products must be resolved to ids first (product_inspect or this tool&#39;s list action). Featuring an out-of-stock product is allowed but usually undesirable — check stock_status in the list output before featuring.
+     * List or set which products appear in a tenant&#39;s curated storefront home grids (Classic and Modern). Each section shows up to 8 products, ordered by the tenant&#39;s default product sort, and hides itself when empty.  SECTIONS (pass as &#x60;section&#x60;):   featured (default) → is_featured → \&quot;Featured Products\&quot;   deals              → is_featured_deal → \&quot;Featured Deals\&quot;   new                → is_featured_new → \&quot;Featured New Inventory\&quot;  Optional schedule windows (starts_at / ends_at) are tenant-local calendar dates stored as UTC. Null start &#x3D; live now; null end &#x3D; never expires. Storefront membership is query-time (flag on + within window).  This does not change the Modern hero&#39;s optional spotlight card; use storefront_theme_manage or store_settings_manage (hero_spotlight_mode / hero_spotlight_product) for that.  ACTIONS:   list (default): return every product flagged for the chosen section          (including scheduled/ended) with id, slug, name, stock_status,          the three featured flags, schedule window, and status          (live|scheduled|ended).   set: pass product_ids (array) and featured (bool) to set the section&#39;s          flag on those products. Optional starts_at / ends_at apply when          featuring; turning featured off clears that section&#39;s window.          Unlisted products are left untouched.  Products must be resolved to ids first (product_inspect or this tool&#39;s list action). Featuring an out-of-stock product is allowed but usually undesirable — check stock_status in the list output before featuring.
      *
      * @param  \ShadowSoftware\DabDash\Model\ProductFeatureManageRequest|null $product_feature_manage_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productFeatureManage'] to see the possible values for this operation
@@ -14818,6 +15529,345 @@ class WriteApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($product_update_by_sku_request));
             } else {
                 $httpBody = $product_update_by_sku_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation productVariationSync
+     *
+     * Atomically create or reconcile the complete variation list and per-variation inventory for one product. Use this for unit or matrix products after pricing is established. Choose unit for one-dimensional named variants and matrix_unit only for a real name/flavour × quantity/pack-size grid. The payload must contain every variant, an exact expected_variation_count, price, cost_price, and stock_quantity for every row. It is idempotent: matching existing IDs or names are updated, missing rows are created, and existing rows are never deleted. dry_run defaults to true. A successful live run returns before/after counts and stock totals for verification. Weight sizes of one flavor share one gram count — write that count on each size, and never describe it as extra inventory. Pack sizes are separate stock. If the vendor gives one count for a flavor, ask which pack size it belongs to before copying it onto every size. Never split one product across multiple calls.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ProductVariationSyncRequest|null $product_variation_sync_request product_variation_sync_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productVariationSync'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \ShadowSoftware\DabDash\Model\ProductVariationSync200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
+     */
+    public function productVariationSync($product_variation_sync_request = null, string $contentType = self::contentTypes['productVariationSync'][0])
+    {
+        list($response) = $this->productVariationSyncWithHttpInfo($product_variation_sync_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation productVariationSyncWithHttpInfo
+     *
+     * Atomically create or reconcile the complete variation list and per-variation inventory for one product. Use this for unit or matrix products after pricing is established. Choose unit for one-dimensional named variants and matrix_unit only for a real name/flavour × quantity/pack-size grid. The payload must contain every variant, an exact expected_variation_count, price, cost_price, and stock_quantity for every row. It is idempotent: matching existing IDs or names are updated, missing rows are created, and existing rows are never deleted. dry_run defaults to true. A successful live run returns before/after counts and stock totals for verification. Weight sizes of one flavor share one gram count — write that count on each size, and never describe it as extra inventory. Pack sizes are separate stock. If the vendor gives one count for a flavor, ask which pack size it belongs to before copying it onto every size. Never split one product across multiple calls.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ProductVariationSyncRequest|null $product_variation_sync_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productVariationSync'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \ShadowSoftware\DabDash\Model\ProductVariationSync200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function productVariationSyncWithHttpInfo($product_variation_sync_request = null, string $contentType = self::contentTypes['productVariationSync'][0])
+    {
+        $request = $this->productVariationSyncRequest($product_variation_sync_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\ProductVariationSync200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 402:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 422:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\ShadowSoftware\DabDash\Model\ProductVariationSync200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\ProductVariationSync200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 402:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation productVariationSyncAsync
+     *
+     * Atomically create or reconcile the complete variation list and per-variation inventory for one product. Use this for unit or matrix products after pricing is established. Choose unit for one-dimensional named variants and matrix_unit only for a real name/flavour × quantity/pack-size grid. The payload must contain every variant, an exact expected_variation_count, price, cost_price, and stock_quantity for every row. It is idempotent: matching existing IDs or names are updated, missing rows are created, and existing rows are never deleted. dry_run defaults to true. A successful live run returns before/after counts and stock totals for verification. Weight sizes of one flavor share one gram count — write that count on each size, and never describe it as extra inventory. Pack sizes are separate stock. If the vendor gives one count for a flavor, ask which pack size it belongs to before copying it onto every size. Never split one product across multiple calls.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ProductVariationSyncRequest|null $product_variation_sync_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productVariationSync'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function productVariationSyncAsync($product_variation_sync_request = null, string $contentType = self::contentTypes['productVariationSync'][0])
+    {
+        return $this->productVariationSyncAsyncWithHttpInfo($product_variation_sync_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation productVariationSyncAsyncWithHttpInfo
+     *
+     * Atomically create or reconcile the complete variation list and per-variation inventory for one product. Use this for unit or matrix products after pricing is established. Choose unit for one-dimensional named variants and matrix_unit only for a real name/flavour × quantity/pack-size grid. The payload must contain every variant, an exact expected_variation_count, price, cost_price, and stock_quantity for every row. It is idempotent: matching existing IDs or names are updated, missing rows are created, and existing rows are never deleted. dry_run defaults to true. A successful live run returns before/after counts and stock totals for verification. Weight sizes of one flavor share one gram count — write that count on each size, and never describe it as extra inventory. Pack sizes are separate stock. If the vendor gives one count for a flavor, ask which pack size it belongs to before copying it onto every size. Never split one product across multiple calls.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ProductVariationSyncRequest|null $product_variation_sync_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productVariationSync'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function productVariationSyncAsyncWithHttpInfo($product_variation_sync_request = null, string $contentType = self::contentTypes['productVariationSync'][0])
+    {
+        $returnType = '\ShadowSoftware\DabDash\Model\ProductVariationSync200Response';
+        $request = $this->productVariationSyncRequest($product_variation_sync_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'productVariationSync'
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ProductVariationSyncRequest|null $product_variation_sync_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productVariationSync'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function productVariationSyncRequest($product_variation_sync_request = null, string $contentType = self::contentTypes['productVariationSync'][0])
+    {
+
+
+
+        $resourcePath = '/api/v1/tools/product_variation_sync';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($product_variation_sync_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($product_variation_sync_request));
+            } else {
+                $httpBody = $product_variation_sync_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -16908,9 +17958,348 @@ class WriteApi
     }
 
     /**
+     * Operation smartListManage
+     *
+     * Create, edit, preview, or delete Smart Lists (dynamic customer audiences).  ACTIONS:   list / show — discover Smart Lists (also available via contact_list_manage).   upsert — create (omit list_id) or update. Requires name + definition     {version:1, match:\&quot;all\&quot;|\&quot;any\&quot;, conditions:[...]}.     Rule types: purchased_category, recent_category_buyers, lapsed_category_buyers,     not_purchased_category, purchased_product, purchase_count, spend_total,     top_spenders, dormant_customer, loyalty_lifetime_points, loyalty_tier.   preview — count matching customers for a definition (or existing list_id).   delete — dry_run default true; applying needs dry_run&#x3D;false + confirm&#x3D;true.  Attach Smart Lists to campaigns with campaign_upsert.contact_list_ids or to coupons via coupon_upsert.contact_list_id. Project to Klaviyo with tenant_klaviyo_manage.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\SmartListManageRequest|null $smart_list_manage_request smart_list_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['smartListManage'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \ShadowSoftware\DabDash\Model\SmartListManage200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
+     */
+    public function smartListManage($smart_list_manage_request = null, string $contentType = self::contentTypes['smartListManage'][0])
+    {
+        list($response) = $this->smartListManageWithHttpInfo($smart_list_manage_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation smartListManageWithHttpInfo
+     *
+     * Create, edit, preview, or delete Smart Lists (dynamic customer audiences).  ACTIONS:   list / show — discover Smart Lists (also available via contact_list_manage).   upsert — create (omit list_id) or update. Requires name + definition     {version:1, match:\&quot;all\&quot;|\&quot;any\&quot;, conditions:[...]}.     Rule types: purchased_category, recent_category_buyers, lapsed_category_buyers,     not_purchased_category, purchased_product, purchase_count, spend_total,     top_spenders, dormant_customer, loyalty_lifetime_points, loyalty_tier.   preview — count matching customers for a definition (or existing list_id).   delete — dry_run default true; applying needs dry_run&#x3D;false + confirm&#x3D;true.  Attach Smart Lists to campaigns with campaign_upsert.contact_list_ids or to coupons via coupon_upsert.contact_list_id. Project to Klaviyo with tenant_klaviyo_manage.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\SmartListManageRequest|null $smart_list_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['smartListManage'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \ShadowSoftware\DabDash\Model\SmartListManage200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function smartListManageWithHttpInfo($smart_list_manage_request = null, string $contentType = self::contentTypes['smartListManage'][0])
+    {
+        $request = $this->smartListManageRequest($smart_list_manage_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\SmartListManage200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 402:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 422:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\ShadowSoftware\DabDash\Model\SmartListManage200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\SmartListManage200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 402:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation smartListManageAsync
+     *
+     * Create, edit, preview, or delete Smart Lists (dynamic customer audiences).  ACTIONS:   list / show — discover Smart Lists (also available via contact_list_manage).   upsert — create (omit list_id) or update. Requires name + definition     {version:1, match:\&quot;all\&quot;|\&quot;any\&quot;, conditions:[...]}.     Rule types: purchased_category, recent_category_buyers, lapsed_category_buyers,     not_purchased_category, purchased_product, purchase_count, spend_total,     top_spenders, dormant_customer, loyalty_lifetime_points, loyalty_tier.   preview — count matching customers for a definition (or existing list_id).   delete — dry_run default true; applying needs dry_run&#x3D;false + confirm&#x3D;true.  Attach Smart Lists to campaigns with campaign_upsert.contact_list_ids or to coupons via coupon_upsert.contact_list_id. Project to Klaviyo with tenant_klaviyo_manage.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\SmartListManageRequest|null $smart_list_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['smartListManage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function smartListManageAsync($smart_list_manage_request = null, string $contentType = self::contentTypes['smartListManage'][0])
+    {
+        return $this->smartListManageAsyncWithHttpInfo($smart_list_manage_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation smartListManageAsyncWithHttpInfo
+     *
+     * Create, edit, preview, or delete Smart Lists (dynamic customer audiences).  ACTIONS:   list / show — discover Smart Lists (also available via contact_list_manage).   upsert — create (omit list_id) or update. Requires name + definition     {version:1, match:\&quot;all\&quot;|\&quot;any\&quot;, conditions:[...]}.     Rule types: purchased_category, recent_category_buyers, lapsed_category_buyers,     not_purchased_category, purchased_product, purchase_count, spend_total,     top_spenders, dormant_customer, loyalty_lifetime_points, loyalty_tier.   preview — count matching customers for a definition (or existing list_id).   delete — dry_run default true; applying needs dry_run&#x3D;false + confirm&#x3D;true.  Attach Smart Lists to campaigns with campaign_upsert.contact_list_ids or to coupons via coupon_upsert.contact_list_id. Project to Klaviyo with tenant_klaviyo_manage.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\SmartListManageRequest|null $smart_list_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['smartListManage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function smartListManageAsyncWithHttpInfo($smart_list_manage_request = null, string $contentType = self::contentTypes['smartListManage'][0])
+    {
+        $returnType = '\ShadowSoftware\DabDash\Model\SmartListManage200Response';
+        $request = $this->smartListManageRequest($smart_list_manage_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'smartListManage'
+     *
+     * @param  \ShadowSoftware\DabDash\Model\SmartListManageRequest|null $smart_list_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['smartListManage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function smartListManageRequest($smart_list_manage_request = null, string $contentType = self::contentTypes['smartListManage'][0])
+    {
+
+
+
+        $resourcePath = '/api/v1/tools/smart_list_manage';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($smart_list_manage_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($smart_list_manage_request));
+            } else {
+                $httpBody = $smart_list_manage_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation storeSettingsManage
      *
-     * Show or update a store&#39;s core settings: display name, phone, address, coordinates, timezone, currency, country, locale, brand colours, and opening hours.  ACTIONS:   show (default): current values.   set: pass only the fields to change. dry_run defaults true — the first call        reports the diff without writing; pass dry_run&#x3D;false to save.  Brand colours: theme_color is the primary, accent_color the secondary (both #RRGGBB; a 3-digit #RGB accent is expanded). button_text_color is auto (default: white or near-black, whichever contrasts more), white, or dark. Every response includes &#x60;palette&#x60;: the effective text colour on primary/accent, its WCAG contrast ratio, and warnings for any pairing under 4.5:1 — dry-run first to preview a palette.  opening_hours is a list of {days: [\&quot;Monday\&quot;, ...], opens: \&quot;09:00\&quot;, closes: \&quot;21:00\&quot;} rows (24h HH:MM, full English day names). Passing it replaces all rows; pass an empty list to clear. Hours feed the storefront About page and search-engine markup. storefront_theme picks the storefront look: classic (default) or modern. theme_mode controls the storefront colour mode: light or dark. hero_* fields preserve the vendor&#39;s full hero message and modern-theme content. The Modern hero featured-product card is optional: hero_spotlight_mode is auto (newest sale), product (pin one), or off (hide the card). Pass hero_spotlight_product (name or slug) or hero_spotlight_product_id to pin a product; omitting the mode then sets it to product. Badge, caption, and button are hero_spotlight_label, hero_spotlight_kicker, and hero_spotlight_cta. product_feature_manage only toggles the separate Featured Products grid. The same card and the rest of the Modern homepage/footer are also on storefront_theme_manage. Vendors edit the card in Settings → Theme. hero_ticker_items replaces custom ticker rows with {label, tag, url} objects; URLs must be site paths or https:// links. Use hero_ticker_mode&#x3D;custom to show them. hero_status_mode controls the Modern hero online/last-call pill: hours (from opening_hours), auto (delivery slots when available, else hours), or off. minimum_age is the storefront age gate / About compliance age (e.g. 19 in NS). footer_notes and about_* set Modern footer notes and About intro copy. privacy_url is the authoritative published privacy-policy URL. Use the exact blog URL when the policy is a blog post. delivery_meta_description is an optional, tenant-specific description for the public /delivery page. Keep it factual and 160 characters or fewer. social_facebook / social_instagram / social_twitter / social_x / google_business_url / gbp_url are absolute https URLs published as Organization and LocalBusiness sameAs (Knowledge Panel alignment). freebie_cost_in_cogs (default true) includes giveaway freebie wholesale cost in vendor COGS / margin reports even though freebie revenue is $0. Slug, owner, subscription, and custom domain are not changed here.
+     * Show or update a store&#39;s core settings: display name, phone, address, coordinates, timezone, currency, country, locale, brand colours, and opening hours.  ACTIONS:   show (default): current values.   set: pass only the fields to change. dry_run defaults true — the first call        reports the diff without writing; pass dry_run&#x3D;false to save.  Brand colours: theme_color is the primary, accent_color the secondary (both #RRGGBB; a 3-digit #RGB accent is expanded). button_text_color is auto (default: white or near-black, whichever contrasts more), white, or dark. Every response includes &#x60;palette&#x60;: the effective text colour on primary/accent, its WCAG contrast ratio, and warnings for any pairing under 4.5:1 — dry-run first to preview a palette.  opening_hours is a list of {days: [\&quot;Monday\&quot;, ...], opens: \&quot;09:00\&quot;, closes: \&quot;21:00\&quot;} rows (24h HH:MM, full English day names). Passing it replaces all rows; pass an empty list to clear. Hours feed the storefront About page and search-engine markup. storefront_theme picks the storefront look: classic (default) or modern. theme_mode controls the storefront colour mode: light or dark. hero_* fields preserve the vendor&#39;s full hero message and modern-theme content. The Modern hero featured-product card is optional: hero_spotlight_mode is auto (newest sale), product (pin one), or off (hide the card). Pass hero_spotlight_product (name or slug) or hero_spotlight_product_id to pin a product; omitting the mode then sets it to product. Badge, caption, and button are hero_spotlight_label, hero_spotlight_kicker, and hero_spotlight_cta. product_feature_manage only toggles the separate Featured Products grid. The same card and the rest of the Modern homepage/footer are also on storefront_theme_manage. Vendors edit the card in Settings → Theme. hero_ticker_items replaces custom ticker rows with {label, tag, url} objects; URLs must be site paths or https:// links. Use hero_ticker_mode&#x3D;custom to show them. hero_status_mode controls the Modern hero online/last-call pill: hours (from opening_hours), auto (delivery slots when available, else hours), or off. minimum_age is the storefront age gate / About compliance age (e.g. 19 in NS). footer_notes and about_* set Modern footer notes and About intro copy. privacy_url is the authoritative published privacy-policy URL. Use the exact blog URL when the policy is a blog post. delivery_meta_description is an optional, tenant-specific description for the public /delivery page. Keep it factual and 160 characters or fewer. social_facebook / social_instagram / social_twitter / social_x / google_business_url / gbp_url are absolute https URLs published as Organization and LocalBusiness sameAs (Knowledge Panel alignment). freebie_cost_in_cogs (default true) includes giveaway freebie wholesale cost in vendor COGS / margin reports even though freebie revenue is $0. revenue_attribution_date is placed (order checkout day) or delivered (scheduled delivery calendar day) for analytics revenue dating. Slug, owner, subscription, and custom domain are not changed here.
      *
      * @param  \ShadowSoftware\DabDash\Model\StoreSettingsManageRequest|null $store_settings_manage_request store_settings_manage_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['storeSettingsManage'] to see the possible values for this operation
@@ -16928,7 +18317,7 @@ class WriteApi
     /**
      * Operation storeSettingsManageWithHttpInfo
      *
-     * Show or update a store&#39;s core settings: display name, phone, address, coordinates, timezone, currency, country, locale, brand colours, and opening hours.  ACTIONS:   show (default): current values.   set: pass only the fields to change. dry_run defaults true — the first call        reports the diff without writing; pass dry_run&#x3D;false to save.  Brand colours: theme_color is the primary, accent_color the secondary (both #RRGGBB; a 3-digit #RGB accent is expanded). button_text_color is auto (default: white or near-black, whichever contrasts more), white, or dark. Every response includes &#x60;palette&#x60;: the effective text colour on primary/accent, its WCAG contrast ratio, and warnings for any pairing under 4.5:1 — dry-run first to preview a palette.  opening_hours is a list of {days: [\&quot;Monday\&quot;, ...], opens: \&quot;09:00\&quot;, closes: \&quot;21:00\&quot;} rows (24h HH:MM, full English day names). Passing it replaces all rows; pass an empty list to clear. Hours feed the storefront About page and search-engine markup. storefront_theme picks the storefront look: classic (default) or modern. theme_mode controls the storefront colour mode: light or dark. hero_* fields preserve the vendor&#39;s full hero message and modern-theme content. The Modern hero featured-product card is optional: hero_spotlight_mode is auto (newest sale), product (pin one), or off (hide the card). Pass hero_spotlight_product (name or slug) or hero_spotlight_product_id to pin a product; omitting the mode then sets it to product. Badge, caption, and button are hero_spotlight_label, hero_spotlight_kicker, and hero_spotlight_cta. product_feature_manage only toggles the separate Featured Products grid. The same card and the rest of the Modern homepage/footer are also on storefront_theme_manage. Vendors edit the card in Settings → Theme. hero_ticker_items replaces custom ticker rows with {label, tag, url} objects; URLs must be site paths or https:// links. Use hero_ticker_mode&#x3D;custom to show them. hero_status_mode controls the Modern hero online/last-call pill: hours (from opening_hours), auto (delivery slots when available, else hours), or off. minimum_age is the storefront age gate / About compliance age (e.g. 19 in NS). footer_notes and about_* set Modern footer notes and About intro copy. privacy_url is the authoritative published privacy-policy URL. Use the exact blog URL when the policy is a blog post. delivery_meta_description is an optional, tenant-specific description for the public /delivery page. Keep it factual and 160 characters or fewer. social_facebook / social_instagram / social_twitter / social_x / google_business_url / gbp_url are absolute https URLs published as Organization and LocalBusiness sameAs (Knowledge Panel alignment). freebie_cost_in_cogs (default true) includes giveaway freebie wholesale cost in vendor COGS / margin reports even though freebie revenue is $0. Slug, owner, subscription, and custom domain are not changed here.
+     * Show or update a store&#39;s core settings: display name, phone, address, coordinates, timezone, currency, country, locale, brand colours, and opening hours.  ACTIONS:   show (default): current values.   set: pass only the fields to change. dry_run defaults true — the first call        reports the diff without writing; pass dry_run&#x3D;false to save.  Brand colours: theme_color is the primary, accent_color the secondary (both #RRGGBB; a 3-digit #RGB accent is expanded). button_text_color is auto (default: white or near-black, whichever contrasts more), white, or dark. Every response includes &#x60;palette&#x60;: the effective text colour on primary/accent, its WCAG contrast ratio, and warnings for any pairing under 4.5:1 — dry-run first to preview a palette.  opening_hours is a list of {days: [\&quot;Monday\&quot;, ...], opens: \&quot;09:00\&quot;, closes: \&quot;21:00\&quot;} rows (24h HH:MM, full English day names). Passing it replaces all rows; pass an empty list to clear. Hours feed the storefront About page and search-engine markup. storefront_theme picks the storefront look: classic (default) or modern. theme_mode controls the storefront colour mode: light or dark. hero_* fields preserve the vendor&#39;s full hero message and modern-theme content. The Modern hero featured-product card is optional: hero_spotlight_mode is auto (newest sale), product (pin one), or off (hide the card). Pass hero_spotlight_product (name or slug) or hero_spotlight_product_id to pin a product; omitting the mode then sets it to product. Badge, caption, and button are hero_spotlight_label, hero_spotlight_kicker, and hero_spotlight_cta. product_feature_manage only toggles the separate Featured Products grid. The same card and the rest of the Modern homepage/footer are also on storefront_theme_manage. Vendors edit the card in Settings → Theme. hero_ticker_items replaces custom ticker rows with {label, tag, url} objects; URLs must be site paths or https:// links. Use hero_ticker_mode&#x3D;custom to show them. hero_status_mode controls the Modern hero online/last-call pill: hours (from opening_hours), auto (delivery slots when available, else hours), or off. minimum_age is the storefront age gate / About compliance age (e.g. 19 in NS). footer_notes and about_* set Modern footer notes and About intro copy. privacy_url is the authoritative published privacy-policy URL. Use the exact blog URL when the policy is a blog post. delivery_meta_description is an optional, tenant-specific description for the public /delivery page. Keep it factual and 160 characters or fewer. social_facebook / social_instagram / social_twitter / social_x / google_business_url / gbp_url are absolute https URLs published as Organization and LocalBusiness sameAs (Knowledge Panel alignment). freebie_cost_in_cogs (default true) includes giveaway freebie wholesale cost in vendor COGS / margin reports even though freebie revenue is $0. revenue_attribution_date is placed (order checkout day) or delivered (scheduled delivery calendar day) for analytics revenue dating. Slug, owner, subscription, and custom domain are not changed here.
      *
      * @param  \ShadowSoftware\DabDash\Model\StoreSettingsManageRequest|null $store_settings_manage_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['storeSettingsManage'] to see the possible values for this operation
@@ -17083,7 +18472,7 @@ class WriteApi
     /**
      * Operation storeSettingsManageAsync
      *
-     * Show or update a store&#39;s core settings: display name, phone, address, coordinates, timezone, currency, country, locale, brand colours, and opening hours.  ACTIONS:   show (default): current values.   set: pass only the fields to change. dry_run defaults true — the first call        reports the diff without writing; pass dry_run&#x3D;false to save.  Brand colours: theme_color is the primary, accent_color the secondary (both #RRGGBB; a 3-digit #RGB accent is expanded). button_text_color is auto (default: white or near-black, whichever contrasts more), white, or dark. Every response includes &#x60;palette&#x60;: the effective text colour on primary/accent, its WCAG contrast ratio, and warnings for any pairing under 4.5:1 — dry-run first to preview a palette.  opening_hours is a list of {days: [\&quot;Monday\&quot;, ...], opens: \&quot;09:00\&quot;, closes: \&quot;21:00\&quot;} rows (24h HH:MM, full English day names). Passing it replaces all rows; pass an empty list to clear. Hours feed the storefront About page and search-engine markup. storefront_theme picks the storefront look: classic (default) or modern. theme_mode controls the storefront colour mode: light or dark. hero_* fields preserve the vendor&#39;s full hero message and modern-theme content. The Modern hero featured-product card is optional: hero_spotlight_mode is auto (newest sale), product (pin one), or off (hide the card). Pass hero_spotlight_product (name or slug) or hero_spotlight_product_id to pin a product; omitting the mode then sets it to product. Badge, caption, and button are hero_spotlight_label, hero_spotlight_kicker, and hero_spotlight_cta. product_feature_manage only toggles the separate Featured Products grid. The same card and the rest of the Modern homepage/footer are also on storefront_theme_manage. Vendors edit the card in Settings → Theme. hero_ticker_items replaces custom ticker rows with {label, tag, url} objects; URLs must be site paths or https:// links. Use hero_ticker_mode&#x3D;custom to show them. hero_status_mode controls the Modern hero online/last-call pill: hours (from opening_hours), auto (delivery slots when available, else hours), or off. minimum_age is the storefront age gate / About compliance age (e.g. 19 in NS). footer_notes and about_* set Modern footer notes and About intro copy. privacy_url is the authoritative published privacy-policy URL. Use the exact blog URL when the policy is a blog post. delivery_meta_description is an optional, tenant-specific description for the public /delivery page. Keep it factual and 160 characters or fewer. social_facebook / social_instagram / social_twitter / social_x / google_business_url / gbp_url are absolute https URLs published as Organization and LocalBusiness sameAs (Knowledge Panel alignment). freebie_cost_in_cogs (default true) includes giveaway freebie wholesale cost in vendor COGS / margin reports even though freebie revenue is $0. Slug, owner, subscription, and custom domain are not changed here.
+     * Show or update a store&#39;s core settings: display name, phone, address, coordinates, timezone, currency, country, locale, brand colours, and opening hours.  ACTIONS:   show (default): current values.   set: pass only the fields to change. dry_run defaults true — the first call        reports the diff without writing; pass dry_run&#x3D;false to save.  Brand colours: theme_color is the primary, accent_color the secondary (both #RRGGBB; a 3-digit #RGB accent is expanded). button_text_color is auto (default: white or near-black, whichever contrasts more), white, or dark. Every response includes &#x60;palette&#x60;: the effective text colour on primary/accent, its WCAG contrast ratio, and warnings for any pairing under 4.5:1 — dry-run first to preview a palette.  opening_hours is a list of {days: [\&quot;Monday\&quot;, ...], opens: \&quot;09:00\&quot;, closes: \&quot;21:00\&quot;} rows (24h HH:MM, full English day names). Passing it replaces all rows; pass an empty list to clear. Hours feed the storefront About page and search-engine markup. storefront_theme picks the storefront look: classic (default) or modern. theme_mode controls the storefront colour mode: light or dark. hero_* fields preserve the vendor&#39;s full hero message and modern-theme content. The Modern hero featured-product card is optional: hero_spotlight_mode is auto (newest sale), product (pin one), or off (hide the card). Pass hero_spotlight_product (name or slug) or hero_spotlight_product_id to pin a product; omitting the mode then sets it to product. Badge, caption, and button are hero_spotlight_label, hero_spotlight_kicker, and hero_spotlight_cta. product_feature_manage only toggles the separate Featured Products grid. The same card and the rest of the Modern homepage/footer are also on storefront_theme_manage. Vendors edit the card in Settings → Theme. hero_ticker_items replaces custom ticker rows with {label, tag, url} objects; URLs must be site paths or https:// links. Use hero_ticker_mode&#x3D;custom to show them. hero_status_mode controls the Modern hero online/last-call pill: hours (from opening_hours), auto (delivery slots when available, else hours), or off. minimum_age is the storefront age gate / About compliance age (e.g. 19 in NS). footer_notes and about_* set Modern footer notes and About intro copy. privacy_url is the authoritative published privacy-policy URL. Use the exact blog URL when the policy is a blog post. delivery_meta_description is an optional, tenant-specific description for the public /delivery page. Keep it factual and 160 characters or fewer. social_facebook / social_instagram / social_twitter / social_x / google_business_url / gbp_url are absolute https URLs published as Organization and LocalBusiness sameAs (Knowledge Panel alignment). freebie_cost_in_cogs (default true) includes giveaway freebie wholesale cost in vendor COGS / margin reports even though freebie revenue is $0. revenue_attribution_date is placed (order checkout day) or delivered (scheduled delivery calendar day) for analytics revenue dating. Slug, owner, subscription, and custom domain are not changed here.
      *
      * @param  \ShadowSoftware\DabDash\Model\StoreSettingsManageRequest|null $store_settings_manage_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['storeSettingsManage'] to see the possible values for this operation
@@ -17104,7 +18493,7 @@ class WriteApi
     /**
      * Operation storeSettingsManageAsyncWithHttpInfo
      *
-     * Show or update a store&#39;s core settings: display name, phone, address, coordinates, timezone, currency, country, locale, brand colours, and opening hours.  ACTIONS:   show (default): current values.   set: pass only the fields to change. dry_run defaults true — the first call        reports the diff without writing; pass dry_run&#x3D;false to save.  Brand colours: theme_color is the primary, accent_color the secondary (both #RRGGBB; a 3-digit #RGB accent is expanded). button_text_color is auto (default: white or near-black, whichever contrasts more), white, or dark. Every response includes &#x60;palette&#x60;: the effective text colour on primary/accent, its WCAG contrast ratio, and warnings for any pairing under 4.5:1 — dry-run first to preview a palette.  opening_hours is a list of {days: [\&quot;Monday\&quot;, ...], opens: \&quot;09:00\&quot;, closes: \&quot;21:00\&quot;} rows (24h HH:MM, full English day names). Passing it replaces all rows; pass an empty list to clear. Hours feed the storefront About page and search-engine markup. storefront_theme picks the storefront look: classic (default) or modern. theme_mode controls the storefront colour mode: light or dark. hero_* fields preserve the vendor&#39;s full hero message and modern-theme content. The Modern hero featured-product card is optional: hero_spotlight_mode is auto (newest sale), product (pin one), or off (hide the card). Pass hero_spotlight_product (name or slug) or hero_spotlight_product_id to pin a product; omitting the mode then sets it to product. Badge, caption, and button are hero_spotlight_label, hero_spotlight_kicker, and hero_spotlight_cta. product_feature_manage only toggles the separate Featured Products grid. The same card and the rest of the Modern homepage/footer are also on storefront_theme_manage. Vendors edit the card in Settings → Theme. hero_ticker_items replaces custom ticker rows with {label, tag, url} objects; URLs must be site paths or https:// links. Use hero_ticker_mode&#x3D;custom to show them. hero_status_mode controls the Modern hero online/last-call pill: hours (from opening_hours), auto (delivery slots when available, else hours), or off. minimum_age is the storefront age gate / About compliance age (e.g. 19 in NS). footer_notes and about_* set Modern footer notes and About intro copy. privacy_url is the authoritative published privacy-policy URL. Use the exact blog URL when the policy is a blog post. delivery_meta_description is an optional, tenant-specific description for the public /delivery page. Keep it factual and 160 characters or fewer. social_facebook / social_instagram / social_twitter / social_x / google_business_url / gbp_url are absolute https URLs published as Organization and LocalBusiness sameAs (Knowledge Panel alignment). freebie_cost_in_cogs (default true) includes giveaway freebie wholesale cost in vendor COGS / margin reports even though freebie revenue is $0. Slug, owner, subscription, and custom domain are not changed here.
+     * Show or update a store&#39;s core settings: display name, phone, address, coordinates, timezone, currency, country, locale, brand colours, and opening hours.  ACTIONS:   show (default): current values.   set: pass only the fields to change. dry_run defaults true — the first call        reports the diff without writing; pass dry_run&#x3D;false to save.  Brand colours: theme_color is the primary, accent_color the secondary (both #RRGGBB; a 3-digit #RGB accent is expanded). button_text_color is auto (default: white or near-black, whichever contrasts more), white, or dark. Every response includes &#x60;palette&#x60;: the effective text colour on primary/accent, its WCAG contrast ratio, and warnings for any pairing under 4.5:1 — dry-run first to preview a palette.  opening_hours is a list of {days: [\&quot;Monday\&quot;, ...], opens: \&quot;09:00\&quot;, closes: \&quot;21:00\&quot;} rows (24h HH:MM, full English day names). Passing it replaces all rows; pass an empty list to clear. Hours feed the storefront About page and search-engine markup. storefront_theme picks the storefront look: classic (default) or modern. theme_mode controls the storefront colour mode: light or dark. hero_* fields preserve the vendor&#39;s full hero message and modern-theme content. The Modern hero featured-product card is optional: hero_spotlight_mode is auto (newest sale), product (pin one), or off (hide the card). Pass hero_spotlight_product (name or slug) or hero_spotlight_product_id to pin a product; omitting the mode then sets it to product. Badge, caption, and button are hero_spotlight_label, hero_spotlight_kicker, and hero_spotlight_cta. product_feature_manage only toggles the separate Featured Products grid. The same card and the rest of the Modern homepage/footer are also on storefront_theme_manage. Vendors edit the card in Settings → Theme. hero_ticker_items replaces custom ticker rows with {label, tag, url} objects; URLs must be site paths or https:// links. Use hero_ticker_mode&#x3D;custom to show them. hero_status_mode controls the Modern hero online/last-call pill: hours (from opening_hours), auto (delivery slots when available, else hours), or off. minimum_age is the storefront age gate / About compliance age (e.g. 19 in NS). footer_notes and about_* set Modern footer notes and About intro copy. privacy_url is the authoritative published privacy-policy URL. Use the exact blog URL when the policy is a blog post. delivery_meta_description is an optional, tenant-specific description for the public /delivery page. Keep it factual and 160 characters or fewer. social_facebook / social_instagram / social_twitter / social_x / google_business_url / gbp_url are absolute https URLs published as Organization and LocalBusiness sameAs (Knowledge Panel alignment). freebie_cost_in_cogs (default true) includes giveaway freebie wholesale cost in vendor COGS / margin reports even though freebie revenue is $0. revenue_attribution_date is placed (order checkout day) or delivered (scheduled delivery calendar day) for analytics revenue dating. Slug, owner, subscription, and custom domain are not changed here.
      *
      * @param  \ShadowSoftware\DabDash\Model\StoreSettingsManageRequest|null $store_settings_manage_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['storeSettingsManage'] to see the possible values for this operation
@@ -17925,6 +19314,684 @@ class WriteApi
     }
 
     /**
+     * Operation suppressionManage
+     *
+     * Inspect or lift email suppressions / campaign unsubscribes for a tenant.  ACTIONS:   list — recent suppressed customers (email_opt_out) and unsubscribed contacts.   lift_transactional — clear customer email_opt_out for an email.   resubscribe — restore contact.subscribed for campaign lists.   lift_all — both transactional + campaign for one email.  Mutating actions: dry_run default true; apply needs dry_run&#x3D;false + confirm&#x3D;true.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\SuppressionManageRequest|null $suppression_manage_request suppression_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['suppressionManage'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \ShadowSoftware\DabDash\Model\SuppressionManage200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
+     */
+    public function suppressionManage($suppression_manage_request = null, string $contentType = self::contentTypes['suppressionManage'][0])
+    {
+        list($response) = $this->suppressionManageWithHttpInfo($suppression_manage_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation suppressionManageWithHttpInfo
+     *
+     * Inspect or lift email suppressions / campaign unsubscribes for a tenant.  ACTIONS:   list — recent suppressed customers (email_opt_out) and unsubscribed contacts.   lift_transactional — clear customer email_opt_out for an email.   resubscribe — restore contact.subscribed for campaign lists.   lift_all — both transactional + campaign for one email.  Mutating actions: dry_run default true; apply needs dry_run&#x3D;false + confirm&#x3D;true.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\SuppressionManageRequest|null $suppression_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['suppressionManage'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \ShadowSoftware\DabDash\Model\SuppressionManage200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function suppressionManageWithHttpInfo($suppression_manage_request = null, string $contentType = self::contentTypes['suppressionManage'][0])
+    {
+        $request = $this->suppressionManageRequest($suppression_manage_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\SuppressionManage200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 402:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 422:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\ShadowSoftware\DabDash\Model\SuppressionManage200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\SuppressionManage200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 402:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation suppressionManageAsync
+     *
+     * Inspect or lift email suppressions / campaign unsubscribes for a tenant.  ACTIONS:   list — recent suppressed customers (email_opt_out) and unsubscribed contacts.   lift_transactional — clear customer email_opt_out for an email.   resubscribe — restore contact.subscribed for campaign lists.   lift_all — both transactional + campaign for one email.  Mutating actions: dry_run default true; apply needs dry_run&#x3D;false + confirm&#x3D;true.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\SuppressionManageRequest|null $suppression_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['suppressionManage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function suppressionManageAsync($suppression_manage_request = null, string $contentType = self::contentTypes['suppressionManage'][0])
+    {
+        return $this->suppressionManageAsyncWithHttpInfo($suppression_manage_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation suppressionManageAsyncWithHttpInfo
+     *
+     * Inspect or lift email suppressions / campaign unsubscribes for a tenant.  ACTIONS:   list — recent suppressed customers (email_opt_out) and unsubscribed contacts.   lift_transactional — clear customer email_opt_out for an email.   resubscribe — restore contact.subscribed for campaign lists.   lift_all — both transactional + campaign for one email.  Mutating actions: dry_run default true; apply needs dry_run&#x3D;false + confirm&#x3D;true.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\SuppressionManageRequest|null $suppression_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['suppressionManage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function suppressionManageAsyncWithHttpInfo($suppression_manage_request = null, string $contentType = self::contentTypes['suppressionManage'][0])
+    {
+        $returnType = '\ShadowSoftware\DabDash\Model\SuppressionManage200Response';
+        $request = $this->suppressionManageRequest($suppression_manage_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'suppressionManage'
+     *
+     * @param  \ShadowSoftware\DabDash\Model\SuppressionManageRequest|null $suppression_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['suppressionManage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function suppressionManageRequest($suppression_manage_request = null, string $contentType = self::contentTypes['suppressionManage'][0])
+    {
+
+
+
+        $resourcePath = '/api/v1/tools/suppression_manage';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($suppression_manage_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($suppression_manage_request));
+            } else {
+                $httpBody = $suppression_manage_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation tenantBlogUpsert
+     *
+     * Update an existing tenant (vendor) blog post&#39;s fields — title, excerpt, body, category, featured_image, meta_title, meta_description, og_image, or is_published. Only the fields you pass are changed. Use tenant_blog_lookup first to find the post_id or slug.  IMAGE: pass media_id (from media_list / media_upload) to set featured_image from a tenant media-library asset. Raw featured_image URLs/paths are refused — ingest with media_upload first, then place by media_id (GitHub #184). Pass featured_image empty/null to clear. A superseded image this post previously owned is cleaned up from disk automatically once the change is saved.  dry_run (default true) previews the fields that would change without writing — call once with dry_run&#x3D;true and review before dry_run&#x3D;false.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\TenantBlogUpsertRequest|null $tenant_blog_upsert_request tenant_blog_upsert_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['tenantBlogUpsert'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \ShadowSoftware\DabDash\Model\ContactCleanup200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
+     */
+    public function tenantBlogUpsert($tenant_blog_upsert_request = null, string $contentType = self::contentTypes['tenantBlogUpsert'][0])
+    {
+        list($response) = $this->tenantBlogUpsertWithHttpInfo($tenant_blog_upsert_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation tenantBlogUpsertWithHttpInfo
+     *
+     * Update an existing tenant (vendor) blog post&#39;s fields — title, excerpt, body, category, featured_image, meta_title, meta_description, og_image, or is_published. Only the fields you pass are changed. Use tenant_blog_lookup first to find the post_id or slug.  IMAGE: pass media_id (from media_list / media_upload) to set featured_image from a tenant media-library asset. Raw featured_image URLs/paths are refused — ingest with media_upload first, then place by media_id (GitHub #184). Pass featured_image empty/null to clear. A superseded image this post previously owned is cleaned up from disk automatically once the change is saved.  dry_run (default true) previews the fields that would change without writing — call once with dry_run&#x3D;true and review before dry_run&#x3D;false.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\TenantBlogUpsertRequest|null $tenant_blog_upsert_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['tenantBlogUpsert'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \ShadowSoftware\DabDash\Model\ContactCleanup200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function tenantBlogUpsertWithHttpInfo($tenant_blog_upsert_request = null, string $contentType = self::contentTypes['tenantBlogUpsert'][0])
+    {
+        $request = $this->tenantBlogUpsertRequest($tenant_blog_upsert_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\ContactCleanup200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 402:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 422:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\ShadowSoftware\DabDash\Model\ContactCleanup200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\ContactCleanup200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 402:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation tenantBlogUpsertAsync
+     *
+     * Update an existing tenant (vendor) blog post&#39;s fields — title, excerpt, body, category, featured_image, meta_title, meta_description, og_image, or is_published. Only the fields you pass are changed. Use tenant_blog_lookup first to find the post_id or slug.  IMAGE: pass media_id (from media_list / media_upload) to set featured_image from a tenant media-library asset. Raw featured_image URLs/paths are refused — ingest with media_upload first, then place by media_id (GitHub #184). Pass featured_image empty/null to clear. A superseded image this post previously owned is cleaned up from disk automatically once the change is saved.  dry_run (default true) previews the fields that would change without writing — call once with dry_run&#x3D;true and review before dry_run&#x3D;false.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\TenantBlogUpsertRequest|null $tenant_blog_upsert_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['tenantBlogUpsert'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function tenantBlogUpsertAsync($tenant_blog_upsert_request = null, string $contentType = self::contentTypes['tenantBlogUpsert'][0])
+    {
+        return $this->tenantBlogUpsertAsyncWithHttpInfo($tenant_blog_upsert_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation tenantBlogUpsertAsyncWithHttpInfo
+     *
+     * Update an existing tenant (vendor) blog post&#39;s fields — title, excerpt, body, category, featured_image, meta_title, meta_description, og_image, or is_published. Only the fields you pass are changed. Use tenant_blog_lookup first to find the post_id or slug.  IMAGE: pass media_id (from media_list / media_upload) to set featured_image from a tenant media-library asset. Raw featured_image URLs/paths are refused — ingest with media_upload first, then place by media_id (GitHub #184). Pass featured_image empty/null to clear. A superseded image this post previously owned is cleaned up from disk automatically once the change is saved.  dry_run (default true) previews the fields that would change without writing — call once with dry_run&#x3D;true and review before dry_run&#x3D;false.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\TenantBlogUpsertRequest|null $tenant_blog_upsert_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['tenantBlogUpsert'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function tenantBlogUpsertAsyncWithHttpInfo($tenant_blog_upsert_request = null, string $contentType = self::contentTypes['tenantBlogUpsert'][0])
+    {
+        $returnType = '\ShadowSoftware\DabDash\Model\ContactCleanup200Response';
+        $request = $this->tenantBlogUpsertRequest($tenant_blog_upsert_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'tenantBlogUpsert'
+     *
+     * @param  \ShadowSoftware\DabDash\Model\TenantBlogUpsertRequest|null $tenant_blog_upsert_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['tenantBlogUpsert'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function tenantBlogUpsertRequest($tenant_blog_upsert_request = null, string $contentType = self::contentTypes['tenantBlogUpsert'][0])
+    {
+
+
+
+        $resourcePath = '/api/v1/tools/tenant_blog_upsert';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($tenant_blog_upsert_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($tenant_blog_upsert_request));
+            } else {
+                $httpBody = $tenant_blog_upsert_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation tenantBrandingManage
      *
      * Show or update a tenant&#39;s store logo, homepage hero image, and BIMI email logo, then upsert the Cloudflare &#x60;default._bimi&#x60; TXT record when the zone is connected.  ACTIONS:   show (default): current logo_path, storefront logo URL (custom domain when          set), hero_image_path/URL, BIMI path/URL, the TXT value to publish,          and whether Cloudflare is connected.   set: pass media_id (from media_list / media_upload) to point logo_path at a          library asset. Pass hero_media_id for settings.hero_image_path, or          clear_hero&#x3D;true to remove the hero. Pass exactly one of source_base64 /          source_path / source_url for an SVG to store the BIMI logo at          tenants/{id}/bimi-logo.svg (media_upload cannot take SVG). dry_run          defaults true — the first call reports what would happen.  Logo URLs and BIMI &#x60;l&#x3D;&#x60; values always use the tenant storefront host (custom domain or {slug}.dabdash.com), never the platform APP_URL.
@@ -18603,9 +20670,687 @@ class WriteApi
     }
 
     /**
+     * Operation tenantKlaviyoManage
+     *
+     * Show or manage a tenant&#39;s BYO Klaviyo integration (profiles, list sync, Smart List projection, order events). Prefer guiding vendors to Settings → Integrations.  ACTIONS:   show (default): connection status + settings (never the API key).   connect / disconnect: dry_run default true; apply needs dry_run&#x3D;false+confirm.   update_settings: default_list_id, mapped_contact_list_id, smart_list_ids,     smart_list_sync_enabled.   sync_now / refresh_smart_lists / use_for_orders / available_lists.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\TenantKlaviyoManageRequest|null $tenant_klaviyo_manage_request tenant_klaviyo_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['tenantKlaviyoManage'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \ShadowSoftware\DabDash\Model\TenantKlaviyoManage200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
+     */
+    public function tenantKlaviyoManage($tenant_klaviyo_manage_request = null, string $contentType = self::contentTypes['tenantKlaviyoManage'][0])
+    {
+        list($response) = $this->tenantKlaviyoManageWithHttpInfo($tenant_klaviyo_manage_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation tenantKlaviyoManageWithHttpInfo
+     *
+     * Show or manage a tenant&#39;s BYO Klaviyo integration (profiles, list sync, Smart List projection, order events). Prefer guiding vendors to Settings → Integrations.  ACTIONS:   show (default): connection status + settings (never the API key).   connect / disconnect: dry_run default true; apply needs dry_run&#x3D;false+confirm.   update_settings: default_list_id, mapped_contact_list_id, smart_list_ids,     smart_list_sync_enabled.   sync_now / refresh_smart_lists / use_for_orders / available_lists.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\TenantKlaviyoManageRequest|null $tenant_klaviyo_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['tenantKlaviyoManage'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \ShadowSoftware\DabDash\Model\TenantKlaviyoManage200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function tenantKlaviyoManageWithHttpInfo($tenant_klaviyo_manage_request = null, string $contentType = self::contentTypes['tenantKlaviyoManage'][0])
+    {
+        $request = $this->tenantKlaviyoManageRequest($tenant_klaviyo_manage_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\TenantKlaviyoManage200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 402:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 422:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\ShadowSoftware\DabDash\Model\TenantKlaviyoManage200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\TenantKlaviyoManage200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 402:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation tenantKlaviyoManageAsync
+     *
+     * Show or manage a tenant&#39;s BYO Klaviyo integration (profiles, list sync, Smart List projection, order events). Prefer guiding vendors to Settings → Integrations.  ACTIONS:   show (default): connection status + settings (never the API key).   connect / disconnect: dry_run default true; apply needs dry_run&#x3D;false+confirm.   update_settings: default_list_id, mapped_contact_list_id, smart_list_ids,     smart_list_sync_enabled.   sync_now / refresh_smart_lists / use_for_orders / available_lists.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\TenantKlaviyoManageRequest|null $tenant_klaviyo_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['tenantKlaviyoManage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function tenantKlaviyoManageAsync($tenant_klaviyo_manage_request = null, string $contentType = self::contentTypes['tenantKlaviyoManage'][0])
+    {
+        return $this->tenantKlaviyoManageAsyncWithHttpInfo($tenant_klaviyo_manage_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation tenantKlaviyoManageAsyncWithHttpInfo
+     *
+     * Show or manage a tenant&#39;s BYO Klaviyo integration (profiles, list sync, Smart List projection, order events). Prefer guiding vendors to Settings → Integrations.  ACTIONS:   show (default): connection status + settings (never the API key).   connect / disconnect: dry_run default true; apply needs dry_run&#x3D;false+confirm.   update_settings: default_list_id, mapped_contact_list_id, smart_list_ids,     smart_list_sync_enabled.   sync_now / refresh_smart_lists / use_for_orders / available_lists.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\TenantKlaviyoManageRequest|null $tenant_klaviyo_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['tenantKlaviyoManage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function tenantKlaviyoManageAsyncWithHttpInfo($tenant_klaviyo_manage_request = null, string $contentType = self::contentTypes['tenantKlaviyoManage'][0])
+    {
+        $returnType = '\ShadowSoftware\DabDash\Model\TenantKlaviyoManage200Response';
+        $request = $this->tenantKlaviyoManageRequest($tenant_klaviyo_manage_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'tenantKlaviyoManage'
+     *
+     * @param  \ShadowSoftware\DabDash\Model\TenantKlaviyoManageRequest|null $tenant_klaviyo_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['tenantKlaviyoManage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function tenantKlaviyoManageRequest($tenant_klaviyo_manage_request = null, string $contentType = self::contentTypes['tenantKlaviyoManage'][0])
+    {
+
+
+
+        $resourcePath = '/api/v1/tools/tenant_klaviyo_manage';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($tenant_klaviyo_manage_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($tenant_klaviyo_manage_request));
+            } else {
+                $httpBody = $tenant_klaviyo_manage_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation tenantMailgunManage
+     *
+     * Show or manage a tenant&#39;s Mailgun Send Email setup (campaigns + hybrid SMTP).  Prefer guiding vendors to Settings → Domain &amp; Email → Send Email (/admin/settings/domain#send-email). That is the canonical setup home — not Integrations alone.  ACTIONS:   show (default): connection status, Ready sending names, SMTP bootstrap     flag, and the #send-email setup URL. Never returns the API key.   connect: validate + store a Mailgun private key. dry_run defaults true;     applying requires dry_run&#x3D;false and confirm&#x3D;true. Dry-run still     validates the key with Mailgun (read-only).   disconnect: remove the Mailgun integration row (SMTP left alone).     Applying requires dry_run&#x3D;false and confirm&#x3D;true.   sync: import domains from the Mailgun account into local rows.   add_domain: create/reuse one sending name under the store/CF apex.   verify_domain: ask Mailgun to re-check DNS for one sending name.   autoconfigure: create mail1..mail5 under the Cloudflare zone and push DNS.     Applying requires dry_run&#x3D;false and confirm&#x3D;true.   bootstrap_smtp: fill tenants.settings.smtp from a Ready Mailgun domain.     Applying requires dry_run&#x3D;false; force_smtp&#x3D;true also needs confirm&#x3D;true.  Mutating actions default dry_run&#x3D;true; pass dry_run&#x3D;false to apply.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\TenantMailgunManageRequest|null $tenant_mailgun_manage_request tenant_mailgun_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['tenantMailgunManage'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \ShadowSoftware\DabDash\Model\TenantMailgunManage200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
+     */
+    public function tenantMailgunManage($tenant_mailgun_manage_request = null, string $contentType = self::contentTypes['tenantMailgunManage'][0])
+    {
+        list($response) = $this->tenantMailgunManageWithHttpInfo($tenant_mailgun_manage_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation tenantMailgunManageWithHttpInfo
+     *
+     * Show or manage a tenant&#39;s Mailgun Send Email setup (campaigns + hybrid SMTP).  Prefer guiding vendors to Settings → Domain &amp; Email → Send Email (/admin/settings/domain#send-email). That is the canonical setup home — not Integrations alone.  ACTIONS:   show (default): connection status, Ready sending names, SMTP bootstrap     flag, and the #send-email setup URL. Never returns the API key.   connect: validate + store a Mailgun private key. dry_run defaults true;     applying requires dry_run&#x3D;false and confirm&#x3D;true. Dry-run still     validates the key with Mailgun (read-only).   disconnect: remove the Mailgun integration row (SMTP left alone).     Applying requires dry_run&#x3D;false and confirm&#x3D;true.   sync: import domains from the Mailgun account into local rows.   add_domain: create/reuse one sending name under the store/CF apex.   verify_domain: ask Mailgun to re-check DNS for one sending name.   autoconfigure: create mail1..mail5 under the Cloudflare zone and push DNS.     Applying requires dry_run&#x3D;false and confirm&#x3D;true.   bootstrap_smtp: fill tenants.settings.smtp from a Ready Mailgun domain.     Applying requires dry_run&#x3D;false; force_smtp&#x3D;true also needs confirm&#x3D;true.  Mutating actions default dry_run&#x3D;true; pass dry_run&#x3D;false to apply.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\TenantMailgunManageRequest|null $tenant_mailgun_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['tenantMailgunManage'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \ShadowSoftware\DabDash\Model\TenantMailgunManage200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function tenantMailgunManageWithHttpInfo($tenant_mailgun_manage_request = null, string $contentType = self::contentTypes['tenantMailgunManage'][0])
+    {
+        $request = $this->tenantMailgunManageRequest($tenant_mailgun_manage_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\TenantMailgunManage200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 402:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 422:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\ShadowSoftware\DabDash\Model\TenantMailgunManage200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\TenantMailgunManage200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 402:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation tenantMailgunManageAsync
+     *
+     * Show or manage a tenant&#39;s Mailgun Send Email setup (campaigns + hybrid SMTP).  Prefer guiding vendors to Settings → Domain &amp; Email → Send Email (/admin/settings/domain#send-email). That is the canonical setup home — not Integrations alone.  ACTIONS:   show (default): connection status, Ready sending names, SMTP bootstrap     flag, and the #send-email setup URL. Never returns the API key.   connect: validate + store a Mailgun private key. dry_run defaults true;     applying requires dry_run&#x3D;false and confirm&#x3D;true. Dry-run still     validates the key with Mailgun (read-only).   disconnect: remove the Mailgun integration row (SMTP left alone).     Applying requires dry_run&#x3D;false and confirm&#x3D;true.   sync: import domains from the Mailgun account into local rows.   add_domain: create/reuse one sending name under the store/CF apex.   verify_domain: ask Mailgun to re-check DNS for one sending name.   autoconfigure: create mail1..mail5 under the Cloudflare zone and push DNS.     Applying requires dry_run&#x3D;false and confirm&#x3D;true.   bootstrap_smtp: fill tenants.settings.smtp from a Ready Mailgun domain.     Applying requires dry_run&#x3D;false; force_smtp&#x3D;true also needs confirm&#x3D;true.  Mutating actions default dry_run&#x3D;true; pass dry_run&#x3D;false to apply.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\TenantMailgunManageRequest|null $tenant_mailgun_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['tenantMailgunManage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function tenantMailgunManageAsync($tenant_mailgun_manage_request = null, string $contentType = self::contentTypes['tenantMailgunManage'][0])
+    {
+        return $this->tenantMailgunManageAsyncWithHttpInfo($tenant_mailgun_manage_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation tenantMailgunManageAsyncWithHttpInfo
+     *
+     * Show or manage a tenant&#39;s Mailgun Send Email setup (campaigns + hybrid SMTP).  Prefer guiding vendors to Settings → Domain &amp; Email → Send Email (/admin/settings/domain#send-email). That is the canonical setup home — not Integrations alone.  ACTIONS:   show (default): connection status, Ready sending names, SMTP bootstrap     flag, and the #send-email setup URL. Never returns the API key.   connect: validate + store a Mailgun private key. dry_run defaults true;     applying requires dry_run&#x3D;false and confirm&#x3D;true. Dry-run still     validates the key with Mailgun (read-only).   disconnect: remove the Mailgun integration row (SMTP left alone).     Applying requires dry_run&#x3D;false and confirm&#x3D;true.   sync: import domains from the Mailgun account into local rows.   add_domain: create/reuse one sending name under the store/CF apex.   verify_domain: ask Mailgun to re-check DNS for one sending name.   autoconfigure: create mail1..mail5 under the Cloudflare zone and push DNS.     Applying requires dry_run&#x3D;false and confirm&#x3D;true.   bootstrap_smtp: fill tenants.settings.smtp from a Ready Mailgun domain.     Applying requires dry_run&#x3D;false; force_smtp&#x3D;true also needs confirm&#x3D;true.  Mutating actions default dry_run&#x3D;true; pass dry_run&#x3D;false to apply.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\TenantMailgunManageRequest|null $tenant_mailgun_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['tenantMailgunManage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function tenantMailgunManageAsyncWithHttpInfo($tenant_mailgun_manage_request = null, string $contentType = self::contentTypes['tenantMailgunManage'][0])
+    {
+        $returnType = '\ShadowSoftware\DabDash\Model\TenantMailgunManage200Response';
+        $request = $this->tenantMailgunManageRequest($tenant_mailgun_manage_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'tenantMailgunManage'
+     *
+     * @param  \ShadowSoftware\DabDash\Model\TenantMailgunManageRequest|null $tenant_mailgun_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['tenantMailgunManage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function tenantMailgunManageRequest($tenant_mailgun_manage_request = null, string $contentType = self::contentTypes['tenantMailgunManage'][0])
+    {
+
+
+
+        $resourcePath = '/api/v1/tools/tenant_mailgun_manage';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($tenant_mailgun_manage_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($tenant_mailgun_manage_request));
+            } else {
+                $httpBody = $tenant_mailgun_manage_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation tenantSmtpManage
      *
-     * Show or update a tenant&#39;s SMTP settings used for transactional email.  ACTIONS:   show (default): returns the current SMTP settings with the password omitted.   set: updates only the supplied fields. dry_run defaults true; pass dry_run&#x3D;false        to save. smtp_password is write-only and is never returned.  Keep from_address equal to the authenticated SMTP username unless the provider has explicitly authorized a different sender or alias. A successful settings update clears the tenant&#39;s stale SMTP health banner; the next send records any still-current failure.
+     * Show or update Advanced store SMTP (manual host/user/password).  Prefer Mailgun Send Email for campaigns and easiest setup: use tenant_mailgun_manage, and send vendors to /admin/settings/domain#send-email. This tool is for Advanced / BYO SMTP only.  ACTIONS:   show (default): returns the current SMTP settings with the password omitted.   set: updates only the supplied fields. dry_run defaults true; pass dry_run&#x3D;false        to save. smtp_password is write-only and is never returned.  Keep from_address equal to the authenticated SMTP username unless the provider has explicitly authorized a different sender or alias. A successful settings update clears the tenant&#39;s stale SMTP health banner; the next send records any still-current failure.
      *
      * @param  \ShadowSoftware\DabDash\Model\TenantSmtpManageRequest|null $tenant_smtp_manage_request tenant_smtp_manage_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['tenantSmtpManage'] to see the possible values for this operation
@@ -18623,7 +21368,7 @@ class WriteApi
     /**
      * Operation tenantSmtpManageWithHttpInfo
      *
-     * Show or update a tenant&#39;s SMTP settings used for transactional email.  ACTIONS:   show (default): returns the current SMTP settings with the password omitted.   set: updates only the supplied fields. dry_run defaults true; pass dry_run&#x3D;false        to save. smtp_password is write-only and is never returned.  Keep from_address equal to the authenticated SMTP username unless the provider has explicitly authorized a different sender or alias. A successful settings update clears the tenant&#39;s stale SMTP health banner; the next send records any still-current failure.
+     * Show or update Advanced store SMTP (manual host/user/password).  Prefer Mailgun Send Email for campaigns and easiest setup: use tenant_mailgun_manage, and send vendors to /admin/settings/domain#send-email. This tool is for Advanced / BYO SMTP only.  ACTIONS:   show (default): returns the current SMTP settings with the password omitted.   set: updates only the supplied fields. dry_run defaults true; pass dry_run&#x3D;false        to save. smtp_password is write-only and is never returned.  Keep from_address equal to the authenticated SMTP username unless the provider has explicitly authorized a different sender or alias. A successful settings update clears the tenant&#39;s stale SMTP health banner; the next send records any still-current failure.
      *
      * @param  \ShadowSoftware\DabDash\Model\TenantSmtpManageRequest|null $tenant_smtp_manage_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['tenantSmtpManage'] to see the possible values for this operation
@@ -18778,7 +21523,7 @@ class WriteApi
     /**
      * Operation tenantSmtpManageAsync
      *
-     * Show or update a tenant&#39;s SMTP settings used for transactional email.  ACTIONS:   show (default): returns the current SMTP settings with the password omitted.   set: updates only the supplied fields. dry_run defaults true; pass dry_run&#x3D;false        to save. smtp_password is write-only and is never returned.  Keep from_address equal to the authenticated SMTP username unless the provider has explicitly authorized a different sender or alias. A successful settings update clears the tenant&#39;s stale SMTP health banner; the next send records any still-current failure.
+     * Show or update Advanced store SMTP (manual host/user/password).  Prefer Mailgun Send Email for campaigns and easiest setup: use tenant_mailgun_manage, and send vendors to /admin/settings/domain#send-email. This tool is for Advanced / BYO SMTP only.  ACTIONS:   show (default): returns the current SMTP settings with the password omitted.   set: updates only the supplied fields. dry_run defaults true; pass dry_run&#x3D;false        to save. smtp_password is write-only and is never returned.  Keep from_address equal to the authenticated SMTP username unless the provider has explicitly authorized a different sender or alias. A successful settings update clears the tenant&#39;s stale SMTP health banner; the next send records any still-current failure.
      *
      * @param  \ShadowSoftware\DabDash\Model\TenantSmtpManageRequest|null $tenant_smtp_manage_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['tenantSmtpManage'] to see the possible values for this operation
@@ -18799,7 +21544,7 @@ class WriteApi
     /**
      * Operation tenantSmtpManageAsyncWithHttpInfo
      *
-     * Show or update a tenant&#39;s SMTP settings used for transactional email.  ACTIONS:   show (default): returns the current SMTP settings with the password omitted.   set: updates only the supplied fields. dry_run defaults true; pass dry_run&#x3D;false        to save. smtp_password is write-only and is never returned.  Keep from_address equal to the authenticated SMTP username unless the provider has explicitly authorized a different sender or alias. A successful settings update clears the tenant&#39;s stale SMTP health banner; the next send records any still-current failure.
+     * Show or update Advanced store SMTP (manual host/user/password).  Prefer Mailgun Send Email for campaigns and easiest setup: use tenant_mailgun_manage, and send vendors to /admin/settings/domain#send-email. This tool is for Advanced / BYO SMTP only.  ACTIONS:   show (default): returns the current SMTP settings with the password omitted.   set: updates only the supplied fields. dry_run defaults true; pass dry_run&#x3D;false        to save. smtp_password is write-only and is never returned.  Keep from_address equal to the authenticated SMTP username unless the provider has explicitly authorized a different sender or alias. A successful settings update clears the tenant&#39;s stale SMTP health banner; the next send records any still-current failure.
      *
      * @param  \ShadowSoftware\DabDash\Model\TenantSmtpManageRequest|null $tenant_smtp_manage_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['tenantSmtpManage'] to see the possible values for this operation
@@ -18886,6 +21631,684 @@ class WriteApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($tenant_smtp_manage_request));
             } else {
                 $httpBody = $tenant_smtp_manage_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation tenantTwilioManage
+     *
+     * Show or manage a tenant&#39;s Twilio SMS connection (required for text campaigns). Prefer Settings → Integrations.  ACTIONS: show | connect | disconnect | test. connect needs account_sid + auth_token + from_number or messaging_service_sid. Mutating actions: dry_run default true; apply needs dry_run&#x3D;false + confirm&#x3D;true.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\TenantTwilioManageRequest|null $tenant_twilio_manage_request tenant_twilio_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['tenantTwilioManage'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \ShadowSoftware\DabDash\Model\TenantTwilioManage200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
+     */
+    public function tenantTwilioManage($tenant_twilio_manage_request = null, string $contentType = self::contentTypes['tenantTwilioManage'][0])
+    {
+        list($response) = $this->tenantTwilioManageWithHttpInfo($tenant_twilio_manage_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation tenantTwilioManageWithHttpInfo
+     *
+     * Show or manage a tenant&#39;s Twilio SMS connection (required for text campaigns). Prefer Settings → Integrations.  ACTIONS: show | connect | disconnect | test. connect needs account_sid + auth_token + from_number or messaging_service_sid. Mutating actions: dry_run default true; apply needs dry_run&#x3D;false + confirm&#x3D;true.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\TenantTwilioManageRequest|null $tenant_twilio_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['tenantTwilioManage'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \ShadowSoftware\DabDash\Model\TenantTwilioManage200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function tenantTwilioManageWithHttpInfo($tenant_twilio_manage_request = null, string $contentType = self::contentTypes['tenantTwilioManage'][0])
+    {
+        $request = $this->tenantTwilioManageRequest($tenant_twilio_manage_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\TenantTwilioManage200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 402:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 422:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\ShadowSoftware\DabDash\Model\TenantTwilioManage200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\TenantTwilioManage200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 402:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation tenantTwilioManageAsync
+     *
+     * Show or manage a tenant&#39;s Twilio SMS connection (required for text campaigns). Prefer Settings → Integrations.  ACTIONS: show | connect | disconnect | test. connect needs account_sid + auth_token + from_number or messaging_service_sid. Mutating actions: dry_run default true; apply needs dry_run&#x3D;false + confirm&#x3D;true.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\TenantTwilioManageRequest|null $tenant_twilio_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['tenantTwilioManage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function tenantTwilioManageAsync($tenant_twilio_manage_request = null, string $contentType = self::contentTypes['tenantTwilioManage'][0])
+    {
+        return $this->tenantTwilioManageAsyncWithHttpInfo($tenant_twilio_manage_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation tenantTwilioManageAsyncWithHttpInfo
+     *
+     * Show or manage a tenant&#39;s Twilio SMS connection (required for text campaigns). Prefer Settings → Integrations.  ACTIONS: show | connect | disconnect | test. connect needs account_sid + auth_token + from_number or messaging_service_sid. Mutating actions: dry_run default true; apply needs dry_run&#x3D;false + confirm&#x3D;true.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\TenantTwilioManageRequest|null $tenant_twilio_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['tenantTwilioManage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function tenantTwilioManageAsyncWithHttpInfo($tenant_twilio_manage_request = null, string $contentType = self::contentTypes['tenantTwilioManage'][0])
+    {
+        $returnType = '\ShadowSoftware\DabDash\Model\TenantTwilioManage200Response';
+        $request = $this->tenantTwilioManageRequest($tenant_twilio_manage_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'tenantTwilioManage'
+     *
+     * @param  \ShadowSoftware\DabDash\Model\TenantTwilioManageRequest|null $tenant_twilio_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['tenantTwilioManage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function tenantTwilioManageRequest($tenant_twilio_manage_request = null, string $contentType = self::contentTypes['tenantTwilioManage'][0])
+    {
+
+
+
+        $resourcePath = '/api/v1/tools/tenant_twilio_manage';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($tenant_twilio_manage_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($tenant_twilio_manage_request));
+            } else {
+                $httpBody = $tenant_twilio_manage_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation webhookManage
+     *
+     * List, create, update, or delete saved tenant webhooks (order events + campaign webhook mode).  ACTIONS: list | show | upsert | delete. upsert needs label + url (https). Optional health_url, events (order.created|order.shipped), is_active, custom_headers [{name,value}]. Signing secrets are generated server-side and returned once on create. Klaviyo-managed webhooks cannot be edited here — use tenant_klaviyo_manage. Assign to a campaign with campaign_upsert.saved_webhook_id.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\WebhookManageRequest|null $webhook_manage_request webhook_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['webhookManage'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \ShadowSoftware\DabDash\Model\WebhookManage200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
+     */
+    public function webhookManage($webhook_manage_request = null, string $contentType = self::contentTypes['webhookManage'][0])
+    {
+        list($response) = $this->webhookManageWithHttpInfo($webhook_manage_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation webhookManageWithHttpInfo
+     *
+     * List, create, update, or delete saved tenant webhooks (order events + campaign webhook mode).  ACTIONS: list | show | upsert | delete. upsert needs label + url (https). Optional health_url, events (order.created|order.shipped), is_active, custom_headers [{name,value}]. Signing secrets are generated server-side and returned once on create. Klaviyo-managed webhooks cannot be edited here — use tenant_klaviyo_manage. Assign to a campaign with campaign_upsert.saved_webhook_id.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\WebhookManageRequest|null $webhook_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['webhookManage'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \ShadowSoftware\DabDash\Model\WebhookManage200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function webhookManageWithHttpInfo($webhook_manage_request = null, string $contentType = self::contentTypes['webhookManage'][0])
+    {
+        $request = $this->webhookManageRequest($webhook_manage_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\WebhookManage200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 402:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 422:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\ShadowSoftware\DabDash\Model\WebhookManage200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\WebhookManage200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 402:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation webhookManageAsync
+     *
+     * List, create, update, or delete saved tenant webhooks (order events + campaign webhook mode).  ACTIONS: list | show | upsert | delete. upsert needs label + url (https). Optional health_url, events (order.created|order.shipped), is_active, custom_headers [{name,value}]. Signing secrets are generated server-side and returned once on create. Klaviyo-managed webhooks cannot be edited here — use tenant_klaviyo_manage. Assign to a campaign with campaign_upsert.saved_webhook_id.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\WebhookManageRequest|null $webhook_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['webhookManage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function webhookManageAsync($webhook_manage_request = null, string $contentType = self::contentTypes['webhookManage'][0])
+    {
+        return $this->webhookManageAsyncWithHttpInfo($webhook_manage_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation webhookManageAsyncWithHttpInfo
+     *
+     * List, create, update, or delete saved tenant webhooks (order events + campaign webhook mode).  ACTIONS: list | show | upsert | delete. upsert needs label + url (https). Optional health_url, events (order.created|order.shipped), is_active, custom_headers [{name,value}]. Signing secrets are generated server-side and returned once on create. Klaviyo-managed webhooks cannot be edited here — use tenant_klaviyo_manage. Assign to a campaign with campaign_upsert.saved_webhook_id.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\WebhookManageRequest|null $webhook_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['webhookManage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function webhookManageAsyncWithHttpInfo($webhook_manage_request = null, string $contentType = self::contentTypes['webhookManage'][0])
+    {
+        $returnType = '\ShadowSoftware\DabDash\Model\WebhookManage200Response';
+        $request = $this->webhookManageRequest($webhook_manage_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'webhookManage'
+     *
+     * @param  \ShadowSoftware\DabDash\Model\WebhookManageRequest|null $webhook_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['webhookManage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function webhookManageRequest($webhook_manage_request = null, string $contentType = self::contentTypes['webhookManage'][0])
+    {
+
+
+
+        $resourcePath = '/api/v1/tools/webhook_manage';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($webhook_manage_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($webhook_manage_request));
+            } else {
+                $httpBody = $webhook_manage_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -19564,6 +22987,345 @@ class WriteApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($zone_clone_request));
             } else {
                 $httpBody = $zone_clone_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation zoneManage
+     *
+     * List or delete a tenant&#39;s delivery zones.  ACTIONS:   list   (default): return every zone with id, name, slug, is_active, is_example,          fulfillment_type, priority, delivery_fee, service_fee, min_order, and counts          of related orders/customer addresses/delivery slots. Always call this first          to find zone_ids and confirm which zones are welcome-wizard example/template          zones (is_example&#x3D;true, or slug prefixed welcome-/example-) versus real          vendor-configured coverage, before deleting anything.    delete: requires zone_ids + confirm&#x3D;true. Refuses to delete a zone that still has          orders, saved customer addresses, or delivery slots attached unless          force&#x3D;true is passed (force does not delete those related rows — it only          lets the zone row be removed; related rows keep their zone_id, which becomes          orphaned, so prefer reassigning/clearing them first). dry_run defaults true —          the first call always reports what would happen without writing.  Common use: cleaning up leftover onboarding-wizard example zones (the three \&quot;N km delivery area\&quot; circles and/or the \&quot;Downtown\&quot; demo zone, slugs welcome-5km / welcome-10km / welcome-15km / example-downtown) when a vendor ended up with both those AND real GADM administrative-boundary zones after running the wizard&#39;s circle and boundary-import steps in sequence.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ZoneManageRequest|null $zone_manage_request zone_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['zoneManage'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \ShadowSoftware\DabDash\Model\ZoneManage200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
+     */
+    public function zoneManage($zone_manage_request = null, string $contentType = self::contentTypes['zoneManage'][0])
+    {
+        list($response) = $this->zoneManageWithHttpInfo($zone_manage_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation zoneManageWithHttpInfo
+     *
+     * List or delete a tenant&#39;s delivery zones.  ACTIONS:   list   (default): return every zone with id, name, slug, is_active, is_example,          fulfillment_type, priority, delivery_fee, service_fee, min_order, and counts          of related orders/customer addresses/delivery slots. Always call this first          to find zone_ids and confirm which zones are welcome-wizard example/template          zones (is_example&#x3D;true, or slug prefixed welcome-/example-) versus real          vendor-configured coverage, before deleting anything.    delete: requires zone_ids + confirm&#x3D;true. Refuses to delete a zone that still has          orders, saved customer addresses, or delivery slots attached unless          force&#x3D;true is passed (force does not delete those related rows — it only          lets the zone row be removed; related rows keep their zone_id, which becomes          orphaned, so prefer reassigning/clearing them first). dry_run defaults true —          the first call always reports what would happen without writing.  Common use: cleaning up leftover onboarding-wizard example zones (the three \&quot;N km delivery area\&quot; circles and/or the \&quot;Downtown\&quot; demo zone, slugs welcome-5km / welcome-10km / welcome-15km / example-downtown) when a vendor ended up with both those AND real GADM administrative-boundary zones after running the wizard&#39;s circle and boundary-import steps in sequence.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ZoneManageRequest|null $zone_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['zoneManage'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \ShadowSoftware\DabDash\Model\ZoneManage200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function zoneManageWithHttpInfo($zone_manage_request = null, string $contentType = self::contentTypes['zoneManage'][0])
+    {
+        $request = $this->zoneManageRequest($zone_manage_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\ZoneManage200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 402:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 422:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\ShadowSoftware\DabDash\Model\ZoneManage200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\ZoneManage200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 402:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation zoneManageAsync
+     *
+     * List or delete a tenant&#39;s delivery zones.  ACTIONS:   list   (default): return every zone with id, name, slug, is_active, is_example,          fulfillment_type, priority, delivery_fee, service_fee, min_order, and counts          of related orders/customer addresses/delivery slots. Always call this first          to find zone_ids and confirm which zones are welcome-wizard example/template          zones (is_example&#x3D;true, or slug prefixed welcome-/example-) versus real          vendor-configured coverage, before deleting anything.    delete: requires zone_ids + confirm&#x3D;true. Refuses to delete a zone that still has          orders, saved customer addresses, or delivery slots attached unless          force&#x3D;true is passed (force does not delete those related rows — it only          lets the zone row be removed; related rows keep their zone_id, which becomes          orphaned, so prefer reassigning/clearing them first). dry_run defaults true —          the first call always reports what would happen without writing.  Common use: cleaning up leftover onboarding-wizard example zones (the three \&quot;N km delivery area\&quot; circles and/or the \&quot;Downtown\&quot; demo zone, slugs welcome-5km / welcome-10km / welcome-15km / example-downtown) when a vendor ended up with both those AND real GADM administrative-boundary zones after running the wizard&#39;s circle and boundary-import steps in sequence.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ZoneManageRequest|null $zone_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['zoneManage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function zoneManageAsync($zone_manage_request = null, string $contentType = self::contentTypes['zoneManage'][0])
+    {
+        return $this->zoneManageAsyncWithHttpInfo($zone_manage_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation zoneManageAsyncWithHttpInfo
+     *
+     * List or delete a tenant&#39;s delivery zones.  ACTIONS:   list   (default): return every zone with id, name, slug, is_active, is_example,          fulfillment_type, priority, delivery_fee, service_fee, min_order, and counts          of related orders/customer addresses/delivery slots. Always call this first          to find zone_ids and confirm which zones are welcome-wizard example/template          zones (is_example&#x3D;true, or slug prefixed welcome-/example-) versus real          vendor-configured coverage, before deleting anything.    delete: requires zone_ids + confirm&#x3D;true. Refuses to delete a zone that still has          orders, saved customer addresses, or delivery slots attached unless          force&#x3D;true is passed (force does not delete those related rows — it only          lets the zone row be removed; related rows keep their zone_id, which becomes          orphaned, so prefer reassigning/clearing them first). dry_run defaults true —          the first call always reports what would happen without writing.  Common use: cleaning up leftover onboarding-wizard example zones (the three \&quot;N km delivery area\&quot; circles and/or the \&quot;Downtown\&quot; demo zone, slugs welcome-5km / welcome-10km / welcome-15km / example-downtown) when a vendor ended up with both those AND real GADM administrative-boundary zones after running the wizard&#39;s circle and boundary-import steps in sequence.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ZoneManageRequest|null $zone_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['zoneManage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function zoneManageAsyncWithHttpInfo($zone_manage_request = null, string $contentType = self::contentTypes['zoneManage'][0])
+    {
+        $returnType = '\ShadowSoftware\DabDash\Model\ZoneManage200Response';
+        $request = $this->zoneManageRequest($zone_manage_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'zoneManage'
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ZoneManageRequest|null $zone_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['zoneManage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function zoneManageRequest($zone_manage_request = null, string $contentType = self::contentTypes['zoneManage'][0])
+    {
+
+
+
+        $resourcePath = '/api/v1/tools/zone_manage';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($zone_manage_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($zone_manage_request));
+            } else {
+                $httpBody = $zone_manage_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

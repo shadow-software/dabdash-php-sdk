@@ -204,6 +204,18 @@ class WriteApiTest extends TestCase
     }
 
     /**
+     * Test case for campaignLaunch
+     *
+     * Start, schedule, or cancel a vendor campaign after it is ready.  ACTIONS:   send_now — draft → materialize + send (or resume paused). Requires spam/inbox gate.   schedule — draft → scheduled_at (tenant timezone local datetime string).   cancel — sending/paused/recovering/scheduled/failed → cancelled.  dry_run defaults TRUE. Applying requires dry_run=false AND confirm=true. Always campaign_spam_score / campaign_send_test first, then confirm with the vendor..
+     *
+     */
+    public function testCampaignLaunch()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for campaignRecipientsRequeue
      *
      * Unstick a vendor email/SMS campaign that auto-paused or stalled mid-send.  Resets failed recipients (and optionally stale \"sending\" rows) back to pending, clears webhook_consecutive_failures / paused_reason / last_error, and sets the campaign status to sending so the dispatcher continues. Already-sent recipients are never touched.  Pass retry_sending_log_errors=true to retry every recipient that appears in the campaign sending log with a retryable error (502/timeout/SMTP soft fail, etc.). Those jobs dispatch immediately (up to dispatch_limit) so they are not stuck behind a large pending queue. The log rows stay — they are diagnostic history.  Use when a webhook campaign froze after consecutive endpoint errors (or soft SMTP failures that were misclassified before the soft-fail fix) and pending + failed recipients remain.  dry_run defaults to TRUE — first call reports counts only. Pass dry_run=false to apply. Always confirm tenant_slug with tenant_list and campaign_id with the vendor..
@@ -218,7 +230,7 @@ class WriteApiTest extends TestCase
     /**
      * Test case for campaignSendTest
      *
-     * Send a single test copy of a campaign so the design and copy can be reviewed before the real send.  Email campaigns go out through the tenant's own SMTP settings — exactly the path a real send uses. Pass to_email. Requires complete SMTP settings.  Text (SMS) campaigns go out through the tenant's connected Twilio account. Pass to_phone instead of to_email. Requires Twilio to be connected.  This is a preview only: it does NOT start the campaign, does NOT touch the audience, and does NOT record any send/open/click stats. Personalization tokens render with sample values; unsubscribe links point at harmless test URLs.  Works on a campaign in any status (a draft preview is the common case). Always confirm the campaign_id with the vendor first..
+     * Send a single test copy of a campaign so the design and copy can be reviewed before the real send.  Email: routes by campaign mode —   smtp → tenant SMTP (requires complete SMTP settings)   mailgun → Mailgun Messages API via a Ready sending name on the campaign   webhook → posts a test payload to the campaign webhook (no inbox email) Pass to_email for smtp/mailgun. Webhook mode uses to_email only as the sample recipient identity in the payload.  Text (SMS): Twilio. Pass to_phone. Requires Twilio connected.  Preview only — does NOT start the campaign, touch the audience, or record stats..
      *
      */
     public function testCampaignSendTest()
@@ -242,7 +254,7 @@ class WriteApiTest extends TestCase
     /**
      * Test case for campaignUpsert
      *
-     * Create or edit a vendor email campaign on behalf of a tenant. This is the vendor → their-customers campaign universe (NOT the platform drip-to-leads system). Completed campaigns cannot be edited.  CREATE MODE (no campaign_id):   Creates a new draft. For email campaigns, `name` and `subject` are required; `html_body` is optional   on create — omit it to start blank and apply a system template afterwards with campaign_apply_template.   For text (SMS) campaigns, set channel to \"sms\" and pass `sms_body` (name required). Twilio must be   connected on the tenant.  UPDATE MODE (campaign_id provided):   Edits an existing campaign. Only the fields you pass are changed; omitted fields are left as-is.   Drafts accept all fields. Sending or paused campaigns accept content fields only — for email that is   name, subject, html_body, plain_body, fallback_first_name; for text that is name, sms_body,   and fallback_first_name. Sending campaigns keep   running and unreached recipients get the latest version. Scheduled, cancelled, and failed campaigns   must be edited from the vendor admin.  HTML BODY (email only):   Pass the full email HTML in `html_body`. It is sanitized exactly like the vendor admin editor:   a full document (<!DOCTYPE …> / <html>) keeps its table-based structure; a fragment is run   through the stricter inline allowlist. Use the literal token {{unsubscribe_url}} where the   unsubscribe link should appear — it is replaced per-recipient at send time and a List-Unsubscribe   header is added automatically. Personalization tokens {{first_name}} and {{last_name}} are also   replaced at send time. When {{first_name}} is blank, fallback_first_name is used (default \"there\"   when unset). Pass fallback_first_name as \"\" to clear an override.  SMS BODY (text only):   Pass the message in `sms_body` (max 1600 chars). Tokens {{first_name}} and {{last_name}} are   replaced at send time (same first-name fallback as email). Text campaigns only target opted-in shop customers.  AUDIENCE / MODE (email only):   mode is \"smtp\" (default) or \"webhook\". audience_includes_customers (default true) targets the   tenant's own customers. This tool does not send anything — use campaign_send_test to preview,   then the vendor sends from the admin.  Always confirm the tenant_slug with tenant_list first. To populate a draft from a built-in design, create it here, then call campaign_apply_template.  ORDERING WARNING: html_body is a full replacement, not a merge. If campaign_generate_flyer or campaign_set_image has already placed an image into this campaign's body, do NOT call this tool again with a new html_body afterward — it silently erases the placed image. Finalize all copy with this tool FIRST, then place images last..
+     * Create or edit a vendor email/SMS campaign (vendor → their customers; NOT platform drip-to-leads). Completed campaigns cannot be edited.  CREATE (no campaign_id): draft. Email needs name+subject (html_body optional — then campaign_apply_template). SMS needs name+sms_body and connected Twilio.  UPDATE (campaign_id): only passed fields change. Drafts accept all fields. Sending/paused accept content only (email: name/subject/html_body/plain_body/fallback_first_name; SMS: name/sms_body/fallback_first_name).  TRANSPORT (email): mode = smtp | webhook | mailgun.   mailgun: require Ready mailgun_domain_ids (from tenant_mailgun_manage show); optional   mailgun_pace drip|blast.   webhook: prefer saved_webhook_id, or inline webhook_url (+ optional headers/health). AUDIENCE: contact_list_ids (manual and/or Smart Lists) and/or audience_includes_customers (default true). Lead lists cannot use smtp — use mailgun or webhook. SMS may attach Smart Lists only (not imported manual lists). Discover lists with contact_list_manage / smart_list_manage.  Optional: throttle_per_minute/hour, send_interval_minutes (1–30), send_window_*.  Does not start a live send — use campaign_send_test, then campaign_launch (confirm) or the vendor admin Send button.  ORDERING: html_body is a full replace. Finalize copy before campaign_generate_flyer / campaign_set_image, or later html_body upserts erase placed images..
      *
      */
     public function testCampaignUpsert()
@@ -318,6 +330,18 @@ class WriteApiTest extends TestCase
      *
      */
     public function testContactCleanup()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for contactListManage
+     *
+     * Discover and manage contact lists (manual + Smart) for campaigns, coupons, and Klaviyo.  ACTIONS:   list (default): all lists with id, name, kind (manual|smart), default_type, contacts_count,     usable_for hints (email/sms/coupon/klaviyo).   show: one list by list_id (includes Smart List definition when kind=smart).   create_manual: create an empty imported/manual list (name required; default_type lead|customer).   rename: update name/description/default_type on a manual list (not Smart — use smart_list_manage).   delete: remove a list (dry_run default true; applying needs dry_run=false + confirm=true).  CSV import stays in the vendor admin. Use smart_list_manage for Smart List CRUD/preview..
+     *
+     */
+    public function testContactListManage()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -530,7 +554,7 @@ class WriteApiTest extends TestCase
     /**
      * Test case for productFeatureManage
      *
-     * List or set which products are featured on a tenant's storefront home page (the \"Featured Products\" section, HomeController — up to 8 shown, ordered by the tenant's default product sort). This does not change the Modern hero's optional featured-product card; use storefront_theme_manage or store_settings_manage (hero_spotlight_mode / hero_spotlight_product) for that.  ACTIONS:   list (default): return every is_featured=true product with id, slug, name,          stock_status. Always call this first to see the current set before          changing it.   set: pass product_ids (array) and featured (bool) to set is_featured on          those products. Unlisted products are left untouched — this is an          additive/subtractive edit, not a replace-the-whole-set operation.  Products must be resolved to ids first (product_inspect or this tool's list action). Featuring an out-of-stock product is allowed but usually undesirable — check stock_status in the list output before featuring..
+     * List or set which products appear in a tenant's curated storefront home grids (Classic and Modern). Each section shows up to 8 products, ordered by the tenant's default product sort, and hides itself when empty.  SECTIONS (pass as `section`):   featured (default) → is_featured → \"Featured Products\"   deals              → is_featured_deal → \"Featured Deals\"   new                → is_featured_new → \"Featured New Inventory\"  Optional schedule windows (starts_at / ends_at) are tenant-local calendar dates stored as UTC. Null start = live now; null end = never expires. Storefront membership is query-time (flag on + within window).  This does not change the Modern hero's optional spotlight card; use storefront_theme_manage or store_settings_manage (hero_spotlight_mode / hero_spotlight_product) for that.  ACTIONS:   list (default): return every product flagged for the chosen section          (including scheduled/ended) with id, slug, name, stock_status,          the three featured flags, schedule window, and status          (live|scheduled|ended).   set: pass product_ids (array) and featured (bool) to set the section's          flag on those products. Optional starts_at / ends_at apply when          featuring; turning featured off clears that section's window.          Unlisted products are left untouched.  Products must be resolved to ids first (product_inspect or this tool's list action). Featuring an out-of-stock product is allowed but usually undesirable — check stock_status in the list output before featuring..
      *
      */
     public function testProductFeatureManage()
@@ -582,6 +606,18 @@ class WriteApiTest extends TestCase
      *
      */
     public function testProductUpdateBySku()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for productVariationSync
+     *
+     * Atomically create or reconcile the complete variation list and per-variation inventory for one product. Use this for unit or matrix products after pricing is established. Choose unit for one-dimensional named variants and matrix_unit only for a real name/flavour × quantity/pack-size grid. The payload must contain every variant, an exact expected_variation_count, price, cost_price, and stock_quantity for every row. It is idempotent: matching existing IDs or names are updated, missing rows are created, and existing rows are never deleted. dry_run defaults to true. A successful live run returns before/after counts and stock totals for verification. Weight sizes of one flavor share one gram count — write that count on each size, and never describe it as extra inventory. Pack sizes are separate stock. If the vendor gives one count for a flavor, ask which pack size it belongs to before copying it onto every size. Never split one product across multiple calls..
+     *
+     */
+    public function testProductVariationSync()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -660,9 +696,21 @@ class WriteApiTest extends TestCase
     }
 
     /**
+     * Test case for smartListManage
+     *
+     * Create, edit, preview, or delete Smart Lists (dynamic customer audiences).  ACTIONS:   list / show — discover Smart Lists (also available via contact_list_manage).   upsert — create (omit list_id) or update. Requires name + definition     {version:1, match:\"all\"|\"any\", conditions:[...]}.     Rule types: purchased_category, recent_category_buyers, lapsed_category_buyers,     not_purchased_category, purchased_product, purchase_count, spend_total,     top_spenders, dormant_customer, loyalty_lifetime_points, loyalty_tier.   preview — count matching customers for a definition (or existing list_id).   delete — dry_run default true; applying needs dry_run=false + confirm=true.  Attach Smart Lists to campaigns with campaign_upsert.contact_list_ids or to coupons via coupon_upsert.contact_list_id. Project to Klaviyo with tenant_klaviyo_manage..
+     *
+     */
+    public function testSmartListManage()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for storeSettingsManage
      *
-     * Show or update a store's core settings: display name, phone, address, coordinates, timezone, currency, country, locale, brand colours, and opening hours.  ACTIONS:   show (default): current values.   set: pass only the fields to change. dry_run defaults true — the first call        reports the diff without writing; pass dry_run=false to save.  Brand colours: theme_color is the primary, accent_color the secondary (both #RRGGBB; a 3-digit #RGB accent is expanded). button_text_color is auto (default: white or near-black, whichever contrasts more), white, or dark. Every response includes `palette`: the effective text colour on primary/accent, its WCAG contrast ratio, and warnings for any pairing under 4.5:1 — dry-run first to preview a palette.  opening_hours is a list of {days: [\"Monday\", ...], opens: \"09:00\", closes: \"21:00\"} rows (24h HH:MM, full English day names). Passing it replaces all rows; pass an empty list to clear. Hours feed the storefront About page and search-engine markup. storefront_theme picks the storefront look: classic (default) or modern. theme_mode controls the storefront colour mode: light or dark. hero_* fields preserve the vendor's full hero message and modern-theme content. The Modern hero featured-product card is optional: hero_spotlight_mode is auto (newest sale), product (pin one), or off (hide the card). Pass hero_spotlight_product (name or slug) or hero_spotlight_product_id to pin a product; omitting the mode then sets it to product. Badge, caption, and button are hero_spotlight_label, hero_spotlight_kicker, and hero_spotlight_cta. product_feature_manage only toggles the separate Featured Products grid. The same card and the rest of the Modern homepage/footer are also on storefront_theme_manage. Vendors edit the card in Settings → Theme. hero_ticker_items replaces custom ticker rows with {label, tag, url} objects; URLs must be site paths or https:// links. Use hero_ticker_mode=custom to show them. hero_status_mode controls the Modern hero online/last-call pill: hours (from opening_hours), auto (delivery slots when available, else hours), or off. minimum_age is the storefront age gate / About compliance age (e.g. 19 in NS). footer_notes and about_* set Modern footer notes and About intro copy. privacy_url is the authoritative published privacy-policy URL. Use the exact blog URL when the policy is a blog post. delivery_meta_description is an optional, tenant-specific description for the public /delivery page. Keep it factual and 160 characters or fewer. social_facebook / social_instagram / social_twitter / social_x / google_business_url / gbp_url are absolute https URLs published as Organization and LocalBusiness sameAs (Knowledge Panel alignment). freebie_cost_in_cogs (default true) includes giveaway freebie wholesale cost in vendor COGS / margin reports even though freebie revenue is $0. Slug, owner, subscription, and custom domain are not changed here..
+     * Show or update a store's core settings: display name, phone, address, coordinates, timezone, currency, country, locale, brand colours, and opening hours.  ACTIONS:   show (default): current values.   set: pass only the fields to change. dry_run defaults true — the first call        reports the diff without writing; pass dry_run=false to save.  Brand colours: theme_color is the primary, accent_color the secondary (both #RRGGBB; a 3-digit #RGB accent is expanded). button_text_color is auto (default: white or near-black, whichever contrasts more), white, or dark. Every response includes `palette`: the effective text colour on primary/accent, its WCAG contrast ratio, and warnings for any pairing under 4.5:1 — dry-run first to preview a palette.  opening_hours is a list of {days: [\"Monday\", ...], opens: \"09:00\", closes: \"21:00\"} rows (24h HH:MM, full English day names). Passing it replaces all rows; pass an empty list to clear. Hours feed the storefront About page and search-engine markup. storefront_theme picks the storefront look: classic (default) or modern. theme_mode controls the storefront colour mode: light or dark. hero_* fields preserve the vendor's full hero message and modern-theme content. The Modern hero featured-product card is optional: hero_spotlight_mode is auto (newest sale), product (pin one), or off (hide the card). Pass hero_spotlight_product (name or slug) or hero_spotlight_product_id to pin a product; omitting the mode then sets it to product. Badge, caption, and button are hero_spotlight_label, hero_spotlight_kicker, and hero_spotlight_cta. product_feature_manage only toggles the separate Featured Products grid. The same card and the rest of the Modern homepage/footer are also on storefront_theme_manage. Vendors edit the card in Settings → Theme. hero_ticker_items replaces custom ticker rows with {label, tag, url} objects; URLs must be site paths or https:// links. Use hero_ticker_mode=custom to show them. hero_status_mode controls the Modern hero online/last-call pill: hours (from opening_hours), auto (delivery slots when available, else hours), or off. minimum_age is the storefront age gate / About compliance age (e.g. 19 in NS). footer_notes and about_* set Modern footer notes and About intro copy. privacy_url is the authoritative published privacy-policy URL. Use the exact blog URL when the policy is a blog post. delivery_meta_description is an optional, tenant-specific description for the public /delivery page. Keep it factual and 160 characters or fewer. social_facebook / social_instagram / social_twitter / social_x / google_business_url / gbp_url are absolute https URLs published as Organization and LocalBusiness sameAs (Knowledge Panel alignment). freebie_cost_in_cogs (default true) includes giveaway freebie wholesale cost in vendor COGS / margin reports even though freebie revenue is $0. revenue_attribution_date is placed (order checkout day) or delivered (scheduled delivery calendar day) for analytics revenue dating. Slug, owner, subscription, and custom domain are not changed here..
      *
      */
     public function testStoreSettingsManage()
@@ -696,6 +744,30 @@ class WriteApiTest extends TestCase
     }
 
     /**
+     * Test case for suppressionManage
+     *
+     * Inspect or lift email suppressions / campaign unsubscribes for a tenant.  ACTIONS:   list — recent suppressed customers (email_opt_out) and unsubscribed contacts.   lift_transactional — clear customer email_opt_out for an email.   resubscribe — restore contact.subscribed for campaign lists.   lift_all — both transactional + campaign for one email.  Mutating actions: dry_run default true; apply needs dry_run=false + confirm=true..
+     *
+     */
+    public function testSuppressionManage()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for tenantBlogUpsert
+     *
+     * Update an existing tenant (vendor) blog post's fields — title, excerpt, body, category, featured_image, meta_title, meta_description, og_image, or is_published. Only the fields you pass are changed. Use tenant_blog_lookup first to find the post_id or slug.  IMAGE: pass media_id (from media_list / media_upload) to set featured_image from a tenant media-library asset. Raw featured_image URLs/paths are refused — ingest with media_upload first, then place by media_id (GitHub #184). Pass featured_image empty/null to clear. A superseded image this post previously owned is cleaned up from disk automatically once the change is saved.  dry_run (default true) previews the fields that would change without writing — call once with dry_run=true and review before dry_run=false..
+     *
+     */
+    public function testTenantBlogUpsert()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for tenantBrandingManage
      *
      * Show or update a tenant's store logo, homepage hero image, and BIMI email logo, then upsert the Cloudflare `default._bimi` TXT record when the zone is connected.  ACTIONS:   show (default): current logo_path, storefront logo URL (custom domain when          set), hero_image_path/URL, BIMI path/URL, the TXT value to publish,          and whether Cloudflare is connected.   set: pass media_id (from media_list / media_upload) to point logo_path at a          library asset. Pass hero_media_id for settings.hero_image_path, or          clear_hero=true to remove the hero. Pass exactly one of source_base64 /          source_path / source_url for an SVG to store the BIMI logo at          tenants/{id}/bimi-logo.svg (media_upload cannot take SVG). dry_run          defaults true — the first call reports what would happen.  Logo URLs and BIMI `l=` values always use the tenant storefront host (custom domain or {slug}.dabdash.com), never the platform APP_URL..
@@ -720,12 +792,60 @@ class WriteApiTest extends TestCase
     }
 
     /**
+     * Test case for tenantKlaviyoManage
+     *
+     * Show or manage a tenant's BYO Klaviyo integration (profiles, list sync, Smart List projection, order events). Prefer guiding vendors to Settings → Integrations.  ACTIONS:   show (default): connection status + settings (never the API key).   connect / disconnect: dry_run default true; apply needs dry_run=false+confirm.   update_settings: default_list_id, mapped_contact_list_id, smart_list_ids,     smart_list_sync_enabled.   sync_now / refresh_smart_lists / use_for_orders / available_lists..
+     *
+     */
+    public function testTenantKlaviyoManage()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for tenantMailgunManage
+     *
+     * Show or manage a tenant's Mailgun Send Email setup (campaigns + hybrid SMTP).  Prefer guiding vendors to Settings → Domain & Email → Send Email (/admin/settings/domain#send-email). That is the canonical setup home — not Integrations alone.  ACTIONS:   show (default): connection status, Ready sending names, SMTP bootstrap     flag, and the #send-email setup URL. Never returns the API key.   connect: validate + store a Mailgun private key. dry_run defaults true;     applying requires dry_run=false and confirm=true. Dry-run still     validates the key with Mailgun (read-only).   disconnect: remove the Mailgun integration row (SMTP left alone).     Applying requires dry_run=false and confirm=true.   sync: import domains from the Mailgun account into local rows.   add_domain: create/reuse one sending name under the store/CF apex.   verify_domain: ask Mailgun to re-check DNS for one sending name.   autoconfigure: create mail1..mail5 under the Cloudflare zone and push DNS.     Applying requires dry_run=false and confirm=true.   bootstrap_smtp: fill tenants.settings.smtp from a Ready Mailgun domain.     Applying requires dry_run=false; force_smtp=true also needs confirm=true.  Mutating actions default dry_run=true; pass dry_run=false to apply..
+     *
+     */
+    public function testTenantMailgunManage()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for tenantSmtpManage
      *
-     * Show or update a tenant's SMTP settings used for transactional email.  ACTIONS:   show (default): returns the current SMTP settings with the password omitted.   set: updates only the supplied fields. dry_run defaults true; pass dry_run=false        to save. smtp_password is write-only and is never returned.  Keep from_address equal to the authenticated SMTP username unless the provider has explicitly authorized a different sender or alias. A successful settings update clears the tenant's stale SMTP health banner; the next send records any still-current failure..
+     * Show or update Advanced store SMTP (manual host/user/password).  Prefer Mailgun Send Email for campaigns and easiest setup: use tenant_mailgun_manage, and send vendors to /admin/settings/domain#send-email. This tool is for Advanced / BYO SMTP only.  ACTIONS:   show (default): returns the current SMTP settings with the password omitted.   set: updates only the supplied fields. dry_run defaults true; pass dry_run=false        to save. smtp_password is write-only and is never returned.  Keep from_address equal to the authenticated SMTP username unless the provider has explicitly authorized a different sender or alias. A successful settings update clears the tenant's stale SMTP health banner; the next send records any still-current failure..
      *
      */
     public function testTenantSmtpManage()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for tenantTwilioManage
+     *
+     * Show or manage a tenant's Twilio SMS connection (required for text campaigns). Prefer Settings → Integrations.  ACTIONS: show | connect | disconnect | test. connect needs account_sid + auth_token + from_number or messaging_service_sid. Mutating actions: dry_run default true; apply needs dry_run=false + confirm=true..
+     *
+     */
+    public function testTenantTwilioManage()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for webhookManage
+     *
+     * List, create, update, or delete saved tenant webhooks (order events + campaign webhook mode).  ACTIONS: list | show | upsert | delete. upsert needs label + url (https). Optional health_url, events (order.created|order.shipped), is_active, custom_headers [{name,value}]. Signing secrets are generated server-side and returned once on create. Klaviyo-managed webhooks cannot be edited here — use tenant_klaviyo_manage. Assign to a campaign with campaign_upsert.saved_webhook_id..
+     *
+     */
+    public function testWebhookManage()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -750,6 +870,18 @@ class WriteApiTest extends TestCase
      *
      */
     public function testZoneClone()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for zoneManage
+     *
+     * List or delete a tenant's delivery zones.  ACTIONS:   list   (default): return every zone with id, name, slug, is_active, is_example,          fulfillment_type, priority, delivery_fee, service_fee, min_order, and counts          of related orders/customer addresses/delivery slots. Always call this first          to find zone_ids and confirm which zones are welcome-wizard example/template          zones (is_example=true, or slug prefixed welcome-/example-) versus real          vendor-configured coverage, before deleting anything.    delete: requires zone_ids + confirm=true. Refuses to delete a zone that still has          orders, saved customer addresses, or delivery slots attached unless          force=true is passed (force does not delete those related rows — it only          lets the zone row be removed; related rows keep their zone_id, which becomes          orphaned, so prefer reassigning/clearing them first). dry_run defaults true —          the first call always reports what would happen without writing.  Common use: cleaning up leftover onboarding-wizard example zones (the three \"N km delivery area\" circles and/or the \"Downtown\" demo zone, slugs welcome-5km / welcome-10km / welcome-15km / example-downtown) when a vendor ended up with both those AND real GADM administrative-boundary zones after running the wizard's circle and boundary-import steps in sequence..
+     *
+     */
+    public function testZoneManage()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

@@ -106,6 +106,7 @@ class StoreSettingsManageRequest implements ModelInterface, ArrayAccess, \JsonSe
         'gbp_url' => 'string',
         'live_chat_enabled' => 'bool',
         'freebie_cost_in_cogs' => 'bool',
+        'revenue_attribution_date' => 'string',
         'legacy_wix_redirects' => 'bool',
         'legacy_wordpress_redirects' => 'bool',
         'wordpress_cutover' => 'bool',
@@ -171,6 +172,7 @@ class StoreSettingsManageRequest implements ModelInterface, ArrayAccess, \JsonSe
         'gbp_url' => null,
         'live_chat_enabled' => null,
         'freebie_cost_in_cogs' => null,
+        'revenue_attribution_date' => null,
         'legacy_wix_redirects' => null,
         'legacy_wordpress_redirects' => null,
         'wordpress_cutover' => null,
@@ -234,6 +236,7 @@ class StoreSettingsManageRequest implements ModelInterface, ArrayAccess, \JsonSe
         'gbp_url' => true,
         'live_chat_enabled' => true,
         'freebie_cost_in_cogs' => true,
+        'revenue_attribution_date' => true,
         'legacy_wix_redirects' => true,
         'legacy_wordpress_redirects' => true,
         'wordpress_cutover' => true,
@@ -377,6 +380,7 @@ class StoreSettingsManageRequest implements ModelInterface, ArrayAccess, \JsonSe
         'gbp_url' => 'gbp_url',
         'live_chat_enabled' => 'live_chat_enabled',
         'freebie_cost_in_cogs' => 'freebie_cost_in_cogs',
+        'revenue_attribution_date' => 'revenue_attribution_date',
         'legacy_wix_redirects' => 'legacy_wix_redirects',
         'legacy_wordpress_redirects' => 'legacy_wordpress_redirects',
         'wordpress_cutover' => 'wordpress_cutover',
@@ -440,6 +444,7 @@ class StoreSettingsManageRequest implements ModelInterface, ArrayAccess, \JsonSe
         'gbp_url' => 'setGbpUrl',
         'live_chat_enabled' => 'setLiveChatEnabled',
         'freebie_cost_in_cogs' => 'setFreebieCostInCogs',
+        'revenue_attribution_date' => 'setRevenueAttributionDate',
         'legacy_wix_redirects' => 'setLegacyWixRedirects',
         'legacy_wordpress_redirects' => 'setLegacyWordpressRedirects',
         'wordpress_cutover' => 'setWordpressCutover',
@@ -503,6 +508,7 @@ class StoreSettingsManageRequest implements ModelInterface, ArrayAccess, \JsonSe
         'gbp_url' => 'getGbpUrl',
         'live_chat_enabled' => 'getLiveChatEnabled',
         'freebie_cost_in_cogs' => 'getFreebieCostInCogs',
+        'revenue_attribution_date' => 'getRevenueAttributionDate',
         'legacy_wix_redirects' => 'getLegacyWixRedirects',
         'legacy_wordpress_redirects' => 'getLegacyWordpressRedirects',
         'wordpress_cutover' => 'getWordpressCutover',
@@ -617,6 +623,7 @@ class StoreSettingsManageRequest implements ModelInterface, ArrayAccess, \JsonSe
         $this->setIfExists('gbp_url', $data ?? [], null);
         $this->setIfExists('live_chat_enabled', $data ?? [], null);
         $this->setIfExists('freebie_cost_in_cogs', $data ?? [], null);
+        $this->setIfExists('revenue_attribution_date', $data ?? [], null);
         $this->setIfExists('legacy_wix_redirects', $data ?? [], null);
         $this->setIfExists('legacy_wordpress_redirects', $data ?? [], null);
         $this->setIfExists('wordpress_cutover', $data ?? [], null);
@@ -2329,6 +2336,40 @@ class StoreSettingsManageRequest implements ModelInterface, ArrayAccess, \JsonSe
             }
         }
         $this->container['freebie_cost_in_cogs'] = $freebie_cost_in_cogs;
+
+        return $this;
+    }
+
+    /**
+     * Gets revenue_attribution_date
+     *
+     * @return string|null
+     */
+    public function getRevenueAttributionDate()
+    {
+        return $this->container['revenue_attribution_date'];
+    }
+
+    /**
+     * Sets revenue_attribution_date
+     *
+     * @param string|null $revenue_attribution_date Analytics revenue day: \"placed\" (checkout day) or \"delivered\" (scheduled delivery calendar day).
+     *
+     * @return self
+     */
+    public function setRevenueAttributionDate($revenue_attribution_date)
+    {
+        if (is_null($revenue_attribution_date)) {
+            array_push($this->openAPINullablesSetToNull, 'revenue_attribution_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('revenue_attribution_date', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['revenue_attribution_date'] = $revenue_attribution_date;
 
         return $this;
     }

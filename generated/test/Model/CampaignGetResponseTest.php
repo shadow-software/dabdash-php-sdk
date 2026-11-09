@@ -152,6 +152,123 @@ class CampaignGetResponseTest extends TestCase
     }
 
     /**
+     * Test attribute "mailgun_domain_ids"
+     */
+    public function testPropertyMailgunDomainIds()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "mailgun_pace"
+     */
+    public function testPropertyMailgunPace()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "contact_lists"
+     */
+    public function testPropertyContactLists()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "saved_webhook_id"
+     */
+    public function testPropertySavedWebhookId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "webhook_url"
+     */
+    public function testPropertyWebhookUrl()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "webhook_health_url"
+     */
+    public function testPropertyWebhookHealthUrl()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "throttle_per_minute"
+     */
+    public function testPropertyThrottlePerMinute()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "throttle_per_hour"
+     */
+    public function testPropertyThrottlePerHour()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "send_interval_minutes"
+     */
+    public function testPropertySendIntervalMinutes()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "send_window_enabled"
+     */
+    public function testPropertySendWindowEnabled()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "send_window_from"
+     */
+    public function testPropertySendWindowFrom()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "send_window_to"
+     */
+    public function testPropertySendWindowTo()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "send_window_days"
+     */
+    public function testPropertySendWindowDays()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "html_body"
      */
     public function testPropertyHtmlBody()

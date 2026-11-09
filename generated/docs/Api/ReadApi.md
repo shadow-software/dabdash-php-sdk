@@ -9,6 +9,9 @@ All URIs are relative to https://.dabdash.com, except if the operation defines a
 | [**analyticsQuery()**](ReadApi.md#analyticsQuery) | **POST** /api/v1/tools/analytics_query | Run read-only analytics queries against the production database. Available reports: revenue_by_tenant, orders_by_status, top_products, revenue_over_time, customer_stats. Revenue dating uses RevenueAttribution (pass tenant_slug for delivered-mode tenants). |
 | [**campaignAudienceInspect()**](ReadApi.md#campaignAudienceInspect) | **POST** /api/v1/tools/campaign_audience_inspect | Split the tenant&#39;s campaign audience into warm (≥1 past order) vs cold (no order history) recipients. Use this before drafting a newsletter or SMS in the Create Promotion flow: warm audiences can get exclusive codes and commercial copy; cold audiences need personalized, spam-safe language — never hard-sell or aggressive exclusive deals.  Returns counts only — it does not create or send a campaign. |
 | [**campaignGet()**](ReadApi.md#campaignGet) | **POST** /api/v1/tools/campaign_get | Read a campaign back, including the message body you are about to edit.  Every other campaign tool reports html_body_length — a character count — so without this you would be rewriting a document you have never seen. Call this first whenever you are asked to change, finish, or comment on existing copy.  Email campaigns return html_body; text campaigns return sms_body. A rendered system template runs 10-32KB, so read once and edit from what you read rather than re-fetching between changes. |
+| [**campaignLinkAudit()**](ReadApi.md#campaignLinkAudit) | **POST** /api/v1/tools/campaign_link_audit | Audit every href in a draft campaign&#39;s HTML against the tenant catalog.  For /products/{slug} and /categories/{slug} links it resolves the row (including draft/archived products) and reports status, stock, and live price. A link that HTTP-200s to the wrong or unpublished product is still a blocking issue — do not rely on curl alone. Optional check_http&#x3D;true also probes the live URL.  Returns links[] plus blocking_issues[] so launch prep can refuse send until product deep links are public and correct. |
+| [**campaignList()**](ReadApi.md#campaignList) | **POST** /api/v1/tools/campaign_list | List recent vendor email/SMS campaigns for a tenant so you can find campaign_id without guessing. Filter by status, channel, or a name/subject substring (q). Returns transport mode, audience flags, and list counts — use campaign_get for the full HTML/SMS body. |
+| [**campaignPreviewImage()**](ReadApi.md#campaignPreviewImage) | **POST** /api/v1/tools/campaign_preview_image | Render a draft email campaign as a PNG screenshot so you (and the vendor) can see exactly how it looks — desktop (600px) or mobile (390px).  Call this AFTER you finish editing an email (template apply, copy upsert, flyer/image placement) to visually confirm your own work before declaring the campaign ready. Prefer desktop first; also call with viewport&#x3D;mobile when the send matters on phones or when the design uses media queries.  When the connected model supports vision input, the response includes vision_review: either \&quot;LOOKS GOOD\&quot; or a short list of concrete layout problems. Fix those problems with campaign_upsert / campaign_set_image and re-check. When vision is unavailable, image_url is still returned for the vendor chat preview — say you cannot visually confirm on this model.  Pass campaign_id (loads stored html_body) OR inline html_body for unsaved markup. SMS campaigns are rejected. |
 | [**campaignSpamScore()**](ReadApi.md#campaignSpamScore) | **POST** /api/v1/tools/campaign_spam_score | Score vendor campaign copy for inbox risk (email HTML or SMS).  One score only: 0–100 (0 &#x3D; spam, 100 &#x3D; primary-inbox friendly). Live scoring uses first-party rules. Pass for_send&#x3D;true to run the same deep filter check used on send/schedule and fold it into that single number (never a second score).  When for_send&#x3D;true on email, the response also includes spamassassin_score and deep_check_rules[] (Postmark/SpamAssassin hits with name, score, description) plus findings[] entries with actionable hints — use these to fix blocked campaigns.  Vendors cannot send or schedule below the platform minimum (default 80). Aim for 80+ before handoff; 85+ is excellent.  Pass campaign_id (loads draft content) OR inline channel + content fields. |
 | [**catalogFlatteningAudit()**](ReadApi.md#catalogFlatteningAudit) | **POST** /api/v1/tools/catalog_flattening_audit | Read-only. Finds products whose sizes were split into separate products instead of tiers.  This happens when a catalog is imported from a store that put the size in the product NAME (\&quot;Blue Dream - 3.5G\&quot;, \&quot;Blue Dream - 7G\&quot;) instead of a size option column. The importer has no size column to read, so each size becomes its own product with a single \&quot;Default\&quot; option, and the store ends up with a long flat menu that cannot use weight pricing or mix &amp; match deals.  Returns each group of products that belong together (\&quot;family\&quot;), the sizes and prices found, and whether the group can be safely merged. A group is NOT mergeable when two of its products claim the same size — that must be resolved by hand first.  Nothing is changed. Use catalog_collapse to merge a group. |
 | [**catalogVariantAudit()**](ReadApi.md#catalogVariantAudit) | **POST** /api/v1/tools/catalog_variant_audit | Lists explicit unit products and their variations for safe catalog compaction review. Read-only. |
@@ -28,12 +31,15 @@ All URIs are relative to https://.dabdash.com, except if the operation defines a
 | [**productImageStrainMatch()**](ReadApi.md#productImageStrainMatch) | **POST** /api/v1/tools/product_image_strain_match | Find products on a tenant&#39;s storefront that have no featured image, and propose a hosted platform strain photo for each by matching product name against the strain library. Read-only — never writes to a product; pass the results to product_image_strain_assign to actually apply them.  Only proposes strains whose photo is already hosted on the platform (cdn.strains.dabdash.com/strains/... — see StrainImageService::isHostedUrl). A name match against an unhosted/dead-remote strain is reported as match_method&#x3D;none rather than proposing a broken or third-party hotlinked image.  Match order per product: 1) the product&#39;s own strain_id FK, if set (match_method&#x3D;strain_id_fk, confidence&#x3D;exact) 2) case-insensitive exact name match (confidence&#x3D;exact) 3) prefix/contains name match, shortest strain name wins ties (confidence&#x3D;partial) 4) no match (match_method&#x3D;none, confidence&#x3D;none). |
 | [**productInspect()**](ReadApi.md#productInspect) | **POST** /api/v1/tools/product_inspect | Inspect a specific product including every variation&#39;s price, compare_at_price, mix_match_tags, stock, and the tenant&#39;s mix &amp; match rule settings. Use this to audit pricing, sale state, and bundle configuration for support tickets. |
 | [**productProfitability()**](ReadApi.md#productProfitability) | **POST** /api/v1/tools/product_profitability | Rank a tenant&#39;s products by real net margin using order-line COGS (order_items.cost_price), not price-tier approximations. Use this before recommending sales, coupons, freebies, or subscription mounting ladders — only promote SKUs with enough margin headroom.  Revenue dating follows RevenueAttribution (placed vs delivered) for the tenant. Freebie gift lines are excluded from COGS so giveaways do not distort product margins. Results include current catalog stock_status and a promo_headroom_ok flag (margin_percent &gt;&#x3D; min_margin_percent).  Sort: margin (default), revenue, or units. Pass a wide date_from for tenants with older imported history. |
+| [**productSearch()**](ReadApi.md#productSearch) | **POST** /api/v1/tools/product_search | Search a tenant&#39;s product catalog by name (and optionally category + status).  Returns id, name, slug, status, storefront_path, price, stock_status, and category_ids — enough to build campaign deep links or a Smart List of purchasers without cobbling product_unit_price_search + visibility dry-runs.  name_query is a case-insensitive substring on product name. Pass category_id or category_slug to restrict membership. status defaults to all (active, draft, archived) so historical / unpublished SKUs still appear when building buyer audiences. |
 | [**productUnitPriceSearch()**](ReadApi.md#productUnitPriceSearch) | **POST** /api/v1/tools/product_unit_price_search | Search and rank a tenant&#39;s catalog by computed per-unit price (e.g. price per gram or price per ounce), across every weight-family product (types \&quot;weight\&quot; and \&quot;matrix\&quot;) — something product_inspect cannot do because it only looks up one product at a time by id/name/sku.  For each active, in-stock variation with a weight_value, computes price_per_gram &#x3D; price_cents / weight_value, then scales it to the requested unit (default \&quot;oz\&quot; &#x3D; 28g, matching the storefront&#39;s weight-tier convention). Use this to answer \&quot;what&#39;s the cheapest/most expensive product per ounce\&quot;, \&quot;find products under $X/g\&quot;, or to rank the catalog by unit economics for pricing audits and promo targeting.  Only weight-family products (weight, matrix) have a meaningful per-gram price — unit-family products (simple, unit, matrix_unit) are excluded since their variations are priced per item, not per weight. |
 | [**promotionAudit()**](ReadApi.md#promotionAudit) | **POST** /api/v1/tools/promotion_audit | Inspect coupons, freebies, mix and match rules, loyalty settings, and storewide sale state for overcharge or missed-discount support tickets. |
 | [**pushNotificationDiagnostics()**](ReadApi.md#pushNotificationDiagnostics) | **POST** /api/v1/tools/push_notification_diagnostics | Diagnose push notification (FCM) delivery for a vendor. Surfaces token health, notification settings, recent send history with push/email flags, and a plain-language diagnosis of why pushes are or are not being delivered. |
 | [**searchConsole()**](ReadApi.md#searchConsole) | **POST** /api/v1/tools/search_console | Query Google Search Console data for the platform (dabdash.com) or a specific tenant with a connected GSC integration. Returns search overview, top queries, top pages, and daily trend. |
 | [**storeInfo()**](ReadApi.md#storeInfo) | **POST** /api/v1/tools/store_info | Identify the connected store — name, slug, timezone, currency, country, and subscription status. Use to validate an API token during setup. |
 | [**strainLookup()**](ReadApi.md#strainLookup) | **POST** /api/v1/tools/strain_lookup | Search the platform strain database — the same catalog vendors search on the create-product page. Returns name, type, cannabinoids, effects, flavors, and whether a hosted photo exists. Use this BEFORE creating a product whose name looks like a strain, then pass strain_id to product_manage so the product is filled from that row. Not tenant-owned media; photos stay on the shared strain CDN. |
+| [**teachingGuide()**](ReadApi.md#teachingGuide) | **POST** /api/v1/tools/teaching_guide | Fetch one Teaching Continuity unit or all units for a page, including body text and selector so you can coach a human through the live DabDash UI with the same wording as Dabby tooltips and Help tours. |
+| [**teachingIndex()**](ReadApi.md#teachingIndex) | **POST** /api/v1/tools/teaching_index | List DabDash UI teaching units (control-level tips shared with tours and Dabby tooltips). Filter by page, tour_key, or id prefix. Use teaching_guide for full body text when coaching a human through the UI. |
 | [**zoneDiagnostics()**](ReadApi.md#zoneDiagnostics) | **POST** /api/v1/tools/zone_diagnostics | Inspect zone polygons against customer or order coordinates to explain why an address is inside or outside delivery coverage. |
 
 
@@ -206,6 +212,189 @@ try {
 ### Return type
 
 [**\ShadowSoftware\DabDash\Model\CampaignGet200Response**](../Model/CampaignGet200Response.md)
+
+### Authorization
+
+[tenantOAuth](../../README.md#tenantOAuth), [tenantApiKey](../../README.md#tenantApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `campaignLinkAudit()`
+
+```php
+campaignLinkAudit($campaign_link_audit_request): \ShadowSoftware\DabDash\Model\CampaignLinkAudit200Response
+```
+
+Audit every href in a draft campaign's HTML against the tenant catalog.  For /products/{slug} and /categories/{slug} links it resolves the row (including draft/archived products) and reports status, stock, and live price. A link that HTTP-200s to the wrong or unpublished product is still a blocking issue — do not rely on curl alone. Optional check_http=true also probes the live URL.  Returns links[] plus blocking_issues[] so launch prep can refuse send until product deep links are public and correct.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: tenantOAuth
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure Bearer authorization: tenantApiKey
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new ShadowSoftware\DabDash\Api\ReadApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$campaign_link_audit_request = new \ShadowSoftware\DabDash\Model\CampaignLinkAuditRequest(); // \ShadowSoftware\DabDash\Model\CampaignLinkAuditRequest
+
+try {
+    $result = $apiInstance->campaignLinkAudit($campaign_link_audit_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ReadApi->campaignLinkAudit: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **campaign_link_audit_request** | [**\ShadowSoftware\DabDash\Model\CampaignLinkAuditRequest**](../Model/CampaignLinkAuditRequest.md)|  | [optional] |
+
+### Return type
+
+[**\ShadowSoftware\DabDash\Model\CampaignLinkAudit200Response**](../Model/CampaignLinkAudit200Response.md)
+
+### Authorization
+
+[tenantOAuth](../../README.md#tenantOAuth), [tenantApiKey](../../README.md#tenantApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `campaignList()`
+
+```php
+campaignList($campaign_list_request): \ShadowSoftware\DabDash\Model\CampaignList200Response
+```
+
+List recent vendor email/SMS campaigns for a tenant so you can find campaign_id without guessing. Filter by status, channel, or a name/subject substring (q). Returns transport mode, audience flags, and list counts — use campaign_get for the full HTML/SMS body.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: tenantOAuth
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure Bearer authorization: tenantApiKey
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new ShadowSoftware\DabDash\Api\ReadApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$campaign_list_request = new \ShadowSoftware\DabDash\Model\CampaignListRequest(); // \ShadowSoftware\DabDash\Model\CampaignListRequest
+
+try {
+    $result = $apiInstance->campaignList($campaign_list_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ReadApi->campaignList: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **campaign_list_request** | [**\ShadowSoftware\DabDash\Model\CampaignListRequest**](../Model/CampaignListRequest.md)|  | [optional] |
+
+### Return type
+
+[**\ShadowSoftware\DabDash\Model\CampaignList200Response**](../Model/CampaignList200Response.md)
+
+### Authorization
+
+[tenantOAuth](../../README.md#tenantOAuth), [tenantApiKey](../../README.md#tenantApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `campaignPreviewImage()`
+
+```php
+campaignPreviewImage($campaign_preview_image_request): \ShadowSoftware\DabDash\Model\CampaignPreviewImage200Response
+```
+
+Render a draft email campaign as a PNG screenshot so you (and the vendor) can see exactly how it looks — desktop (600px) or mobile (390px).  Call this AFTER you finish editing an email (template apply, copy upsert, flyer/image placement) to visually confirm your own work before declaring the campaign ready. Prefer desktop first; also call with viewport=mobile when the send matters on phones or when the design uses media queries.  When the connected model supports vision input, the response includes vision_review: either \"LOOKS GOOD\" or a short list of concrete layout problems. Fix those problems with campaign_upsert / campaign_set_image and re-check. When vision is unavailable, image_url is still returned for the vendor chat preview — say you cannot visually confirm on this model.  Pass campaign_id (loads stored html_body) OR inline html_body for unsaved markup. SMS campaigns are rejected.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: tenantOAuth
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure Bearer authorization: tenantApiKey
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new ShadowSoftware\DabDash\Api\ReadApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$campaign_preview_image_request = new \ShadowSoftware\DabDash\Model\CampaignPreviewImageRequest(); // \ShadowSoftware\DabDash\Model\CampaignPreviewImageRequest
+
+try {
+    $result = $apiInstance->campaignPreviewImage($campaign_preview_image_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ReadApi->campaignPreviewImage: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **campaign_preview_image_request** | [**\ShadowSoftware\DabDash\Model\CampaignPreviewImageRequest**](../Model/CampaignPreviewImageRequest.md)|  | [optional] |
+
+### Return type
+
+[**\ShadowSoftware\DabDash\Model\CampaignPreviewImage200Response**](../Model/CampaignPreviewImage200Response.md)
 
 ### Authorization
 
@@ -1379,6 +1568,67 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `productSearch()`
+
+```php
+productSearch($product_search_request): \ShadowSoftware\DabDash\Model\ProductSearch200Response
+```
+
+Search a tenant's product catalog by name (and optionally category + status).  Returns id, name, slug, status, storefront_path, price, stock_status, and category_ids — enough to build campaign deep links or a Smart List of purchasers without cobbling product_unit_price_search + visibility dry-runs.  name_query is a case-insensitive substring on product name. Pass category_id or category_slug to restrict membership. status defaults to all (active, draft, archived) so historical / unpublished SKUs still appear when building buyer audiences.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: tenantOAuth
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure Bearer authorization: tenantApiKey
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new ShadowSoftware\DabDash\Api\ReadApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$product_search_request = new \ShadowSoftware\DabDash\Model\ProductSearchRequest(); // \ShadowSoftware\DabDash\Model\ProductSearchRequest
+
+try {
+    $result = $apiInstance->productSearch($product_search_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ReadApi->productSearch: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **product_search_request** | [**\ShadowSoftware\DabDash\Model\ProductSearchRequest**](../Model/ProductSearchRequest.md)|  | [optional] |
+
+### Return type
+
+[**\ShadowSoftware\DabDash\Model\ProductSearch200Response**](../Model/ProductSearch200Response.md)
+
+### Authorization
+
+[tenantOAuth](../../README.md#tenantOAuth), [tenantApiKey](../../README.md#tenantApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `productUnitPriceSearch()`
 
 ```php
@@ -1731,6 +1981,128 @@ try {
 ### Return type
 
 [**\ShadowSoftware\DabDash\Model\StrainLookup200Response**](../Model/StrainLookup200Response.md)
+
+### Authorization
+
+[tenantOAuth](../../README.md#tenantOAuth), [tenantApiKey](../../README.md#tenantApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `teachingGuide()`
+
+```php
+teachingGuide($teaching_guide_request): \ShadowSoftware\DabDash\Model\ContactCleanup200Response
+```
+
+Fetch one Teaching Continuity unit or all units for a page, including body text and selector so you can coach a human through the live DabDash UI with the same wording as Dabby tooltips and Help tours.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: tenantOAuth
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure Bearer authorization: tenantApiKey
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new ShadowSoftware\DabDash\Api\ReadApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$teaching_guide_request = new \ShadowSoftware\DabDash\Model\TeachingGuideRequest(); // \ShadowSoftware\DabDash\Model\TeachingGuideRequest
+
+try {
+    $result = $apiInstance->teachingGuide($teaching_guide_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ReadApi->teachingGuide: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **teaching_guide_request** | [**\ShadowSoftware\DabDash\Model\TeachingGuideRequest**](../Model/TeachingGuideRequest.md)|  | [optional] |
+
+### Return type
+
+[**\ShadowSoftware\DabDash\Model\ContactCleanup200Response**](../Model/ContactCleanup200Response.md)
+
+### Authorization
+
+[tenantOAuth](../../README.md#tenantOAuth), [tenantApiKey](../../README.md#tenantApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `teachingIndex()`
+
+```php
+teachingIndex($teaching_index_request): \ShadowSoftware\DabDash\Model\ContactCleanup200Response
+```
+
+List DabDash UI teaching units (control-level tips shared with tours and Dabby tooltips). Filter by page, tour_key, or id prefix. Use teaching_guide for full body text when coaching a human through the UI.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: tenantOAuth
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure Bearer authorization: tenantApiKey
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new ShadowSoftware\DabDash\Api\ReadApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$teaching_index_request = new \ShadowSoftware\DabDash\Model\TeachingIndexRequest(); // \ShadowSoftware\DabDash\Model\TeachingIndexRequest
+
+try {
+    $result = $apiInstance->teachingIndex($teaching_index_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ReadApi->teachingIndex: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **teaching_index_request** | [**\ShadowSoftware\DabDash\Model\TeachingIndexRequest**](../Model/TeachingIndexRequest.md)|  | [optional] |
+
+### Return type
+
+[**\ShadowSoftware\DabDash\Model\ContactCleanup200Response**](../Model/ContactCleanup200Response.md)
 
 ### Authorization
 

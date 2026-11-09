@@ -8,6 +8,7 @@ All URIs are relative to https://.dabdash.com, except if the operation defines a
 | ------------- | ------------- | ------------- |
 | [**zoneClone()**](ZonesApi.md#zoneClone) | **POST** /api/v1/tools/zone_clone | Clone every polygon zone from a source tenant into the target tenant while preserving the target tenant&#39;s existing fee tiers. This is intended for importing a proven coverage map without importing another store&#39;s pricing.  The source zones are grouped into tiers by their minimum order, then mapped by rank to the target tenant&#39;s existing zones ordered by minimum order. The target tier&#39;s delivery_fee, service_fee, min_order, color, priority, and fulfillment_type are applied to every cloned source polygon. Existing target zones are replaced only when replace_existing&#x3D;true and confirm&#x3D;true. Zone colors use an evenly spaced spectrum from the target primary colour to its accent colour, one stop per fee rung. dry_run defaults true. |
 | [**zoneDiagnostics()**](ZonesApi.md#zoneDiagnostics) | **POST** /api/v1/tools/zone_diagnostics | Inspect zone polygons against customer or order coordinates to explain why an address is inside or outside delivery coverage. |
+| [**zoneManage()**](ZonesApi.md#zoneManage) | **POST** /api/v1/tools/zone_manage | List or delete a tenant&#39;s delivery zones.  ACTIONS:   list   (default): return every zone with id, name, slug, is_active, is_example,          fulfillment_type, priority, delivery_fee, service_fee, min_order, and counts          of related orders/customer addresses/delivery slots. Always call this first          to find zone_ids and confirm which zones are welcome-wizard example/template          zones (is_example&#x3D;true, or slug prefixed welcome-/example-) versus real          vendor-configured coverage, before deleting anything.    delete: requires zone_ids + confirm&#x3D;true. Refuses to delete a zone that still has          orders, saved customer addresses, or delivery slots attached unless          force&#x3D;true is passed (force does not delete those related rows — it only          lets the zone row be removed; related rows keep their zone_id, which becomes          orphaned, so prefer reassigning/clearing them first). dry_run defaults true —          the first call always reports what would happen without writing.  Common use: cleaning up leftover onboarding-wizard example zones (the three \&quot;N km delivery area\&quot; circles and/or the \&quot;Downtown\&quot; demo zone, slugs welcome-5km / welcome-10km / welcome-15km / example-downtown) when a vendor ended up with both those AND real GADM administrative-boundary zones after running the wizard&#39;s circle and boundary-import steps in sequence. |
 | [**zoneUpsert()**](ZonesApi.md#zoneUpsert) | **POST** /api/v1/tools/zone_upsert | Create or update a delivery/pickup/shipping zone. Use zone_manage to list or delete.  CREATE (no zone_id): name is required; a zone with the same name is updated instead. UPDATE (zone_id): only the fields you pass change.  Coverage shape — pass ONE of:   polygon: list of {lat, lng} points (or [lng, lat] pairs), at least 3, at most 500.   center_lat + center_lng + radius_km: builds a 32-point circle. Good enough when            the client only publishes a list of towns; refine the polygon later. Fees and minimum order are in dollars. dry_run defaults true: the first call reports what would be saved; pass dry_run&#x3D;false to write. |
 
 
@@ -119,6 +120,67 @@ try {
 ### Return type
 
 [**\ShadowSoftware\DabDash\Model\ZoneDiagnostics200Response**](../Model/ZoneDiagnostics200Response.md)
+
+### Authorization
+
+[tenantOAuth](../../README.md#tenantOAuth), [tenantApiKey](../../README.md#tenantApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `zoneManage()`
+
+```php
+zoneManage($zone_manage_request): \ShadowSoftware\DabDash\Model\ZoneManage200Response
+```
+
+List or delete a tenant's delivery zones.  ACTIONS:   list   (default): return every zone with id, name, slug, is_active, is_example,          fulfillment_type, priority, delivery_fee, service_fee, min_order, and counts          of related orders/customer addresses/delivery slots. Always call this first          to find zone_ids and confirm which zones are welcome-wizard example/template          zones (is_example=true, or slug prefixed welcome-/example-) versus real          vendor-configured coverage, before deleting anything.    delete: requires zone_ids + confirm=true. Refuses to delete a zone that still has          orders, saved customer addresses, or delivery slots attached unless          force=true is passed (force does not delete those related rows — it only          lets the zone row be removed; related rows keep their zone_id, which becomes          orphaned, so prefer reassigning/clearing them first). dry_run defaults true —          the first call always reports what would happen without writing.  Common use: cleaning up leftover onboarding-wizard example zones (the three \"N km delivery area\" circles and/or the \"Downtown\" demo zone, slugs welcome-5km / welcome-10km / welcome-15km / example-downtown) when a vendor ended up with both those AND real GADM administrative-boundary zones after running the wizard's circle and boundary-import steps in sequence.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: tenantOAuth
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure Bearer authorization: tenantApiKey
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new ShadowSoftware\DabDash\Api\ZonesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$zone_manage_request = new \ShadowSoftware\DabDash\Model\ZoneManageRequest(); // \ShadowSoftware\DabDash\Model\ZoneManageRequest
+
+try {
+    $result = $apiInstance->zoneManage($zone_manage_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ZonesApi->zoneManage: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **zone_manage_request** | [**\ShadowSoftware\DabDash\Model\ZoneManageRequest**](../Model/ZoneManageRequest.md)|  | [optional] |
+
+### Return type
+
+[**\ShadowSoftware\DabDash\Model\ZoneManage200Response**](../Model/ZoneManage200Response.md)
 
 ### Authorization
 

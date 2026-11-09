@@ -58,8 +58,11 @@ class ProductFeatureManageRequest implements ModelInterface, ArrayAccess, \JsonS
      */
     protected static $openAPITypes = [
         'action' => 'string',
+        'section' => 'string',
         'product_ids' => 'int[]',
-        'featured' => 'bool'
+        'featured' => 'bool',
+        'starts_at' => 'string',
+        'ends_at' => 'string'
     ];
 
     /**
@@ -71,8 +74,11 @@ class ProductFeatureManageRequest implements ModelInterface, ArrayAccess, \JsonS
      */
     protected static $openAPIFormats = [
         'action' => null,
+        'section' => null,
         'product_ids' => null,
-        'featured' => null
+        'featured' => null,
+        'starts_at' => null,
+        'ends_at' => null
     ];
 
     /**
@@ -82,8 +88,11 @@ class ProductFeatureManageRequest implements ModelInterface, ArrayAccess, \JsonS
      */
     protected static array $openAPINullables = [
         'action' => true,
+        'section' => true,
         'product_ids' => true,
-        'featured' => true
+        'featured' => true,
+        'starts_at' => true,
+        'ends_at' => true
     ];
 
     /**
@@ -173,8 +182,11 @@ class ProductFeatureManageRequest implements ModelInterface, ArrayAccess, \JsonS
      */
     protected static $attributeMap = [
         'action' => 'action',
+        'section' => 'section',
         'product_ids' => 'product_ids',
-        'featured' => 'featured'
+        'featured' => 'featured',
+        'starts_at' => 'starts_at',
+        'ends_at' => 'ends_at'
     ];
 
     /**
@@ -184,8 +196,11 @@ class ProductFeatureManageRequest implements ModelInterface, ArrayAccess, \JsonS
      */
     protected static $setters = [
         'action' => 'setAction',
+        'section' => 'setSection',
         'product_ids' => 'setProductIds',
-        'featured' => 'setFeatured'
+        'featured' => 'setFeatured',
+        'starts_at' => 'setStartsAt',
+        'ends_at' => 'setEndsAt'
     ];
 
     /**
@@ -195,8 +210,11 @@ class ProductFeatureManageRequest implements ModelInterface, ArrayAccess, \JsonS
      */
     protected static $getters = [
         'action' => 'getAction',
+        'section' => 'getSection',
         'product_ids' => 'getProductIds',
-        'featured' => 'getFeatured'
+        'featured' => 'getFeatured',
+        'starts_at' => 'getStartsAt',
+        'ends_at' => 'getEndsAt'
     ];
 
     /**
@@ -257,8 +275,11 @@ class ProductFeatureManageRequest implements ModelInterface, ArrayAccess, \JsonS
     public function __construct(?array $data = null)
     {
         $this->setIfExists('action', $data ?? [], null);
+        $this->setIfExists('section', $data ?? [], null);
         $this->setIfExists('product_ids', $data ?? [], null);
         $this->setIfExists('featured', $data ?? [], null);
+        $this->setIfExists('starts_at', $data ?? [], null);
+        $this->setIfExists('ends_at', $data ?? [], null);
     }
 
     /**
@@ -338,6 +359,40 @@ class ProductFeatureManageRequest implements ModelInterface, ArrayAccess, \JsonS
     }
 
     /**
+     * Gets section
+     *
+     * @return string|null
+     */
+    public function getSection()
+    {
+        return $this->container['section'];
+    }
+
+    /**
+     * Sets section
+     *
+     * @param string|null $section \"featured\" (default), \"deals\", or \"new\".
+     *
+     * @return self
+     */
+    public function setSection($section)
+    {
+        if (is_null($section)) {
+            array_push($this->openAPINullablesSetToNull, 'section');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('section', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['section'] = $section;
+
+        return $this;
+    }
+
+    /**
      * Gets product_ids
      *
      * @return int[]|null
@@ -384,7 +439,7 @@ class ProductFeatureManageRequest implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets featured
      *
-     * @param bool|null $featured Value to set is_featured to for product_ids. Required for action=set.
+     * @param bool|null $featured Value to set on the section flag for product_ids. Required for action=set.
      *
      * @return self
      */
@@ -401,6 +456,74 @@ class ProductFeatureManageRequest implements ModelInterface, ArrayAccess, \JsonS
             }
         }
         $this->container['featured'] = $featured;
+
+        return $this;
+    }
+
+    /**
+     * Gets starts_at
+     *
+     * @return string|null
+     */
+    public function getStartsAt()
+    {
+        return $this->container['starts_at'];
+    }
+
+    /**
+     * Sets starts_at
+     *
+     * @param string|null $starts_at Optional start date (YYYY-MM-DD, tenant timezone). Null/omit = now. Only used when featured=true.
+     *
+     * @return self
+     */
+    public function setStartsAt($starts_at)
+    {
+        if (is_null($starts_at)) {
+            array_push($this->openAPINullablesSetToNull, 'starts_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('starts_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['starts_at'] = $starts_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets ends_at
+     *
+     * @return string|null
+     */
+    public function getEndsAt()
+    {
+        return $this->container['ends_at'];
+    }
+
+    /**
+     * Sets ends_at
+     *
+     * @param string|null $ends_at Optional end date (YYYY-MM-DD, tenant timezone, end of day UTC). Null/omit = never. Must be on/after starts_at.
+     *
+     * @return self
+     */
+    public function setEndsAt($ends_at)
+    {
+        if (is_null($ends_at)) {
+            array_push($this->openAPINullablesSetToNull, 'ends_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ends_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['ends_at'] = $ends_at;
 
         return $this;
     }

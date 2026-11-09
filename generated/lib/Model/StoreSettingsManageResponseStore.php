@@ -77,6 +77,7 @@ class StoreSettingsManageResponseStore implements ModelInterface, ArrayAccess, \
         'theme_mode' => 'string',
         'minimum_age' => 'int',
         'freebie_cost_in_cogs' => 'bool',
+        'revenue_attribution_date' => 'string',
         'opening_hours' => '\ShadowSoftware\DabDash\Model\StoreSettingsManageRequestOpeningHoursInner[]'
     ];
 
@@ -108,6 +109,7 @@ class StoreSettingsManageResponseStore implements ModelInterface, ArrayAccess, \
         'theme_mode' => null,
         'minimum_age' => null,
         'freebie_cost_in_cogs' => null,
+        'revenue_attribution_date' => null,
         'opening_hours' => null
     ];
 
@@ -137,6 +139,7 @@ class StoreSettingsManageResponseStore implements ModelInterface, ArrayAccess, \
         'theme_mode' => false,
         'minimum_age' => false,
         'freebie_cost_in_cogs' => false,
+        'revenue_attribution_date' => false,
         'opening_hours' => false
     ];
 
@@ -246,6 +249,7 @@ class StoreSettingsManageResponseStore implements ModelInterface, ArrayAccess, \
         'theme_mode' => 'theme_mode',
         'minimum_age' => 'minimum_age',
         'freebie_cost_in_cogs' => 'freebie_cost_in_cogs',
+        'revenue_attribution_date' => 'revenue_attribution_date',
         'opening_hours' => 'opening_hours'
     ];
 
@@ -275,6 +279,7 @@ class StoreSettingsManageResponseStore implements ModelInterface, ArrayAccess, \
         'theme_mode' => 'setThemeMode',
         'minimum_age' => 'setMinimumAge',
         'freebie_cost_in_cogs' => 'setFreebieCostInCogs',
+        'revenue_attribution_date' => 'setRevenueAttributionDate',
         'opening_hours' => 'setOpeningHours'
     ];
 
@@ -304,6 +309,7 @@ class StoreSettingsManageResponseStore implements ModelInterface, ArrayAccess, \
         'theme_mode' => 'getThemeMode',
         'minimum_age' => 'getMinimumAge',
         'freebie_cost_in_cogs' => 'getFreebieCostInCogs',
+        'revenue_attribution_date' => 'getRevenueAttributionDate',
         'opening_hours' => 'getOpeningHours'
     ];
 
@@ -384,6 +390,7 @@ class StoreSettingsManageResponseStore implements ModelInterface, ArrayAccess, \
         $this->setIfExists('theme_mode', $data ?? [], null);
         $this->setIfExists('minimum_age', $data ?? [], null);
         $this->setIfExists('freebie_cost_in_cogs', $data ?? [], null);
+        $this->setIfExists('revenue_attribution_date', $data ?? [], null);
         $this->setIfExists('opening_hours', $data ?? [], null);
     }
 
@@ -1056,6 +1063,33 @@ class StoreSettingsManageResponseStore implements ModelInterface, ArrayAccess, \
             throw new \InvalidArgumentException('non-nullable freebie_cost_in_cogs cannot be null');
         }
         $this->container['freebie_cost_in_cogs'] = $freebie_cost_in_cogs;
+
+        return $this;
+    }
+
+    /**
+     * Gets revenue_attribution_date
+     *
+     * @return string|null
+     */
+    public function getRevenueAttributionDate()
+    {
+        return $this->container['revenue_attribution_date'];
+    }
+
+    /**
+     * Sets revenue_attribution_date
+     *
+     * @param string|null $revenue_attribution_date revenue_attribution_date
+     *
+     * @return self
+     */
+    public function setRevenueAttributionDate($revenue_attribution_date)
+    {
+        if (is_null($revenue_attribution_date)) {
+            throw new \InvalidArgumentException('non-nullable revenue_attribution_date cannot be null');
+        }
+        $this->container['revenue_attribution_date'] = $revenue_attribution_date;
 
         return $this;
     }

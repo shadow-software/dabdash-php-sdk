@@ -61,7 +61,12 @@ class ProductFeatureManageResponseProductsInner implements ModelInterface, Array
         'name' => 'string',
         'slug' => 'string',
         'is_featured' => 'bool',
-        'stock_status' => 'string'
+        'is_featured_deal' => 'bool',
+        'is_featured_new' => 'bool',
+        'stock_status' => 'string',
+        'starts_at' => 'string',
+        'ends_at' => 'string',
+        'status' => 'string'
     ];
 
     /**
@@ -76,7 +81,12 @@ class ProductFeatureManageResponseProductsInner implements ModelInterface, Array
         'name' => null,
         'slug' => null,
         'is_featured' => null,
-        'stock_status' => null
+        'is_featured_deal' => null,
+        'is_featured_new' => null,
+        'stock_status' => null,
+        'starts_at' => null,
+        'ends_at' => null,
+        'status' => null
     ];
 
     /**
@@ -89,7 +99,12 @@ class ProductFeatureManageResponseProductsInner implements ModelInterface, Array
         'name' => false,
         'slug' => false,
         'is_featured' => false,
-        'stock_status' => false
+        'is_featured_deal' => false,
+        'is_featured_new' => false,
+        'stock_status' => false,
+        'starts_at' => true,
+        'ends_at' => true,
+        'status' => false
     ];
 
     /**
@@ -182,7 +197,12 @@ class ProductFeatureManageResponseProductsInner implements ModelInterface, Array
         'name' => 'name',
         'slug' => 'slug',
         'is_featured' => 'is_featured',
-        'stock_status' => 'stock_status'
+        'is_featured_deal' => 'is_featured_deal',
+        'is_featured_new' => 'is_featured_new',
+        'stock_status' => 'stock_status',
+        'starts_at' => 'starts_at',
+        'ends_at' => 'ends_at',
+        'status' => 'status'
     ];
 
     /**
@@ -195,7 +215,12 @@ class ProductFeatureManageResponseProductsInner implements ModelInterface, Array
         'name' => 'setName',
         'slug' => 'setSlug',
         'is_featured' => 'setIsFeatured',
-        'stock_status' => 'setStockStatus'
+        'is_featured_deal' => 'setIsFeaturedDeal',
+        'is_featured_new' => 'setIsFeaturedNew',
+        'stock_status' => 'setStockStatus',
+        'starts_at' => 'setStartsAt',
+        'ends_at' => 'setEndsAt',
+        'status' => 'setStatus'
     ];
 
     /**
@@ -208,7 +233,12 @@ class ProductFeatureManageResponseProductsInner implements ModelInterface, Array
         'name' => 'getName',
         'slug' => 'getSlug',
         'is_featured' => 'getIsFeatured',
-        'stock_status' => 'getStockStatus'
+        'is_featured_deal' => 'getIsFeaturedDeal',
+        'is_featured_new' => 'getIsFeaturedNew',
+        'stock_status' => 'getStockStatus',
+        'starts_at' => 'getStartsAt',
+        'ends_at' => 'getEndsAt',
+        'status' => 'getStatus'
     ];
 
     /**
@@ -272,7 +302,12 @@ class ProductFeatureManageResponseProductsInner implements ModelInterface, Array
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('slug', $data ?? [], null);
         $this->setIfExists('is_featured', $data ?? [], null);
+        $this->setIfExists('is_featured_deal', $data ?? [], null);
+        $this->setIfExists('is_featured_new', $data ?? [], null);
         $this->setIfExists('stock_status', $data ?? [], null);
+        $this->setIfExists('starts_at', $data ?? [], null);
+        $this->setIfExists('ends_at', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
     }
 
     /**
@@ -426,6 +461,60 @@ class ProductFeatureManageResponseProductsInner implements ModelInterface, Array
     }
 
     /**
+     * Gets is_featured_deal
+     *
+     * @return bool|null
+     */
+    public function getIsFeaturedDeal()
+    {
+        return $this->container['is_featured_deal'];
+    }
+
+    /**
+     * Sets is_featured_deal
+     *
+     * @param bool|null $is_featured_deal is_featured_deal
+     *
+     * @return self
+     */
+    public function setIsFeaturedDeal($is_featured_deal)
+    {
+        if (is_null($is_featured_deal)) {
+            throw new \InvalidArgumentException('non-nullable is_featured_deal cannot be null');
+        }
+        $this->container['is_featured_deal'] = $is_featured_deal;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_featured_new
+     *
+     * @return bool|null
+     */
+    public function getIsFeaturedNew()
+    {
+        return $this->container['is_featured_new'];
+    }
+
+    /**
+     * Sets is_featured_new
+     *
+     * @param bool|null $is_featured_new is_featured_new
+     *
+     * @return self
+     */
+    public function setIsFeaturedNew($is_featured_new)
+    {
+        if (is_null($is_featured_new)) {
+            throw new \InvalidArgumentException('non-nullable is_featured_new cannot be null');
+        }
+        $this->container['is_featured_new'] = $is_featured_new;
+
+        return $this;
+    }
+
+    /**
      * Gets stock_status
      *
      * @return string|null
@@ -448,6 +537,101 @@ class ProductFeatureManageResponseProductsInner implements ModelInterface, Array
             throw new \InvalidArgumentException('non-nullable stock_status cannot be null');
         }
         $this->container['stock_status'] = $stock_status;
+
+        return $this;
+    }
+
+    /**
+     * Gets starts_at
+     *
+     * @return string|null
+     */
+    public function getStartsAt()
+    {
+        return $this->container['starts_at'];
+    }
+
+    /**
+     * Sets starts_at
+     *
+     * @param string|null $starts_at starts_at
+     *
+     * @return self
+     */
+    public function setStartsAt($starts_at)
+    {
+        if (is_null($starts_at)) {
+            array_push($this->openAPINullablesSetToNull, 'starts_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('starts_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['starts_at'] = $starts_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets ends_at
+     *
+     * @return string|null
+     */
+    public function getEndsAt()
+    {
+        return $this->container['ends_at'];
+    }
+
+    /**
+     * Sets ends_at
+     *
+     * @param string|null $ends_at ends_at
+     *
+     * @return self
+     */
+    public function setEndsAt($ends_at)
+    {
+        if (is_null($ends_at)) {
+            array_push($this->openAPINullablesSetToNull, 'ends_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ends_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['ends_at'] = $ends_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string|null
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string|null $status status
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        if (is_null($status)) {
+            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        }
+        $this->container['status'] = $status;
 
         return $this;
     }

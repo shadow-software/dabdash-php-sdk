@@ -66,7 +66,21 @@ class CampaignUpsertRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'sms_body' => 'string',
         'plain_body' => 'string',
         'mode' => 'string',
-        'audience_includes_customers' => 'bool'
+        'mailgun_domain_ids' => 'int[]',
+        'audience_includes_customers' => 'bool',
+        'contact_list_ids' => 'int[]',
+        'mailgun_pace' => 'string',
+        'saved_webhook_id' => 'int',
+        'webhook_url' => 'string',
+        'webhook_health_url' => 'string',
+        'webhook_headers' => '\ShadowSoftware\DabDash\Model\CampaignUpsertRequestWebhookHeadersInner[]',
+        'throttle_per_minute' => 'int',
+        'throttle_per_hour' => 'int',
+        'send_interval_minutes' => 'int',
+        'send_window_enabled' => 'bool',
+        'send_window_from' => 'int',
+        'send_window_to' => 'int',
+        'send_window_days' => 'int[]'
     ];
 
     /**
@@ -86,7 +100,21 @@ class CampaignUpsertRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'sms_body' => null,
         'plain_body' => null,
         'mode' => null,
-        'audience_includes_customers' => null
+        'mailgun_domain_ids' => null,
+        'audience_includes_customers' => null,
+        'contact_list_ids' => null,
+        'mailgun_pace' => null,
+        'saved_webhook_id' => null,
+        'webhook_url' => null,
+        'webhook_health_url' => null,
+        'webhook_headers' => null,
+        'throttle_per_minute' => null,
+        'throttle_per_hour' => null,
+        'send_interval_minutes' => null,
+        'send_window_enabled' => null,
+        'send_window_from' => null,
+        'send_window_to' => null,
+        'send_window_days' => null
     ];
 
     /**
@@ -104,7 +132,21 @@ class CampaignUpsertRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'sms_body' => true,
         'plain_body' => true,
         'mode' => true,
-        'audience_includes_customers' => true
+        'mailgun_domain_ids' => true,
+        'audience_includes_customers' => true,
+        'contact_list_ids' => true,
+        'mailgun_pace' => true,
+        'saved_webhook_id' => true,
+        'webhook_url' => true,
+        'webhook_health_url' => true,
+        'webhook_headers' => true,
+        'throttle_per_minute' => true,
+        'throttle_per_hour' => true,
+        'send_interval_minutes' => true,
+        'send_window_enabled' => true,
+        'send_window_from' => true,
+        'send_window_to' => true,
+        'send_window_days' => true
     ];
 
     /**
@@ -202,7 +244,21 @@ class CampaignUpsertRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'sms_body' => 'sms_body',
         'plain_body' => 'plain_body',
         'mode' => 'mode',
-        'audience_includes_customers' => 'audience_includes_customers'
+        'mailgun_domain_ids' => 'mailgun_domain_ids',
+        'audience_includes_customers' => 'audience_includes_customers',
+        'contact_list_ids' => 'contact_list_ids',
+        'mailgun_pace' => 'mailgun_pace',
+        'saved_webhook_id' => 'saved_webhook_id',
+        'webhook_url' => 'webhook_url',
+        'webhook_health_url' => 'webhook_health_url',
+        'webhook_headers' => 'webhook_headers',
+        'throttle_per_minute' => 'throttle_per_minute',
+        'throttle_per_hour' => 'throttle_per_hour',
+        'send_interval_minutes' => 'send_interval_minutes',
+        'send_window_enabled' => 'send_window_enabled',
+        'send_window_from' => 'send_window_from',
+        'send_window_to' => 'send_window_to',
+        'send_window_days' => 'send_window_days'
     ];
 
     /**
@@ -220,7 +276,21 @@ class CampaignUpsertRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'sms_body' => 'setSmsBody',
         'plain_body' => 'setPlainBody',
         'mode' => 'setMode',
-        'audience_includes_customers' => 'setAudienceIncludesCustomers'
+        'mailgun_domain_ids' => 'setMailgunDomainIds',
+        'audience_includes_customers' => 'setAudienceIncludesCustomers',
+        'contact_list_ids' => 'setContactListIds',
+        'mailgun_pace' => 'setMailgunPace',
+        'saved_webhook_id' => 'setSavedWebhookId',
+        'webhook_url' => 'setWebhookUrl',
+        'webhook_health_url' => 'setWebhookHealthUrl',
+        'webhook_headers' => 'setWebhookHeaders',
+        'throttle_per_minute' => 'setThrottlePerMinute',
+        'throttle_per_hour' => 'setThrottlePerHour',
+        'send_interval_minutes' => 'setSendIntervalMinutes',
+        'send_window_enabled' => 'setSendWindowEnabled',
+        'send_window_from' => 'setSendWindowFrom',
+        'send_window_to' => 'setSendWindowTo',
+        'send_window_days' => 'setSendWindowDays'
     ];
 
     /**
@@ -238,7 +308,21 @@ class CampaignUpsertRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'sms_body' => 'getSmsBody',
         'plain_body' => 'getPlainBody',
         'mode' => 'getMode',
-        'audience_includes_customers' => 'getAudienceIncludesCustomers'
+        'mailgun_domain_ids' => 'getMailgunDomainIds',
+        'audience_includes_customers' => 'getAudienceIncludesCustomers',
+        'contact_list_ids' => 'getContactListIds',
+        'mailgun_pace' => 'getMailgunPace',
+        'saved_webhook_id' => 'getSavedWebhookId',
+        'webhook_url' => 'getWebhookUrl',
+        'webhook_health_url' => 'getWebhookHealthUrl',
+        'webhook_headers' => 'getWebhookHeaders',
+        'throttle_per_minute' => 'getThrottlePerMinute',
+        'throttle_per_hour' => 'getThrottlePerHour',
+        'send_interval_minutes' => 'getSendIntervalMinutes',
+        'send_window_enabled' => 'getSendWindowEnabled',
+        'send_window_from' => 'getSendWindowFrom',
+        'send_window_to' => 'getSendWindowTo',
+        'send_window_days' => 'getSendWindowDays'
     ];
 
     /**
@@ -307,7 +391,21 @@ class CampaignUpsertRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->setIfExists('sms_body', $data ?? [], null);
         $this->setIfExists('plain_body', $data ?? [], null);
         $this->setIfExists('mode', $data ?? [], null);
+        $this->setIfExists('mailgun_domain_ids', $data ?? [], null);
         $this->setIfExists('audience_includes_customers', $data ?? [], null);
+        $this->setIfExists('contact_list_ids', $data ?? [], null);
+        $this->setIfExists('mailgun_pace', $data ?? [], null);
+        $this->setIfExists('saved_webhook_id', $data ?? [], null);
+        $this->setIfExists('webhook_url', $data ?? [], null);
+        $this->setIfExists('webhook_health_url', $data ?? [], null);
+        $this->setIfExists('webhook_headers', $data ?? [], null);
+        $this->setIfExists('throttle_per_minute', $data ?? [], null);
+        $this->setIfExists('throttle_per_hour', $data ?? [], null);
+        $this->setIfExists('send_interval_minutes', $data ?? [], null);
+        $this->setIfExists('send_window_enabled', $data ?? [], null);
+        $this->setIfExists('send_window_from', $data ?? [], null);
+        $this->setIfExists('send_window_to', $data ?? [], null);
+        $this->setIfExists('send_window_days', $data ?? [], null);
     }
 
     /**
@@ -637,7 +735,7 @@ class CampaignUpsertRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets mode
      *
-     * @param string|null $mode \"smtp\" (default) or \"webhook\". Left unchanged on update unless passed.
+     * @param string|null $mode \"smtp\" (default), \"webhook\", or \"mailgun\" (HTTP API with domain rotation). Left unchanged on update unless passed.
      *
      * @return self
      */
@@ -654,6 +752,40 @@ class CampaignUpsertRequest implements ModelInterface, ArrayAccess, \JsonSeriali
             }
         }
         $this->container['mode'] = $mode;
+
+        return $this;
+    }
+
+    /**
+     * Gets mailgun_domain_ids
+     *
+     * @return int[]|null
+     */
+    public function getMailgunDomainIds()
+    {
+        return $this->container['mailgun_domain_ids'];
+    }
+
+    /**
+     * Sets mailgun_domain_ids
+     *
+     * @param int[]|null $mailgun_domain_ids When mode is mailgun: Ready tenant_mailgun_domains ids to round-robin. Required when setting mode=mailgun.
+     *
+     * @return self
+     */
+    public function setMailgunDomainIds($mailgun_domain_ids)
+    {
+        if (is_null($mailgun_domain_ids)) {
+            array_push($this->openAPINullablesSetToNull, 'mailgun_domain_ids');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('mailgun_domain_ids', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['mailgun_domain_ids'] = $mailgun_domain_ids;
 
         return $this;
     }
@@ -688,6 +820,448 @@ class CampaignUpsertRequest implements ModelInterface, ArrayAccess, \JsonSeriali
             }
         }
         $this->container['audience_includes_customers'] = $audience_includes_customers;
+
+        return $this;
+    }
+
+    /**
+     * Gets contact_list_ids
+     *
+     * @return int[]|null
+     */
+    public function getContactListIds()
+    {
+        return $this->container['contact_list_ids'];
+    }
+
+    /**
+     * Sets contact_list_ids
+     *
+     * @param int[]|null $contact_list_ids Manual or Smart List ids to attach. Pass [] to clear. Omit to leave unchanged on update.
+     *
+     * @return self
+     */
+    public function setContactListIds($contact_list_ids)
+    {
+        if (is_null($contact_list_ids)) {
+            array_push($this->openAPINullablesSetToNull, 'contact_list_ids');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('contact_list_ids', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['contact_list_ids'] = $contact_list_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets mailgun_pace
+     *
+     * @return string|null
+     */
+    public function getMailgunPace()
+    {
+        return $this->container['mailgun_pace'];
+    }
+
+    /**
+     * Sets mailgun_pace
+     *
+     * @param string|null $mailgun_pace When mode is mailgun: \"drip\" (default) or \"blast\".
+     *
+     * @return self
+     */
+    public function setMailgunPace($mailgun_pace)
+    {
+        if (is_null($mailgun_pace)) {
+            array_push($this->openAPINullablesSetToNull, 'mailgun_pace');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('mailgun_pace', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['mailgun_pace'] = $mailgun_pace;
+
+        return $this;
+    }
+
+    /**
+     * Gets saved_webhook_id
+     *
+     * @return int|null
+     */
+    public function getSavedWebhookId()
+    {
+        return $this->container['saved_webhook_id'];
+    }
+
+    /**
+     * Sets saved_webhook_id
+     *
+     * @param int|null $saved_webhook_id When mode is webhook: saved TenantWebhook id. Prefer this over inline webhook_url.
+     *
+     * @return self
+     */
+    public function setSavedWebhookId($saved_webhook_id)
+    {
+        if (is_null($saved_webhook_id)) {
+            array_push($this->openAPINullablesSetToNull, 'saved_webhook_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('saved_webhook_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['saved_webhook_id'] = $saved_webhook_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets webhook_url
+     *
+     * @return string|null
+     */
+    public function getWebhookUrl()
+    {
+        return $this->container['webhook_url'];
+    }
+
+    /**
+     * Sets webhook_url
+     *
+     * @param string|null $webhook_url Inline webhook URL when mode=webhook and no saved_webhook_id.
+     *
+     * @return self
+     */
+    public function setWebhookUrl($webhook_url)
+    {
+        if (is_null($webhook_url)) {
+            array_push($this->openAPINullablesSetToNull, 'webhook_url');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('webhook_url', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['webhook_url'] = $webhook_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets webhook_health_url
+     *
+     * @return string|null
+     */
+    public function getWebhookHealthUrl()
+    {
+        return $this->container['webhook_health_url'];
+    }
+
+    /**
+     * Sets webhook_health_url
+     *
+     * @param string|null $webhook_health_url Optional HTTPS health-check URL for webhook mode.
+     *
+     * @return self
+     */
+    public function setWebhookHealthUrl($webhook_health_url)
+    {
+        if (is_null($webhook_health_url)) {
+            array_push($this->openAPINullablesSetToNull, 'webhook_health_url');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('webhook_health_url', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['webhook_health_url'] = $webhook_health_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets webhook_headers
+     *
+     * @return \ShadowSoftware\DabDash\Model\CampaignUpsertRequestWebhookHeadersInner[]|null
+     */
+    public function getWebhookHeaders()
+    {
+        return $this->container['webhook_headers'];
+    }
+
+    /**
+     * Sets webhook_headers
+     *
+     * @param \ShadowSoftware\DabDash\Model\CampaignUpsertRequestWebhookHeadersInner[]|null $webhook_headers Custom headers for inline webhook mode (max 20).
+     *
+     * @return self
+     */
+    public function setWebhookHeaders($webhook_headers)
+    {
+        if (is_null($webhook_headers)) {
+            array_push($this->openAPINullablesSetToNull, 'webhook_headers');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('webhook_headers', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['webhook_headers'] = $webhook_headers;
+
+        return $this;
+    }
+
+    /**
+     * Gets throttle_per_minute
+     *
+     * @return int|null
+     */
+    public function getThrottlePerMinute()
+    {
+        return $this->container['throttle_per_minute'];
+    }
+
+    /**
+     * Sets throttle_per_minute
+     *
+     * @param int|null $throttle_per_minute Optional send throttle cap per minute.
+     *
+     * @return self
+     */
+    public function setThrottlePerMinute($throttle_per_minute)
+    {
+        if (is_null($throttle_per_minute)) {
+            array_push($this->openAPINullablesSetToNull, 'throttle_per_minute');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('throttle_per_minute', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['throttle_per_minute'] = $throttle_per_minute;
+
+        return $this;
+    }
+
+    /**
+     * Gets throttle_per_hour
+     *
+     * @return int|null
+     */
+    public function getThrottlePerHour()
+    {
+        return $this->container['throttle_per_hour'];
+    }
+
+    /**
+     * Sets throttle_per_hour
+     *
+     * @param int|null $throttle_per_hour Optional send throttle cap per hour.
+     *
+     * @return self
+     */
+    public function setThrottlePerHour($throttle_per_hour)
+    {
+        if (is_null($throttle_per_hour)) {
+            array_push($this->openAPINullablesSetToNull, 'throttle_per_hour');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('throttle_per_hour', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['throttle_per_hour'] = $throttle_per_hour;
+
+        return $this;
+    }
+
+    /**
+     * Gets send_interval_minutes
+     *
+     * @return int|null
+     */
+    public function getSendIntervalMinutes()
+    {
+        return $this->container['send_interval_minutes'];
+    }
+
+    /**
+     * Sets send_interval_minutes
+     *
+     * @param int|null $send_interval_minutes Minutes between individual sends (1–30).
+     *
+     * @return self
+     */
+    public function setSendIntervalMinutes($send_interval_minutes)
+    {
+        if (is_null($send_interval_minutes)) {
+            array_push($this->openAPINullablesSetToNull, 'send_interval_minutes');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('send_interval_minutes', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['send_interval_minutes'] = $send_interval_minutes;
+
+        return $this;
+    }
+
+    /**
+     * Gets send_window_enabled
+     *
+     * @return bool|null
+     */
+    public function getSendWindowEnabled()
+    {
+        return $this->container['send_window_enabled'];
+    }
+
+    /**
+     * Sets send_window_enabled
+     *
+     * @param bool|null $send_window_enabled Restrict sends to a daily window.
+     *
+     * @return self
+     */
+    public function setSendWindowEnabled($send_window_enabled)
+    {
+        if (is_null($send_window_enabled)) {
+            array_push($this->openAPINullablesSetToNull, 'send_window_enabled');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('send_window_enabled', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['send_window_enabled'] = $send_window_enabled;
+
+        return $this;
+    }
+
+    /**
+     * Gets send_window_from
+     *
+     * @return int|null
+     */
+    public function getSendWindowFrom()
+    {
+        return $this->container['send_window_from'];
+    }
+
+    /**
+     * Sets send_window_from
+     *
+     * @param int|null $send_window_from Send window start hour 0–23 (tenant timezone).
+     *
+     * @return self
+     */
+    public function setSendWindowFrom($send_window_from)
+    {
+        if (is_null($send_window_from)) {
+            array_push($this->openAPINullablesSetToNull, 'send_window_from');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('send_window_from', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['send_window_from'] = $send_window_from;
+
+        return $this;
+    }
+
+    /**
+     * Gets send_window_to
+     *
+     * @return int|null
+     */
+    public function getSendWindowTo()
+    {
+        return $this->container['send_window_to'];
+    }
+
+    /**
+     * Sets send_window_to
+     *
+     * @param int|null $send_window_to Send window end hour 0–23 (tenant timezone).
+     *
+     * @return self
+     */
+    public function setSendWindowTo($send_window_to)
+    {
+        if (is_null($send_window_to)) {
+            array_push($this->openAPINullablesSetToNull, 'send_window_to');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('send_window_to', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['send_window_to'] = $send_window_to;
+
+        return $this;
+    }
+
+    /**
+     * Gets send_window_days
+     *
+     * @return int[]|null
+     */
+    public function getSendWindowDays()
+    {
+        return $this->container['send_window_days'];
+    }
+
+    /**
+     * Sets send_window_days
+     *
+     * @param int[]|null $send_window_days ISO weekdays 1–7 when send_window_enabled.
+     *
+     * @return self
+     */
+    public function setSendWindowDays($send_window_days)
+    {
+        if (is_null($send_window_days)) {
+            array_push($this->openAPINullablesSetToNull, 'send_window_days');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('send_window_days', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['send_window_days'] = $send_window_days;
 
         return $this;
     }

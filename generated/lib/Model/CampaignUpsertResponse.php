@@ -66,7 +66,17 @@ class CampaignUpsertResponse implements ModelInterface, ArrayAccess, \JsonSerial
         'mode' => 'string',
         'status' => 'string',
         'audience_includes_customers' => 'bool',
+        'mailgun_domain_ids' => 'int[]',
+        'mailgun_pace' => 'string',
+        'contact_lists' => '\ShadowSoftware\DabDash\Model\CampaignGetResponseContactListsInner[]',
+        'saved_webhook_id' => 'int',
+        'webhook_url' => 'string',
+        'throttle_per_minute' => 'int',
+        'throttle_per_hour' => 'int',
+        'send_interval_minutes' => 'int',
+        'send_window_enabled' => 'bool',
         'message' => 'string',
+        'webhook_signing_secret' => 'string',
         'sms_body_length' => 'int',
         'html_body_length' => 'int',
         'has_unsubscribe_token' => 'bool',
@@ -95,7 +105,17 @@ class CampaignUpsertResponse implements ModelInterface, ArrayAccess, \JsonSerial
         'mode' => null,
         'status' => null,
         'audience_includes_customers' => null,
+        'mailgun_domain_ids' => null,
+        'mailgun_pace' => null,
+        'contact_lists' => null,
+        'saved_webhook_id' => null,
+        'webhook_url' => null,
+        'throttle_per_minute' => null,
+        'throttle_per_hour' => null,
+        'send_interval_minutes' => null,
+        'send_window_enabled' => null,
         'message' => null,
+        'webhook_signing_secret' => null,
         'sms_body_length' => null,
         'html_body_length' => null,
         'has_unsubscribe_token' => null,
@@ -122,7 +142,17 @@ class CampaignUpsertResponse implements ModelInterface, ArrayAccess, \JsonSerial
         'mode' => false,
         'status' => false,
         'audience_includes_customers' => false,
+        'mailgun_domain_ids' => true,
+        'mailgun_pace' => true,
+        'contact_lists' => true,
+        'saved_webhook_id' => true,
+        'webhook_url' => true,
+        'throttle_per_minute' => true,
+        'throttle_per_hour' => true,
+        'send_interval_minutes' => true,
+        'send_window_enabled' => true,
         'message' => false,
+        'webhook_signing_secret' => true,
         'sms_body_length' => true,
         'html_body_length' => true,
         'has_unsubscribe_token' => true,
@@ -229,7 +259,17 @@ class CampaignUpsertResponse implements ModelInterface, ArrayAccess, \JsonSerial
         'mode' => 'mode',
         'status' => 'status',
         'audience_includes_customers' => 'audience_includes_customers',
+        'mailgun_domain_ids' => 'mailgun_domain_ids',
+        'mailgun_pace' => 'mailgun_pace',
+        'contact_lists' => 'contact_lists',
+        'saved_webhook_id' => 'saved_webhook_id',
+        'webhook_url' => 'webhook_url',
+        'throttle_per_minute' => 'throttle_per_minute',
+        'throttle_per_hour' => 'throttle_per_hour',
+        'send_interval_minutes' => 'send_interval_minutes',
+        'send_window_enabled' => 'send_window_enabled',
         'message' => 'message',
+        'webhook_signing_secret' => 'webhook_signing_secret',
         'sms_body_length' => 'sms_body_length',
         'html_body_length' => 'html_body_length',
         'has_unsubscribe_token' => 'has_unsubscribe_token',
@@ -256,7 +296,17 @@ class CampaignUpsertResponse implements ModelInterface, ArrayAccess, \JsonSerial
         'mode' => 'setMode',
         'status' => 'setStatus',
         'audience_includes_customers' => 'setAudienceIncludesCustomers',
+        'mailgun_domain_ids' => 'setMailgunDomainIds',
+        'mailgun_pace' => 'setMailgunPace',
+        'contact_lists' => 'setContactLists',
+        'saved_webhook_id' => 'setSavedWebhookId',
+        'webhook_url' => 'setWebhookUrl',
+        'throttle_per_minute' => 'setThrottlePerMinute',
+        'throttle_per_hour' => 'setThrottlePerHour',
+        'send_interval_minutes' => 'setSendIntervalMinutes',
+        'send_window_enabled' => 'setSendWindowEnabled',
         'message' => 'setMessage',
+        'webhook_signing_secret' => 'setWebhookSigningSecret',
         'sms_body_length' => 'setSmsBodyLength',
         'html_body_length' => 'setHtmlBodyLength',
         'has_unsubscribe_token' => 'setHasUnsubscribeToken',
@@ -283,7 +333,17 @@ class CampaignUpsertResponse implements ModelInterface, ArrayAccess, \JsonSerial
         'mode' => 'getMode',
         'status' => 'getStatus',
         'audience_includes_customers' => 'getAudienceIncludesCustomers',
+        'mailgun_domain_ids' => 'getMailgunDomainIds',
+        'mailgun_pace' => 'getMailgunPace',
+        'contact_lists' => 'getContactLists',
+        'saved_webhook_id' => 'getSavedWebhookId',
+        'webhook_url' => 'getWebhookUrl',
+        'throttle_per_minute' => 'getThrottlePerMinute',
+        'throttle_per_hour' => 'getThrottlePerHour',
+        'send_interval_minutes' => 'getSendIntervalMinutes',
+        'send_window_enabled' => 'getSendWindowEnabled',
         'message' => 'getMessage',
+        'webhook_signing_secret' => 'getWebhookSigningSecret',
         'sms_body_length' => 'getSmsBodyLength',
         'html_body_length' => 'getHtmlBodyLength',
         'has_unsubscribe_token' => 'getHasUnsubscribeToken',
@@ -361,7 +421,17 @@ class CampaignUpsertResponse implements ModelInterface, ArrayAccess, \JsonSerial
         $this->setIfExists('mode', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('audience_includes_customers', $data ?? [], null);
+        $this->setIfExists('mailgun_domain_ids', $data ?? [], null);
+        $this->setIfExists('mailgun_pace', $data ?? [], null);
+        $this->setIfExists('contact_lists', $data ?? [], null);
+        $this->setIfExists('saved_webhook_id', $data ?? [], null);
+        $this->setIfExists('webhook_url', $data ?? [], null);
+        $this->setIfExists('throttle_per_minute', $data ?? [], null);
+        $this->setIfExists('throttle_per_hour', $data ?? [], null);
+        $this->setIfExists('send_interval_minutes', $data ?? [], null);
+        $this->setIfExists('send_window_enabled', $data ?? [], null);
         $this->setIfExists('message', $data ?? [], null);
+        $this->setIfExists('webhook_signing_secret', $data ?? [], null);
         $this->setIfExists('sms_body_length', $data ?? [], null);
         $this->setIfExists('html_body_length', $data ?? [], null);
         $this->setIfExists('has_unsubscribe_token', $data ?? [], null);
@@ -673,6 +743,312 @@ class CampaignUpsertResponse implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
+     * Gets mailgun_domain_ids
+     *
+     * @return int[]|null
+     */
+    public function getMailgunDomainIds()
+    {
+        return $this->container['mailgun_domain_ids'];
+    }
+
+    /**
+     * Sets mailgun_domain_ids
+     *
+     * @param int[]|null $mailgun_domain_ids mailgun_domain_ids
+     *
+     * @return self
+     */
+    public function setMailgunDomainIds($mailgun_domain_ids)
+    {
+        if (is_null($mailgun_domain_ids)) {
+            array_push($this->openAPINullablesSetToNull, 'mailgun_domain_ids');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('mailgun_domain_ids', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['mailgun_domain_ids'] = $mailgun_domain_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets mailgun_pace
+     *
+     * @return string|null
+     */
+    public function getMailgunPace()
+    {
+        return $this->container['mailgun_pace'];
+    }
+
+    /**
+     * Sets mailgun_pace
+     *
+     * @param string|null $mailgun_pace mailgun_pace
+     *
+     * @return self
+     */
+    public function setMailgunPace($mailgun_pace)
+    {
+        if (is_null($mailgun_pace)) {
+            array_push($this->openAPINullablesSetToNull, 'mailgun_pace');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('mailgun_pace', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['mailgun_pace'] = $mailgun_pace;
+
+        return $this;
+    }
+
+    /**
+     * Gets contact_lists
+     *
+     * @return \ShadowSoftware\DabDash\Model\CampaignGetResponseContactListsInner[]|null
+     */
+    public function getContactLists()
+    {
+        return $this->container['contact_lists'];
+    }
+
+    /**
+     * Sets contact_lists
+     *
+     * @param \ShadowSoftware\DabDash\Model\CampaignGetResponseContactListsInner[]|null $contact_lists contact_lists
+     *
+     * @return self
+     */
+    public function setContactLists($contact_lists)
+    {
+        if (is_null($contact_lists)) {
+            array_push($this->openAPINullablesSetToNull, 'contact_lists');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('contact_lists', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['contact_lists'] = $contact_lists;
+
+        return $this;
+    }
+
+    /**
+     * Gets saved_webhook_id
+     *
+     * @return int|null
+     */
+    public function getSavedWebhookId()
+    {
+        return $this->container['saved_webhook_id'];
+    }
+
+    /**
+     * Sets saved_webhook_id
+     *
+     * @param int|null $saved_webhook_id saved_webhook_id
+     *
+     * @return self
+     */
+    public function setSavedWebhookId($saved_webhook_id)
+    {
+        if (is_null($saved_webhook_id)) {
+            array_push($this->openAPINullablesSetToNull, 'saved_webhook_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('saved_webhook_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['saved_webhook_id'] = $saved_webhook_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets webhook_url
+     *
+     * @return string|null
+     */
+    public function getWebhookUrl()
+    {
+        return $this->container['webhook_url'];
+    }
+
+    /**
+     * Sets webhook_url
+     *
+     * @param string|null $webhook_url webhook_url
+     *
+     * @return self
+     */
+    public function setWebhookUrl($webhook_url)
+    {
+        if (is_null($webhook_url)) {
+            array_push($this->openAPINullablesSetToNull, 'webhook_url');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('webhook_url', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['webhook_url'] = $webhook_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets throttle_per_minute
+     *
+     * @return int|null
+     */
+    public function getThrottlePerMinute()
+    {
+        return $this->container['throttle_per_minute'];
+    }
+
+    /**
+     * Sets throttle_per_minute
+     *
+     * @param int|null $throttle_per_minute throttle_per_minute
+     *
+     * @return self
+     */
+    public function setThrottlePerMinute($throttle_per_minute)
+    {
+        if (is_null($throttle_per_minute)) {
+            array_push($this->openAPINullablesSetToNull, 'throttle_per_minute');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('throttle_per_minute', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['throttle_per_minute'] = $throttle_per_minute;
+
+        return $this;
+    }
+
+    /**
+     * Gets throttle_per_hour
+     *
+     * @return int|null
+     */
+    public function getThrottlePerHour()
+    {
+        return $this->container['throttle_per_hour'];
+    }
+
+    /**
+     * Sets throttle_per_hour
+     *
+     * @param int|null $throttle_per_hour throttle_per_hour
+     *
+     * @return self
+     */
+    public function setThrottlePerHour($throttle_per_hour)
+    {
+        if (is_null($throttle_per_hour)) {
+            array_push($this->openAPINullablesSetToNull, 'throttle_per_hour');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('throttle_per_hour', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['throttle_per_hour'] = $throttle_per_hour;
+
+        return $this;
+    }
+
+    /**
+     * Gets send_interval_minutes
+     *
+     * @return int|null
+     */
+    public function getSendIntervalMinutes()
+    {
+        return $this->container['send_interval_minutes'];
+    }
+
+    /**
+     * Sets send_interval_minutes
+     *
+     * @param int|null $send_interval_minutes send_interval_minutes
+     *
+     * @return self
+     */
+    public function setSendIntervalMinutes($send_interval_minutes)
+    {
+        if (is_null($send_interval_minutes)) {
+            array_push($this->openAPINullablesSetToNull, 'send_interval_minutes');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('send_interval_minutes', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['send_interval_minutes'] = $send_interval_minutes;
+
+        return $this;
+    }
+
+    /**
+     * Gets send_window_enabled
+     *
+     * @return bool|null
+     */
+    public function getSendWindowEnabled()
+    {
+        return $this->container['send_window_enabled'];
+    }
+
+    /**
+     * Sets send_window_enabled
+     *
+     * @param bool|null $send_window_enabled send_window_enabled
+     *
+     * @return self
+     */
+    public function setSendWindowEnabled($send_window_enabled)
+    {
+        if (is_null($send_window_enabled)) {
+            array_push($this->openAPINullablesSetToNull, 'send_window_enabled');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('send_window_enabled', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['send_window_enabled'] = $send_window_enabled;
+
+        return $this;
+    }
+
+    /**
      * Gets message
      *
      * @return string|null
@@ -695,6 +1071,40 @@ class CampaignUpsertResponse implements ModelInterface, ArrayAccess, \JsonSerial
             throw new \InvalidArgumentException('non-nullable message cannot be null');
         }
         $this->container['message'] = $message;
+
+        return $this;
+    }
+
+    /**
+     * Gets webhook_signing_secret
+     *
+     * @return string|null
+     */
+    public function getWebhookSigningSecret()
+    {
+        return $this->container['webhook_signing_secret'];
+    }
+
+    /**
+     * Sets webhook_signing_secret
+     *
+     * @param string|null $webhook_signing_secret webhook_signing_secret
+     *
+     * @return self
+     */
+    public function setWebhookSigningSecret($webhook_signing_secret)
+    {
+        if (is_null($webhook_signing_secret)) {
+            array_push($this->openAPINullablesSetToNull, 'webhook_signing_secret');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('webhook_signing_secret', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['webhook_signing_secret'] = $webhook_signing_secret;
 
         return $this;
     }

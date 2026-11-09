@@ -89,6 +89,24 @@ class ProductFeatureManageResponseTest extends TestCase
     }
 
     /**
+     * Test attribute "section"
+     */
+    public function testPropertySection()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "flag"
+     */
+    public function testPropertyFlag()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "tenant"
      */
     public function testPropertyTenant()

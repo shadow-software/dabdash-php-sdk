@@ -260,6 +260,15 @@ class StoreSettingsManageResponseStoreTest extends TestCase
     }
 
     /**
+     * Test attribute "revenue_attribution_date"
+     */
+    public function testPropertyRevenueAttributionDate()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "opening_hours"
      */
     public function testPropertyOpeningHours()

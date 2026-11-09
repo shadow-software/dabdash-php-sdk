@@ -116,9 +116,54 @@ class ProductFeatureManageResponseProductsInnerTest extends TestCase
     }
 
     /**
+     * Test attribute "is_featured_deal"
+     */
+    public function testPropertyIsFeaturedDeal()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "is_featured_new"
+     */
+    public function testPropertyIsFeaturedNew()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "stock_status"
      */
     public function testPropertyStockStatus()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "starts_at"
+     */
+    public function testPropertyStartsAt()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "ends_at"
+     */
+    public function testPropertyEndsAt()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "status"
+     */
+    public function testPropertyStatus()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

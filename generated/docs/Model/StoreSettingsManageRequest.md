@@ -53,6 +53,7 @@ Name | Type | Description | Notes
 **gbp_url** | **string** | Absolute Google Business Profile URL for schema sameAs. | [optional]
 **live_chat_enabled** | **bool** | Show the tenant-scoped storefront live chat widget. | [optional]
 **freebie_cost_in_cogs** | **bool** | Include freebie wholesale cost in COGS / profit reports (default true). | [optional]
+**revenue_attribution_date** | **string** | Analytics revenue day: \&quot;placed\&quot; (checkout day) or \&quot;delivered\&quot; (scheduled delivery calendar day). | [optional]
 **legacy_wix_redirects** | **bool** | Enable Cloudflare Single Redirects for the Wix legacy profile on this tenant zone. | [optional]
 **legacy_wordpress_redirects** | **bool** | Enable Cloudflare Single Redirects for the WordPress legacy profile on this tenant zone. | [optional]
 **wordpress_cutover** | **bool** | Mark WordPress cutover complete (pairs with legacy_wordpress_redirects for CF sync). | [optional]

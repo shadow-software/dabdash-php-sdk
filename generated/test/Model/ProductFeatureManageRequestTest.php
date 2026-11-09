@@ -89,6 +89,15 @@ class ProductFeatureManageRequestTest extends TestCase
     }
 
     /**
+     * Test attribute "section"
+     */
+    public function testPropertySection()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "product_ids"
      */
     public function testPropertyProductIds()
@@ -101,6 +110,24 @@ class ProductFeatureManageRequestTest extends TestCase
      * Test attribute "featured"
      */
     public function testPropertyFeatured()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "starts_at"
+     */
+    public function testPropertyStartsAt()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "ends_at"
+     */
+    public function testPropertyEndsAt()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

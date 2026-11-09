@@ -80,6 +80,9 @@ class ZonesApi
         'zoneDiagnostics' => [
             'application/json',
         ],
+        'zoneManage' => [
+            'application/json',
+        ],
         'zoneUpsert' => [
             'application/json',
         ],
@@ -754,6 +757,345 @@ class ZonesApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($zone_diagnostics_request));
             } else {
                 $httpBody = $zone_diagnostics_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation zoneManage
+     *
+     * List or delete a tenant&#39;s delivery zones.  ACTIONS:   list   (default): return every zone with id, name, slug, is_active, is_example,          fulfillment_type, priority, delivery_fee, service_fee, min_order, and counts          of related orders/customer addresses/delivery slots. Always call this first          to find zone_ids and confirm which zones are welcome-wizard example/template          zones (is_example&#x3D;true, or slug prefixed welcome-/example-) versus real          vendor-configured coverage, before deleting anything.    delete: requires zone_ids + confirm&#x3D;true. Refuses to delete a zone that still has          orders, saved customer addresses, or delivery slots attached unless          force&#x3D;true is passed (force does not delete those related rows — it only          lets the zone row be removed; related rows keep their zone_id, which becomes          orphaned, so prefer reassigning/clearing them first). dry_run defaults true —          the first call always reports what would happen without writing.  Common use: cleaning up leftover onboarding-wizard example zones (the three \&quot;N km delivery area\&quot; circles and/or the \&quot;Downtown\&quot; demo zone, slugs welcome-5km / welcome-10km / welcome-15km / example-downtown) when a vendor ended up with both those AND real GADM administrative-boundary zones after running the wizard&#39;s circle and boundary-import steps in sequence.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ZoneManageRequest|null $zone_manage_request zone_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['zoneManage'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \ShadowSoftware\DabDash\Model\ZoneManage200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
+     */
+    public function zoneManage($zone_manage_request = null, string $contentType = self::contentTypes['zoneManage'][0])
+    {
+        list($response) = $this->zoneManageWithHttpInfo($zone_manage_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation zoneManageWithHttpInfo
+     *
+     * List or delete a tenant&#39;s delivery zones.  ACTIONS:   list   (default): return every zone with id, name, slug, is_active, is_example,          fulfillment_type, priority, delivery_fee, service_fee, min_order, and counts          of related orders/customer addresses/delivery slots. Always call this first          to find zone_ids and confirm which zones are welcome-wizard example/template          zones (is_example&#x3D;true, or slug prefixed welcome-/example-) versus real          vendor-configured coverage, before deleting anything.    delete: requires zone_ids + confirm&#x3D;true. Refuses to delete a zone that still has          orders, saved customer addresses, or delivery slots attached unless          force&#x3D;true is passed (force does not delete those related rows — it only          lets the zone row be removed; related rows keep their zone_id, which becomes          orphaned, so prefer reassigning/clearing them first). dry_run defaults true —          the first call always reports what would happen without writing.  Common use: cleaning up leftover onboarding-wizard example zones (the three \&quot;N km delivery area\&quot; circles and/or the \&quot;Downtown\&quot; demo zone, slugs welcome-5km / welcome-10km / welcome-15km / example-downtown) when a vendor ended up with both those AND real GADM administrative-boundary zones after running the wizard&#39;s circle and boundary-import steps in sequence.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ZoneManageRequest|null $zone_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['zoneManage'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \ShadowSoftware\DabDash\Model\ZoneManage200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function zoneManageWithHttpInfo($zone_manage_request = null, string $contentType = self::contentTypes['zoneManage'][0])
+    {
+        $request = $this->zoneManageRequest($zone_manage_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\ZoneManage200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 402:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 422:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\ShadowSoftware\DabDash\Model\ZoneManage200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\ZoneManage200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 402:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation zoneManageAsync
+     *
+     * List or delete a tenant&#39;s delivery zones.  ACTIONS:   list   (default): return every zone with id, name, slug, is_active, is_example,          fulfillment_type, priority, delivery_fee, service_fee, min_order, and counts          of related orders/customer addresses/delivery slots. Always call this first          to find zone_ids and confirm which zones are welcome-wizard example/template          zones (is_example&#x3D;true, or slug prefixed welcome-/example-) versus real          vendor-configured coverage, before deleting anything.    delete: requires zone_ids + confirm&#x3D;true. Refuses to delete a zone that still has          orders, saved customer addresses, or delivery slots attached unless          force&#x3D;true is passed (force does not delete those related rows — it only          lets the zone row be removed; related rows keep their zone_id, which becomes          orphaned, so prefer reassigning/clearing them first). dry_run defaults true —          the first call always reports what would happen without writing.  Common use: cleaning up leftover onboarding-wizard example zones (the three \&quot;N km delivery area\&quot; circles and/or the \&quot;Downtown\&quot; demo zone, slugs welcome-5km / welcome-10km / welcome-15km / example-downtown) when a vendor ended up with both those AND real GADM administrative-boundary zones after running the wizard&#39;s circle and boundary-import steps in sequence.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ZoneManageRequest|null $zone_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['zoneManage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function zoneManageAsync($zone_manage_request = null, string $contentType = self::contentTypes['zoneManage'][0])
+    {
+        return $this->zoneManageAsyncWithHttpInfo($zone_manage_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation zoneManageAsyncWithHttpInfo
+     *
+     * List or delete a tenant&#39;s delivery zones.  ACTIONS:   list   (default): return every zone with id, name, slug, is_active, is_example,          fulfillment_type, priority, delivery_fee, service_fee, min_order, and counts          of related orders/customer addresses/delivery slots. Always call this first          to find zone_ids and confirm which zones are welcome-wizard example/template          zones (is_example&#x3D;true, or slug prefixed welcome-/example-) versus real          vendor-configured coverage, before deleting anything.    delete: requires zone_ids + confirm&#x3D;true. Refuses to delete a zone that still has          orders, saved customer addresses, or delivery slots attached unless          force&#x3D;true is passed (force does not delete those related rows — it only          lets the zone row be removed; related rows keep their zone_id, which becomes          orphaned, so prefer reassigning/clearing them first). dry_run defaults true —          the first call always reports what would happen without writing.  Common use: cleaning up leftover onboarding-wizard example zones (the three \&quot;N km delivery area\&quot; circles and/or the \&quot;Downtown\&quot; demo zone, slugs welcome-5km / welcome-10km / welcome-15km / example-downtown) when a vendor ended up with both those AND real GADM administrative-boundary zones after running the wizard&#39;s circle and boundary-import steps in sequence.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ZoneManageRequest|null $zone_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['zoneManage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function zoneManageAsyncWithHttpInfo($zone_manage_request = null, string $contentType = self::contentTypes['zoneManage'][0])
+    {
+        $returnType = '\ShadowSoftware\DabDash\Model\ZoneManage200Response';
+        $request = $this->zoneManageRequest($zone_manage_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'zoneManage'
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ZoneManageRequest|null $zone_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['zoneManage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function zoneManageRequest($zone_manage_request = null, string $contentType = self::contentTypes['zoneManage'][0])
+    {
+
+
+
+        $resourcePath = '/api/v1/tools/zone_manage';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($zone_manage_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($zone_manage_request));
+            } else {
+                $httpBody = $zone_manage_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

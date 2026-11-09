@@ -96,6 +96,18 @@ class ZonesApiTest extends TestCase
     }
 
     /**
+     * Test case for zoneManage
+     *
+     * List or delete a tenant's delivery zones.  ACTIONS:   list   (default): return every zone with id, name, slug, is_active, is_example,          fulfillment_type, priority, delivery_fee, service_fee, min_order, and counts          of related orders/customer addresses/delivery slots. Always call this first          to find zone_ids and confirm which zones are welcome-wizard example/template          zones (is_example=true, or slug prefixed welcome-/example-) versus real          vendor-configured coverage, before deleting anything.    delete: requires zone_ids + confirm=true. Refuses to delete a zone that still has          orders, saved customer addresses, or delivery slots attached unless          force=true is passed (force does not delete those related rows — it only          lets the zone row be removed; related rows keep their zone_id, which becomes          orphaned, so prefer reassigning/clearing them first). dry_run defaults true —          the first call always reports what would happen without writing.  Common use: cleaning up leftover onboarding-wizard example zones (the three \"N km delivery area\" circles and/or the \"Downtown\" demo zone, slugs welcome-5km / welcome-10km / welcome-15km / example-downtown) when a vendor ended up with both those AND real GADM administrative-boundary zones after running the wizard's circle and boundary-import steps in sequence..
+     *
+     */
+    public function testZoneManage()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for zoneUpsert
      *
      * Create or update a delivery/pickup/shipping zone. Use zone_manage to list or delete.  CREATE (no zone_id): name is required; a zone with the same name is updated instead. UPDATE (zone_id): only the fields you pass change.  Coverage shape — pass ONE of:   polygon: list of {lat, lng} points (or [lng, lat] pairs), at least 3, at most 500.   center_lat + center_lng + radius_km: builds a 32-point circle. Good enough when            the client only publishes a list of towns; refine the polygon later. Fees and minimum order are in dollars. dry_run defaults true: the first call reports what would be saved; pass dry_run=false to write..

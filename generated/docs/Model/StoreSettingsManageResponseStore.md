@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **theme_mode** | **string** |  | [optional]
 **minimum_age** | **int** |  | [optional]
 **freebie_cost_in_cogs** | **bool** |  | [optional]
+**revenue_attribution_date** | **string** |  | [optional]
 **opening_hours** | [**\ShadowSoftware\DabDash\Model\StoreSettingsManageRequestOpeningHoursInner[]**](StoreSettingsManageRequestOpeningHoursInner.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

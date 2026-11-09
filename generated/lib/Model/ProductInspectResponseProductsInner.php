@@ -60,6 +60,9 @@ class ProductInspectResponseProductsInner implements ModelInterface, ArrayAccess
         'id' => 'int',
         'name' => 'string',
         'slug' => 'string',
+        'status' => 'string',
+        'storefront_url' => 'string',
+        'category_ids' => 'int[]',
         'tracking_type' => 'string',
         'inventory_mode' => 'string',
         'stock_quantity' => 'float',
@@ -79,6 +82,9 @@ class ProductInspectResponseProductsInner implements ModelInterface, ArrayAccess
         'id' => null,
         'name' => null,
         'slug' => null,
+        'status' => null,
+        'storefront_url' => null,
+        'category_ids' => null,
         'tracking_type' => null,
         'inventory_mode' => null,
         'stock_quantity' => null,
@@ -96,6 +102,9 @@ class ProductInspectResponseProductsInner implements ModelInterface, ArrayAccess
         'id' => false,
         'name' => false,
         'slug' => false,
+        'status' => false,
+        'storefront_url' => false,
+        'category_ids' => false,
         'tracking_type' => false,
         'inventory_mode' => true,
         'stock_quantity' => false,
@@ -193,6 +202,9 @@ class ProductInspectResponseProductsInner implements ModelInterface, ArrayAccess
         'id' => 'id',
         'name' => 'name',
         'slug' => 'slug',
+        'status' => 'status',
+        'storefront_url' => 'storefront_url',
+        'category_ids' => 'category_ids',
         'tracking_type' => 'tracking_type',
         'inventory_mode' => 'inventory_mode',
         'stock_quantity' => 'stock_quantity',
@@ -210,6 +222,9 @@ class ProductInspectResponseProductsInner implements ModelInterface, ArrayAccess
         'id' => 'setId',
         'name' => 'setName',
         'slug' => 'setSlug',
+        'status' => 'setStatus',
+        'storefront_url' => 'setStorefrontUrl',
+        'category_ids' => 'setCategoryIds',
         'tracking_type' => 'setTrackingType',
         'inventory_mode' => 'setInventoryMode',
         'stock_quantity' => 'setStockQuantity',
@@ -227,6 +242,9 @@ class ProductInspectResponseProductsInner implements ModelInterface, ArrayAccess
         'id' => 'getId',
         'name' => 'getName',
         'slug' => 'getSlug',
+        'status' => 'getStatus',
+        'storefront_url' => 'getStorefrontUrl',
+        'category_ids' => 'getCategoryIds',
         'tracking_type' => 'getTrackingType',
         'inventory_mode' => 'getInventoryMode',
         'stock_quantity' => 'getStockQuantity',
@@ -295,6 +313,9 @@ class ProductInspectResponseProductsInner implements ModelInterface, ArrayAccess
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('slug', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('storefront_url', $data ?? [], null);
+        $this->setIfExists('category_ids', $data ?? [], null);
         $this->setIfExists('tracking_type', $data ?? [], null);
         $this->setIfExists('inventory_mode', $data ?? [], null);
         $this->setIfExists('stock_quantity', $data ?? [], null);
@@ -422,6 +443,87 @@ class ProductInspectResponseProductsInner implements ModelInterface, ArrayAccess
             throw new \InvalidArgumentException('non-nullable slug cannot be null');
         }
         $this->container['slug'] = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string|null
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string|null $status status
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        if (is_null($status)) {
+            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        }
+        $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets storefront_url
+     *
+     * @return string|null
+     */
+    public function getStorefrontUrl()
+    {
+        return $this->container['storefront_url'];
+    }
+
+    /**
+     * Sets storefront_url
+     *
+     * @param string|null $storefront_url storefront_url
+     *
+     * @return self
+     */
+    public function setStorefrontUrl($storefront_url)
+    {
+        if (is_null($storefront_url)) {
+            throw new \InvalidArgumentException('non-nullable storefront_url cannot be null');
+        }
+        $this->container['storefront_url'] = $storefront_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets category_ids
+     *
+     * @return int[]|null
+     */
+    public function getCategoryIds()
+    {
+        return $this->container['category_ids'];
+    }
+
+    /**
+     * Sets category_ids
+     *
+     * @param int[]|null $category_ids category_ids
+     *
+     * @return self
+     */
+    public function setCategoryIds($category_ids)
+    {
+        if (is_null($category_ids)) {
+            throw new \InvalidArgumentException('non-nullable category_ids cannot be null');
+        }
+        $this->container['category_ids'] = $category_ids;
 
         return $this;
     }

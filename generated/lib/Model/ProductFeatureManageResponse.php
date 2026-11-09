@@ -58,6 +58,8 @@ class ProductFeatureManageResponse implements ModelInterface, ArrayAccess, \Json
      */
     protected static $openAPITypes = [
         'action' => 'string',
+        'section' => 'string',
+        'flag' => 'string',
         'tenant' => '\ShadowSoftware\DabDash\Model\BundleHealthResponseTenant',
         'total' => 'int',
         'products' => '\ShadowSoftware\DabDash\Model\ProductFeatureManageResponseProductsInner[]',
@@ -75,6 +77,8 @@ class ProductFeatureManageResponse implements ModelInterface, ArrayAccess, \Json
      */
     protected static $openAPIFormats = [
         'action' => null,
+        'section' => null,
+        'flag' => null,
         'tenant' => null,
         'total' => null,
         'products' => null,
@@ -90,6 +94,8 @@ class ProductFeatureManageResponse implements ModelInterface, ArrayAccess, \Json
      */
     protected static array $openAPINullables = [
         'action' => false,
+        'section' => false,
+        'flag' => false,
         'tenant' => false,
         'total' => true,
         'products' => true,
@@ -185,6 +191,8 @@ class ProductFeatureManageResponse implements ModelInterface, ArrayAccess, \Json
      */
     protected static $attributeMap = [
         'action' => 'action',
+        'section' => 'section',
+        'flag' => 'flag',
         'tenant' => 'tenant',
         'total' => 'total',
         'products' => 'products',
@@ -200,6 +208,8 @@ class ProductFeatureManageResponse implements ModelInterface, ArrayAccess, \Json
      */
     protected static $setters = [
         'action' => 'setAction',
+        'section' => 'setSection',
+        'flag' => 'setFlag',
         'tenant' => 'setTenant',
         'total' => 'setTotal',
         'products' => 'setProducts',
@@ -215,6 +225,8 @@ class ProductFeatureManageResponse implements ModelInterface, ArrayAccess, \Json
      */
     protected static $getters = [
         'action' => 'getAction',
+        'section' => 'getSection',
+        'flag' => 'getFlag',
         'tenant' => 'getTenant',
         'total' => 'getTotal',
         'products' => 'getProducts',
@@ -281,6 +293,8 @@ class ProductFeatureManageResponse implements ModelInterface, ArrayAccess, \Json
     public function __construct(?array $data = null)
     {
         $this->setIfExists('action', $data ?? [], null);
+        $this->setIfExists('section', $data ?? [], null);
+        $this->setIfExists('flag', $data ?? [], null);
         $this->setIfExists('tenant', $data ?? [], null);
         $this->setIfExists('total', $data ?? [], null);
         $this->setIfExists('products', $data ?? [], null);
@@ -354,6 +368,60 @@ class ProductFeatureManageResponse implements ModelInterface, ArrayAccess, \Json
             throw new \InvalidArgumentException('non-nullable action cannot be null');
         }
         $this->container['action'] = $action;
+
+        return $this;
+    }
+
+    /**
+     * Gets section
+     *
+     * @return string|null
+     */
+    public function getSection()
+    {
+        return $this->container['section'];
+    }
+
+    /**
+     * Sets section
+     *
+     * @param string|null $section section
+     *
+     * @return self
+     */
+    public function setSection($section)
+    {
+        if (is_null($section)) {
+            throw new \InvalidArgumentException('non-nullable section cannot be null');
+        }
+        $this->container['section'] = $section;
+
+        return $this;
+    }
+
+    /**
+     * Gets flag
+     *
+     * @return string|null
+     */
+    public function getFlag()
+    {
+        return $this->container['flag'];
+    }
+
+    /**
+     * Sets flag
+     *
+     * @param string|null $flag flag
+     *
+     * @return self
+     */
+    public function setFlag($flag)
+    {
+        if (is_null($flag)) {
+            throw new \InvalidArgumentException('non-nullable flag cannot be null');
+        }
+        $this->container['flag'] = $flag;
 
         return $this;
     }

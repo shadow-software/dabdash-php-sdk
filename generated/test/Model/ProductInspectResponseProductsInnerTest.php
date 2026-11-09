@@ -107,6 +107,33 @@ class ProductInspectResponseProductsInnerTest extends TestCase
     }
 
     /**
+     * Test attribute "status"
+     */
+    public function testPropertyStatus()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "storefront_url"
+     */
+    public function testPropertyStorefrontUrl()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "category_ids"
+     */
+    public function testPropertyCategoryIds()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "tracking_type"
      */
     public function testPropertyTrackingType()

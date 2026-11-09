@@ -521,6 +521,15 @@ class StoreSettingsManageRequestTest extends TestCase
     }
 
     /**
+     * Test attribute "revenue_attribution_date"
+     */
+    public function testPropertyRevenueAttributionDate()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "legacy_wix_redirects"
      */
     public function testPropertyLegacyWixRedirects()

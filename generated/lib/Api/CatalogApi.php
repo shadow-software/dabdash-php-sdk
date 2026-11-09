@@ -131,10 +131,16 @@ class CatalogApi
         'productManage' => [
             'application/json',
         ],
+        'productSearch' => [
+            'application/json',
+        ],
         'productUnitPriceSearch' => [
             'application/json',
         ],
         'productUpdateBySku' => [
+            'application/json',
+        ],
+        'productVariationSync' => [
             'application/json',
         ],
         'productVisibilityManage' => [
@@ -4610,7 +4616,7 @@ class CatalogApi
     /**
      * Operation productFeatureManage
      *
-     * List or set which products are featured on a tenant&#39;s storefront home page (the \&quot;Featured Products\&quot; section, HomeController — up to 8 shown, ordered by the tenant&#39;s default product sort). This does not change the Modern hero&#39;s optional featured-product card; use storefront_theme_manage or store_settings_manage (hero_spotlight_mode / hero_spotlight_product) for that.  ACTIONS:   list (default): return every is_featured&#x3D;true product with id, slug, name,          stock_status. Always call this first to see the current set before          changing it.   set: pass product_ids (array) and featured (bool) to set is_featured on          those products. Unlisted products are left untouched — this is an          additive/subtractive edit, not a replace-the-whole-set operation.  Products must be resolved to ids first (product_inspect or this tool&#39;s list action). Featuring an out-of-stock product is allowed but usually undesirable — check stock_status in the list output before featuring.
+     * List or set which products appear in a tenant&#39;s curated storefront home grids (Classic and Modern). Each section shows up to 8 products, ordered by the tenant&#39;s default product sort, and hides itself when empty.  SECTIONS (pass as &#x60;section&#x60;):   featured (default) → is_featured → \&quot;Featured Products\&quot;   deals              → is_featured_deal → \&quot;Featured Deals\&quot;   new                → is_featured_new → \&quot;Featured New Inventory\&quot;  Optional schedule windows (starts_at / ends_at) are tenant-local calendar dates stored as UTC. Null start &#x3D; live now; null end &#x3D; never expires. Storefront membership is query-time (flag on + within window).  This does not change the Modern hero&#39;s optional spotlight card; use storefront_theme_manage or store_settings_manage (hero_spotlight_mode / hero_spotlight_product) for that.  ACTIONS:   list (default): return every product flagged for the chosen section          (including scheduled/ended) with id, slug, name, stock_status,          the three featured flags, schedule window, and status          (live|scheduled|ended).   set: pass product_ids (array) and featured (bool) to set the section&#39;s          flag on those products. Optional starts_at / ends_at apply when          featuring; turning featured off clears that section&#39;s window.          Unlisted products are left untouched.  Products must be resolved to ids first (product_inspect or this tool&#39;s list action). Featuring an out-of-stock product is allowed but usually undesirable — check stock_status in the list output before featuring.
      *
      * @param  \ShadowSoftware\DabDash\Model\ProductFeatureManageRequest|null $product_feature_manage_request product_feature_manage_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productFeatureManage'] to see the possible values for this operation
@@ -4628,7 +4634,7 @@ class CatalogApi
     /**
      * Operation productFeatureManageWithHttpInfo
      *
-     * List or set which products are featured on a tenant&#39;s storefront home page (the \&quot;Featured Products\&quot; section, HomeController — up to 8 shown, ordered by the tenant&#39;s default product sort). This does not change the Modern hero&#39;s optional featured-product card; use storefront_theme_manage or store_settings_manage (hero_spotlight_mode / hero_spotlight_product) for that.  ACTIONS:   list (default): return every is_featured&#x3D;true product with id, slug, name,          stock_status. Always call this first to see the current set before          changing it.   set: pass product_ids (array) and featured (bool) to set is_featured on          those products. Unlisted products are left untouched — this is an          additive/subtractive edit, not a replace-the-whole-set operation.  Products must be resolved to ids first (product_inspect or this tool&#39;s list action). Featuring an out-of-stock product is allowed but usually undesirable — check stock_status in the list output before featuring.
+     * List or set which products appear in a tenant&#39;s curated storefront home grids (Classic and Modern). Each section shows up to 8 products, ordered by the tenant&#39;s default product sort, and hides itself when empty.  SECTIONS (pass as &#x60;section&#x60;):   featured (default) → is_featured → \&quot;Featured Products\&quot;   deals              → is_featured_deal → \&quot;Featured Deals\&quot;   new                → is_featured_new → \&quot;Featured New Inventory\&quot;  Optional schedule windows (starts_at / ends_at) are tenant-local calendar dates stored as UTC. Null start &#x3D; live now; null end &#x3D; never expires. Storefront membership is query-time (flag on + within window).  This does not change the Modern hero&#39;s optional spotlight card; use storefront_theme_manage or store_settings_manage (hero_spotlight_mode / hero_spotlight_product) for that.  ACTIONS:   list (default): return every product flagged for the chosen section          (including scheduled/ended) with id, slug, name, stock_status,          the three featured flags, schedule window, and status          (live|scheduled|ended).   set: pass product_ids (array) and featured (bool) to set the section&#39;s          flag on those products. Optional starts_at / ends_at apply when          featuring; turning featured off clears that section&#39;s window.          Unlisted products are left untouched.  Products must be resolved to ids first (product_inspect or this tool&#39;s list action). Featuring an out-of-stock product is allowed but usually undesirable — check stock_status in the list output before featuring.
      *
      * @param  \ShadowSoftware\DabDash\Model\ProductFeatureManageRequest|null $product_feature_manage_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productFeatureManage'] to see the possible values for this operation
@@ -4783,7 +4789,7 @@ class CatalogApi
     /**
      * Operation productFeatureManageAsync
      *
-     * List or set which products are featured on a tenant&#39;s storefront home page (the \&quot;Featured Products\&quot; section, HomeController — up to 8 shown, ordered by the tenant&#39;s default product sort). This does not change the Modern hero&#39;s optional featured-product card; use storefront_theme_manage or store_settings_manage (hero_spotlight_mode / hero_spotlight_product) for that.  ACTIONS:   list (default): return every is_featured&#x3D;true product with id, slug, name,          stock_status. Always call this first to see the current set before          changing it.   set: pass product_ids (array) and featured (bool) to set is_featured on          those products. Unlisted products are left untouched — this is an          additive/subtractive edit, not a replace-the-whole-set operation.  Products must be resolved to ids first (product_inspect or this tool&#39;s list action). Featuring an out-of-stock product is allowed but usually undesirable — check stock_status in the list output before featuring.
+     * List or set which products appear in a tenant&#39;s curated storefront home grids (Classic and Modern). Each section shows up to 8 products, ordered by the tenant&#39;s default product sort, and hides itself when empty.  SECTIONS (pass as &#x60;section&#x60;):   featured (default) → is_featured → \&quot;Featured Products\&quot;   deals              → is_featured_deal → \&quot;Featured Deals\&quot;   new                → is_featured_new → \&quot;Featured New Inventory\&quot;  Optional schedule windows (starts_at / ends_at) are tenant-local calendar dates stored as UTC. Null start &#x3D; live now; null end &#x3D; never expires. Storefront membership is query-time (flag on + within window).  This does not change the Modern hero&#39;s optional spotlight card; use storefront_theme_manage or store_settings_manage (hero_spotlight_mode / hero_spotlight_product) for that.  ACTIONS:   list (default): return every product flagged for the chosen section          (including scheduled/ended) with id, slug, name, stock_status,          the three featured flags, schedule window, and status          (live|scheduled|ended).   set: pass product_ids (array) and featured (bool) to set the section&#39;s          flag on those products. Optional starts_at / ends_at apply when          featuring; turning featured off clears that section&#39;s window.          Unlisted products are left untouched.  Products must be resolved to ids first (product_inspect or this tool&#39;s list action). Featuring an out-of-stock product is allowed but usually undesirable — check stock_status in the list output before featuring.
      *
      * @param  \ShadowSoftware\DabDash\Model\ProductFeatureManageRequest|null $product_feature_manage_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productFeatureManage'] to see the possible values for this operation
@@ -4804,7 +4810,7 @@ class CatalogApi
     /**
      * Operation productFeatureManageAsyncWithHttpInfo
      *
-     * List or set which products are featured on a tenant&#39;s storefront home page (the \&quot;Featured Products\&quot; section, HomeController — up to 8 shown, ordered by the tenant&#39;s default product sort). This does not change the Modern hero&#39;s optional featured-product card; use storefront_theme_manage or store_settings_manage (hero_spotlight_mode / hero_spotlight_product) for that.  ACTIONS:   list (default): return every is_featured&#x3D;true product with id, slug, name,          stock_status. Always call this first to see the current set before          changing it.   set: pass product_ids (array) and featured (bool) to set is_featured on          those products. Unlisted products are left untouched — this is an          additive/subtractive edit, not a replace-the-whole-set operation.  Products must be resolved to ids first (product_inspect or this tool&#39;s list action). Featuring an out-of-stock product is allowed but usually undesirable — check stock_status in the list output before featuring.
+     * List or set which products appear in a tenant&#39;s curated storefront home grids (Classic and Modern). Each section shows up to 8 products, ordered by the tenant&#39;s default product sort, and hides itself when empty.  SECTIONS (pass as &#x60;section&#x60;):   featured (default) → is_featured → \&quot;Featured Products\&quot;   deals              → is_featured_deal → \&quot;Featured Deals\&quot;   new                → is_featured_new → \&quot;Featured New Inventory\&quot;  Optional schedule windows (starts_at / ends_at) are tenant-local calendar dates stored as UTC. Null start &#x3D; live now; null end &#x3D; never expires. Storefront membership is query-time (flag on + within window).  This does not change the Modern hero&#39;s optional spotlight card; use storefront_theme_manage or store_settings_manage (hero_spotlight_mode / hero_spotlight_product) for that.  ACTIONS:   list (default): return every product flagged for the chosen section          (including scheduled/ended) with id, slug, name, stock_status,          the three featured flags, schedule window, and status          (live|scheduled|ended).   set: pass product_ids (array) and featured (bool) to set the section&#39;s          flag on those products. Optional starts_at / ends_at apply when          featuring; turning featured off clears that section&#39;s window.          Unlisted products are left untouched.  Products must be resolved to ids first (product_inspect or this tool&#39;s list action). Featuring an out-of-stock product is allowed but usually undesirable — check stock_status in the list output before featuring.
      *
      * @param  \ShadowSoftware\DabDash\Model\ProductFeatureManageRequest|null $product_feature_manage_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productFeatureManage'] to see the possible values for this operation
@@ -6642,6 +6648,345 @@ class CatalogApi
     }
 
     /**
+     * Operation productSearch
+     *
+     * Search a tenant&#39;s product catalog by name (and optionally category + status).  Returns id, name, slug, status, storefront_path, price, stock_status, and category_ids — enough to build campaign deep links or a Smart List of purchasers without cobbling product_unit_price_search + visibility dry-runs.  name_query is a case-insensitive substring on product name. Pass category_id or category_slug to restrict membership. status defaults to all (active, draft, archived) so historical / unpublished SKUs still appear when building buyer audiences.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ProductSearchRequest|null $product_search_request product_search_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productSearch'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \ShadowSoftware\DabDash\Model\ProductSearch200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
+     */
+    public function productSearch($product_search_request = null, string $contentType = self::contentTypes['productSearch'][0])
+    {
+        list($response) = $this->productSearchWithHttpInfo($product_search_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation productSearchWithHttpInfo
+     *
+     * Search a tenant&#39;s product catalog by name (and optionally category + status).  Returns id, name, slug, status, storefront_path, price, stock_status, and category_ids — enough to build campaign deep links or a Smart List of purchasers without cobbling product_unit_price_search + visibility dry-runs.  name_query is a case-insensitive substring on product name. Pass category_id or category_slug to restrict membership. status defaults to all (active, draft, archived) so historical / unpublished SKUs still appear when building buyer audiences.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ProductSearchRequest|null $product_search_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productSearch'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \ShadowSoftware\DabDash\Model\ProductSearch200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function productSearchWithHttpInfo($product_search_request = null, string $contentType = self::contentTypes['productSearch'][0])
+    {
+        $request = $this->productSearchRequest($product_search_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\ProductSearch200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 402:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 422:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\ShadowSoftware\DabDash\Model\ProductSearch200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\ProductSearch200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 402:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation productSearchAsync
+     *
+     * Search a tenant&#39;s product catalog by name (and optionally category + status).  Returns id, name, slug, status, storefront_path, price, stock_status, and category_ids — enough to build campaign deep links or a Smart List of purchasers without cobbling product_unit_price_search + visibility dry-runs.  name_query is a case-insensitive substring on product name. Pass category_id or category_slug to restrict membership. status defaults to all (active, draft, archived) so historical / unpublished SKUs still appear when building buyer audiences.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ProductSearchRequest|null $product_search_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productSearch'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function productSearchAsync($product_search_request = null, string $contentType = self::contentTypes['productSearch'][0])
+    {
+        return $this->productSearchAsyncWithHttpInfo($product_search_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation productSearchAsyncWithHttpInfo
+     *
+     * Search a tenant&#39;s product catalog by name (and optionally category + status).  Returns id, name, slug, status, storefront_path, price, stock_status, and category_ids — enough to build campaign deep links or a Smart List of purchasers without cobbling product_unit_price_search + visibility dry-runs.  name_query is a case-insensitive substring on product name. Pass category_id or category_slug to restrict membership. status defaults to all (active, draft, archived) so historical / unpublished SKUs still appear when building buyer audiences.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ProductSearchRequest|null $product_search_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productSearch'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function productSearchAsyncWithHttpInfo($product_search_request = null, string $contentType = self::contentTypes['productSearch'][0])
+    {
+        $returnType = '\ShadowSoftware\DabDash\Model\ProductSearch200Response';
+        $request = $this->productSearchRequest($product_search_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'productSearch'
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ProductSearchRequest|null $product_search_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productSearch'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function productSearchRequest($product_search_request = null, string $contentType = self::contentTypes['productSearch'][0])
+    {
+
+
+
+        $resourcePath = '/api/v1/tools/product_search';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($product_search_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($product_search_request));
+            } else {
+                $httpBody = $product_search_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation productUnitPriceSearch
      *
      * Search and rank a tenant&#39;s catalog by computed per-unit price (e.g. price per gram or price per ounce), across every weight-family product (types \&quot;weight\&quot; and \&quot;matrix\&quot;) — something product_inspect cannot do because it only looks up one product at a time by id/name/sku.  For each active, in-stock variation with a weight_value, computes price_per_gram &#x3D; price_cents / weight_value, then scales it to the requested unit (default \&quot;oz\&quot; &#x3D; 28g, matching the storefront&#39;s weight-tier convention). Use this to answer \&quot;what&#39;s the cheapest/most expensive product per ounce\&quot;, \&quot;find products under $X/g\&quot;, or to rank the catalog by unit economics for pricing audits and promo targeting.  Only weight-family products (weight, matrix) have a meaningful per-gram price — unit-family products (simple, unit, matrix_unit) are excluded since their variations are priced per item, not per weight.
@@ -7264,6 +7609,345 @@ class CatalogApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($product_update_by_sku_request));
             } else {
                 $httpBody = $product_update_by_sku_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation productVariationSync
+     *
+     * Atomically create or reconcile the complete variation list and per-variation inventory for one product. Use this for unit or matrix products after pricing is established. Choose unit for one-dimensional named variants and matrix_unit only for a real name/flavour × quantity/pack-size grid. The payload must contain every variant, an exact expected_variation_count, price, cost_price, and stock_quantity for every row. It is idempotent: matching existing IDs or names are updated, missing rows are created, and existing rows are never deleted. dry_run defaults to true. A successful live run returns before/after counts and stock totals for verification. Weight sizes of one flavor share one gram count — write that count on each size, and never describe it as extra inventory. Pack sizes are separate stock. If the vendor gives one count for a flavor, ask which pack size it belongs to before copying it onto every size. Never split one product across multiple calls.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ProductVariationSyncRequest|null $product_variation_sync_request product_variation_sync_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productVariationSync'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \ShadowSoftware\DabDash\Model\ProductVariationSync200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
+     */
+    public function productVariationSync($product_variation_sync_request = null, string $contentType = self::contentTypes['productVariationSync'][0])
+    {
+        list($response) = $this->productVariationSyncWithHttpInfo($product_variation_sync_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation productVariationSyncWithHttpInfo
+     *
+     * Atomically create or reconcile the complete variation list and per-variation inventory for one product. Use this for unit or matrix products after pricing is established. Choose unit for one-dimensional named variants and matrix_unit only for a real name/flavour × quantity/pack-size grid. The payload must contain every variant, an exact expected_variation_count, price, cost_price, and stock_quantity for every row. It is idempotent: matching existing IDs or names are updated, missing rows are created, and existing rows are never deleted. dry_run defaults to true. A successful live run returns before/after counts and stock totals for verification. Weight sizes of one flavor share one gram count — write that count on each size, and never describe it as extra inventory. Pack sizes are separate stock. If the vendor gives one count for a flavor, ask which pack size it belongs to before copying it onto every size. Never split one product across multiple calls.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ProductVariationSyncRequest|null $product_variation_sync_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productVariationSync'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \ShadowSoftware\DabDash\Model\ProductVariationSync200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function productVariationSyncWithHttpInfo($product_variation_sync_request = null, string $contentType = self::contentTypes['productVariationSync'][0])
+    {
+        $request = $this->productVariationSyncRequest($product_variation_sync_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\ProductVariationSync200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 402:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 422:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\ShadowSoftware\DabDash\Model\ProductVariationSync200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\ProductVariationSync200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 402:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation productVariationSyncAsync
+     *
+     * Atomically create or reconcile the complete variation list and per-variation inventory for one product. Use this for unit or matrix products after pricing is established. Choose unit for one-dimensional named variants and matrix_unit only for a real name/flavour × quantity/pack-size grid. The payload must contain every variant, an exact expected_variation_count, price, cost_price, and stock_quantity for every row. It is idempotent: matching existing IDs or names are updated, missing rows are created, and existing rows are never deleted. dry_run defaults to true. A successful live run returns before/after counts and stock totals for verification. Weight sizes of one flavor share one gram count — write that count on each size, and never describe it as extra inventory. Pack sizes are separate stock. If the vendor gives one count for a flavor, ask which pack size it belongs to before copying it onto every size. Never split one product across multiple calls.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ProductVariationSyncRequest|null $product_variation_sync_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productVariationSync'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function productVariationSyncAsync($product_variation_sync_request = null, string $contentType = self::contentTypes['productVariationSync'][0])
+    {
+        return $this->productVariationSyncAsyncWithHttpInfo($product_variation_sync_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation productVariationSyncAsyncWithHttpInfo
+     *
+     * Atomically create or reconcile the complete variation list and per-variation inventory for one product. Use this for unit or matrix products after pricing is established. Choose unit for one-dimensional named variants and matrix_unit only for a real name/flavour × quantity/pack-size grid. The payload must contain every variant, an exact expected_variation_count, price, cost_price, and stock_quantity for every row. It is idempotent: matching existing IDs or names are updated, missing rows are created, and existing rows are never deleted. dry_run defaults to true. A successful live run returns before/after counts and stock totals for verification. Weight sizes of one flavor share one gram count — write that count on each size, and never describe it as extra inventory. Pack sizes are separate stock. If the vendor gives one count for a flavor, ask which pack size it belongs to before copying it onto every size. Never split one product across multiple calls.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ProductVariationSyncRequest|null $product_variation_sync_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productVariationSync'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function productVariationSyncAsyncWithHttpInfo($product_variation_sync_request = null, string $contentType = self::contentTypes['productVariationSync'][0])
+    {
+        $returnType = '\ShadowSoftware\DabDash\Model\ProductVariationSync200Response';
+        $request = $this->productVariationSyncRequest($product_variation_sync_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'productVariationSync'
+     *
+     * @param  \ShadowSoftware\DabDash\Model\ProductVariationSyncRequest|null $product_variation_sync_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['productVariationSync'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function productVariationSyncRequest($product_variation_sync_request = null, string $contentType = self::contentTypes['productVariationSync'][0])
+    {
+
+
+
+        $resourcePath = '/api/v1/tools/product_variation_sync';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($product_variation_sync_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($product_variation_sync_request));
+            } else {
+                $httpBody = $product_variation_sync_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

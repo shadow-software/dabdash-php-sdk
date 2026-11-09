@@ -230,7 +230,7 @@ class CatalogApiTest extends TestCase
     /**
      * Test case for productFeatureManage
      *
-     * List or set which products are featured on a tenant's storefront home page (the \"Featured Products\" section, HomeController — up to 8 shown, ordered by the tenant's default product sort). This does not change the Modern hero's optional featured-product card; use storefront_theme_manage or store_settings_manage (hero_spotlight_mode / hero_spotlight_product) for that.  ACTIONS:   list (default): return every is_featured=true product with id, slug, name,          stock_status. Always call this first to see the current set before          changing it.   set: pass product_ids (array) and featured (bool) to set is_featured on          those products. Unlisted products are left untouched — this is an          additive/subtractive edit, not a replace-the-whole-set operation.  Products must be resolved to ids first (product_inspect or this tool's list action). Featuring an out-of-stock product is allowed but usually undesirable — check stock_status in the list output before featuring..
+     * List or set which products appear in a tenant's curated storefront home grids (Classic and Modern). Each section shows up to 8 products, ordered by the tenant's default product sort, and hides itself when empty.  SECTIONS (pass as `section`):   featured (default) → is_featured → \"Featured Products\"   deals              → is_featured_deal → \"Featured Deals\"   new                → is_featured_new → \"Featured New Inventory\"  Optional schedule windows (starts_at / ends_at) are tenant-local calendar dates stored as UTC. Null start = live now; null end = never expires. Storefront membership is query-time (flag on + within window).  This does not change the Modern hero's optional spotlight card; use storefront_theme_manage or store_settings_manage (hero_spotlight_mode / hero_spotlight_product) for that.  ACTIONS:   list (default): return every product flagged for the chosen section          (including scheduled/ended) with id, slug, name, stock_status,          the three featured flags, schedule window, and status          (live|scheduled|ended).   set: pass product_ids (array) and featured (bool) to set the section's          flag on those products. Optional starts_at / ends_at apply when          featuring; turning featured off clears that section's window.          Unlisted products are left untouched.  Products must be resolved to ids first (product_inspect or this tool's list action). Featuring an out-of-stock product is allowed but usually undesirable — check stock_status in the list output before featuring..
      *
      */
     public function testProductFeatureManage()
@@ -300,6 +300,18 @@ class CatalogApiTest extends TestCase
     }
 
     /**
+     * Test case for productSearch
+     *
+     * Search a tenant's product catalog by name (and optionally category + status).  Returns id, name, slug, status, storefront_path, price, stock_status, and category_ids — enough to build campaign deep links or a Smart List of purchasers without cobbling product_unit_price_search + visibility dry-runs.  name_query is a case-insensitive substring on product name. Pass category_id or category_slug to restrict membership. status defaults to all (active, draft, archived) so historical / unpublished SKUs still appear when building buyer audiences..
+     *
+     */
+    public function testProductSearch()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for productUnitPriceSearch
      *
      * Search and rank a tenant's catalog by computed per-unit price (e.g. price per gram or price per ounce), across every weight-family product (types \"weight\" and \"matrix\") — something product_inspect cannot do because it only looks up one product at a time by id/name/sku.  For each active, in-stock variation with a weight_value, computes price_per_gram = price_cents / weight_value, then scales it to the requested unit (default \"oz\" = 28g, matching the storefront's weight-tier convention). Use this to answer \"what's the cheapest/most expensive product per ounce\", \"find products under $X/g\", or to rank the catalog by unit economics for pricing audits and promo targeting.  Only weight-family products (weight, matrix) have a meaningful per-gram price — unit-family products (simple, unit, matrix_unit) are excluded since their variations are priced per item, not per weight..
@@ -318,6 +330,18 @@ class CatalogApiTest extends TestCase
      *
      */
     public function testProductUpdateBySku()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for productVariationSync
+     *
+     * Atomically create or reconcile the complete variation list and per-variation inventory for one product. Use this for unit or matrix products after pricing is established. Choose unit for one-dimensional named variants and matrix_unit only for a real name/flavour × quantity/pack-size grid. The payload must contain every variant, an exact expected_variation_count, price, cost_price, and stock_quantity for every row. It is idempotent: matching existing IDs or names are updated, missing rows are created, and existing rows are never deleted. dry_run defaults to true. A successful live run returns before/after counts and stock totals for verification. Weight sizes of one flavor share one gram count — write that count on each size, and never describe it as extra inventory. Pack sizes are separate stock. If the vendor gives one count for a flavor, ask which pack size it belongs to before copying it onto every size. Never split one product across multiple calls..
+     *
+     */
+    public function testProductVariationSync()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

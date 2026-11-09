@@ -19,14 +19,16 @@ All URIs are relative to https://.dabdash.com, except if the operation defines a
 | [**pricingStructureList()**](CatalogApi.md#pricingStructureList) | **POST** /api/v1/tools/pricing_structure_list | List all pricing structures for a tenant with their kind (inline|bundle), product count, tracking type, and tier summary. Always call this before pricing_structure_upsert or pricing_structure_assign to get structure IDs and confirm which structures are bundles vs inline (1:1 product) structures.  kind&#x3D;inline  → hidden 1:1 structure tied to exactly one product (is_hidden&#x3D;true) kind&#x3D;bundle  → shared structure visible on /admin/pricing, used by 0 or more products (is_hidden&#x3D;false) |
 | [**pricingStructureRestore()**](CatalogApi.md#pricingStructureRestore) | **POST** /api/v1/tools/pricing_structure_restore | Surgical restore tool. Rebuilds a single product&#39;s pricing structure and variations EXACTLY to a specified state. Bypasses the standard syncVariationsForProduct routine — you control every field.  Use this AFTER inventory_audit_lookup has revealed the pre-incident state of variations whose names/prices/stock were destroyed by an erroneous bundle reassignment.  Behaviour: - Creates a NEW inline (hidden, 1:1) pricing structure with the given tracking_type, tier   definitions, and a name like \&quot;Product: &lt;product_name&gt; (Hidden)\&quot;. Old structure linkage is   replaced. The previous structure is NOT deleted by this tool. - For each tier in the spec, finds-or-creates a variation. Matching is by &#x60;restore_variation_id&#x60;   if provided, else by name. If found, the variation is updated in place (preserving its id and   its audit-log history). If not found, a new variation is created. - Stock_quantity is set EXACTLY to the value specified — this is the whole point of the tool. - Sets product.tracking_type, product.inventory_mode, product.base_unit per the new structure. - Variations on the product not referenced by any tier in the spec are DEACTIVATED (is_active&#x3D;false)   so they stop being shown but their audit history is retained. Pass &#x60;delete_unreferenced&#x3D;true&#x60; to   hard-delete them instead.  SAFETY: - Wrap each call in its own transaction. - Will refuse if the new tracking_type is incompatible with stored cost data. - Inline-only by design — bundles are not recreated by this tool. Use pricing_structure_assign   to put the product on a bundle if that&#39;s what you want. |
 | [**pricingStructureUpsert()**](CatalogApi.md#pricingStructureUpsert) | **POST** /api/v1/tools/pricing_structure_upsert | Create or edit a pricing structure&#39;s tiers, name, and tracking type. Operates in three modes:  BUNDLE MODE (structure_id provided, structure is not hidden):   Edit a shared bundle structure visible on /admin/pricing. Tiers are replaced and ALL products   linked to the bundle are re-synced. Returns how many products were affected as a warning.  INLINE MODE (product_slug or product_id provided, no structure_id):   Edit the hidden 1:1 pricing structure for a single product. Tiers are replaced and variations   are re-synced for that product only. Refuses if the product currently uses a bundle structure —   use pricing_structure_assign to detach from the bundle first.  CREATE BUNDLE MODE (no structure_id, no product_slug/product_id):   Create a new shared bundle structure. Does not link it to any products.  SAFETY RULES enforced by this tool: - Never accepts structure_id pointing to a hidden (inline) structure — always go via product_slug/product_id. - Tiers for weight/matrix types must have weight_grams &gt; 0. - Tiers for simple type: only the first tier is used; name and weight_grams are normalised. - Prices are accepted as dollar amounts (e.g. 12.99) and converted to cents internally. |
-| [**productFeatureManage()**](CatalogApi.md#productFeatureManage) | **POST** /api/v1/tools/product_feature_manage | List or set which products are featured on a tenant&#39;s storefront home page (the \&quot;Featured Products\&quot; section, HomeController — up to 8 shown, ordered by the tenant&#39;s default product sort). This does not change the Modern hero&#39;s optional featured-product card; use storefront_theme_manage or store_settings_manage (hero_spotlight_mode / hero_spotlight_product) for that.  ACTIONS:   list (default): return every is_featured&#x3D;true product with id, slug, name,          stock_status. Always call this first to see the current set before          changing it.   set: pass product_ids (array) and featured (bool) to set is_featured on          those products. Unlisted products are left untouched — this is an          additive/subtractive edit, not a replace-the-whole-set operation.  Products must be resolved to ids first (product_inspect or this tool&#39;s list action). Featuring an out-of-stock product is allowed but usually undesirable — check stock_status in the list output before featuring. |
+| [**productFeatureManage()**](CatalogApi.md#productFeatureManage) | **POST** /api/v1/tools/product_feature_manage | List or set which products appear in a tenant&#39;s curated storefront home grids (Classic and Modern). Each section shows up to 8 products, ordered by the tenant&#39;s default product sort, and hides itself when empty.  SECTIONS (pass as &#x60;section&#x60;):   featured (default) → is_featured → \&quot;Featured Products\&quot;   deals              → is_featured_deal → \&quot;Featured Deals\&quot;   new                → is_featured_new → \&quot;Featured New Inventory\&quot;  Optional schedule windows (starts_at / ends_at) are tenant-local calendar dates stored as UTC. Null start &#x3D; live now; null end &#x3D; never expires. Storefront membership is query-time (flag on + within window).  This does not change the Modern hero&#39;s optional spotlight card; use storefront_theme_manage or store_settings_manage (hero_spotlight_mode / hero_spotlight_product) for that.  ACTIONS:   list (default): return every product flagged for the chosen section          (including scheduled/ended) with id, slug, name, stock_status,          the three featured flags, schedule window, and status          (live|scheduled|ended).   set: pass product_ids (array) and featured (bool) to set the section&#39;s          flag on those products. Optional starts_at / ends_at apply when          featuring; turning featured off clears that section&#39;s window.          Unlisted products are left untouched.  Products must be resolved to ids first (product_inspect or this tool&#39;s list action). Featuring an out-of-stock product is allowed but usually undesirable — check stock_status in the list output before featuring. |
 | [**productImageAssign()**](CatalogApi.md#productImageAssign) | **POST** /api/v1/tools/product_image_assign | Set a product&#39;s featured image and/or gallery from the tenant media library. Pass media_id (from media_list / media_upload) for featured_image, and/or gallery_media_ids to replace gallery_images. Does not upload bytes and does not create media_assets rows — ingest first with media_upload. Assets must be public (private library items have no storefront URL).  dry_run (default true) previews without writing. overwrite (default false) refuses to replace an existing featured_image unless true. clear_featured clears featured_image without setting a new one.  Distinct from product_image_strain_assign, which writes a shared platform strain CDN URL and never creates a tenant library row (GitHub #72 / #184). |
 | [**productImageStrainAssign()**](CatalogApi.md#productImageStrainAssign) | **POST** /api/v1/tools/product_image_strain_assign | Apply a hosted platform strain photo to a product&#39;s featured_image. Writes a URL string to the product row only — never uploads/copies bytes, never creates a tenant media_assets row (this is the shared strain library, not tenant media).  Two modes (exactly one required):   assignments: explicit [{product_id, strain_id}, ...] pairs you already     decided on (e.g. from product_image_strain_match&#39;s proposals).   auto_match: true — re-runs product_image_strain_match&#39;s own matching     internally against products missing a featured image (optionally     scoped by search/limit) and applies every exact/partial match found.  dry_run (default true) previews without writing — always call once with dry_run&#x3D;true and review the results before dry_run&#x3D;false.  overwrite (default false) — a product that already has a featured_image is skipped, never replaced, unless overwrite&#x3D;true. Idempotent: if a product&#39;s featured_image already equals the target strain&#39;s hosted URL, it is reported skipped/already_set regardless of overwrite (nothing to do, not an error).  Refuses to assign a strain whose image is not hosted on the platform (skipped/strain_image_not_hosted) — never writes a dead or third-party hotlinked URL as a product&#39;s featured image. |
 | [**productImageStrainMatch()**](CatalogApi.md#productImageStrainMatch) | **POST** /api/v1/tools/product_image_strain_match | Find products on a tenant&#39;s storefront that have no featured image, and propose a hosted platform strain photo for each by matching product name against the strain library. Read-only — never writes to a product; pass the results to product_image_strain_assign to actually apply them.  Only proposes strains whose photo is already hosted on the platform (cdn.strains.dabdash.com/strains/... — see StrainImageService::isHostedUrl). A name match against an unhosted/dead-remote strain is reported as match_method&#x3D;none rather than proposing a broken or third-party hotlinked image.  Match order per product: 1) the product&#39;s own strain_id FK, if set (match_method&#x3D;strain_id_fk, confidence&#x3D;exact) 2) case-insensitive exact name match (confidence&#x3D;exact) 3) prefix/contains name match, shortest strain name wins ties (confidence&#x3D;partial) 4) no match (match_method&#x3D;none, confidence&#x3D;none). |
 | [**productInspect()**](CatalogApi.md#productInspect) | **POST** /api/v1/tools/product_inspect | Inspect a specific product including every variation&#39;s price, compare_at_price, mix_match_tags, stock, and the tenant&#39;s mix &amp; match rule settings. Use this to audit pricing, sale state, and bundle configuration for support tickets. |
 | [**productManage()**](CatalogApi.md#productManage) | **POST** /api/v1/tools/product_manage | Create a product for a tenant. With no variations this creates a simple one-price product, matching a blank create-product page. For named options, pass the complete variations list and expected_variation_count; the product is created as unit variation inventory and the pricing tiers are kept in sync. Call strain_lookup first when the name looks like a strain, then pass strain_id so description, type, THC/CBD, indica/sativa, effects, flavors, rating, and the hosted strain photo fill in exactly like the vendor create page.  If strain_id is omitted, this tool name-matches the platform strain library itself: an exact name match is applied automatically; close matches are returned as strain_matches so you can offer them. Pass skip_strain_enrich&#x3D;true to skip that.  ACTIONS:   create: requires name. Optional price (dollars), sku, stock_quantity,           category_ids, description, strain_id, or a complete variations list. update: requires product_id. Pass any of name, description, strain_id,           category_ids, meta_title, or meta_description to groom an existing           product without changing its price.           Strain enrichment never replaces an existing product photo; use           product_image_assign with a tenant media_id for photos.           meta_title max 60 chars; meta_description max 160 chars. |
+| [**productSearch()**](CatalogApi.md#productSearch) | **POST** /api/v1/tools/product_search | Search a tenant&#39;s product catalog by name (and optionally category + status).  Returns id, name, slug, status, storefront_path, price, stock_status, and category_ids — enough to build campaign deep links or a Smart List of purchasers without cobbling product_unit_price_search + visibility dry-runs.  name_query is a case-insensitive substring on product name. Pass category_id or category_slug to restrict membership. status defaults to all (active, draft, archived) so historical / unpublished SKUs still appear when building buyer audiences. |
 | [**productUnitPriceSearch()**](CatalogApi.md#productUnitPriceSearch) | **POST** /api/v1/tools/product_unit_price_search | Search and rank a tenant&#39;s catalog by computed per-unit price (e.g. price per gram or price per ounce), across every weight-family product (types \&quot;weight\&quot; and \&quot;matrix\&quot;) — something product_inspect cannot do because it only looks up one product at a time by id/name/sku.  For each active, in-stock variation with a weight_value, computes price_per_gram &#x3D; price_cents / weight_value, then scales it to the requested unit (default \&quot;oz\&quot; &#x3D; 28g, matching the storefront&#39;s weight-tier convention). Use this to answer \&quot;what&#39;s the cheapest/most expensive product per ounce\&quot;, \&quot;find products under $X/g\&quot;, or to rank the catalog by unit economics for pricing audits and promo targeting.  Only weight-family products (weight, matrix) have a meaningful per-gram price — unit-family products (simple, unit, matrix_unit) are excluded since their variations are priced per item, not per weight. |
 | [**productUpdateBySku()**](CatalogApi.md#productUpdateBySku) | **POST** /api/v1/tools/product_update_by_sku | Update a simple product&#39;s stock quantity and/or price by SKU — the inventory-sync path for an external POS. v1 scope: SIMPLE products only (single implicit unit, no weight/variant tiers). Every other pricing type (weight, unit, matrix, matrix_unit) is rejected with a clear message; those need per-tier/per-variant targeting that a flat SKU+quantity+price payload cannot express safely. Always call product_inspect with sku first to confirm which product/type you are targeting. |
+| [**productVariationSync()**](CatalogApi.md#productVariationSync) | **POST** /api/v1/tools/product_variation_sync | Atomically create or reconcile the complete variation list and per-variation inventory for one product. Use this for unit or matrix products after pricing is established. Choose unit for one-dimensional named variants and matrix_unit only for a real name/flavour × quantity/pack-size grid. The payload must contain every variant, an exact expected_variation_count, price, cost_price, and stock_quantity for every row. It is idempotent: matching existing IDs or names are updated, missing rows are created, and existing rows are never deleted. dry_run defaults to true. A successful live run returns before/after counts and stock totals for verification. Weight sizes of one flavor share one gram count — write that count on each size, and never describe it as extra inventory. Pack sizes are separate stock. If the vendor gives one count for a flavor, ask which pack size it belongs to before copying it onto every size. Never split one product across multiple calls. |
 | [**productVisibilityManage()**](CatalogApi.md#productVisibilityManage) | **POST** /api/v1/tools/product_visibility_manage | Set whether tenant products are public or inventory-only without changing inventory, cost, price, category assignments, images, or variations.  visibility&#x3D;public maps to product status&#x3D;active. visibility&#x3D;inventory_only maps to status&#x3D;archived, which removes the product from storefront product, category, related-product, and sitemap queries while preserving the product and its inventory for vendor use. This is reversible.  dry_run defaults to true. A write requires dry_run&#x3D;false and confirm&#x3D;true. Always preview first. Only the explicitly listed product_ids are considered. |
 | [**purchaseOrderDraftCreate()**](CatalogApi.md#purchaseOrderDraftCreate) | **POST** /api/v1/tools/purchase_order_draft_create | Create a draft purchase order for a supplier. Does not receive stock. After creating, add lines with purchase_order_line_add, then tell the vendor to review the draft in admin (never auto-receive). |
 | [**purchaseOrderLineAdd()**](CatalogApi.md#purchaseOrderLineAdd) | **POST** /api/v1/tools/purchase_order_line_add | Add a product line to a draft purchase order. Pass product_id (and variation_id when the product tracks stock by size). qty is the ordered quantity. unit_cost is dollars per unit; omit to use last cost. |
@@ -833,7 +835,7 @@ try {
 productFeatureManage($product_feature_manage_request): \ShadowSoftware\DabDash\Model\ProductFeatureManage200Response
 ```
 
-List or set which products are featured on a tenant's storefront home page (the \"Featured Products\" section, HomeController — up to 8 shown, ordered by the tenant's default product sort). This does not change the Modern hero's optional featured-product card; use storefront_theme_manage or store_settings_manage (hero_spotlight_mode / hero_spotlight_product) for that.  ACTIONS:   list (default): return every is_featured=true product with id, slug, name,          stock_status. Always call this first to see the current set before          changing it.   set: pass product_ids (array) and featured (bool) to set is_featured on          those products. Unlisted products are left untouched — this is an          additive/subtractive edit, not a replace-the-whole-set operation.  Products must be resolved to ids first (product_inspect or this tool's list action). Featuring an out-of-stock product is allowed but usually undesirable — check stock_status in the list output before featuring.
+List or set which products appear in a tenant's curated storefront home grids (Classic and Modern). Each section shows up to 8 products, ordered by the tenant's default product sort, and hides itself when empty.  SECTIONS (pass as `section`):   featured (default) → is_featured → \"Featured Products\"   deals              → is_featured_deal → \"Featured Deals\"   new                → is_featured_new → \"Featured New Inventory\"  Optional schedule windows (starts_at / ends_at) are tenant-local calendar dates stored as UTC. Null start = live now; null end = never expires. Storefront membership is query-time (flag on + within window).  This does not change the Modern hero's optional spotlight card; use storefront_theme_manage or store_settings_manage (hero_spotlight_mode / hero_spotlight_product) for that.  ACTIONS:   list (default): return every product flagged for the chosen section          (including scheduled/ended) with id, slug, name, stock_status,          the three featured flags, schedule window, and status          (live|scheduled|ended).   set: pass product_ids (array) and featured (bool) to set the section's          flag on those products. Optional starts_at / ends_at apply when          featuring; turning featured off clears that section's window.          Unlisted products are left untouched.  Products must be resolved to ids first (product_inspect or this tool's list action). Featuring an out-of-stock product is allowed but usually undesirable — check stock_status in the list output before featuring.
 
 ### Example
 
@@ -1193,6 +1195,67 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `productSearch()`
+
+```php
+productSearch($product_search_request): \ShadowSoftware\DabDash\Model\ProductSearch200Response
+```
+
+Search a tenant's product catalog by name (and optionally category + status).  Returns id, name, slug, status, storefront_path, price, stock_status, and category_ids — enough to build campaign deep links or a Smart List of purchasers without cobbling product_unit_price_search + visibility dry-runs.  name_query is a case-insensitive substring on product name. Pass category_id or category_slug to restrict membership. status defaults to all (active, draft, archived) so historical / unpublished SKUs still appear when building buyer audiences.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: tenantOAuth
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure Bearer authorization: tenantApiKey
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new ShadowSoftware\DabDash\Api\CatalogApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$product_search_request = new \ShadowSoftware\DabDash\Model\ProductSearchRequest(); // \ShadowSoftware\DabDash\Model\ProductSearchRequest
+
+try {
+    $result = $apiInstance->productSearch($product_search_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CatalogApi->productSearch: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **product_search_request** | [**\ShadowSoftware\DabDash\Model\ProductSearchRequest**](../Model/ProductSearchRequest.md)|  | [optional] |
+
+### Return type
+
+[**\ShadowSoftware\DabDash\Model\ProductSearch200Response**](../Model/ProductSearch200Response.md)
+
+### Authorization
+
+[tenantOAuth](../../README.md#tenantOAuth), [tenantApiKey](../../README.md#tenantApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `productUnitPriceSearch()`
 
 ```php
@@ -1301,6 +1364,67 @@ try {
 ### Return type
 
 [**\ShadowSoftware\DabDash\Model\ProductUpdateBySku200Response**](../Model/ProductUpdateBySku200Response.md)
+
+### Authorization
+
+[tenantOAuth](../../README.md#tenantOAuth), [tenantApiKey](../../README.md#tenantApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `productVariationSync()`
+
+```php
+productVariationSync($product_variation_sync_request): \ShadowSoftware\DabDash\Model\ProductVariationSync200Response
+```
+
+Atomically create or reconcile the complete variation list and per-variation inventory for one product. Use this for unit or matrix products after pricing is established. Choose unit for one-dimensional named variants and matrix_unit only for a real name/flavour × quantity/pack-size grid. The payload must contain every variant, an exact expected_variation_count, price, cost_price, and stock_quantity for every row. It is idempotent: matching existing IDs or names are updated, missing rows are created, and existing rows are never deleted. dry_run defaults to true. A successful live run returns before/after counts and stock totals for verification. Weight sizes of one flavor share one gram count — write that count on each size, and never describe it as extra inventory. Pack sizes are separate stock. If the vendor gives one count for a flavor, ask which pack size it belongs to before copying it onto every size. Never split one product across multiple calls.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: tenantOAuth
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure Bearer authorization: tenantApiKey
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new ShadowSoftware\DabDash\Api\CatalogApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$product_variation_sync_request = new \ShadowSoftware\DabDash\Model\ProductVariationSyncRequest(); // \ShadowSoftware\DabDash\Model\ProductVariationSyncRequest
+
+try {
+    $result = $apiInstance->productVariationSync($product_variation_sync_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CatalogApi->productVariationSync: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **product_variation_sync_request** | [**\ShadowSoftware\DabDash\Model\ProductVariationSyncRequest**](../Model/ProductVariationSyncRequest.md)|  | [optional] |
+
+### Return type
+
+[**\ShadowSoftware\DabDash\Model\ProductVariationSync200Response**](../Model/ProductVariationSync200Response.md)
 
 ### Authorization
 
