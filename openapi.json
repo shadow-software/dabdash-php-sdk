@@ -5892,6 +5892,101 @@
                 },
                 "type": "object"
             },
+            "MarketingScheduleListRequest": {
+                "properties": {
+                    "from": {
+                        "description": "ISO date (YYYY-MM-DD) range start, tenant TZ",
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "to": {
+                        "description": "ISO date (YYYY-MM-DD) range end, tenant TZ",
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    }
+                },
+                "type": "object"
+            },
+            "MarketingScheduleListResponse": {
+                "properties": {
+                    "tenant": {
+                        "properties": {
+                            "id": {
+                                "type": "integer"
+                            },
+                            "slug": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "from": {
+                        "type": "string"
+                    },
+                    "to": {
+                        "type": "string"
+                    },
+                    "items": {
+                        "items": {
+                            "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
+                                "kind": {
+                                    "type": "string"
+                                },
+                                "title": {
+                                    "type": "string"
+                                },
+                                "starts_at": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "ends_at": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "status": {
+                                    "type": "string"
+                                },
+                                "deep_link": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "conflict_hints": {
+                                    "items": {
+                                        "type": "string"
+                                    },
+                                    "type": "array"
+                                },
+                                "actions": {
+                                    "items": {
+                                        "type": "string"
+                                    },
+                                    "type": "array"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    },
+                    "day_metrics": {
+                        "description": "Tenant-local Y-m-d keys mapping to revenue, campaign attribution, and (when logistics is on) driver shift counts",
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            },
             "MediaComposeRequest": {
                 "properties": {
                     "category_id": {
@@ -6936,6 +7031,64 @@
                             "type": "object"
                         },
                         "type": "array"
+                    }
+                },
+                "type": "object"
+            },
+            "OrderUpsertRequest": {
+                "properties": {
+                    "rows": {
+                        "description": "1–100 Woo order rows (id/source_id, totals, line_items, billing/shipping).",
+                        "items": {
+                            "type": "object"
+                        },
+                        "type": "array"
+                    },
+                    "dry_run": {
+                        "description": "Defaults true.",
+                        "type": [
+                            "boolean",
+                            "null"
+                        ]
+                    },
+                    "confirm": {
+                        "description": "Required true when applying.",
+                        "type": [
+                            "boolean",
+                            "null"
+                        ]
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "rows"
+                ]
+            },
+            "OrderUpsertResponse": {
+                "properties": {
+                    "dry_run": {
+                        "type": "boolean"
+                    },
+                    "applied": {
+                        "type": "boolean"
+                    },
+                    "created": {
+                        "type": "integer"
+                    },
+                    "updated": {
+                        "type": "integer"
+                    },
+                    "skipped": {
+                        "type": "integer"
+                    },
+                    "unresolved": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "message": {
+                        "type": "string"
                     }
                 },
                 "type": "object"
@@ -10199,6 +10352,71 @@
                     },
                     "seo": {
                         "type": "object"
+                    }
+                },
+                "type": "object"
+            },
+            "SmartCampaignManageRequest": {
+                "properties": {
+                    "action": {
+                        "description": "list | show | create | materialize | pause | resume",
+                        "type": "string"
+                    },
+                    "series_id": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "name": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "subject": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "template_id": {
+                        "description": "System template id, default monthly-roundup",
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "sections": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": [
+                            "array",
+                            "null"
+                        ]
+                    },
+                    "contact_list_ids": {
+                        "items": {
+                            "type": "integer"
+                        },
+                        "type": [
+                            "array",
+                            "null"
+                        ]
+                    },
+                    "first_send_date": {
+                        "description": "YYYY-MM-DD tenant calendar day",
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "interval_days": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
                     }
                 },
                 "type": "object"
@@ -17881,7 +18099,7 @@
         "/api/v1/tools/campaign_upsert": {
             "post": {
                 "operationId": "campaign_upsert",
-                "summary": "Create or edit a vendor email/SMS campaign (vendor → their customers; NOT platform drip-to-leads).\nCompleted campaigns cannot be edited.\n\nCREATE (no campaign_id): draft. Email needs name+subject (html_body optional — then\ncampaign_apply_template). SMS needs name+sms_body and connected Twilio.\n\nUPDATE (campaign_id): only passed fields change. Drafts accept all fields. Sending/paused\naccept content only (email: name/subject/html_body/plain_body/fallback_first_name;\nSMS: name/sms_body/fallback_first_name).\n\nTRANSPORT (email): mode = smtp | webhook | mailgun.\n  mailgun: require Ready mailgun_domain_ids (from tenant_mailgun_manage show); optional\n  mailgun_pace drip|blast.\n  webhook: prefer saved_webhook_id, or inline webhook_url (+ optional headers/health).\nAUDIENCE: contact_list_ids (manual and/or Smart Lists) and/or audience_includes_customers\n(default true). Lead lists cannot use smtp — use mailgun or webhook. SMS may attach Smart\nLists only (not imported manual lists). Discover lists with contact_list_manage /\nsmart_list_manage.\n\nOptional: throttle_per_minute/hour, send_interval_minutes (1–30), send_window_*.\n\nDoes not start a live send — use campaign_send_test, then campaign_launch (confirm) or\nthe vendor admin Send button.\n\nORDERING: html_body is a full replace. Finalize copy before campaign_generate_flyer /\ncampaign_set_image, or later html_body upserts erase placed images.",
+                "summary": "Create or edit a vendor email/SMS campaign (vendor → their customers; NOT platform drip-to-leads).\nCompleted campaigns cannot be edited.\n\nCREATE (no campaign_id): draft. Email needs name+subject (html_body optional — then\ncampaign_apply_template). SMS needs name+sms_body and connected Twilio.\n\nUPDATE (campaign_id): only passed fields change. Drafts accept all fields. Sending/paused\naccept content only (email: name/subject/html_body/plain_body/fallback_first_name;\nSMS: name/sms_body/fallback_first_name).\n\nTRANSPORT (email): mode = smtp | webhook | mailgun.\n  mailgun: require Ready mailgun_domain_ids (from tenant_mailgun_manage show); optional\n  mailgun_pace drip|blast.\n  webhook: prefer saved_webhook_id, or inline webhook_url (+ optional headers/health).\nAUDIENCE: contact_list_ids (manual and/or Smart Lists) and/or audience_includes_customers\n(default true). Lead lists cannot use smtp — use mailgun or webhook. SMS may attach Smart\nLists only (not imported manual lists). Discover lists with contact_list_manage /\nsmart_list_manage.\n\nOptional: throttle_per_minute/hour, send_interval_minutes (1–30), send_window_*.\n\nDoes not start a live send — use campaign_send_test, then campaign_launch (confirm) or\nthe vendor admin Send button.\n\nORDERING: html_body is a full replace. A table-based / already-designed body is kept\nexactly as sent — product and category photos from the previous version are NOT\nre-prepended as hero banners. Bare/fragment copy updates still carry previously\nappended flyer artwork (campaign_generate_flyer / campaign_set_image) so a rewrite\ndoes not wipe the art. Pass html_body \"\" to clear the body on purpose.",
                 "tags": [
                     "marketing",
                     "write"
@@ -22889,6 +23107,179 @@
                 ]
             }
         },
+        "/api/v1/tools/marketing_schedule_list": {
+            "post": {
+                "operationId": "marketing_schedule_list",
+                "summary": "List the tenant marketing calendar: scheduled/active product shelf sales,\nactive storewide and category shelf sales, featured product windows,\ncoupons, freebies, bundles, and email/SMS campaigns in a date range,\nplus per-day revenue and campaign-attributed metrics for that range.\nRead-only federation — does not mutate sales.",
+                "tags": [
+                    "promotions",
+                    "read"
+                ],
+                "requestBody": {
+                    "required": false,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/MarketingScheduleListRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "tool": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "$ref": "#/components/schemas/MarketingScheduleListResponse"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Missing or invalid tenant credentials.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "402": {
+                        "description": "The tenant has no active trial, subscription, or grace period.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "A read-scoped key was used to call a write tool.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unknown tool name.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Request validation failed, or the tool reported a business error.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "tenantApiKey": []
+                    },
+                    {
+                        "tenantOAuth": []
+                    }
+                ]
+            }
+        },
         "/api/v1/tools/media_compose": {
             "post": {
                 "operationId": "media_compose",
@@ -23783,6 +24174,179 @@
                                         },
                                         "data": {
                                             "$ref": "#/components/schemas/OrderDashboardResponse"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Missing or invalid tenant credentials.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "402": {
+                        "description": "The tenant has no active trial, subscription, or grace period.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "A read-scoped key was used to call a write tool.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unknown tool name.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Request validation failed, or the tool reported a business error.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "tenantApiKey": []
+                    },
+                    {
+                        "tenantOAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/tools/order_upsert": {
+            "post": {
+                "operationId": "order_upsert",
+                "summary": "Upsert WooCommerce orders into this tenant (idempotent WP-{id} order numbers).\nUsed by dabdash-for-woocommerce continuous order sync and small residual imports.\nPass at most 100 rows matching the wordpress_commerce_import orders shape.\nPreview defaults on; applying requires dry_run=false and confirm=true.",
+                "tags": [
+                    "orders",
+                    "write"
+                ],
+                "requestBody": {
+                    "required": false,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/OrderUpsertRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "tool": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "$ref": "#/components/schemas/OrderUpsertResponse"
                                         }
                                     }
                                 }
@@ -28107,6 +28671,177 @@
                                         "data": {
                                             "$ref": "#/components/schemas/SeoSettingsManageResponse"
                                         }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Missing or invalid tenant credentials.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "402": {
+                        "description": "The tenant has no active trial, subscription, or grace period.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "A read-scoped key was used to call a write tool.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unknown tool name.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Request validation failed, or the tool reported a business error.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "error",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "tenantApiKey": []
+                    },
+                    {
+                        "tenantOAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/tools/smart_campaign_manage": {
+            "post": {
+                "operationId": "smart_campaign_manage",
+                "summary": "Create or inspect Smart Campaign series (recurring sends fed by live Featured / Deals / New).\nDoes not auto-launch — materialize produces draft EmailCampaign children for vendor confirm.",
+                "tags": [
+                    "promotions",
+                    "read"
+                ],
+                "requestBody": {
+                    "required": false,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SmartCampaignManageRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "tool": {
+                                            "type": "string"
+                                        },
+                                        "data": {}
                                     }
                                 }
                             }
