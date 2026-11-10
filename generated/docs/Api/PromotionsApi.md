@@ -17,7 +17,9 @@ All URIs are relative to https://.dabdash.com, except if the operation defines a
 | [**freebieList()**](PromotionsApi.md#freebieList) | **POST** /api/v1/tools/freebie_list | List a tenant&#39;s freebie rules (\&quot;spend $X, get a free item\&quot;) with id, name, spend threshold, the product/variation given away, quantity, stackable flag, active state, and schedule window. Freebies are evaluated on every cart change by FreebieService: a rule fires once its spend_threshold is met, adding &#x60;quantity&#x60; of the configured product/variation to the cart.  IMPORTANT: this reads the &#x60;freebies&#x60; table — the source of truth the storefront cart uses. It is NOT the legacy freebie summary promotion_audit surfaces alongside coupons/bundles; that view is stale display-only data built for a different purpose. Trust this tool for what actually applies at checkout.  is_merch_product: true when the freebie&#39;s product is tagged \&quot;merch\&quot; (Product.tags contains \&quot;merch\&quot;) — a branded giveaway item (hats, apparel) rather than sellable cannabis inventory. Prefer merch-tagged products over high-COGS flower when recommending a NEW freebie: giving away promo materials protects margin the same way a discount code doesn&#39;t.  is_stackable:   true   → this rule can fire alongside OTHER DIFFERENT freebie rules on the same order (each            rule still only fires once, at its configured quantity, regardless of how far above            its own threshold the cart is). When several stackable rules gift the SAME            variation, they collapse to one cart line whose quantity is the SUM of those rules            (cart_items is unique on cart_id+variation_id — without summing, higher tiers were            silently dropped).   false  → this rule cannot combine with other freebie rules that gift the same variation; if            multiple non-stackable rules share a SKU, the highest spend_threshold wins.   This flag does NOT multiply a single rule&#39;s quantity by how many multiples of the threshold   the cart reaches — a $50-threshold rule at $150 spent still gives quantity 1, not 3. |
 | [**freebieUpsert()**](PromotionsApi.md#freebieUpsert) | **POST** /api/v1/tools/freebie_upsert | Create or update a freebie rule (\&quot;spend $X, get a free item\&quot;) on behalf of a tenant. Freebies are evaluated on every cart change: a rule fires once its spend_threshold is met, adding &#x60;quantity&#x60; of the configured product/variation to the cart (distinct from bundles, which fire on cart CONTENTS/quantity — use bundle_upsert for those).  UPDATE MODE (freebie_id provided):   Edits the freebie. Only the fields you pass are changed; omitted fields are left as-is,   EXCEPT category_ids, which — like bundle_upsert&#39;s variation_ids — fully replaces the category   set whenever passed (pass an empty array to clear all categories).  CREATE MODE (no freebie_id):   Creates a new freebie. name, product_id, spend_threshold, and quantity are required.  product_id and variation_id (if given) MUST belong to the same tenant — foreign ids are rejected, not silently ignored (unlike bundle_upsert&#39;s variation_ids, since a freebie needs exactly one product to give away, not a set).  spend_threshold is entered in DOLLARS (e.g. 50 for a $50 minimum spend) — the tool stores cents internally.  is_stackable:   true   → this rule can fire alongside OTHER DIFFERENT freebie rules on the same order.   false  → this rule cannot combine with other freebie rules.   Does NOT multiply this rule&#39;s own quantity by how many multiples of spend_threshold the cart   reaches — a $50-threshold rule at $150 spent still gives quantity 1, not 3.  SCHEDULE:   starts_at / ends_at are interpreted in the tenant&#39;s timezone and stored as UTC. Pass   null/omit for an always-on freebie.  Always call freebie_list first to get the freebie_id and confirm the current configuration. |
 | [**loyaltyManage()**](PromotionsApi.md#loyaltyManage) | **POST** /api/v1/tools/loyalty_manage | Show or configure a store&#39;s points-based loyalty program, including vendor-defined lifetime-point tiers with automatic percentage discounts.  ACTIONS:   show (default): current settings.   set: pass only what changes. dry_run defaults true; pass dry_run&#x3D;false to save.   set_customer_lifetime: set one explicitly sourced customer&#39;s lifetime total. This is     for a one-time migration and is dry-run by default; it never changes spendable balance. |
+| [**marketingScheduleList()**](PromotionsApi.md#marketingScheduleList) | **POST** /api/v1/tools/marketing_schedule_list | List the tenant marketing calendar: scheduled/active product shelf sales, active storewide and category shelf sales, featured product windows, coupons, freebies, bundles, and email/SMS campaigns in a date range, plus per-day revenue and campaign-attributed metrics for that range. Read-only federation — does not mutate sales. |
 | [**promotionAudit()**](PromotionsApi.md#promotionAudit) | **POST** /api/v1/tools/promotion_audit | Inspect coupons, freebies, mix and match rules, loyalty settings, and storewide sale state for overcharge or missed-discount support tickets. |
+| [**smartCampaignManage()**](PromotionsApi.md#smartCampaignManage) | **POST** /api/v1/tools/smart_campaign_manage | Create or inspect Smart Campaign series (recurring sends fed by live Featured / Deals / New). Does not auto-launch — materialize produces draft EmailCampaign children for vendor confirm. |
 | [**widgetManage()**](PromotionsApi.md#widgetManage) | **POST** /api/v1/tools/widget_manage | List, create, update, or delete a tenant&#39;s homepage marketing widgets (the hero slider cards linking to a product, category, featured products, or a mix &amp; match tag).  ACTIONS:   list   (default): return every widget with id, title, subtitle, link_type, target, sort_order,          is_active, and image_url. Always call this first to find a widget_id.   create: requires title. link_type + its matching id/tag is optional but recommended so the          widget&#39;s CTA actually goes somewhere (see LINK_TYPE below). Defaults to \&quot;featured\&quot;          (no target) when omitted.   update: requires widget_id. Only the fields you pass are changed.   delete: requires widget_id and confirm&#x3D;true.  LINK_TYPE — pairs with exactly one target field:   \&quot;product\&quot;    → product_id   \&quot;category\&quot;   → category_id   \&quot;mix_match\&quot;  → mix_match_tag   \&quot;featured\&quot;   → no target needed (links to the featured-products listing)  IMAGES: pass media_id (from media_list / media_upload) to set image_path (the final, customer-facing image) or base_image_path (the unbranded source canvas SwagImagesService composites the headline/logo overlay onto). Omit both to leave images untouched.  Always call action&#x3D;list first to confirm widget_id before update or delete. |
 
 
@@ -692,6 +694,67 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `marketingScheduleList()`
+
+```php
+marketingScheduleList($marketing_schedule_list_request): \ShadowSoftware\DabDash\Model\MarketingScheduleList200Response
+```
+
+List the tenant marketing calendar: scheduled/active product shelf sales, active storewide and category shelf sales, featured product windows, coupons, freebies, bundles, and email/SMS campaigns in a date range, plus per-day revenue and campaign-attributed metrics for that range. Read-only federation — does not mutate sales.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: tenantOAuth
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure Bearer authorization: tenantApiKey
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new ShadowSoftware\DabDash\Api\PromotionsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$marketing_schedule_list_request = new \ShadowSoftware\DabDash\Model\MarketingScheduleListRequest(); // \ShadowSoftware\DabDash\Model\MarketingScheduleListRequest
+
+try {
+    $result = $apiInstance->marketingScheduleList($marketing_schedule_list_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PromotionsApi->marketingScheduleList: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **marketing_schedule_list_request** | [**\ShadowSoftware\DabDash\Model\MarketingScheduleListRequest**](../Model/MarketingScheduleListRequest.md)|  | [optional] |
+
+### Return type
+
+[**\ShadowSoftware\DabDash\Model\MarketingScheduleList200Response**](../Model/MarketingScheduleList200Response.md)
+
+### Authorization
+
+[tenantOAuth](../../README.md#tenantOAuth), [tenantApiKey](../../README.md#tenantApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `promotionAudit()`
 
 ```php
@@ -739,6 +802,67 @@ try {
 ### Return type
 
 [**\ShadowSoftware\DabDash\Model\PromotionAudit200Response**](../Model/PromotionAudit200Response.md)
+
+### Authorization
+
+[tenantOAuth](../../README.md#tenantOAuth), [tenantApiKey](../../README.md#tenantApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `smartCampaignManage()`
+
+```php
+smartCampaignManage($smart_campaign_manage_request): \ShadowSoftware\DabDash\Model\ContactCleanup200Response
+```
+
+Create or inspect Smart Campaign series (recurring sends fed by live Featured / Deals / New). Does not auto-launch — materialize produces draft EmailCampaign children for vendor confirm.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: tenantOAuth
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure Bearer authorization: tenantApiKey
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new ShadowSoftware\DabDash\Api\PromotionsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$smart_campaign_manage_request = new \ShadowSoftware\DabDash\Model\SmartCampaignManageRequest(); // \ShadowSoftware\DabDash\Model\SmartCampaignManageRequest
+
+try {
+    $result = $apiInstance->smartCampaignManage($smart_campaign_manage_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PromotionsApi->smartCampaignManage: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **smart_campaign_manage_request** | [**\ShadowSoftware\DabDash\Model\SmartCampaignManageRequest**](../Model/SmartCampaignManageRequest.md)|  | [optional] |
+
+### Return type
+
+[**\ShadowSoftware\DabDash\Model\ContactCleanup200Response**](../Model/ContactCleanup200Response.md)
 
 ### Authorization
 

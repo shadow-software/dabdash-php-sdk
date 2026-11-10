@@ -254,7 +254,7 @@ class WriteApiTest extends TestCase
     /**
      * Test case for campaignUpsert
      *
-     * Create or edit a vendor email/SMS campaign (vendor → their customers; NOT platform drip-to-leads). Completed campaigns cannot be edited.  CREATE (no campaign_id): draft. Email needs name+subject (html_body optional — then campaign_apply_template). SMS needs name+sms_body and connected Twilio.  UPDATE (campaign_id): only passed fields change. Drafts accept all fields. Sending/paused accept content only (email: name/subject/html_body/plain_body/fallback_first_name; SMS: name/sms_body/fallback_first_name).  TRANSPORT (email): mode = smtp | webhook | mailgun.   mailgun: require Ready mailgun_domain_ids (from tenant_mailgun_manage show); optional   mailgun_pace drip|blast.   webhook: prefer saved_webhook_id, or inline webhook_url (+ optional headers/health). AUDIENCE: contact_list_ids (manual and/or Smart Lists) and/or audience_includes_customers (default true). Lead lists cannot use smtp — use mailgun or webhook. SMS may attach Smart Lists only (not imported manual lists). Discover lists with contact_list_manage / smart_list_manage.  Optional: throttle_per_minute/hour, send_interval_minutes (1–30), send_window_*.  Does not start a live send — use campaign_send_test, then campaign_launch (confirm) or the vendor admin Send button.  ORDERING: html_body is a full replace. Finalize copy before campaign_generate_flyer / campaign_set_image, or later html_body upserts erase placed images..
+     * Create or edit a vendor email/SMS campaign (vendor → their customers; NOT platform drip-to-leads). Completed campaigns cannot be edited.  CREATE (no campaign_id): draft. Email needs name+subject (html_body optional — then campaign_apply_template). SMS needs name+sms_body and connected Twilio.  UPDATE (campaign_id): only passed fields change. Drafts accept all fields. Sending/paused accept content only (email: name/subject/html_body/plain_body/fallback_first_name; SMS: name/sms_body/fallback_first_name).  TRANSPORT (email): mode = smtp | webhook | mailgun.   mailgun: require Ready mailgun_domain_ids (from tenant_mailgun_manage show); optional   mailgun_pace drip|blast.   webhook: prefer saved_webhook_id, or inline webhook_url (+ optional headers/health). AUDIENCE: contact_list_ids (manual and/or Smart Lists) and/or audience_includes_customers (default true). Lead lists cannot use smtp — use mailgun or webhook. SMS may attach Smart Lists only (not imported manual lists). Discover lists with contact_list_manage / smart_list_manage.  Optional: throttle_per_minute/hour, send_interval_minutes (1–30), send_window_*.  Does not start a live send — use campaign_send_test, then campaign_launch (confirm) or the vendor admin Send button.  ORDERING: html_body is a full replace. A table-based / already-designed body is kept exactly as sent — product and category photos from the previous version are NOT re-prepended as hero banners. Bare/fragment copy updates still carry previously appended flyer artwork (campaign_generate_flyer / campaign_set_image) so a rewrite does not wipe the art. Pass html_body \"\" to clear the body on purpose..
      *
      */
     public function testCampaignUpsert()
@@ -486,6 +486,18 @@ class WriteApiTest extends TestCase
      *
      */
     public function testNotificationSettingsManage()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for orderUpsert
+     *
+     * Upsert WooCommerce orders into this tenant (idempotent WP-{id} order numbers). Used by dabdash-for-woocommerce continuous order sync and small residual imports. Pass at most 100 rows matching the wordpress_commerce_import orders shape. Preview defaults on; applying requires dry_run=false and confirm=true..
+     *
+     */
+    public function testOrderUpsert()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

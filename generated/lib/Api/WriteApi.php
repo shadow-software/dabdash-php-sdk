@@ -179,6 +179,9 @@ class WriteApi
         'notificationSettingsManage' => [
             'application/json',
         ],
+        'orderUpsert' => [
+            'application/json',
+        ],
         'pricingStructureAssign' => [
             'application/json',
         ],
@@ -5417,7 +5420,7 @@ class WriteApi
     /**
      * Operation campaignUpsert
      *
-     * Create or edit a vendor email/SMS campaign (vendor → their customers; NOT platform drip-to-leads). Completed campaigns cannot be edited.  CREATE (no campaign_id): draft. Email needs name+subject (html_body optional — then campaign_apply_template). SMS needs name+sms_body and connected Twilio.  UPDATE (campaign_id): only passed fields change. Drafts accept all fields. Sending/paused accept content only (email: name/subject/html_body/plain_body/fallback_first_name; SMS: name/sms_body/fallback_first_name).  TRANSPORT (email): mode &#x3D; smtp | webhook | mailgun.   mailgun: require Ready mailgun_domain_ids (from tenant_mailgun_manage show); optional   mailgun_pace drip|blast.   webhook: prefer saved_webhook_id, or inline webhook_url (+ optional headers/health). AUDIENCE: contact_list_ids (manual and/or Smart Lists) and/or audience_includes_customers (default true). Lead lists cannot use smtp — use mailgun or webhook. SMS may attach Smart Lists only (not imported manual lists). Discover lists with contact_list_manage / smart_list_manage.  Optional: throttle_per_minute/hour, send_interval_minutes (1–30), send_window_*.  Does not start a live send — use campaign_send_test, then campaign_launch (confirm) or the vendor admin Send button.  ORDERING: html_body is a full replace. Finalize copy before campaign_generate_flyer / campaign_set_image, or later html_body upserts erase placed images.
+     * Create or edit a vendor email/SMS campaign (vendor → their customers; NOT platform drip-to-leads). Completed campaigns cannot be edited.  CREATE (no campaign_id): draft. Email needs name+subject (html_body optional — then campaign_apply_template). SMS needs name+sms_body and connected Twilio.  UPDATE (campaign_id): only passed fields change. Drafts accept all fields. Sending/paused accept content only (email: name/subject/html_body/plain_body/fallback_first_name; SMS: name/sms_body/fallback_first_name).  TRANSPORT (email): mode &#x3D; smtp | webhook | mailgun.   mailgun: require Ready mailgun_domain_ids (from tenant_mailgun_manage show); optional   mailgun_pace drip|blast.   webhook: prefer saved_webhook_id, or inline webhook_url (+ optional headers/health). AUDIENCE: contact_list_ids (manual and/or Smart Lists) and/or audience_includes_customers (default true). Lead lists cannot use smtp — use mailgun or webhook. SMS may attach Smart Lists only (not imported manual lists). Discover lists with contact_list_manage / smart_list_manage.  Optional: throttle_per_minute/hour, send_interval_minutes (1–30), send_window_*.  Does not start a live send — use campaign_send_test, then campaign_launch (confirm) or the vendor admin Send button.  ORDERING: html_body is a full replace. A table-based / already-designed body is kept exactly as sent — product and category photos from the previous version are NOT re-prepended as hero banners. Bare/fragment copy updates still carry previously appended flyer artwork (campaign_generate_flyer / campaign_set_image) so a rewrite does not wipe the art. Pass html_body \&quot;\&quot; to clear the body on purpose.
      *
      * @param  \ShadowSoftware\DabDash\Model\CampaignUpsertRequest|null $campaign_upsert_request campaign_upsert_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignUpsert'] to see the possible values for this operation
@@ -5435,7 +5438,7 @@ class WriteApi
     /**
      * Operation campaignUpsertWithHttpInfo
      *
-     * Create or edit a vendor email/SMS campaign (vendor → their customers; NOT platform drip-to-leads). Completed campaigns cannot be edited.  CREATE (no campaign_id): draft. Email needs name+subject (html_body optional — then campaign_apply_template). SMS needs name+sms_body and connected Twilio.  UPDATE (campaign_id): only passed fields change. Drafts accept all fields. Sending/paused accept content only (email: name/subject/html_body/plain_body/fallback_first_name; SMS: name/sms_body/fallback_first_name).  TRANSPORT (email): mode &#x3D; smtp | webhook | mailgun.   mailgun: require Ready mailgun_domain_ids (from tenant_mailgun_manage show); optional   mailgun_pace drip|blast.   webhook: prefer saved_webhook_id, or inline webhook_url (+ optional headers/health). AUDIENCE: contact_list_ids (manual and/or Smart Lists) and/or audience_includes_customers (default true). Lead lists cannot use smtp — use mailgun or webhook. SMS may attach Smart Lists only (not imported manual lists). Discover lists with contact_list_manage / smart_list_manage.  Optional: throttle_per_minute/hour, send_interval_minutes (1–30), send_window_*.  Does not start a live send — use campaign_send_test, then campaign_launch (confirm) or the vendor admin Send button.  ORDERING: html_body is a full replace. Finalize copy before campaign_generate_flyer / campaign_set_image, or later html_body upserts erase placed images.
+     * Create or edit a vendor email/SMS campaign (vendor → their customers; NOT platform drip-to-leads). Completed campaigns cannot be edited.  CREATE (no campaign_id): draft. Email needs name+subject (html_body optional — then campaign_apply_template). SMS needs name+sms_body and connected Twilio.  UPDATE (campaign_id): only passed fields change. Drafts accept all fields. Sending/paused accept content only (email: name/subject/html_body/plain_body/fallback_first_name; SMS: name/sms_body/fallback_first_name).  TRANSPORT (email): mode &#x3D; smtp | webhook | mailgun.   mailgun: require Ready mailgun_domain_ids (from tenant_mailgun_manage show); optional   mailgun_pace drip|blast.   webhook: prefer saved_webhook_id, or inline webhook_url (+ optional headers/health). AUDIENCE: contact_list_ids (manual and/or Smart Lists) and/or audience_includes_customers (default true). Lead lists cannot use smtp — use mailgun or webhook. SMS may attach Smart Lists only (not imported manual lists). Discover lists with contact_list_manage / smart_list_manage.  Optional: throttle_per_minute/hour, send_interval_minutes (1–30), send_window_*.  Does not start a live send — use campaign_send_test, then campaign_launch (confirm) or the vendor admin Send button.  ORDERING: html_body is a full replace. A table-based / already-designed body is kept exactly as sent — product and category photos from the previous version are NOT re-prepended as hero banners. Bare/fragment copy updates still carry previously appended flyer artwork (campaign_generate_flyer / campaign_set_image) so a rewrite does not wipe the art. Pass html_body \&quot;\&quot; to clear the body on purpose.
      *
      * @param  \ShadowSoftware\DabDash\Model\CampaignUpsertRequest|null $campaign_upsert_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignUpsert'] to see the possible values for this operation
@@ -5590,7 +5593,7 @@ class WriteApi
     /**
      * Operation campaignUpsertAsync
      *
-     * Create or edit a vendor email/SMS campaign (vendor → their customers; NOT platform drip-to-leads). Completed campaigns cannot be edited.  CREATE (no campaign_id): draft. Email needs name+subject (html_body optional — then campaign_apply_template). SMS needs name+sms_body and connected Twilio.  UPDATE (campaign_id): only passed fields change. Drafts accept all fields. Sending/paused accept content only (email: name/subject/html_body/plain_body/fallback_first_name; SMS: name/sms_body/fallback_first_name).  TRANSPORT (email): mode &#x3D; smtp | webhook | mailgun.   mailgun: require Ready mailgun_domain_ids (from tenant_mailgun_manage show); optional   mailgun_pace drip|blast.   webhook: prefer saved_webhook_id, or inline webhook_url (+ optional headers/health). AUDIENCE: contact_list_ids (manual and/or Smart Lists) and/or audience_includes_customers (default true). Lead lists cannot use smtp — use mailgun or webhook. SMS may attach Smart Lists only (not imported manual lists). Discover lists with contact_list_manage / smart_list_manage.  Optional: throttle_per_minute/hour, send_interval_minutes (1–30), send_window_*.  Does not start a live send — use campaign_send_test, then campaign_launch (confirm) or the vendor admin Send button.  ORDERING: html_body is a full replace. Finalize copy before campaign_generate_flyer / campaign_set_image, or later html_body upserts erase placed images.
+     * Create or edit a vendor email/SMS campaign (vendor → their customers; NOT platform drip-to-leads). Completed campaigns cannot be edited.  CREATE (no campaign_id): draft. Email needs name+subject (html_body optional — then campaign_apply_template). SMS needs name+sms_body and connected Twilio.  UPDATE (campaign_id): only passed fields change. Drafts accept all fields. Sending/paused accept content only (email: name/subject/html_body/plain_body/fallback_first_name; SMS: name/sms_body/fallback_first_name).  TRANSPORT (email): mode &#x3D; smtp | webhook | mailgun.   mailgun: require Ready mailgun_domain_ids (from tenant_mailgun_manage show); optional   mailgun_pace drip|blast.   webhook: prefer saved_webhook_id, or inline webhook_url (+ optional headers/health). AUDIENCE: contact_list_ids (manual and/or Smart Lists) and/or audience_includes_customers (default true). Lead lists cannot use smtp — use mailgun or webhook. SMS may attach Smart Lists only (not imported manual lists). Discover lists with contact_list_manage / smart_list_manage.  Optional: throttle_per_minute/hour, send_interval_minutes (1–30), send_window_*.  Does not start a live send — use campaign_send_test, then campaign_launch (confirm) or the vendor admin Send button.  ORDERING: html_body is a full replace. A table-based / already-designed body is kept exactly as sent — product and category photos from the previous version are NOT re-prepended as hero banners. Bare/fragment copy updates still carry previously appended flyer artwork (campaign_generate_flyer / campaign_set_image) so a rewrite does not wipe the art. Pass html_body \&quot;\&quot; to clear the body on purpose.
      *
      * @param  \ShadowSoftware\DabDash\Model\CampaignUpsertRequest|null $campaign_upsert_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignUpsert'] to see the possible values for this operation
@@ -5611,7 +5614,7 @@ class WriteApi
     /**
      * Operation campaignUpsertAsyncWithHttpInfo
      *
-     * Create or edit a vendor email/SMS campaign (vendor → their customers; NOT platform drip-to-leads). Completed campaigns cannot be edited.  CREATE (no campaign_id): draft. Email needs name+subject (html_body optional — then campaign_apply_template). SMS needs name+sms_body and connected Twilio.  UPDATE (campaign_id): only passed fields change. Drafts accept all fields. Sending/paused accept content only (email: name/subject/html_body/plain_body/fallback_first_name; SMS: name/sms_body/fallback_first_name).  TRANSPORT (email): mode &#x3D; smtp | webhook | mailgun.   mailgun: require Ready mailgun_domain_ids (from tenant_mailgun_manage show); optional   mailgun_pace drip|blast.   webhook: prefer saved_webhook_id, or inline webhook_url (+ optional headers/health). AUDIENCE: contact_list_ids (manual and/or Smart Lists) and/or audience_includes_customers (default true). Lead lists cannot use smtp — use mailgun or webhook. SMS may attach Smart Lists only (not imported manual lists). Discover lists with contact_list_manage / smart_list_manage.  Optional: throttle_per_minute/hour, send_interval_minutes (1–30), send_window_*.  Does not start a live send — use campaign_send_test, then campaign_launch (confirm) or the vendor admin Send button.  ORDERING: html_body is a full replace. Finalize copy before campaign_generate_flyer / campaign_set_image, or later html_body upserts erase placed images.
+     * Create or edit a vendor email/SMS campaign (vendor → their customers; NOT platform drip-to-leads). Completed campaigns cannot be edited.  CREATE (no campaign_id): draft. Email needs name+subject (html_body optional — then campaign_apply_template). SMS needs name+sms_body and connected Twilio.  UPDATE (campaign_id): only passed fields change. Drafts accept all fields. Sending/paused accept content only (email: name/subject/html_body/plain_body/fallback_first_name; SMS: name/sms_body/fallback_first_name).  TRANSPORT (email): mode &#x3D; smtp | webhook | mailgun.   mailgun: require Ready mailgun_domain_ids (from tenant_mailgun_manage show); optional   mailgun_pace drip|blast.   webhook: prefer saved_webhook_id, or inline webhook_url (+ optional headers/health). AUDIENCE: contact_list_ids (manual and/or Smart Lists) and/or audience_includes_customers (default true). Lead lists cannot use smtp — use mailgun or webhook. SMS may attach Smart Lists only (not imported manual lists). Discover lists with contact_list_manage / smart_list_manage.  Optional: throttle_per_minute/hour, send_interval_minutes (1–30), send_window_*.  Does not start a live send — use campaign_send_test, then campaign_launch (confirm) or the vendor admin Send button.  ORDERING: html_body is a full replace. A table-based / already-designed body is kept exactly as sent — product and category photos from the previous version are NOT re-prepended as hero banners. Bare/fragment copy updates still carry previously appended flyer artwork (campaign_generate_flyer / campaign_set_image) so a rewrite does not wipe the art. Pass html_body \&quot;\&quot; to clear the body on purpose.
      *
      * @param  \ShadowSoftware\DabDash\Model\CampaignUpsertRequest|null $campaign_upsert_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignUpsert'] to see the possible values for this operation
@@ -12139,6 +12142,345 @@ class WriteApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($notification_settings_manage_request));
             } else {
                 $httpBody = $notification_settings_manage_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation orderUpsert
+     *
+     * Upsert WooCommerce orders into this tenant (idempotent WP-{id} order numbers). Used by dabdash-for-woocommerce continuous order sync and small residual imports. Pass at most 100 rows matching the wordpress_commerce_import orders shape. Preview defaults on; applying requires dry_run&#x3D;false and confirm&#x3D;true.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\OrderUpsertRequest|null $order_upsert_request order_upsert_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['orderUpsert'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \ShadowSoftware\DabDash\Model\OrderUpsert200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
+     */
+    public function orderUpsert($order_upsert_request = null, string $contentType = self::contentTypes['orderUpsert'][0])
+    {
+        list($response) = $this->orderUpsertWithHttpInfo($order_upsert_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation orderUpsertWithHttpInfo
+     *
+     * Upsert WooCommerce orders into this tenant (idempotent WP-{id} order numbers). Used by dabdash-for-woocommerce continuous order sync and small residual imports. Pass at most 100 rows matching the wordpress_commerce_import orders shape. Preview defaults on; applying requires dry_run&#x3D;false and confirm&#x3D;true.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\OrderUpsertRequest|null $order_upsert_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['orderUpsert'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \ShadowSoftware\DabDash\Model\OrderUpsert200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function orderUpsertWithHttpInfo($order_upsert_request = null, string $contentType = self::contentTypes['orderUpsert'][0])
+    {
+        $request = $this->orderUpsertRequest($order_upsert_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\OrderUpsert200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 402:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 422:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\ShadowSoftware\DabDash\Model\OrderUpsert200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\OrderUpsert200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 402:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation orderUpsertAsync
+     *
+     * Upsert WooCommerce orders into this tenant (idempotent WP-{id} order numbers). Used by dabdash-for-woocommerce continuous order sync and small residual imports. Pass at most 100 rows matching the wordpress_commerce_import orders shape. Preview defaults on; applying requires dry_run&#x3D;false and confirm&#x3D;true.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\OrderUpsertRequest|null $order_upsert_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['orderUpsert'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function orderUpsertAsync($order_upsert_request = null, string $contentType = self::contentTypes['orderUpsert'][0])
+    {
+        return $this->orderUpsertAsyncWithHttpInfo($order_upsert_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation orderUpsertAsyncWithHttpInfo
+     *
+     * Upsert WooCommerce orders into this tenant (idempotent WP-{id} order numbers). Used by dabdash-for-woocommerce continuous order sync and small residual imports. Pass at most 100 rows matching the wordpress_commerce_import orders shape. Preview defaults on; applying requires dry_run&#x3D;false and confirm&#x3D;true.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\OrderUpsertRequest|null $order_upsert_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['orderUpsert'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function orderUpsertAsyncWithHttpInfo($order_upsert_request = null, string $contentType = self::contentTypes['orderUpsert'][0])
+    {
+        $returnType = '\ShadowSoftware\DabDash\Model\OrderUpsert200Response';
+        $request = $this->orderUpsertRequest($order_upsert_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'orderUpsert'
+     *
+     * @param  \ShadowSoftware\DabDash\Model\OrderUpsertRequest|null $order_upsert_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['orderUpsert'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function orderUpsertRequest($order_upsert_request = null, string $contentType = self::contentTypes['orderUpsert'][0])
+    {
+
+
+
+        $resourcePath = '/api/v1/tools/order_upsert';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($order_upsert_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($order_upsert_request));
+            } else {
+                $httpBody = $order_upsert_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

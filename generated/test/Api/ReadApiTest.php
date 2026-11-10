@@ -312,6 +312,18 @@ class ReadApiTest extends TestCase
     }
 
     /**
+     * Test case for marketingScheduleList
+     *
+     * List the tenant marketing calendar: scheduled/active product shelf sales, active storewide and category shelf sales, featured product windows, coupons, freebies, bundles, and email/SMS campaigns in a date range, plus per-day revenue and campaign-attributed metrics for that range. Read-only federation — does not mutate sales..
+     *
+     */
+    public function testMarketingScheduleList()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for metrcDiagnostics
      *
      * Returns a JSON summary of Metrc compliance status for a tenant: integration mode, sync states, audit log counts by HTTP status, and pending/failed report counts. Pass a tenant_slug to inspect a specific tenant..
@@ -426,6 +438,18 @@ class ReadApiTest extends TestCase
      *
      */
     public function testSearchConsole()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for smartCampaignManage
+     *
+     * Create or inspect Smart Campaign series (recurring sends fed by live Featured / Deals / New). Does not auto-launch — materialize produces draft EmailCampaign children for vendor confirm..
+     *
+     */
+    public function testSmartCampaignManage()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

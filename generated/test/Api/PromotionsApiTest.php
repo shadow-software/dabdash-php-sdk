@@ -204,12 +204,36 @@ class PromotionsApiTest extends TestCase
     }
 
     /**
+     * Test case for marketingScheduleList
+     *
+     * List the tenant marketing calendar: scheduled/active product shelf sales, active storewide and category shelf sales, featured product windows, coupons, freebies, bundles, and email/SMS campaigns in a date range, plus per-day revenue and campaign-attributed metrics for that range. Read-only federation — does not mutate sales..
+     *
+     */
+    public function testMarketingScheduleList()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for promotionAudit
      *
      * Inspect coupons, freebies, mix and match rules, loyalty settings, and storewide sale state for overcharge or missed-discount support tickets..
      *
      */
     public function testPromotionAudit()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for smartCampaignManage
+     *
+     * Create or inspect Smart Campaign series (recurring sends fed by live Featured / Deals / New). Does not auto-launch — materialize produces draft EmailCampaign children for vendor confirm..
+     *
+     */
+    public function testSmartCampaignManage()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

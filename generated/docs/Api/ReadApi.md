@@ -26,6 +26,7 @@ All URIs are relative to https://.dabdash.com, except if the operation defines a
 | [**inventoryAuditLookup()**](ReadApi.md#inventoryAuditLookup) | **POST** /api/v1/tools/inventory_audit_lookup | Look up the historical inventory state of a list of products from the inventory_audit_logs table.  For each product, returns every variation_id ever logged in the audit trail (including variations that have since been deleted), the variation&#39;s last known stock_quantity strictly BEFORE the given cutoff timestamp, and that variation&#39;s most recent action+notes for context.  Use this tool to recover pre-incident stock values when variations have been overwritten or deleted by a destructive operation (e.g. an erroneous pricing structure assignment that wiped unit/simple variations and replaced them with weight tiers).  Output is grouped per product. Each product also includes its CURRENT variations and their stock for comparison so you can see the delta. |
 | [**inventoryStatus()**](ReadApi.md#inventoryStatus) | **POST** /api/v1/tools/inventory_status | Get inventory status across all tenants or a specific tenant. Shows low stock alerts and out-of-stock products. |
 | [**mailboxInspect()**](ReadApi.md#mailboxInspect) | **POST** /api/v1/tools/mailbox_inspect | Inspect a tenant mailbox: independent INBOX/Sent sync watermarks, errors, recent ingestion counts (inbound/outbound), and a healthy/bootstrap/stalled/quiet verdict. Pass a tenant_slug, or pass platform&#x3D;true for a platform-owned mailbox (tenant_id IS NULL). |
+| [**marketingScheduleList()**](ReadApi.md#marketingScheduleList) | **POST** /api/v1/tools/marketing_schedule_list | List the tenant marketing calendar: scheduled/active product shelf sales, active storewide and category shelf sales, featured product windows, coupons, freebies, bundles, and email/SMS campaigns in a date range, plus per-day revenue and campaign-attributed metrics for that range. Read-only federation — does not mutate sales. |
 | [**metrcDiagnostics()**](ReadApi.md#metrcDiagnostics) | **POST** /api/v1/tools/metrc_diagnostics | Returns a JSON summary of Metrc compliance status for a tenant: integration mode, sync states, audit log counts by HTTP status, and pending/failed report counts. Pass a tenant_slug to inspect a specific tenant. |
 | [**orderDashboard()**](ReadApi.md#orderDashboard) | **POST** /api/v1/tools/order_dashboard | Query orders with filters and stable cursor pagination. Use limit plus next_cursor to walk every order; set include_items&#x3D;true for a complete order export with line items. Tenant access is always enforced. |
 | [**productImageStrainMatch()**](ReadApi.md#productImageStrainMatch) | **POST** /api/v1/tools/product_image_strain_match | Find products on a tenant&#39;s storefront that have no featured image, and propose a hosted platform strain photo for each by matching product name against the strain library. Read-only — never writes to a product; pass the results to product_image_strain_assign to actually apply them.  Only proposes strains whose photo is already hosted on the platform (cdn.strains.dabdash.com/strains/... — see StrainImageService::isHostedUrl). A name match against an unhosted/dead-remote strain is reported as match_method&#x3D;none rather than proposing a broken or third-party hotlinked image.  Match order per product: 1) the product&#39;s own strain_id FK, if set (match_method&#x3D;strain_id_fk, confidence&#x3D;exact) 2) case-insensitive exact name match (confidence&#x3D;exact) 3) prefix/contains name match, shortest strain name wins ties (confidence&#x3D;partial) 4) no match (match_method&#x3D;none, confidence&#x3D;none). |
@@ -36,6 +37,7 @@ All URIs are relative to https://.dabdash.com, except if the operation defines a
 | [**promotionAudit()**](ReadApi.md#promotionAudit) | **POST** /api/v1/tools/promotion_audit | Inspect coupons, freebies, mix and match rules, loyalty settings, and storewide sale state for overcharge or missed-discount support tickets. |
 | [**pushNotificationDiagnostics()**](ReadApi.md#pushNotificationDiagnostics) | **POST** /api/v1/tools/push_notification_diagnostics | Diagnose push notification (FCM) delivery for a vendor. Surfaces token health, notification settings, recent send history with push/email flags, and a plain-language diagnosis of why pushes are or are not being delivered. |
 | [**searchConsole()**](ReadApi.md#searchConsole) | **POST** /api/v1/tools/search_console | Query Google Search Console data for the platform (dabdash.com) or a specific tenant with a connected GSC integration. Returns search overview, top queries, top pages, and daily trend. |
+| [**smartCampaignManage()**](ReadApi.md#smartCampaignManage) | **POST** /api/v1/tools/smart_campaign_manage | Create or inspect Smart Campaign series (recurring sends fed by live Featured / Deals / New). Does not auto-launch — materialize produces draft EmailCampaign children for vendor confirm. |
 | [**storeInfo()**](ReadApi.md#storeInfo) | **POST** /api/v1/tools/store_info | Identify the connected store — name, slug, timezone, currency, country, and subscription status. Use to validate an API token during setup. |
 | [**strainLookup()**](ReadApi.md#strainLookup) | **POST** /api/v1/tools/strain_lookup | Search the platform strain database — the same catalog vendors search on the create-product page. Returns name, type, cannabinoids, effects, flavors, and whether a hosted photo exists. Use this BEFORE creating a product whose name looks like a strain, then pass strain_id to product_manage so the product is filled from that row. Not tenant-owned media; photos stay on the shared strain CDN. |
 | [**teachingGuide()**](ReadApi.md#teachingGuide) | **POST** /api/v1/tools/teaching_guide | Fetch one Teaching Continuity unit or all units for a page, including body text and selector so you can coach a human through the live DabDash UI with the same wording as Dabby tooltips and Help tours. |
@@ -1263,6 +1265,67 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `marketingScheduleList()`
+
+```php
+marketingScheduleList($marketing_schedule_list_request): \ShadowSoftware\DabDash\Model\MarketingScheduleList200Response
+```
+
+List the tenant marketing calendar: scheduled/active product shelf sales, active storewide and category shelf sales, featured product windows, coupons, freebies, bundles, and email/SMS campaigns in a date range, plus per-day revenue and campaign-attributed metrics for that range. Read-only federation — does not mutate sales.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: tenantOAuth
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure Bearer authorization: tenantApiKey
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new ShadowSoftware\DabDash\Api\ReadApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$marketing_schedule_list_request = new \ShadowSoftware\DabDash\Model\MarketingScheduleListRequest(); // \ShadowSoftware\DabDash\Model\MarketingScheduleListRequest
+
+try {
+    $result = $apiInstance->marketingScheduleList($marketing_schedule_list_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ReadApi->marketingScheduleList: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **marketing_schedule_list_request** | [**\ShadowSoftware\DabDash\Model\MarketingScheduleListRequest**](../Model/MarketingScheduleListRequest.md)|  | [optional] |
+
+### Return type
+
+[**\ShadowSoftware\DabDash\Model\MarketingScheduleList200Response**](../Model/MarketingScheduleList200Response.md)
+
+### Authorization
+
+[tenantOAuth](../../README.md#tenantOAuth), [tenantApiKey](../../README.md#tenantApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `metrcDiagnostics()`
 
 ```php
@@ -1859,6 +1922,67 @@ try {
 ### Return type
 
 [**\ShadowSoftware\DabDash\Model\SearchConsole200Response**](../Model/SearchConsole200Response.md)
+
+### Authorization
+
+[tenantOAuth](../../README.md#tenantOAuth), [tenantApiKey](../../README.md#tenantApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `smartCampaignManage()`
+
+```php
+smartCampaignManage($smart_campaign_manage_request): \ShadowSoftware\DabDash\Model\ContactCleanup200Response
+```
+
+Create or inspect Smart Campaign series (recurring sends fed by live Featured / Deals / New). Does not auto-launch — materialize produces draft EmailCampaign children for vendor confirm.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: tenantOAuth
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure Bearer authorization: tenantApiKey
+$config = ShadowSoftware\DabDash\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new ShadowSoftware\DabDash\Api\ReadApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$smart_campaign_manage_request = new \ShadowSoftware\DabDash\Model\SmartCampaignManageRequest(); // \ShadowSoftware\DabDash\Model\SmartCampaignManageRequest
+
+try {
+    $result = $apiInstance->smartCampaignManage($smart_campaign_manage_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ReadApi->smartCampaignManage: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **smart_campaign_manage_request** | [**\ShadowSoftware\DabDash\Model\SmartCampaignManageRequest**](../Model/SmartCampaignManageRequest.md)|  | [optional] |
+
+### Return type
+
+[**\ShadowSoftware\DabDash\Model\ContactCleanup200Response**](../Model/ContactCleanup200Response.md)
 
 ### Authorization
 

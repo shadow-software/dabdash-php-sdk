@@ -235,6 +235,10 @@ docs/Model/MailboxInspectResponseIngestion.md
 docs/Model/MailboxInspectResponseRecentMessagesInner.md
 docs/Model/MailboxInspectResponseSyncState.md
 docs/Model/MailboxInspectResponseVerdict.md
+docs/Model/MarketingScheduleList200Response.md
+docs/Model/MarketingScheduleListRequest.md
+docs/Model/MarketingScheduleListResponse.md
+docs/Model/MarketingScheduleListResponseItemsInner.md
 docs/Model/MediaCompose200Response.md
 docs/Model/MediaComposeRequest.md
 docs/Model/MediaComposeResponse.md
@@ -259,6 +263,9 @@ docs/Model/OrderDashboardResponse.md
 docs/Model/OrderDashboardResponseOrdersInner.md
 docs/Model/OrderDashboardResponseOrdersInnerItemsInner.md
 docs/Model/OrderDashboardResponseSummary.md
+docs/Model/OrderUpsert200Response.md
+docs/Model/OrderUpsertRequest.md
+docs/Model/OrderUpsertResponse.md
 docs/Model/PricingStructureAssign200Response.md
 docs/Model/PricingStructureAssignRequest.md
 docs/Model/PricingStructureAssignResponse.md
@@ -389,6 +396,7 @@ docs/Model/SeoMaxImageManageRequest.md
 docs/Model/SeoSettingsManage200Response.md
 docs/Model/SeoSettingsManageRequest.md
 docs/Model/SeoSettingsManageResponse.md
+docs/Model/SmartCampaignManageRequest.md
 docs/Model/SmartListManage200Response.md
 docs/Model/SmartListManageRequest.md
 docs/Model/SmartListManageResponse.md
@@ -716,6 +724,10 @@ lib/Model/MailboxInspectResponseIngestion.php
 lib/Model/MailboxInspectResponseRecentMessagesInner.php
 lib/Model/MailboxInspectResponseSyncState.php
 lib/Model/MailboxInspectResponseVerdict.php
+lib/Model/MarketingScheduleList200Response.php
+lib/Model/MarketingScheduleListRequest.php
+lib/Model/MarketingScheduleListResponse.php
+lib/Model/MarketingScheduleListResponseItemsInner.php
 lib/Model/MediaCompose200Response.php
 lib/Model/MediaComposeRequest.php
 lib/Model/MediaComposeResponse.php
@@ -741,6 +753,9 @@ lib/Model/OrderDashboardResponse.php
 lib/Model/OrderDashboardResponseOrdersInner.php
 lib/Model/OrderDashboardResponseOrdersInnerItemsInner.php
 lib/Model/OrderDashboardResponseSummary.php
+lib/Model/OrderUpsert200Response.php
+lib/Model/OrderUpsertRequest.php
+lib/Model/OrderUpsertResponse.php
 lib/Model/PricingStructureAssign200Response.php
 lib/Model/PricingStructureAssignRequest.php
 lib/Model/PricingStructureAssignResponse.php
@@ -871,6 +886,7 @@ lib/Model/SeoMaxImageManageRequest.php
 lib/Model/SeoSettingsManage200Response.php
 lib/Model/SeoSettingsManageRequest.php
 lib/Model/SeoSettingsManageResponse.php
+lib/Model/SmartCampaignManageRequest.php
 lib/Model/SmartListManage200Response.php
 lib/Model/SmartListManageRequest.php
 lib/Model/SmartListManageResponse.php
@@ -1195,6 +1211,10 @@ test/Model/MailboxInspectResponseRecentMessagesInnerTest.php
 test/Model/MailboxInspectResponseSyncStateTest.php
 test/Model/MailboxInspectResponseTest.php
 test/Model/MailboxInspectResponseVerdictTest.php
+test/Model/MarketingScheduleList200ResponseTest.php
+test/Model/MarketingScheduleListRequestTest.php
+test/Model/MarketingScheduleListResponseItemsInnerTest.php
+test/Model/MarketingScheduleListResponseTest.php
 test/Model/MediaCompose200ResponseTest.php
 test/Model/MediaComposeRequestTest.php
 test/Model/MediaComposeResponseTest.php
@@ -1219,6 +1239,9 @@ test/Model/OrderDashboardResponseOrdersInnerItemsInnerTest.php
 test/Model/OrderDashboardResponseOrdersInnerTest.php
 test/Model/OrderDashboardResponseSummaryTest.php
 test/Model/OrderDashboardResponseTest.php
+test/Model/OrderUpsert200ResponseTest.php
+test/Model/OrderUpsertRequestTest.php
+test/Model/OrderUpsertResponseTest.php
 test/Model/PricingStructureAssign200ResponseTest.php
 test/Model/PricingStructureAssignRequestTest.php
 test/Model/PricingStructureAssignResponseResultsInnerIdentifierTest.php
@@ -1349,6 +1372,7 @@ test/Model/SeoMaxImageManageRequestTest.php
 test/Model/SeoSettingsManage200ResponseTest.php
 test/Model/SeoSettingsManageRequestTest.php
 test/Model/SeoSettingsManageResponseTest.php
+test/Model/SmartCampaignManageRequestTest.php
 test/Model/SmartListManage200ResponseTest.php
 test/Model/SmartListManageRequestTest.php
 test/Model/SmartListManageResponseTest.php

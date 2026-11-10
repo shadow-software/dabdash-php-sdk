@@ -82,4 +82,16 @@ class OrdersApiTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test case for orderUpsert
+     *
+     * Upsert WooCommerce orders into this tenant (idempotent WP-{id} order numbers). Used by dabdash-for-woocommerce continuous order sync and small residual imports. Pass at most 100 rows matching the wordpress_commerce_import orders shape. Preview defaults on; applying requires dry_run=false and confirm=true..
+     *
+     */
+    public function testOrderUpsert()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

@@ -107,7 +107,13 @@ class PromotionsApi
         'loyaltyManage' => [
             'application/json',
         ],
+        'marketingScheduleList' => [
+            'application/json',
+        ],
         'promotionAudit' => [
+            'application/json',
+        ],
+        'smartCampaignManage' => [
             'application/json',
         ],
         'widgetManage' => [
@@ -3891,6 +3897,345 @@ class PromotionsApi
     }
 
     /**
+     * Operation marketingScheduleList
+     *
+     * List the tenant marketing calendar: scheduled/active product shelf sales, active storewide and category shelf sales, featured product windows, coupons, freebies, bundles, and email/SMS campaigns in a date range, plus per-day revenue and campaign-attributed metrics for that range. Read-only federation — does not mutate sales.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\MarketingScheduleListRequest|null $marketing_schedule_list_request marketing_schedule_list_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['marketingScheduleList'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \ShadowSoftware\DabDash\Model\MarketingScheduleList200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
+     */
+    public function marketingScheduleList($marketing_schedule_list_request = null, string $contentType = self::contentTypes['marketingScheduleList'][0])
+    {
+        list($response) = $this->marketingScheduleListWithHttpInfo($marketing_schedule_list_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation marketingScheduleListWithHttpInfo
+     *
+     * List the tenant marketing calendar: scheduled/active product shelf sales, active storewide and category shelf sales, featured product windows, coupons, freebies, bundles, and email/SMS campaigns in a date range, plus per-day revenue and campaign-attributed metrics for that range. Read-only federation — does not mutate sales.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\MarketingScheduleListRequest|null $marketing_schedule_list_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['marketingScheduleList'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \ShadowSoftware\DabDash\Model\MarketingScheduleList200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function marketingScheduleListWithHttpInfo($marketing_schedule_list_request = null, string $contentType = self::contentTypes['marketingScheduleList'][0])
+    {
+        $request = $this->marketingScheduleListRequest($marketing_schedule_list_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\MarketingScheduleList200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 402:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 422:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\ShadowSoftware\DabDash\Model\MarketingScheduleList200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\MarketingScheduleList200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 402:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation marketingScheduleListAsync
+     *
+     * List the tenant marketing calendar: scheduled/active product shelf sales, active storewide and category shelf sales, featured product windows, coupons, freebies, bundles, and email/SMS campaigns in a date range, plus per-day revenue and campaign-attributed metrics for that range. Read-only federation — does not mutate sales.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\MarketingScheduleListRequest|null $marketing_schedule_list_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['marketingScheduleList'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function marketingScheduleListAsync($marketing_schedule_list_request = null, string $contentType = self::contentTypes['marketingScheduleList'][0])
+    {
+        return $this->marketingScheduleListAsyncWithHttpInfo($marketing_schedule_list_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation marketingScheduleListAsyncWithHttpInfo
+     *
+     * List the tenant marketing calendar: scheduled/active product shelf sales, active storewide and category shelf sales, featured product windows, coupons, freebies, bundles, and email/SMS campaigns in a date range, plus per-day revenue and campaign-attributed metrics for that range. Read-only federation — does not mutate sales.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\MarketingScheduleListRequest|null $marketing_schedule_list_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['marketingScheduleList'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function marketingScheduleListAsyncWithHttpInfo($marketing_schedule_list_request = null, string $contentType = self::contentTypes['marketingScheduleList'][0])
+    {
+        $returnType = '\ShadowSoftware\DabDash\Model\MarketingScheduleList200Response';
+        $request = $this->marketingScheduleListRequest($marketing_schedule_list_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'marketingScheduleList'
+     *
+     * @param  \ShadowSoftware\DabDash\Model\MarketingScheduleListRequest|null $marketing_schedule_list_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['marketingScheduleList'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function marketingScheduleListRequest($marketing_schedule_list_request = null, string $contentType = self::contentTypes['marketingScheduleList'][0])
+    {
+
+
+
+        $resourcePath = '/api/v1/tools/marketing_schedule_list';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($marketing_schedule_list_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($marketing_schedule_list_request));
+            } else {
+                $httpBody = $marketing_schedule_list_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation promotionAudit
      *
      * Inspect coupons, freebies, mix and match rules, loyalty settings, and storewide sale state for overcharge or missed-discount support tickets.
@@ -4174,6 +4519,345 @@ class PromotionsApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($promotion_audit_request));
             } else {
                 $httpBody = $promotion_audit_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation smartCampaignManage
+     *
+     * Create or inspect Smart Campaign series (recurring sends fed by live Featured / Deals / New). Does not auto-launch — materialize produces draft EmailCampaign children for vendor confirm.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\SmartCampaignManageRequest|null $smart_campaign_manage_request smart_campaign_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['smartCampaignManage'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \ShadowSoftware\DabDash\Model\ContactCleanup200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response
+     */
+    public function smartCampaignManage($smart_campaign_manage_request = null, string $contentType = self::contentTypes['smartCampaignManage'][0])
+    {
+        list($response) = $this->smartCampaignManageWithHttpInfo($smart_campaign_manage_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation smartCampaignManageWithHttpInfo
+     *
+     * Create or inspect Smart Campaign series (recurring sends fed by live Featured / Deals / New). Does not auto-launch — materialize produces draft EmailCampaign children for vendor confirm.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\SmartCampaignManageRequest|null $smart_campaign_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['smartCampaignManage'] to see the possible values for this operation
+     *
+     * @throws \ShadowSoftware\DabDash\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \ShadowSoftware\DabDash\Model\ContactCleanup200Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response|\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function smartCampaignManageWithHttpInfo($smart_campaign_manage_request = null, string $contentType = self::contentTypes['smartCampaignManage'][0])
+    {
+        $request = $this->smartCampaignManageRequest($smart_campaign_manage_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\ContactCleanup200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 402:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+                case 422:
+                    return $this->handleResponseWithDataType(
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\ShadowSoftware\DabDash\Model\ContactCleanup200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\ContactCleanup200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 402:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ShadowSoftware\DabDash\Model\AbandonedCartRecoveryManage401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation smartCampaignManageAsync
+     *
+     * Create or inspect Smart Campaign series (recurring sends fed by live Featured / Deals / New). Does not auto-launch — materialize produces draft EmailCampaign children for vendor confirm.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\SmartCampaignManageRequest|null $smart_campaign_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['smartCampaignManage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function smartCampaignManageAsync($smart_campaign_manage_request = null, string $contentType = self::contentTypes['smartCampaignManage'][0])
+    {
+        return $this->smartCampaignManageAsyncWithHttpInfo($smart_campaign_manage_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation smartCampaignManageAsyncWithHttpInfo
+     *
+     * Create or inspect Smart Campaign series (recurring sends fed by live Featured / Deals / New). Does not auto-launch — materialize produces draft EmailCampaign children for vendor confirm.
+     *
+     * @param  \ShadowSoftware\DabDash\Model\SmartCampaignManageRequest|null $smart_campaign_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['smartCampaignManage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function smartCampaignManageAsyncWithHttpInfo($smart_campaign_manage_request = null, string $contentType = self::contentTypes['smartCampaignManage'][0])
+    {
+        $returnType = '\ShadowSoftware\DabDash\Model\ContactCleanup200Response';
+        $request = $this->smartCampaignManageRequest($smart_campaign_manage_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'smartCampaignManage'
+     *
+     * @param  \ShadowSoftware\DabDash\Model\SmartCampaignManageRequest|null $smart_campaign_manage_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['smartCampaignManage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function smartCampaignManageRequest($smart_campaign_manage_request = null, string $contentType = self::contentTypes['smartCampaignManage'][0])
+    {
+
+
+
+        $resourcePath = '/api/v1/tools/smart_campaign_manage';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($smart_campaign_manage_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($smart_campaign_manage_request));
+            } else {
+                $httpBody = $smart_campaign_manage_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
